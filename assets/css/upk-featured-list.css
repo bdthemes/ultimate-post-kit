@@ -1,0 +1,173 @@
+.upk-featured-list {
+  position: relative;
+  counter-reset: number-count;
+  display: flex;
+  flex-direction: column;
+  grid-row-gap: 20px; }
+  .upk-featured-list .upk-item {
+    position: relative; }
+    .upk-featured-list .upk-item .upk-item-box {
+      width: 100%; }
+    .upk-featured-list .upk-item .upk-image-wrap {
+      display: none;
+      overflow: hidden; }
+      .upk-featured-list .upk-item .upk-image-wrap .upk-img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover; }
+    .upk-featured-list .upk-item .upk-content {
+      position: relative;
+      display: flex;
+      align-items: center; }
+    .upk-featured-list .upk-item .upk-counter {
+      counter-increment: number-count;
+      height: 55px;
+      min-width: 55px;
+      width: 55px;
+      background: #ffedef;
+      text-align: center;
+      border-radius: 80px;
+      position: relative;
+      display: inline-table;
+      margin-right: 15px; }
+      .upk-featured-list .upk-item .upk-counter:before {
+        content: counter(number-count);
+        color: #EF233C;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); }
+    .upk-featured-list .upk-item .upk-title {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.4; }
+      .upk-featured-list .upk-item .upk-title a {
+        color: #2B2D42; }
+        .upk-featured-list .upk-item .upk-title a:hover {
+          color: #EF233C; }
+    .upk-featured-list .upk-item .upk-category {
+      padding-bottom: 5px;
+      display: inline-flex; }
+      .upk-featured-list .upk-item .upk-category a {
+        color: #8D99AE;
+        font-size: 13px;
+        letter-spacing: .5px;
+        display: -webkit-inline-box;
+        line-height: 1;
+        text-transform: capitalize;
+        transition: all .3s ease;
+        position: relative;
+        display: flex;
+        align-items: center; }
+        .upk-featured-list .upk-item .upk-category a span {
+          height: 8px;
+          width: 8px;
+          display: block;
+          border-radius: 50%;
+          margin-right: 5px; }
+      .upk-featured-list .upk-item .upk-category a + a {
+        margin-left: 10px; }
+    .upk-featured-list .upk-item .upk-featured-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      position: relative;
+      color: #8D99AE;
+      font-size: 11px;
+      line-height: 1;
+      padding-top: 10px;
+      font-weight: 500;
+      text-transform: uppercase; }
+      .upk-featured-list .upk-item .upk-featured-meta .upk-author-name-wrap {
+        display: flex; }
+        .upk-featured-list .upk-item .upk-featured-meta .upk-author-name-wrap .upk-by {
+          font-weight: 700;
+          padding-right: 6px; }
+        .upk-featured-list .upk-item .upk-featured-meta .upk-author-name-wrap .upk-author-name {
+          text-decoration: none;
+          color: #8D99AE;
+          font-weight: 500; }
+      .upk-featured-list .upk-item .upk-featured-meta > div {
+        position: relative;
+        display: inline-flex; }
+        .upk-featured-list .upk-item .upk-featured-meta > div:before {
+          content: attr(data-separator);
+          margin: 0 5px; }
+        .upk-featured-list .upk-item .upk-featured-meta > div:nth-child(1)::before {
+          display: none; }
+      .upk-featured-list .upk-item .upk-featured-meta .upk-post-time {
+        margin-left: 5px; }
+        .upk-featured-list .upk-item .upk-featured-meta .upk-post-time i {
+          margin-right: 2px; }
+    .upk-featured-list .upk-item:nth-child(1) .upk-image-wrap {
+      display: flex;
+      position: relative;
+      overflow: hidden;
+      width: 100%; }
+      .upk-featured-list .upk-item:nth-child(1) .upk-image-wrap::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(358deg, #101013a6 0, rgba(141, 153, 174, 0.1) 100%); }
+    .upk-featured-list .upk-item:nth-child(1) .upk-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 30px;
+      z-index: 11; }
+    .upk-featured-list .upk-item:nth-child(1) .upk-title a {
+      color: #fff; }
+      .upk-featured-list .upk-item:nth-child(1) .upk-title a:hover {
+        color: #EF233C; }
+    .upk-featured-list .upk-item:nth-child(1) .upk-category a {
+      color: #EDF2F4; }
+    .upk-featured-list .upk-item:nth-child(1) .upk-featured-meta {
+      color: #EDF2F4; }
+      .upk-featured-list .upk-item:nth-child(1) .upk-featured-meta .upk-author-name-wrap .upk-author-name {
+        color: #EDF2F4; }
+  .upk-featured-list.upk-featured-style-1 .upk-content {
+    padding: 0 30px; }
+  .upk-featured-list.upk-featured-style-2 .upk-item-box {
+    flex-direction: row-reverse; }
+  .upk-featured-list.upk-featured-style-3 .upk-item-box {
+    flex-direction: row; }
+  .upk-featured-list.upk-featured-style-2, .upk-featured-list.upk-featured-style-3 {
+    flex-direction: column; }
+    .upk-featured-list.upk-featured-style-2 .upk-item-box, .upk-featured-list.upk-featured-style-3 .upk-item-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      grid-column-gap: 30px; }
+    .upk-featured-list.upk-featured-style-2 .upk-image-wrap, .upk-featured-list.upk-featured-style-3 .upk-image-wrap {
+      display: block;
+      width: 100%; }
+    .upk-featured-list.upk-featured-style-2 .upk-counter, .upk-featured-list.upk-featured-style-3 .upk-counter {
+      display: none; }
+    .upk-featured-list.upk-featured-style-2 .upk-content, .upk-featured-list.upk-featured-style-3 .upk-content {
+      padding: 0;
+      width: 100%; }
+
+.upk-global-link-yes .upk-featured-list .upk-item:hover {
+  cursor: pointer; }
+
+@media (min-width: 768px) {
+  .upk-featured-list .upk-item .upk-counter {
+    height: 80px;
+    width: 80px;
+    min-width: 80px;
+    margin-right: 20px; }
+    .upk-featured-list .upk-item .upk-counter:before {
+      font-size: 24px; }
+  .upk-featured-list .upk-item .upk-title {
+    font-size: 22px; }
+  .upk-featured-list .upk-item .upk-featured-meta {
+    font-size: 12px; }
+  .upk-featured-list .upk-item .upk-category {
+    padding-bottom: 8px; }
+    .upk-featured-list .upk-item .upk-category a {
+      font-size: 14px; } }

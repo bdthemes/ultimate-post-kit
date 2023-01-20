@@ -1,0 +1,54 @@
+.upk-tiny-list {
+  position: relative;
+  counter-reset: number-count;
+  display: grid; }
+  .upk-tiny-list .upk-item {
+    position: relative;
+    transition: all .3s ease; }
+    .upk-tiny-list .upk-item .upk-img {
+      height: 48px;
+      width: 48px;
+      object-fit: cover;
+      margin-left: 15px;
+      border-radius: 3px; }
+    .upk-tiny-list .upk-item .upk-counter {
+      counter-increment: number-count;
+      height: 48px;
+      min-width: 48px;
+      width: 48px;
+      background: #ffedef;
+      text-align: center;
+      border-radius: 3px;
+      position: relative;
+      display: inline-table;
+      margin-left: 15px; }
+      .upk-tiny-list .upk-item .upk-counter:before {
+        content: counter(number-count);
+        color: #EF233C;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 1;
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        transform: translate(50%, -50%); }
+    .upk-tiny-list .upk-item .upk-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.4;
+      z-index: 1; }
+      .upk-tiny-list .upk-item .upk-title a {
+        color: #2B2D42; }
+        .upk-tiny-list .upk-item .upk-title a:hover {
+          color: #EF233C; }
+    .upk-tiny-list .upk-item .upk-title-icon {
+      display: flex;
+      z-index: 1;
+      color: #2B2D42;
+      margin-left: 15px; }
+      .upk-tiny-list .upk-item .upk-title-icon svg {
+        width: 1.2em; }
+
+.upk-global-link-yes .upk-tiny-list .upk-item:hover {
+  cursor: pointer; }

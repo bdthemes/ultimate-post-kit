@@ -1,0 +1,427 @@
+.upk-maple-grid .upk-post-grid {
+  display: grid;
+  grid-gap: 20px; }
+
+.upk-maple-grid .upk-item {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  transition: all 0.3s ease; }
+  .upk-maple-grid .upk-item:hover .upk-img {
+    transform: scale(1.1); }
+
+.upk-maple-grid .upk-item-box {
+  position: relative; }
+
+.upk-maple-grid .upk-image-wrap {
+  position: relative;
+  display: flex; }
+
+.upk-maple-grid .upk-main-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  width: 100%; }
+  .upk-maple-grid .upk-main-image .upk-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease-in-out; }
+
+.upk-maple-grid .upk-category {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 15px;
+  display: inline-flex; }
+  .upk-maple-grid .upk-category a {
+    background-color: #ef233c;
+    text-decoration: none;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    color: #ffffff;
+    letter-spacing: 1.5px; }
+  .upk-maple-grid .upk-category a + a {
+    margin-left: 5px; }
+
+.upk-maple-grid .upk-post-format {
+  position: absolute;
+  bottom: 0;
+  right: 50px; }
+  .upk-maple-grid .upk-post-format a {
+    color: #fff;
+    background-color: #ef233c;
+    display: flex;
+    position: absolute;
+    padding: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    transform: translate(-50%, -50%); }
+    .upk-maple-grid .upk-post-format a i {
+      display: flex; }
+
+.upk-maple-grid .upk-content {
+  padding-top: 20px;
+  width: 100%; }
+
+.upk-maple-grid .upk-meta {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 13px; }
+  .upk-maple-grid .upk-meta .upk-author {
+    display: flex;
+    align-items: center; }
+    .upk-maple-grid .upk-meta .upk-author img {
+      border-radius: 80px;
+      margin-right: 10px; }
+  .upk-maple-grid .upk-meta .author-name {
+    color: #8d99ae;
+    font-weight: 600; }
+  .upk-maple-grid .upk-meta .upk-blog-date {
+    position: relative;
+    display: flex; }
+    .upk-maple-grid .upk-meta .upk-blog-date .date {
+      color: #8d99ae; }
+    .upk-maple-grid .upk-meta .upk-blog-date i {
+      margin: 0 5px; }
+  .upk-maple-grid .upk-meta .upk-post-time {
+    margin-left: 5px;
+    color: #8d99ae; }
+    .upk-maple-grid .upk-meta .upk-post-time i {
+      margin-right: 2px; }
+  .upk-maple-grid .upk-meta .upk-reading-time {
+    color: #8d99ae; }
+  .upk-maple-grid .upk-meta > div {
+    position: relative;
+    display: inline-flex; }
+    .upk-maple-grid .upk-meta > div:before {
+      content: attr(data-separator);
+      margin: 0 8px; }
+    .upk-maple-grid .upk-meta > div:nth-child(1)::before {
+      display: none; }
+
+.upk-maple-grid .upk-title {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 15px; }
+  .upk-maple-grid .upk-title a {
+    color: #2b2d42; }
+    .upk-maple-grid .upk-title a:hover {
+      color: #ef233c; }
+
+.upk-maple-grid .upk-text {
+  color: #8d99ae;
+  font-size: 14px; }
+  .upk-maple-grid .upk-text P {
+    margin: 0; }
+
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 3) .upk-item-box,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 4) .upk-item-box,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 5) .upk-item-box,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 6) .upk-item-box,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2) .upk-item-box,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3) .upk-item-box,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4) .upk-item-box,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) .upk-item-box,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2) .upk-item-box,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4) .upk-item-box,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) .upk-item-box,
+.upk-maple-grid .upk-style-3 .upk-item:nth-child(n + 1) .upk-item-box {
+  display: flex;
+  align-items: center;
+  width: 100%; }
+
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 3) .upk-title,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 4) .upk-title,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 5) .upk-title,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 6) .upk-title,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2) .upk-title,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3) .upk-title,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4) .upk-title,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) .upk-title,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2) .upk-title,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4) .upk-title,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) .upk-title,
+.upk-maple-grid .upk-style-3 .upk-item:nth-child(n + 1) .upk-title {
+  font-size: 16px; }
+
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 3) .upk-category,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 3) .upk-post-format,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 3) .upk-author,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 3) .upk-blog-date::before,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 3) .upk-text,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 4) .upk-category,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 4) .upk-post-format,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 4) .upk-author,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 4) .upk-blog-date::before,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 4) .upk-text,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 5) .upk-category,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 5) .upk-post-format,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 5) .upk-author,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 5) .upk-blog-date::before,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 5) .upk-text,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 6) .upk-category,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 6) .upk-post-format,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 6) .upk-author,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 6) .upk-blog-date::before,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 6) .upk-text,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2) .upk-category,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2) .upk-post-format,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2) .upk-author,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2) .upk-blog-date::before,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2) .upk-text,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3) .upk-category,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3) .upk-post-format,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3) .upk-author,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3) .upk-blog-date::before,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3) .upk-text,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4) .upk-category,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4) .upk-post-format,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4) .upk-author,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4) .upk-blog-date::before,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4) .upk-text,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) .upk-category,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) .upk-post-format,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) .upk-author,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) .upk-blog-date::before,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) .upk-text,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2) .upk-category,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2) .upk-post-format,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2) .upk-author,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2) .upk-blog-date::before,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2) .upk-text,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4) .upk-category,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4) .upk-post-format,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4) .upk-author,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4) .upk-blog-date::before,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4) .upk-text,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) .upk-category,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) .upk-post-format,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) .upk-author,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) .upk-blog-date::before,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) .upk-text,
+.upk-maple-grid .upk-style-3 .upk-item:nth-child(n + 1) .upk-category,
+.upk-maple-grid .upk-style-3 .upk-item:nth-child(n + 1) .upk-post-format,
+.upk-maple-grid .upk-style-3 .upk-item:nth-child(n + 1) .upk-author,
+.upk-maple-grid .upk-style-3 .upk-item:nth-child(n + 1) .upk-blog-date::before,
+.upk-maple-grid .upk-style-3 .upk-item:nth-child(n + 1) .upk-text {
+  display: none; }
+
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 3) .upk-main-image,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 4) .upk-main-image,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 5) .upk-main-image,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 6) .upk-main-image,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2) .upk-main-image,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3) .upk-main-image,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4) .upk-main-image,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) .upk-main-image,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2) .upk-main-image,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4) .upk-main-image,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) .upk-main-image,
+.upk-maple-grid .upk-style-3 .upk-item:nth-child(n + 1) .upk-main-image {
+  width: 150px; }
+
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 3) .upk-content,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 4) .upk-content,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 5) .upk-content,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 6) .upk-content,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2) .upk-content,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3) .upk-content,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4) .upk-content,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) .upk-content,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2) .upk-content,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4) .upk-content,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) .upk-content,
+.upk-maple-grid .upk-style-3 .upk-item:nth-child(n + 1) .upk-content {
+  padding: 15px; }
+
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 3) .upk-content-inner,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 4) .upk-content-inner,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 5) .upk-content-inner,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 6) .upk-content-inner,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2) .upk-content-inner,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3) .upk-content-inner,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4) .upk-content-inner,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) .upk-content-inner,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2) .upk-content-inner,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4) .upk-content-inner,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) .upk-content-inner,
+.upk-maple-grid .upk-style-3 .upk-item:nth-child(n + 1) .upk-content-inner {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-flow: wrap-reverse; }
+
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 3) .upk-meta,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 4) .upk-meta,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 5) .upk-meta,
+.upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 6) .upk-meta,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2) .upk-meta,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3) .upk-meta,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4) .upk-meta,
+.upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) .upk-meta,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2) .upk-meta,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4) .upk-meta,
+.upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) .upk-meta,
+.upk-maple-grid .upk-style-3 .upk-item:nth-child(n + 1) .upk-meta {
+  font-size: 13px;
+  margin-bottom: 0;
+  width: 100%; }
+  .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 3) .upk-meta .upk-blog-date,
+  .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 4) .upk-meta .upk-blog-date,
+  .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 5) .upk-meta .upk-blog-date,
+  .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 6) .upk-meta .upk-blog-date,
+  .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2) .upk-meta .upk-blog-date,
+  .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3) .upk-meta .upk-blog-date,
+  .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4) .upk-meta .upk-blog-date,
+  .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) .upk-meta .upk-blog-date,
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2) .upk-meta .upk-blog-date,
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4) .upk-meta .upk-blog-date,
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) .upk-meta .upk-blog-date,
+  .upk-maple-grid .upk-style-3 .upk-item:nth-child(n + 1) .upk-meta .upk-blog-date {
+    padding-left: 0px; }
+    .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 3) .upk-meta .upk-blog-date i,
+    .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 4) .upk-meta .upk-blog-date i,
+    .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 5) .upk-meta .upk-blog-date i,
+    .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 6) .upk-meta .upk-blog-date i,
+    .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2) .upk-meta .upk-blog-date i,
+    .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3) .upk-meta .upk-blog-date i,
+    .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4) .upk-meta .upk-blog-date i,
+    .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) .upk-meta .upk-blog-date i,
+    .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2) .upk-meta .upk-blog-date i,
+    .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4) .upk-meta .upk-blog-date i,
+    .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) .upk-meta .upk-blog-date i,
+    .upk-maple-grid .upk-style-3 .upk-item:nth-child(n + 1) .upk-meta .upk-blog-date i {
+      margin-left: 0; }
+
+.upk-maple-grid .upk-style-1 {
+  grid-template-columns: repeat(6, 1fr); }
+  .upk-maple-grid .upk-style-1 .upk-item {
+    grid-column: span 6 / auto; }
+
+.upk-maple-grid .upk-style-2 {
+  grid-template-columns: repeat(6, 1fr); }
+  .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 1) {
+    grid-column: span 6 / auto;
+    grid-row: span 4 / auto; }
+  .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2), .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3), .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4), .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) {
+    grid-column: span 6 / auto; }
+
+.upk-maple-grid .upk-style-3 {
+  grid-template-columns: repeat(1, 1fr); }
+
+.upk-maple-grid .upk-style-4 {
+  grid-template-columns: repeat(1, 1fr); }
+
+.upk-maple-grid .upk-style-5 {
+  grid-template-columns: repeat(6, 1fr); }
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 1) {
+    grid-column: span 6 / auto; }
+    .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 1) .upk-item-box {
+      display: block; }
+    .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 1) .upk-main-image {
+      width: 100%; }
+    .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 1) .upk-content {
+      padding-top: 30px;
+      padding-left: 0px;
+      padding-right: 0px; }
+    .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 1) .upk-title {
+      font-size: 18px; }
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 3) {
+    grid-column: span 6 / auto;
+    grid-row: span 3 / auto; }
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2), .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4), .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) {
+    grid-column: span 6 / auto; }
+
+.upk-maple-content--center .upk-style-1 .upk-item:nth-child(6n + 3) .upk-meta,
+.upk-maple-content--center .upk-style-1 .upk-item:nth-child(6n + 4) .upk-meta,
+.upk-maple-content--center .upk-style-1 .upk-item:nth-child(6n + 5) .upk-meta,
+.upk-maple-content--center .upk-style-1 .upk-item:nth-child(6n + 6) .upk-meta,
+.upk-maple-content--center .upk-style-2 .upk-item:nth-child(5n + 2) .upk-meta,
+.upk-maple-content--center .upk-style-2 .upk-item:nth-child(5n + 3) .upk-meta,
+.upk-maple-content--center .upk-style-2 .upk-item:nth-child(5n + 4) .upk-meta,
+.upk-maple-content--center .upk-style-2 .upk-item:nth-child(5n + 5) .upk-meta,
+.upk-maple-content--center .upk-style-5 .upk-item:nth-child(5n + 2) .upk-meta,
+.upk-maple-content--center .upk-style-5 .upk-item:nth-child(5n + 4) .upk-meta,
+.upk-maple-content--center .upk-style-5 .upk-item:nth-child(5n + 5) .upk-meta,
+.upk-maple-content--center .upk-style-3 .upk-item:nth-child(n + 1) .upk-meta {
+  justify-content: center; }
+
+.upk-maple-content--right .upk-style-1 .upk-item:nth-child(6n + 3) .upk-item-box,
+.upk-maple-content--right .upk-style-1 .upk-item:nth-child(6n + 4) .upk-item-box,
+.upk-maple-content--right .upk-style-1 .upk-item:nth-child(6n + 5) .upk-item-box,
+.upk-maple-content--right .upk-style-1 .upk-item:nth-child(6n + 6) .upk-item-box,
+.upk-maple-content--right .upk-style-2 .upk-item:nth-child(5n + 2) .upk-item-box,
+.upk-maple-content--right .upk-style-2 .upk-item:nth-child(5n + 3) .upk-item-box,
+.upk-maple-content--right .upk-style-2 .upk-item:nth-child(5n + 4) .upk-item-box,
+.upk-maple-content--right .upk-style-2 .upk-item:nth-child(5n + 5) .upk-item-box,
+.upk-maple-content--right .upk-style-5 .upk-item:nth-child(5n + 2) .upk-item-box,
+.upk-maple-content--right .upk-style-5 .upk-item:nth-child(5n + 4) .upk-item-box,
+.upk-maple-content--right .upk-style-5 .upk-item:nth-child(5n + 5) .upk-item-box,
+.upk-maple-content--right .upk-style-3 .upk-item:nth-child(n + 1) .upk-item-box {
+  flex-direction: row-reverse; }
+
+.upk-maple-content--right .upk-style-1 .upk-item:nth-child(6n + 3) .upk-meta,
+.upk-maple-content--right .upk-style-1 .upk-item:nth-child(6n + 4) .upk-meta,
+.upk-maple-content--right .upk-style-1 .upk-item:nth-child(6n + 5) .upk-meta,
+.upk-maple-content--right .upk-style-1 .upk-item:nth-child(6n + 6) .upk-meta,
+.upk-maple-content--right .upk-style-2 .upk-item:nth-child(5n + 2) .upk-meta,
+.upk-maple-content--right .upk-style-2 .upk-item:nth-child(5n + 3) .upk-meta,
+.upk-maple-content--right .upk-style-2 .upk-item:nth-child(5n + 4) .upk-meta,
+.upk-maple-content--right .upk-style-2 .upk-item:nth-child(5n + 5) .upk-meta,
+.upk-maple-content--right .upk-style-5 .upk-item:nth-child(5n + 2) .upk-meta,
+.upk-maple-content--right .upk-style-5 .upk-item:nth-child(5n + 4) .upk-meta,
+.upk-maple-content--right .upk-style-5 .upk-item:nth-child(5n + 5) .upk-meta,
+.upk-maple-content--right .upk-style-3 .upk-item:nth-child(n + 1) .upk-meta {
+  justify-content: flex-end; }
+
+.upk-global-link-yes .upk-maple-grid .upk-item:hover {
+  cursor: pointer; }
+
+@media (min-width: 768px) {
+  .upk-maple-grid .upk-title {
+    font-size: 24px; }
+  .upk-maple-grid .upk-text {
+    font-size: 16px;
+    margin-bottom: 20px; }
+  .upk-maple-grid .upk-meta {
+    font-size: 14px; }
+  .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 3) .upk-title,
+  .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 4) .upk-title,
+  .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 5) .upk-title,
+  .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n + 6) .upk-title,
+  .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2) .upk-title,
+  .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3) .upk-title,
+  .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4) .upk-title,
+  .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) .upk-title,
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2) .upk-title,
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4) .upk-title,
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) .upk-title,
+  .upk-maple-grid .upk-style-3 .upk-item:nth-child(n + 1) .upk-title {
+    font-size: 18px; }
+  .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 1), .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 2), .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 3), .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 4), .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n + 5) {
+    grid-column: span 3 / auto; }
+  .upk-maple-grid .upk-style-4,
+  .upk-maple-grid .upk-style-3 {
+    grid-template-columns: repeat(2, 1fr); }
+  .upk-maple-grid .upk-style-1 .upk-item:nth-child(n + 1) {
+    grid-column: span 3 / auto; }
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 1) .upk-image-wrap,
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 1) .upk-content {
+    width: 50%; }
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 1) .upk-item-box {
+    display: flex; }
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 1) .upk-post-format {
+    bottom: 50px;
+    right: 0px; }
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 1) .upk-content {
+    padding: 0 30px; }
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 1) .upk-title {
+    font-size: 24px; }
+  .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 2), .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 3), .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 4), .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n + 5) {
+    grid-column: span 3 / auto; } }

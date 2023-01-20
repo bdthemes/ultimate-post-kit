@@ -1,0 +1,94 @@
+.upk-amox-grid {
+  display: grid;
+  grid-gap: 30px; }
+  .upk-amox-grid .upk-item {
+    overflow: hidden; }
+    .upk-amox-grid .upk-item:hover .upk-img-wrap .upk-img {
+      transform: scale(1.2); }
+    .upk-amox-grid .upk-item.active {
+      position: relative; }
+      .upk-amox-grid .upk-item.active .upk-img-wrap {
+        height: 100%;
+        position: relative; }
+        .upk-amox-grid .upk-item.active .upk-img-wrap::before {
+          position: absolute;
+          content: '';
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background: #2b2d4259;
+          z-index: 1;
+          transition: background .3s ease; }
+      .upk-amox-grid .upk-item.active .upk-content {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        z-index: 1; }
+      .upk-amox-grid .upk-item.active .upk-title a {
+        color: #EDF2F4; }
+        .upk-amox-grid .upk-item.active .upk-title a:hover {
+          color: #D90429; }
+      .upk-amox-grid .upk-item.active .upk-category a {
+        color: #fff;
+        background: #161a2b;
+        padding: 4px 8px;
+        transition: all .3s ease-in-out; }
+        .upk-amox-grid .upk-item.active .upk-category a:hover {
+          background: #D90429; }
+      .upk-amox-grid .upk-item.active .upk-meta {
+        color: #EDF2F4; }
+  .upk-amox-grid .upk-img-wrap {
+    overflow: hidden;
+    cursor: pointer; }
+    .upk-amox-grid .upk-img-wrap .upk-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1);
+      transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1); }
+  .upk-amox-grid .upk-content {
+    padding: 20px 0; }
+  .upk-amox-grid .upk-category {
+    display: inline-flex;
+    margin-bottom: 8px; }
+    .upk-amox-grid .upk-category a {
+      font-size: 11px;
+      color: #8D99AE;
+      text-transform: uppercase;
+      transition: all .3s ease-in-out; }
+      .upk-amox-grid .upk-category a:hover {
+        color: #D90429; }
+    .upk-amox-grid .upk-category a + a {
+      margin-left: 5px; }
+  .upk-amox-grid .upk-title {
+    margin: 0;
+    padding-bottom: 8px;
+    font-size: 20px;
+    font-weight: 700; }
+    .upk-amox-grid .upk-title a {
+      color: #2B2D42;
+      transition: all .3s ease-in-out; }
+      .upk-amox-grid .upk-title a:hover {
+        color: #D90429; }
+  .upk-amox-grid .upk-meta {
+    font-size: 12px;
+    color: #8D99AE; }
+    .upk-amox-grid .upk-meta .upk-post-time {
+      margin-left: 5px; }
+      .upk-amox-grid .upk-meta .upk-post-time i {
+        margin-right: 2px; }
+    .upk-amox-grid .upk-meta > div {
+      position: relative;
+      display: inline-flex; }
+      .upk-amox-grid .upk-meta > div:before {
+        content: attr(data-separator);
+        margin: 0 5px; }
+      .upk-amox-grid .upk-meta > div:nth-child(1)::before {
+        display: none; }
+  .upk-amox-grid .upk-comments span {
+    margin-left: 4px; }
+
+.upk-global-link-yes .upk-amox-grid .upk-item:hover {
+  cursor: pointer; }

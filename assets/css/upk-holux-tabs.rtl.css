@@ -1,0 +1,156 @@
+.ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-header-tabs {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 0;
+  margin: 0; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-header-tabs .upk-holux-tabs-tabs-list {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%; }
+    .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-header-tabs .upk-holux-tabs-tabs-list a {
+      height: 45px;
+      line-height: 45px;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 10px;
+      text-decoration: none;
+      color: #544e4e;
+      transition: all 0.3s ease;
+      display: block; }
+      .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-header-tabs .upk-holux-tabs-tabs-list a:hover {
+        text-decoration-line: underline; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-header-tabs .upk-holux-tabs-active a {
+    background: #2b2d42;
+    color: #fff; }
+
+.ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs {
+  padding: 30px 0;
+  display: grid; }
+
+.ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item {
+  grid-template-columns: repeat(1, 1fr);
+  border-top: 1px solid #7b707038;
+  padding: 20px 0; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item:nth-child(1) {
+    border: none;
+    padding-top: 0; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-item-box {
+    display: flex;
+    align-items: center;
+    height: 100%; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-image {
+    height: 100%; }
+    .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-image a img {
+      width: 100px;
+      height: 100px;
+      max-width: none;
+      object-fit: cover; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-content {
+    padding-right: 10px; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-category a {
+    border: 1px solid #d90429;
+    display: inline-block;
+    padding: 3px 6px;
+    text-decoration: none;
+    font-size: 9px;
+    color: #d90429;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 8px;
+    transition: all 0.3s ease; }
+    .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-category a:hover {
+      background: #d90429;
+      color: #fff; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-title {
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 11px;
+    margin: 0;
+    margin-bottom: 6px; }
+    .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-title a {
+      color: #2b2d42;
+      text-decoration: none;
+      transition: all 0.3s ease; }
+      .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-title a:hover {
+        color: #d90429; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-meta {
+    display: block;
+    align-items: center;
+    color: #969696;
+    font-size: 9px;
+    text-transform: capitalize;
+    grid-column-gap: 10px; }
+    .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-meta i {
+      padding-left: 6px; }
+    .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-meta .upk-separator {
+      display: none; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-author {
+    position: relative; }
+    .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-author a {
+      text-decoration: none;
+      color: #969696; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-date {
+    padding-right: 0;
+    margin-top: 8px; }
+
+@media (min-width: 768px) {
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-header-tabs .upk-holux-tabs-tabs-list a {
+    height: 60px;
+    line-height: 60px;
+    font-size: 14px; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-image a img {
+    width: 120px;
+    height: 120px; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-content {
+    padding-right: 20px;
+    width: 100%; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-categroy {
+    font-size: 12px;
+    margin-bottom: 15px; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-title {
+    margin-bottom: 10px;
+    font-size: 16px; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-meta {
+    display: flex;
+    font-size: 12px; }
+    .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-meta .upk-separator {
+      display: block; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-author::before {
+    content: ""; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-date {
+    margin-top: 0; }
+    .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-date a {
+      padding-right: 3px; } }
+
+@media (min-width: 1024px) {
+  .ultimate-post-kit-container {
+    padding-right: 40px;
+    padding-left: 40px; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-header-tabs .upk-holux-tabs-tabs-list a {
+    height: 60px;
+    line-height: 60px;
+    font-size: 14px; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-image a img {
+    width: 120px;
+    height: 120px; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-content {
+    padding-right: 20px; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-categroy {
+    font-size: 10px;
+    margin-bottom: 15px; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-title {
+    margin-bottom: 10px;
+    font-size: 18px; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-meta {
+    display: flex;
+    font-size: 11px; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-author::before {
+    content: ""; }
+  .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-date {
+    margin-top: 0; }
+    .ultimate-post-kit-holux-tabs-wrap .upk-holux-tabs-item .upk-holux-tabs-date a {
+      padding-right: 3px; } }

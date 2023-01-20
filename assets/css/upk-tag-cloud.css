@@ -1,0 +1,40 @@
+.upk-tag-cloud .upk-tag-cloud-item {
+  position: relative;
+  background: #2B2D42;
+  border-radius: 4px;
+  align-items: center;
+  transition: all .3s ease; }
+  .upk-tag-cloud .upk-tag-cloud-item .upk-tag-cloud-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: .5px;
+    transition: all .3s ease;
+    line-height: 1; }
+  .upk-tag-cloud .upk-tag-cloud-item .upk-tag-cloud-count {
+    display: inline-flex;
+    font-size: 13px;
+    padding: 3px 5px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    line-height: 1;
+    margin-left: 5px;
+    transition: all .3s ease; }
+
+.upk-layout-style--inline .upk-tag-cloud {
+  display: -webkit-inline-box; }
+  .upk-layout-style--inline .upk-tag-cloud .upk-tag-cloud-item {
+    padding: 8px 16px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: inline-flex; }
+    .upk-layout-style--inline .upk-tag-cloud .upk-tag-cloud-item:nth-last-child(1) {
+      margin-right: 0; }
+
+.upk-layout-style--grid .upk-tag-cloud {
+  display: grid; }
+  .upk-layout-style--grid .upk-tag-cloud .upk-tag-cloud-item {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; }

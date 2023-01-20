@@ -1,0 +1,46 @@
+.upk-static-social-count {
+  display: grid;
+  grid-column-gap: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  width: 100%; }
+  .upk-static-social-count .upk-item {
+    text-align: center;
+    transition: all .3s ease; }
+    .upk-static-social-count .upk-item:hover .upk-icon {
+      transform: translateY(-5px); }
+  .upk-static-social-count .upk-icon {
+    margin-bottom: 10px;
+    transform: translateY(0);
+    transition: transform .3s ease; }
+    .upk-static-social-count .upk-icon span {
+      font-size: 14px;
+      border: 1px solid #c8c6c6;
+      color: #565252;
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: 100%;
+      transition: all .3s ease; }
+      .upk-static-social-count .upk-icon span:hover {
+        color: #000; }
+  .upk-static-social-count .upk-count {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #383535;
+    font-weight: 600;
+    margin-bottom: 4px; }
+  .upk-static-social-count .upk-meta {
+    font-size: 14px;
+    text-transform: capitalize;
+    color: #626262; }
+  .upk-static-social-count.upk-style-2 .upk-item {
+    display: inline-flex;
+    align-items: center;
+    text-align: right;
+    grid-column-gap: 10px; }
+  .upk-static-social-count.upk-style-2 .upk-icon {
+    margin: 0; }

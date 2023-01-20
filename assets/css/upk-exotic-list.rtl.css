@@ -1,0 +1,132 @@
+.upk-exotic-list {
+  position: relative; }
+  .upk-exotic-list .upk-item {
+    display: inline-flex;
+    flex-direction: column;
+    grid-row-gap: 20px;
+    margin-bottom: 30px;
+    width: 100%; }
+    .upk-exotic-list .upk-item:nth-last-child(1) {
+      margin-bottom: 0 !important; }
+  .upk-exotic-list .upk-image-wrap {
+    width: 100%;
+    height: 100%;
+    position: static;
+    top: 0;
+    overflow: hidden; }
+  .upk-exotic-list .upk-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+  .upk-exotic-list .upk-content-wrap {
+    width: 100%;
+    display: inline-block;
+    align-items: center;
+    grid-column-gap: 0; }
+  .upk-exotic-list .upk-date-wrap {
+    font-size: 14px;
+    text-transform: capitalize;
+    color: #676c7e;
+    margin-bottom: 10px;
+    display: inline-flex; }
+  .upk-exotic-list .upk-title {
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: capitalize;
+    text-decoration: none;
+    margin: 0 0 5px;
+    position: relative; }
+    .upk-exotic-list .upk-title a {
+      color: #131415;
+      text-decoration: none;
+      transition: all .3s ease-in-out; }
+      .upk-exotic-list .upk-title a:hover {
+        color: #db180a; }
+  .upk-exotic-list .upk-category a {
+    color: #676c7e;
+    text-decoration: none;
+    transition: all .3s ease-in-out; }
+    .upk-exotic-list .upk-category a:hover {
+      color: #db180a; }
+  .upk-exotic-list .upk-category a + a {
+    margin-right: 5px; }
+  .upk-exotic-list .upk-author a {
+    color: #676c7e;
+    text-decoration: none;
+    transition: all .3s ease-in-out; }
+    .upk-exotic-list .upk-author a:hover {
+      color: #db180a; }
+  .upk-exotic-list .upk-meta {
+    font-size: 14px;
+    color: #4b4c58;
+    display: inline-flex;
+    align-items: center;
+    text-transform: capitalize; }
+    .upk-exotic-list .upk-meta > div {
+      position: relative;
+      display: inline-flex; }
+      .upk-exotic-list .upk-meta > div:before {
+        content: attr(data-separator);
+        margin: 0 5px; }
+      .upk-exotic-list .upk-meta > div:nth-child(1)::before {
+        display: none; }
+
+@media (min-width: 768px) {
+  .upk-exotic-list {
+    grid-template-columns: repeat(3, 1fr); }
+    .upk-exotic-list .upk-content-wrap {
+      width: 48%; }
+      .upk-exotic-list .upk-content-wrap:hover + .upk-image-wrap .upk-img {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+        z-index: 1; }
+    .upk-exotic-list .upk-image-wrap {
+      width: 48%;
+      position: absolute; }
+      .upk-exotic-list .upk-image-wrap .upk-img {
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(1.15);
+        transition: opacity .65s,visibility .65s,transform .65s;
+        transition-timing-function: cubic-bezier(0.16, 0.9, 0.7, 1); }
+    .upk-exotic-list .upk-item {
+      margin-bottom: 50px;
+      grid-row-gap: 0; }
+      .upk-exotic-list .upk-item:nth-child(1) .upk-content-wrap + .upk-image-wrap .upk-img {
+        opacity: 1;
+        visibility: visible; }
+    .upk-exotic-list.upk-image-direction-right .upk-item {
+      flex-direction: row; }
+    .upk-exotic-list.upk-image-direction-right .upk-image-wrap {
+      left: 0; }
+    .upk-exotic-list.upk-image-direction-left .upk-item {
+      flex-direction: row-reverse; }
+    .upk-exotic-list.upk-image-direction-left .upk-content-wrap {
+      flex-direction: row-reverse; }
+    .upk-exotic-list.upk-image-direction-left .upk-image-wrap {
+      right: 0; } }
+
+@media (min-width: 1024px) {
+  .upk-exotic-list {
+    grid-template-columns: repeat(3, 1fr); }
+    .upk-exotic-list .upk-content-wrap {
+      display: inline-flex;
+      width: 65%;
+      grid-column-gap: 40px; }
+      .upk-exotic-list .upk-content-wrap .upk-inner-content {
+        width: 60%; }
+    .upk-exotic-list .upk-image-wrap {
+      width: 35%; }
+    .upk-exotic-list .upk-item {
+      margin-bottom: 78px; } }
+
+@media (min-width: 1440px) {
+  .upk-exotic-list .upk-date-wrap {
+    font-size: 16px;
+    margin-bottom: 0; }
+  .upk-exotic-list .upk-title {
+    font-size: 27px; } }
+
+.upk-global-link-yes .upk-exotic-list .upk-item:hover {
+  cursor: pointer; }

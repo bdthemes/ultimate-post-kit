@@ -1,0 +1,96 @@
+#elementor-panel #elementor-controls .upk-disabled-control .elementor-control-input-wrapper {
+  pointer-events: none !important;
+  opacity: 0.4; }
+
+#elementor-panel #elementor-controls .upk-disabled-control .elementor-control-field {
+  pointer-events: none !important; }
+
+#elementor-panel #elementor-controls .upk-disabled-control .elementor-control-field:before {
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2236px%22%20height%3D%2212px%22%3E%3Cpath%20fill%3D%22rgba%2817,%2017,%2017,%200.9%29%22%20transform%3D%22rotate%280%29%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E") no-repeat;
+  height: 6px;
+  width: 18px;
+  margin-bottom: 6px;
+  background-size: 100% auto !important;
+  content: "";
+  display: none;
+  position: absolute;
+  right: 35px;
+  top: 0; }
+
+#elementor-panel #elementor-controls .upk-disabled-control .elementor-control-field:after {
+  content: "This is a pro control, available with Ultimate Post Kit Pro version.";
+  padding: 10px;
+  display: none;
+  position: absolute;
+  top: -52px;
+  right: 20px;
+  width: 220px;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 3px;
+  color: #fff;
+  z-index: 10;
+  line-height: 16px;
+  pointer-events: none;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3); }
+
+#elementor-panel #elementor-controls .upk-disabled-control:hover .elementor-control-field:after,
+#elementor-panel #elementor-controls .upk-disabled-control:hover .elementor-control-field:before {
+  display: block; }
+
+#elementor-panel-category-ultimate-post-kit .elementor-element:hover .icon, #elementor-panel-category-ultimate-post-kit .elementor-element:hover .title {
+  color: #EF233C; }
+
+#elementor-panel-category-ultimate-post-kit .elementor-element:hover .icon .upk-widget-icon:after, #elementor-panel-category-ultimate-post-kit .elementor-element:hover .title .upk-widget-icon:after {
+  opacity: 1; }
+
+.elementor-element .icon {
+  position: relative; }
+
+.elementor-element .icon .upk-widget-icon:after {
+  content: "\e95b";
+  position: absolute;
+  font-family: 'ultimate-post-kit', serif;
+  right: 8px;
+  top: 8px;
+  font-size: 10px;
+  opacity: .4; }
+
+.elementor-element .icon .upk-widget-icon:before {
+  font-size: 48px; }
+
+.elementor-element .icon .upk-widget-icon.upk-new:after {
+  color: #EF233C;
+  opacity: 1; }
+
+.upk-new-control:after,
+.upk-pro-control:after {
+  color: #fff;
+  font-size: 8px;
+  font-weight: 700;
+  border-radius: 2px;
+  padding: 3px 4px;
+  margin-left: 5px;
+  vertical-align: middle; }
+
+.upk-new-control:after {
+  content: 'NEW';
+  background-color: #55c10c; }
+
+.upk-pro-control:after {
+  content: 'PRO';
+  background-color: #e62a3f; }
+
+#elementor-panel #elementor-panel-header-title span.upk-widget-badge:after,
+#elementor-panel .elementor-control-title span.upk-widget-badge:after,
+#elementor-panel .elementor-section-title span.upk-widget-badge:after {
+  font-family: "ultimate-post-kit" !important;
+  content: '\e95b';
+  background-color: #e0e6ec;
+  color: #50565d;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 30px;
+  padding: 3px 4px;
+  margin-right: 4px;
+  vertical-align: middle; }

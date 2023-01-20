@@ -1,0 +1,1 @@
+!function(e,n){"use strict";var t=function(e,n){var t=e.find(".upk-news-ticker"),o=t.data("settings");t.length&&n(t).upkNewsTicker(o)};jQuery(window).on("elementor/frontend/init",(function(){elementorFrontend.hooks.addAction("frontend/element_ready/upk-news-ticker.default",t)}))}(jQuery,window.elementorFrontend);

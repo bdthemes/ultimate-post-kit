@@ -1,0 +1,267 @@
+.upk-banner-wrap .upk-item {
+  height: 300px;
+  position: relative;
+  overflow: hidden; }
+  .upk-banner-wrap .upk-item::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%; }
+
+.upk-banner-wrap .upk-content {
+  position: absolute;
+  padding: 40px; }
+
+.upk-banner-wrap .upk-title {
+  font-size: 18px;
+  margin: 0;
+  text-transform: uppercase; }
+  .upk-banner-wrap .upk-title a {
+    text-decoration: none;
+    color: #27272d;
+    transition: all .3s ease-in; }
+    .upk-banner-wrap .upk-title a:hover {
+      color: #D90429; }
+
+.upk-banner-wrap .upk-sub-title {
+  font-size: 16px;
+  color: #191b1e;
+  font-weight: 400;
+  margin: 0;
+  text-transform: capitalize; }
+
+.upk-banner-wrap .upk-text {
+  color: #262a2f;
+  font-size: 12px;
+  text-transform: capitalize;
+  margin-bottom: 20px; }
+  .upk-banner-wrap .upk-text p {
+    margin: 0; }
+  .upk-banner-wrap .upk-text strong {
+    color: #fff; }
+
+.upk-banner-wrap .upk-buy-btn a {
+  color: #3b3f42;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 12px;
+  font-weight: 600;
+  background: 100% 0;
+  border: 1px solid #3b3f42;
+  padding: 7px 15px;
+  transition: all .3s ease-in;
+  display: inline-block; }
+  .upk-banner-wrap .upk-buy-btn a:hover {
+    background: #edeeee;
+    color: rgba(24, 21, 21, 0.979); }
+  .upk-banner-wrap .upk-buy-btn a svg {
+    width: 1em;
+    height: 1em;
+    fill: #3b3f42;
+    transition: all .3s ease-in; }
+
+.upk-banner-wrap .upk-discount {
+  position: absolute;
+  color: #fff;
+  font-weight: 600;
+  font-size: 10px;
+  border: 0;
+  background: #f00;
+  text-align: center;
+  padding: 4px 12px; }
+
+.upk-banner-wrap .upk-banner-size-text {
+  position: absolute;
+  background: red;
+  font-size: 10px;
+  padding: 5px;
+  color: #fff;
+  font-weight: 700;
+  text-align: center; }
+
+.upk-sale-badge-style-1 .upk-discount {
+  top: 0;
+  right: 0; }
+
+.upk-sale-badge-style-2 .upk-discount {
+  top: 0;
+  left: 0; }
+
+.upk-sale-badge-style-3 .upk-discount {
+  bottom: 0;
+  right: 0; }
+
+.upk-sale-badge-style-4 .upk-discount {
+  bottom: 0;
+  left: 0; }
+
+.upk-sale-badge-style-5 .upk-discount {
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%); }
+
+.upk-sale-badge-style-6 .upk-discount {
+  top: 0;
+  right: 50%;
+  transform: translateX(50%); }
+
+.upk-sale-badge-style-7 .upk-discount {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(-180deg); }
+
+.upk-sale-badge-style-8 .upk-discount {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(-180deg); }
+
+.upk-size-badge-style-1 .upk-banner-size-text {
+  top: 0;
+  right: 0; }
+
+.upk-size-badge-style-2 .upk-banner-size-text {
+  top: 0;
+  left: 0; }
+
+.upk-size-badge-style-3 .upk-banner-size-text {
+  bottom: 0;
+  right: 0; }
+
+.upk-size-badge-style-4 .upk-banner-size-text {
+  bottom: 0;
+  left: 0; }
+
+.upk-size-badge-style-5 .upk-banner-size-text {
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%); }
+
+.upk-size-badge-style-6 .upk-banner-size-text {
+  top: 0;
+  right: 50%;
+  transform: translateX(50%); }
+
+.upk-size-badge-style-7 .upk-banner-size-text {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(-180deg); }
+
+.upk-size-badge-style-8 .upk-banner-size-text {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(-180deg); }
+
+.upk-banner-style-1 .upk-content {
+  right: 0;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.upk-banner-style-1 .upk-buy-btn {
+  display: inline-flex;
+  margin-top: 16px; }
+
+.upk-banner-style-1 .upk-sub-title {
+  padding-bottom: 10px; }
+
+.upk-banner-style-1 .upk-title {
+  padding-bottom: 7px; }
+
+.upk-banner-style-2 .upk-content {
+  display: inline-block;
+  align-items: center;
+  justify-content: space-between;
+  top: 50%;
+  right: 0;
+  left: 0;
+  transform: translateY(-50%); }
+
+.upk-banner-style-2 .upk-content-inner {
+  margin-bottom: 10px;
+  width: 100%; }
+
+.upk-banner-style-2 .upk-title {
+  padding-bottom: 7px; }
+
+.upk-banner-style-2 .upk-text {
+  width: 100%; }
+
+.upk-banner-style-2 .upk-buy-btn {
+  width: 100%;
+  text-align: right; }
+
+.upk-banner-style-3 .upk-title {
+  padding-bottom: 10px; }
+
+.upk-banner-style-3 .upk-content {
+  display: block;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  text-align: right;
+  top: 50%;
+  right: 0;
+  left: 0;
+  transform: translateY(-50%); }
+
+.upk-banner-style-3 .upk-content-inner {
+  margin-bottom: 10px;
+  width: 100%; }
+
+.upk-banner-style-3 .upk-text {
+  margin: 0;
+  width: 100%; }
+
+.upk-banner-style-3 .upk-buy-btn {
+  width: 100%;
+  text-align: right;
+  margin-top: 15px; }
+
+@media (min-width: 768px) {
+  .upk-banner-wrap .upk-buy-btn a {
+    font-size: 14px;
+    padding: 9px 17px; }
+  .upk-banner-wrap .upk-text {
+    font-size: 14px;
+    margin-bottom: 0; }
+  .upk-banner-wrap .upk-title {
+    font-size: 25px; }
+  .upk-banner-style-2 .upk-content {
+    display: flex; }
+  .upk-banner-style-2 .upk-content-inner {
+    margin-bottom: 0; }
+  .upk-banner-style-2 .upk-discount {
+    font-size: 12px; }
+  .upk-banner-style-2 .upk-buy-btn {
+    text-align: left; }
+  .upk-banner-style-3 .upk-content {
+    display: flex;
+    text-align: left; }
+  .upk-banner-style-3 .upk-buy-btn {
+    margin-top: 0; }
+  .upk-banner-style-3 .upk-text {
+    display: block; } }
+
+@media (min-width: 1024px) {
+  .upk-banner-category a {
+    font-size: 12px; }
+  .upk-banner-item .upk-banner-content {
+    padding: 40px; }
+  .upk-banner-title {
+    margin: 20px 0; }
+  .upk-banner-title a {
+    font-size: 25px; }
+  .upk-banner-meta {
+    font-size: 14px; } }

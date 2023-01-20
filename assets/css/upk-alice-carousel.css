@@ -1,0 +1,158 @@
+.upk-alice-carousel .upk-item {
+  display: flex; }
+
+.upk-alice-carousel .upk-item-box {
+  position: relative;
+  display: flex;
+  width: 100%; }
+  .upk-alice-carousel .upk-item-box::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    background: #1b19198c;
+    transition: all .3s ease; }
+  .upk-alice-carousel .upk-item-box:hover .upk-img-wrap .upk-img {
+    transform: scale(1.1); }
+  .upk-alice-carousel .upk-item-box:hover .upk-category {
+    opacity: 1; }
+
+.upk-alice-carousel .upk-img-wrap {
+  overflow: hidden;
+  display: flex;
+  width: 100%; }
+  .upk-alice-carousel .upk-img-wrap .upk-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 1s ease; }
+
+.upk-alice-carousel .upk-category {
+  position: absolute;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity .5s ease;
+  z-index: 11; }
+  .upk-alice-carousel .upk-category a {
+    color: #e8e4e4;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background: #EF233C;
+    padding: 5px 14px;
+    transition: all .3s ease; }
+    .upk-alice-carousel .upk-category a:hover {
+      background: #D90429; }
+  .upk-alice-carousel .upk-category a + a {
+    margin-left: 5px; }
+
+.upk-alice-carousel .upk-content {
+  position: absolute;
+  padding: 30px;
+  width: 100%;
+  bottom: 0;
+  z-index: 10; }
+
+.upk-alice-carousel .upk-title {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+  padding-bottom: 10px;
+  text-transform: capitalize; }
+  .upk-alice-carousel .upk-title a {
+    color: #fff;
+    transition: all .3s ease; }
+
+.upk-alice-carousel .upk-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 14px;
+  color: #EDF2F4;
+  text-transform: capitalize; }
+  .upk-alice-carousel .upk-meta .upk-author {
+    position: relative; }
+    .upk-alice-carousel .upk-meta .upk-author a {
+      color: #EDF2F4; }
+    .upk-alice-carousel .upk-meta .upk-author span {
+      padding-right: 6px; }
+  .upk-alice-carousel .upk-meta .upk-date {
+    position: relative;
+    font-weight: 400; }
+  .upk-alice-carousel .upk-meta .upk-post-time {
+    margin-left: 5px; }
+    .upk-alice-carousel .upk-meta .upk-post-time i {
+      margin-right: 2px; }
+  .upk-alice-carousel .upk-meta > div {
+    position: relative;
+    display: inline-flex; }
+    .upk-alice-carousel .upk-meta > div:before {
+      content: attr(data-separator);
+      margin: 0 5px; }
+    .upk-alice-carousel .upk-meta > div:nth-child(1)::before {
+      display: none; }
+
+.upk-alice-carousel .upk-content-bottom-center .upk-content {
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, 0); }
+  .upk-alice-carousel .upk-content-bottom-center .upk-content .upk-meta {
+    justify-content: center; }
+
+.upk-alice-carousel .upk-content-bottom-left .upk-content {
+  text-align: left;
+  left: 0; }
+  .upk-alice-carousel .upk-content-bottom-left .upk-content .upk-meta {
+    justify-content: left; }
+
+.upk-alice-carousel .upk-content-bottom-right .upk-content {
+  text-align: right;
+  right: 0; }
+  .upk-alice-carousel .upk-content-bottom-right .upk-content .upk-meta {
+    justify-content: flex-end; }
+
+.upk-global-link-yes .upk-alice-carousel .upk-item:hover {
+  cursor: pointer; }
+
+.elementor-widget-upk-alice-carousel .upk-arrows-container {
+  -webkit-transform: translate(var(--upk-alice-carousel-arrows-ncx, 0), var(--upk-alice-carousel-arrows-ncy, 40));
+  transform: translate(var(--upk-alice-carousel-arrows-ncx, 0), var(--upk-alice-carousel-arrows-ncy, 40)); }
+
+.elementor-widget-upk-alice-carousel .upk-dots-container {
+  -webkit-transform: translate(var(--upk-alice-carousel-dots-nnx, 0), var(--upk-alice-carousel-dots-nny, 30));
+  transform: translate(var(--upk-alice-carousel-dots-nnx, 0), var(--upk-alice-carousel-dots-nny, 30)); }
+
+.elementor-widget-upk-alice-carousel .upk-arrows-dots-container {
+  -webkit-transform: translate(var(--upk-alice-carousel-both-ncx, 0), var(--upk-alice-carousel-both-ncy, 40));
+  transform: translate(var(--upk-alice-carousel-both-ncx, 0), var(--upk-alice-carousel-both-ncy, 40)); }
+
+.elementor-widget-upk-alice-carousel .upk-arrows-fraction-container {
+  -webkit-transform: translate(var(--upk-alice-carousel-arrows-fraction-ncx, 0), var(--upk-alice-carousel-arrows-fraction-ncy, 40));
+  transform: translate(var(--upk-alice-carousel-arrows-fraction-ncx, 0), var(--upk-alice-carousel-arrows-fraction-ncy, 40)); }
+
+.elementor-widget-upk-alice-carousel .upk-position-center-left .upk-arrows-container,
+.elementor-widget-upk-alice-carousel .upk-position-center-right .upk-arrows-container {
+  -webkit-transform: translate(var(--upk-alice-carousel-arrows-ncx, 0), var(--upk-alice-carousel-arrows-ncy, 0)) rotate(90deg);
+  transform: translate(var(--upk-alice-carousel-arrows-ncx, 0), var(--upk-alice-carousel-arrows-ncy, 0)) rotate(90deg); }
+
+.elementor-widget-upk-alice-carousel .upk-position-center-left .upk-dots-container,
+.elementor-widget-upk-alice-carousel .upk-position-center-right .upk-dots-container {
+  -webkit-transform: translate(var(--upk-alice-carousel-dots-nnx, 0), var(--upk-alice-carousel-dots-nny, 0)) rotate(90deg);
+  transform: translate(var(--upk-alice-carousel-dots-nnx, 0), var(--upk-alice-carousel-dots-nny, 0)) rotate(90deg); }
+
+.elementor-widget-upk-alice-carousel .upk-position-center-left .upk-arrows-dots-container,
+.elementor-widget-upk-alice-carousel .upk-position-center-right .upk-arrows-dots-container {
+  -webkit-transform: translate(var(--upk-alice-carousel-both-ncx, 0), var(--upk-alice-carousel-both-ncy, 0)) rotate(90deg);
+  transform: translate(var(--upk-alice-carousel-both-ncx, 0), var(--upk-alice-carousel-both-ncy, 0)) rotate(90deg); }
+
+.elementor-widget-upk-alice-carousel .upk-position-center-left .upk-arrows-fraction-container,
+.elementor-widget-upk-alice-carousel .upk-position-center-right .upk-arrows-fraction-container {
+  -webkit-transform: translate(var(--upk-alice-carousel-arrows-fraction-ncx, 0), var(--upk-alice-carousel-arrows-fraction-ncy, 0)) rotate(90deg);
+  transform: translate(var(--upk-alice-carousel-arrows-fraction-ncx, 0), var(--upk-alice-carousel-arrows-fraction-ncy, 0)) rotate(90deg); }

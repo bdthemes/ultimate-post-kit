@@ -1,0 +1,18 @@
+.upk-category-list {
+  display: grid; }
+  .upk-category-list div {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background: #2B2D42;
+    padding: 20px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: uppercase;
+    transition: all .3s ease; }
+    .upk-category-list div a {
+      color: #fff;
+      margin-right: 10px;
+      transition: color .3s ease; }

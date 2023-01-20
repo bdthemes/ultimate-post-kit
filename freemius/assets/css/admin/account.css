@@ -1,0 +1,496 @@
+label.fs-tag,
+span.fs-tag {
+    background: #ffba00;
+    color: #fff;
+    display: inline-block;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 11px;
+    line-height: 11px;
+    vertical-align: baseline;
+}
+
+label.fs-tag.fs-warn,
+span.fs-tag.fs-warn {
+    background: #ffba00;
+}
+
+label.fs-tag.fs-info,
+span.fs-tag.fs-info {
+    background: #00a0d2;
+}
+
+label.fs-tag.fs-success,
+span.fs-tag.fs-success {
+    background: #46b450;
+}
+
+label.fs-tag.fs-error,
+span.fs-tag.fs-error {
+    background: #dc3232;
+}
+
+.fs-notice[data-id="license_not_whitelabeled"].success,
+.fs-notice[data-id="license_whitelabeled"].success {
+    color: inherit;
+    border-left-color: #00a0d2;
+}
+
+.fs-notice[data-id="license_not_whitelabeled"].success label.fs-plugin-title,
+.fs-notice[data-id="license_whitelabeled"].success label.fs-plugin-title {
+    display: none;
+}
+
+#fs_account .postbox,
+#fs_account .widefat {
+    max-width: 800px;
+    padding: 35px;
+    border-radius: 10px;
+    border: 0;
+}
+
+#fs_account h3 {
+    font-size: 1.3em;
+    margin: 0;
+    display: inline-block;
+}
+
+#fs_account h3 .dashicons {
+    width: 26px;
+    height: 26px;
+    font-size: 1.3em;
+}
+
+#fs_account i.dashicons {
+    font-size: 1.2em;
+    height: 1.2em;
+    width: 1.2em;
+}
+
+#fs_account .dashicons {
+    vertical-align: middle;
+}
+
+#fs_account .fs-header-actions {
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    font-size: 14px;
+}
+
+#fs_account .fs-header-actions ul {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    grid-column-gap: 5px;
+}
+#fs_account .fs-header-actions li {
+    float: left;
+    margin: 0;
+}
+
+#fs_account .fs-header-actions li form {
+    display: inline-block;
+}
+
+#fs_account .fs-header-actions li a {
+    text-decoration: none;
+    color: #4f5b76;
+}
+
+#fs_account_details .button-group {
+    float: right;
+}
+
+.rtl #fs_account .fs-header-actions {
+    left: 15px;
+    right: auto;
+}
+
+.fs-key-value-table {
+    width: 100%;
+}
+
+.fs-key-value-table form {
+    display: inline-block;
+}
+
+.fs-key-value-table tr td:first-child {
+    text-align: left;
+}
+
+.fs-key-value-table tr td:first-child nobr {
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.fs-key-value-table tr td:first-child form {
+    display: block;
+}
+
+.fs-key-value-table tr td.fs-right {
+    margin-left: auto;
+}
+
+.fs-key-value-table tr.fs-odd {
+    background: #ebebeb;
+}
+
+/* .fs-key-value-table td,
+.fs-key-value-table th {
+    padding: 10px;
+} */
+.fs-key-value-table code {
+    line-height: 28px;
+}
+
+.fs-key-value-table var,
+.fs-key-value-table code,
+.fs-key-value-table input[type="text"] {
+    color: #0073aa;
+    font-size: 12px;
+    background: none;
+    margin-left: 10px;
+}
+
+.fs-key-value-table input[type="text"] {
+    width: 100%;
+    font-weight: bold;
+}
+
+label.fs-tag {
+    background: #ffba00;
+    color: #fff;
+    display: inline-block;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 11px;
+    line-height: 11px;
+    vertical-align: baseline;
+}
+
+label.fs-tag.fs-warn {
+    background: #ffba00;
+}
+
+label.fs-tag.fs-success {
+    background: #46b450;
+}
+
+label.fs-tag.fs-error {
+    background: #dc3232;
+}
+
+#fs_sites .fs-scrollable-table .fs-table-body {
+    max-height: 200px;
+    overflow: auto;
+    border: 1px solid #e5e5e5;
+}
+
+#fs_sites .fs-scrollable-table .fs-table-body>table.widefat {
+    border: none !important;
+}
+
+#fs_sites .fs-scrollable-table .fs-main-column {
+    width: 100%;
+}
+
+#fs_sites .fs-scrollable-table .fs-site-details td:first-of-type {
+    text-align: right;
+    color: grey;
+    width: 1px;
+}
+
+#fs_sites .fs-scrollable-table .fs-site-details td:last-of-type {
+    text-align: right;
+}
+
+#fs_sites .fs-scrollable-table .fs-install-details table tr td {
+    width: 1px;
+    white-space: nowrap;
+}
+
+#fs_sites .fs-scrollable-table .fs-install-details table tr td:last-of-type {
+    width: auto;
+}
+
+#fs_addons h3 {
+    border: none;
+    margin-bottom: 0;
+    padding: 4px 5px;
+}
+
+#fs_addons td {
+    vertical-align: middle;
+}
+
+#fs_addons thead {
+    white-space: nowrap;
+}
+
+#fs_addons td:first-child,
+#fs_addons th:first-child {
+    text-align: left;
+    font-weight: bold;
+}
+
+#fs_addons td:last-child,
+#fs_addons th:last-child {
+    text-align: right;
+}
+
+#fs_addons th {
+    font-weight: bold;
+}
+
+#fs_billing_address {
+    width: 100%;
+}
+
+#fs_billing_address tr td {
+    width: 50%;
+    padding: 5px;
+}
+
+#fs_billing_address tr:first-of-type td {
+    padding-top: 0;
+}
+
+#fs_billing_address span {
+    font-weight: bold;
+}
+
+#fs_billing_address input,
+#fs_billing_address select {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+}
+
+#fs_billing_address input::-moz-placeholder,
+#fs_billing_address select::-moz-placeholder {
+    color: transparent;
+    opacity: 1;
+}
+
+#fs_billing_address input:-ms-input-placeholder,
+#fs_billing_address select:-ms-input-placeholder {
+    color: transparent;
+}
+
+#fs_billing_address input::-webkit-input-placeholder,
+#fs_billing_address select::-webkit-input-placeholder {
+    color: transparent;
+}
+
+#fs_billing_address input.fs-read-mode,
+#fs_billing_address select.fs-read-mode {
+    border-color: transparent;
+    color: #777;
+    border-bottom: 1px dashed #ccc;
+    padding-left: 0;
+    background: none;
+}
+
+#fs_billing_address.fs-read-mode td span {
+    display: none;
+}
+
+#fs_billing_address.fs-read-mode input,
+#fs_billing_address.fs-read-mode select {
+    border-color: transparent;
+    color: #777;
+    border-bottom: 1px dashed #ccc;
+    padding-left: 0;
+    background: none;
+}
+
+#fs_billing_address.fs-read-mode input::-moz-placeholder,
+#fs_billing_address.fs-read-mode select::-moz-placeholder {
+    color: #ccc;
+    opacity: 1;
+}
+
+#fs_billing_address.fs-read-mode input:-ms-input-placeholder,
+#fs_billing_address.fs-read-mode select:-ms-input-placeholder {
+    color: #ccc;
+}
+
+#fs_billing_address.fs-read-mode input::-webkit-input-placeholder,
+#fs_billing_address.fs-read-mode select::-webkit-input-placeholder {
+    color: #ccc;
+}
+
+#fs_billing_address button {
+    display: block;
+    width: 100%;
+}
+
+/* edit by asik */
+.fs-key-value-table tr {
+    height: 55px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background: transparent;
+    border: 1px solid #f1f1f1;
+    margin-bottom: 10px;
+}
+
+.fs-key-value-table code {
+    padding: 0;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #5e646c;
+}
+
+.fs-field-plan td {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+#fs_account_details .button-group {
+    margin-left: auto;
+}
+
+#poststuff .inside {
+    margin-top: 30px !important;
+    padding: 0;
+}
+
+.wp-core-ui .button-group {
+    font-size: inherit !important;
+}
+
+.wp-core-ui .button,
+.wp-core-ui .button-secondary {
+    color: #2c2f32 !important;
+    border-color: #c4c9cc !important;
+    background: #fbfbfb00 !important;
+    transition: all .3s ease;
+}
+
+.wp-core-ui .button:hover, .wp-core-ui .button-secondary:hover {
+    border-color: rgba(0, 46, 243, 0.73) !important;
+}
+
+/* clone-resolution css start*/
+
+.fs-notice[data-id^=clone_resolution_options_notice] .fs-clone-resolution-option {
+    border: 1px solid #efefef;
+    padding: 20px;
+    border-radius: 10px;
+}
+.fs-notice[data-id^=clone_resolution_options_notice] .fs-clone-resolution-option strong {
+    font-size: 14px;
+    padding: 0;
+    line-height: 1.7;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    display: inline-block;
+    color: #343a4a;
+    font-weight: 400;
+}
+
+.fs-clone-resolution-option div button {
+    margin-top: 20px !important;
+}
+/* clone-resolution css end*/
+
+/* common css start*/
+.notice p, .notice-title, div.updated p, div.error p, .form-table td .notice p {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-block;
+    text-transform: capitalize;
+    font-size: 14px;
+    color: #343a4a; 
+}
+.postbox .inside {
+    padding: 30px 0 0 0!important;
+}
+
+.input-container {
+    margin-top: 12px;
+}
+
+/* common css end*/
+
+/* dialog boxs css start*/
+.fs-modal .fs-modal-header h4 {
+    color: #2b2e3c !important;
+    text-shadow: 0 !important;
+}
+.fs-modal .fs-modal-body>div {
+    margin-top: 0 !important;
+}
+.fs-modal.fs-modal-email-address-update p {
+    margin: 0 !important;
+}
+input.fs-new-email-address-input {
+    height: 50px;
+    border: 1px solid #d7d8dc !important;
+    margin-top: 10px;
+}
+.fs-modal .fs-modal-header {
+    padding: 20px 30px !important;
+    margin-bottom: 0 !important;
+}
+
+.fs-modal .fs-modal-body {
+    padding: 30px 40px !important;
+} 
+.fs-modal .fs-modal-footer {
+    padding: 20px !important;
+}
+
+.fs-modal .fs-modal-header .fs-close {
+    right: 30px !important;
+    top: 15px !important;
+    color: #42445c !important;
+}
+.fs-modal .fs-modal-dialog {
+    background: #ffffff !important;
+    border-radius: 10px;
+    padding-bottom: 0 !important;
+}
+.fs-modal .fs-modal-header {
+    background: transparent !important;
+}
+.fs-modal .fs-modal-body, .fs-modal .fs-modal-footer {
+    background: transparent !important;
+}
+.fs-modal .fs-modal-body p {
+    margin: 0;
+}
+input.fs-license-key {
+    height: 50px;
+    border: 1px solid #d7d8dc !important;
+    margin: 12px 0;
+}
+
+.fs-modal.fs-modal-license-key-resend.fs-freemium input.email-address {
+    height: 40px;
+    margin-left: 11px;
+    border: 1px solid #ccccd0;
+}
+.fs-modal.fs-modal-license-key-resend.fs-freemium label {
+    margin-bottom: 24px !important;
+}
+
+/* dialog boxs css end*/
+
+/* affiliation start*/
+
+/* affiliation end*/
+
+/* edit css start*/
+#poststuff .inside {
+    margin: 0 !important;
+}
+/* edit css end*/
+

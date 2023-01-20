@@ -1,0 +1,35 @@
+.upk-recent-comments {
+    display: grid;
+    .upk-meta {
+        margin-bottom: 15px;
+        .upk-avatar {
+            margin-right: 15px;
+            img {
+                border-radius: 80px;
+            }
+        }
+        .upk-author-name {
+            color: #2B2D42;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: capitalize;
+            transition: color .3s ease;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            &:hover {
+                color: #EF233C;
+            }
+        }
+        .upk-date {
+            color: #798184;
+            font-size: 14px;
+        }
+    }
+    .upk-text {
+        color: #798184;
+        font-size: 16px;
+    }
+}

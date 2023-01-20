@@ -1,0 +1,267 @@
+.ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 2px solid #ef233c; }
+  .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-forbes-tabs-header-title .upk-title {
+    color: #ef233c;
+    font-size: 10px;
+    transition: all 0.3s ease;
+    margin: 0; }
+  .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap {
+    margin-left: auto;
+    display: flex;
+    align-items: center; }
+    .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-filter-wrapper {
+      display: none; }
+      .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-filter-wrapper .upk-forbes-tabs-filter-item {
+        list-style: none;
+        margin: 0; }
+        .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-filter-wrapper .upk-forbes-tabs-filter-item .upk-filter-list {
+          display: inline-block;
+          margin: 0 10px; }
+          .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-filter-wrapper .upk-forbes-tabs-filter-item .upk-filter-list .upk-option {
+            text-decoration: none;
+            text-transform: capitalize;
+            font-size: 13px;
+            color: #2b2d42;
+            font-weight: 600;
+            transition: all 0.3s ease; }
+            .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-filter-wrapper .upk-forbes-tabs-filter-item .upk-filter-list .upk-option:hover {
+              color: #ef233c; }
+          .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-filter-wrapper .upk-forbes-tabs-filter-item .upk-filter-list.upk-forbes-tabs-active .upk-option {
+            color: #ef233c; }
+    .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-filter-responsive {
+      display: block;
+      padding-left: 10px; }
+      .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-filter-responsive .upk-filter-item {
+        padding: 5px 6px;
+        font-size: 14px;
+        color: #2b2d42;
+        text-transform: capitalize;
+        font-weight: 600;
+        border: 1px solid #8d99ae;
+        border-radius: 3px; }
+    .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-pagination {
+      padding-left: 2px; }
+      .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-pagination .upk-pagination-btn {
+        padding: 6px 10px;
+        background: transparent;
+        border: 1px solid #8d99ae;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+        text-decoration: none; }
+        .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-pagination .upk-pagination-btn .upk-icon {
+          font-size: 14px;
+          color: #8d99ae;
+          transition: all 0.3s ease; }
+        .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-pagination .upk-pagination-btn:hover {
+          background: #ef233c;
+          border: 1px solid #ef233c; }
+          .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-pagination .upk-pagination-btn:hover .upk-icon {
+            color: #fff; }
+      .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-pagination .upk-prev {
+        margin-right: 6px; }
+
+.upk-forbes-tabs-grid-wrapper {
+  padding: 50px 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 30px; }
+  .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item {
+    grid-column: span 6 / auto;
+    background: #fff; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item .upk-forbes-tabs-grid-item-box {
+      display: flex;
+      height: 100%; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item .upk-image-wrapper {
+      width: 250px;
+      height: 100%;
+      overflow: hidden; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item .upk-image-wrapper a .upk-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 2s ease; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item .upk-forbes-tabs-content-box {
+      padding-left: 15px;
+      z-index: 111; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item .upk-forbes-tabs-category {
+      display: flex;
+      margin-bottom: 6px; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item .upk-forbes-tabs-category a {
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        color: #d90429; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item .upk-forbes-tabs-category a + a {
+        margin-left: 5px; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item .upk-forbes-tabs-title {
+      margin-bottom: 6px;
+      display: block;
+      text-decoration: none; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item .upk-title {
+      color: #2b2d42;
+      font-weight: 700;
+      text-transform: capitalize;
+      line-height: 1.4;
+      transition: all 0.3s ease;
+      margin: 0; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item .upk-title:hover {
+        color: #d90429; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item .upk-meta {
+      display: flex;
+      align-items: center;
+      font-size: 12px; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item .upk-meta .upk-icon {
+        color: #b7b6b6; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item .upk-meta span {
+        color: #b7b6b6;
+        text-transform: uppercase;
+        font-weight: 500; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item .upk-author-content a {
+      text-decoration: none;
+      color: #b7b6b6; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:hover .upk-image-wrapper a .upk-img {
+      transform: scale(1.1); }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) {
+      grid-column: span 6 / auto;
+      grid-row: span 1 / auto; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) .upk-forbes-tabs-grid-item-box {
+        position: relative;
+        height: 100%;
+        transition: all 0.3s ease; }
+        .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) .upk-forbes-tabs-grid-item-box::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          top: 0;
+          bottom: 0;
+          background: #1b19198c;
+          z-index: 4; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) .upk-image-wrapper {
+        width: 100%; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) .upk-forbes-tabs-content-box {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 20px; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) .upk-forbes-tabs-category {
+        margin-bottom: 15px; }
+        .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) .upk-forbes-tabs-category a {
+          border: 1px solid #c3c3c3;
+          background: transparent;
+          color: #c3c3c3;
+          line-height: 1;
+          padding: 6px 10px;
+          border-radius: 2px; }
+          .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) .upk-forbes-tabs-category a:hover {
+            border: 1px solid transparent;
+            background: #d90429; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) .upk-title {
+        font-size: 16px;
+        color: #fff; }
+        .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) .upk-title:hover {
+          color: #d90429; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) .upk-meta .upk-icon {
+        color: #cac3c3; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) .upk-meta span {
+        color: #cac3c3; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) .upk-author-content {
+        margin: 0; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .upk-forbes-tabs-grid-item-box {
+      align-items: center; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .upk-forbes-tabs-content-box {
+      width: 100%; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .upk-title {
+      font-size: 15px; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .upk-meta {
+      display: block; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .upk-comments {
+      display: none; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .upk-date-content {
+      margin-top: 10px;
+      padding-left: 0; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .author {
+      width: 40px;
+      border-radius: 30px; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .upk-blog-date {
+      position: relative;
+      display: flex;
+      margin-top: 10px; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .upk-separator {
+      margin: 0 6px;
+      color: #b2bccd;
+      display: none; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .upk-post-time,
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .author-name,
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .date {
+      font-size: 9px;
+      color: #b2bccd;
+      text-transform: uppercase;
+      font-weight: 600;
+      display: flex;
+      line-height: 1; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .upk-post-time {
+      margin-left: 5px; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .upk-post-time i {
+        margin-right: 2px; }
+
+@media (min-width: 768px) {
+  .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-filter-wrapper {
+    display: none; }
+  .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-filter-responsive .upk-filter-item {
+    padding: 10px 20px;
+    font-size: 16px; }
+  .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-pagination {
+    padding-left: 20px; }
+    .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-pagination .upk-pagination-btn {
+      padding: 10px 18px; }
+  .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-forbes-tabs-header-title .upk-title {
+    font-size: 16px; }
+  .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item {
+    grid-column: span 3 / auto; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(9n + 1) {
+      grid-column: span 3 / auto;
+      grid-row: span 2 / auto; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .upk-blog-post-meta {
+      display: flex;
+      align-items: center; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .upk-separator {
+      display: block; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(n + 1) .upk-blog-date {
+      margin-top: 0; } }
+
+@media (min-width: 1024px) {
+  .ultimate-post-kit-container {
+    padding-left: 40x;
+    padding-right: 40px; }
+  .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-filter-wrapper {
+    display: block; }
+  .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-filter-responsive {
+    display: none; }
+    .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-filter-responsive .upk-filter-item {
+      padding: 10px 20px;
+      font-size: 16px; }
+  .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-pagination {
+    padding-left: 20px; }
+    .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-pagination .upk-pagination-btn {
+      padding: 6px 20px;
+      text-decoration: none; }
+    .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-filter-and-pagination-wrap .upk-forbes-tabs-pagination .upk-prev {
+      margin-right: 10px; }
+  .ultimate-post-kit-forbes-tabs-wrap .upk-forbes-tabs-header-wrap .upk-forbes-tabs-header-title .upk-title {
+    font-size: 18px; }
+  .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item {
+    grid-column: span 2 / auto; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) {
+      grid-column: span 2 / auto;
+      grid-row: span 3 / auto; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) .upk-forbes-tabs-content-box {
+        padding: 30px; }
+      .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item:nth-child(7n + 1) .upk-title {
+        font-size: 20px; }
+    .upk-forbes-tabs-grid-wrapper .upk-forbes-tabs-grid-item .upk-forbes-tabs-category a {
+      font-size: 10px; } }
