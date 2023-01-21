@@ -8,7 +8,37 @@ defined('ABSPATH') || die();
 
 trait Global_Widget_Functions {
 
+	/**
+	 * New Image Render Method With Lazy Load Support
+	 *
+	 * @return void
+	 */
+
 	function render_image($image_id, $size) {
+		$placeholder_image_src = Utils::get_placeholder_image_src();
+		$image_src             = wp_get_attachment_image_src($image_id, $size);
+
+		if (!$image_src) {
+			printf('<img class="upk-img" src="%1$s" alt="%2$s">', $placeholder_image_src, esc_html(get_the_title()));
+		} else {
+			printf(wp_get_attachment_image(
+				$image_id,
+				$size,
+				false,
+				[
+					'class' => 'upk-img',
+					'alt'   => esc_html(get_the_title())
+				]
+			));
+		}
+	}
+
+	/**
+	 * Old Image Render Method
+	 * Not Using Anymore
+	 * @return void
+	 */
+	function __render_image($image_id, $size) {
 		$placeholder_image_src = Utils::get_placeholder_image_src();
 		$image_src = wp_get_attachment_image_src($image_id, $size);
 		if (!$image_src) {
