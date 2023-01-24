@@ -161,3 +161,11 @@
 	    width: 100%;
 	}
 }
+
+//Inline font feature fixing
+[class*=" elementor-widget-upk-"] {
+	svg.e-font-icon-svg {
+		height: 1em;
+		width: 1em;
+	}
+}
