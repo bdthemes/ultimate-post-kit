@@ -205,6 +205,10 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 == Changelog ==
 
 
+= 3.1.X [XX January 2023] =
+
+* Fixed: Minor issue fixed in Maple Grid Widget (Thanks to Eduardo)
+
 = 3.1.1 [5th January 2023] =
 
 * Added: Reading time option added in Foxico Slider, Grove Timeline, Hansel Slider, Holux Tabs, Iconic Slider,  Kalon Grid, Kalon Carousel, Optick Slider, Pixina Grid, Soft Timeline, Sline Slider, Stone Hover, Snap Timeline, Wixer Grid, Wixer Carousel, Welsh List widgets

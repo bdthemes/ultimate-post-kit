@@ -1254,38 +1254,38 @@ class Maple_Grid extends Group_Control_Query {
 				<div class="upk-content">
 					<div class="upk-content-inner">
 
-						<?php if ($settings['show_author'] or $settings['show_date'] or $settings['show_reading_time']) : ?>
-						<div class="upk-meta">
-							<?php if ($settings['grid_style'] != '3') : ?>
-								<?php $this->render_author(); ?>
-							<?php endif; ?>
+						<?php if ($settings['show_author_avatar'] == 'yes' or $settings['show_author_name'] == 'yes' or $settings['show_date'] or $settings['show_reading_time']) : ?>
+							<div class="upk-meta">
+								<?php if ($settings['grid_style'] != '3') : ?>
+									<?php $this->render_author(); ?>
+								<?php endif; ?>
 
-							<?php if ($settings['show_date'] == 'yes') : ?>
-								<div class="upk-blog-date" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
-									<div class="upk-blog-date">
-										<a class="date" href="#">
-											<i class="upk-icon-calendar" aria-hidden="true"></i><?php $this->render_date(); ?>
-										</a>
-									</div>
-								
-									<?php if ($settings['show_time']) : ?>
-									<div class="upk-post-time">
-										<i class="upk-icon-clock" aria-hidden="true"></i>
-										<?php echo get_the_time(); ?>
-									</div>
-									<?php endif; ?>
-								</div>
-							<?php endif; ?>
+								<?php if ($settings['show_date'] == 'yes') : ?>
+									<div class="upk-blog-date" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+										<div class="upk-blog-date">
+											<a class="date" href="#">
+												<i class="upk-icon-calendar" aria-hidden="true"></i><?php $this->render_date(); ?>
+											</a>
+										</div>
 
-							<?php if (_is_upk_pro_activated()) :
-								if ('yes' === $settings['show_reading_time']) : ?>
-									<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
-										<?php ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
+										<?php if ($settings['show_time']) : ?>
+											<div class="upk-post-time">
+												<i class="upk-icon-clock" aria-hidden="true"></i>
+												<?php echo get_the_time(); ?>
+											</div>
+										<?php endif; ?>
 									</div>
 								<?php endif; ?>
-							<?php endif; ?>
 
-						</div>
+								<?php if (_is_upk_pro_activated()) :
+									if ('yes' === $settings['show_reading_time']) : ?>
+										<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+											<?php ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
+										</div>
+									<?php endif; ?>
+								<?php endif; ?>
+
+							</div>
 						<?php endif; ?>
 
 						<?php $this->render_title(substr($this->get_name(), 4)); ?>

@@ -1288,7 +1288,7 @@ class Maple_Carousel extends Group_Control_Query {
 
 								<div class="upk-content">
 
-									<?php if ($settings['show_author'] or $settings['show_date'] or $settings['show_reading_time']) : ?>
+									<?php if ($settings['show_date'] or $settings['show_reading_time']) : ?>
 									<div class="upk-meta">
 										<?php $this->render_author(); ?>
 
