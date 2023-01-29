@@ -2,6 +2,10 @@
 @import "overrides.scss";
 
 /* Common Less */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 // Title Animation
 // Site Scss Need to add
 .title-animation-middle-overline,

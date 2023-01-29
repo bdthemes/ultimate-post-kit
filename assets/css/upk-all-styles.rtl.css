@@ -1064,6 +1064,10 @@
   height: 5px;
   width: 100%; }
 
+[class*=" elementor-widget-upk-"] svg.e-font-icon-svg {
+  height: 1em;
+  width: 1em; }
+
 #elementor-panel #elementor-controls .upk-disabled-control .elementor-control-input-wrapper {
   pointer-events: none !important;
   opacity: 0.4; }
@@ -1163,7 +1167,7 @@
 
 @font-face {
   font-family: "ultimate-post-kit";
-  src: url("../fonts/ultimate-post-kit.woff2?o0803n") format("woff2"), url("../fonts/ultimate-post-kit.ttf?o0803n") format("truetype"), url("../fonts/ultimate-post-kit.woff?o0803n") format("woff"), url("../fonts/ultimate-post-kit.svg?o0803n#ultimate-post-kit") format("svg");
+  src: url("../fonts/ultimate-post-kit.woff2?oeja6g") format("woff2"), url("../fonts/ultimate-post-kit.ttf?oeja6g") format("truetype"), url("../fonts/ultimate-post-kit.woff?oeja6g") format("woff"), url("../fonts/ultimate-post-kit.svg?oeja6g#ultimate-post-kit") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block; }
@@ -1180,6 +1184,9 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+.upk-icon-instagram-gallery:before {
+  content: ""; }
 
 .upk-icon-banner:before {
   content: ""; }
@@ -2042,6 +2049,10 @@
   height: 5px;
   width: 100%; }
 
+[class*=" elementor-widget-upk-"] svg.e-font-icon-svg {
+  height: 1em;
+  width: 1em; }
+
 [class*="elementor-widget-upk-"] a:hover {
   text-decoration: none; }
 
@@ -2049,6 +2060,9 @@
   transition: all 350ms cubic-bezier(0.38, 0.91, 0.58, 1); }
 
 /* Common Less */
+*, *::before, *::after {
+  box-sizing: border-box; }
+
 .title-animation-middle-overline,
 .title-animation-middle-underline,
 .title-animation-overline,

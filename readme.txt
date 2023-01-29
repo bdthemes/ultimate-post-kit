@@ -2,13 +2,13 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive, post widget, live copy, elementor addon, pagebuilder addon, addons, bdthemes
-Stable tag: 3.1.1
+Stable tag: 3.2.0
 Requires PHP: 7.0.0
 Requires at least: 4.7.0
 Tested up to: 6.1.1
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.9.2
+Elementor tested up to: 3.10.1
 
 Best Post Addon for Elementor WordPress Plugin with 70+ Most Popular Elements that need your everyday blog website building.
 
@@ -155,6 +155,7 @@ More widgets & extensions are coming soon...
 0. **[Reading Progress Circle](https://postkit.pro/demo/reading-progress-circle/)** - The Reading Progress widget creates a progress tracker on your blog page to help the visitors track the total reading progress of the current page. Just place it inside your blog page and the counter go up to 100% according to the position you are at on the page. See the demo
 0. **[Social Link](https://postkit.pro/demo/social-link/)** - Display social media link button with colorful icons, boxes, full-custom colours and shapes. Supports more than 30 social media platforms.
 0. **[Stone Hover](https://postkit.pro/demo/stone-hover/)** - Create scalable post sliders with an inline full-width picture frame that interacts and unfolds the image on user action. Let you design the perfect canvas with changeable panels upon hover.
+0. **[Instagram Gallery](https://postkit.pro/demo/instagram-gallery/)** - With the next level gallery interface by Instagram Gallery widget, it's now possible to change the design sense of such amazing gallery in WordPress.
 
 **[PURCHASE ULTIMATE POST KIT PRO FROM OUR WEBSITE]( https://postkit.pro/pricing/ )**
 
@@ -205,9 +206,11 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 == Changelog ==
 
 
-= 3.1.X [XX January 2023] =
+= 3.2.0 [29th January 2023] =
 
+* Added: Instagram Gallery widget added
 * Fixed: Minor issue fixed in Maple Grid Widget (Thanks to Eduardo)
+* Fixed: Radius issue fixed in Forbes Tabs widget (Thanks to Mariano Cucinotta)
 
 = 3.1.1 [5th January 2023] =
 

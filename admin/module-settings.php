@@ -25,7 +25,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/alex-grid/',
+                    'demo_url'     => 'https://postkit.pro/demo/alex-grid/',
                     'video_url'    => 'https://youtu.be/criKI7Mm-5g',
                 ],
                 [
@@ -35,7 +35,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/alex-carousel/',
+                    'demo_url'     => 'https://postkit.pro/demo/alex-carousel/',
                     'video_url'    => 'https://youtu.be/nmMajegrTiM',
                 ],
                 [
@@ -45,7 +45,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/alice-grid/',
+                    'demo_url'     => 'https://postkit.pro/demo/alice-grid/',
                     'video_url'    => 'https://youtu.be/E7W5WSAvxbA',
                 ],
                 [
@@ -55,7 +55,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/alice-carousel/',
+                    'demo_url'     => 'https://postkit.pro/demo/alice-carousel/',
                     'video_url'    => 'https://youtu.be/I0i6q45j6Ps',
                 ],
                 [
@@ -65,7 +65,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/alter-grid/',
+                    'demo_url'     => 'https://postkit.pro/demo/alter-grid/',
                     'video_url'    => 'https://youtu.be/lJdoW-aPAe8',
                 ],
                 [
@@ -75,7 +75,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/alter-carousel/',
+                    'demo_url'     => 'https://postkit.pro/demo/alter-carousel/',
                     'video_url'    => 'https://youtu.be/KInlL05e_lk',
                 ],
                 [
@@ -85,7 +85,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/amox-grid/',
+                    'demo_url'     => 'https://postkit.pro/demo/amox-grid/',
                     'video_url'    => 'https://youtu.be/BeJ77OLErAk',
                 ],
                 [
@@ -95,7 +95,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/amox-carousel/',
+                    'demo_url'     => 'https://postkit.pro/demo/amox-carousel/',
                     'video_url'    => 'https://youtu.be/3FoLaHsyB0g',
                 ],
                 [
@@ -105,7 +105,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/atlas-slider/',
+                    'demo_url'     => 'https://postkit.pro/demo/atlas-slider/',
                     'video_url'    => 'https://youtu.be/kM1G84F5Pb4',
                 ],
                 [
@@ -115,7 +115,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/author/',
+                    'demo_url'     => 'https://postkit.pro/demo/author/',
                     'video_url'    => 'https://youtu.be/rW8rTtw62ko',
                 ],
 
@@ -126,7 +126,7 @@ class ModuleService {
                     'default'      => "off",
                     'widget_type'  => 'free',
                     'content_type' => 'others new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/banner/',
+                    'demo_url'     => 'https://postkit.pro/demo/banner/',
                     'video_url'    => '',
                 ],
 
@@ -137,7 +137,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/berlin-slider/',
+                    'demo_url'     => 'https://postkit.pro/demo/berlin-slider/',
                     'video_url'    => 'https://youtu.be/VErUARoiMKo',
                 ],
                 [
@@ -147,7 +147,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'list',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/buzz-list/',
+                    'demo_url'     => 'https://postkit.pro/demo/buzz-list/',
                     'video_url'    => 'https://youtu.be/fxjL-ugL_Ls',
                 ],
                 [
@@ -157,7 +157,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/buzz-list-carousel/',
+                    'demo_url'     => 'https://postkit.pro/demo/buzz-list-carousel/',
                     'video_url'    => 'https://youtu.be/fxjL-ugL_Ls',
                 ],
                 [
@@ -167,7 +167,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/camux-slider/',
+                    'demo_url'     => 'https://postkit.pro/demo/camux-slider/',
                     'video_url'    => '',
                 ],
                 [
@@ -177,7 +177,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'list',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/classic-list/',
+                    'demo_url'     => 'https://postkit.pro/demo/classic-list/',
                     'video_url'    => 'https://youtu.be/A6z4z_Ki1kw',
                 ],
                 [
@@ -187,7 +187,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/crystal-slider/',
+                    'demo_url'     => 'https://postkit.pro/demo/crystal-slider/',
                     'video_url'    => 'https://youtu.be/wZNw_prt-uI',
                 ],
                 [
@@ -197,7 +197,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/carbon-slider/',
+                    'demo_url'     => 'https://postkit.pro/demo/carbon-slider/',
                     'video_url'    => 'https://youtu.be/1NNnJRZxxpc',
                 ],
                 [
@@ -207,7 +207,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/elite-grid/',
+                    'demo_url'     => 'https://postkit.pro/demo/elite-grid/',
                     'video_url'    => 'https://youtu.be/J0AfZvRWClw',
                 ],
                 [
@@ -217,7 +217,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/elite-carousel/',
+                    'demo_url'     => 'https://postkit.pro/demo/elite-carousel/',
                     'video_url'    => 'https://youtu.be/iod230fVndQ',
                 ],
                 [
@@ -227,7 +227,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'list new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/exotic-list/',
+                    'demo_url'     => 'https://postkit.pro/demo/exotic-list/',
                     'video_url'    => '',
                 ],
                 [
@@ -237,7 +237,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'list',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/fanel-list/',
+                    'demo_url'     => 'https://postkit.pro/demo/fanel-list/',
                     'video_url'    => 'https://youtu.be/nGAoLOoNYk4',
                 ],
                 [
@@ -247,7 +247,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'list',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/featured-list/',
+                    'demo_url'     => 'https://postkit.pro/demo/featured-list/',
                     'video_url'    => 'https://youtu.be/Q-Pm-6Kkmr4',
                 ],
                 [
@@ -257,7 +257,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'tabs',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/forbes-tabs/',
+                    'demo_url'     => 'https://postkit.pro/demo/forbes-tabs/',
                     'video_url'    => 'https://youtu.be/lc0WNMtjP_k',
                 ],
                 [
@@ -267,7 +267,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/foxico-slider/',
+                    'demo_url'     => 'https://postkit.pro/demo/foxico-slider/',
                     'video_url'    => '',
                 ],
                 [
@@ -277,7 +277,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'timeline',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/grove-timeline/',
+                    'demo_url'     => 'https://postkit.pro/demo/grove-timeline/',
                     'video_url'    => 'https://youtu.be/FPkHDXCMrjk',
                 ],
                 [
@@ -287,7 +287,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/hansel-slider/',
+                    'demo_url'     => 'https://postkit.pro/demo/hansel-slider/',
                     'video_url'    => 'https://youtu.be/tC7WGeMQkSQ',
                 ],
                 [
@@ -297,7 +297,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'list',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/harold-list/',
+                    'demo_url'     => 'https://postkit.pro/demo/harold-list/',
                     'video_url'    => 'https://youtu.be/gmMpNuw4LD8',
                 ],
                 [
@@ -307,7 +307,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/harold-carousel/',
+                    'demo_url'     => 'https://postkit.pro/demo/harold-carousel/',
                     'video_url'    => 'https://youtu.be/M9GruY3beAk',
                 ],
                 [
@@ -317,7 +317,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/hazel-grid/',
+                    'demo_url'     => 'https://postkit.pro/demo/hazel-grid/',
                     'video_url'    => 'https://youtu.be/Uy_rOg8lQJM',
                 ],
                 [
@@ -327,7 +327,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/hazel-carousel/',
+                    'demo_url'     => 'https://postkit.pro/demo/hazel-carousel/',
                     'video_url'    => 'https://youtu.be/N1f6AanD3gM',
                 ],
                 [
@@ -337,7 +337,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'tabs',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/holux-tabs/',
+                    'demo_url'     => 'https://postkit.pro/demo/holux-tabs/',
                     'video_url'    => 'https://youtu.be/P-y7v3RRP1M',
                 ],
                 [
@@ -347,17 +347,17 @@ class ModuleService {
                     'default'      => "off",
                     'widget_type'  => 'pro',
                     'content_type' => 'slider new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/iconic-slider/',
+                    'demo_url'     => 'https://postkit.pro/demo/iconic-slider/',
                     'video_url'    => '',
                 ],
                 [
-                    'name'         => 'instagram',
-                    'label'        => esc_html__('Instagram', 'ultimate-post-kit'),
+                    'name'         => 'instagram-gallery',
+                    'label'        => esc_html__('Instagram Gallery', 'ultimate-post-kit'),
                     'type'         => 'checkbox',
                     'default'      => "off",
                     'widget_type'  => 'pro',
                     'content_type' => 'instagram new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/instagram/',
+                    'demo_url'     => 'https://postkit.pro/demo/instagram-gallery/',
                     'video_url'    => '',
                 ],
                 [
@@ -367,7 +367,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/kalon-grid/',
+                    'demo_url'     => 'https://postkit.pro/demo/kalon-grid/',
                     'video_url'    => 'https://youtu.be/sxePbXHbVdw',
                 ],
                 [
@@ -377,7 +377,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/kalon-carousel/',
+                    'demo_url'     => 'https://postkit.pro/demo/kalon-carousel/',
                     'video_url'    => 'https://youtu.be/zTS25x7KWTA',
                 ],
                 [
@@ -387,7 +387,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/maple-grid/',
+                    'demo_url'     => 'https://postkit.pro/demo/maple-grid/',
                     'video_url'    => 'https://youtu.be/teraPP36sgQ',
                 ],
                 [
@@ -397,7 +397,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/maple-carousel/',
+                    'demo_url'     => 'https://postkit.pro/demo/maple-carousel/',
                     'video_url'    => 'https://youtu.be/h9KTG-DIbm4',
                 ],
                 [
@@ -407,7 +407,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/news-ticker/',
+                    'demo_url'     => 'https://postkit.pro/demo/news-ticker/',
                     'video_url'    => 'https://youtu.be/xiKwQActvwk',
                 ],
                 [
@@ -417,7 +417,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/newsletter/',
+                    'demo_url'     => 'https://postkit.pro/demo/newsletter/',
                     'video_url'    => 'https://youtu.be/8ZgQVoSPEyw',
                 ],
                 [
@@ -427,7 +427,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/noxe-slider/',
+                    'demo_url'     => 'https://postkit.pro/demo/noxe-slider/',
                     'video_url'    => 'https://youtu.be/CyhG4NK8_lo',
                 ],
                 [
@@ -437,7 +437,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/optick-slider/',
+                    'demo_url'     => 'https://postkit.pro/demo/optick-slider/',
                     'video_url'    => 'https://youtu.be/gqTNcaH7Qy4',
                 ],
                 [
@@ -447,7 +447,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'timeline',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/timeline/',
+                    'demo_url'     => 'https://postkit.pro/demo/timeline/',
                     'video_url'    => 'https://youtu.be/kggB0k9WJ1U',
                 ],
                 [
@@ -457,7 +457,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/paradox-slider/',
+                    'demo_url'     => 'https://postkit.pro/demo/paradox-slider/',
                     'video_url'    => 'https://youtu.be/2ZYnLz__uA4',
                 ],
                 [
@@ -467,7 +467,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/pholox-slider/',
+                    'demo_url'     => 'https://postkit.pro/demo/pholox-slider/',
                     'video_url'    => '',
                 ],
                 [
@@ -477,7 +477,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/pixina-grid/',
+                    'demo_url'     => 'https://postkit.pro/demo/pixina-grid/',
                     'video_url'    => 'https://youtu.be/oCPys6NyKDo',
                 ],
                 [
@@ -487,7 +487,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/pixina-carousel/',
+                    'demo_url'     => 'https://postkit.pro/demo/pixina-carousel/',
                     'video_url'    => 'https://youtu.be/ebSyK__cMhw',
                 ],
                 [
@@ -497,7 +497,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/post-accordion/',
+                    'demo_url'     => 'https://postkit.pro/demo/post-accordion/',
                     'video_url'    => 'https://youtu.be/lxGeTthE_lA',
                 ],
                 [
@@ -507,7 +507,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/post-calendar/',
+                    'demo_url'     => 'https://postkit.pro/demo/post-calendar/',
                     'video_url'    => 'https://youtu.be/_MhyGAgj8yw',
                 ],
                 [
@@ -517,7 +517,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/post-category/',
+                    'demo_url'     => 'https://postkit.pro/demo/post-category/',
                     'video_url'    => 'https://youtu.be/3S5hRqxTDTo',
                 ],
                 [
@@ -527,7 +527,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/category-carousel/',
+                    'demo_url'     => 'https://postkit.pro/demo/category-carousel/',
                     'video_url'    => '',
                 ],
                 [
@@ -537,7 +537,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/ramble-grid/',
+                    'demo_url'     => 'https://postkit.pro/demo/ramble-grid/',
                     'video_url'    => 'https://youtu.be/mKdxqk3M2qI',
                 ],
                 [
@@ -547,7 +547,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/ramble-carousel/',
+                    'demo_url'     => 'https://postkit.pro/demo/ramble-carousel/',
                     'video_url'    => 'https://youtu.be/vv10IM0pCHA',
                 ],
                 [
@@ -557,7 +557,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/reading-progress/',
+                    'demo_url'     => 'https://postkit.pro/demo/reading-progress/',
                     'video_url'    => 'https://youtu.be/9N_2WDXUjo0',
                 ],
                 [
@@ -567,7 +567,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/reading-progress-circle/',
+                    'demo_url'     => 'https://postkit.pro/demo/reading-progress-circle/',
                     'video_url'    => '',
                 ],
                 [
@@ -577,7 +577,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/recent-comments/',
+                    'demo_url'     => 'https://postkit.pro/demo/recent-comments/',
                     'video_url'    => 'https://youtu.be/_RFwr9Lx7Gs',
                 ],
                 [
@@ -587,7 +587,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'list',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/scott-list/',
+                    'demo_url'     => 'https://postkit.pro/demo/scott-list/',
                     'video_url'    => 'https://youtu.be/twaysnvoWkM',
                 ],
                 [
@@ -597,7 +597,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/skide-slider/',
+                    'demo_url'     => 'https://postkit.pro/demo/skide-slider/',
                     'video_url'    => 'https://youtu.be/7-7PbdFi_Ks',
                 ],
                 [
@@ -607,7 +607,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'timeline',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/soft-timeline/',
+                    'demo_url'     => 'https://postkit.pro/demo/soft-timeline/',
                     'video_url'    => 'https://youtu.be/5scXg5bsGDc',
                 ],
                 [
@@ -617,7 +617,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/sline-slider/',
+                    'demo_url'     => 'https://postkit.pro/demo/sline-slider/',
                     'video_url'    => '',
                 ],
                 [
@@ -627,7 +627,7 @@ class ModuleService {
                     'default'      => "off",
                     'widget_type'  => 'pro',
                     'content_type' => 'others new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/stone-hover/',
+                    'demo_url'     => 'https://postkit.pro/demo/stone-hover/',
                     'video_url'    => '',
                 ],
                 [
@@ -637,7 +637,7 @@ class ModuleService {
                     'default'      => "off",
                     'widget_type'  => 'free',
                     'content_type' => 'slider new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/snog-slider/',
+                    'demo_url'     => 'https://postkit.pro/demo/snog-slider/',
                     'video_url'    => '',
                 ],
                 [
@@ -647,7 +647,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'timeline',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/snap-timeline/',
+                    'demo_url'     => 'https://postkit.pro/demo/snap-timeline/',
                     'video_url'    => 'https://youtu.be/KCBjzS_1lE0',
                 ],
                 [
@@ -657,7 +657,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/static-social-count/',
+                    'demo_url'     => 'https://postkit.pro/demo/static-social-count/',
                     'video_url'    => 'https://youtu.be/MmbdYPee9qw',
                 ],
                 [
@@ -667,7 +667,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/social-share/',
+                    'demo_url'     => 'https://postkit.pro/demo/social-share/',
                     'video_url'    => 'https://youtu.be/77S087dzK3Q',
                 ],
                 [
@@ -677,7 +677,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/social-link/',
+                    'demo_url'     => 'https://postkit.pro/demo/social-link/',
                     'video_url'    => 'https://youtu.be/MCH3v8iwrTw',
                 ],
                 [
@@ -687,7 +687,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/tag-cloud/',
+                    'demo_url'     => 'https://postkit.pro/demo/tag-cloud/',
                     'video_url'    => 'https://youtu.be/DLl_bqh_E2M',
                 ],
                 [
@@ -697,7 +697,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'list',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/tiny-list/',
+                    'demo_url'     => 'https://postkit.pro/demo/tiny-list/',
                     'video_url'    => 'https://youtu.be/PZlXofIOy68',
                 ],
                 [
@@ -707,7 +707,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/wixer-grid/',
+                    'demo_url'     => 'https://postkit.pro/demo/wixer-grid/',
                     'video_url'    => 'https://youtu.be/MeR0jXdpYc0',
                 ],
                 [
@@ -717,7 +717,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/wixer-carousel/',
+                    'demo_url'     => 'https://postkit.pro/demo/wixer-carousel/',
                     'video_url'    => 'https://youtu.be/NxelaRS-a9o',
                 ],
                 [
@@ -727,7 +727,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'list',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-post-kit/demo/welsh-list/',
+                    'demo_url'     => 'https://postkit.pro/demo/welsh-list/',
                     'video_url'    => '',
                 ]
             ],
