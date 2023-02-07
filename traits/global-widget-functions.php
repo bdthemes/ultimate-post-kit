@@ -21,7 +21,7 @@ trait Global_Widget_Functions {
 		if (!$image_src) {
 			printf('<img class="upk-img" src="%1$s" alt="%2$s">', $placeholder_image_src, esc_html(get_the_title()));
 		} else {
-			printf(wp_get_attachment_image(
+			print(wp_get_attachment_image(
 				$image_id,
 				$size,
 				false,
