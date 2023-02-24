@@ -1112,7 +1112,7 @@ class Alex_Grid extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'readmore_hover_background',
-				'selector' => '{{WRAPPER}} .upk-alex-grid .upk-item:hover .upk-readmore',
+				'selector' => '{{WRAPPER}} .upk-alex-grid .upk-readmore:hover',
 			]
 		);
 
@@ -1122,7 +1122,7 @@ class Alex_Grid extends Group_Control_Query {
 				'label'     => __('Border Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-alex-grid .upk-item:hover .upk-readmore' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-alex-grid .upk-readmore:hover' => 'border-color: {{VALUE}};',
 				],
 				'condition' => [
 					'readmore_border_border!' => ''
@@ -1134,7 +1134,7 @@ class Alex_Grid extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'readmore_hover_shadow',
-				'selector' => '{{WRAPPER}} .upk-alex-grid .upk-item:hover .upk-readmore',
+				'selector' => '{{WRAPPER}} .upk-alex-grid .upk-readmore:hover',
 			]
 		);
 

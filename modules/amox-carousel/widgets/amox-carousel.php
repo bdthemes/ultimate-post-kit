@@ -183,7 +183,7 @@ class Amox_Carousel extends Group_Control_Query
 				'label'       => __('Custom Active Item', 'bdthemes-element-pack') . BDTUPK_PC,
 				'type'        => Controls_Manager::NUMBER,
 				'default'	  => 2,
-				'description' => __('Type your item number.', 'ultimate-post-kit'),
+				'description' => __('Be more creative with your design by typing in your item number.', 'ultimate-post-kit'),
 				'classes' => BDTUPK_IS_PC,
 				'condition' => [
 					'carousel_active_item' => ''
@@ -907,7 +907,7 @@ class Amox_Carousel extends Group_Control_Query
 						$thumbnail_size = $settings['primary_thumbnail_size'];
 
 						$active_item = '';
-
+						$i++;
 						if (_is_upk_pro_activated()) {
 							$active_item = apply_filters('amox_carousel_active_item', $this, $i);
 						}

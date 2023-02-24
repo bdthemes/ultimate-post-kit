@@ -553,7 +553,7 @@ class Elite_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Line Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-content .upk-title .upk-title a:before' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-content .upk-title a:before' => 'border-color: {{VALUE}};',
 				],
 				'condition' => [
 					'title_advanced_style' => 'yes'

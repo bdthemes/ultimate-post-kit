@@ -72,7 +72,8 @@
     align-items: center;
     color: #c9d5e9;
     font-size: 12px;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    gap: 10px; }
     .upk-camux-slider .upk-meta .upk-name {
       text-decoration: none;
       color: #c9d5e9;
@@ -85,7 +86,8 @@
         margin-left: 2px; }
     .upk-camux-slider .upk-meta > div {
       position: relative;
-      display: inline-flex; }
+      display: inline-flex;
+      gap: 5px; }
       .upk-camux-slider .upk-meta > div:before {
         content: attr(data-separator);
         margin: 0 5px; }
@@ -93,14 +95,15 @@
         display: none; }
 
 .upk-camux-thumbs {
-  position: absolute;
+  position: absolute !important;
   right: 50%;
   height: 80px;
   width: 250px;
   bottom: 0;
   transform: translateX(50%); }
   .upk-camux-thumbs .upk-item {
-    border-radius: 6px; }
+    border-radius: 6px;
+    overflow: hidden; }
   .upk-camux-thumbs .swiper-slide-active {
     -webkit-mask-image: url(../images/mask/thumbs-active.svg);
     mask-image: url(../images/mask/thumbs-active.svg);

@@ -1208,7 +1208,7 @@ class Camux_Slider extends Group_Control_Query {
 
 	?>
 		<div <?php echo $this->get_render_attribute_string('camux-slider'); ?>>
-			<div class="swiper-container">
+			<div class="swiper-container swiper">
 				<div class="swiper-wrapper">
 				<?php
 			}
@@ -1323,7 +1323,7 @@ class Camux_Slider extends Group_Control_Query {
 				$this->render_footer();
 
 			?>
-			<div thumbsSlider="" class="swiper-container upk-camux-thumbs">
+			<div thumbsSlider="" class="swiper-container swiper upk-camux-thumbs">
 				<div class="swiper-wrapper">
 					<?php
 

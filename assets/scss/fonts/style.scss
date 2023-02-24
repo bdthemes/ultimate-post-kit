@@ -3,10 +3,10 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?oeja6g') format('woff2'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?oeja6g') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?oeja6g') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?oeja6g##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?3pknzd') format('woff2'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?3pknzd') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?3pknzd') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?3pknzd##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -385,6 +385,11 @@
 .upk-icon-maple-grid {
   &:before {
     content: $upk-icon-maple-grid; 
+  }
+}
+.upk-icon-multicolor-item {
+  &:before {
+    content: $upk-icon-multicolor-item; 
   }
 }
 .upk-icon-category_image {

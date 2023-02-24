@@ -143,6 +143,16 @@
   height: 1em;
   width: 1em; }
 
+[class*=" elementor-widget-upk-"] .swiper-container {
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 1; }
+
+[class*=" elementor-widget-upk-"] .swiper-pagination-fraction, [class*=" elementor-widget-upk-"] .swiper-pagination-custom, [class*=" elementor-widget-upk-"] .swiper-horizontal > .swiper-pagination-bullets, [class*=" elementor-widget-upk-"] .swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: auto; }
+
 [class*="elementor-widget-upk-"] a:hover {
   text-decoration: none; }
 

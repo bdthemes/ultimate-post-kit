@@ -87,6 +87,7 @@
 		color: #c9d5e9;
 		font-size: 12px;
 		text-transform: uppercase;
+		gap: 10px;
 		.upk-name {
 			text-decoration: none;
 			color: #c9d5e9;
@@ -104,6 +105,7 @@
 		& > div {
 			position: relative;
 			display: inline-flex;
+			gap: 5px;
 			&:before {
 				content: attr(data-separator);
 				margin: 0 5px;
@@ -119,7 +121,7 @@
 
 //Thumbs
 .upk-camux-thumbs {
-	position: absolute;
+	position: absolute !important;
     left: 50%;
     height: 80px;
 	width: 250px;
@@ -127,6 +129,7 @@
     transform: translateX(-50%);
 	.upk-item {
 		border-radius: 6px;
+		overflow: hidden;
 	}
 	.swiper-slide-active {
 		-webkit-mask-image: url(../images/mask/thumbs-active.svg);

@@ -106,7 +106,7 @@
 
 .upk-skide-thumbs {
   max-width: 225px;
-  position: absolute;
+  position: absolute !important;
   bottom: 20px;
   right: 30px;
   left: auto; }

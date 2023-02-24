@@ -2,13 +2,13 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive, post widget, live copy, elementor addon, pagebuilder addon, addons, bdthemes
-Stable tag: 3.2.1
+Stable tag: 3.3.1
 Requires PHP: 7.0.0
 Requires at least: 4.7.0
 Tested up to: 6.1.1
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.10.2
+Elementor tested up to: 3.11.2
 
 Best Post Addon for Elementor WordPress Plugin with 70+ Most Popular Elements that need your everyday blog website building.
 
@@ -157,6 +157,10 @@ More widgets & extensions are coming soon...
 0. **[Stone Hover](https://postkit.pro/demo/stone-hover/)** - Create scalable post sliders with an inline full-width picture frame that interacts and unfolds the image on user action. Let you design the perfect canvas with changeable panels upon hover.
 0. **[Instagram Gallery](https://postkit.pro/demo/instagram-gallery/)** - With the next level gallery interface by Instagram Gallery widget, it's now possible to change the design sense of such amazing gallery in WordPress.
 
+== Pro Extensions 🔥 ==
+
+0. **[MultiColor Item](https://postkit.pro/demo/multicolor-item/)** - The ability to create a variety of colorful posts inside your blogging site will make you stay one step ahead of your competitor in terms of presentation. Now you can do that with the Multicolor Extension and get more attention from your visitors.
+
 **[PURCHASE ULTIMATE POST KIT PRO FROM OUR WEBSITE]( https://postkit.pro/pricing/ )**
 
 
@@ -203,8 +207,19 @@ You can also watch this video for more details:
 
 https://www.youtube.com/watch?v=kVUWaMvZN9s
 
+
 == Changelog ==
 
+= 3.3.1 [23rd February 2023] =
+
+* Added: Border Color Feature added in Multicolor Item extension (pro)
+* Fixed: Active item issue fixed in amox grid & amox carousel widgets
+* Added: Readmore size option added in Fanel List widget
+
+= 3.3.0 [16th February 2023] =
+
+* Added: MultiColor Item Extension added (Pro)
+* Added: Swiper Library v8.4.5 compatibility added
 
 = 3.2.1 [7th February 2023] =
 

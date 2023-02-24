@@ -1019,7 +1019,7 @@ class Skide_Slider extends Group_Control_Query
 
 	?>
 		<div <?php $this->print_render_attribute_string('skide-slider'); ?>>
-			<div class="swiper-container">
+			<div class="swiper-container swiper">
 				<div class="swiper-wrapper">
 				<?php
 			}
@@ -1211,7 +1211,7 @@ class Skide_Slider extends Group_Control_Query
 				$this->render_footer();
 
 			?>
-			<div thumbsSlider="" class="swiper-container upk-skide-thumbs">
+			<div thumbsSlider="" class="swiper-container swiper upk-skide-thumbs">
 				<div class="swiper-wrapper">
 					<?php
 
