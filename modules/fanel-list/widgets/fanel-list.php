@@ -748,7 +748,7 @@ class Fanel_List extends Group_Control_Query {
 		$this->add_responsive_control(
 			'readmore_button_height',
 			[
-				'label'     => esc_html__('Button Height', 'ultimate-post-kit') . BDTEP_NC,
+				'label'     => esc_html__('Button Height', 'ultimate-post-kit') . BDTUPK_NC,
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}} .upk-fanel-list .upk-item .upk-fanel-read-more' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
@@ -759,7 +759,7 @@ class Fanel_List extends Group_Control_Query {
 		$this->add_responsive_control(
 			'readmore_button_width',
 			[
-				'label'     => esc_html__('Button Width', 'ultimate-post-kit') . BDTEP_NC,
+				'label'     => esc_html__('Button Width', 'ultimate-post-kit') . BDTUPK_NC,
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}} .upk-fanel-list .upk-item .upk-fanel-read-more' => 'width: {{SIZE}}{{UNIT}};',

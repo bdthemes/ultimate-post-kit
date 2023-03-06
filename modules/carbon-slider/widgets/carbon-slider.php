@@ -498,6 +498,18 @@ class Carbon_Slider extends Group_Control_Query {
 		);
 
 		$this->add_responsive_control(
+			'title_padding',
+			[
+				'label'      => esc_html__('Padding', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .upk-carbon-slider-wrap .upk-carbon-main .upk-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
 			'title_margin',
 			[
 				'label'      => esc_html__('Margin', 'ultimate-post-kit'),

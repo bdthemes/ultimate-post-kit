@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive, post widget, live copy, elementor addon, pagebuilder addon, addons, bdthemes
-Stable tag: 3.3.1
+Stable tag: 3.3.2
 Requires PHP: 7.0.0
 Requires at least: 4.7.0
 Tested up to: 6.1.1
@@ -167,14 +167,14 @@ More widgets & extensions are coming soon...
 == Common Issues and Solutions: 🐣 ==
 
 1. **Elementor editor fails to load**
-Ans. It is due to your server PHP setting. You can increase PHP memory limit from wp-config.php file or php.ini file 
+Ans. It is due to your server PHP setting. You can increase PHP memory limit from wp-config.php file or php.ini file
 [View Documentation](https://bdthemes.com/fix-elementor-stuck-on-loading-screen-instantly/)
 
 == Need Help? ==
 
 Is there any feature that you want to get in this plugins?
 Please use the suggest page to send us a message about the feature you think we should add to our products.
-Needs assistance to use this plugins? 
+Needs assistance to use this plugins?
 Feel free to [Contact us](https://bdthemes.com/support/) 💌 or check our widget Tutorials to learn about how to use them efficiently.
 
 == Check out our other Addons 👑 ==
@@ -194,11 +194,11 @@ Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor p
 
 
 == Installation ==
- 
+
 This section describes how to install the plugin and get it working.
- 
+
 e.g.
- 
+
 1. Upload `ultimate-post-kit` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Start use it by go to elementor editor.
@@ -210,11 +210,19 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
-= 3.3.1 [23rd February 2023] =
+= 3.3.2 [28th February 2023] =
 
-* Added: Border Color Feature added in Multicolor Item extension (pro)
+Fixed: Fatal error issue fixed
+
+= 3.3.1 [25th February 2023] =
+
+* Added: Padding option added in carbon slider widget
+* Added: Readmore size option added in fanel list widget
+* Added: Border Color Feature added in multicolor item extension (pro)
+* Fixed: Hazel carousel not showing issue fixed
 * Fixed: Active item issue fixed in amox grid & amox carousel widgets
-* Added: Readmore size option added in Fanel List widget
+* Fixed: Related Query issue fixed.
+* Fixed: Post Calendar isn't translateable issue fixed.
 
 = 3.3.0 [16th February 2023] =
 
@@ -416,7 +424,7 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 = 1.8.1 [5th June 2021] =
 
-* Fixed: Human diff time issue fixed in harold carousel 
+* Fixed: Human diff time issue fixed in harold carousel
 
 = 1.8.0 [5th June 2021] =
 

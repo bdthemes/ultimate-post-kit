@@ -217,15 +217,6 @@
     transition: all .3s ease;
     display: inline-flex; }
 
-.upk-hazel-carousel .swiper-container:not(.swiper-container-horizontal) {
-  opacity: 0; }
-  .upk-hazel-carousel .swiper-container:not(.swiper-container-horizontal) div > div {
-    max-width: 350px; }
-
-.upk-hazel-carousel .swiper-container.swiper-container-horizontal {
-  opacity: 1;
-  transition: opacity 400ms ease-out; }
-
 .upk-global-link-yes .upk-hazel-carousel .upk-post-grid-item:hover {
   cursor: pointer; }
 

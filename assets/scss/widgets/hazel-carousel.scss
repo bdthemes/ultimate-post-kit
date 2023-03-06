@@ -401,21 +401,6 @@
 			}
 		}
 	}
-
-	.swiper-container {
-		&:not(.swiper-container-horizontal) {
-			opacity: 0;
-
-			div>div {
-				max-width: 350px;
-			}
-		}
-
-		&.swiper-container-horizontal {
-			opacity: 1;
-			transition: opacity 400ms ease-out;
-		}
-	}
 }
 
 .upk-global-link-yes {

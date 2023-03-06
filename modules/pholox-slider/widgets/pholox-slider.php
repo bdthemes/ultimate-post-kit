@@ -1200,10 +1200,72 @@ class Pholox_Slider extends Group_Control_Query
 			]
 		);
 
+		// $this->add_control(
+		// 	'playlist_category_color',
+		// 	[
+		// 		'label'     => __('Color', 'ultimate-post-kit'),
+		// 		'type'      => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-category a' => 'color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+
+		// $this->add_group_control(
+		// 	Group_Control_Typography::get_type(),
+		// 	[
+		// 		'name'     => 'playlist_category_typo',
+		// 		'selector' => '{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-category a',
+		// 	]
+		// );
+
+		// $this->add_control(
+		// 	'playlist_category_color_hover',
+		// 	[
+		// 		'label'     => __('Hover Color', 'ultimate-post-kit'),
+		// 		'type'      => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider:hover .upk-category a' => 'color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+
+		// $this->add_control(
+		// 	'playlist_category_color_active',
+		// 	[
+		// 		'label'     => __('Active Color', 'ultimate-post-kit'),
+		// 		'type'      => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider  .swiper-slide-active .upk-category a' => 'color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+
+
+		// category control thumbs start
+			
+		$this->add_responsive_control(
+			'playlist_category_bottom_spacing',
+			[
+				'label' => esc_html__('Bottom Spacing', 'ultimate-post-kit'),
+				'type'  => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min'  => 0,
+						'max'  => 50,
+						'step' => 2,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-category' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
 		$this->add_control(
 			'playlist_category_color',
 			[
-				'label'     => __('Color', 'ultimate-post-kit'),
+				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-category a' => 'color: {{VALUE}};',
@@ -1212,34 +1274,123 @@ class Pholox_Slider extends Group_Control_Query
 		);
 
 		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name'      => 'playlist_category_background',
+				'selector'  => '{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-category a',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'        => 'playlist_category_border',
+				'selector'    => '{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-category a',
+			]
+		);
+
+		$this->add_responsive_control(
+			'playlist_category_border_radius',
+			[
+				'label'      => esc_html__('Border Radius', 'ultimate-post-kit'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-category a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'playlist_category_padding',
+			[
+				'label'      => esc_html__('Padding', 'ultimate-post-kit'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-category a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'playlist_category_spacing',
+			[
+				'label' => esc_html__('Spacing Between', 'ultimate-post-kit'),
+				'type'  => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min'  => 0,
+						'max'  => 50,
+						'step' => 2,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-category a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => 'playlist_category_shadow',
+				'selector' => '{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-category a',
+			]
+		);
+
+		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name'     => 'playlist_category_typo',
+				'name'     => 'playlist_category_typography',
+				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
 				'selector' => '{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-category a',
 			]
 		);
 
 		$this->add_control(
-			'playlist_category_color_hover',
+			'thumbs_slider_category_hover_heading',
 			[
-				'label'     => __('Hover Color', 'ultimate-post-kit'),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider:hover .upk-category a' => 'color: {{VALUE}};',
-				],
+				'label'     => esc_html__('Hover', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before'
 			]
 		);
 
 		$this->add_control(
-			'playlist_category_color_active',
+			'playlist_category_hover_color',
 			[
-				'label'     => __('Active Color', 'ultimate-post-kit'),
+				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider  .swiper-slide-active .upk-category a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-category a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name'      => 'playlist_category_hover_background',
+				'selector'  => '{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-category a:hover',
+			]
+		);
+
+		$this->add_control(
+			'playlist_category_hover_border_color',
+			[
+				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'category_border_border!' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-category a:hover' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+		// category control thumbs end
+
 
 		$this->end_controls_tab();
 

@@ -110,7 +110,7 @@ abstract class Group_Control_Query extends Module_Base {
                 ],
                 'condition'   => [
                     'posts_include_by' => 'terms',
-                    'posts_source!'    => ['manual_selection', 'current_query', '_ultimate_post_kit_pro_related_post_type'],
+                    'posts_source!'    => ['manual_selection', 'current_query'],
                 ]
             ]
         );
@@ -160,7 +160,7 @@ abstract class Group_Control_Query extends Module_Base {
                     ]
                 ],
                 'condition'   => [
-                    'posts_source!'    => ['manual_selection', 'current_query', '_ultimate_post_kit_pro_related_post_type'],
+                    'posts_source!'    => ['manual_selection', 'current_query'],
                     'posts_exclude_by' => 'manual_selection',
                 ]
             ]
@@ -200,7 +200,7 @@ abstract class Group_Control_Query extends Module_Base {
                 ],
                 'condition'   => [
                     'posts_exclude_by' => 'terms',
-                    'posts_source!'    => ['manual_selection', 'current_query', '_ultimate_post_kit_pro_related_post_type'],
+                    'posts_source!'    => ['manual_selection', 'current_query'],
                 ]
             ]
         );
@@ -359,6 +359,7 @@ abstract class Group_Control_Query extends Module_Base {
         /**
          * Set Feature Images
          */
+
         if ($this->get_settings_for_display('posts_only_with_featured_image') === 'yes') {
             $args['meta_key'] = '_thumbnail_id';
         }
@@ -395,11 +396,13 @@ abstract class Group_Control_Query extends Module_Base {
 
                 case 'exact':
                     $after_date = $this->get_settings_for_display('posts_date_after');
+
                     if (!empty($after_date)) {
                         $date_query['after'] = $after_date;
                     }
 
                     $before_date = $this->get_settings_for_display('posts_date_before');
+
                     if (!empty($before_date)) {
                         $date_query['before'] = $before_date;
                     }
@@ -423,11 +426,11 @@ abstract class Group_Control_Query extends Module_Base {
 
         $args['post_status']      = 'publish';
         $args['suppress_filters'] = false;
+        $exclude_by               = $this->getGroupControlQueryParamBy('exclude');
 
         if (0 < $settings['posts_offset']) {
             $args['offset_to_fix'] = $settings['posts_offset'];
         }
-
 
         /**
          * Set Ignore Sticky
@@ -437,8 +440,11 @@ abstract class Group_Control_Query extends Module_Base {
             && $this->get_settings_for_display('posts_ignore_sticky_posts') === 'yes'
         ) {
             $args['ignore_sticky_posts'] = true;
-        }
 
+            if (in_array('current_post', $exclude_by)) {
+                $args['post__not_in'] = [get_the_ID()];
+            }
+        }
 
         if ($this->getGroupControlQueryPostType() === 'manual_selection') {
             /**
@@ -450,14 +456,15 @@ abstract class Group_Control_Query extends Module_Base {
             if (!empty($selected_ids)) {
                 $args['post__in'] = $selected_ids;
             }
+
             $args['ignore_sticky_posts'] = 1;
         } elseif ('current_query' === $this->getGroupControlQueryPostType()) {
             /**
              * Make Current Query
              */
             $args = $GLOBALS['wp_query']->query_vars;
-            $args = apply_filters('ultimate_post_kit_pro/query/get_query_args/current_query', $args);
-        } elseif ('_ultimate_post_kit_pro_related_post_type' === $this->getGroupControlQueryPostType()) {
+            $args = apply_filters('ultimate_post_kit/query/get_query_args/current_query', $args);
+        } elseif ('_ultimate_post_kit_pro_related_post_type' == $this->getGroupControlQueryPostType()) {
             /**
              * Set Related Query
              */
@@ -465,24 +472,23 @@ abstract class Group_Control_Query extends Module_Base {
             $related_post_id   = is_singular() && (0 !== $post_id) ? $post_id : null;
             $args['post_type'] = get_post_type($related_post_id);
 
-            $include_by = $this->getGroupControlQueryParamBy('include');
-            if (in_array('authors', $include_by)) {
-                $args['author__in'] = wp_parse_id_list($settings['posts_include_author_ids']);
-            } else {
-                $args['author__in'] = get_post_field('post_author', $related_post_id);
-            }
-
             $exclude_by = $this->getGroupControlQueryParamBy('exclude');
-            if (in_array('authors', $exclude_by)) {
-                $args['author__not_in'] = wp_parse_id_list($settings['posts_exclude_author_ids']);
-            }
-
             if (in_array('current_post', $exclude_by)) {
                 $args['post__not_in'] = [get_the_ID()];
             }
 
+            /**
+             * Set Authors
+             */
+            $args = $this->getAuthorArgs($args, $settings, $related_post_id);
+
+            /**
+             * Set Taxonomy
+             */
+            $args = $this->getTermsArgs($args, $settings);
+
             $args['ignore_sticky_posts'] = 1;
-            $args                        = apply_filters('ultimate_post_kit_pro/query/get_query_args/related_query', $args);
+            $args                        = apply_filters('ultimate_post_kit/query/get_query_args/related_query', $args);
         } else {
 
             /**
@@ -504,93 +510,108 @@ abstract class Group_Control_Query extends Module_Base {
                 $exclude_ids          = $settings['posts_exclude_ids'];
                 $args['post__not_in'] = array_merge($current_post, wp_parse_id_list($exclude_ids));
             }
+
             /**
              * Set Authors
              */
-            $include_by    = $this->getGroupControlQueryParamBy('include');
-            $exclude_by    = $this->getGroupControlQueryParamBy('exclude');
-            $include_users = [];
-            $exclude_users = [];
-
-            if (in_array('authors', $include_by)) {
-                $include_users = wp_parse_id_list($settings['posts_include_author_ids']);
-            }
-
-            if (in_array('authors', $exclude_by)) {
-                $exclude_users = wp_parse_id_list($settings['posts_exclude_author_ids']);
-                $include_users = array_diff($include_users, $exclude_users);
-            }
-
-            if (!empty($include_users)) {
-                $args['author__in'] = $include_users;
-            }
-
-            if (!empty($exclude_users)) {
-                $args['author__not_in'] = $exclude_users;;
-            }
+            $args = $this->getAuthorArgs($args, $settings);
 
             /**
              * Set Taxonomy
              */
-            $include_by    = $this->getGroupControlQueryParamBy('include');
-            $exclude_by    = $this->getGroupControlQueryParamBy('exclude');
-            $include_terms = [];
-            $exclude_terms = [];
-            $terms_query   = [];
-
-            if (in_array('terms', $include_by)) {
-                $include_terms = wp_parse_id_list($settings['posts_include_term_ids']);
-            }
-
-            if (in_array('terms', $exclude_by)) {
-                $exclude_terms = wp_parse_id_list($settings['posts_exclude_term_ids']);
-                $include_terms = array_diff($include_terms, $exclude_terms);
-            }
-
-            if (!empty($include_terms)) {
-                $tax_terms_map = $this->mapGroupControlQuery($include_terms);
-
-                foreach ($tax_terms_map as $tax => $terms) {
-                    $terms_query[] = [
-                        'taxonomy' => $tax,
-                        'field'    => 'term_id',
-                        'terms'    => $terms,
-                        'operator' => 'IN',
-                    ];
-                }
-            }
-
-            if (!empty($exclude_terms)) {
-                $tax_terms_map = $this->mapGroupControlQuery($exclude_terms);
-
-                foreach ($tax_terms_map as $tax => $terms) {
-                    $terms_query[] = [
-                        'taxonomy' => $tax,
-                        'field'    => 'term_id',
-                        'terms'    => $terms,
-                        'operator' => 'NOT IN',
-                    ];
-                }
-            }
-
-            if (!empty($terms_query)) {
-                $args['tax_query']             = $terms_query;
-                $args['tax_query']['relation'] = 'AND';
-            }
+            $args = $this->getTermsArgs($args, $settings);
         }
 
-        $query_id = $this->get_settings_for_display('query_id');
-
-        if (!empty($query_id)) {
+        if ($this->get_settings_for_display('query_id')) {
             add_action('pre_get_posts', [$this, 'pre_get_posts_query_filter']);
         }
+
+        // fixing custom offset
+        ## https://codex.wordpress.org/Making_Custom_Queries_using_Offset_and_Pagination
         add_action('pre_get_posts', [$this, 'fix_query_offset'], 1);
         add_filter('found_posts', [$this, 'prefix_adjust_offset_pagination'], 1, 2);
-
 
         return $args;
     }
 
+    private function getAuthorArgs($args, $settings, $post = null) {
+
+        $include_by = $this->getGroupControlQueryParamBy('include');
+        $exclude_by = $this->getGroupControlQueryParamBy('exclude');
+        $include_users = [];
+        $exclude_users = [];
+
+        if (in_array('authors', $include_by)) {
+            $include_users = wp_parse_id_list($settings['posts_include_author_ids']);
+        } elseif ($post) {
+            $include_users = get_post_field('post_author', $post);
+        }
+
+        if (in_array('authors', $exclude_by)) {
+            $exclude_users = wp_parse_id_list($settings['posts_exclude_author_ids']);
+            $include_users = array_diff($include_users, $exclude_users);
+        }
+
+        if (!empty($include_users)) {
+            $args['author__in'] = $include_users;
+        }
+
+        if (!empty($exclude_users)) {
+            $args['author__not_in'] = $exclude_users;
+        }
+
+        return $args;
+    }
+
+    private function getTermsArgs($args, $settings) {
+
+        $include_by     = $this->getGroupControlQueryParamBy('include');
+        $exclude_by     = $this->getGroupControlQueryParamBy('exclude');
+        $include_terms  = [];
+        $terms_query    = [];
+
+        if (in_array('terms', $include_by)) {
+            $include_terms = wp_parse_id_list($settings['posts_include_term_ids']);
+        }
+
+        if (in_array('terms', $exclude_by)) {
+            $exclude_terms = wp_parse_id_list($settings['posts_exclude_term_ids']);
+            $include_terms = array_diff($include_terms, $exclude_terms);
+        }
+
+        if (!empty($include_terms)) {
+            $tax_terms_map = $this->mapGroupControlQuery($include_terms);
+
+            foreach ($tax_terms_map as $tax => $terms) {
+                $terms_query[] = [
+                    'taxonomy' => $tax,
+                    'field'    => 'term_id',
+                    'terms'    => $terms,
+                    'operator' => 'IN',
+                ];
+            }
+        }
+
+        if (!empty($exclude_terms)) {
+            $tax_terms_map = $this->mapGroupControlQuery($exclude_terms);
+
+            foreach ($tax_terms_map as $tax => $terms) {
+                $terms_query[] = [
+                    'taxonomy' => $tax,
+                    'field'    => 'term_id',
+                    'terms'    => $terms,
+                    'operator' => 'NOT IN',
+                ];
+            }
+        }
+
+        if (!empty($terms_query)) {
+            $args['tax_query']             = $terms_query;
+            $args['tax_query']['relation'] = 'AND';
+        }
+
+        return $args;
+    }
 
     /**
      * @return mixed
@@ -598,7 +619,6 @@ abstract class Group_Control_Query extends Module_Base {
     private function getGroupControlQueryPostType() {
         return $this->get_settings_for_display('posts_source');
     }
-
 
     /**
      * Get Query Params by args
@@ -641,6 +661,7 @@ abstract class Group_Control_Query extends Module_Base {
         return $tax_terms_map;
     }
 
+
     /**
      * @return array|string[]|\WP_Post_Type[]
      */
@@ -652,14 +673,14 @@ abstract class Group_Control_Query extends Module_Base {
             'elementor_library'    => '',
             'attachment'           => '',
             'bdt_template_manager' => '',
-            'bdt-custom-template'  => ''
+            'bdt-custom-template'  => '',
         ];
 
         $post_types = array_diff_key($post_types, $ignorePostTypes);
 
         $extra_types = [
-            'manual_selection'                         => __('Manual Selection', 'ultimate-post-kit'),
-            'current_query'                            => __('Current Query', 'ultimate-post-kit'),
+            'manual_selection'   => __('Manual Selection', 'bdthemes-element-pack'),
+            'current_query'      => __('Current Query', 'bdthemes-element-pack'),
             '_ultimate_post_kit_pro_related_post_type' => __('Related', 'ultimate-post-kit'),
         ];
 
@@ -671,12 +692,16 @@ abstract class Group_Control_Query extends Module_Base {
     /**
      * @param WP_Query $query fix the offset
      */
-    public function fix_query_offset(&$query) {
-        if (!empty($query->query_vars['offset_to_fix'])) {
+
+    function fix_query_offset(&$query) {
+
+        if (isset($query->query_vars['offset_to_fix'])) {
+
             if ($query->is_paged) {
-                $query->query_vars['offset'] = $query->query_vars['offset_to_fix'] + (($query->query_vars['paged'] - 1) * $query->query_vars['posts_per_page']);
+                $page_offset = $query->query_vars['offset_to_fix'] + (($query->query_vars['paged'] - 1) * $query->query_vars['posts_per_page']);
+                $query->set('offset', $page_offset);
             } else {
-                $query->query_vars['offset'] = $query->query_vars['offset_to_fix'];
+                $query->set('offset', $query->query_vars['offset_to_fix']);
             }
         }
     }
