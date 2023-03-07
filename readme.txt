@@ -8,7 +8,7 @@ Requires at least: 4.7.0
 Tested up to: 6.1.1
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.11.2
+Elementor tested up to: 3.11.3
 
 Best Post Addon for Elementor WordPress Plugin with 70+ Most Popular Elements that need your everyday blog website building.
 

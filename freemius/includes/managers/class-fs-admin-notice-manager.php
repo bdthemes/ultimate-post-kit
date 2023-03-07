@@ -181,7 +181,7 @@
             check_admin_referer( 'fs_dismiss_notice_action' );
 
             if ( ! is_numeric( $_POST['message_id'] ) ) {
-                $this->_sticky_storage->remove( sanitize_key($_POST['message_id']) );
+                $this->_sticky_storage->remove( $_POST['message_id'] );
             }
 
             wp_die();
@@ -501,9 +501,15 @@
          *
          * @author Vova Feldman (@svovaf)
          * @since  1.0.8
+         *
+         * @param bool $is_temporary @since 2.5.1
          */
-        function clear_all_sticky() {
-            $this->_sticky_storage->clear_all();
+        function clear_all_sticky( $is_temporary = false ) {
+            if ( $is_temporary ) {
+                $this->_notices = array();
+            } else {
+                $this->_sticky_storage->clear_all();
+            }
         }
 
         #--------------------------------------------------------------------------------
