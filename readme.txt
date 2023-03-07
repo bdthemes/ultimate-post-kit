@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive, post widget, live copy, elementor addon, pagebuilder addon, addons, bdthemes
-Stable tag: 3.3.2
+Stable tag: 3.3.3
 Requires PHP: 7.0.0
 Requires at least: 4.7.0
 Tested up to: 6.1.1
@@ -210,9 +210,13 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.3.3 [7th March 2023] =
+
+* Added: WordPress Default date display as Heading of Post List option Added in Post Calendar Widget (pro)
+
 = 3.3.2 [28th February 2023] =
 
-Fixed: Fatal error issue fixed
+* Fixed: Fatal error issue fixed
 
 = 3.3.1 [25th February 2023] =
 
