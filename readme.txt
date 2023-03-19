@@ -2,13 +2,13 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive, post widget, live copy, elementor addon, pagebuilder addon, addons, bdthemes
-Stable tag: 3.3.3
+Stable tag: 3.4.0
 Requires PHP: 7.0.0
 Requires at least: 4.7.0
 Tested up to: 6.1.1
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.11.3
+Elementor tested up to: 3.11.4
 
 Best Post Addon for Elementor WordPress Plugin with 70+ Most Popular Elements that need your everyday blog website building.
 
@@ -120,6 +120,7 @@ More widgets & extensions are coming soon...
 = List 🔢 =
 
 0. **[Classic List](https://postkit.pro/demo/classic-list/)** - Any blog page looks awesome with the new Classic List widget by Ultimate Post Kit. The wide image section with separated detail portion makes it look classy and stylish.
+0. **[Candy List](https://postkit.pro/demo/candy-list/)** - Using the Candy List widget to show your post list, you can surprise your visitors with a sudden content reveal. Because by default, the widget only shows the post title, category, and meta. Only when hovered, visitors will see the post images popping up with stylish animations.
 0. **[Welsh List](https://postkit.pro/demo/welsh-list/)** - The Welsh List widget is a blogging tool that displays your blog posts with a broad detailing, including the post publishing date in a timestamp. The list looks a lot like a calendar and best for featuring upcoming posts on your website. See the demo
 
 = Carousel 🌅 =
@@ -209,6 +210,12 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 
 == Changelog ==
+
+= 3.4.0 [16th March 2023] =
+
+* Added: Candy List widget added (Pro)
+* Updated: Alex grid & carousel meta controls improved
+* Updated: Amox Grid & Carousel widget Improved (Thanks to viswanathvipul)
 
 = 3.3.3 [7th March 2023] =
 

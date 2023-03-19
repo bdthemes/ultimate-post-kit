@@ -10,8 +10,7 @@ use Elementor\Tracker;
  * Ultimate Post Kit Admin Settings Class
  */
 
-class UltimatePostKit_Admin_Settings
-{
+class UltimatePostKit_Admin_Settings {
 
     public static $modules_list  = null;
     public static $modules_names = null;
@@ -31,8 +30,7 @@ class UltimatePostKit_Admin_Settings
     public  $showMessage  = false;
     private $is_activated = false;
 
-    function __construct()
-    {
+    function __construct() {
         $this->settings_api = new UltimatePostKit_Settings_API;
 
         if (!defined('BDTUPK_HIDE')) {
@@ -71,8 +69,7 @@ class UltimatePostKit_Admin_Settings
      * @since 6.0.0
      *
      */
-    public static function get_used_widgets()
-    {
+    public static function get_used_widgets() {
 
         $used_widgets = array();
 
@@ -110,8 +107,7 @@ class UltimatePostKit_Admin_Settings
      *
      */
 
-    public static function get_used_only_widgets()
-    {
+    public static function get_used_only_widgets() {
 
         $used_widgets = array();
 
@@ -149,8 +145,7 @@ class UltimatePostKit_Admin_Settings
      *
      */
 
-    public static function get_used_only_3rdparty()
-    {
+    public static function get_used_only_3rdparty() {
 
         $used_widgets = array();
 
@@ -188,8 +183,7 @@ class UltimatePostKit_Admin_Settings
      *
      */
 
-    public static function get_unused_widgets()
-    {
+    public static function get_unused_widgets() {
 
         if (!current_user_can('install_plugins')) {
             die();
@@ -213,8 +207,7 @@ class UltimatePostKit_Admin_Settings
      *
      */
 
-    public static function get_unused_only_widgets()
-    {
+    public static function get_unused_only_widgets() {
 
         if (!current_user_can('install_plugins')) {
             die();
@@ -238,8 +231,7 @@ class UltimatePostKit_Admin_Settings
      *
      */
 
-    public static function get_unused_only_3rdparty()
-    {
+    public static function get_unused_only_3rdparty() {
 
         if (!current_user_can('install_plugins')) {
             die();
@@ -263,8 +255,7 @@ class UltimatePostKit_Admin_Settings
      *
      */
 
-    public static function get_upk_widgets_names()
-    {
+    public static function get_upk_widgets_names() {
         $names = self::$modules_names;
 
         if (null === $names) {
@@ -288,8 +279,7 @@ class UltimatePostKit_Admin_Settings
      *
      */
 
-    public static function get_upk_only_widgets()
-    {
+    public static function get_upk_only_widgets() {
         $names = self::$modules_names_only_widgets;
 
         if (null === $names) {
@@ -313,8 +303,7 @@ class UltimatePostKit_Admin_Settings
      *
      */
 
-    public static function get_upk_only_3rdparty_names()
-    {
+    public static function get_upk_only_3rdparty_names() {
         $names = self::$modules_names_only_3rdparty;
 
         if (null === $names) {
@@ -336,8 +325,7 @@ class UltimatePostKit_Admin_Settings
      *
      */
 
-    public static function get_url()
-    {
+    public static function get_url() {
         return admin_url('admin.php?page=' . self::PAGE_ID);
     }
 
@@ -348,8 +336,7 @@ class UltimatePostKit_Admin_Settings
      *
      */
 
-    public function admin_init()
-    {
+    public function admin_init() {
 
         //set the settings
         $this->settings_api->set_sections($this->get_settings_sections());
@@ -366,8 +353,7 @@ class UltimatePostKit_Admin_Settings
      *
      */
 
-    public function admin_menu()
-    {
+    public function admin_menu() {
         add_menu_page(
             BDTUPK_TITLE . ' ' . esc_html__('Dashboard', 'ultimate-post-kit'),
             BDTUPK_TITLE,
@@ -445,8 +431,7 @@ class UltimatePostKit_Admin_Settings
      * @return string
      */
 
-    public function ultimate_post_kit_icon()
-    {
+    public function ultimate_post_kit_icon() {
         return 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNC4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA5MDkuMyA4ODMuOCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgOTA5LjMgODgzLjg7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+DQoJLnN0MHtmaWxsOiNBN0FBQUQ7fQ0KPC9zdHlsZT4NCjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik04MTEuMiwyNzIuOUg2ODEuNnYxMjkuN2MwLDEzLjYtMTEsMjQuNy0yNC43LDI0LjdoLTEwNWMtMTMuNiwwLTI0LjctMTEtMjQuNy0yNC43YzAsMCwwLDAsMCwwdi0xMDUNCgljMC0xMy42LDExLTI0LjcsMjQuNi0yNC43YzAsMCwwLDAsMCwwaDEyOS43VjE0My4zYzAtMTMuNi0xMS0yNC43LTI0LjctMjQuN0gzOTcuNmMtMTMuNiwwLTI0LjcsMTEtMjQuNywyNC43YzAsMCwwLDAsMCwwdjQ3MS41DQoJYzAsMTMuNi0xMSwyNC42LTI0LjYsMjQuN2MwLDAsMCwwLDAsMGgtMTA1Yy0xMy42LDAtMjQuNy0xMS0yNC43LTI0Ljd2LTM3NWMwLTEzLjYtMTEtMjQuNy0yNC43LTI0LjdIODljLTEzLjYsMC0yNC43LDExLTI0LjcsMjQuNw0KCWMwLDAsMCwwLDAsMHY1MjkuNGMwLDEzLjYsMTEsMjQuNywyNC43LDI0LjdoNDEzLjZjMTMuNiwwLDI0LjctMTEuMSwyNC43LTI0LjdWNjA2LjJjMC0xMy42LDExLTI0LjcsMjQuNy0yNC43aDI1OS4zDQoJYzEzLjYsMCwyNC43LTExLDI0LjctMjQuN1YyOTcuNkM4MzUuOSwyODQsODI0LjksMjczLDgxMS4yLDI3Mi45QzgxMS4yLDI3Mi45LDgxMS4yLDI3Mi45LDgxMS4yLDI3Mi45eiIvPg0KPHJlY3QgeD0iNzMyIiB5PSI4Mi42IiBjbGFzcz0ic3QwIiB3aWR0aD0iMzQuOCIgaGVpZ2h0PSIzNC44Ii8+DQo8cmVjdCB4PSI3OTEiIHk9IjE0OS43IiBjbGFzcz0ic3QwIiB3aWR0aD0iMjMuOSIgaGVpZ2h0PSIyMy45Ii8+DQo8cmVjdCB4PSI4MDMiIHk9IjgyLjYiIGNsYXNzPSJzdDAiIHdpZHRoPSIxNy44IiBoZWlnaHQ9IjE3LjgiLz4NCjxyZWN0IHg9Ijg2Ni43IiB5PSIxNTUuOCIgY2xhc3M9InN0MCIgd2lkdGg9IjE3LjgiIGhlaWdodD0iMTcuOCIvPg0KPHJlY3QgeD0iODI4LjkiIHk9IjQ0LjMiIGNsYXNzPSJzdDAiIHdpZHRoPSI4LjkiIGhlaWdodD0iOC45Ii8+DQo8cmVjdCB4PSI4NzcuNCIgeT0iMzgiIGNsYXNzPSJzdDAiIHdpZHRoPSI3LjIiIGhlaWdodD0iNy4yIi8+DQo8cmVjdCB4PSI4NTIuNiIgeT0iODciIGNsYXNzPSJzdDAiIHdpZHRoPSI4LjkiIGhlaWdodD0iOC45Ii8+DQo8cmVjdCB4PSI3MzUuNCIgeT0iMTgyLjgiIGNsYXNzPSJzdDAiIHdpZHRoPSIxOS43IiBoZWlnaHQ9IjE5LjciLz4NCjxyZWN0IHg9IjgyNi4zIiB5PSIyMDQuNiIgY2xhc3M9InN0MCIgd2lkdGg9IjE0LjEiIGhlaWdodD0iMTQuMSIvPg0KPC9zdmc+DQo=';
     }
 
@@ -457,8 +442,7 @@ class UltimatePostKit_Admin_Settings
      * @return array
      */
 
-    public function get_settings_sections()
-    {
+    public function get_settings_sections() {
         $sections = [
             [
                 'id'    => 'ultimate_post_kit_active_modules',
@@ -488,8 +472,7 @@ class UltimatePostKit_Admin_Settings
      * @return array
      */
 
-    protected function ultimate_post_kit_admin_settings()
-    {
+    protected function ultimate_post_kit_admin_settings() {
 
         return ModuleService::get_widget_settings(function ($settings) {
             $settings_fields    = $settings['settings_fields'];
@@ -508,8 +491,7 @@ class UltimatePostKit_Admin_Settings
      * @return void
      */
 
-    public function ultimate_post_kit_welcome()
-    {
+    public function ultimate_post_kit_welcome() {
         $track_nw_msg = '';
         if (!Tracker::is_allow_track()) {
             $track_nw = esc_html__('This feature is not working because the Elementor Usage Data Sharing feature is Not Enabled.', 'ultimate-post-kit');
@@ -577,7 +559,7 @@ class UltimatePostKit_Admin_Settings
                 <div class="bdt-width-1-3@m upk-support-section">
                     <div class="upk-support-content bdt-card bdt-card-body">
                         <h1 class="upk-feature-title">Support And Feedback</h1>
-                        <p>Feeling like to consult with an expert? Take live Chat support immediately from <a href="https://bdthemes.com/ultimate-post-kit/" target="_blank" rel="">UltimatePostKit</a>. We are always
+                        <p>Feeling like to consult with an expert? Take live Chat support immediately from <a href="https://postkit.pro/" target="_blank" rel="">UltimatePostKit</a>. We are always
                             ready to help
                             you 24/7.</p>
                         <p><strong>Or if you’re facing technical issues with our plugin, then please create a support
@@ -636,8 +618,7 @@ class UltimatePostKit_Admin_Settings
      * @return void
      */
 
-    function ultimate_post_kit_get_pro()
-    {
+    function ultimate_post_kit_get_pro() {
     ?>
         <div class="upk-dashboard-panel" bdt-scrollspy="target: > div > div > .bdt-card; cls: bdt-animation-slide-bottom-small; delay: 300">
 
@@ -827,7 +808,7 @@ class UltimatePostKit_Admin_Settings
 
                             <?php if (true !== _is_upk_pro_activated()) : ?>
                                 <div class="upk-purchase-button">
-                                    <a href="https://bdthemes.com/ultimate-post-kit/#a851ca7" target="_blank">Purchase Now</a>
+                                    <a href="https://postkit.pro/#a851ca7" target="_blank">Purchase Now</a>
                                 </div>
                             <?php endif; ?>
 
@@ -848,8 +829,7 @@ class UltimatePostKit_Admin_Settings
      * @return void
      */
 
-    function ultimate_post_kit_system_requirement()
-    {
+    function ultimate_post_kit_system_requirement() {
         $php_version        = phpversion();
         $max_execution_time = ini_get('max_execution_time');
         $memory_limit       = ini_get('memory_limit');
@@ -1004,8 +984,7 @@ class UltimatePostKit_Admin_Settings
      * @return void
      */
 
-    function plugin_page()
-    {
+    function plugin_page() {
 
         echo '<div class="wrap ultimate-post-kit-dashboard">';
         echo '<h1>' . BDTUPK_TITLE . ' Settings</h1>';
@@ -1068,8 +1047,7 @@ class UltimatePostKit_Admin_Settings
      *
      * This code uses localstorage for displaying active tabs
      */
-    function script()
-    {
+    function script() {
     ?>
         <script>
             jQuery(document).ready(function() {
@@ -1078,8 +1056,11 @@ class UltimatePostKit_Admin_Settings
 
             function filterSearch(e) {
                 var parentID = '#' + jQuery(e).data('id');
-
                 var search = jQuery(parentID).find('.bdt-search-input').val().toLowerCase();
+
+                jQuery(".upk-options .upk-option-item").filter(function() {
+                    jQuery(this).toggle(jQuery(this).attr('data-widget-name').toLowerCase().indexOf(search) > -1)
+                });
 
                 if (!search) {
                     jQuery(parentID).find('.bdt-search-input').attr('bdt-filter-control', "");
@@ -1255,8 +1236,7 @@ class UltimatePostKit_Admin_Settings
      * @return void
      */
 
-    function footer_info()
-    {
+    function footer_info() {
     ?>
 
         <div class="ultimate-post-kit-footer-info bdt-margin-medium-top">
@@ -1289,8 +1269,7 @@ class UltimatePostKit_Admin_Settings
      * @access public
      */
 
-    public function v6_activate_notice()
-    {
+    public function v6_activate_notice() {
 
         Notices::add_notice(
             [
@@ -1311,8 +1290,7 @@ class UltimatePostKit_Admin_Settings
      * @access public
      */
 
-    public function el_use_mini_cart()
-    {
+    public function el_use_mini_cart() {
 
         Notices::add_notice(
             [
@@ -1332,8 +1310,7 @@ class UltimatePostKit_Admin_Settings
      * @access public
      */
 
-    public function allow_tracker_activate_notice()
-    {
+    public function allow_tracker_activate_notice() {
 
         Notices::add_notice(
             [
@@ -1351,8 +1328,7 @@ class UltimatePostKit_Admin_Settings
      *
      * @return array page names with key value pairs
      */
-    function get_pages()
-    {
+    function get_pages() {
         $pages         = get_pages();
         $pages_options = [];
         if ($pages) {

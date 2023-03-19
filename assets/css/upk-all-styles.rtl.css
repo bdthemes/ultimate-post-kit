@@ -1161,6 +1161,17 @@
   content: 'PRO';
   background-color: #e62a3f; }
 
+.upk-updated-control:after {
+  content: 'UPDATED';
+  background-color: #2d60ce;
+  color: #fff;
+  font-size: 7px;
+  font-weight: 700;
+  border-radius: 2px;
+  padding: 3px 4px;
+  margin-right: 5px;
+  vertical-align: middle; }
+
 #elementor-panel #elementor-panel-header-title span.upk-widget-badge:after,
 #elementor-panel .elementor-control-title span.upk-widget-badge:after,
 #elementor-panel .elementor-section-title span.upk-widget-badge:after {
@@ -1177,7 +1188,7 @@
 
 @font-face {
   font-family: "ultimate-post-kit";
-  src: url("../fonts/ultimate-post-kit.woff2?3pknzd") format("woff2"), url("../fonts/ultimate-post-kit.ttf?3pknzd") format("truetype"), url("../fonts/ultimate-post-kit.woff?3pknzd") format("woff"), url("../fonts/ultimate-post-kit.svg?3pknzd#ultimate-post-kit") format("svg");
+  src: url("../fonts/ultimate-post-kit.woff2?6n2hf") format("woff2"), url("../fonts/ultimate-post-kit.ttf?6n2hf") format("truetype"), url("../fonts/ultimate-post-kit.woff?6n2hf") format("woff"), url("../fonts/ultimate-post-kit.svg?6n2hf#ultimate-post-kit") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block; }
@@ -1194,6 +1205,9 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+.upk-icon-candy-list:before {
+  content: ""; }
 
 .upk-icon-instagram-gallery:before {
   content: ""; }
@@ -2180,6 +2194,10 @@
   .rtl .upk-arrows-fraction-container .swiper-pagination,
   .rtl .upk-arrows-dots-container .swiper-pagination {
     direction: rtl; }
+
+.rtl .upk-news-ticker-controls {
+  display: flex;
+  flex-direction: row-reverse; }
 
 /* Swiper */
 .swiper-container .elementor-lightbox-content-source {

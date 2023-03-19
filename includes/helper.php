@@ -38,6 +38,9 @@ if (!defined('BDTUPK_CP')) {
 if (!defined('BDTUPK_NC')) {
 	define('BDTUPK_NC', '<span class="upk-new-control"></span>');
 } //Add prefix for all widgets <span class="upk-widget-badge"></span>
+if (!defined('BDTUPK_UC')) {
+    define('BDTUPK_UC', '<span class="upk-updated-control"></span>');
+} // if you have any custom style
 
 if (_is_upk_pro_activated()) {
 	if (!defined('BDTUPK_PC')) {
@@ -164,7 +167,7 @@ function ultimate_post_kit_get_taxonomies() {
 	if ($taxonomies) {
 		foreach ($taxonomies as $taxonomy) {
 			$post_type_obj             = get_post_type_object($taxonomy->object_type[0]);
-			$output[$taxonomy->name] = ($taxonomy->label ? $taxonomy->label : '') . ' (' . $post_type_obj->label . ')';
+			$output[$taxonomy->name] = ($taxonomy->label ? $taxonomy->label : '') . ' (' . isset($post_type_obj->label) . ')';
 		}
 	}
 

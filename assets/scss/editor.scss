@@ -102,6 +102,17 @@ $icomoon-font-family: "ultimate-post-kit";
     background-color: #e62a3f;
   }
 }
+.upk-updated-control:after {
+  content: 'UPDATED';
+  background-color: #2d60ce;
+  color: #fff;
+  font-size: 7px;
+  font-weight: 700;
+  border-radius: 2px;
+  padding: 3px 4px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
 
 #elementor-panel #elementor-panel-header-title span.upk-widget-badge:after, 
 #elementor-panel .elementor-control-title span.upk-widget-badge:after, 

@@ -171,6 +171,16 @@ class ModuleService {
                     'video_url'    => '',
                 ],
                 [
+                    'name'         => 'candy-list',
+                    'label'        => esc_html__('Candy List', 'ultimate-post-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "on",
+                    'widget_type'  => 'pro',
+                    'content_type' => 'list new',
+                    'demo_url'     => 'https://postkit.pro/demo/candy-list/',
+                    'video_url'    => '',
+                ],
+                [
                     'name'         => 'classic-list',
                     'label'        => esc_html__('Classic List', 'ultimate-post-kit'),
                     'type'         => 'checkbox',

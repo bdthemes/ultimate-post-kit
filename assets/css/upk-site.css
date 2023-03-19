@@ -258,6 +258,10 @@
   .rtl .upk-arrows-dots-container .swiper-pagination {
     direction: ltr; }
 
+.rtl .upk-news-ticker-controls {
+  display: flex;
+  flex-direction: row-reverse; }
+
 /* Swiper */
 .swiper-container .elementor-lightbox-content-source {
   display: none; }

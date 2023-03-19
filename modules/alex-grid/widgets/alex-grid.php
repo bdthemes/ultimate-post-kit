@@ -1147,7 +1147,7 @@ class Alex_Grid extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_style_author',
 			[
-				'label'      => esc_html__('Meta', 'ultimate-post-kit'),
+				'label'      => esc_html__('Meta', 'ultimate-post-kit') . BDTUPK_UC,
 				'tab'        => Controls_Manager::TAB_STYLE,
 				'conditions' => [
 					'relation' => 'or',
@@ -1159,17 +1159,22 @@ class Alex_Grid extends Group_Control_Query {
 						[
 							'name'  => 'show_date',
 							'value' => 'yes'
+						],
+						[
+							'name'  => 'show_reading_time',
+							'value' => 'yes'
 						]
 					]
 				],
 			]
 		);
 
-		$this->add_control(
-			'author_image_heading',
+		$this->start_controls_tabs('tabs_author_date_style');
+
+		$this->start_controls_tab(
+			'tab_avatar_normal',
 			[
-				'label'     => esc_html__('Avatar', 'ultimate-post-kit'),
-				'type'      => Controls_Manager::HEADING,
+				'label' => __('Avatar', 'ultimate-post-kit'),
 				'condition' => [
 					'show_author' => 'yes',
 				],
@@ -1231,12 +1236,14 @@ class Alex_Grid extends Group_Control_Query {
 			]
 		);
 
-		$this->add_control(
-			'author_name_heading',
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'tab_author_name_normal',
 			[
-				'label'     => esc_html__('Text', 'ultimate-post-kit'),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before'
+				'label' => __('Author Name', 'ultimate-post-kit'),
+				'condition' => [
+					'show_author' => 'yes',
+				],
 			]
 		);
 
@@ -1246,7 +1253,10 @@ class Alex_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-alex-grid .upk-meta .upk-author-name a, {{WRAPPER}} .upk-alex-grid .upk-meta .upk-date, {{WRAPPER}} .upk-alex-grid .upk-meta .upk-post-time, {{WRAPPER}} .upk-alex-grid .upk-meta .upk-reading-time' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-alex-grid .upk-meta .upk-author-name a' => 'color: {{VALUE}};',
+				],
+				'condition' => [
+					'show_author' => 'yes',
 				],
 			]
 		);
@@ -1258,6 +1268,66 @@ class Alex_Grid extends Group_Control_Query {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-alex-grid .upk-meta .upk-author-name a:hover' => 'color: {{VALUE}};',
+				],
+				'condition' => [
+					'show_author' => 'yes',
+				],
+			]
+		);
+		
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'author_name_typography',
+				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
+				'selector' => '{{WRAPPER}} .upk-alex-grid .upk-meta .upk-author-name a',
+				'condition' => [
+					'show_author' => 'yes',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'tab_date_normal',
+			[
+				'label' => __('Date', 'ultimate-post-kit'),
+				'conditions' => [
+					'relation' => 'or',
+					'terms'    => [
+						[
+							'name'  => 'show_date',
+							'value' => 'yes'
+						],
+						[
+							'name'  => 'show_reading_time',
+							'value' => 'yes'
+						]
+					]
+				],
+			]
+		);
+
+		$this->add_control(
+			'date_color',
+			[
+				'label'     => esc_html__('Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .upk-alex-grid .upk-meta .upk-date, {{WRAPPER}} .upk-alex-grid .upk-meta .upk-post-time, {{WRAPPER}} .upk-alex-grid .upk-meta .upk-reading-time' => 'color: {{VALUE}};',
+				],
+				'conditions' => [
+					'relation' => 'or',
+					'terms'    => [
+						[
+							'name'  => 'show_date',
+							'value' => 'yes'
+						],
+						[
+							'name'  => 'show_reading_time',
+							'value' => 'yes'
+						]
+					]
 				],
 			]
 		);
@@ -1276,17 +1346,36 @@ class Alex_Grid extends Group_Control_Query {
 				'selectors' => [
 					'{{WRAPPER}} .upk-alex-grid .upk-meta .upk-date-reading-wrap > div:before' => 'margin: 0 {{SIZE}}{{UNIT}};',
 				],
+				'condition' => [
+					'show_reading_time' => 'yes',
+				],
 			]
 		);
 
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name'     => 'author_name_typography',
+				'name'     => 'date_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-alex-grid .upk-meta .upk-author-name a, {{WRAPPER}} .upk-alex-grid .upk-meta .upk-date, {{WRAPPER}} .upk-alex-grid .upk-meta .upk-post-time, {{WRAPPER}} .upk-alex-grid .upk-meta .upk-reading-time',
+				'selector' => '{{WRAPPER}} .upk-alex-grid .upk-meta .upk-date, {{WRAPPER}} .upk-alex-grid .upk-meta .upk-post-time, {{WRAPPER}} .upk-alex-grid .upk-meta .upk-reading-time',
+				'conditions' => [
+					'relation' => 'or',
+					'terms'    => [
+						[
+							'name'  => 'show_date',
+							'value' => 'yes'
+						],
+						[
+							'name'  => 'show_reading_time',
+							'value' => 'yes'
+						]
+					]
+				],
 			]
 		);
+
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
 
 		$this->end_controls_section();
 

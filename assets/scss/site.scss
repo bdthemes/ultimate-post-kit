@@ -131,6 +131,10 @@
       direction: ltr;
     }
   }
+  .upk-news-ticker-controls {
+    display: flex;
+    flex-direction: row-reverse;
+  }
 }
 
 /* Swiper */

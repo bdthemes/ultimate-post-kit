@@ -1,4 +1,5 @@
 <?php
+
 namespace UltimatePostKit\Modules\Newsletter\Widgets;
 
 use UltimatePostKit\Base\Module_Base;
@@ -9,7 +10,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Icons_Manager;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class Newsletter extends Module_Base {
 
@@ -18,7 +19,7 @@ class Newsletter extends Module_Base {
 	}
 
 	public function get_title() {
-		return BDTUPK . esc_html__( 'Newsletter', 'ultimate-post-kit' );
+		return BDTUPK . esc_html__('Newsletter', 'ultimate-post-kit');
 	}
 
 	public function get_icon() {
@@ -26,26 +27,26 @@ class Newsletter extends Module_Base {
 	}
 
 	public function get_categories() {
-		return [ 'ultimate-post-kit' ];
+		return ['ultimate-post-kit'];
 	}
 
 	public function get_keywords() {
-		return [ 'newsletter', 'email', 'marketing', 'newsletter' ];
+		return ['newsletter', 'email', 'marketing', 'newsletter'];
 	}
 
 	public function get_style_depends() {
-        if ($this->upk_is_edit_mode()) {
-            return ['upk-all-styles'];
-        } else {
-            return [ 'upk-newsletter' ];
-        }
-    }
+		if ($this->upk_is_edit_mode()) {
+			return ['upk-all-styles'];
+		} else {
+			return ['upk-newsletter'];
+		}
+	}
 
 	public function get_script_depends() {
-		if ( $this->upk_is_edit_mode() ) {
-			return [ 'upk-all-scripts' ];
+		if ($this->upk_is_edit_mode()) {
+			return ['upk-all-scripts'];
 		} else {
-			return [ 'upk-newsletter' ];
+			return ['upk-newsletter'];
 		}
 	}
 
@@ -58,14 +59,14 @@ class Newsletter extends Module_Base {
 		$this->start_controls_section(
 			'section_content_layout',
 			[
-				'label' => esc_html__( 'Layout', 'ultimate-post-kit' ),
+				'label' => esc_html__('Layout', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'show_before_icon',
 			[
-				'label' => esc_html__( 'Before Icon', 'ultimate-post-kit' ),
+				'label' => esc_html__('Before Icon', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SWITCHER,
 			]
 		);
@@ -73,7 +74,7 @@ class Newsletter extends Module_Base {
 		$this->add_control(
 			'mailchimp_before_icon',
 			[
-				'label'       => __( 'Choose Icon', 'ultimate-post-kit' ),
+				'label'       => __('Choose Icon', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'far fa-envelope-open',
@@ -100,43 +101,43 @@ class Newsletter extends Module_Base {
 		$this->add_control(
 			'before_text',
 			[
-				'label'       => esc_html__( 'Before Text', 'ultimate-post-kit' ),
+				'label'       => esc_html__('Before Text', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
-				'dynamic'     => [ 'active' => true ],
-				'placeholder' => esc_html__( 'Before Text', 'ultimate-post-kit' ),
+				'dynamic'     => ['active' => true],
+				'placeholder' => esc_html__('Before Text', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'after_text',
 			[
-				'label'       => esc_html__( 'After Text', 'ultimate-post-kit' ),
+				'label'       => esc_html__('After Text', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
-				'dynamic'     => [ 'active' => true ],
-				'placeholder' => esc_html__( 'After Text', 'ultimate-post-kit' ),
+				'dynamic'     => ['active' => true],
+				'placeholder' => esc_html__('After Text', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_responsive_control(
 			'align',
 			[
-				'label'        => __( 'Alignment', 'ultimate-post-kit' ),
+				'label'        => __('Alignment', 'ultimate-post-kit'),
 				'type'         => Controls_Manager::CHOOSE,
 				'options'      => [
 					'left'    => [
-						'title' => __( 'Left', 'ultimate-post-kit' ),
+						'title' => __('Left', 'ultimate-post-kit'),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'ultimate-post-kit' ),
+						'title' => __('Center', 'ultimate-post-kit'),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'ultimate-post-kit' ),
+						'title' => __('Right', 'ultimate-post-kit'),
 						'icon'  => 'eicon-text-align-right',
 					],
 					'justify' => [
-						'title' => __( 'Justified', 'ultimate-post-kit' ),
+						'title' => __('Justified', 'ultimate-post-kit'),
 						'icon'  => 'eicon-text-align-justify',
 					],
 				],
@@ -186,19 +187,19 @@ class Newsletter extends Module_Base {
 		$this->add_control(
 			'email_field_placeholder',
 			[
-				'label'       => esc_html__( 'Email Field Placeholder', 'ultimate-post-kit' ),
+				'label'       => esc_html__('Email Field Placeholder', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
-				'dynamic'     => [ 'active' => true ],
+				'dynamic'     => ['active' => true],
 				'label_block' => true,
-				'default'     => esc_html__( 'Email *', 'ultimate-post-kit' ),
-				'placeholder' => esc_html__( 'Email *', 'ultimate-post-kit' ),
+				'default'     => esc_html__('Email *', 'ultimate-post-kit'),
+				'placeholder' => esc_html__('Email *', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'show_fname',
 			[
-				'label' => esc_html__( 'Show Name', 'ultimate-post-kit' ),
+				'label' => esc_html__('Show Name', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SWITCHER,
 			]
 		);
@@ -206,12 +207,12 @@ class Newsletter extends Module_Base {
 		$this->add_control(
 			'fname_field_placeholder',
 			[
-				'label'       => esc_html__( 'Name Field Placeholder', 'ultimate-post-kit' ),
+				'label'       => esc_html__('Name Field Placeholder', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
-				'dynamic'     => [ 'active' => true ],
+				'dynamic'     => ['active' => true],
 				'label_block' => true,
-				'default'     => esc_html__( 'Name ', 'ultimate-post-kit' ),
-				'placeholder' => esc_html__( 'Name ', 'ultimate-post-kit' ),
+				'default'     => esc_html__('Name ', 'ultimate-post-kit'),
+				'placeholder' => esc_html__('Name ', 'ultimate-post-kit'),
 				'condition'	=> [
 					'show_fname' => 'yes',
 				]
@@ -221,7 +222,7 @@ class Newsletter extends Module_Base {
 		$this->add_control(
 			'fullwidth_input',
 			[
-				'label' => esc_html__( 'Fullwidth Fields', 'ultimate-post-kit' ),
+				'label' => esc_html__('Fullwidth Fields', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SWITCHER,
 				'prefix_class' => 'upk-field-full--',
 			]
@@ -230,7 +231,7 @@ class Newsletter extends Module_Base {
 		$this->add_control(
 			'fullwidth_button',
 			[
-				'label'     => esc_html__( 'Fullwidth Button', 'ultimate-post-kit' ),
+				'label'     => esc_html__('Fullwidth Button', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SWITCHER,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-wrapper .upk-newsletter-btn' => 'width: 100%;',
@@ -246,25 +247,25 @@ class Newsletter extends Module_Base {
 		$this->start_controls_section(
 			'section_content_button',
 			[
-				'label' => esc_html__( 'Signup Button', 'ultimate-post-kit' ),
+				'label' => esc_html__('Signup Button', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'button_text',
 			[
-				'label'       => esc_html__( 'Button Text', 'ultimate-post-kit' ),
+				'label'       => esc_html__('Button Text', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
-				'dynamic'     => [ 'active' => true ],
-				'placeholder' => esc_html__( 'SIGNUP', 'ultimate-post-kit' ),
-				'default'     => esc_html__( 'SIGNUP', 'ultimate-post-kit' ),
+				'dynamic'     => ['active' => true],
+				'placeholder' => esc_html__('SIGNUP', 'ultimate-post-kit'),
+				'default'     => esc_html__('SIGNUP', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'mailchimp_button_icon',
 			[
-				'label'       => __( 'Icon', 'ultimate-post-kit' ),
+				'label'       => __('Icon', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::ICONS,
 				'label_block' => false,
 				'skin' => 'inline'
@@ -274,12 +275,12 @@ class Newsletter extends Module_Base {
 		$this->add_control(
 			'icon_align',
 			[
-				'label'   => __( 'Icon Position', 'ultimate-post-kit' ),
+				'label'   => __('Icon Position', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'right',
 				'options' => [
-					'left'   => __( 'Left', 'ultimate-post-kit' ),
-					'right'  => __( 'Right', 'ultimate-post-kit' ),
+					'left'   => __('Left', 'ultimate-post-kit'),
+					'right'  => __('Right', 'ultimate-post-kit'),
 				],
 				'condition' => [
 					'mailchimp_button_icon[value]!' => '',
@@ -290,16 +291,16 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'icon_indent',
 			[
-				'label' => __( 'Icon Spacing', 'ultimate-post-kit' ),
+				'label' => __('Icon Spacing', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
 						'max' => 100,
 					],
 				],
-					'default' => [
-						'size' => 8,
-					],
+				'default' => [
+					'size' => 8,
+				],
 				'condition' => [
 					'mailchimp_button_icon[value]!' => '',
 				],
@@ -315,7 +316,7 @@ class Newsletter extends Module_Base {
 		$this->start_controls_section(
 			'section_style_before_icon',
 			[
-				'label'     => __( 'Before Icon', 'ultimate-post-kit' ),
+				'label'     => __('Before Icon', 'ultimate-post-kit'),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'show_before_icon' => 'yes',
@@ -324,19 +325,19 @@ class Newsletter extends Module_Base {
 			]
 		);
 
-		$this->start_controls_tabs( 'tabs_before_icon_style' );
+		$this->start_controls_tabs('tabs_before_icon_style');
 
 		$this->start_controls_tab(
 			'tab_before_icon_normal',
 			[
-				'label' => __( 'Normal', 'ultimate-post-kit' ),
+				'label' => __('Normal', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'before_icon_color',
 			[
-				'label'     => __( 'Color', 'ultimate-post-kit' ),
+				'label'     => __('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-before-icon' => 'color: {{VALUE}};',
@@ -366,9 +367,9 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'before_icon_radius',
 			[
-				'label'      => __( 'Border Radius', 'ultimate-post-kit' ),
+				'label'      => __('Border Radius', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%' ],
+				'size_units' => ['px', '%'],
 				'selectors'  => [
 					'{{WRAPPER}} .upk-newsletter-before-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -378,9 +379,9 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'before_icon_padding',
 			[
-				'label'      => __( 'Padding', 'ultimate-post-kit' ),
+				'label'      => __('Padding', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'em', '%' ],
+				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
 					'{{WRAPPER}} .upk-newsletter-before-icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -390,9 +391,9 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'before_icon_margin',
 			[
-				'label'      => __( 'Margin', 'ultimate-post-kit' ),
+				'label'      => __('Margin', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'em', '%' ],
+				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
 					'{{WRAPPER}} .upk-newsletter-before-icon' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -410,7 +411,7 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'before_icon_size',
 			[
-				'label' => __( 'Size', 'ultimate-post-kit' ),
+				'label' => __('Size', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-wrapper .upk-newsletter-before-icon'   => 'font-size: {{SIZE}}{{UNIT}};',
@@ -423,14 +424,14 @@ class Newsletter extends Module_Base {
 		$this->start_controls_tab(
 			'tab_before_icon_hover',
 			[
-				'label' => __( 'Hover', 'ultimate-post-kit' ),
+				'label' => __('Hover', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'before_icon_hover_color',
 			[
-				'label'     => __( 'Color', 'ultimate-post-kit' ),
+				'label'     => __('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-before-icon:hover' => 'color: {{VALUE}};',
@@ -450,7 +451,7 @@ class Newsletter extends Module_Base {
 		$this->add_control(
 			'before_icon_hover_border_color',
 			[
-				'label'     => __( 'Border Color', 'ultimate-post-kit' ),
+				'label'     => __('Border Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'condition' => [
 					'before_icon_border_border!' => '',
@@ -470,24 +471,24 @@ class Newsletter extends Module_Base {
 		$this->start_controls_section(
 			'section_style_input',
 			[
-				'label' => esc_html__( 'Email Field', 'ultimate-post-kit' ),
+				'label' => esc_html__('Field', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
-		$this->start_controls_tabs( 'tabs_input_style' );
+		$this->start_controls_tabs('tabs_input_style');
 
 		$this->start_controls_tab(
 			'tab_input_normal',
 			[
-				'label' => esc_html__( 'Normal', 'ultimate-post-kit' ),
+				'label' => esc_html__('Normal', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'input_placeholder_color',
 			[
-				'label'     => esc_html__( 'Placeholder Color', 'ultimate-post-kit' ),
+				'label'     => esc_html__('Placeholder Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-wrapper input[type*="email"]::placeholder, {{WRAPPER}} .upk-newsletter-wrapper input[type*="text"]::placeholder' => 'color: {{VALUE}};',
@@ -498,7 +499,7 @@ class Newsletter extends Module_Base {
 		$this->add_control(
 			'input_color',
 			[
-				'label'     => esc_html__( 'Text Color', 'ultimate-post-kit' ),
+				'label'     => esc_html__('Text Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-wrapper .upk-input' => 'color: {{VALUE}};',
@@ -515,7 +516,8 @@ class Newsletter extends Module_Base {
 		);
 
 		$this->add_group_control(
-			Group_Control_Border::get_type(), [
+			Group_Control_Border::get_type(),
+			[
 				'name'        => 'input_border',
 				'placeholder' => '1px',
 				'default'     => '1px',
@@ -526,9 +528,9 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'input_radius',
 			[
-				'label'      => esc_html__( 'Border Radius', 'ultimate-post-kit' ),
+				'label'      => esc_html__('Border Radius', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%' ],
+				'size_units' => ['px', '%'],
 				'selectors'  => [
 					'{{WRAPPER}} .upk-newsletter-wrapper .upk-input' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -538,9 +540,9 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'input_padding',
 			[
-				'label'      => esc_html__( 'Padding', 'ultimate-post-kit' ),
+				'label'      => esc_html__('Padding', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'em', '%' ],
+				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
 					'{{WRAPPER}} .upk-newsletter-wrapper .upk-input' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -550,9 +552,9 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'input_margin',
 			[
-				'label'      => esc_html__( 'Margin', 'ultimate-post-kit' ),
+				'label'      => esc_html__('Margin', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'em', '%' ],
+				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
 					'{{WRAPPER}} .upk-newsletter-wrapper .upk-newsletter-input-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -571,7 +573,7 @@ class Newsletter extends Module_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'      => 'placeholder_typography',
-				'label'     => esc_html__( 'Typography', 'ultimate-post-kit' ),
+				'label'     => esc_html__('Typography', 'ultimate-post-kit'),
 				'selector'  => '{{WRAPPER}} .upk-newsletter-wrapper .upk-input',
 			]
 		);
@@ -581,14 +583,14 @@ class Newsletter extends Module_Base {
 		$this->start_controls_tab(
 			'tab_input_focus',
 			[
-				'label' => esc_html__( 'Focus', 'ultimate-post-kit' ),
+				'label' => esc_html__('Focus', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'input_focus_color',
 			[
-				'label'     => esc_html__( 'Text Color', 'ultimate-post-kit' ),
+				'label'     => esc_html__('Text Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-wrapper input:focus' => 'color: {{VALUE}};',
@@ -607,7 +609,7 @@ class Newsletter extends Module_Base {
 		$this->add_control(
 			'input_focus_border_color',
 			[
-				'label'     => esc_html__( 'Border Color', 'ultimate-post-kit' ),
+				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'condition' => [
 					'input_border_border!' => '',
@@ -627,24 +629,24 @@ class Newsletter extends Module_Base {
 		$this->start_controls_section(
 			'section_style_button',
 			[
-				'label' => esc_html__( 'Sign Up Button', 'ultimate-post-kit' ),
+				'label' => esc_html__('Sign Up Button', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
-		$this->start_controls_tabs( 'tabs_button_style' );
+		$this->start_controls_tabs('tabs_button_style');
 
 		$this->start_controls_tab(
 			'tab_button_normal',
 			[
-				'label' => esc_html__( 'Normal', 'ultimate-post-kit' ),
+				'label' => esc_html__('Normal', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'button_text_color',
 			[
-				'label'     => esc_html__( 'Color', 'ultimate-post-kit' ),
+				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-wrapper .upk-newsletter-btn' => 'color: {{VALUE}};',
@@ -673,9 +675,9 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'button_radius',
 			[
-				'label'      => esc_html__( 'Border Radius', 'ultimate-post-kit' ),
+				'label'      => esc_html__('Border Radius', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%' ],
+				'size_units' => ['px', '%'],
 				'selectors'  => [
 					'{{WRAPPER}} .upk-newsletter-wrapper .upk-newsletter-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -685,9 +687,9 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'button_text_padding',
 			[
-				'label'      => esc_html__( 'Padding', 'ultimate-post-kit' ),
+				'label'      => esc_html__('Padding', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'em', '%' ],
+				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
 					'{{WRAPPER}} .upk-newsletter-wrapper .upk-newsletter-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -706,7 +708,7 @@ class Newsletter extends Module_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'      => 'button_typography',
-				'label'     => esc_html__( 'Typography', 'ultimate-post-kit' ),
+				'label'     => esc_html__('Typography', 'ultimate-post-kit'),
 				'selector'  => '{{WRAPPER}} .upk-newsletter-wrapper .upk-newsletter-btn',
 			]
 		);
@@ -716,14 +718,14 @@ class Newsletter extends Module_Base {
 		$this->start_controls_tab(
 			'tab_button_hover',
 			[
-				'label' => esc_html__( 'Hover', 'ultimate-post-kit' ),
+				'label' => esc_html__('Hover', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'hover_color',
 			[
-				'label'     => esc_html__( 'Color', 'ultimate-post-kit' ),
+				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-wrapper .upk-newsletter-btn:hover' => 'color: {{VALUE}};',
@@ -742,7 +744,7 @@ class Newsletter extends Module_Base {
 		$this->add_control(
 			'button_hover_border_color',
 			[
-				'label'     => esc_html__( 'Border Color', 'ultimate-post-kit' ),
+				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'condition' => [
 					'button_border_border!' => '',
@@ -756,7 +758,7 @@ class Newsletter extends Module_Base {
 		$this->add_control(
 			'hover_animation',
 			[
-				'label' => __( 'Hover Animation', 'ultimate-post-kit' ),
+				'label' => __('Hover Animation', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::HOVER_ANIMATION,
 			]
 		);
@@ -770,7 +772,7 @@ class Newsletter extends Module_Base {
 		$this->start_controls_section(
 			'section_style_icon',
 			[
-				'label'     => __( 'Signup Button Icon', 'ultimate-post-kit' ),
+				'label'     => __('Signup Button Icon', 'ultimate-post-kit'),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'mailchimp_button_icon[value]!' => '',
@@ -778,19 +780,19 @@ class Newsletter extends Module_Base {
 			]
 		);
 
-		$this->start_controls_tabs( 'tabs_signup_btn_icon_style' );
+		$this->start_controls_tabs('tabs_signup_btn_icon_style');
 
 		$this->start_controls_tab(
 			'tab_signup_btn_icon_normal',
 			[
-				'label' => __( 'Normal', 'ultimate-post-kit' ),
+				'label' => __('Normal', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'signup_btn_icon_color',
 			[
-				'label'     => __( 'Color', 'ultimate-post-kit' ),
+				'label'     => __('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-btn .upk-newsletter-btn-icon i' => 'color: {{VALUE}};',
@@ -820,9 +822,9 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'signup_btn_icon_radius',
 			[
-				'label'      => __( 'Border Radius', 'ultimate-post-kit' ),
+				'label'      => __('Border Radius', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%' ],
+				'size_units' => ['px', '%'],
 				'selectors'  => [
 					'{{WRAPPER}} .upk-newsletter-btn .upk-newsletter-btn-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -832,9 +834,9 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'signup_btn_icon_padding',
 			[
-				'label'      => __( 'Padding', 'ultimate-post-kit' ),
+				'label'      => __('Padding', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'em', '%' ],
+				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
 					'{{WRAPPER}} .upk-newsletter-btn .upk-newsletter-btn-icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -844,9 +846,9 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'signup_btn_icon_margin',
 			[
-				'label'      => __( 'Margin', 'ultimate-post-kit' ),
+				'label'      => __('Margin', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'em', '%' ],
+				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
 					'{{WRAPPER}} .upk-newsletter-btn .upk-newsletter-btn-icon' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -864,7 +866,7 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'signup_btn_icon_size',
 			[
-				'label' => __( 'Size', 'ultimate-post-kit' ),
+				'label' => __('Size', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-btn .upk-newsletter-btn-icon'   => 'font-size: {{SIZE}}{{UNIT}};',
@@ -877,14 +879,14 @@ class Newsletter extends Module_Base {
 		$this->start_controls_tab(
 			'tab_signup_btn_icon_hover',
 			[
-				'label' => __( 'Hover', 'ultimate-post-kit' ),
+				'label' => __('Hover', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'signup_btn_icon_hover_color',
 			[
-				'label'     => __( 'Color', 'ultimate-post-kit' ),
+				'label'     => __('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-btn:hover .upk-newsletter-btn-icon i' => 'color: {{VALUE}};',
@@ -904,7 +906,7 @@ class Newsletter extends Module_Base {
 		$this->add_control(
 			'icon_hover_border_color',
 			[
-				'label'     => __( 'Border Color', 'ultimate-post-kit' ),
+				'label'     => __('Border Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'condition' => [
 					'signup_btn_icon_border_border!' => '',
@@ -924,7 +926,7 @@ class Newsletter extends Module_Base {
 		$this->start_controls_section(
 			'section_style_before_text',
 			[
-				'label'     => __( 'Before Text', 'ultimate-post-kit' ),
+				'label'     => __('Before Text', 'ultimate-post-kit'),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'before_text!' => '',
@@ -935,7 +937,7 @@ class Newsletter extends Module_Base {
 		$this->add_control(
 			'before_text_color',
 			[
-				'label'     => __( 'Color', 'ultimate-post-kit' ),
+				'label'     => __('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-wrapper .upk-newsletter-before-text' => 'color: {{VALUE}};',
@@ -946,7 +948,7 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'before_text_spacing',
 			[
-				'label' => __( 'Spacing', 'ultimate-post-kit' ),
+				'label' => __('Spacing', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-wrapper .upk-newsletter-before-text'   => 'margin-bottom: {{SIZE}}{{UNIT}};',
@@ -958,7 +960,7 @@ class Newsletter extends Module_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'before_text_typography',
-				'label'    => esc_html__( 'Typography', 'ultimate-post-kit' ),
+				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
 				'selector' => '{{WRAPPER}} .upk-newsletter-wrapper .upk-newsletter-before-text',
 			]
 		);
@@ -968,7 +970,7 @@ class Newsletter extends Module_Base {
 		$this->start_controls_section(
 			'section_style_after_text',
 			[
-				'label'     => __( 'After Text', 'ultimate-post-kit' ),
+				'label'     => __('After Text', 'ultimate-post-kit'),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'after_text!' => '',
@@ -979,7 +981,7 @@ class Newsletter extends Module_Base {
 		$this->add_control(
 			'after_text_color',
 			[
-				'label'     => __( 'Color', 'ultimate-post-kit' ),
+				'label'     => __('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-wrapper .upk-newsletter-after-text' => 'color: {{VALUE}};',
@@ -990,7 +992,7 @@ class Newsletter extends Module_Base {
 		$this->add_responsive_control(
 			'after_text_spacing',
 			[
-				'label' => __( 'Spacing', 'ultimate-post-kit' ),
+				'label' => __('Spacing', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}} .upk-newsletter-wrapper .upk-newsletter-after-text'   => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -1002,7 +1004,7 @@ class Newsletter extends Module_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'after_text_typography',
-				'label'    => esc_html__( 'Typography', 'ultimate-post-kit' ),
+				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
 				'selector' => '{{WRAPPER}} .upk-newsletter-wrapper .upk-newsletter-after-text',
 			]
 		);
@@ -1012,87 +1014,87 @@ class Newsletter extends Module_Base {
 
 	public function render_text($settings) {
 
-		$this->add_render_attribute( 'content-wrapper', 'class', 'upk-newsletter-btn-content-wrapper' );
+		$this->add_render_attribute('content-wrapper', 'class', 'upk-newsletter-btn-content-wrapper');
 
-		if ( 'left' == $settings['icon_align'] or 'right' == $settings['icon_align'] ) {
-			$this->add_render_attribute( 'content-wrapper', 'class', 'upk-flex upk-flex-middle upk-flex-center' );
+		if ('left' == $settings['icon_align'] or 'right' == $settings['icon_align']) {
+			$this->add_render_attribute('content-wrapper', 'class', 'upk-flex upk-flex-middle upk-flex-center');
 		}
 
-		$this->add_render_attribute( 'icon-align', 'class', 'elementor-align-icon-' . $settings['icon_align'] );
-		$this->add_render_attribute( 'icon-align', 'class', 'upk-newsletter-btn-icon' );
+		$this->add_render_attribute('icon-align', 'class', 'elementor-align-icon-' . $settings['icon_align']);
+		$this->add_render_attribute('icon-align', 'class', 'upk-newsletter-btn-icon');
 
-		$this->add_render_attribute( 'text', 'class', ['upk-newsletter-btn-text'] );
-		$this->add_inline_editing_attributes( 'text', 'none' );
+		$this->add_render_attribute('text', 'class', ['upk-newsletter-btn-text']);
+		$this->add_inline_editing_attributes('text', 'none');
 
-		?>
-		<div <?php $this->print_render_attribute_string( 'content-wrapper' ); ?>>
-			<?php if ( ! empty( $settings['mailchimp_button_icon']['value'] ) ) : ?>
+?>
+		<div <?php $this->print_render_attribute_string('content-wrapper'); ?>>
+			<?php if (!empty($settings['mailchimp_button_icon']['value'])) : ?>
 				<div class="upk-newsletter-btn-icon upk-flex-align-<?php echo esc_attr($settings['icon_align']); ?>">
-						
-					<?php Icons_Manager::render_icon( $settings['mailchimp_button_icon'], [ 'aria-hidden' => 'true', 'class' => 'fa-fw' ] ); ?>
+
+					<?php Icons_Manager::render_icon($settings['mailchimp_button_icon'], ['aria-hidden' => 'true', 'class' => 'fa-fw']); ?>
 
 				</div>
 			<?php endif; ?>
-			<div <?php $this->print_render_attribute_string( 'text' ); ?>><?php echo wp_kses( $settings['button_text'], ultimate_post_kit_allow_tags('title') ); ?></div>
+			<div <?php $this->print_render_attribute_string('text'); ?>><?php echo wp_kses($settings['button_text'], ultimate_post_kit_allow_tags('title')); ?></div>
 		</div>
-		<?php
+	<?php
 	}
 
 	public function render() {
 		$settings = $this->get_settings_for_display();
-		$this->add_render_attribute( 'input-wrapper', 'class', 'upk-newsletter-input-wrapper' );
-		?>
+		$this->add_render_attribute('input-wrapper', 'class', 'upk-newsletter-input-wrapper');
+	?>
 		<div class="upk-newsletter-wrapper">
 
-	        <?php if ( ! empty( $settings['before_text'] ) ) : ?>
-	           <div class="upk-newsletter-before-text"><?php echo esc_attr($settings['before_text']); ?></div>
-	        <?php endif; ?>
+			<?php if (!empty($settings['before_text'])) : ?>
+				<div class="upk-newsletter-before-text"><?php echo esc_attr($settings['before_text']); ?></div>
+			<?php endif; ?>
 
 			<form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" class="upk-newsletter">
-				
-				<?php if ( $settings['show_before_icon'] and ! empty( $settings['mailchimp_before_icon']['value'] ) ) : ?>
+
+				<?php if ($settings['show_before_icon'] and !empty($settings['mailchimp_before_icon']['value'])) : ?>
 					<div class="upk-newsletter-before-icon">
 
-						<?php Icons_Manager::render_icon( $settings['mailchimp_before_icon'], [ 'aria-hidden' => 'true', 'class' => 'fa-fw' ] ); ?>
+						<?php Icons_Manager::render_icon($settings['mailchimp_before_icon'], ['aria-hidden' => 'true', 'class' => 'fa-fw']); ?>
 
 					</div>
 				<?php endif; ?>
 
-				<?php if($settings['show_fname'] == 'yes'): ?>
-				<div <?php $this->print_render_attribute_string( 'input-wrapper' ); ?>>
-					<input type="text" name="fname" placeholder="<?php echo esc_attr($settings['fname_field_placeholder']); ?>" class="upk-input" />
-				</div>
+				<?php if ($settings['show_fname'] == 'yes') : ?>
+					<div <?php $this->print_render_attribute_string('input-wrapper'); ?>>
+						<input type="text" name="fname" placeholder="<?php echo esc_attr($settings['fname_field_placeholder']); ?>" class="upk-input" />
+					</div>
 				<?php endif; ?>
 
-				<div <?php $this->print_render_attribute_string( 'input-wrapper' ); ?>>
+				<div <?php $this->print_render_attribute_string('input-wrapper'); ?>>
 					<input type="email" name="email" placeholder="<?php echo esc_attr($settings['email_field_placeholder']); ?>" required class="upk-input" />
 					<input type="hidden" name="action" value="ultimate_post_kit_mailchimp_subscribe" />
 					<!-- we need action parameter to receive ajax request in WordPress -->
 				</div>
 				<?php
 
-				$this->add_render_attribute( 'signup_button', 'class', ['upk-newsletter-btn'] );				
+				$this->add_render_attribute('signup_button', 'class', ['upk-newsletter-btn']);
 
-				if ( $settings['hover_animation'] ) {
-					$this->add_render_attribute( 'signup_button', 'class', 'elementor-animation-' . $settings['hover_animation'] );
+				if ($settings['hover_animation']) {
+					$this->add_render_attribute('signup_button', 'class', 'elementor-animation-' . $settings['hover_animation']);
 				}
 
 				?>
 				<div class="upk-newsletter-signup-wrapper">
-					<button <?php $this->print_render_attribute_string( 'signup_button' ); ?>>
+					<button <?php $this->print_render_attribute_string('signup_button'); ?>>
 						<?php $this->render_text($settings); ?>
 					</button>
 				</div>
 			</form>
 
-	        <!-- after text -->
-	        <?php if ( ! empty( $settings['after_text'] ) ) : ?>
-	            <div class="upk-newsletter-after-text"><?php echo esc_attr($settings['after_text']); ?></div>
-	        <?php endif; ?>
+			<!-- after text -->
+			<?php if (!empty($settings['after_text'])) : ?>
+				<div class="upk-newsletter-after-text"><?php echo esc_attr($settings['after_text']); ?></div>
+			<?php endif; ?>
 
 		</div><!-- end newsletter-signup -->
 
-		 
-        <?php
+
+<?php
 	}
 }
