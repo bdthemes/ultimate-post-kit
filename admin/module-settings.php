@@ -127,7 +127,7 @@ class ModuleService {
                     'widget_type'  => 'free',
                     'content_type' => 'others',
                     'demo_url'     => 'https://postkit.pro/demo/banner/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/ESZvXD-knVQ',
                 ],
 
                 [
@@ -638,7 +638,7 @@ class ModuleService {
                     'widget_type'  => 'pro',
                     'content_type' => 'others',
                     'demo_url'     => 'https://postkit.pro/demo/stone-hover/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/7Gz3ElKbb2Q',
                 ],
                 [
                     'name'         => 'snog-slider',
@@ -760,7 +760,7 @@ class ModuleService {
                     'widget_type'  => 'pro',
                     'content_type' => 'new',
                     'demo_url'     => '',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/U_UaEQA1cqU',
                 ]
             ],
             'ultimate_post_kit_api_settings'     => [

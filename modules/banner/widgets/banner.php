@@ -62,7 +62,7 @@ class Banner extends Group_Control_Query
 
 	public function get_custom_help_url()
 	{
-		return 'https://youtu.be/lxGeTthE_lA';
+		return 'https://youtu.be/ESZvXD-knVQ';
 	}
 
 	public function get_query()
