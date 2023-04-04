@@ -2,8 +2,10 @@
 @import "overrides.scss";
 
 /* Common Less */
-*, *::before, *::after {
-  box-sizing: border-box;
+.elementor-lightbox {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 }
 
 // Title Animation

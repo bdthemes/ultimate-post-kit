@@ -212,6 +212,9 @@ abstract class Group_Control_Query extends Module_Base {
             'posts_divider',
             [
                 'type' => Controls_Manager::DIVIDER,
+                'condition' => [
+                    'posts_source!' => 'current_query',
+                ]
             ]
         );
 
@@ -221,6 +224,9 @@ abstract class Group_Control_Query extends Module_Base {
                 'label'   => __('Offset', 'bdthemes-element-pack') . BDTUPK_NC,
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 0,
+                'condition' => [
+                    'posts_source!' => 'current_query',
+                ]
             ]
         );
 

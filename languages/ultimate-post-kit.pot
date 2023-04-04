@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Ultimate Post Kit\n"
-"POT-Creation-Date: 2023-02-28 17:00+0600\n"
+"POT-Creation-Date: 2023-04-01 16:09+0600\n"
 "PO-Revision-Date: 2022-09-17 23:09+0600\n"
 "Last-Translator: Selim Rana <selim@bdthemes.com>\n"
 "Language-Team: Selim Rana <selim@bdthemes.com>\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "No item"
 msgstr ""
 
-#: admin/admin-feeds.php:94 includes/helper.php:450
+#: admin/admin-feeds.php:94 includes/helper.php:453
 msgid "ago"
 msgstr ""
 
@@ -43,7 +43,7 @@ msgstr ""
 msgid "Docs"
 msgstr ""
 
-#: admin/admin-feeds.php:123 admin/admin-settings.php:433
+#: admin/admin-feeds.php:123 admin/admin-settings.php:419
 msgid "Get Pro"
 msgstr ""
 
@@ -51,45 +51,45 @@ msgstr ""
 msgid "Changelog"
 msgstr ""
 
-#: admin/admin-settings.php:372
+#: admin/admin-settings.php:358
 msgid "Dashboard"
 msgstr ""
 
-#: admin/admin-settings.php:384 admin/admin-settings.php:465
+#: admin/admin-settings.php:370 admin/admin-settings.php:449
 msgid "Core Widgets"
 msgstr ""
 
-#: admin/admin-settings.php:393 admin/admin-settings.php:469
+#: admin/admin-settings.php:379 admin/admin-settings.php:453
 msgid "Extensions"
 msgstr ""
 
-#: admin/admin-settings.php:402 admin/admin-settings.php:473
+#: admin/admin-settings.php:388 admin/admin-settings.php:457
 msgid "API Settings"
 msgstr ""
 
-#: admin/admin-settings.php:413 admin/admin-settings.php:477
+#: admin/admin-settings.php:399 admin/admin-settings.php:461
 msgid "Other Settings"
 msgstr ""
 
-#: admin/admin-settings.php:515
+#: admin/admin-settings.php:497
 msgid ""
 "This feature is not working because the Elementor Usage Data Sharing feature "
 "is Not Enabled."
 msgstr ""
 
-#: admin/admin-settings.php:1217
+#: admin/admin-settings.php:1198
 msgid "Please wait, Saving settings..."
 msgstr ""
 
-#: admin/admin-settings.php:1225
+#: admin/admin-settings.php:1206
 msgid "Settings Saved Successfully."
 msgstr ""
 
-#: admin/admin-settings.php:1232
+#: admin/admin-settings.php:1213
 msgid "Unknown error, make sure access is correct!"
 msgstr ""
 
-#: admin/admin-settings.php:1301
+#: admin/admin-settings.php:1280
 msgid ""
 "There are very important changes in our major version <strong>v6.0.0</"
 "strong>. If you are continuing with the Ultimate Post Kit plugin from an "
@@ -100,14 +100,14 @@ msgid ""
 "you."
 msgstr ""
 
-#: admin/admin-settings.php:1323
+#: admin/admin-settings.php:1301
 msgid ""
 "We can see you activated the <strong>Mini-Cart</strong> of Elementor Pro and "
 "also Ultimate Post Kit Pro. We will recommend you to choose one of them, "
 "otherwise you will get conflict. Thank you."
 msgstr ""
 
-#: admin/admin-settings.php:1344
+#: admin/admin-settings.php:1321
 msgid ""
 "Please activate <strong>Usage Data Sharing</strong> features from Elementor, "
 "otherwise Widgets Analytics will not work. Please activate the settings from "
@@ -196,7 +196,7 @@ msgid "Atlas Slider"
 msgstr ""
 
 #: admin/module-settings.php:113
-#: includes/controls/group-query/group-control-query.php:284
+#: includes/controls/group-query/group-control-query.php:290
 #: modules/alex-carousel/widgets/alex-carousel.php:235
 #: modules/alex-grid/widgets/alex-grid.php:329
 #: modules/alice-carousel/widgets/alice-carousel.php:228
@@ -239,161 +239,165 @@ msgid "Camux Slider"
 msgstr ""
 
 #: admin/module-settings.php:175
+msgid "Candy List"
+msgstr ""
+
+#: admin/module-settings.php:185
 msgid "Classic List"
 msgstr ""
 
-#: admin/module-settings.php:185 modules/crystal-slider/module.info.php:5
+#: admin/module-settings.php:195 modules/crystal-slider/module.info.php:5
 #: modules/crystal-slider/widgets/crystal-slider.php:31
 msgid "Crystal Slider"
 msgstr ""
 
-#: admin/module-settings.php:195 modules/carbon-slider/module.info.php:5
+#: admin/module-settings.php:205 modules/carbon-slider/module.info.php:5
 #: modules/carbon-slider/widgets/carbon-slider.php:33
 msgid "Carbon Slider"
 msgstr ""
 
-#: admin/module-settings.php:205 modules/elite-grid/module.info.php:5
+#: admin/module-settings.php:215 modules/elite-grid/module.info.php:5
 #: modules/elite-grid/widgets/elite-grid.php:34
 msgid "Elite Grid"
 msgstr ""
 
-#: admin/module-settings.php:215 modules/elite-carousel/module.info.php:5
+#: admin/module-settings.php:225 modules/elite-carousel/module.info.php:5
 #: modules/elite-carousel/widgets/elite-carousel.php:35
 msgid "Elite Carousel"
 msgstr ""
 
-#: admin/module-settings.php:225 modules/exotic-list/module.info.php:5
+#: admin/module-settings.php:235 modules/exotic-list/module.info.php:5
 #: modules/exotic-list/widgets/exotic-list.php:34
 msgid "Exotic List"
 msgstr ""
 
-#: admin/module-settings.php:235 modules/fanel-list/module.info.php:5
+#: admin/module-settings.php:245 modules/fanel-list/module.info.php:5
 #: modules/fanel-list/widgets/fanel-list.php:35
 msgid "Fanel List"
 msgstr ""
 
-#: admin/module-settings.php:245 modules/featured-list/module.info.php:5
+#: admin/module-settings.php:255 modules/featured-list/module.info.php:5
 #: modules/featured-list/widgets/featured-list.php:34
 msgid "Featured List"
 msgstr ""
 
-#: admin/module-settings.php:255
+#: admin/module-settings.php:265
 msgid "Forbes Tabs"
 msgstr ""
 
-#: admin/module-settings.php:265
+#: admin/module-settings.php:275
 msgid "Foxico Slider"
 msgstr ""
 
-#: admin/module-settings.php:275
+#: admin/module-settings.php:285
 msgid "Grove Timeline"
 msgstr ""
 
-#: admin/module-settings.php:285
+#: admin/module-settings.php:295
 msgid "Hansel Slider"
 msgstr ""
 
-#: admin/module-settings.php:295 modules/harold-list/module.info.php:5
+#: admin/module-settings.php:305 modules/harold-list/module.info.php:5
 #: modules/harold-list/widgets/harold-list.php:34
 msgid "Harold List"
 msgstr ""
 
-#: admin/module-settings.php:305
+#: admin/module-settings.php:315
 msgid "Harold List carousel"
 msgstr ""
 
-#: admin/module-settings.php:315 modules/hazel-grid/module.info.php:5
+#: admin/module-settings.php:325 modules/hazel-grid/module.info.php:5
 #: modules/hazel-grid/widgets/hazel-grid.php:33
 msgid "Hazel Grid"
 msgstr ""
 
-#: admin/module-settings.php:325 modules/hazel-carousel/module.info.php:5
+#: admin/module-settings.php:335 modules/hazel-carousel/module.info.php:5
 #: modules/hazel-carousel/widgets/hazel-carousel.php:35
 msgid "Hazel Carousel"
 msgstr ""
 
-#: admin/module-settings.php:335
+#: admin/module-settings.php:345
 msgid "Holux Tabs"
 msgstr ""
 
-#: admin/module-settings.php:345
+#: admin/module-settings.php:355
 msgid "Iconic Slider"
 msgstr ""
 
-#: admin/module-settings.php:355
+#: admin/module-settings.php:365
 msgid "Instagram Gallery"
 msgstr ""
 
-#: admin/module-settings.php:365
+#: admin/module-settings.php:375
 msgid "Kalon Grid"
 msgstr ""
 
-#: admin/module-settings.php:375
+#: admin/module-settings.php:385
 msgid "Kalon Carousel"
 msgstr ""
 
-#: admin/module-settings.php:385 modules/maple-grid/module.info.php:5
+#: admin/module-settings.php:395 modules/maple-grid/module.info.php:5
 #: modules/maple-grid/widgets/maple-grid.php:34
 msgid "Maple Grid"
 msgstr ""
 
-#: admin/module-settings.php:395 modules/maple-carousel/module.info.php:5
+#: admin/module-settings.php:405 modules/maple-carousel/module.info.php:5
 #: modules/maple-carousel/widgets/maple-carousel.php:35
 msgid "Maple Carousel"
 msgstr ""
 
-#: admin/module-settings.php:405 modules/news-ticker/module.info.php:5
+#: admin/module-settings.php:415 modules/news-ticker/module.info.php:5
 #: modules/news-ticker/widgets/news-ticker.php:30
 #: modules/news-ticker/widgets/news-ticker.php:329
 msgid "News Ticker"
 msgstr ""
 
-#: admin/module-settings.php:415 modules/newsletter/module.info.php:5
-#: modules/newsletter/widgets/newsletter.php:21
+#: admin/module-settings.php:425 modules/newsletter/module.info.php:5
+#: modules/newsletter/widgets/newsletter.php:22
 msgid "Newsletter"
 msgstr ""
 
-#: admin/module-settings.php:425 modules/noxe-slider/module.info.php:5
+#: admin/module-settings.php:435 modules/noxe-slider/module.info.php:5
 #: modules/noxe-slider/widgets/noxe-slider.php:33
 msgid "Noxe Slider"
 msgstr ""
 
-#: admin/module-settings.php:435
+#: admin/module-settings.php:445
 msgid "Optick Slider"
 msgstr ""
 
-#: admin/module-settings.php:445 modules/timeline/module.info.php:5
+#: admin/module-settings.php:455 modules/timeline/module.info.php:5
 #: modules/timeline/widgets/timeline.php:35
 msgid "Oras Timeline"
 msgstr ""
 
-#: admin/module-settings.php:455 modules/paradox-slider/module.info.php:5
+#: admin/module-settings.php:465 modules/paradox-slider/module.info.php:5
 #: modules/paradox-slider/widgets/paradox-slider.php:31
 msgid "Paradox Slider"
 msgstr ""
 
-#: admin/module-settings.php:465 modules/pholox-slider/module.info.php:5
+#: admin/module-settings.php:475 modules/pholox-slider/module.info.php:5
 #: modules/pholox-slider/widgets/pholox-slider.php:34
 msgid "Pholox Slider"
 msgstr ""
 
-#: admin/module-settings.php:475
+#: admin/module-settings.php:485
 msgid "Pixina Grid"
 msgstr ""
 
-#: admin/module-settings.php:485
+#: admin/module-settings.php:495
 msgid "Pixina Carousel"
 msgstr ""
 
-#: admin/module-settings.php:495 modules/post-accordion/module.info.php:5
+#: admin/module-settings.php:505 modules/post-accordion/module.info.php:5
 msgid "Accordion"
 msgstr ""
 
-#: admin/module-settings.php:505
+#: admin/module-settings.php:515
 msgid "Post Calendar"
 msgstr ""
 
-#: admin/module-settings.php:515
+#: admin/module-settings.php:525
 #: modules/alex-carousel/widgets/alex-carousel.php:217
 #: modules/alex-carousel/widgets/alex-carousel.php:662
 #: modules/alex-grid/widgets/alex-grid.php:311
@@ -443,115 +447,115 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: admin/module-settings.php:525 modules/category-carousel/module.info.php:5
+#: admin/module-settings.php:535 modules/category-carousel/module.info.php:5
 #: modules/category-carousel/widgets/category-carousel.php:32
 msgid "Category Carousel"
 msgstr ""
 
-#: admin/module-settings.php:535 modules/ramble-grid/module.info.php:5
+#: admin/module-settings.php:545 modules/ramble-grid/module.info.php:5
 #: modules/ramble-grid/widgets/ramble-grid.php:33
 msgid "Ramble Grid"
 msgstr ""
 
-#: admin/module-settings.php:545 modules/ramble-carousel/module.info.php:5
+#: admin/module-settings.php:555 modules/ramble-carousel/module.info.php:5
 #: modules/ramble-carousel/widgets/ramble-carousel.php:34
 msgid "Ramble Carousel"
 msgstr ""
 
-#: admin/module-settings.php:555 modules/reading-progress/module.info.php:5
+#: admin/module-settings.php:565 modules/reading-progress/module.info.php:5
 #: modules/reading-progress/widgets/reading-progress.php:19
 msgid "Reading Progress Bar"
 msgstr ""
 
-#: admin/module-settings.php:565
+#: admin/module-settings.php:575
 msgid "Reading Progress Circle"
 msgstr ""
 
-#: admin/module-settings.php:575 modules/recent-comments/module.info.php:5
+#: admin/module-settings.php:585 modules/recent-comments/module.info.php:5
 #: modules/recent-comments/widgets/recent-comments.php:31
 msgid "Recent Comments"
 msgstr ""
 
-#: admin/module-settings.php:585 modules/scott-list/module.info.php:5
+#: admin/module-settings.php:595 modules/scott-list/module.info.php:5
 #: modules/scott-list/widgets/scott-list.php:35
 msgid "Scott List"
 msgstr ""
 
-#: admin/module-settings.php:595 modules/skide-slider/module.info.php:5
+#: admin/module-settings.php:605 modules/skide-slider/module.info.php:5
 #: modules/skide-slider/widgets/skide-slider.php:34
 msgid "Skide Slider"
 msgstr ""
 
-#: admin/module-settings.php:605
+#: admin/module-settings.php:615
 msgid "Soft Timeline"
 msgstr ""
 
-#: admin/module-settings.php:615
+#: admin/module-settings.php:625
 msgid "Sline Slider"
 msgstr ""
 
-#: admin/module-settings.php:625
+#: admin/module-settings.php:635
 msgid "Stone Hover"
 msgstr ""
 
-#: admin/module-settings.php:635 modules/snog-slider/module.info.php:5
+#: admin/module-settings.php:645 modules/snog-slider/module.info.php:5
 #: modules/snog-slider/widgets/snog-slider.php:34
 msgid "Snog Slider"
 msgstr ""
 
-#: admin/module-settings.php:645
+#: admin/module-settings.php:655
 msgid "Snap Timeline"
 msgstr ""
 
-#: admin/module-settings.php:655
+#: admin/module-settings.php:665
 msgid "Social Count(Static)"
 msgstr ""
 
-#: admin/module-settings.php:665 modules/social-share/module.info.php:5
+#: admin/module-settings.php:675 modules/social-share/module.info.php:5
 #: modules/social-share/widgets/social-share.php:34
 msgid "Social Share"
 msgstr ""
 
-#: admin/module-settings.php:675 modules/author/widgets/author.php:1174
+#: admin/module-settings.php:685 modules/author/widgets/author.php:1174
 msgid "Social Link"
 msgstr ""
 
-#: admin/module-settings.php:685 modules/tag-cloud/module.info.php:5
+#: admin/module-settings.php:695 modules/tag-cloud/module.info.php:5
 #: modules/tag-cloud/widgets/tag-cloud.php:24
 msgid "Tag Cloud"
 msgstr ""
 
-#: admin/module-settings.php:695 modules/tiny-list/module.info.php:5
+#: admin/module-settings.php:705 modules/tiny-list/module.info.php:5
 #: modules/tiny-list/widgets/tiny-list.php:35
 msgid "Tiny List"
 msgstr ""
 
-#: admin/module-settings.php:705
+#: admin/module-settings.php:715
 msgid "Wixer Grid"
 msgstr ""
 
-#: admin/module-settings.php:715
+#: admin/module-settings.php:725
 msgid "Wixer Carousel"
 msgstr ""
 
-#: admin/module-settings.php:725
+#: admin/module-settings.php:735
 msgid "Welsh List"
 msgstr ""
 
-#: admin/module-settings.php:738 modules/animations/module.info.php:5
+#: admin/module-settings.php:748 modules/animations/module.info.php:5
 #: modules/news-ticker/widgets/news-ticker.php:249
 msgid "Animations"
 msgstr ""
 
-#: admin/module-settings.php:747
+#: admin/module-settings.php:757
 msgid "MultiColor Item"
 msgstr ""
 
-#: admin/module-settings.php:759
+#: admin/module-settings.php:769
 msgid "Mailchimp Access"
 msgstr ""
 
-#: admin/module-settings.php:760
+#: admin/module-settings.php:770
 msgid ""
 "Go to your Mailchimp > Website > Domains > Extras > API Keys (<a "
 "href=\"http://prntscr.com/xqo78x\" target=\"_blank\">http://prntscr.com/"
@@ -560,19 +564,19 @@ msgid ""
 "com/xqnt5z</a>"
 msgstr ""
 
-#: admin/module-settings.php:766
+#: admin/module-settings.php:776
 msgid "Mailchimp API Key"
 msgstr ""
 
-#: admin/module-settings.php:774
+#: admin/module-settings.php:784
 msgid "Audience ID"
 msgstr ""
 
-#: admin/module-settings.php:788
+#: admin/module-settings.php:798
 msgid "Instagram Access"
 msgstr ""
 
-#: admin/module-settings.php:789
+#: admin/module-settings.php:799
 msgid ""
 "Go to <a href=\"https://developers.facebook.com/docs/instagram-basic-display-"
 "api/getting-started\" target=\"_blank\">https://developers.facebook.com/docs/"
@@ -580,73 +584,73 @@ msgid ""
 "and Access Token."
 msgstr ""
 
-#: admin/module-settings.php:796
+#: admin/module-settings.php:806
 msgid "Instagram App ID"
 msgstr ""
 
-#: admin/module-settings.php:803
+#: admin/module-settings.php:813
 msgid "Instagram App Secret"
 msgstr ""
 
-#: admin/module-settings.php:811
+#: admin/module-settings.php:821
 msgid "Instagram Access Token"
 msgstr ""
 
-#: admin/module-settings.php:812
+#: admin/module-settings.php:822
 msgid ""
 "Go to <a href=\"https://developers.facebook.com/docs/instagram-basic-display-"
 "api/getting-started\" target=\"_blank\">This Link</a> and Generate the "
 "access token then copy and paste here."
 msgstr ""
 
-#: admin/module-settings.php:828 admin/module-settings.php:836
+#: admin/module-settings.php:838 admin/module-settings.php:846
 msgid "Category Image"
 msgstr ""
 
-#: admin/module-settings.php:829
+#: admin/module-settings.php:839
 msgid ""
 "Display exclusive category avatar by turning on this switcher. The Category "
 "image will be visible for all post widgets if the category is turned on from "
 "the widget controls."
 msgstr ""
 
-#: admin/module-settings.php:851 admin/module-settings.php:859
+#: admin/module-settings.php:861 admin/module-settings.php:869
 msgid "Duplicator"
 msgstr ""
 
-#: admin/module-settings.php:852
+#: admin/module-settings.php:862
 msgid ""
 "Just hit the button below to enable the duplicator. It can duplicate "
 "anything like posts,pages and elementor templates. A masterclass duplication "
 "with just one click."
 msgstr ""
 
-#: admin/module-settings.php:874
+#: admin/module-settings.php:884
 msgid "Live Copy or Paste"
 msgstr ""
 
-#: admin/module-settings.php:875
+#: admin/module-settings.php:885
 msgid ""
 "Live copy is a copy feature that allow you to copy and paste content from "
 "one domain to another. For example you can copy demo content directly from "
 "our demo website."
 msgstr ""
 
-#: admin/module-settings.php:882
+#: admin/module-settings.php:892
 msgid "Live Copy/Paste"
 msgstr ""
 
-#: admin/module-settings.php:898
+#: admin/module-settings.php:908
 msgid "Video Link Meta"
 msgstr ""
 
-#: admin/module-settings.php:899
+#: admin/module-settings.php:909
 msgid ""
 "If you need to display video features in your website so please enable this "
 "option."
 msgstr ""
 
-#: admin/module-settings.php:906 includes/ultimate-post-kit-metabox.php:18
+#: admin/module-settings.php:916 includes/ultimate-post-kit-metabox.php:18
 msgid "Video Link"
 msgstr ""
 
@@ -742,11 +746,11 @@ msgid "Current Post"
 msgstr ""
 
 #: includes/controls/group-query/group-control-query.php:140
-#: includes/controls/group-query/group-control-query.php:682
+#: includes/controls/group-query/group-control-query.php:688
 msgid "Manual Selection"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:221
+#: includes/controls/group-query/group-control-query.php:224
 #: modules/amox-grid/widgets/amox-grid.php:806
 #: modules/paradox-slider/widgets/paradox-slider.php:1559
 #: modules/post-category/widgets/post-category.php:742
@@ -756,8 +760,10 @@ msgstr ""
 msgid "Offset"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:230
-#: includes/controls/group-query/group-control-query.php:283
+#: includes/controls/group-query/group-control-query.php:236
+#: includes/controls/group-query/group-control-query.php:289
+#: modules/alex-carousel/widgets/alex-carousel.php:1120
+#: modules/alex-grid/widgets/alex-grid.php:1294
 #: modules/carbon-slider/widgets/carbon-slider.php:855
 #: modules/category-carousel/widgets/category-carousel.php:230
 #: modules/elite-carousel/widgets/elite-carousel.php:813
@@ -775,60 +781,60 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:234
+#: includes/controls/group-query/group-control-query.php:240
 #: modules/recent-comments/widgets/recent-comments.php:285
 #: modules/recent-comments/widgets/recent-comments.php:757
 msgid "All"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:235
+#: includes/controls/group-query/group-control-query.php:241
 msgid "Past Day"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:236
+#: includes/controls/group-query/group-control-query.php:242
 msgid "Past Week"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:237
+#: includes/controls/group-query/group-control-query.php:243
 msgid "Past Month"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:238
+#: includes/controls/group-query/group-control-query.php:244
 msgid "Past Quarter"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:239
+#: includes/controls/group-query/group-control-query.php:245
 msgid "Past Year"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:240
+#: includes/controls/group-query/group-control-query.php:246
 #: modules/author/widgets/author.php:676
 #: modules/post-category/widgets/post-category.php:745
 #: modules/social-share/widgets/social-share.php:399
 msgid "Custom"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:251
+#: includes/controls/group-query/group-control-query.php:257
 msgid "Before"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:253
+#: includes/controls/group-query/group-control-query.php:259
 msgid ""
 "Setting a ‘Before’ date will show all the posts published until the chosen "
 "date (inclusive)."
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:264
+#: includes/controls/group-query/group-control-query.php:270
 msgid "After"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:266
+#: includes/controls/group-query/group-control-query.php:272
 msgid ""
 "Setting an ‘After’ date will show all the posts published since the chosen "
 "date (inclusive)."
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:277
+#: includes/controls/group-query/group-control-query.php:283
 #: modules/author/widgets/author.php:344
 #: modules/category-carousel/widgets/category-carousel.php:225
 #: modules/post-category/widgets/post-category.php:257
@@ -837,7 +843,7 @@ msgstr ""
 msgid "Order By"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:281
+#: includes/controls/group-query/group-control-query.php:287
 #: modules/alex-carousel/widgets/alex-carousel.php:471
 #: modules/alex-grid/widgets/alex-grid.php:619
 #: modules/alice-carousel/widgets/alice-carousel.php:474
@@ -884,22 +890,22 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:282
+#: includes/controls/group-query/group-control-query.php:288
 msgid "ID"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:285
+#: includes/controls/group-query/group-control-query.php:291
 msgid "Comment Count"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:286
+#: includes/controls/group-query/group-control-query.php:292
 #: modules/category-carousel/widgets/category-carousel.php:232
 #: modules/post-category/widgets/post-category.php:264
 #: modules/tag-cloud/widgets/tag-cloud.php:285
 msgid "Menu Order"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:287
+#: includes/controls/group-query/group-control-query.php:293
 #: modules/author/widgets/author.php:351
 #: modules/category-carousel/widgets/category-carousel.php:233
 #: modules/post-category/widgets/post-category.php:265
@@ -908,7 +914,7 @@ msgstr ""
 msgid "Random"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:298
+#: includes/controls/group-query/group-control-query.php:304
 #: modules/author/widgets/author.php:359
 #: modules/category-carousel/widgets/category-carousel.php:241
 #: modules/post-category/widgets/post-category.php:273
@@ -917,7 +923,7 @@ msgstr ""
 msgid "Order"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:302
+#: includes/controls/group-query/group-control-query.php:308
 #: modules/author/widgets/author.php:363
 #: modules/category-carousel/widgets/category-carousel.php:245
 #: modules/post-category/widgets/post-category.php:277
@@ -926,7 +932,7 @@ msgstr ""
 msgid "ASC"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:303
+#: includes/controls/group-query/group-control-query.php:309
 #: modules/author/widgets/author.php:364
 #: modules/category-carousel/widgets/category-carousel.php:246
 #: modules/post-category/widgets/post-category.php:278
@@ -935,166 +941,168 @@ msgstr ""
 msgid "DESC"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:314
+#: includes/controls/group-query/group-control-query.php:320
 msgid "Ignore Sticky Posts"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:327
+#: includes/controls/group-query/group-control-query.php:333
 msgid "Only Featured Image Post"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:328
+#: includes/controls/group-query/group-control-query.php:334
 msgid "Enable to display posts only when featured image is present."
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:340
+#: includes/controls/group-query/group-control-query.php:346
 msgid "Query ID"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:341
+#: includes/controls/group-query/group-control-query.php:347
 msgid "Give your Query a custom unique id to allow server side filtering"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:683
+#: includes/controls/group-query/group-control-query.php:689
 msgid "Current Query"
 msgstr ""
 
-#: includes/controls/group-query/group-control-query.php:684
+#: includes/controls/group-query/group-control-query.php:690
 msgid "Related"
 msgstr ""
 
-#: includes/helper.php:78
+#: includes/helper.php:81
 msgid "Email"
 msgstr ""
 
-#: includes/helper.php:79
+#: includes/helper.php:82
 msgid "Website"
 msgstr ""
 
-#: includes/helper.php:82
+#: includes/helper.php:85
 #: modules/static-social-count/widgets/static-social-count.php:401
 msgid "Facebook"
 msgstr ""
 
-#: includes/helper.php:83
+#: includes/helper.php:86
 #: modules/static-social-count/widgets/static-social-count.php:413
 msgid "Twitter"
 msgstr ""
 
-#: includes/helper.php:84
+#: includes/helper.php:87
 msgid "LinkedIn"
 msgstr ""
 
-#: includes/helper.php:85
+#: includes/helper.php:88
 msgid "GitHub"
 msgstr ""
 
-#: includes/helper.php:86
+#: includes/helper.php:89
 msgid "WordPress"
 msgstr ""
 
-#: includes/helper.php:87
+#: includes/helper.php:90
 msgid "Dribbble"
 msgstr ""
 
-#: includes/helper.php:146 includes/helper.php:161
+#: includes/helper.php:149 includes/helper.php:164
 msgid "Select Type"
 msgstr ""
 
-#: includes/helper.php:427
+#: includes/helper.php:430
 msgid "Edit Template"
 msgstr ""
 
-#: includes/helper.php:491
+#: includes/helper.php:494
 msgid "Select Menu"
 msgstr ""
 
-#: includes/helper.php:528
+#: includes/helper.php:531
 msgid "Template Not Found!"
 msgstr ""
 
-#: includes/helper.php:530
+#: includes/helper.php:533
 msgid "Select Template"
 msgstr ""
 
-#: includes/helper.php:550
+#: includes/helper.php:553
 msgid "No sidebars were found"
 msgstr ""
 
-#: includes/helper.php:552
+#: includes/helper.php:555
 msgid "Select Sidebar"
 msgstr ""
 
-#: includes/helper.php:623
+#: includes/helper.php:626
 msgid "Multiply"
 msgstr ""
 
-#: includes/helper.php:624
+#: includes/helper.php:627
 msgid "Screen"
 msgstr ""
 
-#: includes/helper.php:625 modules/banner/widgets/banner.php:706
+#: includes/helper.php:628 modules/banner/widgets/banner.php:706
 #: modules/camux-slider/widgets/camux-slider.php:385
 #: modules/snog-slider/widgets/snog-slider.php:405
 msgid "Overlay"
 msgstr ""
 
-#: includes/helper.php:626
+#: includes/helper.php:629
 msgid "Darken"
 msgstr ""
 
-#: includes/helper.php:627
+#: includes/helper.php:630
 msgid "Lighten"
 msgstr ""
 
-#: includes/helper.php:628
+#: includes/helper.php:631
 msgid "Color-Dodge"
 msgstr ""
 
-#: includes/helper.php:629
+#: includes/helper.php:632
 msgid "Color-Burn"
 msgstr ""
 
-#: includes/helper.php:630
+#: includes/helper.php:633
 msgid "Hard-Light"
 msgstr ""
 
-#: includes/helper.php:631
+#: includes/helper.php:634
 msgid "Soft-Light"
 msgstr ""
 
-#: includes/helper.php:632
+#: includes/helper.php:635
 msgid "Difference"
 msgstr ""
 
-#: includes/helper.php:633
+#: includes/helper.php:636
 msgid "Exclusion"
 msgstr ""
 
-#: includes/helper.php:634
+#: includes/helper.php:637
 msgid "Hue"
 msgstr ""
 
-#: includes/helper.php:635
+#: includes/helper.php:638
 msgid "Saturation"
 msgstr ""
 
-#: includes/helper.php:636 modules/alex-carousel/widgets/alex-carousel.php:507
+#: includes/helper.php:639 modules/alex-carousel/widgets/alex-carousel.php:507
 #: modules/alex-carousel/widgets/alex-carousel.php:619
 #: modules/alex-carousel/widgets/alex-carousel.php:700
 #: modules/alex-carousel/widgets/alex-carousel.php:798
 #: modules/alex-carousel/widgets/alex-carousel.php:857
 #: modules/alex-carousel/widgets/alex-carousel.php:928
-#: modules/alex-carousel/widgets/alex-carousel.php:1071
-#: modules/alex-carousel/widgets/alex-carousel.php:1132
+#: modules/alex-carousel/widgets/alex-carousel.php:1079
+#: modules/alex-carousel/widgets/alex-carousel.php:1140
+#: modules/alex-carousel/widgets/alex-carousel.php:1222
 #: modules/alex-grid/widgets/alex-grid.php:655
 #: modules/alex-grid/widgets/alex-grid.php:779
 #: modules/alex-grid/widgets/alex-grid.php:859
 #: modules/alex-grid/widgets/alex-grid.php:957
 #: modules/alex-grid/widgets/alex-grid.php:1016
 #: modules/alex-grid/widgets/alex-grid.php:1103
-#: modules/alex-grid/widgets/alex-grid.php:1246
-#: modules/alex-grid/widgets/alex-grid.php:1307
+#: modules/alex-grid/widgets/alex-grid.php:1253
+#: modules/alex-grid/widgets/alex-grid.php:1314
+#: modules/alex-grid/widgets/alex-grid.php:1396
 #: modules/alice-carousel/widgets/alice-carousel.php:500
 #: modules/alice-carousel/widgets/alice-carousel.php:580
 #: modules/alice-carousel/widgets/alice-carousel.php:697
@@ -1243,14 +1251,14 @@ msgstr ""
 #: modules/news-ticker/widgets/news-ticker.php:348
 #: modules/news-ticker/widgets/news-ticker.php:401
 #: modules/news-ticker/widgets/news-ticker.php:488
-#: modules/newsletter/widgets/newsletter.php:339
-#: modules/newsletter/widgets/newsletter.php:433
-#: modules/newsletter/widgets/newsletter.php:647
-#: modules/newsletter/widgets/newsletter.php:726
-#: modules/newsletter/widgets/newsletter.php:793
-#: modules/newsletter/widgets/newsletter.php:887
-#: modules/newsletter/widgets/newsletter.php:938
-#: modules/newsletter/widgets/newsletter.php:982
+#: modules/newsletter/widgets/newsletter.php:340
+#: modules/newsletter/widgets/newsletter.php:434
+#: modules/newsletter/widgets/newsletter.php:649
+#: modules/newsletter/widgets/newsletter.php:728
+#: modules/newsletter/widgets/newsletter.php:795
+#: modules/newsletter/widgets/newsletter.php:889
+#: modules/newsletter/widgets/newsletter.php:940
+#: modules/newsletter/widgets/newsletter.php:984
 #: modules/noxe-slider/widgets/noxe-slider.php:385
 #: modules/noxe-slider/widgets/noxe-slider.php:455
 #: modules/noxe-slider/widgets/noxe-slider.php:501
@@ -1354,11 +1362,11 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: includes/helper.php:637
+#: includes/helper.php:640
 msgid "Luminosity"
 msgstr ""
 
-#: includes/helper.php:646 modules/alex-carousel/widgets/alex-carousel.php:486
+#: includes/helper.php:649 modules/alex-carousel/widgets/alex-carousel.php:486
 #: modules/alex-grid/widgets/alex-grid.php:634
 #: modules/carbon-slider/widgets/carbon-slider.php:469
 #: modules/paradox-slider/widgets/paradox-slider.php:396
@@ -1369,8 +1377,8 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: includes/helper.php:647 includes/helper.php:664 includes/helper.php:679
-#: includes/helper.php:696 modules/author/widgets/author.php:640
+#: includes/helper.php:650 includes/helper.php:667 includes/helper.php:682
+#: includes/helper.php:699 modules/author/widgets/author.php:640
 #: modules/banner/widgets/banner.php:550 modules/banner/widgets/banner.php:585
 #: modules/hazel-carousel/widgets/hazel-carousel.php:162
 #: modules/hazel-grid/widgets/hazel-grid.php:170
@@ -1379,14 +1387,14 @@ msgstr ""
 msgid "Top Left"
 msgstr ""
 
-#: includes/helper.php:648 includes/helper.php:665 includes/helper.php:680
-#: includes/helper.php:697 modules/author/widgets/author.php:639
+#: includes/helper.php:651 includes/helper.php:668 includes/helper.php:683
+#: includes/helper.php:700 modules/author/widgets/author.php:639
 #: modules/banner/widgets/banner.php:555 modules/banner/widgets/banner.php:590
 msgid "Top Center"
 msgstr ""
 
-#: includes/helper.php:649 includes/helper.php:666 includes/helper.php:681
-#: includes/helper.php:698 modules/author/widgets/author.php:641
+#: includes/helper.php:652 includes/helper.php:669 includes/helper.php:684
+#: includes/helper.php:701 modules/author/widgets/author.php:641
 #: modules/banner/widgets/banner.php:551 modules/banner/widgets/banner.php:586
 #: modules/hazel-carousel/widgets/hazel-carousel.php:163
 #: modules/hazel-grid/widgets/hazel-grid.php:171
@@ -1395,7 +1403,7 @@ msgstr ""
 msgid "Top Right"
 msgstr ""
 
-#: includes/helper.php:650 includes/helper.php:682
+#: includes/helper.php:653 includes/helper.php:685
 #: modules/alice-carousel/widgets/alice-carousel.php:154
 #: modules/alice-grid/widgets/alice-grid.php:216
 #: modules/amox-carousel/widgets/amox-carousel.php:154
@@ -1410,7 +1418,7 @@ msgstr ""
 #: modules/hazel-carousel/widgets/hazel-carousel.php:164
 #: modules/hazel-grid/widgets/hazel-grid.php:172
 #: modules/maple-grid/widgets/maple-grid.php:199
-#: modules/newsletter/widgets/newsletter.php:131
+#: modules/newsletter/widgets/newsletter.php:132
 #: modules/paradox-slider/widgets/paradox-slider.php:128
 #: modules/pholox-slider/widgets/pholox-slider.php:138
 #: modules/post-category/widgets/post-category.php:144
@@ -1423,20 +1431,20 @@ msgstr ""
 msgid "Center"
 msgstr ""
 
-#: includes/helper.php:651 includes/helper.php:667 includes/helper.php:683
-#: includes/helper.php:699 modules/author/widgets/author.php:637
+#: includes/helper.php:654 includes/helper.php:670 includes/helper.php:686
+#: includes/helper.php:702 modules/author/widgets/author.php:637
 #: modules/social-share/widgets/social-share.php:313
 msgid "Center Left"
 msgstr ""
 
-#: includes/helper.php:652 includes/helper.php:668 includes/helper.php:684
-#: includes/helper.php:700 modules/author/widgets/author.php:638
+#: includes/helper.php:655 includes/helper.php:671 includes/helper.php:687
+#: includes/helper.php:703 modules/author/widgets/author.php:638
 #: modules/social-share/widgets/social-share.php:314
 msgid "Center Right"
 msgstr ""
 
-#: includes/helper.php:653 includes/helper.php:669 includes/helper.php:685
-#: includes/helper.php:701 modules/author/widgets/author.php:643
+#: includes/helper.php:656 includes/helper.php:672 includes/helper.php:688
+#: includes/helper.php:704 modules/author/widgets/author.php:643
 #: modules/banner/widgets/banner.php:552 modules/banner/widgets/banner.php:587
 #: modules/hazel-carousel/widgets/hazel-carousel.php:165
 #: modules/hazel-grid/widgets/hazel-grid.php:173
@@ -1445,16 +1453,16 @@ msgstr ""
 msgid "Bottom Left"
 msgstr ""
 
-#: includes/helper.php:654 includes/helper.php:670 includes/helper.php:686
-#: includes/helper.php:702 modules/author/widgets/author.php:642
+#: includes/helper.php:657 includes/helper.php:673 includes/helper.php:689
+#: includes/helper.php:705 modules/author/widgets/author.php:642
 #: modules/banner/widgets/banner.php:554 modules/banner/widgets/banner.php:589
 #: modules/hazel-carousel/widgets/hazel-carousel.php:167
 #: modules/hazel-grid/widgets/hazel-grid.php:175
 msgid "Bottom Center"
 msgstr ""
 
-#: includes/helper.php:655 includes/helper.php:671 includes/helper.php:687
-#: includes/helper.php:703 modules/author/widgets/author.php:644
+#: includes/helper.php:658 includes/helper.php:674 includes/helper.php:690
+#: includes/helper.php:706 modules/author/widgets/author.php:644
 #: modules/banner/widgets/banner.php:553 modules/banner/widgets/banner.php:588
 #: modules/hazel-carousel/widgets/hazel-carousel.php:166
 #: modules/hazel-grid/widgets/hazel-grid.php:174
@@ -1463,7 +1471,7 @@ msgstr ""
 msgid "Bottom Right"
 msgstr ""
 
-#: includes/helper.php:747
+#: includes/helper.php:750
 msgid "Select Mask"
 msgstr ""
 
@@ -1544,7 +1552,7 @@ msgstr ""
 #: modules/maple-carousel/widgets/maple-carousel.php:78
 #: modules/maple-grid/widgets/maple-grid.php:69
 #: modules/news-ticker/widgets/news-ticker.php:73
-#: modules/newsletter/widgets/newsletter.php:61
+#: modules/newsletter/widgets/newsletter.php:62
 #: modules/noxe-slider/widgets/noxe-slider.php:76
 #: modules/paradox-slider/widgets/paradox-slider.php:74
 #: modules/pholox-slider/widgets/pholox-slider.php:85
@@ -1651,8 +1659,8 @@ msgstr ""
 #: modules/exotic-list/widgets/exotic-list.php:89
 #: modules/exotic-list/widgets/exotic-list.php:101
 #: modules/maple-grid/widgets/maple-grid.php:195
-#: modules/newsletter/widgets/newsletter.php:127
-#: modules/newsletter/widgets/newsletter.php:281
+#: modules/newsletter/widgets/newsletter.php:128
+#: modules/newsletter/widgets/newsletter.php:282
 #: modules/paradox-slider/widgets/paradox-slider.php:124
 #: modules/pholox-slider/widgets/pholox-slider.php:114
 #: modules/pholox-slider/widgets/pholox-slider.php:134
@@ -1686,8 +1694,8 @@ msgstr ""
 #: modules/exotic-list/widgets/exotic-list.php:88
 #: modules/exotic-list/widgets/exotic-list.php:109
 #: modules/maple-grid/widgets/maple-grid.php:203
-#: modules/newsletter/widgets/newsletter.php:135
-#: modules/newsletter/widgets/newsletter.php:282
+#: modules/newsletter/widgets/newsletter.php:136
+#: modules/newsletter/widgets/newsletter.php:283
 #: modules/paradox-slider/widgets/paradox-slider.php:132
 #: modules/pholox-slider/widgets/pholox-slider.php:118
 #: modules/pholox-slider/widgets/pholox-slider.php:142
@@ -1887,9 +1895,9 @@ msgid "Separator"
 msgstr ""
 
 #: modules/alex-carousel/widgets/alex-carousel.php:260
-#: modules/alex-carousel/widgets/alex-carousel.php:1121
+#: modules/alex-carousel/widgets/alex-carousel.php:1211
 #: modules/alex-grid/widgets/alex-grid.php:354
-#: modules/alex-grid/widgets/alex-grid.php:1296
+#: modules/alex-grid/widgets/alex-grid.php:1385
 #: modules/alter-carousel/widgets/alter-carousel.php:317
 #: modules/alter-carousel/widgets/alter-carousel.php:1014
 #: modules/alter-grid/widgets/alter-grid.php:394
@@ -2065,10 +2073,10 @@ msgstr ""
 #: modules/maple-grid/widgets/maple-grid.php:831
 #: modules/maple-grid/widgets/maple-grid.php:987
 #: modules/news-ticker/widgets/news-ticker.php:461
-#: modules/newsletter/widgets/newsletter.php:332
-#: modules/newsletter/widgets/newsletter.php:483
-#: modules/newsletter/widgets/newsletter.php:640
-#: modules/newsletter/widgets/newsletter.php:786
+#: modules/newsletter/widgets/newsletter.php:333
+#: modules/newsletter/widgets/newsletter.php:484
+#: modules/newsletter/widgets/newsletter.php:642
+#: modules/newsletter/widgets/newsletter.php:788
 #: modules/noxe-slider/widgets/noxe-slider.php:627
 #: modules/paradox-slider/widgets/paradox-slider.php:869
 #: modules/paradox-slider/widgets/paradox-slider.php:1049
@@ -2099,15 +2107,15 @@ msgstr ""
 #: modules/alex-carousel/widgets/alex-carousel.php:569
 #: modules/alex-carousel/widgets/alex-carousel.php:727
 #: modules/alex-carousel/widgets/alex-carousel.php:886
-#: modules/alex-carousel/widgets/alex-carousel.php:1047
-#: modules/alex-carousel/widgets/alex-carousel.php:1206
+#: modules/alex-carousel/widgets/alex-carousel.php:1052
+#: modules/alex-carousel/widgets/alex-carousel.php:1296
 #: modules/alex-grid/widgets/alex-grid.php:402
 #: modules/alex-grid/widgets/alex-grid.php:495
 #: modules/alex-grid/widgets/alex-grid.php:729
 #: modules/alex-grid/widgets/alex-grid.php:886
 #: modules/alex-grid/widgets/alex-grid.php:1045
-#: modules/alex-grid/widgets/alex-grid.php:1222
-#: modules/alex-grid/widgets/alex-grid.php:1381
+#: modules/alex-grid/widgets/alex-grid.php:1227
+#: modules/alex-grid/widgets/alex-grid.php:1470
 #: modules/alice-carousel/widgets/alice-carousel.php:351
 #: modules/alice-carousel/widgets/alice-carousel.php:724
 #: modules/alice-grid/widgets/alice-grid.php:443
@@ -2191,10 +2199,10 @@ msgstr ""
 #: modules/maple-grid/widgets/maple-grid.php:613
 #: modules/maple-grid/widgets/maple-grid.php:865
 #: modules/maple-grid/widgets/maple-grid.php:1039
-#: modules/newsletter/widgets/newsletter.php:369
-#: modules/newsletter/widgets/newsletter.php:529
-#: modules/newsletter/widgets/newsletter.php:676
-#: modules/newsletter/widgets/newsletter.php:823
+#: modules/newsletter/widgets/newsletter.php:370
+#: modules/newsletter/widgets/newsletter.php:531
+#: modules/newsletter/widgets/newsletter.php:678
+#: modules/newsletter/widgets/newsletter.php:825
 #: modules/noxe-slider/widgets/noxe-slider.php:661
 #: modules/paradox-slider/widgets/paradox-slider.php:903
 #: modules/paradox-slider/widgets/paradox-slider.php:1098
@@ -2312,9 +2320,9 @@ msgstr ""
 #: modules/maple-grid/widgets/maple-grid.php:927
 #: modules/maple-grid/widgets/maple-grid.php:1100
 #: modules/news-ticker/widgets/news-ticker.php:481
-#: modules/newsletter/widgets/newsletter.php:426
-#: modules/newsletter/widgets/newsletter.php:719
-#: modules/newsletter/widgets/newsletter.php:880
+#: modules/newsletter/widgets/newsletter.php:427
+#: modules/newsletter/widgets/newsletter.php:721
+#: modules/newsletter/widgets/newsletter.php:882
 #: modules/noxe-slider/widgets/noxe-slider.php:722
 #: modules/paradox-slider/widgets/paradox-slider.php:964
 #: modules/paradox-slider/widgets/paradox-slider.php:1172
@@ -2385,9 +2393,9 @@ msgid "Glass Morphism"
 msgstr ""
 
 #: modules/alex-carousel/widgets/alex-carousel.php:375
-#: modules/alex-carousel/widgets/alex-carousel.php:1145
+#: modules/alex-carousel/widgets/alex-carousel.php:1235
 #: modules/alex-grid/widgets/alex-grid.php:455
-#: modules/alex-grid/widgets/alex-grid.php:1320
+#: modules/alex-grid/widgets/alex-grid.php:1409
 #: modules/alice-carousel/widgets/alice-carousel.php:301
 #: modules/alice-grid/widgets/alice-grid.php:393
 #: modules/author/widgets/author.php:406
@@ -2402,9 +2410,9 @@ msgid ""
 msgstr ""
 
 #: modules/alex-carousel/widgets/alex-carousel.php:383
-#: modules/alex-carousel/widgets/alex-carousel.php:1154
+#: modules/alex-carousel/widgets/alex-carousel.php:1244
 #: modules/alex-grid/widgets/alex-grid.php:463
-#: modules/alex-grid/widgets/alex-grid.php:1329
+#: modules/alex-grid/widgets/alex-grid.php:1418
 #: modules/alice-carousel/widgets/alice-carousel.php:308
 #: modules/alice-carousel/widgets/alice-carousel.php:392
 #: modules/alice-grid/widgets/alice-grid.php:400
@@ -2566,10 +2574,12 @@ msgstr ""
 
 #: modules/alex-carousel/widgets/alex-carousel.php:519
 #: modules/alex-carousel/widgets/alex-carousel.php:778
-#: modules/alex-carousel/widgets/alex-carousel.php:1111
+#: modules/alex-carousel/widgets/alex-carousel.php:1108
+#: modules/alex-carousel/widgets/alex-carousel.php:1185
 #: modules/alex-grid/widgets/alex-grid.php:667
 #: modules/alex-grid/widgets/alex-grid.php:937
-#: modules/alex-grid/widgets/alex-grid.php:1286
+#: modules/alex-grid/widgets/alex-grid.php:1282
+#: modules/alex-grid/widgets/alex-grid.php:1359
 #: modules/alice-carousel/widgets/alice-carousel.php:540
 #: modules/alice-carousel/widgets/alice-carousel.php:650
 #: modules/alice-carousel/widgets/alice-carousel.php:776
@@ -2676,10 +2686,10 @@ msgstr ""
 #: modules/news-ticker/widgets/news-ticker.php:259
 #: modules/news-ticker/widgets/news-ticker.php:381
 #: modules/news-ticker/widgets/news-ticker.php:427
-#: modules/newsletter/widgets/newsletter.php:574
-#: modules/newsletter/widgets/newsletter.php:709
-#: modules/newsletter/widgets/newsletter.php:961
-#: modules/newsletter/widgets/newsletter.php:1005
+#: modules/newsletter/widgets/newsletter.php:576
+#: modules/newsletter/widgets/newsletter.php:711
+#: modules/newsletter/widgets/newsletter.php:963
+#: modules/newsletter/widgets/newsletter.php:1007
 #: modules/noxe-slider/widgets/noxe-slider.php:408
 #: modules/noxe-slider/widgets/noxe-slider.php:480
 #: modules/noxe-slider/widgets/noxe-slider.php:533
@@ -2808,11 +2818,11 @@ msgstr ""
 #: modules/alex-carousel/widgets/alex-carousel.php:595
 #: modules/alex-carousel/widgets/alex-carousel.php:739
 #: modules/alex-carousel/widgets/alex-carousel.php:898
-#: modules/alex-carousel/widgets/alex-carousel.php:1218
+#: modules/alex-carousel/widgets/alex-carousel.php:1308
 #: modules/alex-grid/widgets/alex-grid.php:755
 #: modules/alex-grid/widgets/alex-grid.php:898
 #: modules/alex-grid/widgets/alex-grid.php:1057
-#: modules/alex-grid/widgets/alex-grid.php:1393
+#: modules/alex-grid/widgets/alex-grid.php:1482
 #: modules/alice-carousel/widgets/alice-carousel.php:363
 #: modules/alice-carousel/widgets/alice-carousel.php:736
 #: modules/alice-grid/widgets/alice-grid.php:455
@@ -2878,10 +2888,10 @@ msgstr ""
 #: modules/maple-grid/widgets/maple-grid.php:639
 #: modules/maple-grid/widgets/maple-grid.php:877
 #: modules/maple-grid/widgets/maple-grid.php:1051
-#: modules/newsletter/widgets/newsletter.php:381
-#: modules/newsletter/widgets/newsletter.php:541
-#: modules/newsletter/widgets/newsletter.php:688
-#: modules/newsletter/widgets/newsletter.php:835
+#: modules/newsletter/widgets/newsletter.php:382
+#: modules/newsletter/widgets/newsletter.php:543
+#: modules/newsletter/widgets/newsletter.php:690
+#: modules/newsletter/widgets/newsletter.php:837
 #: modules/noxe-slider/widgets/noxe-slider.php:343
 #: modules/noxe-slider/widgets/noxe-slider.php:520
 #: modules/noxe-slider/widgets/noxe-slider.php:673
@@ -2984,10 +2994,10 @@ msgstr ""
 #: modules/maple-carousel/widgets/maple-carousel.php:1068
 #: modules/maple-grid/widgets/maple-grid.php:953
 #: modules/maple-grid/widgets/maple-grid.php:1126
-#: modules/newsletter/widgets/newsletter.php:453
-#: modules/newsletter/widgets/newsletter.php:610
-#: modules/newsletter/widgets/newsletter.php:745
-#: modules/newsletter/widgets/newsletter.php:907
+#: modules/newsletter/widgets/newsletter.php:454
+#: modules/newsletter/widgets/newsletter.php:612
+#: modules/newsletter/widgets/newsletter.php:747
+#: modules/newsletter/widgets/newsletter.php:909
 #: modules/noxe-slider/widgets/noxe-slider.php:751
 #: modules/paradox-slider/widgets/paradox-slider.php:993
 #: modules/paradox-slider/widgets/paradox-slider.php:1210
@@ -3019,9 +3029,9 @@ msgid "Border Color"
 msgstr ""
 
 #: modules/alex-carousel/widgets/alex-carousel.php:673
-#: modules/alex-carousel/widgets/alex-carousel.php:1027
+#: modules/alex-carousel/widgets/alex-carousel.php:1032
 #: modules/alex-grid/widgets/alex-grid.php:833
-#: modules/alex-grid/widgets/alex-grid.php:1202
+#: modules/alex-grid/widgets/alex-grid.php:1207
 #: modules/alice-carousel/widgets/alice-carousel.php:522
 #: modules/alice-carousel/widgets/alice-carousel.php:671
 #: modules/alice-grid/widgets/alice-grid.php:595
@@ -3077,8 +3087,8 @@ msgstr ""
 #: modules/maple-grid/widgets/maple-grid.php:532
 #: modules/maple-grid/widgets/maple-grid.php:889
 #: modules/maple-grid/widgets/maple-grid.php:1063
-#: modules/newsletter/widgets/newsletter.php:949
-#: modules/newsletter/widgets/newsletter.php:993
+#: modules/newsletter/widgets/newsletter.php:951
+#: modules/newsletter/widgets/newsletter.php:995
 #: modules/noxe-slider/widgets/noxe-slider.php:425
 #: modules/noxe-slider/widgets/noxe-slider.php:685
 #: modules/paradox-slider/widgets/paradox-slider.php:596
@@ -3159,18 +3169,18 @@ msgstr ""
 msgid "Meta"
 msgstr ""
 
-#: modules/alex-carousel/widgets/alex-carousel.php:996
-#: modules/alex-grid/widgets/alex-grid.php:1171
+#: modules/alex-carousel/widgets/alex-carousel.php:1002
+#: modules/alex-grid/widgets/alex-grid.php:1177
 #: modules/author/widgets/author.php:549
 #: modules/post-accordion/widgets/post-accordion.php:703
 #: modules/recent-comments/widgets/recent-comments.php:533
 msgid "Avatar"
 msgstr ""
 
-#: modules/alex-carousel/widgets/alex-carousel.php:1007
-#: modules/alex-carousel/widgets/alex-carousel.php:1242
-#: modules/alex-grid/widgets/alex-grid.php:1182
-#: modules/alex-grid/widgets/alex-grid.php:1417
+#: modules/alex-carousel/widgets/alex-carousel.php:1012
+#: modules/alex-carousel/widgets/alex-carousel.php:1332
+#: modules/alex-grid/widgets/alex-grid.php:1187
+#: modules/alex-grid/widgets/alex-grid.php:1506
 #: modules/author/widgets/author.php:669
 #: modules/carbon-slider/widgets/carbon-slider.php:1112
 #: modules/category-carousel/widgets/category-carousel.php:814
@@ -3179,8 +3189,8 @@ msgstr ""
 #: modules/crystal-slider/widgets/crystal-slider.php:1342
 #: modules/elite-carousel/widgets/elite-carousel.php:658
 #: modules/elite-grid/widgets/elite-grid.php:730
-#: modules/newsletter/widgets/newsletter.php:413
-#: modules/newsletter/widgets/newsletter.php:867
+#: modules/newsletter/widgets/newsletter.php:414
+#: modules/newsletter/widgets/newsletter.php:869
 #: modules/paradox-slider/widgets/paradox-slider.php:1128
 #: modules/pholox-slider/widgets/pholox-slider.php:461
 #: modules/post-accordion/widgets/post-accordion.php:711
@@ -3196,31 +3206,16 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-#: modules/alex-carousel/widgets/alex-carousel.php:1062
-#: modules/alex-grid/widgets/alex-grid.php:1237
-#: modules/alter-carousel/widgets/alter-carousel.php:715
-#: modules/alter-grid/widgets/alter-grid.php:790
-#: modules/banner/widgets/banner.php:115 modules/banner/widgets/banner.php:934
-#: modules/camux-slider/widgets/camux-slider.php:561
-#: modules/carbon-slider/widgets/carbon-slider.php:799
-#: modules/elite-carousel/widgets/elite-carousel.php:573
-#: modules/elite-grid/widgets/elite-grid.php:645
-#: modules/fanel-list/widgets/fanel-list.php:522
-#: modules/maple-carousel/widgets/maple-carousel.php:613
-#: modules/maple-grid/widgets/maple-grid.php:656
-#: modules/noxe-slider/widgets/noxe-slider.php:444
-#: modules/paradox-slider/widgets/paradox-slider.php:634
-#: modules/post-accordion/widgets/post-accordion.php:469
-#: modules/ramble-carousel/widgets/ramble-carousel.php:656
-#: modules/ramble-grid/widgets/ramble-grid.php:647
-#: modules/recent-comments/widgets/recent-comments.php:460
-#: modules/snog-slider/widgets/snog-slider.php:585
-#: modules/timeline/widgets/timeline.php:602
-msgid "Text"
+#: modules/alex-carousel/widgets/alex-carousel.php:1069
+#: modules/alex-grid/widgets/alex-grid.php:1243
+#: modules/ramble-carousel/widgets/ramble-carousel.php:245
+#: modules/ramble-carousel/widgets/ramble-carousel.php:782
+#: modules/ramble-grid/widgets/ramble-grid.php:773
+msgid "Author Name"
 msgstr ""
 
-#: modules/alex-carousel/widgets/alex-carousel.php:1082
-#: modules/alex-grid/widgets/alex-grid.php:1257
+#: modules/alex-carousel/widgets/alex-carousel.php:1093
+#: modules/alex-grid/widgets/alex-grid.php:1267
 #: modules/alice-carousel/widgets/alice-carousel.php:511
 #: modules/alice-carousel/widgets/alice-carousel.php:591
 #: modules/alice-grid/widgets/alice-grid.php:584
@@ -3290,9 +3285,9 @@ msgstr ""
 msgid "Hover Color"
 msgstr ""
 
-#: modules/alex-carousel/widgets/alex-carousel.php:1093
+#: modules/alex-carousel/widgets/alex-carousel.php:1164
 #: modules/alex-grid/widgets/alex-grid.php:910
-#: modules/alex-grid/widgets/alex-grid.php:1268
+#: modules/alex-grid/widgets/alex-grid.php:1338
 #: modules/alice-carousel/widgets/alice-carousel.php:632
 #: modules/alice-carousel/widgets/alice-carousel.php:748
 #: modules/alice-grid/widgets/alice-grid.php:715
@@ -3357,9 +3352,9 @@ msgstr ""
 msgid "Space Between"
 msgstr ""
 
-#: modules/alex-carousel/widgets/alex-carousel.php:1143
+#: modules/alex-carousel/widgets/alex-carousel.php:1233
 #: modules/alex-grid/widgets/alex-grid.php:453
-#: modules/alex-grid/widgets/alex-grid.php:1318
+#: modules/alex-grid/widgets/alex-grid.php:1407
 #: modules/alice-carousel/widgets/alice-carousel.php:299
 #: modules/alice-grid/widgets/alice-grid.php:391
 #: modules/author/widgets/author.php:404
@@ -3370,8 +3365,8 @@ msgstr ""
 msgid "Glassmorphism"
 msgstr ""
 
-#: modules/alex-carousel/widgets/alex-carousel.php:1179
-#: modules/alex-grid/widgets/alex-grid.php:1354
+#: modules/alex-carousel/widgets/alex-carousel.php:1269
+#: modules/alex-grid/widgets/alex-grid.php:1443
 #: modules/banner/widgets/banner.php:711 modules/banner/widgets/banner.php:721
 #: modules/camux-slider/widgets/camux-slider.php:390
 #: modules/camux-slider/widgets/camux-slider.php:400
@@ -3401,8 +3396,8 @@ msgstr ""
 msgid "Background"
 msgstr ""
 
-#: modules/alex-carousel/widgets/alex-carousel.php:1230
-#: modules/alex-grid/widgets/alex-grid.php:1405
+#: modules/alex-carousel/widgets/alex-carousel.php:1320
+#: modules/alex-grid/widgets/alex-grid.php:1494
 #: modules/alter-carousel/widgets/alter-carousel.php:746
 #: modules/alter-carousel/widgets/alter-carousel.php:919
 #: modules/alter-carousel/widgets/alter-carousel.php:1085
@@ -3428,9 +3423,9 @@ msgstr ""
 #: modules/fanel-list/widgets/fanel-list.php:553
 #: modules/hazel-carousel/widgets/hazel-carousel.php:571
 #: modules/hazel-grid/widgets/hazel-grid.php:656
-#: modules/newsletter/widgets/newsletter.php:393
-#: modules/newsletter/widgets/newsletter.php:553
-#: modules/newsletter/widgets/newsletter.php:847
+#: modules/newsletter/widgets/newsletter.php:394
+#: modules/newsletter/widgets/newsletter.php:555
+#: modules/newsletter/widgets/newsletter.php:849
 #: modules/noxe-slider/widgets/noxe-slider.php:467
 #: modules/pholox-slider/widgets/pholox-slider.php:910
 #: modules/ramble-carousel/widgets/ramble-carousel.php:1114
@@ -3859,7 +3854,7 @@ msgstr ""
 #: modules/alter-carousel/widgets/alter-carousel.php:359
 #: modules/alter-grid/widgets/alter-grid.php:444
 #: modules/banner/widgets/banner.php:639
-#: modules/newsletter/widgets/newsletter.php:267
+#: modules/newsletter/widgets/newsletter.php:268
 #: modules/ramble-carousel/widgets/ramble-carousel.php:312
 #: modules/ramble-grid/widgets/ramble-grid.php:303
 #: modules/scott-list/widgets/scott-list.php:699
@@ -3872,7 +3867,7 @@ msgstr ""
 #: modules/alter-carousel/widgets/alter-carousel.php:369
 #: modules/alter-grid/widgets/alter-grid.php:454
 #: modules/banner/widgets/banner.php:649
-#: modules/newsletter/widgets/newsletter.php:277
+#: modules/newsletter/widgets/newsletter.php:278
 #: modules/ramble-carousel/widgets/ramble-carousel.php:325
 #: modules/ramble-grid/widgets/ramble-grid.php:316
 msgid "Icon Position"
@@ -3881,7 +3876,7 @@ msgstr ""
 #: modules/alter-carousel/widgets/alter-carousel.php:392
 #: modules/alter-grid/widgets/alter-grid.php:477
 #: modules/banner/widgets/banner.php:672
-#: modules/newsletter/widgets/newsletter.php:293
+#: modules/newsletter/widgets/newsletter.php:294
 #: modules/ramble-carousel/widgets/ramble-carousel.php:341
 #: modules/ramble-grid/widgets/ramble-grid.php:332
 msgid "Icon Spacing"
@@ -3932,6 +3927,27 @@ msgstr ""
 msgid "Background Color"
 msgstr ""
 
+#: modules/alter-carousel/widgets/alter-carousel.php:715
+#: modules/alter-grid/widgets/alter-grid.php:790
+#: modules/banner/widgets/banner.php:115 modules/banner/widgets/banner.php:934
+#: modules/camux-slider/widgets/camux-slider.php:561
+#: modules/carbon-slider/widgets/carbon-slider.php:799
+#: modules/elite-carousel/widgets/elite-carousel.php:573
+#: modules/elite-grid/widgets/elite-grid.php:645
+#: modules/fanel-list/widgets/fanel-list.php:522
+#: modules/maple-carousel/widgets/maple-carousel.php:613
+#: modules/maple-grid/widgets/maple-grid.php:656
+#: modules/noxe-slider/widgets/noxe-slider.php:444
+#: modules/paradox-slider/widgets/paradox-slider.php:634
+#: modules/post-accordion/widgets/post-accordion.php:469
+#: modules/ramble-carousel/widgets/ramble-carousel.php:656
+#: modules/ramble-grid/widgets/ramble-grid.php:647
+#: modules/recent-comments/widgets/recent-comments.php:460
+#: modules/snog-slider/widgets/snog-slider.php:585
+#: modules/timeline/widgets/timeline.php:602
+msgid "Text"
+msgstr ""
+
 #: modules/alter-grid/widgets/alter-grid.php:167
 #: modules/maple-grid/widgets/maple-grid.php:162
 msgid "Secondary Image Width"
@@ -3963,7 +3979,7 @@ msgstr ""
 #: modules/crystal-slider/widgets/crystal-slider.php:1419
 #: modules/exotic-list/widgets/exotic-list.php:97
 #: modules/maple-grid/widgets/maple-grid.php:191
-#: modules/newsletter/widgets/newsletter.php:123
+#: modules/newsletter/widgets/newsletter.php:124
 #: modules/post-category/widgets/post-category.php:136
 #: modules/recent-comments/widgets/recent-comments.php:121
 #: modules/skide-slider/widgets/skide-slider.php:139
@@ -4137,7 +4153,7 @@ msgid "Avatar Size"
 msgstr ""
 
 #: modules/author/widgets/author.php:232
-#: modules/newsletter/widgets/newsletter.php:201
+#: modules/newsletter/widgets/newsletter.php:202
 msgid "Show Name"
 msgstr ""
 
@@ -5131,8 +5147,8 @@ msgstr ""
 #: modules/hazel-grid/widgets/hazel-grid.php:715
 #: modules/maple-carousel/widgets/maple-carousel.php:671
 #: modules/maple-grid/widgets/maple-grid.php:715
-#: modules/newsletter/widgets/newsletter.php:501
-#: modules/newsletter/widgets/newsletter.php:591
+#: modules/newsletter/widgets/newsletter.php:502
+#: modules/newsletter/widgets/newsletter.php:593
 #: modules/paradox-slider/widgets/paradox-slider.php:713
 #: modules/timeline/widgets/timeline.php:668
 #: modules/timeline/widgets/timeline.php:739
@@ -5324,93 +5340,93 @@ msgid ""
 "information."
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:68
-#: modules/newsletter/widgets/newsletter.php:318
+#: modules/newsletter/widgets/newsletter.php:69
+#: modules/newsletter/widgets/newsletter.php:319
 msgid "Before Icon"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:76
+#: modules/newsletter/widgets/newsletter.php:77
 msgid "Choose Icon"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:103
-#: modules/newsletter/widgets/newsletter.php:106
-#: modules/newsletter/widgets/newsletter.php:927
+#: modules/newsletter/widgets/newsletter.php:104
+#: modules/newsletter/widgets/newsletter.php:107
+#: modules/newsletter/widgets/newsletter.php:929
 msgid "Before Text"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:113
-#: modules/newsletter/widgets/newsletter.php:116
-#: modules/newsletter/widgets/newsletter.php:971
+#: modules/newsletter/widgets/newsletter.php:114
+#: modules/newsletter/widgets/newsletter.php:117
+#: modules/newsletter/widgets/newsletter.php:973
 msgid "After Text"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:139
+#: modules/newsletter/widgets/newsletter.php:140
 msgid "Justified"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:189
+#: modules/newsletter/widgets/newsletter.php:190
 msgid "Email Field Placeholder"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:193
 #: modules/newsletter/widgets/newsletter.php:194
+#: modules/newsletter/widgets/newsletter.php:195
 msgid "Email *"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:209
+#: modules/newsletter/widgets/newsletter.php:210
 msgid "Name Field Placeholder"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:213
 #: modules/newsletter/widgets/newsletter.php:214
+#: modules/newsletter/widgets/newsletter.php:215
 msgid "Name "
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:224
+#: modules/newsletter/widgets/newsletter.php:225
 msgid "Fullwidth Fields"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:233
+#: modules/newsletter/widgets/newsletter.php:234
 msgid "Fullwidth Button"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:249
+#: modules/newsletter/widgets/newsletter.php:250
 msgid "Signup Button"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:256
+#: modules/newsletter/widgets/newsletter.php:257
 msgid "Button Text"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:259
 #: modules/newsletter/widgets/newsletter.php:260
+#: modules/newsletter/widgets/newsletter.php:261
 msgid "SIGNUP"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:473
-msgid "Email Field"
+#: modules/newsletter/widgets/newsletter.php:474
+msgid "Field"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:490
+#: modules/newsletter/widgets/newsletter.php:491
 msgid "Placeholder Color"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:584
+#: modules/newsletter/widgets/newsletter.php:586
 msgid "Focus"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:630
+#: modules/newsletter/widgets/newsletter.php:632
 msgid "Sign Up Button"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:759
+#: modules/newsletter/widgets/newsletter.php:761
 #: modules/ramble-carousel/widgets/ramble-carousel.php:1193
 #: modules/ramble-grid/widgets/ramble-grid.php:1184
 msgid "Hover Animation"
 msgstr ""
 
-#: modules/newsletter/widgets/newsletter.php:773
+#: modules/newsletter/widgets/newsletter.php:775
 msgid "Signup Button Icon"
 msgstr ""
 
@@ -5815,12 +5831,6 @@ msgstr ""
 #: modules/ramble-carousel/widgets/ramble-carousel.php:714
 #: modules/ramble-grid/widgets/ramble-grid.php:705
 msgid "Author Avatar"
-msgstr ""
-
-#: modules/ramble-carousel/widgets/ramble-carousel.php:245
-#: modules/ramble-carousel/widgets/ramble-carousel.php:782
-#: modules/ramble-grid/widgets/ramble-grid.php:773
-msgid "Author Name"
 msgstr ""
 
 #: modules/ramble-carousel/widgets/ramble-carousel.php:639
