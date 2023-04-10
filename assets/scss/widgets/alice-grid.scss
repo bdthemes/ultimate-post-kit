@@ -151,7 +151,7 @@
 
 	.upk-style-2 {
 		grid-template-columns: repeat(6, 1fr);
-		.upk-item , 
+		.upk-item, 
 		&:nth-child(-n+2){
 			grid-column: 6 span/ auto;
 		}
@@ -161,6 +161,14 @@
 		grid-gap: 20px;
 		grid-template-columns: repeat(6, 1fr);
 		.upk-item{
+			grid-column:span 6/ auto;
+		}
+	}
+
+	.upk-style-4 {
+		grid-gap: 20px;
+		grid-template-columns: repeat(6, 1fr);
+		.upk-item {
 			grid-column:span 6/ auto;
 		}
 	}
@@ -242,6 +250,20 @@
 				}
 			}
 		}
+		.upk-style-4 {
+			.upk-item {
+				&:nth-child(5n+2) {
+					grid-column: span 3 / auto;
+					grid-row: span 2;
+				}
+				&:nth-child(5n+1),
+				&:nth-child(5n+3),
+				&:nth-child(5n+4),
+				&:nth-child(5n+5) {
+					grid-column: span 3 / auto;
+				}
+			}
+		}
 	}
 }
 
@@ -256,9 +278,6 @@
 		.upk-title {
 			padding-bottom: 12px;
 		}
-		// .upk-meta {
-		// 	font-size: 14px;
-		// }
 
 		.upk-style-1 {
 			grid-template-columns: repeat(3, 1fr);
@@ -289,7 +308,7 @@
 				}
 			}
 		}
-
+		
 		.upk-style-3 {
 			.upk-item{
 				&:nth-child(6n+1) {
@@ -298,6 +317,21 @@
 					.upk-title {
 						font-size: 25px;
 					}
+				}
+			}
+		}
+		.upk-style-4 {
+			.upk-item {
+				&:nth-child(5n+2) {
+					grid-column: span 2 / auto;
+					grid-row: span 2;
+				}
+
+				&:nth-child(5n+1),
+				&:nth-child(5n+3),
+				&:nth-child(5n+4),
+				&:nth-child(5n+5) {
+					grid-column: span 2 / auto;
 				}
 			}
 		}

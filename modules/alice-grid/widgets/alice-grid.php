@@ -76,9 +76,10 @@ class Alice_Grid extends Group_Control_Query {
 				'type'    => Controls_Manager::SELECT,
 				'default' => '1',
 				'options' => [
-					'1'  => esc_html__('Style 01', 'ultimate-post-kit'),
-					'2'  => esc_html__('Style 02', 'ultimate-post-kit'),
-					'3'  => esc_html__('Style 03', 'ultimate-post-kit'),
+					'1'  => esc_html__('01', 'ultimate-post-kit'),
+					'2'  => esc_html__('02', 'ultimate-post-kit'),
+					'3'  => esc_html__('03', 'ultimate-post-kit'),
+					'4'  => esc_html__('04', 'ultimate-post-kit'),
 				],
 			]
 		);
@@ -151,10 +152,11 @@ class Alice_Grid extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-alice-grid .upk-style-1 .upk-item' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-alice-grid .upk-style-1 .upk-item, {{WRAPPER}} .upk-alice-grid .upk-style-4 .upk-item:nth-child(5n+1), {{WRAPPER}} .upk-alice-grid .upk-style-4 .upk-item:nth-child(5n+3), {{WRAPPER}} .upk-alice-grid .upk-style-4 .upk-item:nth-child(5n+4), {{WRAPPER}} .upk-alice-grid .upk-style-4 .upk-item:nth-child(5n+5)' => 'height: {{SIZE}}{{UNIT}};',
+					'(mobile){{WRAPPER}} .upk-alice-grid .upk-style-4 .upk-item:nth-child(5n+2)' => 'height: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
-					'grid_style' => '1'
+					'grid_style' => ['1', '4']
 				]
 			]
 		);
@@ -174,7 +176,7 @@ class Alice_Grid extends Group_Control_Query {
 					'{{WRAPPER}} .upk-alice-grid .upk-style-2 .upk-item:nth-child(5n+1), {{WRAPPER}} .upk-alice-grid .upk-style-2 .upk-item:nth-child(5n+2), {{WRAPPER}} .upk-alice-grid .upk-style-3 .upk-item:nth-child(6n+1)' => 'height: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
-					'grid_style!' => ['1', '3']
+					'grid_style!' => ['1', '3', '4']
 				]
 			]
 		);
@@ -195,7 +197,7 @@ class Alice_Grid extends Group_Control_Query {
 					'(mobile){{WRAPPER}} .upk-alice-grid .upk-style-3 .upk-item:nth-child(6n+1)' => 'height: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
-					'grid_style!' => '1'
+					'grid_style!' => ['1', '4']
 				]
 			]
 		);
@@ -281,7 +283,7 @@ class Alice_Grid extends Group_Control_Query {
 					'size' => 5,
 				],
 				'condition' => [
-					'grid_style' => ['2']
+					'grid_style' => ['2', '4']
 				]
 			]
 		);
@@ -622,7 +624,7 @@ class Alice_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Secondary Typography', 'ultimate-post-kit'),
 				'selector'  => '{{WRAPPER}} .upk-alice-grid .upk-style-2 .upk-item:nth-child(5n+3) .upk-title, {{WRAPPER}} .upk-alice-grid .upk-style-2 .upk-item:nth-child(5n+4) .upk-title, {{WRAPPER}} .upk-alice-grid .upk-style-2 .upk-item:nth-child(5n+5) .upk-title, {{WRAPPER}} .upk-alice-grid .upk-style-3 .upk-item:nth-child(6n+2) .upk-title, {{WRAPPER}} .upk-alice-grid .upk-style-3 .upk-item:nth-child(6n+3) .upk-title, {{WRAPPER}} .upk-alice-grid .upk-style-3 .upk-item:nth-child(6n+4) .upk-title, {{WRAPPER}} .upk-alice-grid .upk-style-3 .upk-item:nth-child(6n+5) .upk-title, {{WRAPPER}} .upk-alice-grid .upk-style-3 .upk-item:nth-child(6n+6) .upk-title',
 				'condition' => [
-					'grid_style!' => '1'
+					'grid_style!' => ['1', '4']
 				]
 			]
 		);
@@ -992,7 +994,7 @@ class Alice_Grid extends Group_Control_Query {
 		$settings = $this->get_settings_for_display();
 
 
-		if ($settings['grid_style'] == '2') {
+		if ($settings['grid_style'] == '2' or $settings['grid_style'] == '4') {
 			$this->query_posts($settings['item_limit_2']['size']);
 		} else {
 			$this->query_posts($settings['item_limit']['size']);
