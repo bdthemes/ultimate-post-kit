@@ -101,6 +101,19 @@ class Post_Accordion extends Group_Control_Query {
 			]
 		);
 
+		$this->add_control(
+			'layout_style',
+			[
+				'label'   => __('Lyout Style', 'ultimate-post-kit') .BDTUPK_NC,
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'style-1',
+				'options' => [
+					'style-1' => '1',
+					'style-2' => '2',
+				],
+			]
+		);
+
 		$this->add_group_control(
 			Group_Control_Image_Size::get_type(),
 			[
@@ -556,7 +569,7 @@ class Post_Accordion extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a ,{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a::before' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -565,7 +578,7 @@ class Post_Accordion extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'      => 'category_background',
-				'selector'  => '{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a',
+				'selector'  => '{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a ,{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a::before',
 			]
 		);
 
@@ -573,7 +586,7 @@ class Post_Accordion extends Group_Control_Query {
 			Group_Control_Border::get_type(),
 			[
 				'name'        => 'category_border',
-				'selector'    => '{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a',
+				'selector'    => '{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a ,{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a::before',
 			]
 		);
 
@@ -584,7 +597,7 @@ class Post_Accordion extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a ,{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a::before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -596,7 +609,7 @@ class Post_Accordion extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a ,{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a::before' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -622,7 +635,7 @@ class Post_Accordion extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'category_shadow',
-				'selector' => '{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a',
+				'selector' => '{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a ,{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a::before',
 			]
 		);
 
@@ -631,7 +644,7 @@ class Post_Accordion extends Group_Control_Query {
 			[
 				'name'     => 'category_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a',
+				'selector' => '{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a ,{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a::before',
 			]
 		);
 
@@ -653,7 +666,7 @@ class Post_Accordion extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a:hover ,{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a:hover::before' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -662,7 +675,7 @@ class Post_Accordion extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'      => 'category_hover_background',
-				'selector'  => '{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a:hover',
+				'selector'  => '{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a:hover ,{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a:hover::before',
 			]
 		);
 
@@ -675,7 +688,7 @@ class Post_Accordion extends Group_Control_Query {
 					'category_border_border!' => '',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a:hover ,{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a:hover::before' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -936,6 +949,41 @@ class Post_Accordion extends Group_Control_Query {
 	<?php
 	}
 
+	protected function _upk_get_category($post_type) {
+		switch ($post_type) {
+			case 'campaign':
+				$taxonomy = 'campaign_category';
+				break;
+			case 'lightbox_library':
+				$taxonomy = 'ngg_tag';
+				break;
+			case 'give_forms':
+				$taxonomy = 'give_forms_category';
+				break;
+			case 'tribe_events':
+				$taxonomy = 'tribe_events_cat';
+				break;
+			case 'product':
+				$taxonomy = 'product_cat';
+				break;
+			default:
+				$taxonomy = 'category';
+				break;
+		}
+	
+		$categories = get_the_terms(get_the_ID(), $taxonomy);
+		$_categories = [];
+		if ($categories) {
+			foreach ($categories as $category) {
+				$link = '<a data-hover="' . $category->name . '" href="' . esc_url(get_category_link($category->term_id)) . '">' . $category->name . '</a>';
+				$_categories[$category->slug] = $link;
+			}
+		}
+		return implode(' ', $_categories);
+	}
+	
+
+
 	public function render_title() {
 		$settings = $this->get_settings_for_display();
 
@@ -967,14 +1015,13 @@ class Post_Accordion extends Group_Control_Query {
 	<?php
 	}
 
-	public function render_category() {
-
+	function render_category() {
 		if (!$this->get_settings('show_category')) {
 			return;
 		}
 	?>
 		<div class="upk-accordion-category">
-			<?php echo upk_get_category($this->get_settings('posts_source')); ?>
+			<?php echo $this->_upk_get_category($this->get_settings('posts_source')); ?>
 		</div>
 	<?php
 	}
@@ -1118,7 +1165,7 @@ class Post_Accordion extends Group_Control_Query {
 
 	?>
 		<div class="upk-accordion">
-			<div class="upk-accordion-wrapper">
+			<div class="upk-accordion-wrapper upk-accordion-<?php echo esc_attr($settings['layout_style'])?>">
 
 				<?php while ($wp_query->have_posts()) :
 					$wp_query->the_post();
