@@ -38,7 +38,8 @@
       width: 100%; }
       .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category {
         margin-bottom: 15px; }
-        .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a {
+        .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a,
+        .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a:before {
           display: inline-flex;
           color: #fff;
           background: #EF233C;
@@ -49,8 +50,9 @@
           border-radius: 3px;
           text-transform: uppercase;
           transition: all .3s ease; }
-          .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a:hover {
-            background: #D90429; }
+        .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a:hover,
+        .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a:hover::before {
+          background: #D90429; }
         .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a + a {
           margin-right: 5px; }
       .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-title {
@@ -113,6 +115,24 @@
       font-size: 14px;
       color: #cad1d4;
       line-height: 1; }
+  .upk-accordion-wrapper.upk-accordion-style-2 .upk-accordion-category {
+    overflow: hidden; }
+    .upk-accordion-wrapper.upk-accordion-style-2 .upk-accordion-category a {
+      position: relative;
+      display: block;
+      -webkit-transition: -webkit-transform 0.2s;
+      transition: transform 0.2s;
+      transform-origin: 0% 0%; }
+      .upk-accordion-wrapper.upk-accordion-style-2 .upk-accordion-category a::before {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        right: 0;
+        content: attr(data-hover); }
+  .upk-accordion-wrapper.upk-accordion-style-2 .upk-accordion-item:hover .upk-accordion-category a {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    transform-origin: 100% 0%; }
 
 .upk-global-link-yes .upk-accordion-wrapper .upk-alex-carousel-item:hover {
   cursor: pointer; }
@@ -136,7 +156,8 @@
         width: 370px; }
         .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category {
           margin-bottom: 20px; }
-          .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a {
+          .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a,
+          .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-category a::before {
             padding: 8px 12px;
             font-size: 10px; }
         .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-title {
