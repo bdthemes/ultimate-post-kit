@@ -104,12 +104,12 @@ class Post_Accordion extends Group_Control_Query {
 		$this->add_control(
 			'layout_style',
 			[
-				'label'   => __('Lyout Style', 'ultimate-post-kit') .BDTUPK_NC,
+				'label'   => __('Layout Style', 'ultimate-post-kit') .BDTUPK_NC,
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'style-1',
 				'options' => [
-					'style-1' => '1',
-					'style-2' => '2',
+					'style-1' => '01',
+					'style-2' => '02',
 				],
 			]
 		);
@@ -170,8 +170,12 @@ class Post_Accordion extends Group_Control_Query {
 			[
 				'label'   => esc_html__('Show Text', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SWITCHER,
-				'separator' => 'before'
-			]
+				'separator' => 'before',
+				'condition'   => [
+					'layout_style' => 'style-1'
+				],
+			]	
+			
 		);
 
 		$this->add_control(
@@ -469,7 +473,7 @@ class Post_Accordion extends Group_Control_Query {
 					],
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-title' => 'padding-bottom: {{SIZE}}px;'
+					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-title' => 'margin-bottom: {{SIZE}}px;'
 				],
 			]
 		);
@@ -519,7 +523,7 @@ class Post_Accordion extends Group_Control_Query {
 					],
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-text' => 'padding-bottom: {{SIZE}}px;'
+					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content .upk-accordion-text' => 'margin-bottom: {{SIZE}}px;'
 				],
 			]
 		);
@@ -991,7 +995,7 @@ class Post_Accordion extends Group_Control_Query {
 			return;
 		}
 
-		printf('<%1$s class="upk-accordion-title"><a href="%2$s" title="%3$s">%3$s</a></%1$s>', Utils::get_valid_html_tag($settings['title_tags']), get_permalink(), get_the_title());
+		printf('<%1$s class="upk-accordion-title"><a  data-hover="%3$s" href="%2$s" title="%3$s">%3$s</a></%1$s>', Utils::get_valid_html_tag($settings['title_tags']), get_permalink(), get_the_title());
 	}
 
 	public function render_excerpt($excerpt_length) {
@@ -1002,12 +1006,12 @@ class Post_Accordion extends Group_Control_Query {
 
 		$strip_shortcode = $this->get_settings_for_display('strip_shortcode');
 	?>
-		<div class="upk-accordion-text">
+		<div class="upk-accordion-text" data-hover="<?php echo wp_trim_words(get_the_excerpt(), $excerpt_length, ''); ?>">
 			<?php
 			if (has_excerpt()) {
 				the_excerpt();
 			} else {
-				echo ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode);
+				echo ultimate_post_kit_custom_excerpt ($excerpt_length, $strip_shortcode);
 			}
 			?>
 		</div>
@@ -1033,15 +1037,24 @@ class Post_Accordion extends Group_Control_Query {
 			return;
 		}
 
+		$date_for_hover = false;
+		if ($settings['human_diff_time'] == 'yes') {
+			$date_for_hover = ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
+		} else {
+			$date_for_hover = get_the_date();
+		}
+
 	?>
 		<div class="upk-accordion-date">
 			<i class="upk-icon-calendar" aria-hidden="true"></i>
-			<span>
-				<?php if ($settings['human_diff_time'] == 'yes') {
-					echo ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
-				} else {
-					echo get_the_date();
-				} ?>
+			<span <?php 
+			if($date_for_hover){ 
+				printf('data-hover="%s"', $date_for_hover); 
+				} 
+				?>>
+				<?php
+				echo $date_for_hover;
+				?>
 			</span>
 		</div>
 		<?php if ($settings['show_time']) : ?>
@@ -1063,9 +1076,9 @@ class Post_Accordion extends Group_Control_Query {
 
 		<div class="upk-accordion-comments">
 			<i class="upk-icon-bubbles" aria-hidden="true"></i>
-			<span>
-				<?php echo get_comments_number($id) ?>
-				<?php echo esc_html('Comments', 'ultimate-post-kit') ?>
+			<span <?php printf('data-hover="%s"', get_comments_number($id) . ' ' . esc_html('Comments', 'ultimate-post-kit')); ?>>
+				<?php echo get_comments_number($id); ?>
+				<?php echo esc_html('Comments', 'ultimate-post-kit'); ?>
 			</span>
 		</div>
 

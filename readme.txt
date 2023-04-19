@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive, post widget, live copy, elementor addon, pagebuilder addon, addons, bdthemes
-Stable tag: 3.4.3
+Stable tag: 3.4.4
 Requires PHP: 7.0.0
 Requires at least: 4.7.0
 Tested up to: 6.2.0
@@ -210,6 +210,12 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 
 == Changelog ==
+
+= 3.4.4 [19th April 2023] =
+
+* Added: Post accordion widget layout style option added
+* Fixed: Candy list widget category issue fixed
+* Fixed: Camux, Foxico & Snog widgets image height theme compatibility issue fixed
 
 = 3.4.3 [6th April 2023] =
 
