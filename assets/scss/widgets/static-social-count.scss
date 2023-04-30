@@ -1,22 +1,26 @@
 .upk-static-social-count {
-    display: grid;
-    grid-column-gap: 40px;
-    grid-template-columns: repeat(4, 1fr);
-    justify-content: center;
-    width: 100%;
+  display: grid;
+  grid-column-gap: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  width: 100%;
+
   .upk-item {
-     text-align: center;
-     transition: all .3s ease;
-        &:hover {
-        .upk-icon {
-            transform: translateY(-5px);
-        }
+    text-align: center;
+    transition: all .3s ease;
+
+    &:hover {
+      .upk-icon {
+        transform: translateY(-5px);
+      }
     }
   }
+
   .upk-icon {
     margin-bottom: 10px;
     transform: translateY(0);
     transition: transform .3s ease;
+
     span {
       font-size: 14px;
       border: 1px solid #c8c6c6;
@@ -29,32 +33,50 @@
       text-decoration: none;
       border-radius: 100%;
       transition: all .3s ease;
+
       &:hover {
         color: #000,
       }
     }
   }
+
   .upk-count {
-      font-size: 14px;
-      text-transform: uppercase;
-      color: #383535;
-      font-weight: 600;
-      margin-bottom: 4px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #383535;
+    font-weight: 600;
+    margin-bottom: 4px;
   }
+
   .upk-meta {
     font-size: 14px;
     text-transform: capitalize;
     color: #626262;
   }
+
   &.upk-style-2 {
-	.upk-item {
-	  display: inline-flex;
-	  align-items: center;
-	  text-align: left;
-	  grid-column-gap: 10px;
-   }
-   .upk-icon {
-	  margin: 0;
-	}
+    .upk-item {
+      text-align: left;
+    }
+  }
+
+  &.upk-style-2,
+  &.upk-style-3 {
+    .upk-item {
+      display: inline-flex;
+      align-items: center;
+      grid-column-gap: 10px;
+    }
+
+    .upk-icon {
+      margin: 0;
+    }
+  }
+
+  &.upk-style-3 {
+    .upk-item {
+      text-align: right;
+      flex-direction: row-reverse;
+    }
   }
 }

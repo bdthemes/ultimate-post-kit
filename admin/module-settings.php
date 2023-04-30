@@ -99,6 +99,16 @@ class ModuleService {
                     'video_url'    => 'https://youtu.be/3FoLaHsyB0g',
                 ],
                 [
+                    'name'         => 'aoxim-carousel',
+                    'label'        => esc_html__('Aoxim Carousel', 'ultimate-post-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "on",
+                    'widget_type'  => 'pro',
+                    'content_type' => 'carousel',
+                    'demo_url'     => 'https://postkit.pro/demo/aoxim-carousel/',
+                    'video_url'    => 'https://youtu.be/ebSyK__cMhw',
+                ],
+                [
                     'name'         => 'atlas-slider',
                     'label'        => esc_html__('Atlas Slider', 'ultimate-post-kit'),
                     'type'         => 'checkbox',

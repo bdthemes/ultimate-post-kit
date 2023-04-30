@@ -38,9 +38,13 @@
     text-transform: capitalize;
     color: #626262; }
   .upk-static-social-count.upk-style-2 .upk-item {
+    text-align: right; }
+  .upk-static-social-count.upk-style-2 .upk-item, .upk-static-social-count.upk-style-3 .upk-item {
     display: inline-flex;
     align-items: center;
-    text-align: right;
     grid-column-gap: 10px; }
-  .upk-static-social-count.upk-style-2 .upk-icon {
+  .upk-static-social-count.upk-style-2 .upk-icon, .upk-static-social-count.upk-style-3 .upk-icon {
     margin: 0; }
+  .upk-static-social-count.upk-style-3 .upk-item {
+    text-align: left;
+    flex-direction: row-reverse; }

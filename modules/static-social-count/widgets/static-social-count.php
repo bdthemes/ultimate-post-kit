@@ -66,12 +66,13 @@ class Static_Social_Count extends Group_Control_Query {
 		$this->add_control(
 			'select_style',
 			[
-				'label'      => esc_html__('Select Style', 'ultimate-post-kit'),
+				'label'      => esc_html__('Select Style', 'ultimate-post-kit') . BDTUPK_NC,
 				'type'       => Controls_Manager::SELECT,
 				'default'    => '',
 				'options'    => [
 					''  => esc_html__('Style 1', 'ultimate-post-kit'),
 					'upk-style-2' => esc_html__('Style 2', 'ultimate-post-kit'),
+					'upk-style-3' => esc_html__('Style 3', 'ultimate-post-kit'),
 				],
 			]
 		);
