@@ -109,6 +109,16 @@ class ModuleService {
                     'video_url'    => 'https://youtu.be/ebSyK__cMhw',
                 ],
                 [
+                    'name'         => 'axial-carousel',
+                    'label'        => esc_html__('Axial Carousel', 'ultimate-post-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "on",
+                    'widget_type'  => 'pro',
+                    'content_type' => 'carousel',
+                    'demo_url'     => 'https://postkit.pro/demo/axial-carousel/',
+                    'video_url'    => 'https://youtu.be/ebSyK__cMhw',
+                ],
+                [
                     'name'         => 'atlas-slider',
                     'label'        => esc_html__('Atlas Slider', 'ultimate-post-kit'),
                     'type'         => 'checkbox',
