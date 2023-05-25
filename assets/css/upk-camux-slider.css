@@ -1,3 +1,8 @@
+.upk-camux-slider-wrap .upk-img {
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover; }
+
 .upk-camux-slider {
   margin-bottom: 40px; }
   .upk-camux-slider .upk-item {
@@ -12,10 +17,6 @@
       width: 100%;
       height: 100%;
       background-image: linear-gradient(45deg, rgba(5, 4, 4, 0.741), transparent); }
-    .upk-camux-slider .upk-img-wrap .upk-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; }
   .upk-camux-slider .upk-content {
     width: 100%;
     max-width: 800px;
@@ -117,10 +118,7 @@
     position: relative;
     height: 100%; }
     .upk-camux-thumbs .upk-img-wrap .upk-img {
-      cursor: pointer;
-      width: 100%;
-      height: 100%;
-      object-fit: cover; }
+      cursor: pointer; }
   .upk-camux-thumbs .upk-comments {
     position: absolute;
     bottom: 0;

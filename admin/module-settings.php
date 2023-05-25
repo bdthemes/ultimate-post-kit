@@ -758,7 +758,7 @@ class ModuleService {
                     'widget_type'  => 'pro',
                     'content_type' => 'list',
                     'demo_url'     => 'https://postkit.pro/demo/welsh-list/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/f_sXqkUMfDg',
                 ]
             ],
 

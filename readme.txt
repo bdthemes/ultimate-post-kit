@@ -211,6 +211,12 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.4.4 [19th April 2023] =
+
+* Added: Post accordion widget layout style option added
+* Fixed: Candy list widget category issue fixed
+* Fixed: Camux, Foxico & Snog widgets image height theme compatibility issue fixed
+
 = 3.4.3 [6th April 2023] =
 
 * Added: Layout style 4 option added in alice grid widget
