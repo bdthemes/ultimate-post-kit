@@ -1314,7 +1314,7 @@ class Elite_Grid extends Group_Control_Query {
 			}
 		}
 
-	?>
+		?>
 		<div class="upk-elite-grid">
 			<div <?php $this->print_render_attribute_string('grid-wrap'); ?>>
 
@@ -1337,7 +1337,7 @@ class Elite_Grid extends Group_Control_Query {
 			<div class="ep-pagination">
 				<?php ultimate_post_kit_post_pagination($wp_query, $this->get_id()); ?>
 			</div>
-<?php
+		<?php
 		}
 		wp_reset_postdata();
 	}

@@ -2,16 +2,15 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive, post widget, live copy, elementor addon, pagebuilder addon, addons, bdthemes
-Stable tag: 3.5.0
+Stable tag: 3.5.2
 Requires PHP: 7.0.0
 Requires at least: 4.7.0
-Tested up to: 6.2.0
+Tested up to: 6.2.2
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.12.2
+Elementor tested up to: 3.13.4
 
-Best Post Addon for Elementor WordPress Plugin with 70+ Most Popular Elements that need your everyday blog website building.
-
+Best Post Addon for Elementor WordPress Plugin with 75+ Most Popular Elements that need your everyday blog website building.
 
 == Description ==
 
@@ -41,6 +40,7 @@ https://www.youtube.com/watch?v=er0uGv1yjig
 0. **[Alter Grid](https://postkit.pro/demo/alter-grid/)** - The Alter Grid widget let you make the best use of classical blog style that shows every details arranged neatly on the layout. You can easily create stunning blog homepage utilizing the layout style of this elementor addon. Best for news portals, gaming sites, lifestyle blogs. See the demo
 0. **[Amox Grid](https://postkit.pro/demo/amox-grid/)** - The Amox Grid is a powerful yet minimalistic post grid tool developed by the Ultimate Post Kit plugin. It has a default hover style that shifts the background into a custom designs once hovered. See the demo
 0. **[Elite Grid](https://postkit.pro/demo/elite-grid/)** - The Elite Grid widget lets you design beautiful blog posts with high end graphics and unique title style with excerpt. While displaying posts with detailed information, this elementor addon keeps its focus on the author, gives you enough space to highlight the author. See the demo
+0. **[Gratis Grid](https://postkit.pro/demo/gratis-grid/)** - Introduce your audience to a modern website with the Gratis Grid's eye-catchy post layouts. The grid can display your post category, title, meta, and show more button inside a evenly proportional grid interface, making your posts more attractive and informative.
 0. **[Hazel Grid](https://postkit.pro/demo/hazel-grid/)** - The Hazel Grid widget is one of the most prominent post tool by the Ultimate Post Kit plugin. It presents a simple style, omitting excessive detailing and rather boost its appearance through high quality graphics. It's fun to use this elementor addon for post related blog sites. See the demo
 0. **[Maple Grid](https://postkit.pro/demo/maple-grid/)** - The Maple Grid widget has a unique post layout that maximizes the delivery of blog information. It shows every detail of a post including tags, categories, and post type. Design news covers, lifestyle blogs, showdowns, inaugurations, and more. See the demo
 0. **[Ramble Grid](https://postkit.pro/demo/ramble-grid/)** - The Ramble Grid is a different type of widget. It offers a layout resembling a blank canvas with a minimum amount of detail until you hover and discover everything it contains. While users can enjoy enough white area, all info related to the post will reveal upon hover. See the demo
@@ -125,6 +125,8 @@ More widgets & extensions are coming soon...
 
 = Carousel 🌅 =
 
+0. **[Eldora Carousel](https://postkit.pro/demo/eldora-carousel/)** - The Eldora Carousel presents a slider-type interface to onboard your posts into the webpage with a compact card view of the post image and details (title, description, meta, button) along with the next and previous post images on both sides.
+0. **[Gratis Carousel](https://postkit.pro/demo/gratis-carousel/)** - Revolutionize your website with the Gratis Carousel widget and unveil a stunning post layout that will make your content stand out like never before. Prepare to captivate your audience with a visually striking and engaging website experience.
 0. **[Kalon Carousel](https://postkit.pro/demo/kalon-carousel/)** - Kalon Carousel is the animated carousel version of the Kalon Grid widget. It displays posts with minimal information that is suitable for featuring up coming posts on your website. See the demo.
 0. **[Pixina Carousel](https://postkit.pro/demo/pixina-carousel/)** - Pixina Carousel can transform your blog page into ultra modern grid with artistic board-view. This carousel layout has a description bezel that has the ability to catch people's attention like honey-driven bear. See the demos
 0. **[Wixer Carousel](https://postkit.pro/demo/wixer-carousel/)** - The Wixer Carousel is the brother of Wixer Grid widget. It has a clean & calm interface for displaying your blog posts. The widget can bring out the beauty of the feature posts along with image-less post navigation right below. See the demo
@@ -210,6 +212,20 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 
 == Changelog ==
+
+= 3.5.2 [1st June 2023] =
+
+* Fixed: Conflict issue fixed
+
+= 3.5.1 [1st June 2023] =
+
+* Fixed: Conflict issue fixed
+
+= 3.5.0 [30th May 2023] =
+
+* Added: Gratis grid widget added
+* Added: Gratis carousel widget added (Pro)
+* Added: Eldora carousel widget added (Pro)
 
 = 3.4.4 [19th April 2023] =
 

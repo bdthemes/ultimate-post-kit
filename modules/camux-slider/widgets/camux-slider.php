@@ -61,9 +61,9 @@ class Camux_Slider extends Group_Control_Query {
 		}
 	}
 
-	// public function get_custom_help_url() {
-	// 	return 'https://youtu.be/2ZYnLz__uA4';
-	// }
+	public function get_custom_help_url() {
+		return 'https://youtu.be/3IFFXN69IgQ';
+	}
 
 
 	public function get_query() {

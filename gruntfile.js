@@ -63,6 +63,7 @@ module.exports = function(grunt) {
                     'assets/css/upk-pholox-slider.css'        : 'assets/scss/widgets/pholox-slider.scss',
                     'assets/css/upk-snog-slider.css'          : 'assets/scss/widgets/snog-slider.scss',
                     'assets/css/upk-exotic-list.css'          : 'assets/scss/widgets/exotic-list.scss',
+                    'assets/css/upk-gratis-grid.css'          : 'assets/scss/widgets/gratis-grid.scss',
 
 
                     'assets/css/upk-all-styles.css'           : 'assets/scss/all-styles.scss',

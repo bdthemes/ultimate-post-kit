@@ -1,0 +1,151 @@
+.upk-gratis-grid .upk-gratis-wrap {
+  display: grid; }
+
+.upk-gratis-grid .upk-item {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all .3s ease; }
+  .upk-gratis-grid .upk-item:hover .upk-img-wrap::before, .upk-gratis-grid .upk-item.active .upk-img-wrap::before {
+    height: 0;
+    transition-delay: .1s; }
+  .upk-gratis-grid .upk-item:hover .upk-img-wrap::after, .upk-gratis-grid .upk-item.active .upk-img-wrap::after {
+    opacity: 1;
+    transition-delay: .2s; }
+  .upk-gratis-grid .upk-item:hover .upk-category a,
+  .upk-gratis-grid .upk-item:hover .upk-meta,
+  .upk-gratis-grid .upk-item:hover .upk-author-name, .upk-gratis-grid .upk-item.active .upk-category a,
+  .upk-gratis-grid .upk-item.active .upk-meta,
+  .upk-gratis-grid .upk-item.active .upk-author-name {
+    color: #e4e4e4; }
+  .upk-gratis-grid .upk-item:hover .upk-title a, .upk-gratis-grid .upk-item.active .upk-title a {
+    color: #fff; }
+  .upk-gratis-grid .upk-item:hover .upk-link-button a, .upk-gratis-grid .upk-item.active .upk-link-button a {
+    color: #434549;
+    background-color: #fff;
+    transition-delay: .1s; }
+    .upk-gratis-grid .upk-item:hover .upk-link-button a:hover, .upk-gratis-grid .upk-item.active .upk-link-button a:hover {
+      color: #fff; }
+  .upk-gratis-grid .upk-item .upk-link-button a:hover {
+    color: #fff; }
+
+.upk-gratis-grid .upk-img-wrap {
+  position: relative;
+  height: 450px; }
+
+.upk-gratis-grid .upk-img-wrap::before, .upk-gratis-grid .upk-img-wrap::after,
+.upk-gratis-grid .upk-img-wrap::before,
+.upk-gratis-grid .upk-img-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.upk-gratis-grid .upk-img-wrap::before {
+  transition: height .2s ease-in; }
+
+.upk-gratis-grid .upk-img-wrap::after {
+  opacity: 0;
+  transition: opacity .2s ease-in; }
+
+.upk-gratis-grid .upk-img {
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover;
+  display: block; }
+
+.upk-gratis-grid .upk-content-wrap {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  padding: 40px;
+  transform: translateY(-50%); }
+
+.upk-gratis-grid .upk-category,
+.upk-gratis-grid .upk-gratis-wrap .upk-title {
+  margin: 0 0 15px; }
+
+.upk-gratis-grid .upk-category a,
+.upk-gratis-grid .upk-gratis-wrap .upk-title a {
+  text-decoration: none;
+  transition: all .3s ease; }
+
+.upk-gratis-grid .upk-category a,
+.upk-gratis-grid .upk-meta {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #434549;
+  transition: color .3s ease, background-color .3s ease, border .3s ease; }
+
+.upk-gratis-grid .upk-gratis-wrap .upk-title {
+  font-size: 30px;
+  font-weight: 700; }
+  .upk-gratis-grid .upk-gratis-wrap .upk-title a {
+    color: #131314; }
+
+.upk-gratis-grid .upk-meta {
+  gap: 10px; }
+
+.upk-gratis-grid .upk-meta,
+.upk-gratis-grid .upk-author,
+.upk-gratis-grid .upk-date,
+.upk-gratis-grid .upk-link-button a {
+  display: flex;
+  align-items: center; }
+
+.upk-gratis-grid .upk-author,
+.upk-gratis-grid .upk-date {
+  gap: 5px; }
+
+.upk-gratis-grid .upk-author-name {
+  text-decoration: none;
+  color: #434549;
+  transition: color .3s ease; }
+
+.upk-gratis-grid .upk-meta svg {
+  width: 1em;
+  height: 1em;
+  display: block; }
+
+.upk-gratis-grid .upk-gratis-line {
+  margin: 30px 0;
+  width: 100%;
+  height: 1.2px;
+  background-color: #bebebe;
+  transition: background-color .3s ease; }
+
+.upk-gratis-grid .upk-link-button a {
+  justify-content: space-between;
+  background-color: #6f757f;
+  padding: 14px;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  transition: color .3s ease, background-color .3s ease; }
+  .upk-gratis-grid .upk-link-button a span,
+  .upk-gratis-grid .upk-link-button a svg {
+    z-index: 1; }
+  .upk-gratis-grid .upk-link-button a::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: #ed0c0c;
+    transition: height .3s ease; }
+  .upk-gratis-grid .upk-link-button a:hover {
+    color: #fff; }
+    .upk-gratis-grid .upk-link-button a:hover::before {
+      height: 100%; }
+
+.upk-item-match-height--yes .upk-gratis-grid .swiper-slide {
+  height: initial; }
+
+.upk-global-link-yes .upk-gratis-grid .upk-item:hover {
+  cursor: pointer; }

@@ -61,7 +61,7 @@ class Category_Carousel extends Module_Base {
 	}
 
 	public function get_custom_help_url() {
-		return 'https://youtu.be/FPkHDXCMrjk';
+		return 'https://youtu.be/kNA3mYIMkLM';
 	}
 
 

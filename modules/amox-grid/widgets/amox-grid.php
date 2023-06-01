@@ -1060,8 +1060,8 @@ $i = 0;
             }
 
             ?>
-										<?php $this->render_post_grid_item(get_the_ID(), $thumbnail_size, $active_item);?>
-									<?php endwhile;?>
+            <?php $this->render_post_grid_item(get_the_ID(), $thumbnail_size, $active_item);?>
+        <?php endwhile;?>
 		</div>
 
 		<?php

@@ -67,10 +67,10 @@ class Pholox_Slider extends Group_Control_Query
 		}
 	}
 
-	// public function get_custom_help_url()
-	// {
-	// 	return 'https://youtu.be/3ABRMLE_6-I';
-	// }
+	public function get_custom_help_url()
+	{
+		return 'https://youtu.be/Et_-wFgOn0M';
+	}
 
 	public function get_query()
 	{
