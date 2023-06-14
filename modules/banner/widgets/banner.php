@@ -1442,20 +1442,20 @@ class Banner extends Group_Control_Query
 			<div class="upk-content-inner">
 				<?php if ($settings['show_title'] and $settings['title_text']) : ?>
 					<<?php echo Utils::get_valid_html_tag($settings['title_size']); ?> class="upk-title">
-						<?php echo wp_kses_post($settings['title_text'], ultimate_post_kit_title_tags('title')); ?>
+						<?php echo wp_kses_post($settings['title_text'], ultimate_post_kit_title_tags('title_text')); ?>
 					</<?php echo Utils::get_valid_html_tag($settings['title_size']); ?>>
 				<?php endif; ?>
 
 				<?php if ($settings['sub_title_text'] and 'yes' == $settings['show_sub_title']) : ?>
 					<div class="upk-sub-title">
-						<?php echo wp_kses($settings['sub_title_text'], ultimate_post_kit_title_tags('title')); ?>
+						<?php echo esc_html($settings['sub_title_text']); ?>
 					</div>
 				<?php endif; ?>
 			</div>
 
 			<?php if ($settings['description_text'] and 'yes' == $settings['show_text'] and $settings['layout_direction'] !== 'style-4') : ?>
 				<div class="upk-text">
-					<?php echo wp_kses($settings['description_text'], ultimate_post_kit_title_tags('text')); ?>
+					<?php echo wp_kses_post($settings['description_text'], ultimate_post_kit_title_tags('description_text')); ?>
 				</div>
 			<?php endif; ?>
 
@@ -1464,14 +1464,14 @@ class Banner extends Group_Control_Query
 
 		<?php if ('yes' == $settings['show_badge'] and $settings['badge_text']) : ?>
 			<div class="upk-discount">
-				<?php echo wp_kses($settings['badge_text'], ultimate_post_kit_title_tags('title')); ?>
+				<?php echo esc_html($settings['badge_text']); ?>
 			</div>
 		<?php endif; ?>
 
 		<?php if ('yes' == $settings['show_banner_size'] and $settings['banner_size_text']) : ?>
 			<div class="upk-banner-size-text">
 				<span>
-					<?php echo wp_kses($settings['banner_size_text'], ultimate_post_kit_title_tags('title')); ?>
+					<?php echo esc_html($settings['banner_size_text']); ?>
 				</span>
 			</div>
 		<?php endif; ?>

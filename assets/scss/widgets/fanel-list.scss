@@ -35,8 +35,7 @@
 			position: absolute;
 			bottom: 0;
 			right: 0;
-			width: 55px;
-			height: 55px;
+			padding: 10px 15px;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -224,8 +223,6 @@
 				padding: 30px;
 			}
 			.upk-fanel-date-wrap {
-				width: 65px;
-				height: 65px;
 				.upk-fanel-date {
 					font-size: 20px;
 				}

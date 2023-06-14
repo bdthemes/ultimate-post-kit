@@ -13,44 +13,38 @@ use UltimatePostKit\Utils;
 
 use UltimatePostKit\Traits\Global_Widget_Controls;
 use UltimatePostKit\Includes\Controls\GroupQuery\Group_Control_Query;
+use UltimatePostKit\Includes\Controls\SelectInput\Dynamic_Select;
 use WP_Query;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-class Skide_Slider extends Group_Control_Query
-{
+class Skide_Slider extends Group_Control_Query {
 
 	use Global_Widget_Controls;
 
 	private $_query = null;
 
-	public function get_name()
-	{
+	public function get_name() {
 		return 'upk-skide-slider';
 	}
 
-	public function get_title()
-	{
+	public function get_title() {
 		return BDTUPK . esc_html__('Skide Slider', 'ultimate-post-kit');
 	}
 
-	public function get_icon()
-	{
+	public function get_icon() {
 		return 'upk-widget-icon upk-icon-skide-slider';
 	}
 
-	public function get_categories()
-	{
+	public function get_categories() {
 		return ['ultimate-post-kit'];
 	}
 
-	public function get_keywords()
-	{
+	public function get_keywords() {
 		return ['post', 'carousel', 'blog', 'recent', 'news', 'slider', 'skide'];
 	}
 
-	public function get_style_depends()
-	{
+	public function get_style_depends() {
 		if ($this->upk_is_edit_mode()) {
 			return ['upk-all-styles'];
 		} else {
@@ -58,8 +52,7 @@ class Skide_Slider extends Group_Control_Query
 		}
 	}
 
-	public function get_script_depends()
-	{
+	public function get_script_depends() {
 		if ($this->upk_is_edit_mode()) {
 			return ['upk-all-scripts'];
 		} else {
@@ -67,18 +60,15 @@ class Skide_Slider extends Group_Control_Query
 		}
 	}
 
-	public function get_custom_help_url()
-	{
+	public function get_custom_help_url() {
 		return 'https://youtu.be/7-7PbdFi_Ks';
 	}
 
-	public function get_query()
-	{
+	public function get_query() {
 		return $this->_query;
 	}
 
-	protected function register_controls()
-	{
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_content_layout',
 			[
@@ -110,7 +100,7 @@ class Skide_Slider extends Group_Control_Query
 		$this->add_responsive_control(
 			'content_max_width',
 			[
-				'label' => esc_html__('Content Max Width', 'bdthemes-prime-slider'),
+				'label' => esc_html__('Content Max Width', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SLIDER,
 				'size_units' => ['px', 'vw', '%'],
 				'range' => [
@@ -262,6 +252,31 @@ class Skide_Slider extends Group_Control_Query
 		);
 
 		$this->register_query_builder_controls();
+
+		$this->add_control(
+			'top_stories_query_heading',
+			[
+				'label'     => __('Top Stories Item', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
+					'show_top_stories' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'top_stories_selected_ids',
+			[
+				'label'       => __('Select Posts', 'ultimate-post-kit'),
+				'type'        => Dynamic_Select::TYPE,
+				'multiple'    => true,
+				'label_block' => true,
+				'condition' => [
+					'show_top_stories' => 'yes'
+				]
+			]
+		);
 
 		$this->end_controls_section();
 
@@ -819,7 +834,7 @@ class Skide_Slider extends Group_Control_Query
 				'type' 		 => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-skide-thumbs .upk-title a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-skide-thumbs .upk-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -838,15 +853,13 @@ class Skide_Slider extends Group_Control_Query
 		$this->end_controls_tabs();
 
 		$this->end_controls_section();
-
 	}
 
 	/**
 	 * Main query render for this widget
 	 * @param $posts_per_page number item query limit
 	 */
-	public function query_posts($posts_per_page)
-	{
+	public function query_posts($posts_per_page) {
 
 		$default = $this->getGroupControlQueryArgs();
 		if ($posts_per_page) {
@@ -857,8 +870,7 @@ class Skide_Slider extends Group_Control_Query
 		$this->_query = new WP_Query($args);
 	}
 
-	public function render_image($image_id, $size)
-	{
+	public function render_image($image_id, $size) {
 		$placeholder_image_src = Utils::get_placeholder_image_src();
 
 		$image_src = wp_get_attachment_image_src($image_id, $size);
@@ -876,8 +888,7 @@ class Skide_Slider extends Group_Control_Query
 	<?php
 	}
 
-	public function render_title()
-	{
+	public function render_title() {
 		$settings = $this->get_settings_for_display();
 
 		if (!$this->get_settings('show_title')) {
@@ -887,8 +898,7 @@ class Skide_Slider extends Group_Control_Query
 		printf('<%1$s class="upk-title"><a href="%2$s" title="%3$s">%3$s</a></%1$s>', Utils::get_valid_html_tag($settings['title_tags']), get_permalink(), get_the_title());
 	}
 
-	public function render_excerpt($excerpt_length)
-	{
+	public function render_excerpt($excerpt_length) {
 
 		if (!$this->get_settings('show_excerpt')) {
 			return;
@@ -908,8 +918,7 @@ class Skide_Slider extends Group_Control_Query
 	<?php
 	}
 
-	public function render_category()
-	{
+	public function render_category() {
 
 		if (!$this->get_settings('show_category')) {
 			return;
@@ -921,8 +930,7 @@ class Skide_Slider extends Group_Control_Query
 	<?php
 	}
 
-	public function render_date()
-	{
+	public function render_date() {
 		$settings = $this->get_settings_for_display();
 
 
@@ -950,8 +958,7 @@ class Skide_Slider extends Group_Control_Query
 	<?php
 	}
 
-	public function render_author()
-	{
+	public function render_author() {
 
 		if (!$this->get_settings('show_author')) {
 			return;
@@ -966,8 +973,7 @@ class Skide_Slider extends Group_Control_Query
 	<?php
 	}
 
-	public function render_comments($id = 0)
-	{
+	public function render_comments($id = 0) {
 
 		if (!$this->get_settings('show_comments')) {
 			return;
@@ -982,8 +988,7 @@ class Skide_Slider extends Group_Control_Query
 	<?php
 	}
 
-	public function render_header()
-	{
+	public function render_header() {
 		$id              = 'upk-skide-slider-' . $this->get_id();
 		$settings        = $this->get_settings_for_display();
 
@@ -1024,8 +1029,7 @@ class Skide_Slider extends Group_Control_Query
 				<?php
 			}
 
-			public function render_footer()
-			{
+			public function render_footer() {
 				$settings = $this->get_settings_for_display();
 
 				?>
@@ -1037,8 +1041,7 @@ class Skide_Slider extends Group_Control_Query
 	<?php
 			}
 
-			public function render_post_grid_item($post_id, $image_size)
-			{
+			public function render_post_grid_item($post_id, $image_size) {
 				$settings = $this->get_settings_for_display();
 
 				$this->add_render_attribute('slider-item', 'class', 'upk-skide-item swiper-slide', true);
@@ -1070,23 +1073,23 @@ class Skide_Slider extends Group_Control_Query
 						</div>
 
 						<?php if ($settings['show_comments'] or $settings['show_date'] or $settings['show_reading_time']) : ?>
-						<div class="upk-date-comments">
-							<?php $this->render_date(); ?>
+							<div class="upk-date-comments">
+								<?php $this->render_date(); ?>
 
-							<?php if ($settings['show_comments']) : ?>
-								<div data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
-								<?php $this->render_comments($post_id); ?>
-								</div>
-							<?php endif; ?>
-
-							<?php if (_is_upk_pro_activated()) :
-								if ('yes' === $settings['show_reading_time']) : ?>
-									<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
-										<?php ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
+								<?php if ($settings['show_comments']) : ?>
+									<div data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+										<?php $this->render_comments($post_id); ?>
 									</div>
 								<?php endif; ?>
-							<?php endif; ?>
-						</div>
+
+								<?php if (_is_upk_pro_activated()) :
+									if ('yes' === $settings['show_reading_time']) : ?>
+										<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+											<?php ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
+										</div>
+									<?php endif; ?>
+								<?php endif; ?>
+							</div>
 						<?php endif; ?>
 
 					</div>
@@ -1097,8 +1100,7 @@ class Skide_Slider extends Group_Control_Query
 	<?php
 			}
 
-			public function render_thumbnav($post_id, $image_size)
-			{
+			public function render_thumbnav($post_id, $image_size) {
 				$settings        = $this->get_settings_for_display();
 
 				$this->add_render_attribute('thumb-item', 'class', 'upk-skide-thumb-item swiper-slide', true);
@@ -1117,75 +1119,7 @@ class Skide_Slider extends Group_Control_Query
 	<?php
 			}
 
-			public function __render_top_stories()
-			{
-				$settings = $this->get_settings_for_display();
-
-				if (!$this->get_settings('show_top_stories')) {
-					return;
-				}
-
-	?>
-
-		<div class="upk-skide-top-stories">
-			<h3 class="upk-header-title"><?php echo esc_html_x('Top Stories', 'Frontend', 'ultimate-post-kit') ?></h3>
-			<?php
-				$story_posts = get_posts([
-					'post_status' => 'publish',
-					'post_type' => $this->get_settings('posts_source'),
-					'orderby' => 'comment_count',
-					'order' => 'desc',
-					'posts_per_page' => 3,
-				]);
-				if (count($story_posts) > 0) :
-					foreach ($story_posts as $posts) {
-						// var_dump($posts);
-			?>
-					<div class="upk-stories-item">
-						<div class="upk-stories-img">
-							<?php $placeholder_image_src = Utils::get_placeholder_image_src();
-							$image_id = get_post_thumbnail_id($posts->ID);
-							$image_src = wp_get_attachment_image_src($image_id, 'thumbnail');
-							if (!$image_src) {
-								$image_src = $placeholder_image_src;
-							} else {
-								$image_src = $image_src[0];
-							}
-							?>
-							<img class="upk-img swiper-lazy" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_html($posts->post_title); ?>">
-						</div>
-						<div class="upk-stories-content">
-							<div class="upk-date upk-flex upk-flex-middle">
-								<div>
-									<?php if ($settings['human_diff_time'] == 'yes') {
-										echo ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
-									} else {
-										echo get_the_date();
-									} ?>
-								</div>
-								<?php if ($settings['show_time']) : ?>
-									<div class="upk-post-time">
-										<i class="upk-icon-clock" aria-hidden="true"></i>
-										<?php echo get_the_time(); ?>
-									</div>
-								<?php endif; ?>
-							</div>
-							<?php printf('<h3 class="upk-title"><a href="%2$s">%1$s</a></h3>', $posts->post_title, get_permalink()); ?>
-						</div>
-					</div>
-			<?php
-
-					}
-				endif;
-			?>
-
-		</div>
-
-	<?php
-			}
-
-			public function render()
-			{
+			public function render() {
 				$settings = $this->get_settings_for_display();
 
 				$this->query_posts($settings['item_limit']['size']);
@@ -1207,8 +1141,10 @@ class Skide_Slider extends Group_Control_Query
 
 					$this->render_post_grid_item(get_the_ID(), $thumbnail_size);
 				}
+				wp_reset_postdata();
 
 				$this->render_footer();
+
 
 			?>
 			<div thumbsSlider="" class="swiper-container swiper upk-skide-thumbs">
@@ -1221,6 +1157,7 @@ class Skide_Slider extends Group_Control_Query
 
 						$this->render_thumbnav(get_the_ID(), $thumbnail_size);
 					}
+					wp_reset_postdata();
 
 					?>
 				</div>
@@ -1234,6 +1171,5 @@ class Skide_Slider extends Group_Control_Query
 		</div>
 
 <?php
-				wp_reset_postdata();
 			}
 		}

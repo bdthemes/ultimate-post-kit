@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive, post widget, live copy, elementor addon, pagebuilder addon, addons, bdthemes
-Stable tag: 3.5.2
+Stable tag: 3.6.0
 Requires PHP: 7.0.0
 Requires at least: 4.7.0
 Tested up to: 6.2.2
@@ -135,7 +135,7 @@ More widgets & extensions are coming soon...
 
 0. **[Atlas Slider](https://postkit.pro/demo/atlas-slider/)** - The Atlas Slider widget is a unique whole section slider having a primary post display along with a thumb post gallery. Best for blogging site, the slider can create a one-item hero page easily. See the demo
 0. **[Berlin Slider](https://postkit.pro/demo/berlin-slider/)** - The Berlin slider adds a classy vibe to your blogging website by it's vintage post layout with a built-in video player button. The slider is perfect for displaying product video, recipe video, etc. in a fancy way. See the demo
-0. **[Foxico Slider](https://postkit.pro/demo/foxico-slider/)** - Foxico Slider is a revolutionary slider widget by Prime Slider that presents a high-resolution slider interface with dynamic paginations and navigation along with a thumb post layout. See the demo
+0. **[Foxico Slider](https://postkit.pro/demo/foxico-slider/)** - Foxico Slider is a revolutionary slider widget by that presents a high-resolution slider interface with dynamic paginations and navigation along with a thumb post layout. See the demo
 0. **[Hansel Slider](https://postkit.pro/demo/hansel-slider/)** - Hansel slider makes the most outstanding slider layout for your blog homepage with exquisite graphics and extraordinary content delivery. Use it to learn it. See the demo
 0. **[Iconic Slider](https://postkit.pro/demo/iconic-slider/)** - Ultimate Post Kit presents the Iconic slider widget which is a full-width post slider having a highlighted date badge, a new stylish read more button, and smart navigations to make things easier for your visitors. Packed with cool animation effects, Iconic is really the iconic widget for your blogging site.
 0. **[Optick Slider](https://postkit.pro/demo/optick-slider/)** - Optick Slider creates a unique slider layout with a blurred image animation and colorful category, buttons, and counters. Make your blog page more stunning with an outstanding slider widget.
@@ -212,6 +212,20 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 
 == Changelog ==
+
+= 3.6.0 [14th June 2023] =
+
+* Added: Skide slider widget top stories custom query posts select option added
+* Added: Berlin slider widget height, thumbnail some options added
+* Added: Featured List widget category & counter number featured style controls added
+* Added: Forbes Tabs widget item primay, secondary content & primary image overlay options added
+* Added: Layout style 3 option added in static social count widget
+* Added: paradox slider items border & border radius control added
+* Added: Holux Tabs widget wrapper padding & items controls option added 
+* Added: Fanel List widget date border, padding, margin control added
+* Added: Skide slider widget glassmorphism added
+* Fixed: Forbes Tabs widget all control retouch and fixed
+* Fixed: Skide Slider widget thumbs title margin issue fixed
 
 = 3.5.2 [1st June 2023] =
 

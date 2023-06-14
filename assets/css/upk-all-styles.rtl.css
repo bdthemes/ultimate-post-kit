@@ -463,7 +463,7 @@
     .upk-dashboard-panel .bdt-card .bdt-button.bdt-btn-upk {
       background-color: #E62A3F; }
     .upk-dashboard-panel .bdt-card .bdt-button.bdt-btn-usk {
-      background-color: #e21530; }
+      background-color: rgba(226, 21, 48, 0.3); }
     .upk-dashboard-panel .bdt-card .bdt-button.bdt-btn-pg {
       background-color: transparent;
       background-image: linear-gradient(-145deg, rgba(13, 59, 84, 0.8) 0%, #0D3B54 100%); }
@@ -7475,7 +7475,8 @@
 
 .upk-paradox-slider .upk-paradox-slider-item {
   display: flex;
-  height: 470px; }
+  height: 470px;
+  overflow: hidden; }
   .upk-paradox-slider .upk-paradox-slider-item .upk-image-wrapper:before {
     content: '';
     position: absolute;
@@ -8707,8 +8708,7 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 55px;
-      height: 55px;
+      padding: 10px 15px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -8844,11 +8844,8 @@
     grid-template-columns: repeat(2, 1fr); }
     .upk-fanel-list .upk-item .upk-content {
       padding: 30px; }
-    .upk-fanel-list .upk-item .upk-fanel-date-wrap {
-      width: 65px;
-      height: 65px; }
-      .upk-fanel-list .upk-item .upk-fanel-date-wrap .upk-fanel-date {
-        font-size: 20px; } }
+    .upk-fanel-list .upk-item .upk-fanel-date-wrap .upk-fanel-date {
+      font-size: 20px; } }
 
 .upk-author .upk-author-wrapper {
   display: grid; }

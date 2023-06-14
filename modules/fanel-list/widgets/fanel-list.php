@@ -597,6 +597,15 @@ class Fanel_List extends Group_Control_Query {
 			]
 		);
 
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'     => 'date_border',
+				'label'    => esc_html__('Border', 'ultimate-post-kit'),
+				'selector' => '{{WRAPPER}} .upk-fanel-list .upk-item .upk-fanel-date-wrap',
+			]
+		);
+
 		$this->add_responsive_control(
 			'date_border_radius',
 			[
@@ -606,6 +615,30 @@ class Fanel_List extends Group_Control_Query {
 				'selectors'  => [
 					'{{WRAPPER}} .upk-fanel-list .upk-item .upk-fanel-date-wrap' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'date_padding',
+			[
+				'label'      => esc_html__('Padding', 'ultimate-post-kit'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .upk-fanel-list .upk-item .upk-fanel-date-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				]
+			]
+		);
+
+		$this->add_responsive_control(
+			'date_margin',
+			[
+				'label'      => __('Margin', 'ultimate-post-kit'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .upk-fanel-list .upk-item .upk-fanel-date-wrap' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				]
 			]
 		);
 

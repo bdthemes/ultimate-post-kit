@@ -2,6 +2,7 @@
 	.upk-paradox-slider-item {
 		display: flex;
 		height: 470px;
+		overflow: hidden;
 		.upk-image-wrapper {
 			&:before {
 				content: '';

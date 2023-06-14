@@ -1,6 +1,7 @@
 .upk-paradox-slider .upk-paradox-slider-item {
   display: flex;
-  height: 470px; }
+  height: 470px;
+  overflow: hidden; }
   .upk-paradox-slider .upk-paradox-slider-item .upk-image-wrapper:before {
     content: '';
     position: absolute;

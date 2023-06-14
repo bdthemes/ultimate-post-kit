@@ -583,17 +583,6 @@ class Featured_List extends Group_Control_Query {
 			]
 		);
 
-		$this->add_control(
-			'category_featured_color',
-			[
-				'label'     => esc_html__('Featured Color', 'ultimate-post-kit'),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-category a' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
@@ -689,17 +678,6 @@ class Featured_List extends Group_Control_Query {
 			]
 		);
 
-		$this->add_control(
-			'category_featured_color_hover',
-			[
-				'label'     => esc_html__('Featured Color', 'ultimate-post-kit'),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-category a:hover' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
@@ -724,6 +702,99 @@ class Featured_List extends Group_Control_Query {
 
 		$this->end_controls_tab();
 
+		$this->start_controls_tab(
+			'tab_category_featured',
+			[
+				'label' => esc_html__('Featured', 'ultimate-post-kit'),
+			]
+		);
+
+		$this->add_control(
+			'category_featured_heading',
+			[
+				'label'     => esc_html__('NORMAL', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::HEADING,
+			]
+		);
+
+		$this->add_control(
+			'category_featured_color',
+			[
+				'label'     => esc_html__('Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-category a' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name'     => 'category_featured_background',
+				'selector' => '{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-category a',
+			]
+		);
+
+		$this->add_control(
+			'category_featured_border_color',
+			[
+				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'category_border_border!' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-category a' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'heading_category_featured_hover_style',
+			[
+				'label'     => esc_html__('HOVER', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'category_featured_color_hover',
+			[
+				'label'     => esc_html__('Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-category a:hover' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name'     => 'category_featured_background_hover',
+				'selector' => '{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-category a:hover',
+			]
+		);
+
+		$this->add_control(
+			'category_featured_border_color_hover',
+			[
+				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'category_border_border!' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-category a:hover' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+
 		$this->end_controls_tabs();
 
 		$this->end_controls_section();
@@ -735,7 +806,19 @@ class Featured_List extends Group_Control_Query {
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'show_counter_number' => 'yes',
+					'layout_style'        => 'style-1',
 				]
+			]
+		);
+
+		$this->start_controls_tabs(
+			'counter_number_style_tabs'
+		);
+		
+		$this->start_controls_tab(
+			'conter_number_style_normal_tab',
+			[
+				'label' => esc_html__( 'Normal', 'ultimate-post-kit' ),
 			]
 		);
 
@@ -746,17 +829,6 @@ class Featured_List extends Group_Control_Query {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-featured-list .upk-item .upk-counter:before' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'featured_counter_number_color',
-			[
-				'label'     => esc_html__('Featured Color', 'ultimate-post-kit') . BDTUPK_NC,
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-counter:before' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -831,6 +903,53 @@ class Featured_List extends Group_Control_Query {
 				'selector' => '{{WRAPPER}} .upk-featured-list .upk-item .upk-counter:before',
 			]
 		);
+
+		
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'conter_number__featured_style_normal_tab',
+			[
+				'label' => esc_html__( 'Featured', 'ultimate-post-kit' ),
+			]
+		);
+		
+		$this->add_control(
+			'featured_counter_number_color',
+			[
+				'label'     => esc_html__('Color', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-counter:before' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name'     => 'featured_counter_number_background',
+				'selector' => '{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-counter',
+			]
+		);
+
+		$this->add_control(
+			'featured_counter_number_border_color',
+			[
+				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'counter_number_border_border!' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-counter' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+		
+		$this->end_controls_tab();
+		
+		$this->end_controls_tabs();
 
 		$this->end_controls_section();
 

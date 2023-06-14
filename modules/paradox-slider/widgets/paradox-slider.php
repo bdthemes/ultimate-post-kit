@@ -555,6 +555,29 @@ class Paradox_Slider extends Group_Control_Query {
 			]
 		);
 
+		// border
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'      => 'slider_item_border',
+				'label'     => esc_html__('Border', 'ultimate-post-kit'),
+				'selector'  => '{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item',
+			]
+		);
+
+		// border radius
+		$this->add_responsive_control(
+			'slider_item_border_radius',
+			[
+				'label'      => esc_html__('Border Radius', 'ultimate-post-kit'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
