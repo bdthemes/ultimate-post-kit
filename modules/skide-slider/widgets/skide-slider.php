@@ -223,6 +223,30 @@ class Skide_Slider extends Group_Control_Query {
 			]
 		);
 
+		$this->add_control(
+			'top_stories_query_heading',
+			[
+				'label'     => __('Top Stories Item', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'      => Controls_Manager::HEADING,
+				'condition' => [
+					'show_top_stories' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'top_stories_selected_ids',
+			[
+				'label'       => __('Select Posts', 'ultimate-post-kit'),
+				'type'        => Dynamic_Select::TYPE,
+				'multiple'    => true,
+				'label_block' => true,
+				'condition' => [
+					'show_top_stories' => 'yes'
+				]
+			]
+		);
+
 		$this->end_controls_section();
 
 		// Query Settings
@@ -252,31 +276,6 @@ class Skide_Slider extends Group_Control_Query {
 		);
 
 		$this->register_query_builder_controls();
-
-		$this->add_control(
-			'top_stories_query_heading',
-			[
-				'label'     => __('Top Stories Item', 'ultimate-post-kit') . BDTUPK_NC,
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-				'condition' => [
-					'show_top_stories' => 'yes'
-				]
-			]
-		);
-
-		$this->add_control(
-			'top_stories_selected_ids',
-			[
-				'label'       => __('Select Posts', 'ultimate-post-kit'),
-				'type'        => Dynamic_Select::TYPE,
-				'multiple'    => true,
-				'label_block' => true,
-				'condition' => [
-					'show_top_stories' => 'yes'
-				]
-			]
-		);
 
 		$this->end_controls_section();
 

@@ -1013,7 +1013,7 @@ class Snog_Slider extends Group_Control_Query {
 		$this->add_control(
 			'link_btn_line_heading',
 			[
-				'label' => esc_html__( 'L I N E', 'ultimate-post-kit' ),
+				'label' => esc_html__( 'LINE', 'ultimate-post-kit' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -1033,7 +1033,7 @@ class Snog_Slider extends Group_Control_Query {
 		$this->add_control(
 			'link_btn_line_hover_color',
 			[
-				'label'     => esc_html__('Color', 'ultimate-post-kit'),
+				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-snog-slider-wrap .upk-link-btn a:hover::before' => 'background-color: {{VALUE}};',
