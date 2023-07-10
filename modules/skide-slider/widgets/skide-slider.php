@@ -9,6 +9,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
+use Elementor\Plugin;
 use UltimatePostKit\Utils;
 
 use UltimatePostKit\Traits\Global_Widget_Controls;
@@ -1021,9 +1022,12 @@ class Skide_Slider extends Group_Control_Query {
 			]
 		);
 
+		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+		$this->add_render_attribute('swiper', 'class', 'swiper-carousel ' . $swiper_class);
+
 	?>
 		<div <?php $this->print_render_attribute_string('skide-slider'); ?>>
-			<div class="swiper-container swiper">
+			<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
 				<div class="swiper-wrapper">
 				<?php
 			}
@@ -1128,6 +1132,9 @@ class Skide_Slider extends Group_Control_Query {
 					return;
 				}
 
+				$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+		$this->add_render_attribute('swiper-thumbs', 'class', 'upk-skide-thumbs ' . $swiper_class);
+
 	?>
 		<div class="upk-skide-slider-wrap">
 			<?php
@@ -1146,7 +1153,7 @@ class Skide_Slider extends Group_Control_Query {
 
 
 			?>
-			<div thumbsSlider="" class="swiper-container swiper upk-skide-thumbs">
+			<div thumbsSlider="" <?php $this->print_render_attribute_string('swiper-thumbs'); ?>>
 				<div class="swiper-wrapper">
 					<?php
 

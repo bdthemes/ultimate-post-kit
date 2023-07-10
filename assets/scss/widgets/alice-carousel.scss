@@ -6,6 +6,7 @@
 		position: relative;
 		display: flex;
 		width: 100%;
+		overflow: hidden;
 		&::before {
 			content: '';
 			display: block;

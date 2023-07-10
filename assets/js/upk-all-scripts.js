@@ -660,7 +660,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -697,7 +697,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -734,7 +734,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -773,7 +773,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
 
         //console.log(JSON.parse(JSON.stringify($settings)));
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -810,7 +810,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -847,7 +847,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -884,7 +884,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -921,7 +921,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -958,7 +958,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -1028,7 +1028,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -1065,7 +1065,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -1190,7 +1190,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -1226,7 +1226,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -1284,7 +1284,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -1365,7 +1365,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -1428,7 +1428,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -1502,7 +1502,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
             return;
         }
 
-        var $carouselContainer = $carousel.find('.swiper-container'),
+        var $carouselContainer = $carousel.find('.swiper-carousel'),
             $settings = $carousel.data('settings');
 
         const Swiper = elementorFrontend.utils.swiper;
@@ -1569,8 +1569,8 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
         initSwiper();
         async function initSwiper() {
 
-            var $thumbs = $slider.find('.upk-thumbs-slider .swiper-container');
-            var $preview = $slider.find('.upk-main-slider .swiper-container');
+            var $thumbs = $slider.find('.upk-thumbs-slider .swiper-thumbs');
+            var $preview = $slider.find('.upk-main-slider .swiper-carousel');
 
             var mainSlider = await new Swiper($preview, $settings);
 
@@ -1645,7 +1645,7 @@ g(c,[{key:"setShareCallback",value:function(b){this.providers=this.providers.map
       return;
     }
 
-    var $carouselContainer = $carousel.find(".swiper-container"),
+    var $carouselContainer = $carousel.find(".upk-main-slider"),
       $settings = $carousel.data("settings"),
       $widgetSettings = $carousel.data("widget-settings");
 

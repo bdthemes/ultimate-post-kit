@@ -7,7 +7,7 @@
       return;
     }
 
-    var $carouselContainer = $carousel.find(".swiper-container"),
+    var $carouselContainer = $carousel.find(".upk-main-slider"),
       $settings = $carousel.data("settings"),
       $widgetSettings = $carousel.data("widget-settings");
 

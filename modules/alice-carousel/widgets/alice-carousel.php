@@ -352,7 +352,7 @@ class Alice_Carousel extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-alice-carousel .upk-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-alice-carousel .upk-item-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -457,7 +457,7 @@ class Alice_Carousel extends Group_Control_Query {
 					]
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .swiper-container' => 'padding: {{SIZE}}{{UNIT}}; margin: 0 -{{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .swiper-carousel' => 'padding: {{SIZE}}{{UNIT}}; margin: 0 -{{SIZE}}{{UNIT}};'
 				],
 			]
 		);
@@ -870,7 +870,7 @@ class Alice_Carousel extends Group_Control_Query {
 	?>
 		<div <?php $this->print_render_attribute_string('carousel'); ?>>
 			<div class="upk-content-<?php echo esc_html($settings['content_position']) ?>">
-				<div class="swiper-container">
+				<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 					<?php
 				}

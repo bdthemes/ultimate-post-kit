@@ -10,6 +10,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
 use Elementor\Utils;
+use Elementor\Plugin;
 use UltimatePostKit\Traits\Global_Widget_Controls;
 use UltimatePostKit\Traits\Global_Widget_Functions;
 use UltimatePostKit\Traits\Global_Swiper_Functions;
@@ -915,10 +916,14 @@ class Category_Carousel extends Module_Base {
 		$settings        = $this->get_settings_for_display();
 		$this->add_render_attribute('carousel', 'class', ['upk-category-carousel', $settings['skin_layout']]);
 		$this->render_header_attribute('category');
-	?>
+
+		$skin_layout = $settings['skin_layout'];
+		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+		$this->add_render_attribute('swiper', 'class', 'swiper-carousel upk-category-carousel-wrap upk-category-carousel-' . $skin_layout .' ' . $swiper_class );
+		?>
 		<div <?php $this->print_render_attribute_string('carousel'); ?>>
 			<div class="upk-category-carousel-wrapper">
-				<div class="swiper-container upk-category-carousel-wrap upk-category-carousel-<?php esc_html_e($settings['skin_layout'], 'ultimate-post-kit-pro'); ?>">
+				<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 						<?php
 					}

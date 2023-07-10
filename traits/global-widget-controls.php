@@ -832,7 +832,7 @@ trait Global_Widget_Controls {
 		$this->add_control(
 			'arrows_heading',
 			[
-				'label'     => __('A R R O W S', 'ultimate-post-kit'),
+				'label'     => __('ARROWS', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => [
 					'navigation!' => ['dots', 'progressbar', 'none'],
@@ -1035,7 +1035,7 @@ trait Global_Widget_Controls {
 		$this->add_control(
 			'dots_heading',
 			[
-				'label'     => __('D O T S', 'bdthemes-element-pack'),
+				'label'     => __('DOTS', 'bdthemes-element-pack'),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => [
 					'navigation!' => ['arrows', 'arrows-fraction', 'progressbar', 'none'],
@@ -1287,7 +1287,7 @@ trait Global_Widget_Controls {
 		$this->add_control(
 			'fraction_heading',
 			[
-				'label'     => __('F R A C T I O N', 'ultimate-post-kit'),
+				'label'     => __('FRACTION', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => [
 					'navigation' => 'arrows-fraction',
@@ -1358,7 +1358,7 @@ trait Global_Widget_Controls {
 		$this->add_control(
 			'progresbar_heading',
 			[
-				'label'     => __('P R O G R E S S B A R', 'ultimate-post-kit'),
+				'label'     => __('PROGRESSBAR', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => [
 					'navigation' => 'progressbar',
@@ -1418,7 +1418,7 @@ trait Global_Widget_Controls {
 		$this->add_control(
 			'scrollbar_heading',
 			[
-				'label'     => __('S C R O L L B A R', 'ultimate-post-kit'),
+				'label'     => __('SCROLLBAR', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => [
 					'show_scrollbar' => 'yes'
@@ -1494,7 +1494,7 @@ trait Global_Widget_Controls {
 		$this->add_control(
 			'navi_offset_heading',
 			[
-				'label' => __('O F F S E T', 'ultimate-post-kit'),
+				'label' => __('OFFSET', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::HEADING,
 			]
 		);

@@ -104,6 +104,8 @@
 /* swiper for 3rd party style */
 .swiper-pagination-fraction,
 .swiper-pagination-custom,
+.swiper-horizontal .swiper-pagination-bullets,
+.swiper-horizontal+.swiper-pagination-bullets, 
 .swiper-container-horizontal .swiper-pagination-bullets,
 .swiper-container-horizontal+.swiper-pagination-bullets {
   bottom: -50px;
@@ -140,10 +142,13 @@
 }
 
 /* Swiper */
+.swiper .elementor-lightbox-content-source,
 .swiper-container .elementor-lightbox-content-source {
   display: none;
 }
 
+.swiper-horizontal+.swiper-pagination-progressbar,
+.swiper-vertical+.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite, 
 .swiper-container-horizontal+.swiper-pagination-progressbar,
 .swiper-container-vertical+.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
   width: 100%;
@@ -261,6 +266,7 @@
 
 //Swiper css
 [class*="elementor-widget-upk-"] {
+  .swiper-coverflow, 
   .swiper-container-coverflow {
     padding-top: 15px;
 
@@ -269,6 +275,7 @@
     }
   }
 
+  .swiper-horizontal>.swiper-pagination-progress, 
   .swiper-container-horizontal>.swiper-pagination-progress {
     top: auto;
     bottom: 0;
@@ -278,17 +285,20 @@
 .elementor-pagination-position-inside {
 
   .swiper-pagination-fraction,
+  .swiper-horizontal>.swiper-pagination-bullets, 
   .swiper-container-horizontal>.swiper-pagination-bullets {
     bottom: 10px;
   }
 }
 
 .elementor-pagination-position-outside {
+  .swiper, 
   .swiper-container {
     padding-bottom: 40px;
   }
 
   .swiper-pagination-fraction,
+  .swiper-horizontal>.swiper-pagination-bullets, 
   .swiper-container-horizontal>.swiper-pagination-bullets {
     bottom: 0;
   }

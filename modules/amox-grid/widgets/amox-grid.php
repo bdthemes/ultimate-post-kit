@@ -737,7 +737,7 @@ class Amox_Grid extends Group_Control_Query
             $this->add_control(
                 'category_active_normal_heading',
                 [
-                    'label' => esc_html__('N O R M A L', 'ultimate-post-kit'),
+                    'label' => esc_html__('NORMAL', 'ultimate-post-kit'),
                     'type' => Controls_Manager::HEADING,
                 ]
             );

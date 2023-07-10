@@ -8,6 +8,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
+use Elementor\Plugin;
 use UltimatePostKit\Utils;
 
 use UltimatePostKit\Traits\Global_Widget_Controls;
@@ -1704,10 +1705,14 @@ class Pholox_Slider extends Group_Control_Query
 			return;
 		}
 
+		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+		$this->add_render_attribute('swiper', 'class', 'swiper-carousel ' . $swiper_class);
+		$this->add_render_attribute('swiper-thumbs', 'class', 'swiper-thumbs ' . $swiper_class);
+
 		$this->render_header();
 	?>
 		<div class="upk-main-slider">
-			<div class="swiper-container">
+			<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
 				<div class="swiper-wrapper">
 					<?php
 					while ($wp_query->have_posts()) {
@@ -1727,7 +1732,7 @@ class Pholox_Slider extends Group_Control_Query
 		</div>
 
 		<div class="upk-thumbs-slider">
-			<div thumbsSlider="" class="swiper-container">
+			<div thumbsSlider="" <?php echo $this->get_render_attribute_string('swiper-thumbs'); ?>>
 				<div class="swiper-wrapper">
 					<?php
 					while ($wp_query->have_posts()) {

@@ -428,7 +428,7 @@ class Amox_Carousel extends Group_Control_Query
 					]
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .swiper-container' => 'padding: {{SIZE}}{{UNIT}}; margin: 0 -{{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .swiper-carousel' => 'padding: {{SIZE}}{{UNIT}}; margin: 0 -{{SIZE}}{{UNIT}};'
 				],
 			]
 		);
@@ -785,7 +785,7 @@ class Amox_Carousel extends Group_Control_Query
 			$this->add_control(
 				'category_active_normal_heading',
 				[
-					'label'     => esc_html__('N O R M A L', 'ultimate-post-kit'),
+					'label'     => esc_html__('NORMAL', 'ultimate-post-kit'),
 					'type'      => Controls_Manager::HEADING,
 				]
 			);
@@ -841,7 +841,7 @@ class Amox_Carousel extends Group_Control_Query
 	?>
 		<div <?php $this->print_render_attribute_string('carousel'); ?>>
 			<div class="upk-post-wrapper">
-				<div class="swiper-container">
+				<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 					<?php
 				}

@@ -9,6 +9,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
+use Elementor\Plugin;
 use UltimatePostKit\Utils;
 
 use UltimatePostKit\Traits\Global_Widget_Controls;
@@ -1561,7 +1562,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .swiper-container-horizontal > .swiper-scrollbar' => 'height: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-paradox-slider .swiper-container-horizontal > .swiper-scrollbar, {{WRAPPER}} .upk-paradox-slider .swiper-horizontal > .swiper-scrollbar' => 'height: {{SIZE}}px;',
 				],
 				'condition'   => [
 					'show_scrollbar' => 'yes'
@@ -2095,7 +2096,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'label'   => __( 'Scrollbar Offset', 'ultimate-post-kit' ),
 				'type'    => Controls_Manager::SLIDER,
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .swiper-container-horizontal > .swiper-scrollbar' => 'bottom: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-paradox-slider .swiper-container-horizontal > .swiper-scrollbar, {{WRAPPER}} .upk-paradox-slider .swiper-horizontal > .swiper-scrollbar' => 'bottom: {{SIZE}}px;',
 				],
 				'condition'   => [
 					'show_scrollbar' => 'yes'
@@ -2307,10 +2308,13 @@ class Paradox_Slider extends Group_Control_Query {
 			]
 		);
 
+		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+		$this->add_render_attribute('swiper', 'class', 'swiper-carousel ' . $swiper_class);
+
 		?>
 		<div <?php $this->print_render_attribute_string( 'paradox-slider' ); ?>>
 			<div class="upk-paradox-slider-wrapper">
-				<div class="swiper-container">
+				<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 		<?php
 	}

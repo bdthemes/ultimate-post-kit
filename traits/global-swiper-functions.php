@@ -2,6 +2,8 @@
 	
 namespace UltimatePostKit\Traits;
 
+use Elementor\Plugin;
+
 defined( 'ABSPATH' ) || die();
 	
 trait Global_Swiper_Functions {
@@ -96,6 +98,9 @@ trait Global_Swiper_Functions {
 				]
 			]
 		);
+
+		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+		$this->add_render_attribute('swiper', 'class', 'swiper-carousel ' . $swiper_class);
 	}
 	
 	function render_navigation() {

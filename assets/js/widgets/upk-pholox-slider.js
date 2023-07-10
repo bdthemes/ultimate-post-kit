@@ -17,8 +17,8 @@
         initSwiper();
         async function initSwiper() {
 
-            var $thumbs = $slider.find('.upk-thumbs-slider .swiper-container');
-            var $preview = $slider.find('.upk-main-slider .swiper-container');
+            var $thumbs = $slider.find('.upk-thumbs-slider .swiper-thumbs');
+            var $preview = $slider.find('.upk-main-slider .swiper-carousel');
 
             var mainSlider = await new Swiper($preview, $settings);
 

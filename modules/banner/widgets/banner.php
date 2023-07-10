@@ -1150,7 +1150,7 @@ class Banner extends Group_Control_Query
 						],
 						[
 							'name'     => 'show_banner_size',
-							'value'    => 'post'
+							'value'    => 'yes'
 						],
 					]
 				],

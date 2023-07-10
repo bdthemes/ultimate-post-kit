@@ -9,6 +9,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
+use Elementor\Plugin;
 
 use UltimatePostKit\Utils;
 use UltimatePostKit\Traits\Global_Widget_Controls;
@@ -93,7 +94,7 @@ class Crystal_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .upk-crystal-slider .swiper-container' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-crystal-slider .swiper-carousel' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -110,7 +111,7 @@ class Crystal_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-crystal-slider .swiper-container' => 'padding-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-crystal-slider .swiper-carousel' => 'padding-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1597,9 +1598,12 @@ class Crystal_Slider extends Group_Control_Query {
 			]
 		);
 
+		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+		$this->add_render_attribute('swiper', 'class', 'swiper-carousel ' . $swiper_class);
+
 	?>
 		<div <?php $this->print_render_attribute_string('crystal-slider'); ?>>
-			<div class="swiper-container">
+			<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
 				<div class="swiper-wrapper">
 				<?php
 			}

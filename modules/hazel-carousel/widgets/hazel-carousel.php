@@ -428,7 +428,7 @@ class Hazel_Carousel extends Group_Control_Query {
 					'size' => 10
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .swiper-container' => 'padding: {{SIZE}}{{UNIT}}; margin: 0 -{{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .swiper-carousel' => 'padding: {{SIZE}}{{UNIT}}; margin: 0 -{{SIZE}}{{UNIT}};'
 				],
 			]
 		);
@@ -941,7 +941,7 @@ class Hazel_Carousel extends Group_Control_Query {
 	?>
 		<div <?php $this->print_render_attribute_string('carousel'); ?>>
 			<div class="upk-post-grid upk-pg-text-position-<?php echo esc_html($settings['content_position']) ?> upk-blog-content-style-<?php echo esc_html($settings['content_style']) ?>">
-				<div class="swiper-container">
+				<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 					<?php
 				}

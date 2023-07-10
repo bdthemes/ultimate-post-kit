@@ -9,6 +9,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
+use Elementor\Plugin;
 
 use UltimatePostKit\Utils;
 use UltimatePostKit\Traits\Global_Widget_Controls;
@@ -1384,9 +1385,12 @@ class Snog_Slider extends Group_Control_Query {
 			]
 		);
 
+		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+		$this->add_render_attribute('swiper', 'class', 'upk-main-slider ' . $swiper_class);
+
 		?>
 		<div <?php echo $this->get_render_attribute_string( 'snog-slider' ); ?>>
-			<div class="swiper-container upk-main-slider">
+			<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
                 <div class="swiper-wrapper">
 		<?php
 	}
@@ -1525,6 +1529,10 @@ class Snog_Slider extends Group_Control_Query {
 			return;
 		}
 
+		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+		$this->add_render_attribute('swiper-thumbs', 'class', 'upk-snog-thumbs ' . $swiper_class);
+		$this->add_render_attribute('swiper-content', 'class', 'upk-content-slider ' . $swiper_class);
+
 		?>
 		<div class="upk-snog-slider-wrap" id="<?php echo esc_attr($id); ?>">
 			<?php
@@ -1541,7 +1549,7 @@ class Snog_Slider extends Group_Control_Query {
 			$this->render_footer();
 
 			?>
-			<div thumbsSlider="" class="swiper-container upk-snog-thumbs">
+			<div thumbsSlider="" <?php echo $this->get_render_attribute_string('swiper-thumbs'); ?>>
 				<div class="swiper-wrapper">
 					<?php
 
@@ -1556,7 +1564,7 @@ class Snog_Slider extends Group_Control_Query {
 				</div>
 			</div>
 
-			<div class="upk-content-slider swiper-container">
+			<div <?php echo $this->get_render_attribute_string('swiper-content'); ?>>
 					<div class="swiper-wrapper">
 						<?php 
 						while ( $wp_query->have_posts() ) {

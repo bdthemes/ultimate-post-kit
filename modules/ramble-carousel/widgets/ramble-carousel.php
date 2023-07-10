@@ -505,7 +505,7 @@ class Ramble_Carousel extends Group_Control_Query {
 					'size' => 10
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .swiper-container' => 'padding: {{SIZE}}{{UNIT}}; margin: 0 -{{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .swiper-carousel' => 'padding: {{SIZE}}{{UNIT}}; margin: 0 -{{SIZE}}{{UNIT}};'
 				],
 			]
 		);
@@ -1444,7 +1444,7 @@ class Ramble_Carousel extends Group_Control_Query {
 	?>
 		<div <?php $this->print_render_attribute_string('carousel'); ?>>
 			<div class="upk-wrapper">
-				<div class="swiper-container">
+				<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 					<?php
 				}
