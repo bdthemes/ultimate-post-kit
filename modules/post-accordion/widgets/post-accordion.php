@@ -67,10 +67,36 @@ class Post_Accordion extends Group_Control_Query {
 			]
 		);
 
+		$this->add_control(
+			'layout_style',
+			[
+				'label'   => __('Layout Style', 'ultimate-post-kit') .BDTUPK_NC,
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'style-1',
+				'options' => [
+					'style-1' => 'Horizontal',
+					'style-2' => 'Vertical',
+				],
+			]
+		);
+
+		$this->add_control(
+			'layout_content_style',
+			[
+				'label'   => __('Content Style', 'ultimate-post-kit') .BDTUPK_NC,
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'style-1',
+				'options' => [
+					'style-1' => '01',
+					'style-2' => '02',
+				],
+			]
+		);
+
 		$this->add_responsive_control(
 			'default_item_height',
 			[
-				'label'   => esc_html__('Item Height(px)', 'ultimate-post-kit'),
+				'label'   => esc_html__('Height(px)', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -79,37 +105,42 @@ class Post_Accordion extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-accordion-wrapper' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
 
-		$this->add_control(
-			'default_item_expand',
+		$this->add_responsive_control(
+			'default_item_gap',
 			[
-				'label'   => esc_html__('Item Hover Expand(em)', 'ultimate-post-kit'),
+				'label'   => esc_html__('Item Gap', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
-						'min' => 10,
+						'min' => 0,
 						'max' => 50,
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item:hover' => 'flex-basis: {{SIZE}}em;',
+					'{{WRAPPER}} .upk-accordion-wrapper' => 'gap: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
 
-		$this->add_control(
-			'layout_style',
+
+		$this->add_responsive_control(
+			'default_item_expand',
 			[
-				'label'   => __('Layout Style', 'ultimate-post-kit') .BDTUPK_NC,
-				'type'    => Controls_Manager::SELECT,
-				'default' => 'style-1',
-				'options' => [
-					'style-1' => '01',
-					'style-2' => '02',
+				'label'   => esc_html__('Item Hover Expand', 'ultimate-post-kit'),
+				'type'    => Controls_Manager::SLIDER,
+				'range' => [
+					    'px' => [
+					        'min' => 2,
+					        'max' => 10,
+					    ],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item:hover' => 'flex: {{SIZE}};',
 				],
 			]
 		);
@@ -276,7 +307,7 @@ class Post_Accordion extends Group_Control_Query {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control (
 			'content_width',
 			[
 				'label'       => __('Content Width', 'ultimate-post-kit'),
@@ -303,6 +334,27 @@ class Post_Accordion extends Group_Control_Query {
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
 					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item .upk-accordion-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'        => 'item_border',
+				'label'       => __('Border', 'ultimate-post-kit') . BDTUPK_NC,
+				'selector'    => '{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item',
+			]
+		);
+
+		$this->add_responsive_control(
+			'item_border_radius',
+			[
+				'label'      => __('Border Radius', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .upk-accordion-wrapper .upk-accordion-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1151,7 +1203,7 @@ class Post_Accordion extends Group_Control_Query {
 						<?php if (_is_upk_pro_activated()) :
 							if ('yes' === $settings['show_reading_time']) : ?>
 								<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
-									<?php ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
+									<?php echo ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
 								</div>
 							<?php endif; ?>
 						<?php endif; ?>
@@ -1178,7 +1230,7 @@ class Post_Accordion extends Group_Control_Query {
 
 	?>
 		<div class="upk-accordion">
-			<div class="upk-accordion-wrapper upk-accordion-<?php echo esc_attr($settings['layout_style'])?>">
+			<div class="upk-accordion-wrapper upk-accordion-content<?php echo esc_attr($settings['layout_content_style'])?> upk-accordion-<?php echo esc_attr($settings['layout_style'])?>">
 
 				<?php while ($wp_query->have_posts()) :
 					$wp_query->the_post();

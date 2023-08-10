@@ -10,7 +10,6 @@
     position: relative;
     overflow: hidden;
     display: flex;
-    //transition: all .3s ease;
     &:hover {
       .upk-button-wrap {
         margin-bottom: 0 !important;
@@ -144,7 +143,7 @@
   }
 
   .upk-readmore {
-    display: block;
+    display: flex;
     position: relative;
     padding: 25px 20px;
     transition: all .3s ease;

@@ -88,7 +88,7 @@
     margin-bottom: -50px;
     transition: margin-bottom 0.5s cubic-bezier(0.25, 0.85, 0.35, 0.98); }
   .upk-alex-grid .upk-readmore {
-    display: block;
+    display: flex;
     position: relative;
     padding: 25px 20px;
     transition: all .3s ease; }

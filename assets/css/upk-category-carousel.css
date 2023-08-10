@@ -278,39 +278,3 @@
 
 .upk-item-match-height--yes .upk-category-carousel .swiper-slide {
   height: initial; }
-
-.elementor-widget-upk-category-carousel .upk-arrows-container {
-  -webkit-transform: translate(var(--upk-category-carousel-arrows-ncx, 0), var(--upk-category-carousel-arrows-ncy, 40));
-  transform: translate(var(--upk-category-carousel-arrows-ncx, 0), var(--upk-category-carousel-arrows-ncy, 40)); }
-
-.elementor-widget-upk-category-carousel .upk-dots-container {
-  -webkit-transform: translate(var(--upk-category-carousel-dots-nnx, 0), var(--upk-category-carousel-dots-nny, 30));
-  transform: translate(var(--upk-category-carousel-dots-nnx, 0), var(--upk-category-carousel-dots-nny, 30)); }
-
-.elementor-widget-upk-category-carousel .upk-arrows-dots-container {
-  -webkit-transform: translate(var(--upk-category-carousel-both-ncx, 0), var(--upk-category-carousel-both-ncy, 40));
-  transform: translate(var(--upk-category-carousel-both-ncx, 0), var(--upk-category-carousel-both-ncy, 40)); }
-
-.elementor-widget-upk-category-carousel .upk-arrows-fraction-container {
-  -webkit-transform: translate(var(--upk-category-carousel-arrows-fraction-ncx, 0), var(--upk-category-carousel-arrows-fraction-ncy, 40));
-  transform: translate(var(--upk-category-carousel-arrows-fraction-ncx, 0), var(--upk-category-carousel-arrows-fraction-ncy, 40)); }
-
-.elementor-widget-upk-category-carousel .upk-position-center-left .upk-arrows-container,
-.elementor-widget-upk-category-carousel .upk-position-center-right .upk-arrows-container {
-  -webkit-transform: translate(var(--upk-category-carousel-arrows-ncx, 0), var(--upk-category-carousel-arrows-ncy, 0)) rotate(90deg);
-  transform: translate(var(--upk-category-carousel-arrows-ncx, 0), var(--upk-category-carousel-arrows-ncy, 0)) rotate(90deg); }
-
-.elementor-widget-upk-category-carousel .upk-position-center-left .upk-dots-container,
-.elementor-widget-upk-category-carousel .upk-position-center-right .upk-dots-container {
-  -webkit-transform: translate(var(--upk-category-carousel-dots-nnx, 0), var(--upk-category-carousel-dots-nny, 0)) rotate(90deg);
-  transform: translate(var(--upk-category-carousel-dots-nnx, 0), var(--upk-category-carousel-dots-nny, 0)) rotate(90deg); }
-
-.elementor-widget-upk-category-carousel .upk-position-center-left .upk-arrows-dots-container,
-.elementor-widget-upk-category-carousel .upk-position-center-right .upk-arrows-dots-container {
-  -webkit-transform: translate(var(--upk-category-carousel-both-ncx, 0), var(--upk-category-carousel-both-ncy, 0)) rotate(90deg);
-  transform: translate(var(--upk-category-carousel-both-ncx, 0), var(--upk-category-carousel-both-ncy, 0)) rotate(90deg); }
-
-.elementor-widget-upk-category-carousel .upk-position-center-left .upk-arrows-fraction-container,
-.elementor-widget-upk-category-carousel .upk-position-center-right .upk-arrows-fraction-container {
-  -webkit-transform: translate(var(--upk-category-carousel-arrows-fraction-ncx, 0), var(--upk-category-carousel-arrows-fraction-ncy, 0)) rotate(90deg);
-  transform: translate(var(--upk-category-carousel-arrows-fraction-ncx, 0), var(--upk-category-carousel-arrows-fraction-ncy, 0)) rotate(90deg); }

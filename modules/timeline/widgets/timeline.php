@@ -293,8 +293,8 @@ class Timeline extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item:nth-child(2n+1) .upk-timeline-image-and-content-wrapper' => 'padding: {{SIZE}}px {{SIZE}}px {{SIZE}}px 0;',
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item:nth-child(2n+2) .upk-timeline-image-and-content-wrapper' => 'padding: {{SIZE}}px 0 {{SIZE}}px {{SIZE}}px;',
+					'{{WRAPPER}} .upk-timeline .upk-item:nth-child(2n+1) .upk-image-and-content-wrapper' => 'padding: {{SIZE}}px {{SIZE}}px {{SIZE}}px 0;',
+					'{{WRAPPER}} .upk-timeline .upk-item:nth-child(2n+2) .upk-image-and-content-wrapper' => 'padding: {{SIZE}}px 0 {{SIZE}}px {{SIZE}}px;',
 				],
 			]
 		);
@@ -332,7 +332,7 @@ class Timeline extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--upk-timeline-border-width: {{SIZE}}px;'
+					'{{WRAPPER}}' => '--upk-border-width: {{SIZE}}px;'
 				],
 			]
 		);
@@ -349,8 +349,8 @@ class Timeline extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-line-right' => 'border-radius: 0 {{SIZE}}px {{SIZE}}px 0;',
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-line-left'  => 'border-radius: {{SIZE}}px 0 0 {{SIZE}}px',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-line-right' => 'border-radius: 0 {{SIZE}}px {{SIZE}}px 0;',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-line-left'  => 'border-radius: {{SIZE}}px 0 0 {{SIZE}}px',
 				],
 			]
 		);
@@ -370,7 +370,7 @@ class Timeline extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-start-end-wrap, {{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-date-wrapper' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-start-end-wrap, {{WRAPPER}} .upk-timeline .upk-item .upk-date-wrapper' => 'color: {{VALUE}};'
 				],
 			]
 		);
@@ -381,7 +381,7 @@ class Timeline extends Group_Control_Query {
 				'label'     => esc_html__('Background', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-start-end-wrap, {{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-date-wrapper' => 'background: {{VALUE}};'
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-start-end-wrap, {{WRAPPER}} .upk-timeline .upk-item .upk-date-wrapper' => 'background: {{VALUE}};'
 				],
 			]
 		);
@@ -393,7 +393,7 @@ class Timeline extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-start-end-wrap, {{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-date-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-start-end-wrap, {{WRAPPER}} .upk-timeline .upk-item .upk-date-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -433,7 +433,7 @@ class Timeline extends Group_Control_Query {
 						'default' => '#e1e7f0',
 					],
 				],
-				'selector'       => '{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-image-wrapper .upk-img',
+				'selector'       => '{{WRAPPER}} .upk-timeline .upk-item .upk-image-wrapper .upk-img',
 			]
 		);
 
@@ -444,7 +444,7 @@ class Timeline extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item:nth-child(2n+1) .upk-timeline-image-wrapper .upk-img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-timeline .upk-item:nth-child(2n+1) .upk-image-wrapper .upk-img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -456,7 +456,7 @@ class Timeline extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item:nth-child(2n+2) .upk-timeline-image-wrapper .upk-img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-timeline .upk-item:nth-child(2n+2) .upk-image-wrapper .upk-img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -468,7 +468,7 @@ class Timeline extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-image-wrapper .upk-img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-image-wrapper .upk-img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -477,7 +477,7 @@ class Timeline extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'item_image_shadow',
-				'selector' => '{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-image-wrapper .upk-img',
+				'selector' => '{{WRAPPER}} .upk-timeline .upk-item .upk-image-wrapper .upk-img',
 			]
 		);
 
@@ -493,7 +493,7 @@ class Timeline extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--upk-timeline-image-width: {{SIZE}}px;'
+					'{{WRAPPER}}' => '--upk-image-width: {{SIZE}}px;'
 				],
 			]
 		);
@@ -504,7 +504,7 @@ class Timeline extends Group_Control_Query {
 				'label'     => esc_html__('Spacing', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
-					'{{WRAPPER}}' => '--upk-timeline-image-spacing: {{SIZE}}px;'
+					'{{WRAPPER}}' => '--upk-image-spacing: {{SIZE}}px;'
 				],
 			]
 		);
@@ -543,7 +543,7 @@ class Timeline extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-title a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-title a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -554,7 +554,7 @@ class Timeline extends Group_Control_Query {
 				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-title a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-title a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -564,7 +564,7 @@ class Timeline extends Group_Control_Query {
 			[
 				'name'     => 'title_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-title',
+				'selector' => '{{WRAPPER}} .upk-timeline .upk-item .upk-title',
 			]
 		);
 
@@ -573,7 +573,7 @@ class Timeline extends Group_Control_Query {
 			[
 				'name'     => 'title_text_shadow',
 				'label'    => __('Text Shadow', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-title',
+				'selector' => '{{WRAPPER}} .upk-timeline .upk-item .upk-title',
 			]
 		);
 
@@ -589,7 +589,7 @@ class Timeline extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-title' => 'padding-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-title' => 'padding-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -613,7 +613,7 @@ class Timeline extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-desc' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-desc' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -623,7 +623,7 @@ class Timeline extends Group_Control_Query {
 			[
 				'name'     => 'text_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-desc',
+				'selector' => '{{WRAPPER}} .upk-timeline .upk-item .upk-desc',
 			]
 		);
 
@@ -634,7 +634,7 @@ class Timeline extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-desc' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-desc' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				]
 			]
 		);
@@ -668,7 +668,7 @@ class Timeline extends Group_Control_Query {
 				'label'     => esc_html__('Text Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-meta, {{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-meta .upk-author-name-wrap .upk-author-name' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-meta, {{WRAPPER}} .upk-timeline .upk-item .upk-meta .upk-author-name-wrap .upk-author-name' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -679,7 +679,7 @@ class Timeline extends Group_Control_Query {
 				'label'     => esc_html__('Text Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-meta .upk-author-name-wrap .upk-author-name:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-meta .upk-author-name-wrap .upk-author-name:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -689,7 +689,7 @@ class Timeline extends Group_Control_Query {
 			[
 				'name'     => 'meta_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-meta',
+				'selector' => '{{WRAPPER}} .upk-timeline .upk-item .upk-meta',
 			]
 		);
 
@@ -705,7 +705,7 @@ class Timeline extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-meta .upk-separator' => 'margin: 0 {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-meta .upk-separator' => 'margin: 0 {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -739,7 +739,7 @@ class Timeline extends Group_Control_Query {
 				'label'     => esc_html__('Text Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-responsive-date' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-responsive-date' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -749,7 +749,7 @@ class Timeline extends Group_Control_Query {
 			[
 				'name'     => 'date_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-responsive-date',
+				'selector' => '{{WRAPPER}} .upk-timeline .upk-item .upk-responsive-date',
 			]
 		);
 
@@ -765,7 +765,7 @@ class Timeline extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-responsive-date .upk-date' => 'padding-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-responsive-date .upk-date' => 'padding-left: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -777,7 +777,7 @@ class Timeline extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-responsive-date' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-responsive-date' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				]
 			]
 		);
@@ -807,7 +807,7 @@ class Timeline extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-category' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-category' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -827,7 +827,7 @@ class Timeline extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-category a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-category a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -836,7 +836,7 @@ class Timeline extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'category_background',
-				'selector' => '{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-category a',
+				'selector' => '{{WRAPPER}} .upk-timeline .upk-item .upk-category a',
 			]
 		);
 
@@ -862,7 +862,7 @@ class Timeline extends Group_Control_Query {
 						'default' => '#EF233C',
 					],
 				],
-				'selector'       => '{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-category a',
+				'selector'       => '{{WRAPPER}} .upk-timeline .upk-item .upk-category a',
 			]
 		);
 
@@ -873,7 +873,7 @@ class Timeline extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-category a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-category a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -885,7 +885,7 @@ class Timeline extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-category a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-category a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -902,7 +902,7 @@ class Timeline extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-category a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-category a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -912,7 +912,7 @@ class Timeline extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'category_shadow',
-				'selector' => '{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-category a',
+				'selector' => '{{WRAPPER}} .upk-timeline .upk-item .upk-category a',
 			]
 		);
 
@@ -921,7 +921,7 @@ class Timeline extends Group_Control_Query {
 			[
 				'name'     => 'category_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-category a',
+				'selector' => '{{WRAPPER}} .upk-timeline .upk-item .upk-category a',
 			]
 		);
 
@@ -940,7 +940,7 @@ class Timeline extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-category a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-category a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -949,7 +949,7 @@ class Timeline extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'category_hover_background',
-				'selector' => '{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-category a:hover',
+				'selector' => '{{WRAPPER}} .upk-timeline .upk-item .upk-category a:hover',
 			]
 		);
 
@@ -962,7 +962,7 @@ class Timeline extends Group_Control_Query {
 					'category_border_border!' => '',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-timeline .upk-timeline-item .upk-timeline-category a:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-category a:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1009,7 +1009,7 @@ class Timeline extends Group_Control_Query {
 
 ?>
 
-		<div class="upk-timeline-image-wrapper">
+		<div class="upk-image-wrapper">
 			<img class="upk-img" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
 		</div>
 	<?php
@@ -1021,7 +1021,7 @@ class Timeline extends Group_Control_Query {
 			return;
 		}
 	?>
-		<div class="upk-timeline-category">
+		<div class="upk-category">
 			<?php echo upk_get_category($this->get_settings('posts_source')); ?>
 		</div>
 	<?php
@@ -1049,7 +1049,7 @@ class Timeline extends Group_Control_Query {
 		}
 		$strip_shortcode = $this->get_settings_for_display('strip_shortcode');
 	?>
-		<div class="upk-timeline-desc">
+		<div class="upk-desc">
 			<?php
 			if (has_excerpt()) {
 				the_excerpt();
@@ -1069,7 +1069,7 @@ class Timeline extends Group_Control_Query {
 		}
 	?>
 
-		<div class="upk-timeline-comments">
+		<div class="upk-comments">
 			<?php echo get_comments_number($id) ?>
 			<?php echo esc_html__('Comments', 'ultimate-post-kit') ?>
 		</div>
@@ -1098,21 +1098,21 @@ class Timeline extends Group_Control_Query {
 
 			$this->add_render_attribute('timeline-item', 'onclick', "window.open('" . esc_url(get_permalink()) . "', '_self')", true);
 		}
-		$this->add_render_attribute('timeline-item', 'class', 'upk-timeline-item', true);
+		$this->add_render_attribute('timeline-item', 'class', 'upk-item', true);
 		$this->add_render_attribute('timeline-item', 'class', $class);
 
 	?>
 
 		<div <?php $this->print_render_attribute_string('timeline-item'); ?>>
-			<div class="upk-timeline-item-box">
-				<span class="upk-timeline-start-end-wrap">
+			<div class="upk-item-box">
+				<span class="upk-start-end-wrap">
 					<span class="upk-start"><?php echo esc_html__('start', 'ultimate-post-kit') ?></span>
 					<span class="upk-end"><?php echo esc_html__('end', 'ultimate-post-kit') ?></span>
 				</span>
 
 				<?php //if($settings['show_date'] == 'yes') : 
 				?>
-				<div class="upk-timeline-date-wrapper">
+				<div class="upk-date-wrapper">
 					<div class="upk-date-inner">
 						<span class="upk-month"><?php echo get_the_date('m/d'); ?></span>
 						<span class="upk-year"><?php echo get_the_date('Y'); ?></span>
@@ -1121,15 +1121,15 @@ class Timeline extends Group_Control_Query {
 				<?php ///endif; 
 				?>
 
-				<div class="upk-timeline-image-and-content-wrapper">
+				<div class="upk-image-and-content-wrapper">
 					<?php $this->render_image(get_post_thumbnail_id($post_id), $image_size); ?>
-					<div class="upk-timeline-content-wrap">
+					<div class="upk-content-wrap">
 
 						<?php $this->render_category(); ?>
 						<?php $this->render_title(substr($this->get_name(), 4)); ?>
 
 						<?php if ($settings['show_date'] == 'yes' or $settings['show_inline_date'] == 'yes') : ?>
-							<div class="upk-timeline-responsive-date">
+							<div class="upk-responsive-date">
 								<span class="upk-publish"><?php echo esc_html__('publish on', 'ultimate-post-kit') ?></span>
 								<span class="upk-date">
 									<?php $this->render_date(); ?>
@@ -1145,7 +1145,7 @@ class Timeline extends Group_Control_Query {
 
 						<?php $this->render_excerpt($excerpt_length); ?>
 
-						<div class="upk-timeline-meta">
+						<div class="upk-meta">
 							<?php $this->render_author(); ?>
 							<span class="upk-separator"><?php echo esc_html($settings['meta_separator']); ?></span>
 							<?php $this->render_comments($post_id); ?>
@@ -1153,8 +1153,8 @@ class Timeline extends Group_Control_Query {
 					</div>
 				</div>
 
-				<div class="upk-timeline-line-right"></div>
-				<div class="upk-timeline-line-left"></div>
+				<div class="upk-line-right"></div>
+				<div class="upk-line-left"></div>
 			</div>
 		</div>
 	<?php
@@ -1176,7 +1176,7 @@ class Timeline extends Group_Control_Query {
 	?>
 
 		<div class="upk-timeline">
-			<div class="upk-timeline-wrapper">
+			<div class="upk-wrapper">
 
 				<?php
 
@@ -1187,7 +1187,7 @@ class Timeline extends Group_Control_Query {
 					$thumbnail_size = $settings['primary_thumbnail_size'];
 
 					if ($limit == 0) {
-						$class = 'upk-timeline-last-even-item upk-timeline-last-odd-item';
+						$class = 'upk-last-even-item upk-last-odd-item';
 					}
 
 				?>

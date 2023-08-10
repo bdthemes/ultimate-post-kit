@@ -93,7 +93,7 @@ class Author extends Module_Base {
 					'6' => '6',
 				],
 				'selectors'      => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper.upk-author-layout-grid_1' => 'grid-template-columns: repeat({{SIZE}}, 1fr);',
+					'{{WRAPPER}} .upk-author-wrapper.upk-grid_1' => 'grid-template-columns: repeat({{SIZE}}, 1fr);',
 				],
 				'condition'      => [
 					'layout_style' => ['grid_1']
@@ -115,7 +115,7 @@ class Author extends Module_Base {
 					'3' => '3',
 				],
 				'selectors'      => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper.upk-author-layout-list' => 'grid-template-columns: repeat({{SIZE}}, 1fr);',
+					'{{WRAPPER}} .upk-author-wrapper.upk-list' => 'grid-template-columns: repeat({{SIZE}}, 1fr);',
 				],
 				'condition'      => [
 					'layout_style' => 'list'
@@ -132,7 +132,7 @@ class Author extends Module_Base {
 					'size' => 20,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper' => 'grid-gap: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper' => 'grid-gap: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -157,7 +157,7 @@ class Author extends Module_Base {
 					]
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-content' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -182,7 +182,7 @@ class Author extends Module_Base {
 					]
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-link' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-link' => 'justify-content: {{VALUE}};',
 				],
 			]
 		);
@@ -384,7 +384,7 @@ class Author extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -424,7 +424,7 @@ class Author extends Module_Base {
 					'size' => 5
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'
+					'{{WRAPPER}} .upk-author-wrapper .upk-item' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'
 				],
 				'condition' => [
 					'glassmorphism_effect' => 'yes',
@@ -436,7 +436,7 @@ class Author extends Module_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'item_background',
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-item',
 			]
 		);
 
@@ -462,7 +462,7 @@ class Author extends Module_Base {
 						'default' => '#e9edf4',
 					],
 				],
-				'selector'       => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item',
+				'selector'       => '{{WRAPPER}} .upk-author-wrapper .upk-item',
 			]
 		);
 
@@ -473,7 +473,7 @@ class Author extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -485,7 +485,7 @@ class Author extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -494,7 +494,7 @@ class Author extends Module_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'item_box_shadow',
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-item',
 			]
 		);
 
@@ -511,7 +511,7 @@ class Author extends Module_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'item_hover_background',
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item:hover',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-item:hover',
 			]
 		);
 
@@ -521,7 +521,7 @@ class Author extends Module_Base {
 				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-item:hover' => 'border-color: {{VALUE}};',
 				],
 				'condition' => [
 					'item_border_border!' => '',
@@ -533,7 +533,7 @@ class Author extends Module_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'item_box_shadow_hover',
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item:hover',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-item:hover',
 			]
 		);
 
@@ -600,7 +600,7 @@ class Author extends Module_Base {
 				'default'        => 0,
 				'options'        => ultimate_post_kit_mask_shapes(),
 				'selectors'      => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-image a img' => '-webkit-mask-image: url({{VALUE}}); mask-image: url({{VALUE}});',
+					'{{WRAPPER}} .upk-author-wrapper .upk-image a img' => '-webkit-mask-image: url({{VALUE}}); mask-image: url({{VALUE}});',
 				],
 				'condition'      => [
 					'image_mask_popover' => 'yes',
@@ -617,7 +617,7 @@ class Author extends Module_Base {
 				'type'       => Controls_Manager::MEDIA,
 				'show_label' => false,
 				'selectors'  => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-image a img' => '-webkit-mask-image: url({{URL}}); mask-image: url({{URL}});',
+					'{{WRAPPER}} .upk-author-wrapper .upk-image a img' => '-webkit-mask-image: url({{URL}}); mask-image: url({{URL}});',
 				],
 				'condition'  => [
 					'image_mask_popover' => 'yes',
@@ -655,7 +655,7 @@ class Author extends Module_Base {
 					'bottom-right'  => 'bottom right',
 				],
 				'selectors'            => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-image a img' => '-webkit-mask-position: {{VALUE}}; mask-position: {{VALUE}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-image a img' => '-webkit-mask-position: {{VALUE}}; mask-position: {{VALUE}};',
 				],
 				'condition'            => [
 					'image_mask_popover' => 'yes',
@@ -676,7 +676,7 @@ class Author extends Module_Base {
 					'initial' => esc_html__('Custom', 'ultimate-post-kit'),
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-image a img' => '-webkit-mask-size: {{VALUE}}; mask-size: {{VALUE}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-image a img' => '-webkit-mask-size: {{VALUE}}; mask-size: {{VALUE}};',
 				],
 				'condition' => [
 					'image_mask_popover' => 'yes',
@@ -715,7 +715,7 @@ class Author extends Module_Base {
 				],
 				'required'   => true,
 				'selectors'  => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-image a img' => '-webkit-mask-size: {{SIZE}}{{UNIT}}; mask-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-image a img' => '-webkit-mask-size: {{SIZE}}{{UNIT}}; mask-size: {{SIZE}}{{UNIT}};',
 				],
 				'condition'  => [
 					'image_mask_popover'    => 'yes',
@@ -753,7 +753,7 @@ class Author extends Module_Base {
 					'no-repeat-round' => 'no-repeat round',
 				],
 				'selectors'            => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-image a img' => '-webkit-mask-repeat: {{VALUE}}; mask-repeat: {{VALUE}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-image a img' => '-webkit-mask-repeat: {{VALUE}}; mask-repeat: {{VALUE}};',
 				],
 				'condition'            => [
 					'image_mask_popover' => 'yes',
@@ -767,7 +767,7 @@ class Author extends Module_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name'     => 'avatar_border',
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-image a img',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-image a img',
 				'separator' => 'before'
 			]
 		);
@@ -779,7 +779,7 @@ class Author extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-image a img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-image a img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -791,7 +791,7 @@ class Author extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-image a img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-image a img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -803,7 +803,7 @@ class Author extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-image' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-image' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition'  => [
 					'layout_style' => ['grid_1']
@@ -815,7 +815,7 @@ class Author extends Module_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'avatar_box_shadow',
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-image a img',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-image a img',
 			]
 		);
 
@@ -831,7 +831,7 @@ class Author extends Module_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-image a img' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; min-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-image a img' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; min-width: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'layout_style' => ['list']
@@ -851,7 +851,7 @@ class Author extends Module_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-image' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-image' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'layout_style' => 'list'
@@ -872,7 +872,7 @@ class Author extends Module_Base {
 			Group_Control_Css_Filter::get_type(),
 			[
 				'name'     => 'css_filters',
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-image a img',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-image a img',
 			]
 		);
 
@@ -889,7 +889,7 @@ class Author extends Module_Base {
 			Group_Control_Css_Filter::get_type(),
 			[
 				'name'     => 'hover_css_filters',
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item:hover .upk-author-image a img',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-item:hover .upk-image a img',
 			]
 		);
 
@@ -916,7 +916,7 @@ class Author extends Module_Base {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-name a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-name a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -927,7 +927,7 @@ class Author extends Module_Base {
 				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-name a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-name a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -937,7 +937,7 @@ class Author extends Module_Base {
 			[
 				'name'     => 'name_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-name a',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-name a',
 			]
 		);
 
@@ -946,7 +946,7 @@ class Author extends Module_Base {
 			[
 				'name'     => 'name_text_shadow',
 				'label'    => __('Text Shadow', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-name a',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-name a',
 			]
 		);
 
@@ -969,7 +969,7 @@ class Author extends Module_Base {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-role' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-role' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -979,7 +979,7 @@ class Author extends Module_Base {
 			[
 				'name'     => 'role_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-role',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-role',
 			]
 		);
 
@@ -995,7 +995,7 @@ class Author extends Module_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-role' => 'padding-top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-role' => 'padding-top: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1019,7 +1019,7 @@ class Author extends Module_Base {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-description' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-description' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1029,7 +1029,7 @@ class Author extends Module_Base {
 			[
 				'name'     => 'description_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-description',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-description',
 			]
 		);
 
@@ -1045,7 +1045,7 @@ class Author extends Module_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-description' => 'padding-top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-description' => 'padding-top: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1069,7 +1069,7 @@ class Author extends Module_Base {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-post-count' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-post-count' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1078,7 +1078,7 @@ class Author extends Module_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'post_count_background',
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-post-count',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-post-count',
 			]
 		);
 
@@ -1104,7 +1104,7 @@ class Author extends Module_Base {
 					// 	'default' => '#8D99AE',
 					// ],
 				],
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-post-count',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-post-count',
 			]
 		);
 
@@ -1115,7 +1115,7 @@ class Author extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-post-count' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-post-count' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1127,7 +1127,7 @@ class Author extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-post-count' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-post-count' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1136,7 +1136,7 @@ class Author extends Module_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'post_count_shadow',
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-post-count',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-post-count',
 			]
 		);
 
@@ -1145,7 +1145,7 @@ class Author extends Module_Base {
 			[
 				'name'     => 'post_count_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-post-count',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-post-count',
 			]
 		);
 
@@ -1161,7 +1161,7 @@ class Author extends Module_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-post-count' => 'top: {{SIZE}}{{UNIT}}; right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-post-count' => 'top: {{SIZE}}{{UNIT}}; right: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1191,7 +1191,7 @@ class Author extends Module_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-link' => 'padding-top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-link' => 'padding-top: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1211,7 +1211,7 @@ class Author extends Module_Base {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-link a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-link a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1220,7 +1220,7 @@ class Author extends Module_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'social_link_background',
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-link a',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-link a',
 			]
 		);
 
@@ -1228,7 +1228,7 @@ class Author extends Module_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name'     => 'social_link_border',
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-link a',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-link a',
 			]
 		);
 
@@ -1239,7 +1239,7 @@ class Author extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-link a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-link a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1251,7 +1251,7 @@ class Author extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-link a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-link a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1268,7 +1268,7 @@ class Author extends Module_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-link a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-link a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1277,7 +1277,7 @@ class Author extends Module_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'social_link_shadow',
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-link a',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-link a',
 			]
 		);
 
@@ -1286,7 +1286,7 @@ class Author extends Module_Base {
 			[
 				'name'     => 'social_link_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-link a',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-link a',
 			]
 		);
 
@@ -1305,7 +1305,7 @@ class Author extends Module_Base {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-link a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-link a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1314,7 +1314,7 @@ class Author extends Module_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'social_link_hover_background',
-				'selector' => '{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-link a:hover',
+				'selector' => '{{WRAPPER}} .upk-author-wrapper .upk-link a:hover',
 			]
 		);
 
@@ -1327,7 +1327,7 @@ class Author extends Module_Base {
 					'social_link_border_border!' => '',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-link a:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-link a:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1339,7 +1339,7 @@ class Author extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-author .upk-author-wrapper .upk-author-item .upk-author-content .upk-author-link a:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-author-wrapper .upk-link a:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1366,22 +1366,22 @@ class Author extends Module_Base {
 
 ?>
 		<div class="upk-author">
-			<div class="upk-author-wrapper upk-author-layout-<?php echo esc_html($settings['layout_style']) ?>">
+			<div class="upk-author-wrapper upk-<?php echo esc_html($settings['layout_style']) ?>">
 				<?php
 				foreach ($users as $author) {
 				?>
-					<div class="upk-author-item">
+					<div class="upk-item">
 						<?php if ($settings['show_author_avatar']) : ?>
-							<div class="upk-author-image">
+							<div class="upk-image">
 								<a href="<?php echo get_bloginfo('url') . "/?author=" . $author->ID; ?>">
 									<?php echo get_avatar($author->ID, $settings['author_avatar_size']); ?>
 								</a>
 							</div>
 						<?php endif; ?>
 
-						<div class="upk-author-content">
+						<div class="upk-content">
 							<?php if ($settings['show_author_name']) : ?>
-								<div class="upk-author-name">
+								<div class="upk-name">
 									<a href="<?php echo get_bloginfo('url') . "/?author=" . $author->ID; ?>">
 										<?php echo get_the_author_meta('display_name', $author->ID); ?>
 									</a>
@@ -1389,20 +1389,20 @@ class Author extends Module_Base {
 							<?php endif; ?>
 
 							<?php if ($settings['show_author_role']) : ?>
-								<div class="upk-author-role">
+								<div class="upk-role">
 									<?php echo ucwords(get_user_role($author->ID)); ?>
 								</div>
 							<?php endif; ?>
 
 							<?php if ($settings['show_author_description'] and get_the_author_meta('description', $author->ID)) : ?>
-								<div class="upk-author-description">
+								<div class="upk-description">
 									<?php echo get_the_author_meta('description', $author->ID); ?>
 								</div>
 							<?php endif; ?>
 
 							<?php if ($settings['show_author_link'] and !empty($social_links)) : ?>
 
-								<div class="upk-author-link">
+								<div class="upk-link">
 
 
 									<?php foreach ($social_links as $link) : ?>
@@ -1434,7 +1434,7 @@ class Author extends Module_Base {
 						</div>
 
 						<?php if ($settings['show_post_count']) : ?>
-							<div class="upk-author-post-count">
+							<div class="upk-post-count">
 								<?php
 
 								$count = count_user_posts($author->ID);

@@ -183,67 +183,6 @@
 	}
 }
 
-.elementor-widget-upk-maple-carousel {
-	.upk-arrows-container {
-		-webkit-transform: translate(var(--upk-maple-carousel-arrows-ncx, 0), var(--upk-maple-carousel-arrows-ncy, 40));
-		transform: translate(var(--upk-maple-carousel-arrows-ncx, 0), var(--upk-maple-carousel-arrows-ncy, 40));
-	}
-	.upk-dots-container {
-		-webkit-transform: translate(var(--upk-maple-carousel-dots-nnx, 0), var(--upk-maple-carousel-dots-nny, 30));
-		transform: translate(var(--upk-maple-carousel-dots-nnx, 0), var(--upk-maple-carousel-dots-nny, 30));
-	}
-	.upk-arrows-dots-container {
-		-webkit-transform: translate(var(--upk-maple-carousel-both-ncx, 0), var(--upk-maple-carousel-both-ncy, 40));
-		transform: translate(var(--upk-maple-carousel-both-ncx, 0), var(--upk-maple-carousel-both-ncy, 40));
-	}
-	.upk-arrows-fraction-container {
-		-webkit-transform: translate(
-			var(--upk-maple-carousel-arrows-fraction-ncx, 0),
-			var(--upk-maple-carousel-arrows-fraction-ncy, 40)
-		);
-		transform: translate(
-			var(--upk-maple-carousel-arrows-fraction-ncx, 0),
-			var(--upk-maple-carousel-arrows-fraction-ncy, 40)
-		);
-	}
-	.upk-position-center-left,
-	.upk-position-center-right {
-		.upk-arrows-container {
-			-webkit-transform: translate(
-					var(--upk-maple-carousel-arrows-ncx, 0),
-					var(--upk-maple-carousel-arrows-ncy, 0)
-				)
-				rotate(90deg);
-			transform: translate(var(--upk-maple-carousel-arrows-ncx, 0), var(--upk-maple-carousel-arrows-ncy, 0))
-				rotate(90deg);
-		}
-		.upk-dots-container {
-			-webkit-transform: translate(var(--upk-maple-carousel-dots-nnx, 0), var(--upk-maple-carousel-dots-nny, 0))
-				rotate(90deg);
-			transform: translate(var(--upk-maple-carousel-dots-nnx, 0), var(--upk-maple-carousel-dots-nny, 0))
-				rotate(90deg);
-		}
-		.upk-arrows-dots-container {
-			-webkit-transform: translate(var(--upk-maple-carousel-both-ncx, 0), var(--upk-maple-carousel-both-ncy, 0))
-				rotate(90deg);
-			transform: translate(var(--upk-maple-carousel-both-ncx, 0), var(--upk-maple-carousel-both-ncy, 0))
-				rotate(90deg);
-		}
-		.upk-arrows-fraction-container {
-			-webkit-transform: translate(
-					var(--upk-maple-carousel-arrows-fraction-ncx, 0),
-					var(--upk-maple-carousel-arrows-fraction-ncy, 0)
-				)
-				rotate(90deg);
-			transform: translate(
-					var(--upk-maple-carousel-arrows-fraction-ncx, 0),
-					var(--upk-maple-carousel-arrows-fraction-ncy, 0)
-				)
-				rotate(90deg);
-		}
-	}
-}
-
 //Responsive Css Here
 @media (min-width: 768px) {
 	.upk-maple-carousel {

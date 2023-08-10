@@ -866,7 +866,7 @@ class Harold_List extends Group_Control_Query {
 							<?php if (_is_upk_pro_activated()) :
 								if ('yes' === $settings['show_reading_time']) : ?>
 									<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
-										<?php ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
+										<?php echo ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
 									</div>
 								<?php endif; ?>
 							<?php endif; ?>

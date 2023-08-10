@@ -93,7 +93,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-item' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -110,7 +110,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-content-box' => 'max-width: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-paradox-slider .upk-content-box' => 'max-width: {{SIZE}}px;',
 				],
 			]
 		);
@@ -134,7 +134,7 @@ class Paradox_Slider extends Group_Control_Query {
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
-				'prefix_class' => 'upk-content-position--',
+				'prefix_class' => 'upk-content--',
 				'render_type' => 'template',
 			]
 		);
@@ -539,7 +539,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'label'     => esc_html__('Overlay Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-image-wrapper:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-image-wrapper:before' => 'background: {{VALUE}};',
 				],
 			]
 		);
@@ -551,7 +551,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'type' 		 => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-content-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-content-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -562,7 +562,7 @@ class Paradox_Slider extends Group_Control_Query {
 			[
 				'name'      => 'slider_item_border',
 				'label'     => esc_html__('Border', 'ultimate-post-kit'),
-				'selector'  => '{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item',
+				'selector'  => '{{WRAPPER}} .upk-paradox-slider .upk-item',
 			]
 		);
 
@@ -574,7 +574,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -598,7 +598,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-title-wrap .upk-paradox-title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-title-wrap .upk-title' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -609,7 +609,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-title-wrap .upk-paradox-title:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-title-wrap .upk-title:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -626,7 +626,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-title-wrap' => 'padding-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-title-wrap' => 'padding-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -636,7 +636,7 @@ class Paradox_Slider extends Group_Control_Query {
 			[
 				'name'      => 'title_typography',
 				'label'     => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector'  => '{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-title-wrap',
+				'selector'  => '{{WRAPPER}} .upk-paradox-slider .upk-title-wrap',
 			]
 		);
 
@@ -645,7 +645,7 @@ class Paradox_Slider extends Group_Control_Query {
 			[
 				'name' => 'title_text_shadow',
 				'label' => __('Text Shadow', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-wrapper .upk-paradox-slider-item .upk-paradox-content-box .upk-content-inner .upk-paradox-title-wrap',
+				'selector' => '{{WRAPPER}} .upk-paradox-slider .upk-wrapper .upk-content-box .upk-content-inner .upk-title-wrap',
 			]
 		);
 
@@ -669,7 +669,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-slider-text' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-text' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -687,7 +687,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-slider-text' => 'padding-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-text' => 'padding-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -697,7 +697,7 @@ class Paradox_Slider extends Group_Control_Query {
 			[
 				'name'      => 'text_typography',
 				'label'     => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector'  => '{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-slider-text',
+				'selector'  => '{{WRAPPER}} .upk-paradox-slider .upk-text',
 			]
 		);
 
@@ -726,7 +726,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-author-image img' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-author-image img' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -737,7 +737,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'label'     => esc_html__('Text Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-author-name a, {{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-author-role' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-author-name a, {{WRAPPER}} .upk-paradox-slider .upk-author-role' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -754,7 +754,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-author-image img' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-author-image img' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -764,7 +764,7 @@ class Paradox_Slider extends Group_Control_Query {
 			[
 				'name'     => 'author_name_typography',
 				'label'    => esc_html__('Name Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-author-name a',
+				'selector' => '{{WRAPPER}} .upk-paradox-slider .upk-author-name a',
 			]
 		);
 
@@ -773,7 +773,7 @@ class Paradox_Slider extends Group_Control_Query {
 			[
 				'name'     => 'author_role_typography',
 				'label'    => esc_html__('Role Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-author-role',
+				'selector' => '{{WRAPPER}} .upk-paradox-slider .upk-author-role',
 			]
 		);
 
@@ -806,7 +806,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-meta' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-meta' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -824,7 +824,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-meta' => 'padding-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-meta' => 'padding-left: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -840,7 +840,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-meta > div:before' => 'margin: 0 {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-meta > div:before' => 'margin: 0 {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -850,7 +850,7 @@ class Paradox_Slider extends Group_Control_Query {
 			[
 				'name'     => 'date_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-meta',
+				'selector' => '{{WRAPPER}} .upk-paradox-slider .upk-meta',
 			]
 		);
 
@@ -880,7 +880,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-category-date-wrap' => 'padding-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-category-date-wrap' => 'padding-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -900,7 +900,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-category a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-category a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -909,7 +909,7 @@ class Paradox_Slider extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'      => 'category_background',
-				'selector'  => '{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-category a',
+				'selector'  => '{{WRAPPER}} .upk-paradox-slider .upk-category a',
 			]
 		);
 
@@ -917,7 +917,7 @@ class Paradox_Slider extends Group_Control_Query {
 			Group_Control_Border::get_type(),
 			[
 				'name'        => 'category_border',
-				'selector'    => '{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-category a',
+				'selector'    => '{{WRAPPER}} .upk-paradox-slider .upk-category a',
 			]
 		);
 
@@ -928,7 +928,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-category a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-category a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -940,7 +940,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-category a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-category a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -958,7 +958,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-category a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-category a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -967,7 +967,7 @@ class Paradox_Slider extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'category_shadow',
-				'selector' => '{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-category a',
+				'selector' => '{{WRAPPER}} .upk-paradox-slider .upk-category a',
 			]
 		);
 
@@ -976,7 +976,7 @@ class Paradox_Slider extends Group_Control_Query {
 			[
 				'name'     => 'category_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-category a',
+				'selector' => '{{WRAPPER}} .upk-paradox-slider .upk-category a',
 			]
 		);
 
@@ -998,7 +998,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-category a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-category a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1007,7 +1007,7 @@ class Paradox_Slider extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'      => 'category_hover_background',
-				'selector'  => '{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-category a:hover',
+				'selector'  => '{{WRAPPER}} .upk-paradox-slider .upk-category a:hover',
 			]
 		);
 
@@ -1020,7 +1020,7 @@ class Paradox_Slider extends Group_Control_Query {
 					'category_border_border!' => '',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-paradox-slider-item .upk-paradox-category a:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-category a:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1626,7 +1626,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--upk-paradox-slider-arrows-ncx: {{SIZE}}px;'
+					'{{WRAPPER}}' => '--upk-swiper-carousel-arrows-ncx: {{SIZE}}px;'
 				],
 			]
 		);
@@ -1652,7 +1652,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--upk-paradox-slider-arrows-ncy: {{SIZE}}px;'
+					'{{WRAPPER}}' => '--upk-swiper-carousel-arrows-ncy: {{SIZE}}px;'
 				],
 				'conditions'   => [
 					'terms' => [
@@ -1737,7 +1737,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--upk-paradox-slider-dots-nnx: {{SIZE}}px;'
+					'{{WRAPPER}}' => '--upk-swiper-carousel-dots-nnx: {{SIZE}}px;'
 				],
 			]
 		);
@@ -1776,7 +1776,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--upk-paradox-slider-dots-nny: {{SIZE}}px;'
+					'{{WRAPPER}}' => '--upk-swiper-carousel-dots-nny: {{SIZE}}px;'
 				],
 			]
 		);
@@ -1815,7 +1815,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--upk-paradox-slider-both-ncx: {{SIZE}}px;'
+					'{{WRAPPER}}' => '--upk-swiper-carousel-both-ncx: {{SIZE}}px;'
 				],
 			]
 		);
@@ -1854,7 +1854,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--upk-paradox-slider-both-ncy: {{SIZE}}px;'
+					'{{WRAPPER}}' => '--upk-swiper-carousel-both-ncy: {{SIZE}}px;'
 				],
 			]
 		);
@@ -1958,7 +1958,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--upk-paradox-slider-arrows-fraction-ncx: {{SIZE}}px;'
+					'{{WRAPPER}}' => '--upk-swiper-carousel-arrows-fraction-ncx: {{SIZE}}px;'
 				],
 			]
 		);
@@ -1997,7 +1997,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--upk-paradox-slider-arrows-fraction-ncy: {{SIZE}}px;'
+					'{{WRAPPER}}' => '--upk-swiper-carousel-arrows-fraction-ncy: {{SIZE}}px;'
 				],
 			]
 		);
@@ -2135,7 +2135,7 @@ class Paradox_Slider extends Group_Control_Query {
 
 		?>
 
-		<img class="upk-paradox-img swiper-lazy" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+		<img class="upk-img swiper-lazy" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
 
 		<?php
 	}
@@ -2147,7 +2147,7 @@ class Paradox_Slider extends Group_Control_Query {
 			return;
 		}
 
-		printf('<%1$s class="upk-paradox-title-wrap"><a href="%2$s" title="%3$s" class="upk-paradox-title">%3$s</a></%1$s>', Utils::get_valid_html_tag($settings['title_tags']), get_permalink(), get_the_title());
+		printf('<%1$s class="upk-title-wrap"><a href="%2$s" title="%3$s" class="upk-title">%3$s</a></%1$s>', Utils::get_valid_html_tag($settings['title_tags']), get_permalink(), get_the_title());
 
 	}
 
@@ -2158,7 +2158,7 @@ class Paradox_Slider extends Group_Control_Query {
 		}
 		$strip_shortcode = $this->get_settings_for_display( 'strip_shortcode' );
 		?>
-		<div class="upk-paradox-slider-text">
+		<div class="upk-text">
 			<?php
 				if ( has_excerpt() ) {
 					the_excerpt();
@@ -2212,7 +2212,7 @@ class Paradox_Slider extends Group_Control_Query {
 
 		?>
 
-		<div class="upk-paradox-date">
+		<div class="upk-date">
 			<?php if ($settings['human_diff_time'] == 'yes') {
 				echo ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
 			} else {
@@ -2236,14 +2236,14 @@ class Paradox_Slider extends Group_Control_Query {
 			return;
 		}
 		?>
-		<div class="upk-paradox-category">
+		<div class="upk-category">
 			<?php echo upk_get_category($this->get_settings('posts_source')); ?>
 		</div>
 		<?php
 	}
 
 	public function render_header() {
-		$id              = 'upk-paradox-slider-' . $this->get_id();
+		$id              = 'upk-' . $this->get_id();
 		$settings        = $this->get_settings_for_display();
 
 		$this->add_render_attribute( 'paradox-slider', 'id', $id );
@@ -2313,7 +2313,7 @@ class Paradox_Slider extends Group_Control_Query {
 
 		?>
 		<div <?php $this->print_render_attribute_string( 'paradox-slider' ); ?>>
-			<div class="upk-paradox-slider-wrapper">
+			<div class="upk-wrapper">
 				<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 		<?php
@@ -2458,7 +2458,7 @@ class Paradox_Slider extends Group_Control_Query {
 
 			$this->add_render_attribute('carousel-item', 'onclick', "window.open('" . esc_url(get_permalink()) . "', '_self')", true);
 		}
-		$this->add_render_attribute('carousel-item', 'class', 'upk-paradox-slider-item swiper-slide upk-transition-toggle', true);
+		$this->add_render_attribute('carousel-item', 'class', 'upk-item swiper-slide upk-transition-toggle', true);
 
 		?>
 		<div <?php $this->print_render_attribute_string('carousel-item'); ?>>
@@ -2466,7 +2466,7 @@ class Paradox_Slider extends Group_Control_Query {
 				<?php $this->render_image(get_post_thumbnail_id($post_id), $image_size); ?>
 			</div>
 
-			<div class="upk-paradox-content-box upk-position-center">
+			<div class="upk-content-box upk-position-center">
 				<div class="upk-content-inner">
 					<div class="upk-category-date-wrap upk-flex upk-flex-middle" data-swiper-parallax="-100" data-swiper-parallax-opacity="0.5" data-swiper-parallax-duration="600">
 						<?php $this->render_category(); ?>
@@ -2477,7 +2477,7 @@ class Paradox_Slider extends Group_Control_Query {
 							<?php if (_is_upk_pro_activated()) :
 								if ('yes' === $settings['show_reading_time']) : ?>
 									<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
-										<?php ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
+										<?php echo ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
 									</div>
 								<?php endif; ?>
 							<?php endif; ?>

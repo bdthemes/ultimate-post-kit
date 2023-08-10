@@ -823,9 +823,9 @@ if (_is_upk_pro_activated()) {
 		$reading_minute = floor($total_word / $avg_reading_speed);
 		$reading_seconds = floor($total_word % $avg_reading_speed / ($avg_reading_speed / 60));
 		if ($total_word >= $avg_reading_speed) {
-			printf("%s min %s sec read", $reading_minute, $reading_seconds);
+			return $reading_minute . ' min ' . $reading_seconds . ' sec read';
 		} else {
-			printf("%s sec read", $reading_seconds);
+			return $reading_seconds . ' sec read';
 		}
 	}
 }

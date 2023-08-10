@@ -882,7 +882,7 @@ class Category_Carousel extends Module_Base {
 		$this->end_controls_tab();
 		$this->end_controls_tabs();
 		$this->end_controls_section();
-		$this->register_navigation_style('category');
+		$this->register_navigation_style('swiper');
 	}
 
 	public function get_taxonomies() {

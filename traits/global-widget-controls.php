@@ -858,7 +858,7 @@ trait Global_Widget_Controls {
 				'label'     => __('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-prev i, {{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-next i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .upk-navigation-prev i, {{WRAPPER}} .upk-navigation-next i' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'navigation!' => ['dots', 'progressbar', 'none'],
@@ -872,7 +872,7 @@ trait Global_Widget_Controls {
 				'label'     => __('Background', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-prev, {{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-next' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .upk-navigation-prev, {{WRAPPER}} .upk-navigation-next' => 'background-color: {{VALUE}}',
 				],
 				'condition' => [
 					'navigation!' => ['dots', 'progressbar', 'none'],
@@ -884,7 +884,7 @@ trait Global_Widget_Controls {
 			Group_Control_Border::get_type(),
 			[
 				'name'      => 'nav_arrows_border',
-				'selector'  => '{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-prev, {{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-next',
+				'selector'  => '{{WRAPPER}} .upk-navigation-prev, {{WRAPPER}} .upk-navigation-next',
 				'condition' => [
 					'navigation!' => ['dots', 'progressbar', 'none'],
 				],
@@ -898,7 +898,7 @@ trait Global_Widget_Controls {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-prev, {{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-next' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-navigation-prev, {{WRAPPER}} .upk-navigation-next' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition'  => [
 					'navigation!' => ['dots', 'progressbar', 'none'],
@@ -913,7 +913,7 @@ trait Global_Widget_Controls {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-prev, {{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-next' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-navigation-prev, {{WRAPPER}} .upk-navigation-next' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition'  => [
 					'navigation!' => ['dots', 'progressbar', 'none'],
@@ -933,8 +933,8 @@ trait Global_Widget_Controls {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-prev i,
-                {{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-next i' => 'font-size: {{SIZE || 24}}{{UNIT}};',
+					'{{WRAPPER}} .upk-navigation-prev i,
+                {{WRAPPER}} .upk-navigation-next i' => 'font-size: {{SIZE || 24}}{{UNIT}};',
 				],
 				'condition' => [
 					'navigation!' => ['dots', 'progressbar', 'none'],
@@ -954,8 +954,8 @@ trait Global_Widget_Controls {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-prev' => 'margin-right: {{SIZE}}px;',
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-next' => 'margin-left: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-navigation-prev' => 'margin-right: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-navigation-next' => 'margin-left: {{SIZE}}px;',
 				],
 				'condition' => [
 					'navigation!' => ['dots', 'progressbar', 'none'],
@@ -981,7 +981,7 @@ trait Global_Widget_Controls {
 				'label'     => __('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-prev:hover i, {{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-next:hover i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .upk-navigation-prev:hover i, {{WRAPPER}} .upk-navigation-next:hover i' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'navigation!' => ['dots', 'progressbar', 'none'],
@@ -995,7 +995,7 @@ trait Global_Widget_Controls {
 				'label'     => __('Background', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-prev:hover, {{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-next:hover' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .upk-navigation-prev:hover, {{WRAPPER}} .upk-navigation-next:hover' => 'background-color: {{VALUE}}',
 				],
 				'condition' => [
 					'navigation!' => ['dots', 'progressbar', 'none'],
@@ -1009,7 +1009,7 @@ trait Global_Widget_Controls {
 				'label'     => __('Border Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-prev:hover, {{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-next:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-navigation-prev:hover, {{WRAPPER}} .upk-navigation-next:hover' => 'border-color: {{VALUE}};',
 				],
 				'condition' => [
 					'nav_arrows_border_border!' => '',
@@ -1061,7 +1061,7 @@ trait Global_Widget_Controls {
 				'label'     => __('Color', 'bdthemes-element-pack'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-bullet' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .swiper-pagination-bullet' => 'background-color: {{VALUE}}',
 				],
 				'condition' => [
 					'navigation!' => ['arrows', 'arrows-fraction', 'progressbar', 'none'],
@@ -1095,7 +1095,7 @@ trait Global_Widget_Controls {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-bullet' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .swiper-pagination-bullet' => 'width: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'navigation!' => ['arrows', 'arrows-fraction', 'progressbar', 'none'],
@@ -1115,7 +1115,7 @@ trait Global_Widget_Controls {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-bullet' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .swiper-pagination-bullet' => 'height: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'navigation!' => ['arrows', 'arrows-fraction', 'progressbar', 'none'],
@@ -1130,7 +1130,7 @@ trait Global_Widget_Controls {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-bullet' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .swiper-pagination-bullet' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => [
 					'navigation!' => ['arrows', 'arrows-fraction', 'progressbar', 'none'],
@@ -1142,7 +1142,7 @@ trait Global_Widget_Controls {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'dots_box_shadow',
-				'selector' => '{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-bullet',
+				'selector' => '{{WRAPPER}} .swiper-pagination-bullet',
 				'condition' => [
 					'navigation!' => ['arrows', 'arrows-fraction', 'progressbar', 'none'],
 				],
@@ -1167,7 +1167,7 @@ trait Global_Widget_Controls {
 				'label'     => __('Color', 'bdthemes-element-pack'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-bullet-active' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .swiper-pagination-bullet-active' => 'background-color: {{VALUE}}',
 				],
 				'condition' => [
 					'navigation!' => ['arrows', 'arrows-fraction', 'progressbar', 'none'],
@@ -1187,7 +1187,7 @@ trait Global_Widget_Controls {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-bullet-active' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .swiper-pagination-bullet-active' => 'width: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'navigation!' => ['arrows', 'arrows-fraction', 'progressbar', 'none'],
@@ -1207,7 +1207,7 @@ trait Global_Widget_Controls {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-bullet-active' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .swiper-pagination-bullet-active' => 'height: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}}' => '--upk-swiper-dots-active-height: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
@@ -1223,7 +1223,7 @@ trait Global_Widget_Controls {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-bullet-active' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .swiper-pagination-bullet-active' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => [
 					'navigation!' => ['arrows', 'arrows-fraction', 'progressbar', 'none'],
@@ -1263,7 +1263,7 @@ trait Global_Widget_Controls {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'dots_active_box_shadow',
-				'selector' => '{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-bullet-active',
+				'selector' => '{{WRAPPER}} .swiper-pagination-bullet-active',
 				'condition' => [
 					'navigation!' => ['arrows', 'arrows-fraction', 'progressbar', 'none'],
 				],
@@ -1311,7 +1311,7 @@ trait Global_Widget_Controls {
 				'label'     => __('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-fraction' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .swiper-pagination-fraction' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'navigation' => 'arrows-fraction',
@@ -1325,7 +1325,7 @@ trait Global_Widget_Controls {
 				'label'     => __('Active Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-current' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .swiper-pagination-current' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'navigation' => 'arrows-fraction',
@@ -1338,7 +1338,7 @@ trait Global_Widget_Controls {
 			[
 				'name'      => 'fraction_typography',
 				'label'     => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector'  => '{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-fraction',
+				'selector'  => '{{WRAPPER}} .swiper-pagination-fraction',
 				'condition' => [
 					'navigation' => 'arrows-fraction',
 				],
@@ -1382,7 +1382,7 @@ trait Global_Widget_Controls {
 				'label'     => __('Bar Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-progressbar' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .swiper-pagination-progressbar' => 'background-color: {{VALUE}}',
 				],
 				'condition' => [
 					'navigation' => 'progressbar',
@@ -1397,7 +1397,7 @@ trait Global_Widget_Controls {
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'after',
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-progressbar .swiper-pagination-progressbar-fill' => 'background: {{VALUE}}',
+					'{{WRAPPER}} .swiper-pagination-progressbar .swiper-pagination-progressbar-fill' => 'background: {{VALUE}}',
 				],
 				'condition' => [
 					'navigation' => 'progressbar',
@@ -1442,7 +1442,7 @@ trait Global_Widget_Controls {
 				'label'     => __('Bar Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-scrollbar' => 'background: {{VALUE}}',
+					'{{WRAPPER}} .swiper-scrollbar' => 'background: {{VALUE}}',
 				],
 				'condition' => [
 					'show_scrollbar' => 'yes'
@@ -1456,7 +1456,7 @@ trait Global_Widget_Controls {
 				'label'     => __('Drag Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-scrollbar .swiper-scrollbar-drag' => 'background: {{VALUE}}',
+					'{{WRAPPER}} .swiper-scrollbar .swiper-scrollbar-drag' => 'background: {{VALUE}}',
 				],
 				'condition' => [
 					'show_scrollbar' => 'yes'
@@ -1476,7 +1476,7 @@ trait Global_Widget_Controls {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-container-horizontal > .swiper-scrollbar' => 'height: {{SIZE}}px;',
+					'{{WRAPPER}} .swiper-container-horizontal > .swiper-scrollbar' => 'height: {{SIZE}}px;',
 				],
 				'condition' => [
 					'show_scrollbar' => 'yes'
@@ -1599,8 +1599,8 @@ trait Global_Widget_Controls {
 					],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-prev' => 'left: {{SIZE}}px;',
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-next' => 'right: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-navigation-prev' => 'left: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-navigation-next' => 'right: {{SIZE}}px;',
 				],
 				'conditions' => [
 					'terms' => [
@@ -1788,8 +1788,8 @@ trait Global_Widget_Controls {
 					],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-prev' => 'left: {{SIZE}}px;',
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-next' => 'right: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-navigation-prev' => 'left: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-navigation-next' => 'right: {{SIZE}}px;',
 				],
 				'conditions' => [
 					'terms' => [
@@ -1821,7 +1821,7 @@ trait Global_Widget_Controls {
 					],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-dots-container' => 'transform: translateY({{SIZE}}px);',
+					'{{WRAPPER}} .upk-dots-container' => 'transform: translateY({{SIZE}}px);',
 				],
 				'conditions' => [
 					'terms' => [
@@ -1931,8 +1931,8 @@ trait Global_Widget_Controls {
 					],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-prev' => 'left: {{SIZE}}px;',
-					'{{WRAPPER}} .upk-' . $name . '-carousel .upk-navigation-next' => 'right: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-navigation-prev' => 'left: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-navigation-next' => 'right: {{SIZE}}px;',
 				],
 				'conditions' => [
 					'terms' => [
@@ -1964,7 +1964,7 @@ trait Global_Widget_Controls {
 					],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-fraction' => 'transform: translateY({{SIZE}}px);',
+					'{{WRAPPER}} .swiper-pagination-fraction' => 'transform: translateY({{SIZE}}px);',
 				],
 				'conditions' => [
 					'terms' => [
@@ -1996,7 +1996,7 @@ trait Global_Widget_Controls {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-pagination-progressbar' => 'transform: translateY({{SIZE}}px);',
+					'{{WRAPPER}} .swiper-pagination-progressbar' => 'transform: translateY({{SIZE}}px);',
 				],
 				'condition' => [
 					'navigation' => 'progressbar',
@@ -2010,7 +2010,7 @@ trait Global_Widget_Controls {
 				'label'     => __('Scrollbar Offset', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
-					'{{WRAPPER}} .upk-' . $name . '-carousel .swiper-container-horizontal > .swiper-scrollbar' => 'bottom: {{SIZE}}px;',
+					'{{WRAPPER}} .swiper-container-horizontal > .swiper-scrollbar' => 'bottom: {{SIZE}}px;',
 				],
 				'condition' => [
 					'show_scrollbar' => 'yes'

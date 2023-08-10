@@ -1346,7 +1346,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->end_controls_section();
 
 		//Navigation Global Controls
-		$this->register_navigation_style('alex');
+		$this->register_navigation_style('swiper');
 	}
 
 	/**

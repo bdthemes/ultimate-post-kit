@@ -1,172 +1,162 @@
-.upk-author {
-    .upk-author-wrapper {
-        display: grid;
-        .upk-author-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 6px;
+.upk-author-wrapper {
+    .upk-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 6px;
+        transition: all .3s ease;
+    }
+    .upk-post-count {
+        position: absolute;
+        font-size: 12px;
+        color: #8D99AE;
+        border-color: #8D99AE;
+        text-transform: capitalize;
+        line-height: 1;
+        padding: 3px 6px;
+        border-radius: 3px;
+    }
+    .upk-content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+    }
+    .upk-name {
+        a {
+            display: inline-flex;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2B2D42;
+            line-height: 1;
+            text-transform: capitalize;
             transition: all .3s ease;
-            .upk-author-post-count {
-                position: absolute;
-                font-size: 12px;
-                color: #8D99AE;
-                border-color: #8D99AE;
-                text-transform: capitalize;
-                line-height: 1;
-                padding: 3px 6px;
-                border-radius: 3px;
-            }
-            .upk-author-content {
-                position: relative;
-                z-index: 1;
-                width: 100%;
-                .upk-author-name {
-                    a {
-                        display: inline-flex;
-                        font-size: 18px;
-                        font-weight: 600;
-                        color: #2B2D42;
-                        line-height: 1;
-                        text-transform: capitalize;
-                        transition: all .3s ease;
-                        &:hover {
-                            color: #EF233C;
-                        }
-                    }
-                }
-                .upk-author-description {
-                    font-size: 15px;
-                    color: #8D99AE;
-                    padding-top: 10px;
-                }
-                .upk-author-role {
-                    font-size: 15px;
-                    color: #8D99AE;
-                }
-                .upk-author-link {
-                    display: flex;
-                    align-items: center;
-                    padding-top: 15px;
-                    line-height: 1;
-                    a {
-                        color: #8D99AE;
-                        font-size: 15px;
-                        transition: all .3s ease;
-                        &:hover {
-                            color: #EF233C;
-                        }
-                    }
-                    a + a {
-                        margin-left: 20px;
-                    }
-                }
+            &:hover {
+                color: #EF233C;
             }
         }
-    
-        &.upk-author-layout-grid_1 {
-            .upk-author-item {
-                .upk-author-post-count {
-                    top: 15px;
-                    right: 15px;
-                }
-                .upk-author-content {
-                    text-align: center;
-                }
-                .upk-author-link {
-                    justify-content: center;
-                }
+    }
+    .upk-description {
+        font-size: 15px;
+        color: #8D99AE;
+        padding-top: 10px;
+    }
+    .upk-role {
+        font-size: 15px;
+        color: #8D99AE;
+    }
+    .upk-link {
+        display: flex;
+        align-items: center;
+        padding-top: 15px;
+        line-height: 1;
+        a {
+            color: #8D99AE;
+            font-size: 15px;
+            transition: all .3s ease;
+            &:hover {
+                color: #EF233C;
             }
         }
-    
-        &.upk-author-layout-grid_1 {
-            .upk-author-item {
-                padding: 15px;
-                .upk-author-image {
-                    margin: 35px 30px 20px 30px;
-                    a {
-                        img {
-                            width: 100%;
-                            height: 100%;
-                            border-radius: 100%;
-                            object-fit: cover;
-                        }
-                    }
-                }
-            }
+        a + a {
+            margin-left: 20px;
         }
-    
-        &.upk-author-layout-list {
-            .upk-author-item {
-                padding: 10px;
-                display: flex;
-                align-items: center;
-                .upk-author-image {
-                    margin-right: 15px;
-                    img {
-                        height: 70px;
-                        width: 70px;
-                        min-width: 70px;
-                        border-radius: 100%;
-                    }
-                }
-                .upk-author-post-count {
-                    top: 10px;
-                    right: 10px;
-                }
-                .upk-author-link {
-                    justify-content: left;
+    }
+
+    &.upk-grid_1 {
+        .upk-post-count {
+            top: 15px;
+            right: 15px;
+        }
+        .upk-content {
+            text-align: center;
+        }
+        .upk-link {
+            justify-content: center;
+        }
+        .upk-item {
+            padding: 15px;
+        }
+        .upk-image {
+            margin: 35px 30px 20px 30px;
+            a {
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 100%;
+                    object-fit: cover;
                 }
             }
         }
     }
-}
 
+    &.upk-list {
+        .upk-item {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .upk-image {
+            margin-right: 15px;
+            img {
+                height: 70px;
+                width: 70px;
+                min-width: 70px;
+                border-radius: 100%;
+            }
+        }
+        .upk-post-count {
+            top: 10px;
+            right: 10px;
+        }
+        .upk-link {
+            justify-content: left;
+        }
+    }
+}
+.upk-author {
+    .upk-author-wrapper {
+        display: grid;
+    }
+}
 //Responsive Scss Here
 @media  (min-width:1024px)  {
-    .upk-author {
-        .upk-author-wrapper {
-            .upk-author-item {
-                .upk-author-post-count {
-                    font-size: 13px;
-                }
-                .upk-author-content {
-                    .upk-author-name {
-                        a {
-                            font-size: 18px;
-                        }
-                    }
-                    .upk-author-description {
-                        font-size: 15px;
-                    }
+    .upk-author-wrapper {
+        .upk-post-count {
+            font-size: 13px;
+        }
+        .upk-name {
+            a {
+                font-size: 18px;
+            }
+        }
+        .upk-description {
+            font-size: 15px;
+        }
+        &.upk-grid_1 {
+            .upk-item {
+                position: relative;
+                padding: 30px;
+            }
+            .upk-post-count {
+                top: 30px;
+                right: 30px;
+            }
+        }
+
+        &.upk-list {
+            .upk-item {
+                padding: 15px;
+            }
+            .upk-image {
+                margin-right: 20px;
+                img {
+                    height: 80px;
+                    width: 80px;
+                    min-width: 80px;
                 }
             }
-            &.upk-author-layout-grid_1 {
-                .upk-author-item {
-                    position: relative;
-                    padding: 30px;
-                    .upk-author-post-count {
-                        top: 30px;
-                        right: 30px;
-                    }
-                }
-            }
-    
-            &.upk-author-layout-list {
-                .upk-author-item {
-                    padding: 15px;
-                    .upk-author-image {
-                        margin-right: 20px;
-                        img {
-                            height: 80px;
-                            width: 80px;
-                            min-width: 80px;
-                        }
-                    }
-                    .upk-author-post-count {
-                        top: 15px;
-                        right: 15px;
-                    }
-                }
+            .upk-post-count {
+                top: 15px;
+                right: 15px;
             }
         }
     }

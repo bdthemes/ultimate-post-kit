@@ -257,7 +257,7 @@
 				Group_Control_Border::get_type(),
 				[
 					'name'     => 'item_image_border',
-					'selector' => '{{WRAPPER}} .upk-exotic-list .upk-image-wrap .upk-img',
+					'selector' => '{{WRAPPER}} .upk-exotic-list .upk-image-wrap',
 				]
 			);
 			
@@ -268,7 +268,7 @@
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', '%' ],
 					'selectors'  => [
-						'{{WRAPPER}} .upk-exotic-list .upk-image-wrap .upk-img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .upk-exotic-list .upk-image-wrap' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 				]
 			);
@@ -807,7 +807,7 @@
 								<?php if (_is_upk_pro_activated()) :
 									if ('yes' === $settings['show_reading_time']) : ?>
 										<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
-											<?php ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
+											<?php echo ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
 										</div>
 									<?php endif; ?>
 								<?php endif; ?>

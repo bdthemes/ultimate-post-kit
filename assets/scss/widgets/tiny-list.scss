@@ -5,58 +5,58 @@
 	.upk-item {
 		position: relative;
 		transition: all .3s ease;
-        .upk-img {
-            height: 48px;
-            width: 48px;
-            object-fit: cover;
-			margin-right: 15px;
-			border-radius: 3px;
-        }
-		
-		.upk-counter {
-			counter-increment: number-count;
-			height: 48px;
-			min-width: 48px;
-			width: 48px;
-			background: #ffedef;
-			text-align: center;
-			border-radius: 3px;
-			position: relative;
-			display: inline-table;
-			margin-right: 15px;
-			&:before {
-				content: counter(number-count);
-				color: #EF233C;
-				font-weight: 600;
-				font-size: 14px;
-				line-height: 1;
-				position: absolute;
-				left: 50%;
-				top: 50%;
-				transform: translate(-50%, -50%);
-			}
-		}
-		.upk-title {
-			margin: 0;
-			font-size: 18px;
+	}
+	.upk-img {
+		height: 48px;
+		width: 48px;
+		object-fit: cover;
+		margin-right: 15px;
+		border-radius: 3px;
+	}
+	
+	.upk-counter {
+		counter-increment: number-count;
+		height: 48px;
+		min-width: 48px;
+		width: 48px;
+		background: #ffedef;
+		text-align: center;
+		border-radius: 3px;
+		position: relative;
+		display: inline-table;
+		margin-right: 15px;
+		&:before {
+			content: counter(number-count);
+			color: #EF233C;
 			font-weight: 600;
-			line-height: 1.4;
-            z-index: 1;
-			a {
-				color: #2B2D42;
-				&:hover {
-					color: #EF233C;
-				}
+			font-size: 14px;
+			line-height: 1;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+	.upk-title {
+		margin: 0;
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 1.4;
+		z-index: 1;
+		a {
+			color: #2B2D42;
+			&:hover {
+				color: #EF233C;
 			}
 		}
-		.upk-title-icon {
-			display: flex;
-			z-index: 1;
-			color: #2B2D42;
-			margin-right: 15px;
-			svg {
-				width: 1.2em;
-			}
+	}
+	.upk-title-icon {
+		display: flex;
+		z-index: 1;
+		color: #2B2D42;
+		margin-right: 15px;
+		svg {
+			width: 1.2em;
 		}
 	}
 }

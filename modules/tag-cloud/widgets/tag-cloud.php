@@ -139,7 +139,7 @@ class Tag_Cloud extends Module_Base {
 				'label'     => esc_html__('Item Gap', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
-					'{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item' => 'margin-right: {{SIZE}}{{UNIT}}; margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-tag-cloud .upk-item' => 'margin-right: {{SIZE}}{{UNIT}}; margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'layout_style' => 'inline'
@@ -159,7 +159,7 @@ class Tag_Cloud extends Module_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-tag-cloud .upk-item' => 'height: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'layout_style' => 'grid'
@@ -191,7 +191,7 @@ class Tag_Cloud extends Module_Base {
 					]
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}} .upk-tag-cloud .upk-item' => 'justify-content: {{VALUE}};',
 				],
 				'condition' => [
 					'layout_style' => 'grid'
@@ -353,7 +353,7 @@ class Tag_Cloud extends Module_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'item_background',
-				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item',
+				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-item',
 				'condition' => [
 					'single_background' => 'yes'
 				]
@@ -376,7 +376,7 @@ class Tag_Cloud extends Module_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name'     => 'item_border',
-				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item',
+				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-item',
 			]
 		);
 
@@ -387,7 +387,7 @@ class Tag_Cloud extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-tag-cloud .upk-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -399,7 +399,7 @@ class Tag_Cloud extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-tag-cloud .upk-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -408,7 +408,7 @@ class Tag_Cloud extends Module_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'item_box_shadow',
-				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item',
+				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-item',
 			]
 		);
 
@@ -425,7 +425,7 @@ class Tag_Cloud extends Module_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'itam_background_hover',
-				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item:hover',
+				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-item:hover',
 			]
 		);
 
@@ -435,7 +435,7 @@ class Tag_Cloud extends Module_Base {
 				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item:hover' => 'border-color: {{VALUE}};'
+					'{{WRAPPER}} .upk-tag-cloud .upk-item:hover' => 'border-color: {{VALUE}};'
 				],
 				'condition' => [
 					'item_border_border!' => ''
@@ -447,7 +447,7 @@ class Tag_Cloud extends Module_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'item_box_shadow_hover',
-				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item:hover',
+				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-item:hover',
 			]
 		);
 
@@ -480,7 +480,7 @@ class Tag_Cloud extends Module_Base {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item .upk-tag-cloud-name' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-tag-cloud .upk-item .upk-name' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -491,7 +491,7 @@ class Tag_Cloud extends Module_Base {
 				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item:hover .upk-tag-cloud-name' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-tag-cloud .upk-item:hover .upk-name' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -501,7 +501,7 @@ class Tag_Cloud extends Module_Base {
 			[
 				'name'     => 'category_name_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item .upk-tag-cloud-name',
+				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-item .upk-name',
 			]
 		);
 
@@ -521,7 +521,7 @@ class Tag_Cloud extends Module_Base {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item .upk-tag-cloud-count' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-tag-cloud .upk-item .upk-count' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -532,7 +532,7 @@ class Tag_Cloud extends Module_Base {
 				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item:hover .upk-tag-cloud-count' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-tag-cloud .upk-item:hover .upk-count' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -541,7 +541,7 @@ class Tag_Cloud extends Module_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'count_background',
-				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item .upk-tag-cloud-count',
+				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-item .upk-count',
 			]
 		);
 
@@ -549,7 +549,7 @@ class Tag_Cloud extends Module_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name'     => 'count_border',
-				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item .upk-tag-cloud-count',
+				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-item .upk-count',
 			]
 		);
 
@@ -560,7 +560,7 @@ class Tag_Cloud extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item .upk-tag-cloud-count' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-tag-cloud .upk-item .upk-count' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -572,7 +572,7 @@ class Tag_Cloud extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item .upk-tag-cloud-count' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-tag-cloud .upk-item .upk-count' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -581,7 +581,7 @@ class Tag_Cloud extends Module_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'count_box_shadow',
-				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item .upk-tag-cloud-count',
+				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-item .upk-count',
 			]
 		);
 
@@ -590,7 +590,7 @@ class Tag_Cloud extends Module_Base {
 			[
 				'name'     => 'count_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item .upk-tag-cloud-count',
+				'selector' => '{{WRAPPER}} .upk-tag-cloud .upk-item .upk-count',
 			]
 		);
 
@@ -606,7 +606,7 @@ class Tag_Cloud extends Module_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-tag-cloud .upk-tag-cloud-item .upk-tag-cloud-count' => 'margin-left: {{SIZE}}px;'
+					'{{WRAPPER}} .upk-tag-cloud .upk-item .upk-count' => 'margin-left: {{SIZE}}px;'
 				],
 			]
 		);
@@ -650,7 +650,7 @@ class Tag_Cloud extends Module_Base {
 				foreach ($categories as $index => $cat) :
 					$output = '';
 
-					$this->add_render_attribute('category-item', 'class', 'upk-tag-cloud-item', true);
+					$this->add_render_attribute('category-item', 'class', 'upk-item', true);
 
 					$this->add_render_attribute('category-item', 'href', get_category_link($cat->cat_ID), true);
 
@@ -676,10 +676,10 @@ class Tag_Cloud extends Module_Base {
 				?>
 
 					<a <?php $this->print_render_attribute_string('category-item'); ?>>
-						<span class="upk-tag-cloud-name"><?php echo esc_html($cat->cat_name); ?></span>
+						<span class="upk-name"><?php echo esc_html($cat->cat_name); ?></span>
 
 						<?php if ($settings['show_count'] == 'yes') : ?>
-							<span class="upk-tag-cloud-count"><?php echo esc_html($cat->category_count); ?></span>
+							<span class="upk-count"><?php echo esc_html($cat->category_count); ?></span>
 						<?php endif; ?>
 					</a>
 				<?php
