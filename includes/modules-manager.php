@@ -96,9 +96,12 @@ final class Manager
     public function load_module_instance($module)
     {
 
+        if(isset($_GET['page']) && 'ultimate_post_kit_options' ==  $_GET['page']){
+            return;
+        }
 
         $direction = is_rtl() ? '.rtl' : '';
-        $suffix    = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+        $suffix    = '.min';
 
         $module_id  = $module['name'];
         $class_name = str_replace('-', ' ', $module_id);

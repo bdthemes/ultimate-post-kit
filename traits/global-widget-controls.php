@@ -129,7 +129,7 @@ trait Global_Widget_Controls {
 				'label'     => esc_html__('Spacing', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
-					'{{WRAPPER}} .upk-pagination'     => 'margin-left: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-pagination'     => 'margin-left: -{{SIZE}}px;',
 					'{{WRAPPER}} .upk-pagination > *' => 'padding-left: {{SIZE}}px;',
 				],
 			]

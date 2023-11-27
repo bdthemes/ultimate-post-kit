@@ -92,6 +92,15 @@
   margin-right: 5px;
   vertical-align: middle; }
 
+#elementor-panel .elementor-control-type-section span.upk-widget-badge {
+  position: absolute;
+  left: 15px; }
+
+#elementor-panel .elementor-control-title span.upk-widget-badge:after,
+#elementor-panel .elementor-section-title span.upk-widget-badge:after {
+  background-color: #e0e6ec;
+  color: #50565d; }
+
 #elementor-panel #elementor-panel-header-title span.upk-widget-badge:after,
 #elementor-panel .elementor-control-title span.upk-widget-badge:after,
 #elementor-panel .elementor-section-title span.upk-widget-badge:after {
@@ -102,6 +111,6 @@
   font-size: 10px;
   font-weight: 700;
   border-radius: 30px;
-  padding: 3px 4px;
+  padding: 4px;
   margin-left: 4px;
   vertical-align: middle; }

@@ -411,7 +411,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 
 
 
-            // 3rd party widgets 
+            // 3rd party widgets
             if ($plugin_name and $plugin_path) {
                 if ($this->_is_plugin_installed($plugin_name, $plugin_path)) {
                     if (!current_user_can('activate_plugins')) {
@@ -870,6 +870,8 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                                                         <li class="upk-widget-slider" bdt-filter-control="filter: [data-content-type*='slider']; group: data-widget-type"><a href="#">Slider</a></li>
                                                         <li class="upk-widget-tabs" bdt-filter-control="filter: [data-content-type*='tabs']; group: data-widget-type"><a href="#">Tabs</a></li>
                                                         <li class="upk-widget-timeline" bdt-filter-control="filter: [data-content-type*='timeline']; group: data-widget-type"><a href="#">Timeline</a></li>
+                                                        <li class="upk-widget-template-builder" bdt-filter-control="filter: [data-content-type*='template-builder']; group: data-widget-type"><a href="#">Template Builder</a></li>
+
                                                         <li class="upk-widget-others" bdt-filter-control="filter: [data-content-type*='others']; group: data-widget-type"><a href="#">Others</a></li>
                                                     </ul>
                                                 </div>
@@ -904,7 +906,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                                         <input data-id="upk-options-parent-<?php echo esc_attr($i); ?>" onkeyup="filterSearch(this);" bdt-filter-control="" class="bdt-search-input bdt-flex-middle" type="search" placeholder="Search widget..." autofocus>
                                     </div>
 
-                                    <?php //if ($form['id'] == 'ultimate_post_kit_active_modules' or $form['id'] == 'ultimate_post_kit_third_party_widget' ) : 
+                                    <?php //if ($form['id'] == 'ultimate_post_kit_active_modules' or $form['id'] == 'ultimate_post_kit_third_party_widget' ) :
                                     ?>
                                     <div>
                                         <ul class="bdt-subnav bdt-subnav-pill upk-widget-onoff">
@@ -920,7 +922,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                                             </li>
                                         </ul>
                                     </div>
-                                    <?php //endif; 
+                                    <?php //endif;
                                     ?>
                                 </div>
 

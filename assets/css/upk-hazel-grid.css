@@ -30,6 +30,11 @@
         padding: 30px;
         transition: all 0.3s ease;
         opacity: 1; }
+        .upk-hazel-grid .upk-post-grid .upk-item .upk-item-box .upk-content .upk-blog-badge span {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 7px; }
         .upk-hazel-grid .upk-post-grid .upk-item .upk-item-box .upk-content .upk-blog-badge a {
           text-decoration: none;
           font-size: 9px;

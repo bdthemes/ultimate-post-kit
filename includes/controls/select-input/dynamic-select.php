@@ -105,7 +105,7 @@ class Dynamic_Select extends Base_Data_Control {
 		 * @since 5.8.0
 		 */
 		public function enqueue() {
-			wp_enqueue_script('upk-dynamic-select', BDTUPK_URL . 'includes/controls/assets/js/upk-dynamic-select.js', array('jquery'), BDTUPK_VER);
+			wp_enqueue_script('upk-dynamic-select', BDTUPK_URL . 'includes/controls/assets/js/upk-dynamic-select.min.js', array('jquery'), BDTUPK_VER);
 			wp_localize_script(
 				'upk-dynamic-select',
 				'upk_dynamic_select',

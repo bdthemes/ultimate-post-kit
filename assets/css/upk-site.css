@@ -384,6 +384,9 @@
     height: 13px;
     color: #bbb !important; }
 
+[class*="elementor-widget-upk-"] .upk-navigation-prev, [class*="elementor-widget-upk-"] .upk-navigation-next {
+  cursor: pointer; }
+
 [class*="elementor-widget-upk-"] .swiper-coverflow,
 [class*="elementor-widget-upk-"] .swiper-container-coverflow {
   padding-top: 15px; }

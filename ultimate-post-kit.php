@@ -4,14 +4,14 @@
  * Plugin Name: Ultimate Post Kit
  * Plugin URI: https://bdthemes.com/ultimate-post-kit/
  * Description: <a href="https://bdthemes.com/ultimate-post-kit/">Ultimate Post Kit</a> is a packed of post related elementor widgets. This plugin gives you post related widget features for elementor page builder plugin.
- * Version: 3.7.2
+ * Version: 3.9.5
  * Author: BdThemes
  * Author URI: https://bdthemes.com/
  * Text Domain: ultimate-post-kit
  * Domain Path: /languages
  * License: GPL3
  * Elementor requires at least: 3.0.0
- * Elementor tested up to: 3.15.1
+ * Elementor tested up to: 3.17.3
  */
 
 if (!defined('ABSPATH')) {
@@ -19,13 +19,13 @@ if (!defined('ABSPATH')) {
 }
 
 // Some pre define value for easy use
-define('BDTUPK_VER', '3.7.2');
+define('BDTUPK_VER', '3.9.5');
 define('BDTUPK__FILE__', __FILE__);
 
 
 if (!function_exists('_is_upk_pro_installed')) {
 
-	function _is_upk_pro_installed(){
+	function _is_upk_pro_installed() {
 
 		if (!function_exists('get_plugins')) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -40,8 +40,8 @@ if (!function_exists('_is_upk_pro_installed')) {
 
 if (!function_exists('_is_upk_pro_activated')) {
 
-	function _is_upk_pro_activated(){
-		
+	function _is_upk_pro_activated() {
+
 		if (!function_exists('get_plugins')) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
@@ -62,7 +62,7 @@ if (function_exists('upk_fs')) {
 } else {
 	if (!function_exists('upk_fs')) {
 		// Create a helper function for easy SDK access.
-		function upk_fs(){
+		function upk_fs() {
 			global $upk_fs;
 
 			if (!isset($upk_fs)) {
@@ -82,10 +82,19 @@ if (function_exists('upk_fs')) {
 						'type'                => 'plugin',
 						'public_key'          => 'pk_5ee4f096c0fc2fde7ea8dc9bb2899',
 						'is_premium'          => false,
+						'premium_suffix' 	  => 'Pro',
 						// If your plugin is a serviceware, set this option to false.
 						'has_premium_version' => false,
-						'has_addons'          => true,
+						'has_addons'          => false,
 						'has_paid_plans'      => false,
+						'menu'                => array(
+							'slug'       	=> 'ultimate_post_kit_options',
+							'first-path' 	=> 'admin.php?page=ultimate_post_kit_options',
+							'contact'    	=> false,
+							'support'    	=> false,
+							'account'    	=> false,
+							'affiliation' 	=> false,
+						),
 						// Set the SDK to work in a sandbox mode (for development & testing).
 						// IMPORTANT: MAKE SURE TO REMOVE SECRET KEY BEFORE DEPLOYMENT.
 						'secret_key'          => 'sk_I>m2ZGqwJkLv:>~hFQn_6+tH-d4QF',
@@ -123,7 +132,7 @@ if (function_exists('upk_fs')) {
 	 * Plugin load here correctly
 	 * Also loaded the language file from here
 	 */
-	function ultimate_post_kit_load_plugin(){
+	function ultimate_post_kit_load_plugin() {
 		load_plugin_textdomain('ultimate-post-kit', false, basename(dirname(__FILE__)) . '/languages');
 
 		if (!did_action('elementor/loaded')) {
@@ -142,7 +151,7 @@ if (function_exists('upk_fs')) {
 	/**
 	 * Check Elementor installed and activated correctly
 	 */
-	function ultimate_post_kit_fail_load(){
+	function ultimate_post_kit_fail_load() {
 		$screen = get_current_screen();
 		if (isset($screen->parent_file) && 'plugins.php' === $screen->parent_file && 'update' === $screen->id) {
 			return;
@@ -174,7 +183,7 @@ if (function_exists('upk_fs')) {
 	 */
 	if (!function_exists('_is_elementor_installed')) {
 
-		function _is_elementor_installed(){
+		function _is_elementor_installed() {
 			$file_path         = 'elementor/elementor.php';
 			$installed_plugins = get_plugins();
 

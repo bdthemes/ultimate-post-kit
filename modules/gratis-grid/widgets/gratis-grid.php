@@ -63,10 +63,9 @@ class Gratis_Grid extends Group_Control_Query
 		}
 	}
 
-	// public function get_custom_help_url()
-	// {
-	// 	return 'https://youtu.be/ebSyK__cMhw';
-	// }
+	public function get_custom_help_url() {
+		return 'https://youtu.be/jLBLAqxEOwQ';
+	}
 
 	public function get_query()
 	{

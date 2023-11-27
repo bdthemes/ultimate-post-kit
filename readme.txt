@@ -2,13 +2,13 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive, post widget, live copy, elementor addon, pagebuilder addon, addons, bdthemes
-Stable tag: 3.7.2
+Stable tag: 3.9.5
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
-Tested up to: 6.3
+Tested up to: 6.4.1
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.15.2
+Elementor tested up to: 3.17.3
 
 Best Post Addon for Elementor WordPress Plugin with 75+ Most Popular Elements that need your everyday blog website building.
 
@@ -82,7 +82,7 @@ https://www.youtube.com/watch?v=er0uGv1yjig
 
 = Timeline 🎏 =
 
-0. **[Post Timeline](https://postkit.pro/demo/timeline/)** - The timeline widget is a specialty for bloggers that uses a dynamic flow chart to display posts, pages, or events in a timely manner. It is developed by the Ultimate Post Kit plugin to boost the user experience of your blogging site.
+0. **[Oras Timeline](https://postkit.pro/demo/timeline/)** - The timeline widget is a specialty for bloggers that uses a dynamic flow chart to display posts, pages, or events in a timely manner. It is developed by the Ultimate Post Kit plugin to boost the user experience of your blogging site.
 
 = Others 💠 =
 
@@ -90,7 +90,7 @@ https://www.youtube.com/watch?v=er0uGv1yjig
 0. **[Banner](https://postkit.pro/demo/banner/)** - Banner lets you display a quick news feed to keep your audience updated about the deals, offers, or pieces of information that could be vital for your blog. Customizable and full of features for your needs.
 0. **[News Ticker](https://postkit.pro/demo/news-ticker/)** - The News Ticker widget is designed by the Ultimate Post Kit plugin as a miniature post presentation on your blogging site. The layout is identical to that seen often on a news channel. See the demo.
 0. **[Newsletter](https://postkit.pro/demo/newsletter/)** - The Newsletter widget helps you collect emails from your visitors and let you create mail lists easily. It's one of the most important feature for a blog site that you can get for free along with a customization interface at Ultimate Post Kit plugin. See the demo
-0. **[Post Accordion](https://postkit.pro/demo/accordion/)** - Using Accordion widget, you can create a stunning layout to display your blog posts with the all-known accordion effect. Unlike the old ones where only text or image has the effect, it creates the effect for the whole post block. See the demo.
+0. **[Post Accordion](https://postkit.pro/demo/post-accordion/)** - Using Accordion widget, you can create a stunning layout to display your blog posts with the all-known accordion effect. Unlike the old ones where only text or image has the effect, it creates the effect for the whole post block. See the demo.
 0. **[Post Category](https://postkit.pro/demo/post-category/)** - The Category widget is a blog based widget that shows total posts on a website by categories. On it, numerical values such as the number of posts belonging to a certain category are displayed. See the demo.
 0. **[Reading Progress Bar](https://postkit.pro/demo/reading-progress/)** - The Reading Progress Bar widget creates a progress tracker on your blog page to help the visitors track the total reading progress of the current page. Just place it inside your blog page and the counter go up to 100% according to the position you are at on the page. See the demo
 0. **[Recent Comments](https://postkit.pro/demo/recent-comments/)** - The Recent Comments widget shows your visitors' recent comments on your blog posts. It's a simplified widget for creating a positive impact on your website based on peoples' words. See the demo
@@ -151,6 +151,7 @@ More widgets & extensions are coming soon...
 0. **[Grove Timeline](https://postkit.pro/demo/grove-timeline/)** - Grove Timeline is a special widget for bloggers that displays posts in a timeline with randomized style. you can infact see how unique it is and what things it can do. See the demo
 0. **[Snap Timeline](https://postkit.pro/demo/snap-timeline/)** - Snap Timeline is another unique time-based blog widget that can create a modern & calm blog layout on your website. The idea is to capture people's heart with simple yet emotional post layout with time stamps. See the demo
 0. **[Soft Timeline](https://postkit.pro/demo/soft-timeline/)** - Soft Timeline is a sleek time-based blog post widget with a tree-formation layout style. This minimalist widget presents a professional attribute towards the viewers, making the unable to avoid their gaze from it. See the demo
+0. **[Checkerboard](https://postkit.pro/demo/checkerboard/)** - You might call the Checkboard widget a post list or a grid-type, but this is one of the iconic post widgets that forms a chain of posts in a visually attractive interface layout. Display your main posts or shrink them to show featured posts, do whatever you like.
 
 = Others 💠 =
 
@@ -163,6 +164,18 @@ More widgets & extensions are coming soon...
 == Pro Extensions 🔥 ==
 
 0. **[MultiColor Item](https://postkit.pro/demo/multicolor-item/)** - The ability to create a variety of colorful posts inside your blogging site will make you stay one step ahead of your competitor in terms of presentation. Now you can do that with the Multicolor Extension and get more attention from your visitors.
+
+== Template Builder 🧊 ==
+
+0. **[Post Title](https://postkit.pro/archive/)** - A Single page widget that lets you arrange the element to your preferred style and help you change the single post layout. To be used with other single page elements.
+0. **[Post Content](https://postkit.pro/archive/)** - A Single page widget that lets you arrange the element to your preferred style and help you change the single post layout. To be used with other single page elements.
+0. **[Post Info](https://postkit.pro/archive/)** - A Single page widget that lets you arrange the element to your preferred style and help you change the single post layout. To be used with other single page elements.
+0. **[Post Featured Image](https://postkit.pro/archive/)** - A Single page widget that lets you arrange the element to your preferred style and help you change the single post layout. To be used with other single page elements.
+
+== Template Shortcode 🌅 ==
+
+Now you can create shortcodes for templates created with the Ultimate Post Kit widgets with the Template Builder menu, and display the template as it is inside any page builder. Works on Gutenberg, Divi, Oxygen, Beaver Builder, etc.
+
 
 **[PURCHASE ULTIMATE POST KIT PRO FROM OUR WEBSITE]( https://postkit.pro/pricing/ )**
 
@@ -212,6 +225,73 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 
 == Changelog ==
+
+= 3.9.5 [19th November 2023] =
+
+### Added
+
+* Added: Post format style controls & title text stroke added in soft timeline widget
+* Added: Item border, radius, shadow & image style controls & title text stroke control & counter line width, color controls added in wixer grid & carousel widgets
+
+### Fixed
+
+* Fixed: Indicator color issue fixed in soft timeline widget
+
+### Updated
+
+* Updated: Wixer grid & carousel widgets optimized & improved
+* Updated: Welsh list widget optimized & improved
+* Updated: Stone hover widget optimized & improved
+* Updated: Soft timeline widget optimized & improved
+* Updated: Carbon slider optimized & improved
+* Updated: Skide slider optimized & improved
+
+= 3.9.4 [31st October 2023] =
+
+* Updated: System improved
+
+= 3.9.3 [25th October 2023] =
+
+* Added: Title text stroke control added in camux, carbon, crystal, noxe, paradox, skide, snog slider widgets
+
+= 3.9.2 [10th October 2023] =
+
+* Fixed: Dynamic select draft posts issue fixed in skide slider widget
+* Fixed: Maple, amox, hazel grid & carousel category issue fixed
+
+= 3.9.1 [9th October 2023] =
+
+* Fixed: Instagram issue fixed
+* Fixed: Navigation anchor tag seo issue fixed
+* Updated: Uikit version updated
+* Updated: System memory issue improved
+
+= 3.9.0 [27th September 2023] =
+
+* Added: Saved Templates as a Shortcode feature added (Thanks to michalcikj)
+* Added: Meta alignment option added in checkerboard widget
+* Added: Title featured typography, text stroke & text shadow controls added in featured list widget
+* Added: Category spacing option added in maple grid & carousel widgets
+* Fixed: Author hover color issue fixed in checkerboard widget
+* Fixed: Border radius issue fixed in amox carousel widget
+
+= 3.8.0 [23rd September 2023] =
+
+* Added: Template Builder Feature added (pro)
+* Added: Post Title widget added (pro)
+* Added: Post Content widget added (pro)
+* Added: Post Featured Image widget added (pro)
+* Added: Post Info widget added (pro)
+* Added: Checkerboard widget added (pro)
+* Added: Load More & Infinite Scroll feature added in Kalon Grid
+* Fixed: Recent Comments widget date translateable issue fixed
+* Updated: System improved
+
+= 3.7.3 [16th August 2023] =
+
+* Added: Navigation arrows option added in camux widget
+* Added: Navigation Arrows Icon option added in carbon slider widget
+* Fixed: Navigation conflict issue fixed in carbon slider widget
 
 = 3.7.2 [9th August 2023] =
 

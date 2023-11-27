@@ -56,7 +56,7 @@ class Timeline extends Group_Control_Query {
 	}
 
 	public function get_custom_help_url() {
-		return 'https://youtu.be/kggB0k9WJ1U';
+		return 'https://youtu.be/2iYuNgP4K0A';
 	}
 
 	public function get_query() {

@@ -854,7 +854,7 @@ class Hazel_Grid extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-badge a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-badge span' => 'gap: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);

@@ -29,9 +29,11 @@
     right: 15px;
     display: flex;
     align-items: center; }
-    .upk-alex-grid .upk-meta .upk-author-img img {
-      border-radius: 80px;
-      margin-left: 10px; }
+    .upk-alex-grid .upk-meta .upk-author-img {
+      display: inline-flex; }
+      .upk-alex-grid .upk-meta .upk-author-img img {
+        border-radius: 80px;
+        margin-left: 10px; }
     .upk-alex-grid .upk-meta .upk-author-name a {
       color: #dcdcdc;
       font-size: 14px;

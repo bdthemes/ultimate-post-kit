@@ -58,10 +58,9 @@
 
 .upk-gratis-grid .upk-content-wrap {
   position: absolute;
-  top: 50%;
   right: 0;
   padding: 40px;
-  transform: translateY(-50%); }
+  bottom: 0; }
 
 .upk-gratis-grid .upk-category,
 .upk-gratis-grid .upk-gratis-wrap .upk-title {
@@ -143,9 +142,6 @@
     color: #fff; }
     .upk-gratis-grid .upk-link-button a:hover::before {
       height: 100%; }
-
-.upk-item-match-height--yes .upk-gratis-grid .swiper-slide {
-  height: initial; }
 
 .upk-global-link-yes .upk-gratis-grid .upk-item:hover {
   cursor: pointer; }

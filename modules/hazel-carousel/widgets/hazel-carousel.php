@@ -769,7 +769,7 @@ class Hazel_Carousel extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-hazel-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content .upk-blog-badge a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-hazel-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content .upk-blog-badge span' => 'gap: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);

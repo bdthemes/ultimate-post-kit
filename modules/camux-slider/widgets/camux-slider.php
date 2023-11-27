@@ -8,6 +8,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Image_Size;
+use Elementor\Group_Control_Text_Stroke;
 use Elementor\Group_Control_Background;
 use Elementor\Plugin;
 
@@ -250,6 +251,15 @@ class Camux_Slider extends Group_Control_Query {
 				'label' => esc_html__('Show Comments', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SWITCHER,
 				'default'   => 'yes',
+				'separator' => 'before'
+			]
+		);
+
+		$this->add_control(
+			'show_navigation',
+			[
+				'label' => esc_html__('Show Navigation', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'  => Controls_Manager::SWITCHER,
 				'separator' => 'before'
 			]
 		);
@@ -551,6 +561,15 @@ class Camux_Slider extends Group_Control_Query {
 				'name' => 'title_text_shadow',
 				'label' => __('Text Shadow', 'ultimate-post-kit'),
 				'selector' => '{{WRAPPER}} .upk-camux-slider .upk-title a',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Stroke::get_type(),
+			[
+				'name'      => 'title_text_stroke',
+				'label'     => __('Text Stroke', 'ultimate-post-kit') . BDTUPK_NC,
+				'selector'  => '{{WRAPPER}} .upk-camux-slider .upk-title a',
 			]
 		);
 
@@ -1162,6 +1181,215 @@ class Camux_Slider extends Group_Control_Query {
 		$this->end_controls_tabs();
 
 		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_style_navigation',
+			[
+				'label'      => __('Navigation', 'ultimate-post-kit') . BDTUPK_NC,
+				'tab'        => Controls_Manager::TAB_STYLE,
+				'condition'  => [
+					'show_navigation' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'nav_arrows_icon',
+			[
+				'label'     => esc_html__('Arrows Icon', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => '0',
+				'options'   => [
+					'0'        => esc_html__('Default', 'bdthemes-element-pack'),
+					'1'        => esc_html__('Style 1', 'ultimate-post-kit'),
+					'2'        => esc_html__('Style 2', 'ultimate-post-kit'),
+					'3'        => esc_html__('Style 3', 'ultimate-post-kit'),
+					'4'        => esc_html__('Style 4', 'ultimate-post-kit'),
+					'5'        => esc_html__('Style 5', 'ultimate-post-kit'),
+					'6'        => esc_html__('Style 6', 'ultimate-post-kit'),
+					'7'        => esc_html__('Style 7', 'ultimate-post-kit'),
+					'8'        => esc_html__('Style 8', 'ultimate-post-kit'),
+					'9'        => esc_html__('Style 9', 'ultimate-post-kit'),
+					'10'       => esc_html__('Style 10', 'ultimate-post-kit'),
+					'11'       => esc_html__('Style 11', 'ultimate-post-kit'),
+					'12'       => esc_html__('Style 12', 'ultimate-post-kit'),
+					'13'       => esc_html__('Style 13', 'ultimate-post-kit'),
+					'14'       => esc_html__('Style 14', 'ultimate-post-kit'),
+					'15'       => esc_html__('Style 15', 'ultimate-post-kit'),
+					'16'       => esc_html__('Style 16', 'ultimate-post-kit'),
+					'17'       => esc_html__('Style 17', 'ultimate-post-kit'),
+					'18'       => esc_html__('Style 18', 'ultimate-post-kit'),
+					'circle-1' => esc_html__('Style 19', 'ultimate-post-kit'),
+					'circle-2' => esc_html__('Style 20', 'ultimate-post-kit'),
+					'circle-3' => esc_html__('Style 21', 'ultimate-post-kit'),
+					'circle-4' => esc_html__('Style 22', 'ultimate-post-kit'),
+					'square-1' => esc_html__('Style 23', 'ultimate-post-kit'),
+				],
+			]
+		);
+
+		$this->start_controls_tabs('tabs_navigation_arrows_style');
+
+		$this->start_controls_tab(
+			'tabs_nav_arrows_normal',
+			[
+				'label'     => __('Normal', 'ultimate-post-kit'),
+			]
+		);
+
+		$this->add_control(
+			'arrows_color',
+			[
+				'label'     => __('Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .upk-navigation-prev i, {{WRAPPER}} .upk-navigation-next i' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name'      => 'arrows_background',
+				'selector'  => '{{WRAPPER}} .upk-navigation-prev, {{WRAPPER}} .upk-navigation-next',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'      => 'nav_arrows_border',
+				'selector'  => '{{WRAPPER}} .upk-navigation-prev, {{WRAPPER}} .upk-navigation-next',
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_responsive_control(
+			'border_radius',
+			[
+				'label'      => __('Border Radius', 'ultimate-post-kit'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .upk-navigation-prev, {{WRAPPER}} .upk-navigation-next' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'arrows_padding',
+			[
+				'label'      => esc_html__('Padding', 'ultimate-post-kit'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .upk-navigation-prev, {{WRAPPER}} .upk-navigation-next' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'arrows_spacing',
+			[
+				'label'     => __('Spacing', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default'   => [
+					'size' => 30,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-navigation-prev' => 'margin-left: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-navigation-next' => 'margin-right: {{SIZE}}px;',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'arrows_size',
+			[
+				'label'     => __('Size', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => [
+					'px' => [
+						'min' => 10,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-navigation-prev i, {{WRAPPER}} .upk-navigation-next i' => 'font-size: {{SIZE || 24}}{{UNIT}};',
+				],
+			]
+		);
+		// box shadow
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => 'arrows_box_shadow',
+				'selector' => '{{WRAPPER}} .upk-navigation-prev, {{WRAPPER}} .upk-navigation-next',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tabs_nav_arrows_hover',
+			[
+				'label'     => __('Hover', 'ultimate-post-kit'),
+			]
+		);
+
+		$this->add_control(
+			'arrows_hover_color',
+			[
+				'label'     => __('Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .upk-navigation-prev:hover i, {{WRAPPER}} .upk-navigation-next:hover i' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name'      => 'arrows_hover_background',
+				'selector'  => '{{WRAPPER}} .upk-navigation-prev:hover, {{WRAPPER}} .upk-navigation-next:hover',
+			]
+		);
+
+		$this->add_control(
+			'nav_arrows_hover_border_color',
+			[
+				'label'     => __('Border Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .upk-navigation-prev:hover, {{WRAPPER}} .upk-navigation-next:hover' => 'border-color: {{VALUE}};',
+				],
+				'condition' => [
+					'nav_arrows_border_border!' => '',
+				],
+			]
+		);
+		// box shadow
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => 'arrows_hover_box_shadow',
+				'selector' => '{{WRAPPER}} .upk-navigation-prev:hover, {{WRAPPER}} .upk-navigation-next:hover',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->end_controls_section();
 	}
 
 	/**
@@ -1237,6 +1465,10 @@ class Camux_Slider extends Group_Control_Query {
 							"lazy" => [
 								"loadPrevNext"  => "true",
 							],
+							"navigation" => [
+								"nextEl" => "#$id .upk-navigation-next",
+								"prevEl" => "#$id .upk-navigation-prev",
+							],
 						]))
 					]
 				]
@@ -1259,6 +1491,16 @@ class Camux_Slider extends Group_Control_Query {
 				?>
 
 				</div>
+				<?php if ($settings['show_navigation']) : ?>
+				<div class="upk-navigation-wrap">
+					<div class="upk-navigation-prev">
+						<i class="upk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
+					</div>
+					<div class="upk-navigation-next">
+						<i class="upk-icon-arrow-right-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
+					</div>
+				</div>
+				<?php endif; ?>
 			</div>
 		</div>
 

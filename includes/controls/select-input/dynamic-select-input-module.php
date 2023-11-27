@@ -128,6 +128,8 @@ class UltimatePostKit_Dynamic_Select_Input_Module {
 
 		$args = [];
 
+		$args['post_status'] = 'publish';
+
 		if ($this->getPostType()) {
 			$args['post_type'] = $this->getPostType();
 		} else {

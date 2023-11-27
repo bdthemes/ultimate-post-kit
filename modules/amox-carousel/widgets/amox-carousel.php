@@ -707,7 +707,7 @@ class Amox_Carousel extends Group_Control_Query
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-amox-carousel .upk-category a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-amox-carousel .upk-category' => 'gap: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);

@@ -110,12 +110,12 @@ trait Global_Swiper_Functions {
 		if ( 'arrows' == $settings['navigation'] ) : ?>
 			<div class="upk-position-z-index upk-position-<?php echo esc_html( $settings['arrows_position'] . $hide_arrow_on_mobile ); ?>">
 				<div class="upk-arrows-container upk-slidenav-container">
-					<a href="" class="upk-navigation-prev">
+					<div class="upk-navigation-prev">
 						<i class="upk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
-					</a>
-					<a href="" class="upk-navigation-next">
+					</div>
+					<div class="upk-navigation-next">
 						<i class="upk-icon-arrow-right-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
-					</a>
+					</div>
 				</div>
 			</div>
 		<?php endif;
@@ -146,9 +146,9 @@ trait Global_Swiper_Functions {
 
 				<div class="upk-flex upk-flex-middle">
 					<div class="<?php echo esc_html( $hide_arrow_on_mobile ); ?>">
-						<a href="" class="upk-navigation-prev">
+						<div class="upk-navigation-prev">
 							<i class="upk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
-						</a>
+						</div>
 					</div>
 					
 					<?php if ('center' !== $settings['both_position']) : ?>
@@ -156,9 +156,9 @@ trait Global_Swiper_Functions {
 					<?php endif; ?>
 
 					<div class="<?php echo esc_html( $hide_arrow_on_mobile ); ?>">
-						<a href="" class="upk-navigation-next">
+						<div class="upk-navigation-next">
 							<i class="upk-icon-arrow-right-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
-						</a>
+						</div>
 					</div>
 
 				</div>
@@ -177,9 +177,9 @@ trait Global_Swiper_Functions {
 
 				<div class="upk-flex upk-flex-middle">
 					<div class="<?php echo esc_html( $hide_arrow_on_mobile ); ?>">
-						<a href="" class="upk-navigation-prev">
+						<div class="upk-navigation-prev">
 							<i class="upk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
-						</a>
+						</div>
 					</div>
 					
 					<?php if ('center' !== $settings['arrows_fraction_position']) : ?>
@@ -187,9 +187,9 @@ trait Global_Swiper_Functions {
 					<?php endif; ?>
 
 					<div class="<?php echo esc_html( $hide_arrow_on_mobile ); ?>">
-						<a href="" class="upk-navigation-next">
+						<div class="upk-navigation-next">
 							<i class="upk-icon-arrow-right-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
-						</a>
+						</div>
 					</div>
 
 				</div>

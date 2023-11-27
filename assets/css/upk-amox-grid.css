@@ -52,6 +52,8 @@
     padding: 20px 0; }
   .upk-amox-grid .upk-category {
     display: inline-flex;
+    flex-wrap: wrap;
+    gap: 7px;
     margin-bottom: 8px; }
     .upk-amox-grid .upk-category a {
       font-size: 11px;
@@ -60,8 +62,6 @@
       transition: all .3s ease-in-out; }
       .upk-amox-grid .upk-category a:hover {
         color: #D90429; }
-    .upk-amox-grid .upk-category a + a {
-      margin-left: 5px; }
   .upk-amox-grid .upk-title {
     margin: 0;
     padding-bottom: 8px;

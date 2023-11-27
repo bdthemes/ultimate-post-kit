@@ -26,17 +26,16 @@
   top: 0;
   right: 0;
   margin: 15px;
-  display: inline-flex; }
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 7px; }
   .upk-maple-carousel .upk-category a {
     background-color: #ef233c;
     text-decoration: none;
     padding: 3px 10px;
     border-radius: 15px;
     font-size: 12px;
-    color: #ffffff;
-    letter-spacing: 1.5px; }
-  .upk-maple-carousel .upk-category a + a {
-    margin-right: 5px; }
+    color: #ffffff; }
 
 .upk-maple-carousel .upk-post-format {
   position: absolute;

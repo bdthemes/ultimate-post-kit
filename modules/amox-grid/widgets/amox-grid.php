@@ -660,7 +660,7 @@ class Amox_Grid extends Group_Control_Query
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .upk-amox-grid .upk-category a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .upk-amox-grid .upk-category' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );

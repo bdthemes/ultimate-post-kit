@@ -9,7 +9,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
-
+use Elementor\Group_Control_Text_Stroke;
 use UltimatePostKit\Traits\Global_Widget_Controls;
 use UltimatePostKit\Traits\Global_Widget_Functions;
 use UltimatePostKit\Includes\Controls\GroupQuery\Group_Control_Query;
@@ -365,6 +365,16 @@ class Featured_List extends Group_Control_Query {
 			]
 		);
 
+		//title tabs control
+		$this->start_controls_tabs('tabs_title_style');
+		//title normal tab
+		$this->start_controls_tab(
+			'tab_title_normal',
+			[
+				'label' => esc_html__('Normal', 'ultimate-post-kit'),
+			]
+		);
+
 		$this->add_control(
 			'title_color',
 			[
@@ -373,7 +383,6 @@ class Featured_List extends Group_Control_Query {
 				'selectors' => [
 					'{{WRAPPER}} .upk-featured-list .upk-item .upk-title a' => 'color: {{VALUE}};',
 				],
-				'separator' => 'before'
 			]
 		);
 
@@ -385,30 +394,6 @@ class Featured_List extends Group_Control_Query {
 				'selectors' => [
 					'{{WRAPPER}} .upk-featured-list .upk-item .upk-title a:hover' => 'color: {{VALUE}};',
 				],
-			]
-		);
-
-		$this->add_control(
-			'title_featured_color',
-			[
-				'label'     => esc_html__('Featured Color', 'ultimate-post-kit'),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-title a' => 'color: {{VALUE}};',
-				],
-				'separator' => 'before'
-			]
-		);
-
-		$this->add_control(
-			'title_featured_hover_color',
-			[
-				'label'     => esc_html__('Featured Hover Color', 'ultimate-post-kit'),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-title a:hover' => 'color: {{VALUE}};',
-				],
-				'separator' => 'after'
 			]
 		);
 
@@ -429,6 +414,79 @@ class Featured_List extends Group_Control_Query {
 				'selector' => '{{WRAPPER}} .upk-featured-list .upk-item .upk-title a',
 			]
 		);
+		//title text stroke control
+		$this->add_group_control(
+			Group_Control_Text_Stroke::get_type(),
+			[
+				'name'     => 'title_text_stroke',
+				'label'    => __('Text Stroke', 'ultimate-post-kit') . BDTUPK_NC . BDTUPK_PC,
+				'selector' => '{{WRAPPER}} .upk-featured-list .upk-item .upk-title a',
+			]
+		);
+
+		//title normal tab end
+		$this->end_controls_tab();
+		//title featured tab
+		$this->start_controls_tab(
+			'tab_title_featured',
+			[
+				'label' => esc_html__('Featured', 'ultimate-post-kit'),
+			]
+		);
+
+		$this->add_control(
+			'title_featured_color',
+			[
+				'label'     => esc_html__('Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-title a' => 'color: {{VALUE}};',
+				],
+				'separator' => 'before'
+			]
+		);
+
+		$this->add_control(
+			'title_featured_hover_color',
+			[
+				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-title a:hover' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'featured_title_typography',
+				'label'    => esc_html__('Typography', 'ultimate-post-kit') . BDTUPK_NC . BDTUPK_PC,
+				'selector' => '{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-title',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Shadow::get_type(),
+			[
+				'name'     => 'featured_title_text_shadow',
+				'label'    => __('Text Shadow', 'ultimate-post-kit') . BDTUPK_NC . BDTUPK_PC,
+				'selector' => '{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-title a',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Stroke::get_type(),
+			[
+				'name'     => 'featured_title_text_stroke',
+				'label'    => __('Text Stroke', 'ultimate-post-kit') . BDTUPK_NC . BDTUPK_PC,
+				'selector' => '{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-title a',
+			]
+		);
+		//title featured tab end
+		$this->end_controls_tab();
+		//title tabs control end
+		$this->end_controls_tabs();
 
 		$this->end_controls_section();
 

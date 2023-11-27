@@ -1,30 +1,38 @@
 {
-  "name": "ultimate-post-kit",
-  "version": "1.0.0",
-  "main": "index.php",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "ultimate-post-kit",
-    "theme"
-  ],
-  "author": "bdthemes",
-  "license": "ISC",
-  "devDependencies": {
-    "grunt": "^1.5.3",
-    "grunt-contrib-less": "^1.4.1",
-    "grunt-contrib-uglify": "^5.0.0",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-rtlcss": "^2.0.2",
-    "grunt-terser": "^1.0.0",
-    "jit-grunt": "^0.10.0"
-  },
-  "dependencies": {
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-sass": "^3.1.0",
-    "node-sass": "^7.0.1",
-    "sass": "^1.32.8",
-    "vue": "^2.6.12"
-  }
+	"name": "ultimate-post-kit",
+	"version": "2.0.0",
+	"main": "index.php",
+	"scripts": {
+		"build": "npm run lint:fix && npm run clean && cross-env NODE_ENV=production grunt",
+		"clean": "rimraf ./assets",
+		"dev": "cross-env NODE_ENV=development grunt watch",
+		"lint:fix": "eslint \"src/js/**/*.js\" --fix"
+	},
+	"keywords": [
+		"ultimate-post-kit",
+		"theme"
+	],
+	"author": "bdthemes",
+	"license": "ISC",
+	"devDependencies": {
+		"cross-env": "^7.0.3",
+		"eslint": "^8.48.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-jquery": "^1.5.1",
+		"eslint-plugin-prettier": "^5.0.0",
+		"goodshare.js": "^4.1.2",
+		"grunt": "^1.6.1",
+		"grunt-contrib-concat": "^2.1.0",
+		"grunt-contrib-copy": "^1.0.0",
+		"grunt-contrib-watch": "^1.1.0",
+		"grunt-rtlcss": "^2.0.2",
+		"grunt-sass": "^3.1.0",
+		"grunt-terser": "^2.0.0",
+		"jquery": "^3.7.0",
+		"node-sass": "^9.0.0",
+		"prettier": "^3.0.2",
+		"rimraf": "^5.0.1",
+		"terser": "^5.18.2",
+		"uikit": "3.16.24"
+	}
 }

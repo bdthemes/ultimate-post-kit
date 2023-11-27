@@ -7,6 +7,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
+use Elementor\Group_Control_Text_Stroke;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
 use Elementor\Utils;
@@ -540,6 +541,15 @@ class Carbon_Slider extends Group_Control_Query {
 			]
 		);
 
+		$this->add_group_control(
+			Group_Control_Text_Stroke::get_type(),
+			[
+				'name'      => 'title_text_stroke',
+				'label'     => __('Text Stroke', 'ultimate-post-kit') . BDTUPK_NC,
+				'selector'  => '{{WRAPPER}} .upk-carbon-slider-wrap .upk-carbon-main .upk-title a',
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -936,7 +946,7 @@ class Carbon_Slider extends Group_Control_Query {
 		$this->add_control(
 			'thumbs_dits_heading',
 			[
-				'label'     => esc_html__('D O T S', 'ultimate-post-kit'),
+				'label'     => esc_html__('DOTS', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before'
 			]
@@ -1053,9 +1063,50 @@ class Carbon_Slider extends Group_Control_Query {
 		$this->add_control(
 			'thumbs_arrows_heading',
 			[
-				'label'     => esc_html__('A R R O W S', 'ultimate-post-kit'),
+				'label'     => esc_html__('ARROWS', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before'
+				'separator' => 'before',
+				'condition' => [
+					'show_navigation' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'nav_arrows_icon',
+			[
+				'label'     => esc_html__('Arrows Icon', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'      => Controls_Manager::SELECT,
+				'default'   => '0',
+				'options'   => [
+					'0'        => esc_html__('Default', 'bdthemes-element-pack'),
+					'1'        => esc_html__('Style 1', 'ultimate-post-kit'),
+					'2'        => esc_html__('Style 2', 'ultimate-post-kit'),
+					'3'        => esc_html__('Style 3', 'ultimate-post-kit'),
+					'4'        => esc_html__('Style 4', 'ultimate-post-kit'),
+					'5'        => esc_html__('Style 5', 'ultimate-post-kit'),
+					'6'        => esc_html__('Style 6', 'ultimate-post-kit'),
+					'7'        => esc_html__('Style 7', 'ultimate-post-kit'),
+					'8'        => esc_html__('Style 8', 'ultimate-post-kit'),
+					'9'        => esc_html__('Style 9', 'ultimate-post-kit'),
+					'10'       => esc_html__('Style 10', 'ultimate-post-kit'),
+					'11'       => esc_html__('Style 11', 'ultimate-post-kit'),
+					'12'       => esc_html__('Style 12', 'ultimate-post-kit'),
+					'13'       => esc_html__('Style 13', 'ultimate-post-kit'),
+					'14'       => esc_html__('Style 14', 'ultimate-post-kit'),
+					'15'       => esc_html__('Style 15', 'ultimate-post-kit'),
+					'16'       => esc_html__('Style 16', 'ultimate-post-kit'),
+					'17'       => esc_html__('Style 17', 'ultimate-post-kit'),
+					'18'       => esc_html__('Style 18', 'ultimate-post-kit'),
+					'circle-1' => esc_html__('Style 19', 'ultimate-post-kit'),
+					'circle-2' => esc_html__('Style 20', 'ultimate-post-kit'),
+					'circle-3' => esc_html__('Style 21', 'ultimate-post-kit'),
+					'circle-4' => esc_html__('Style 22', 'ultimate-post-kit'),
+					'square-1' => esc_html__('Style 23', 'ultimate-post-kit'),
+				],
+				'condition' => [
+					'show_navigation' => 'yes'
+				]
 			]
 		);
 
@@ -1065,6 +1116,9 @@ class Carbon_Slider extends Group_Control_Query {
 			'tabs_nav_arrows_normal',
 			[
 				'label'     => __('Normal', 'ultimate-post-kit'),
+				'condition' => [
+					'show_navigation' => 'yes'
+				]
 			]
 		);
 
@@ -1076,6 +1130,9 @@ class Carbon_Slider extends Group_Control_Query {
 				'selectors' => [
 					'{{WRAPPER}} .upk-carbon-slider-wrap .upk-navigation-button' => 'color: {{VALUE}}',
 				],
+				'condition' => [
+					'show_navigation' => 'yes'
+				]
 			]
 		);
 
@@ -1084,6 +1141,9 @@ class Carbon_Slider extends Group_Control_Query {
 			[
 				'name'     => 'arrows_background',
 				'selector' => '{{WRAPPER}} .upk-carbon-slider-wrap .upk-navigation-button',
+				'condition' => [
+					'show_navigation' => 'yes'
+				]
 			]
 		);
 
@@ -1092,6 +1152,9 @@ class Carbon_Slider extends Group_Control_Query {
 			[
 				'name'     => 'arrows_border',
 				'selector' => '{{WRAPPER}} .upk-carbon-slider-wrap .upk-navigation-button',
+				'condition' => [
+					'show_navigation' => 'yes'
+				]
 			]
 		);
 
@@ -1104,6 +1167,9 @@ class Carbon_Slider extends Group_Control_Query {
 				'selectors'  => [
 					'{{WRAPPER}} .upk-carbon-slider-wrap .upk-navigation-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
+				'condition' => [
+					'show_navigation' => 'yes'
+				]
 			]
 		);
 
@@ -1115,6 +1181,9 @@ class Carbon_Slider extends Group_Control_Query {
 				'selectors' => [
 					'{{WRAPPER}} .upk-carbon-slider-wrap .upk-navigation-button' => 'font-size: {{SIZE}}{{UNIT}};',
 				],
+				'condition' => [
+					'show_navigation' => 'yes'
+				]
 			]
 		);
 
@@ -1127,6 +1196,9 @@ class Carbon_Slider extends Group_Control_Query {
 				'selectors'  => [
 					'{{WRAPPER}} .upk-carbon-slider-wrap .upk-navigation-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
+				'condition' => [
+					'show_navigation' => 'yes'
+				]
 			]
 		);
 
@@ -1136,6 +1208,9 @@ class Carbon_Slider extends Group_Control_Query {
 			'tabs_nav_arrows_hover',
 			[
 				'label'     => __('Hover', 'ultimate-post-kit'),
+				'condition' => [
+					'show_navigation' => 'yes'
+				]
 			]
 		);
 
@@ -1147,6 +1222,9 @@ class Carbon_Slider extends Group_Control_Query {
 				'selectors' => [
 					'{{WRAPPER}} .upk-carbon-slider-wrap .upk-navigation-button:hover' => 'color: {{VALUE}}',
 				],
+				'condition' => [
+					'show_navigation' => 'yes'
+				]
 			]
 		);
 
@@ -1155,6 +1233,9 @@ class Carbon_Slider extends Group_Control_Query {
 			[
 				'name'     => 'arrows_hover_background',
 				'selector' => '{{WRAPPER}} .upk-carbon-slider-wrap .upk-navigation-button:hover',
+				'condition' => [
+					'show_navigation' => 'yes'
+				]
 			]
 		);
 
@@ -1165,6 +1246,7 @@ class Carbon_Slider extends Group_Control_Query {
 				'type'      => Controls_Manager::COLOR,
 				'condition' => [
 					'arrows_border_border!' => '',
+					'show_navigation' => 'yes'
 				],
 				'selectors' => [
 					'{{WRAPPER}} .upk-carbon-slider-wrap .upk-navigation-button:hover' => 'border-color: {{VALUE}};',
@@ -1244,7 +1326,6 @@ class Carbon_Slider extends Group_Control_Query {
 							"parallax"       => true,
 							"grabCursor"     => ($settings["grab_cursor"] === "yes") ? true : false,
 							"pauseOnHover"   => ("yes" == $settings["pauseonhover"]) ? true : false,
-							// "centeredSlides" => ( $settings["centered_slides"] === "yes" ) ? true : false,
 							"slidesPerView"  => 1,
 							"observer"       => ($settings["observer"]) ? true : false,
 							"observeParents" => ($settings["observer"]) ? true : false,
@@ -1253,8 +1334,8 @@ class Carbon_Slider extends Group_Control_Query {
 								"loadPrevNext"  => "true",
 							],
 							"navigation" => [
-								"nextEl" => ".upk-navigation-next",
-								"prevEl" => ".upk-navigation-prev",
+								"nextEl" => "#$id-wrapper .upk-navigation-next",
+								"prevEl" => "#$id-wrapper .upk-navigation-prev",
 							],
 						]))
 					]
@@ -1354,6 +1435,7 @@ class Carbon_Slider extends Group_Control_Query {
 
 			public function render() {
 				$settings = $this->get_settings_for_display();
+				$id_wrapper              = 'upk-carbon-slider-' . $this->get_id() . '-wrapper';
 
 				$this->query_posts($settings['item_limit']['size']);
 				$wp_query = $this->get_query();
@@ -1366,7 +1448,7 @@ class Carbon_Slider extends Group_Control_Query {
 		$this->add_render_attribute('swiper-thumbs', 'class', 'upk-carbon-thumbs ' . $swiper_class);
 
 	?>
-		<div class="upk-carbon-slider-wrap">
+		<div class="upk-carbon-slider-wrap" id="<?php echo esc_html($id_wrapper); ?>">
 			<?php
 
 				$this->render_header();
@@ -1397,10 +1479,10 @@ class Carbon_Slider extends Group_Control_Query {
 				<?php if ($settings['show_navigation']) : ?>
 					<div class="upk-navigation-wrap">
 						<div class="upk-navigation-button upk-navigation-prev">
-							<i class="eicon-arrow-left" aria-hidden="true"></i>
+							<i class="upk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
 						</div>
 						<div class="upk-navigation-button upk-navigation-next">
-							<i class="eicon-arrow-right" aria-hidden="true"></i>
+							<i class="upk-icon-arrow-right-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
 						</div>
 					</div>
 				<?php endif; ?>

@@ -799,6 +799,7 @@ class Maple_Carousel extends Group_Control_Query {
 			[
 				'name'     => 'category_border',
 				'selector' => '{{WRAPPER}} .upk-maple-carousel .upk-category a',
+				'separator' => 'before'
 			]
 		);
 
@@ -827,9 +828,21 @@ class Maple_Carousel extends Group_Control_Query {
 		);
 
 		$this->add_responsive_control(
+			'category_margin',
+			[
+				'label'      => esc_html__('Margin', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .upk-maple-carousel .upk-category' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
 			'category_spacing',
 			[
-				'label'     => esc_html__('Spacing', 'ultimate-post-kit'),
+				'label'     => esc_html__('Space Between', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -839,11 +852,10 @@ class Maple_Carousel extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-maple-carousel .upk-category a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-maple-carousel .upk-category' => 'gap: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
-
 
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
@@ -901,9 +913,16 @@ class Maple_Carousel extends Group_Control_Query {
 				'selectors' => [
 					'{{WRAPPER}} .upk-maple-carousel .upk-category a:hover' => 'border-color: {{VALUE}};',
 				],
+				'separator' => 'before'
 			]
 		);
-
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => 'category_shadow_hover',
+				'selector' => '{{WRAPPER}} .upk-maple-carousel .upk-category a:hover',
+			]
+		);
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();

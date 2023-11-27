@@ -6,6 +6,7 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Text_Stroke;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
 use Elementor\Plugin;
@@ -596,6 +597,15 @@ class Pholox_Slider extends Group_Control_Query
 				'name'      => 'title_typography',
 				'label'     => esc_html__('Typography', 'ultimate-post-kit'),
 				'selector'  => '{{WRAPPER}} .upk-pholox-slider .upk-main-slider .upk-title',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Stroke::get_type(),
+			[
+				'name'      => 'title_text_stroke',
+				'label'     => __('Text Stroke', 'ultimate-post-kit') . BDTUPK_NC,
+				'selector'  => '{{WRAPPER}} .upk-pholox-slider .upk-main-slider .upk-title a',
 			]
 		);
 

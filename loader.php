@@ -109,7 +109,7 @@ class Ultimate_Post_Kit_Loader {
 		// Dynamic Select control
 		require BDTUPK_INC_PATH . 'controls/select-input/dynamic-select-input-module.php';
 		require BDTUPK_INC_PATH . 'controls/select-input/dynamic-select.php';
-
+		
 		//require BDTUPK_PATH . 'base/ultimate-post-kit-base.php';
 
 		// all widgets control from here
@@ -187,14 +187,14 @@ class Ultimate_Post_Kit_Loader {
 
 	public function register_site_scripts() {
 
-		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+		// $suffix = '.min';
 
-		wp_register_script('goodshare', BDTUPK_ASSETS_URL . 'vendor/js/goodshare' . $suffix . '.js', ['jquery'], '4.1.2', true);
-		wp_register_script('scrolline', BDTUPK_ASSETS_URL . 'vendor/js/jquery.scrolline' . $suffix . '.js', ['jquery'], '4.1.2', true);
-		wp_register_script('news-ticker-js', BDTUPK_ASSETS_URL . 'vendor/js/newsticker' . $suffix . '.js', ['jquery'], '', true);
-		wp_register_script('upk-animations', BDTUPK_ASSETS_URL . 'js/extensions/upk-animations' . $suffix . '.js', ['jquery'], '', true);
+		wp_register_script('goodshare', BDTUPK_ASSETS_URL . 'vendor/js/goodshare.min.js', ['jquery'], '4.1.2', true);
+		wp_register_script('scrolline', BDTUPK_ASSETS_URL . 'vendor/js/jquery.scrolline.min.js', ['jquery'], '4.1.2', true);
+		wp_register_script('news-ticker-js', BDTUPK_ASSETS_URL . 'vendor/js/newsticker.min.js', ['jquery'], '', true);
+		wp_register_script('upk-animations', BDTUPK_ASSETS_URL . 'js/extensions/upk-animations.min.js', ['jquery'], '', true);
 
-		wp_register_script('upk-all-scripts', BDTUPK_ASSETS_URL . 'js/upk-all-scripts' . $suffix . '.js', [
+		wp_register_script('upk-all-scripts', BDTUPK_ASSETS_URL . 'js/upk-all-scripts.min.js', [
 			'jquery',
 			'elementor-frontend',
 			'scrolline'
@@ -220,10 +220,10 @@ class Ultimate_Post_Kit_Loader {
 	 */
 	public function enqueue_site_scripts() {
 
-		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+		// $suffix = '.min';
 
 
-		wp_enqueue_script('upk-site', BDTUPK_ASSETS_URL . 'js/upk-site' . $suffix . '.js', [
+		wp_enqueue_script('upk-site', BDTUPK_ASSETS_URL . 'js/upk-site.min.js', [
 			'jquery',
 			'elementor-frontend'
 		], BDTUPK_VER, true); // tooltip file should be separate
@@ -246,9 +246,9 @@ class Ultimate_Post_Kit_Loader {
 
 	public function enqueue_editor_scripts() {
 
-		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+		// $suffix = '.min';
 
-		wp_enqueue_script('upk-editor', BDTUPK_ASSETS_URL . 'js/upk-editor' . $suffix . '.js', [
+		wp_enqueue_script('upk-editor', BDTUPK_ASSETS_URL . 'js/upk-editor.min.js', [
 			'backbone-marionette',
 			'elementor-common-modules',
 			'elementor-editor-modules',

@@ -1,6 +1,6 @@
 <?php
 
-namespace PrimeSlider\Includes;
+namespace UltimatePostKit\Includes;
 
 use Elementor\Core\Files\CSS\Post as Post_CSS;
 

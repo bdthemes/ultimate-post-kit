@@ -53,6 +53,10 @@
 				return [ 'upk-font', 'upk-exotic-list' ];
 			}
 		}
+		
+		public function get_custom_help_url() {
+			return 'https://youtu.be/WROTolCKOmE';
+		}
 
 		public function get_query() {
 			return $this->_query;
