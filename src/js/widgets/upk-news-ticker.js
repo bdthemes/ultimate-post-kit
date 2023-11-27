@@ -3,25 +3,25 @@
  */
 
 (function ($, elementor) {
-	'use strict';
+  "use strict";
 
-	var widgetNewsTicker = function ($scope, $) {
-		var $newsTicker = $scope.find('.upk-news-ticker'),
-			$settings = $newsTicker.data('settings');
+  var widgetNewsTicker = function ($scope, $) {
+    var $newsTicker = $scope.find(".upk-news-ticker"),
+      $settings = $newsTicker.data("settings");
 
-		if (!$newsTicker.length) {
-			return;
-		}
+    if (!$newsTicker.length) {
+      return;
+    }
 
-		$($newsTicker).upkNewsTicker($settings);
-	};
+    $($newsTicker).upkNewsTicker($settings);
+  };
 
-	jQuery(window).on('elementor/frontend/init', function () {
-		elementorFrontend.hooks.addAction(
-			'frontend/element_ready/upk-news-ticker.default',
-			widgetNewsTicker,
-		);
-	});
+  jQuery(window).on("elementor/frontend/init", function () {
+    elementorFrontend.hooks.addAction(
+      "frontend/element_ready/upk-news-ticker.default",
+      widgetNewsTicker,
+    );
+  });
 })(jQuery, window.elementorFrontend);
 
 /**

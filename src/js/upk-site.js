@@ -1,3 +1,3 @@
 (function ($, elementor) {
-	'use strict';
+  "use strict";
 })(jQuery, window.elementorFrontend);
