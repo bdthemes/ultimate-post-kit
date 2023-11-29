@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive, post widget, live copy, elementor addon, pagebuilder addon, addons, bdthemes
-Stable tag: 3.9.5
+Stable tag: 3.9.6
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.4.1
@@ -226,19 +226,16 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
-= 3.9.5 [19th November 2023] =
+= 3.9.6 [29th November 2023] =
 
-### Added
+* Fixed: Comments date issue fixed in recent comments widget
+* Updated: Sline slider widget optimized
+
+= 3.9.5 [19th November 2023] =
 
 * Added: Post format style controls & title text stroke added in soft timeline widget
 * Added: Item border, radius, shadow & image style controls & title text stroke control & counter line width, color controls added in wixer grid & carousel widgets
-
-### Fixed
-
 * Fixed: Indicator color issue fixed in soft timeline widget
-
-### Updated
-
 * Updated: Wixer grid & carousel widgets optimized & improved
 * Updated: Welsh list widget optimized & improved
 * Updated: Stone hover widget optimized & improved

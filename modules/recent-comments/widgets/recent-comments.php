@@ -834,7 +834,7 @@ class Recent_Comments extends Group_Control_Query {
 					$content    = wp_trim_words($comment->comment_content, $settings['excerpt_limit']);
 					$avatar     = get_avatar($comment->comment_author_email, $size = $settings['avatar_size']);
 					$author     = $comment->comment_author;
-					$date 		= get_the_date('F j, Y \a\t g:i a', $comment->comment_post_ID);
+					$date 		= get_comment_date('F j, Y \a\t g:i a', $comment_id);
 
 					$this->add_render_attribute(
 						'upk-author',
