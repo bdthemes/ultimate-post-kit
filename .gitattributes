@@ -3,4 +3,5 @@
 gruntfile.js export-ignore
 package.json export-ignore
 package-lock.json export-ignore
-/assets/scss export-ignore
+.eslintrc export-ignore
+/src export-ignore
