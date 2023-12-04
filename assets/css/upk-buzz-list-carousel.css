@@ -48,8 +48,11 @@
     font-size: 30px;
     font-weight: 600;
     position: relative;
-    padding-right: 15px;
-    transition: all 0.3s cubic-bezier(0.34, 0.01, 0.58, 1); }
+    margin-right: 15px;
+    transition: all 0.3s cubic-bezier(0.34, 0.01, 0.58, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center; }
   .upk-buzz-list-carousel .upk-inner {
     padding-left: 15px;
     border-left: 2px solid #8D99AE;

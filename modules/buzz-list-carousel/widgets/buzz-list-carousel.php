@@ -678,6 +678,41 @@ class Buzz_List_Carousel extends Group_Control_Query {
 			]
 		);
 
+		// background color
+		$this->add_control(
+			'counter_number_background_color',
+			[
+				'label'     => esc_html__('Background Color', 'ultimate-post-kit') . BDTUPK_NC,  
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .upk-buzz-list-carousel .upk-count' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		// border
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'     => 'counter_number_border',
+				'label'    => esc_html__('Border', 'ultimate-post-kit') . BDTUPK_NC,  
+				'selector' => '{{WRAPPER}} .upk-buzz-list-carousel .upk-count',
+			]
+		);
+
+		// border radius
+		$this->add_responsive_control(
+			'counter_number_border_radius',
+			[
+				'label'      => esc_html__('Border Radius', 'ultimate-post-kit') . BDTUPK_NC,  
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .upk-buzz-list-carousel .upk-count' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
 		$this->add_control(
 			'counter_number_hover_color',
 			[
@@ -685,6 +720,43 @@ class Buzz_List_Carousel extends Group_Control_Query {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-buzz-list-carousel .upk-item:hover .upk-count' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'counter_number_hover_background_color',
+			[
+				'label'     => esc_html__('Hover Background Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .upk-buzz-list-carousel .upk-item:hover .upk-count' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'counter_number_border_hover_color',
+			[
+				'label'     => esc_html__('Hover Border Color', 'ultimate-post-kit') . BDTUPK_NC,  
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'counter_number_border_border!' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-buzz-list-carousel .upk-item:hover .upk-count' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'counter_number_width',
+			[
+				'label'      => esc_html__('Width', 'ultimate-post-kit') . BDTUPK_NC, 
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'selectors'  => [
+					'{{WRAPPER}} .upk-buzz-list-carousel .upk-count' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -724,8 +796,8 @@ class Buzz_List_Carousel extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-buzz-list-carousel .upk-count' => 'padding-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .upk-buzz-list-carousel .upk-inner' => 'padding-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-buzz-list-carousel .upk-count' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-buzz-list-carousel .upk-inner' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'before'
 			]
