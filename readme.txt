@@ -226,6 +226,10 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.9.6 [Working Progress] =
+
+* Added: Number Count Style Tabs New Control Added Buzz List Carousel Widget
+
 = 3.9.6 [29th November 2023] =
 
 * Fixed: Comments date issue fixed in recent comments widget
