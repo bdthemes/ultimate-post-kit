@@ -226,9 +226,9 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
-= 3.9.6 [Working Progress] =
+= 3.9.X [Working Progress] =
 
-* Added: Number Count Style Tabs New Control Added Buzz List Carousel Widget
+* Added: Alignment & counter number controls added in buzz list carousel widget
 
 = 3.9.6 [29th November 2023] =
 
