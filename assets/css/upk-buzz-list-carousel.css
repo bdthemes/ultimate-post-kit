@@ -51,8 +51,7 @@
     margin-right: 15px;
     transition: all 0.3s cubic-bezier(0.34, 0.01, 0.58, 1);
     display: flex;
-    align-items: center;
-    justify-content: center; }
+    line-height: 1; }
   .upk-buzz-list-carousel .upk-inner {
     padding-left: 15px;
     border-left: 2px solid #8D99AE;
