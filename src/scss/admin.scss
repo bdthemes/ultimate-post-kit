@@ -13,6 +13,10 @@ $icon-color: #48484a;
 $card-background: #fff;
 $global-link-color: #1e87f0;
 
+.activate-license.ultimate-post-kit {
+  display: none !important;
+}
+
 .ultimate-post-kit-dashboard {
   &.wrap {
     margin: 10px 20px 0 0;
