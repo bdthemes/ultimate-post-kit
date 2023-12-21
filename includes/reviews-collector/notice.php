@@ -66,7 +66,7 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 
 			$installed = get_option( $this->rc_date_name . '_installed', false );
 
-			if ( $installed && ( time() - $installed ) < 2 * MINUTE_IN_SECONDS ) {
+			if ( $installed && ( time() - $installed ) < 5 * MINUTE_IN_SECONDS ) {
 				// if ( $installed && ( time() - $installed ) < 3 * DAY_IN_SECONDS ) {
 				return;
 			}
