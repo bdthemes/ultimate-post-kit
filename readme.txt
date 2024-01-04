@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive, post widget, live copy, elementor addon, pagebuilder addon, addons, bdthemes
-Stable tag: 3.9.9
+Stable tag: 3.9.10
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.4.2
@@ -225,6 +225,10 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 
 == Changelog ==
+
+= 3.9.10 [4th January 2024] =
+
+* Fixed: Duplicator issue Fixed
 
 = 3.9.9 [31th December 2023] =
 
