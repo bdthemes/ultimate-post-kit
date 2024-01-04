@@ -228,7 +228,7 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 = 3.9.11 [4th January 2024] =
 
-* Removed: Unnecessary file removed
+* Removed: Unnecessary assets file removed
 
 = 3.9.10 [4th January 2024] =
 
