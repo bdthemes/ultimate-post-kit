@@ -211,6 +211,29 @@ if ( ! class_exists( 'Insights_SDK' ) ) {
 				return;
 			}
 
+			/**
+			 * ==================================
+			 * 
+			 * Start Own Custom Data Important
+			 * 
+			 * ==================================
+			 */
+			$custom_data = array(
+				'active_modules'   => get_option( 'ultimate_post_kit_active_modules', false ),
+				'elementor_extend' => get_option( 'ultimate_post_kit_elementor_extend', false ),
+				'other_settings'   => get_option( 'ultimate_post_kit_other_settings', false ),
+			);
+
+			$custom_data = wp_json_encode( $custom_data, true );
+
+			/**
+			 * ==================================
+			 * 
+			 * End Own Custom Data Important
+			 * 
+			 * ==================================
+			 */
+
 			$data                = array();
 			$data['public_key']  = $public_key;
 			$data['product_id']  = $product_id;
@@ -357,38 +380,38 @@ if ( ! class_exists( 'Insights_SDK' ) ) {
 			$plugin_icon  = isset( $this->params['plugin_icon'] ) ? $this->params['plugin_icon'] : '';
 
 			?>
-						<div class="dci-global-notice dci-notice-data notice notice-success is-dismissible">
-							<div class="dci-global-header">
-								<?php if ( ! empty( $plugin_icon ) ) : ?>
-														<div>
-															<img src="<?php echo esc_url( $plugin_icon ); ?>" alt="icon">
-														</div>
-								<?php endif; ?>
-								<h3>
-									<?php printf( $plugin_title ); ?>
-								</h3>
-							</div>
-							<?php printf( $plugin_msg ); ?>
-							<p>
-								What we <a href="<?php echo esc_url( $admin_url ); ?>">collect</a>?
-							</p>
-							<input type="hidden" name="dci_name" value="<?php echo esc_html( $this->dci_name ); ?>">
-							<input type="hidden" name="dci_date_name" value="<?php echo esc_html( $this->dci_date_name ); ?>">
-							<input type="hidden" name="dci_allow_name" value="<?php echo esc_html( $this->dci_allow_name ); ?>">
-							<input type="hidden" name="nonce" value="<?php echo esc_html( wp_create_nonce( 'dci_sdk' ) ); ?>">
-							<p>
-								<button name="dci_allow_status" value="yes" class="button button-primary dci-button-allow">
-									Allow
-								</button>
-								<button name="dci_allow_status" value="skip" class="button dci-button-skip button-secondary">
-									I'll Skip For Now
-								</button>
-								<button name="dci_allow_status" value="disallow" class="button dci-button-disallow dci-button-danger">
-									Don't Allow
-								</button>
-							</p>
-						</div>
-			<?php
+									<div class="dci-global-notice dci-notice-data notice notice-success is-dismissible">
+										<div class="dci-global-header">
+											<?php if ( ! empty( $plugin_icon ) ) : ?>
+																		<div>
+																			<img src="<?php echo esc_url( $plugin_icon ); ?>" alt="icon">
+																		</div>
+											<?php endif; ?>
+											<h3>
+												<?php printf( $plugin_title ); ?>
+											</h3>
+										</div>
+										<?php printf( $plugin_msg ); ?>
+										<p>
+											What we <a href="<?php echo esc_url( $admin_url ); ?>">collect</a>?
+										</p>
+										<input type="hidden" name="dci_name" value="<?php echo esc_html( $this->dci_name ); ?>">
+										<input type="hidden" name="dci_date_name" value="<?php echo esc_html( $this->dci_date_name ); ?>">
+										<input type="hidden" name="dci_allow_name" value="<?php echo esc_html( $this->dci_allow_name ); ?>">
+										<input type="hidden" name="nonce" value="<?php echo esc_html( wp_create_nonce( 'dci_sdk' ) ); ?>">
+										<p>
+											<button name="dci_allow_status" value="yes" class="button button-primary dci-button-allow">
+												Allow
+											</button>
+											<button name="dci_allow_status" value="skip" class="button dci-button-skip button-secondary">
+												I'll Skip For Now
+											</button>
+											<button name="dci_allow_status" value="disallow" class="button dci-button-disallow dci-button-danger">
+												Don't Allow
+											</button>
+										</p>
+									</div>
+						<?php
 		}
 
 		/**
