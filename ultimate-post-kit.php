@@ -147,11 +147,12 @@ if ( ! function_exists( '_is_elementor_installed' ) ) {
 if ( ! function_exists( 'rc_upk_core_plugin' ) ) {
 	function rc_upk_core_plugin() {
 
-		require_once BDTUPK_INC_PATH . 'reviews-collector/start.php';
+		require_once BDTUPK_INC_PATH . 'feedback-hub/start.php';
 
 		rc_dynamic_init( array(
 			'sdk_version'  => '1.0.0',
 			'plugin_name'  => 'Ultimate Post Kit',
+			'plugin_icon'  => BDTUPK_ASSETS_URL . 'images/logo.svg',
 			'slug'         => 'ultimate_post_kit_options',
 			'menu'         => array(
 				'slug' => 'ultimate_post_kit_options',
@@ -162,7 +163,7 @@ if ( ! function_exists( 'rc_upk_core_plugin' ) ) {
 		) );
 
 	}
-	add_action( 'plugins_loaded', 'rc_upk_core_plugin' );
+	add_action( 'admin_init', 'rc_upk_core_plugin' );
 }
 
 /**
