@@ -180,6 +180,7 @@ if ( ! function_exists( 'dci_plugin_ultimate_post_kit' ) ) {
 			'product_id'   => 1,
 			'plugin_name'  => 'Ultimate Post Kit', // make simple, must not empty
 			'plugin_title' => 'Ultimate Post Kit ( Never miss an Important Update )', // You can describe your plugin title here
+			'plugin_icon'  => BDTUPK_ASSETS_URL . 'images/logo.svg',
 			'api_endpoint' => 'https://analytics.bdthemes.com/wp-json/dci/v1/data-insights',
 			'menu'         => array(
 				'slug' => 'ultimate_post_kit_options',
