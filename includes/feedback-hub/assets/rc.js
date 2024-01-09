@@ -1,6 +1,6 @@
 (function ($) {
     // console.log('rc.js loaded');
-    $(document).on('click', '.rc-button-allow, .rc-button-skip', function () {
+    $(document).on('click', '.rc-button-allow, .rc-button-skip, .rc-button-disallow', function () {
         let nonce = $(this).data('nonce'),
             rc_name = $(this).data('rc_name'),
             date_name = $(this).data('date_name'),
