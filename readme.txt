@@ -226,7 +226,7 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
-= 3.9.12 [8th January 2024] =
+= 3.9.12 [10th January 2024] =
 
 * Updated: System improved
 
