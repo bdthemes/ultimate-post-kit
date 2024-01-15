@@ -992,7 +992,26 @@ class ModuleService {
                     'name' => 'live_copy_group_end',
                     'type' => 'end_group',
                 ],
+                [
+                    'name'  => 'enable_audio_link_group_start',
+                    'label' => esc_html__('Audio Link Meta', 'ultimate-post-kit'),
+                    'desc'  => __('If you need to display Audio features in your website so please enable this option.', 'ultimate-post-kit'),
+                    'type'  => 'start_group',
+                    'content_type' => 'new',
+                ],
 
+                [
+                    'name'    => 'audio_link',
+                    'label'   => esc_html__('Audio Link', 'ultimate-post-kit'),
+                    'type'    => 'checkbox',
+                    'default' => "off",
+                    'widget_type' => 'free',
+                ],
+
+                [
+                    'name' => 'audio_link_group_end',
+                    'type' => 'end_group',
+                ],
                 [
                     'name'  => 'enable_video_link_group_start',
                     'label' => esc_html__('Video Link Meta', 'ultimate-post-kit'),
@@ -1012,7 +1031,7 @@ class ModuleService {
                 [
                     'name' => 'video_link_group_end',
                     'type' => 'end_group',
-                ]
+                ],
             ]
         ];
 
