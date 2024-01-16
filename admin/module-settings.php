@@ -282,6 +282,16 @@ class ModuleService {
                     'video_url'    => 'https://youtu.be/Q-Pm-6Kkmr4',
                 ],
                 [
+                    'name'         => 'featured-gallery',
+                    'label'        => esc_html__('Featured Gallery', 'ultimate-post-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'widget_type'  => 'pro',
+                    'content_type' => 'gallery list new',
+                    'demo_url'     => 'https://postkit.pro/demo/featured-gallery/',
+                    'video_url'    => '',
+                ],
+                [
                     'name'         => 'forbes-tabs',
                     'label'        => esc_html__('Forbes Tabs', 'ultimate-post-kit'),
                     'type'         => 'checkbox',
