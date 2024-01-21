@@ -159,7 +159,7 @@ class Admin
 		// $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-form');
-		wp_enqueue_script('upk-notice', BDTUPK_ADMIN_ASSETS_URL . 'js/upk-notice.js', ['jquery'], BDTUPK_VER,  true);
+		wp_enqueue_script('upk-notice', BDTUPK_ADMIN_ASSETS_URL . 'js/upk-notice.min.js', ['jquery'], BDTUPK_VER,  true);
 
 		if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_post_kit_options')) {
 			wp_enqueue_script('chart', BDTUPK_ADMIN_ASSETS_URL . 'js/chart.min.js', ['jquery'], '3.9.1', true);
