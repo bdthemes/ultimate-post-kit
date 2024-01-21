@@ -233,6 +233,7 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 = 3.9.13 [XX January 2024] =
 
 * Added: Featured Gallery widget added (pro)
+* Fixed: Notice js file not found issue fixed
 
 = 3.9.12 [10th January 2024] =
 
