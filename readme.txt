@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive, post widget, live copy, elementor addon, pagebuilder addon, addons, bdthemes
-Stable tag: 3.9.12
+Stable tag: 3.9.13
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.4.2
@@ -123,6 +123,10 @@ More widgets & extensions are coming soon...
 0. **[Candy List](https://postkit.pro/demo/candy-list/)** - Using the Candy List widget to show your post list, you can surprise your visitors with a sudden content reveal. Because by default, the widget only shows the post title, category, and meta. Only when hovered, visitors will see the post images popping up with stylish animations.
 0. **[Welsh List](https://postkit.pro/demo/welsh-list/)** - The Welsh List widget is a blogging tool that displays your blog posts with a broad detailing, including the post publishing date in a timestamp. The list looks a lot like a calendar and best for featuring upcoming posts on your website. See the demo
 
+= Gallery 💠 =
+
+0. **[Featured Gallery](https://postkit.pro/demo/featured-gallery/)** - 
+
 = Carousel 🌅 =
 
 0. **[Eldora Carousel](https://postkit.pro/demo/eldora-carousel/)** - The Eldora Carousel presents a slider-type interface to onboard your posts into the webpage with a compact card view of the post image and details (title, description, meta, button) along with the next and previous post images on both sides.
@@ -225,6 +229,10 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 
 == Changelog ==
+
+= 3.9.13 [XX January 2024] =
+
+* Added: Featured Gallery widget added (pro)
 
 = 3.9.12 [10th January 2024] =
 

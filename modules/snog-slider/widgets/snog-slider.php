@@ -64,9 +64,9 @@ class Snog_Slider extends Group_Control_Query {
 		}
 	}
 
-	// public function get_custom_help_url() {
-	// 	return 'https://youtu.be/2ZYnLz__uA4';
-	// }
+	public function get_custom_help_url() {
+		return 'https://youtu.be/UKZIEgYg0gs?si=exkIDYa-j2c7E34t';
+	}
 
 
 	public function get_query() {
