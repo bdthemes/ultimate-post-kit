@@ -234,6 +234,7 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 * Added: Featured Gallery widget added (pro)
 * Fixed: Notice js file not found issue fixed
+* Fixed: Category multicolor issue fixed in featured list widget
 
 = 3.9.12 [10th January 2024] =
 
