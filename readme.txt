@@ -233,7 +233,9 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 = 3.9.13 [XX January 2024] =
 
 * Added: Featured Gallery widget added (pro)
+* Added: Arrows icon select option added in crystal slider widget
 * Fixed: Notice js file not found issue fixed
+* Fixed: Category multicolor issue fixed in featured list widget
 
 = 3.9.12 [10th January 2024] =
 

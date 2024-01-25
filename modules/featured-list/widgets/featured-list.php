@@ -1079,7 +1079,7 @@ class Featured_List extends Group_Control_Query {
 
 			if ($categories) {
 				foreach ($categories as $category) {
-					$bg_color = strToHex($category->cat_name);
+					$bg_color = strToHex($category->name);
 					$link = '<a href="' . esc_url(get_category_link($category->term_id)) . '"><span style="background-color:' . $bg_color . '"></span>' . $category->name . '</a>';
 					$_categories[$category->slug] = $link;
 				}
