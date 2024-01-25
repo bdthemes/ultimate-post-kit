@@ -345,6 +345,44 @@ class Crystal_Slider extends Group_Control_Query {
 		);
 
 		$this->add_control(
+			'nav_arrows_icon',
+			[
+				'label'     => esc_html__('Arrows Icon', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => '0',
+				'options'   => [
+					'0'        => esc_html__('Default', 'bdthemes-element-pack'),
+					'1'        => esc_html__('Style 1', 'ultimate-post-kit'),
+					'2'        => esc_html__('Style 2', 'ultimate-post-kit'),
+					'3'        => esc_html__('Style 3', 'ultimate-post-kit'),
+					'4'        => esc_html__('Style 4', 'ultimate-post-kit'),
+					'5'        => esc_html__('Style 5', 'ultimate-post-kit'),
+					'6'        => esc_html__('Style 6', 'ultimate-post-kit'),
+					'7'        => esc_html__('Style 7', 'ultimate-post-kit'),
+					'8'        => esc_html__('Style 8', 'ultimate-post-kit'),
+					'9'        => esc_html__('Style 9', 'ultimate-post-kit'),
+					'10'       => esc_html__('Style 10', 'ultimate-post-kit'),
+					'11'       => esc_html__('Style 11', 'ultimate-post-kit'),
+					'12'       => esc_html__('Style 12', 'ultimate-post-kit'),
+					'13'       => esc_html__('Style 13', 'ultimate-post-kit'),
+					'14'       => esc_html__('Style 14', 'ultimate-post-kit'),
+					'15'       => esc_html__('Style 15', 'ultimate-post-kit'),
+					'16'       => esc_html__('Style 16', 'ultimate-post-kit'),
+					'17'       => esc_html__('Style 17', 'ultimate-post-kit'),
+					'18'       => esc_html__('Style 18', 'ultimate-post-kit'),
+					'circle-1' => esc_html__('Style 19', 'ultimate-post-kit'),
+					'circle-2' => esc_html__('Style 20', 'ultimate-post-kit'),
+					'circle-3' => esc_html__('Style 21', 'ultimate-post-kit'),
+					'circle-4' => esc_html__('Style 22', 'ultimate-post-kit'),
+					'square-1' => esc_html__('Style 23', 'ultimate-post-kit'),
+				],
+				'condition' => [
+					'show_navigation' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
 			'show_pagination',
 			[
 				'label' => esc_html__('Show Pagination', 'ultimate-post-kit'),
@@ -1099,7 +1137,7 @@ class Crystal_Slider extends Group_Control_Query {
 				'label' => esc_html__('Vertical Offset', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SLIDER,
 				'selectors' => [
-					'{{WRAPPER}} .upk-crystal-slider .upk-navigation-wrap .upk-navigation-next, {{WRAPPER}} .upk-crystal-slider .upk-navigation-wrap .upk-navigation-prev' => 'top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-crystal-slider .upk-navigation-wrap .upk-navigation-next, {{WRAPPER}} .upk-crystal-slider .upk-navigation-wrap .upk-navigation-prev' => 'top: {{SIZE}}%;',
 				],
 			]
 		);
@@ -1114,8 +1152,8 @@ class Crystal_Slider extends Group_Control_Query {
 					'unit' => '%',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-crystal-slider .upk-navigation-wrap .upk-navigation-next' => 'right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .upk-crystal-slider .upk-navigation-wrap .upk-navigation-prev' => 'left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-crystal-slider .upk-navigation-wrap .upk-navigation-next' => 'left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-crystal-slider .upk-navigation-wrap .upk-navigation-prev' => 'right: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1625,11 +1663,11 @@ class Crystal_Slider extends Group_Control_Query {
 				</div>
 				<?php if ($settings['show_navigation']) : ?>
 					<div class="upk-navigation-wrap">
-						<div class="upk-navigation-next">
-							<i class="eicon-arrow-right"></i>
-						</div>
 						<div class="upk-navigation-prev">
-							<i class="eicon-arrow-left"></i>
+							<i class="upk-icon-arrow-right-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
+						</div>
+						<div class="upk-navigation-next">
+							<i class="upk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
 						</div>
 					</div>
 				<?php endif; ?>

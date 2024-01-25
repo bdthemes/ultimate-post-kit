@@ -54,9 +54,9 @@ class Pholox_Slider extends Group_Control_Query
 	public function get_style_depends()
 	{
 		if ($this->upk_is_edit_mode()) {
-			return ['elementor-icons-fa-solid', 'upk-all-styles'];
+			return ['upk-all-styles'];
 		} else {
-			return ['elementor-icons-fa-solid', 'upk-pholox-slider'];
+			return ['upk-font', 'upk-pholox-slider'];
 		}
 	}
 
@@ -1580,7 +1580,7 @@ class Pholox_Slider extends Group_Control_Query
 				<?php if ($video_link !== false) : ?>
 					<div class="upk-play-btn">
 						<a href="javascript:void(0);" data-src="<?php echo esc_url($video_link); ?>">
-							<i class="fas fa-play"></i>
+							<i class="upk-icon-play" aria-hidden="true"></i>
 						</a>
 					</div>
 				<?php endif; ?>
