@@ -180,7 +180,7 @@ if ( ! function_exists( 'dci_plugin_ultimate_post_kit' ) ) {
 			'sdk_version'  => '1.1.0',
 			'product_id'   => 1,
 			'plugin_name'  => 'Ultimate Post Kit', // make simple, must not empty
-			'plugin_title' => 'Ultimate Post Kit ( Never miss an Important Update )', // You can describe your plugin title here
+			'plugin_title' => 'Love using Ultimate Post Kit? Congrats 🎉 ( Never miss an Important Update )', // You can describe your plugin title here
 			'plugin_icon'  => BDTUPK_ASSETS_URL . 'images/logo.svg',
 			'api_endpoint' => 'https://analytics.bdthemes.com/wp-json/dci/v1/data-insights',
 			'menu'         => array(
@@ -188,7 +188,7 @@ if ( ! function_exists( 'dci_plugin_ultimate_post_kit' ) ) {
 			),
 			'public_key'   => 'pk_yLi403LFWfR4A0u4CKhH9uLR9pmZ0KOF',
 			'is_premium'   => false,
-			'plugin_msg'   => '<p>Would you allow us to collect non-sensitive data to improve your experiences with our product?</p> <p>We respect your privacy. Any data collected by your approval is non-sensitive and does not include personal/sensitive information.</p>',
+			'plugin_msg'   => '<p>Be Top-contributor by sharing non-sensitive plugin data and create an impact to the global WordPress community today! You can receive valuable emails periodically.</p>',
 		) );
 
 	}
