@@ -125,7 +125,7 @@ More widgets & extensions are coming soon...
 
 = Gallery 💠 =
 
-0. **[Featured Gallery](https://postkit.pro/demo/featured-gallery/)** - 
+0. **[Featured Gallery](https://postkit.pro/demo/featured-gallery/)** - Create the most outstanding post gallery within your website and entertain your visitors with maximum engagement using the Featured Gallery widget.
 
 = Carousel 🌅 =
 
@@ -230,7 +230,7 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
-= 3.10.0 [28th January 2024] =
+= 3.10.0 [29th January 2024] =
 
 * Added: Featured Gallery widget added (pro)
 * Added: Custom audio meta fields added
