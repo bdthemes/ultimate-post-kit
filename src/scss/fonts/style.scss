@@ -3,10 +3,10 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?d78baa') format('woff2'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?d78baa') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?d78baa') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?d78baa##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?ddw409') format('woff2'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?ddw409') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?ddw409') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?ddw409##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,6 +27,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.upk-icon-featured-gallery {
+  &:before {
+    content: $upk-icon-featured-gallery; 
+  }
+}
+.upk-icon-post-comments {
+  &:before {
+    content: $upk-icon-post-comments; 
+  }
+}
 .upk-icon-post-title {
   &:before {
     content: $upk-icon-post-title; 
@@ -432,6 +442,11 @@
     content: $upk-icon-maple-grid; 
   }
 }
+.upk-icon-audio_link {
+  &:before {
+    content: $upk-icon-audio_link; 
+  }
+}
 .upk-icon-multicolor-item {
   &:before {
     content: $upk-icon-multicolor-item; 
@@ -775,6 +790,11 @@
 .upk-icon-arrow-right-square-1 {
   &:before {
     content: $upk-icon-arrow-right-square-1; 
+  }
+}
+.upk-icon-play {
+  &:before {
+    content: $upk-icon-play; 
   }
 }
 .upk-icon-ultimate-post-kit {
