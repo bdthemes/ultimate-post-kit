@@ -1231,7 +1231,7 @@
 
 @font-face {
   font-family: "ultimate-post-kit";
-  src: url("../fonts/ultimate-post-kit.woff2?d78baa") format("woff2"), url("../fonts/ultimate-post-kit.ttf?d78baa") format("truetype"), url("../fonts/ultimate-post-kit.woff?d78baa") format("woff"), url("../fonts/ultimate-post-kit.svg?d78baa#ultimate-post-kit") format("svg");
+  src: url("../fonts/ultimate-post-kit.woff2?ddw409") format("woff2"), url("../fonts/ultimate-post-kit.ttf?ddw409") format("truetype"), url("../fonts/ultimate-post-kit.woff?ddw409") format("woff"), url("../fonts/ultimate-post-kit.svg?ddw409#ultimate-post-kit") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block; }
@@ -1248,6 +1248,12 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+.upk-icon-featured-gallery:before {
+  content: ""; }
+
+.upk-icon-post-comments:before {
+  content: ""; }
 
 .upk-icon-post-title:before {
   content: ""; }
@@ -1492,6 +1498,9 @@
 .upk-icon-maple-grid:before {
   content: ""; }
 
+.upk-icon-audio_link:before {
+  content: ""; }
+
 .upk-icon-multicolor-item:before {
   content: ""; }
 
@@ -1698,6 +1707,9 @@
 
 .upk-icon-arrow-right-square-1:before {
   content: ""; }
+
+.upk-icon-play:before {
+  content: ""; }
 
 .upk-icon-ultimate-post-kit:before {
   content: ""; }
@@ -2193,6 +2205,17 @@
 
 [class*="elementor-widget-upk-"] .swiper-pagination .swiper-pagination-bullet {
   transition: all 350ms cubic-bezier(0.38, 0.91, 0.58, 1); }
+
+[class*="elementor-widget-upk-"] .upk-title a {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-transform: inherit;
+  font-style: inherit;
+  text-decoration: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit; }
 
 /* Common Less */
 .elementor-lightbox *, .elementor-lightbox *::before, .elementor-lightbox *::after {
@@ -11771,3 +11794,14 @@
 
 [class*="elementor-widget-upk-"] .swiper-pagination .swiper-pagination-bullet {
   transition: all 350ms cubic-bezier(0.38, 0.91, 0.58, 1); }
+
+[class*="elementor-widget-upk-"] .upk-title a {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-transform: inherit;
+  font-style: inherit;
+  text-decoration: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit; }

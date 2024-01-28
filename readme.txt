@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive, post widget, live copy, elementor addon, pagebuilder addon, addons, bdthemes
-Stable tag: 3.9.13
+Stable tag: 3.10.0
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.4.2
@@ -230,12 +230,14 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
-= 3.9.13 [XX January 2024] =
+= 3.10.0 [28th January 2024] =
 
 * Added: Featured Gallery widget added (pro)
+* Added: Custom audio meta fields added
 * Added: Arrows icon select option added in crystal slider widget
 * Fixed: Notice js file not found issue fixed
 * Fixed: Category multicolor issue fixed in featured list widget
+* Fixed: Post title typography global fonts issue fixed (Thanks to Greg)
 
 = 3.9.12 [10th January 2024] =
 
