@@ -1231,7 +1231,7 @@
 
 @font-face {
   font-family: "ultimate-post-kit";
-  src: url("../fonts/ultimate-post-kit.woff2?ddw409") format("woff2"), url("../fonts/ultimate-post-kit.ttf?ddw409") format("truetype"), url("../fonts/ultimate-post-kit.woff?ddw409") format("woff"), url("../fonts/ultimate-post-kit.svg?ddw409#ultimate-post-kit") format("svg");
+  src: url("../fonts/ultimate-post-kit.woff2?9pdzvf") format("woff2"), url("../fonts/ultimate-post-kit.ttf?9pdzvf") format("truetype"), url("../fonts/ultimate-post-kit.woff?9pdzvf") format("woff"), url("../fonts/ultimate-post-kit.svg?9pdzvf#ultimate-post-kit") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block; }
@@ -11092,8 +11092,6 @@
     text-align: center;
     color: #2B2D42;
     border-radius: 100px; }
-    .upk-pholox-slider .upk-play-btn a i {
-      padding-left: 2px; }
 
 .upk-pholox-slider .upk-title {
   font-weight: 700;

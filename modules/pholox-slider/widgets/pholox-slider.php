@@ -1580,7 +1580,7 @@ class Pholox_Slider extends Group_Control_Query
 				<?php if ($video_link !== false) : ?>
 					<div class="upk-play-btn">
 						<a href="javascript:void(0);" data-src="<?php echo esc_url($video_link); ?>">
-							<i class="upk-icon-play" aria-hidden="true"></i>
+							<i class="upk-icon-play upk-play-btn" aria-hidden="true"></i>
 						</a>
 					</div>
 				<?php endif; ?>
@@ -1607,7 +1607,7 @@ class Pholox_Slider extends Group_Control_Query
 				<?php if ($video_link !== false) : ?>
 					<div class="upk-play-btn">
 						<a class="upk-pholox-video-trigger" data-src="<?php echo esc_url($video_link); ?>" href="javascript:void(0);">
-							<i class="upk-play-btn fas fa-play"></i>
+							<i class="upk-icon-play upk-play-btn" aria-hidden="true"></i>
 						</a>
 					</div>
 					<div class="upk-video-wrap">
