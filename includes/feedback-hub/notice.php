@@ -68,7 +68,7 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 
 			// if ( $installed && ( time() - $installed ) < 1 * MINUTE_IN_SECONDS ) {
 			if ( $installed && ( time() - $installed ) < 3 * DAY_IN_SECONDS ) {
-				return;
+				 return;
 			}
 
 			/**
@@ -219,48 +219,51 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 			$plugin_icon  = isset( $this->params['plugin_icon'] ) ? $this->params['plugin_icon'] : '';
 
 			?>
-					<div class="rc-global-notice notice notice-success is-dismissible">
-						<div class="rc-global-header">
-							<?php if ( ! empty( $plugin_icon ) ) : ?>
-											<div>
-												<img src="<?php echo esc_url( $plugin_icon ); ?>" alt="icon">
-											</div>
-							<?php endif; ?>
+				<div class="rc-global-notice notice notice-success is-dismissible">
+					<div class="rc-global-header">
+						<?php if ( ! empty( $plugin_icon ) ) : ?>
+						<div class="bdt-notice-rc-logo">
+							<img src="<?php echo esc_url( $plugin_icon ); ?>" alt="icon">
+						</div>
+						<?php endif; ?>
+
+						<div class="bdt-notice-rc-content">
 							<h3>
 								<?php printf( $plugin_title ); ?>
 							</h3>
+							<?php printf( $plugin_msg ); ?>
+							<input type="hidden" name="rc_name" value="<?php echo esc_html( $this->rc_name ); ?>">
+							<input type="hidden" name="nonce" value="<?php echo esc_html( wp_create_nonce( 'rc_sdk' ) ); ?>">
+							<div class="bdt-notice-rc-buttons">
+								<button data-rc_name="<?php echo esc_html( $this->rc_name ); ?>"
+									data-date_name="<?php echo esc_html( $this->rc_date_name ); ?>"
+									data-allow_name="<?php echo esc_html( $this->rc_allow_name ); ?>"
+									data-nonce="<?php echo esc_html( wp_create_nonce( 'rc_sdk' ) ); ?>"
+									data-review_url="<?php echo esc_html( $this->review_url ); ?>" name="rc_allow_status" value="yes"
+									class="rc-button-allow">
+									<span class="dashicons dashicons-star-filled" style="margin-top: 3px;"></span> Give us your Review
+								</button>
+								<button data-rc_name="<?php echo esc_html( $this->rc_name ); ?>"
+									data-date_name="<?php echo esc_html( $this->rc_date_name ); ?>"
+									data-allow_name="<?php echo esc_html( $this->rc_allow_name ); ?>"
+									data-nonce="<?php echo esc_html( wp_create_nonce( 'rc_sdk' ) ); ?>"
+									data-review_url="<?php echo esc_html( $this->review_url ); ?>" name="rc_allow_status" value="skip"
+									class="rc-button-skip">
+									I'll skip for now
+								</button>
+								<button data-rc_name="<?php echo esc_html( $this->rc_name ); ?>"
+									data-date_name="<?php echo esc_html( $this->rc_date_name ); ?>"
+									data-allow_name="<?php echo esc_html( $this->rc_allow_name ); ?>"
+									data-nonce="<?php echo esc_html( wp_create_nonce( 'rc_sdk' ) ); ?>"
+									data-review_url="<?php echo esc_html( $this->review_url ); ?>" name="rc_allow_status" value="disallow"
+									class="rc-button-disallow rc-button-danger">
+									Hide and Don't show again
+								</button>
+							</div>
 						</div>
-						<?php printf( $plugin_msg ); ?>
-						<input type="hidden" name="rc_name" value="<?php echo esc_html( $this->rc_name ); ?>">
-						<input type="hidden" name="nonce" value="<?php echo esc_html( wp_create_nonce( 'rc_sdk' ) ); ?>">
-						<p>
-							<button data-rc_name="<?php echo esc_html( $this->rc_name ); ?>"
-								data-date_name="<?php echo esc_html( $this->rc_date_name ); ?>"
-								data-allow_name="<?php echo esc_html( $this->rc_allow_name ); ?>"
-								data-nonce="<?php echo esc_html( wp_create_nonce( 'rc_sdk' ) ); ?>"
-								data-review_url="<?php echo esc_html( $this->review_url ); ?>" name="rc_allow_status" value="yes"
-								class="button button-primary rc-button-allow">
-								<span class="dashicons dashicons-star-filled" style="margin-top: 3px;"></span> Give us your Review
-							</button>
-							<button data-rc_name="<?php echo esc_html( $this->rc_name ); ?>"
-								data-date_name="<?php echo esc_html( $this->rc_date_name ); ?>"
-								data-allow_name="<?php echo esc_html( $this->rc_allow_name ); ?>"
-								data-nonce="<?php echo esc_html( wp_create_nonce( 'rc_sdk' ) ); ?>"
-								data-review_url="<?php echo esc_html( $this->review_url ); ?>" name="rc_allow_status" value="skip"
-								class="button rc-button-skip button-secondary">
-								I'll skip for now
-							</button>
-							<button data-rc_name="<?php echo esc_html( $this->rc_name ); ?>"
-								data-date_name="<?php echo esc_html( $this->rc_date_name ); ?>"
-								data-allow_name="<?php echo esc_html( $this->rc_allow_name ); ?>"
-								data-nonce="<?php echo esc_html( wp_create_nonce( 'rc_sdk' ) ); ?>"
-								data-review_url="<?php echo esc_html( $this->review_url ); ?>" name="rc_allow_status" value="disallow"
-								class="button rc-button-disallow button-secondary rc-button-danger">
-								Hide and Don't show again
-							</button>
-						</p>
 					</div>
-					<?php
+				</div>
+				<?php
 		}
 
 		/**
@@ -300,6 +303,7 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 if ( ! function_exists( 'rc_sdk_automate' ) ) {
 	function rc_sdk_automate( $params ) {
 		if ( class_exists( 'RC_Reviews_Collector' ) ) {
+			// RC_Reviews_Collector::get_instance( $params );
 			new RC_Reviews_Collector( $params );
 		}
 	}
