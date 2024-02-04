@@ -115,25 +115,25 @@
 
 .dci-global-notice .dci-button-allow {
 	background-color: transparent;
-	--primaryColor: #08AEEC;
-	--secondaryColor: #20E2AD;
+	--primaryColor: #60DF54;
+	--secondaryColor: #08C972;
 	color: white;
-	background: linear-gradient(313deg, var(--primaryColor), var(--secondaryColor) 100%);
+	background: linear-gradient(-45deg, var(--primaryColor), var(--secondaryColor) 100%);
 	transition: --primaryColor 1s, --secondaryColor 1s;
 	border: none;
 }
 .dci-global-notice .dci-button-allow:hover {
-	--primaryColor: #20E2AD;;
-	--secondaryColor: #08AEEC;
+	--primaryColor: #08C972;
+	--secondaryColor: #60DF54;
 }
 
 .dci-global-notice .dci-button-skip{
     border: 0;
-    background-color: #e0f5ff;
+    background-color: rgba(86, 220, 88, 0.212);
 }
 
 .dci-global-notice .dci-button-skip:hover {
-    background-color: #d9f1fd;
+    background-color: rgba(86, 220, 88, 0.348);
 }
 
 .dci-global-notice .dci-button-disallow {
@@ -154,7 +154,7 @@
     z-index: 99;
     border-color: #e2e2e5;
     box-shadow: none;
-    border-left-color: #46d8bb;
+    border-left-color: #5bde57;
 }
 
 .dci-global-notice .dci-global-header {
