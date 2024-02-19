@@ -84,12 +84,6 @@ class Alice_Grid extends Group_Control_Query {
 			]
 		);
 
-		// if (upk_fs()->is__premium_only()) {
-		// 	$column_size = 'grid-template-columns: repeat({{SIZE}}, 1fr);';
-		// } else {
-		// 	$column_size = '';
-		// }
-
 		$column_size = apply_filters('upk_column_size', '');
 
 		$this->add_responsive_control(
