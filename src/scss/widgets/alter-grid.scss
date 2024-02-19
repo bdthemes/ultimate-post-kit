@@ -46,6 +46,7 @@
 	.upk-img-wrap {
 		position: relative;
 		display: flex;
+		height: 100%;
 		.upk-main-img {
 			overflow: hidden;
 			display: flex;
@@ -375,6 +376,52 @@
 		}
 	}
 }
+
+.upk-content-on-image-yes {
+	.upk-alter-grid {
+		.upk-item {
+			height: 400px;
+			&:hover {
+				.upk-content {
+					height: 100% !important;
+				}
+				.upk-readmore,
+				.upk-meta, 
+				.upk-text {
+					opacity: 1;
+				}
+				.upk-meta {
+					transition-delay: .2s;
+				}
+			}
+		}
+		.upk-content {
+			position: absolute;
+			height: 150px;
+			bottom: 0;
+			background-color: rgba(0, 0, 0, 0.15);
+			transition: all .3s ease-in-out;
+		}
+		.upk-readmore, 
+		.upk-meta,
+		.upk-text {
+			opacity: 0;
+			transition: all .3s ease;
+		}
+		.upk-readmore,
+		.upk-text,
+		.upk-meta,
+		.upk-meta a,
+		.upk-title a,
+		.upk-category a {
+			color: #ffffff;
+		}
+		.upk-readmore-on-image {
+			display: none;
+		}
+	}
+}
+
 // Responsive  Css 
 @media only screen and (min-width: 600px) {
 	.upk-alter-grid {

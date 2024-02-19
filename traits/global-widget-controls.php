@@ -31,7 +31,7 @@ trait Global_Widget_Controls {
 		$this->add_responsive_control(
 			'pagination_alignment',
 			[
-				'label'   => __('Alignment', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'   => __('Alignment', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::CHOOSE,
 				'options' => [
 					'left'   => [
@@ -307,7 +307,7 @@ trait Global_Widget_Controls {
 		$this->add_control(
 			'show_reading_time',
 			[
-				'label'     => esc_html__('Reading Time', 'ultimate-post-kit') . BDTUPK_NC . BDTUPK_PC,
+				'label'     => esc_html__('Reading Time', 'ultimate-post-kit') . BDTUPK_PC,
 				'type'      => Controls_Manager::SWITCHER,
 				'separator' => 'before',
 				'classes' => BDTUPK_IS_PC
@@ -1072,7 +1072,7 @@ trait Global_Widget_Controls {
 		$this->add_responsive_control(
 			'dots_space_between',
 			[
-				'label'     => __('Space Between', 'bdthemes-element-pack') . BDTUPK_NC,
+				'label'     => __('Space Between', 'bdthemes-element-pack'),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}}' => '--upk-swiper-dots-space-between: {{SIZE}}{{UNIT}};',
@@ -1154,7 +1154,7 @@ trait Global_Widget_Controls {
 		$this->start_controls_tab(
 			'tabs_nav_dots_active',
 			[
-				'label'     => __('Active', 'bdthemes-element-pack') . BDTUPK_NC,
+				'label'     => __('Active', 'bdthemes-element-pack'),
 				'condition' => [
 					'navigation!' => ['arrows', 'arrows-fraction', 'progressbar', 'none'],
 				],

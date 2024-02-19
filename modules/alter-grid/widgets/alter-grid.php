@@ -85,12 +85,6 @@ class Alter_Grid extends Group_Control_Query {
 			]
 		);
 
-		// if (_is_upk_pro_activated()) {
-		// 	$column_size = 'grid-template-columns: repeat({{SIZE}}, 1fr);';
-		// } else {
-		// 	$column_size = '';
-		// }
-
 		$column_size = apply_filters('upk_column_size', '');
 
 		$this->add_responsive_control(
@@ -122,7 +116,7 @@ class Alter_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'row_gap',
 			[
-				'label'     => esc_html__('Row Gap', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Row Gap', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}} .upk-alter-grid .upk-post-grid' => 'grid-row-gap: {{SIZE}}{{UNIT}};',
@@ -190,13 +184,69 @@ class Alter_Grid extends Group_Control_Query {
 			]
 		);
 
+		$this->add_control(
+			'content_on_image',
+			[
+				'label'        => esc_html__('Content on Image', 'ultimate-post-kit') . BDTUPK_NC . BDTUPK_PC,
+				'type'         => Controls_Manager::SWITCHER,
+				'description'  => esc_html__('If you enable this feature, Read more type "on image" will not work.', 'ultimate-post-kit'),
+				'prefix_class' => 'upk-content-on-image-',
+				'separator'    => 'before',
+				'classes'   => BDTUPK_IS_PC,
+				'render_type'  => 'template',
+				'condition'    => [
+					'grid_style' => ['1']
+				]
+			]
+		);
+
+		$this->add_responsive_control(
+			'item_height',
+			[
+				'label'     => esc_html__('Item Height', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => [
+					'px' => [
+						'min' => 100,
+						'max' => 800,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}}.upk-content-on-image-yes .upk-alter-grid .upk-item' => 'height: {{SIZE}}px;',
+				],
+				'condition' => [
+					'content_on_image' => 'yes'
+				]
+			]
+		);
+		
+		$this->add_responsive_control(
+			'content_height',
+			[
+				'label'     => esc_html__('Content Height', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => [
+					'px' => [
+						'min' => 50,
+						'max' => 200,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}}.upk-content-on-image-yes .upk-alter-grid .upk-item .upk-content' => 'height: {{SIZE}}px;',
+				],
+				'condition' => [
+					'content_on_image' => 'yes'
+				]
+			]
+		);
+
 		$this->end_controls_section();
 
 		// Query Settings
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => __('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -325,7 +375,7 @@ class Alter_Grid extends Group_Control_Query {
 		$this->add_control(
 			'meta_separator',
 			[
-				'label'       => __('Separator', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'       => __('Separator', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => '|',
 				'label_block' => false,
@@ -384,14 +434,14 @@ class Alter_Grid extends Group_Control_Query {
 					'on_image' => esc_html__('On Image', 'ultimate-post-kit'),
 				],
 				'separator' => 'before',
-				'classes'   => BDTUPK_IS_PC
+				'classes'   => BDTUPK_IS_PC,
 			]
 		);
 
 		$this->add_control(
 			'show_post_format',
 			[
-				'label'   => esc_html__('Post Format', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'   => esc_html__('Post Format', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SWITCHER,
 				'separator' => 'before'
 			]
@@ -421,7 +471,7 @@ class Alter_Grid extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_content_readmore',
 			[
-				'label' => esc_html__('Read More', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => esc_html__('Read More', 'ultimate-post-kit'),
 				'condition'   => [
 					'readmore_type' => 'classic',
 				],
@@ -505,6 +555,44 @@ class Alter_Grid extends Group_Control_Query {
 			]
 		);
 
+		$this->add_control(
+			'overlay_blur_effect',
+			[
+				'label'       => esc_html__('Glassmorphism', 'ultimate-post-kit'),
+				'type'        => Controls_Manager::SWITCHER,
+				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
+				'default'     => 'yes',
+				'condition'   => [
+					'content_on_image' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'overlay_blur_level',
+			[
+				'label'     => __('Blur Level', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => [
+					'px' => [
+						'min'  => 0,
+						'step' => 1,
+						'max'  => 50,
+					]
+				],
+				'default'   => [
+					'size' => 10
+				],
+				'selectors' => [
+					'{{WRAPPER}}.upk-content-on-image-yes .upk-alter-grid .upk-content' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'
+				],
+				'condition' => [
+					'overlay_blur_effect' => 'yes',
+					'content_on_image' => 'yes'
+				]
+			]
+		);
+
 		$this->add_responsive_control(
 			'content_padding',
 			[
@@ -531,6 +619,21 @@ class Alter_Grid extends Group_Control_Query {
 			[
 				'name'     => 'itam_background',
 				'selector' => '{{WRAPPER}} .upk-alter-grid .upk-item',
+				'condition' => [
+					'content_on_image!' => 'yes'
+				]
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name'     => 'itam_content_background',
+				'selector' => '{{WRAPPER}}.upk-content-on-image-yes .upk-alter-grid .upk-content',
+				'exclude'  => ['image'],
+				'condition' => [
+					'content_on_image' => 'yes'
+				]
 			]
 		);
 
@@ -542,6 +645,7 @@ class Alter_Grid extends Group_Control_Query {
 				'placeholder' => '1px',
 				'default'     => '1px',
 				'selector'    => '{{WRAPPER}} .upk-alter-grid .upk-item',
+				'separator'   => 'before'
 			]
 		);
 
@@ -579,6 +683,21 @@ class Alter_Grid extends Group_Control_Query {
 			[
 				'name'     => 'itam_background_color_hover',
 				'selector' => '{{WRAPPER}} .upk-alter-grid .upk-item:hover',
+				'condition' => [
+					'content_on_image!' => 'yes'
+				]
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name'     => 'itam_content_hover_background',
+				'selector' => '{{WRAPPER}}.upk-content-on-image-yes .upk-alter-grid .upk-item:hover .upk-content',
+				'exclude'  => ['image'],
+				'condition' => [
+					'content_on_image' => 'yes'
+				]
 			]
 		);
 
@@ -1087,7 +1206,7 @@ class Alter_Grid extends Group_Control_Query {
 			$this->start_controls_section(
 				'section_style_readmore',
 				[
-					'label'     => esc_html__('Read More', 'bdthemes-element-pack') . BDTUPK_NC,
+					'label'     => esc_html__('Read More', 'bdthemes-element-pack'),
 					'tab'       => Controls_Manager::TAB_STYLE,
 					'condition' => [
 						'readmore_type' => 'classic',
@@ -1248,7 +1367,7 @@ class Alter_Grid extends Group_Control_Query {
 			$this->start_controls_section(
 				'section_style_readmore_on_image',
 				[
-					'label'     => esc_html__('Read More On Image', 'bdthemes-element-pack') . BDTUPK_NC,
+					'label'     => esc_html__('Read More On Image', 'bdthemes-element-pack'),
 					'tab'       => Controls_Manager::TAB_STYLE,
 					'condition' => [
 						'readmore_type' => 'on_image',
@@ -1284,7 +1403,7 @@ class Alter_Grid extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_style_post_format',
 			[
-				'label'     => esc_html__('Post Format', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Post Format', 'ultimate-post-kit'),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'show_post_format' => 'yes',
