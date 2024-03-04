@@ -875,7 +875,7 @@ class Post_Category extends Module_Base {
 					<a <?php $this->print_render_attribute_string( 'category-item' ); ?>>
 						<!-- display image  -->
 						<?php if ( $image_settings == 'on' && $settings['show_image'] == 'yes' ) :
-							echo $category_image;
+							echo wp_kses_post($category_image);
 						endif; ?>
 						<div class="upk-content">
 							<span class="upk-category-name">
@@ -918,7 +918,7 @@ class Post_Category extends Module_Base {
 			<?php
 		else :
 
-			echo '<div class="upk-alert">' . __( 'Category Not Found!', 'ultimate-post-kit' ) . '</div>';
+			echo '<div class="upk-alert">' . esc_html__( 'Category Not Found!', 'ultimate-post-kit' ) . '</div>';
 
 		endif;
 	}

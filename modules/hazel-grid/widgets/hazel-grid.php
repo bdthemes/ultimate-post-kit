@@ -969,7 +969,7 @@ class Hazel_Grid extends Group_Control_Query {
 			return;
 		}
 
-		printf('<%1$s class="upk-title"><a href="%2$s" title="%3$s" class="upk-blog-title">%3$s</a></%1$s>', Utils::get_valid_html_tag($settings['title_tags']), get_permalink(), get_the_title());
+		printf('<%1$s class="upk-title"><a href="%2$s" title="%3$s" class="upk-blog-title">%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), get_permalink(), get_the_title());
 	}
 
 	public function render_author() {

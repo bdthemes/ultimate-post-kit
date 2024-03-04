@@ -694,7 +694,7 @@ class Tag_Cloud extends Module_Base {
 <?php
 		else :
 
-			echo '<div class="upk-alert">' . __('Category Not Found!', 'ultimate-post-kit') . '</div>';
+			echo '<div class="upk-alert">' . esc_html__('Category Not Found!', 'ultimate-post-kit') . '</div>';
 
 		endif;
 	}
