@@ -954,9 +954,9 @@ class Category_Carousel extends Module_Base {
 										<h3 class="title"><?php echo esc_html($cat->cat_name); ?></h3>
 										<?php if ($settings['show_count'] === 'yes') : ?>
 											<p class="upk-category-count">
-											<?php printf('<span class="upk-count-number">%s</span>', $cat->category_count);
+											<?php printf('<span class="upk-count-number">%s</span>', esc_html($cat->category_count));
 											if ($settings['show_text'] === 'yes') :
-												printf('<span class="upk-count-text">%s</span>', $settings['count_text_label']);
+												printf('<span class="upk-count-text">%s</span>', esc_html($settings['count_text_label']));
 											endif;
 										endif; ?>
 											</p>

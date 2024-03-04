@@ -158,7 +158,7 @@ if ( ! function_exists( 'rc_upk_core_plugin' ) ) {
 				'slug' => 'ultimate_post_kit_options',
 			),
 			'review_url'   => 'https://bdt.to/ultimate-post-kit-elementor-addons-review',
-			'plugin_title' => 'Yay! Great that you\'re using <strong>Ultimate Post Kit</strong>',
+			'plugin_title' => 'Yay! Great that you\'re using Ultimate Post Kit',
 			'plugin_msg'   => '<p>Loved using Ultimate Post Kit on your website? Share your experience in a review and help us spread the love to everyone right now. Good words will help the community.</p>',
 		) );
 

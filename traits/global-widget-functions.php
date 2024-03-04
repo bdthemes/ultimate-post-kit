@@ -19,7 +19,7 @@ trait Global_Widget_Functions {
 		$image_src             = wp_get_attachment_image_src($image_id, $size);
 
 		if (!$image_src) {
-			printf('<img class="upk-img" src="%1$s" alt="%2$s">', $placeholder_image_src, esc_html(get_the_title()));
+			printf('<img class="upk-img" src="%1$s" alt="%2$s">', esc_url($placeholder_image_src), esc_html(get_the_title()));
 		} else {
 			print(wp_get_attachment_image(
 				$image_id,
@@ -57,7 +57,7 @@ trait Global_Widget_Functions {
 			return;
 		}
 		apply_filters('upk/' . $widget_name . '/before/title', '');
-		printf('<%1$s class="upk-title"><a href="%2$s" title="%3$s" class="title-animation-%4$s" >%3$s</a></%1$s>', Utils::get_valid_html_tag($settings['title_tags']), get_permalink(), get_the_title(), esc_attr($settings['title_style']));
+		printf('<%1$s class="upk-title"><a href="%2$s" title="%3$s" class="title-animation-%4$s" >%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), get_permalink(), get_the_title(), esc_attr($settings['title_style']));
 		apply_filters('upk/' . $widget_name . '/after/title', '');
 	}
 

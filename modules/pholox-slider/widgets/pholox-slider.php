@@ -1454,7 +1454,7 @@ class Pholox_Slider extends Group_Control_Query
 			return;
 		}
 
-		printf('<%1$s class="upk-title"><a href="%2$s" title="%3$s">%3$s</a></%1$s>', Utils::get_valid_html_tag($settings['title_tags']), 'javascript:void(0);', get_the_title());
+		printf('<%1$s class="upk-title"><a href="%2$s" title="%3$s">%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), 'javascript:void(0);', get_the_title());
 	}
 
 
@@ -1479,7 +1479,7 @@ class Pholox_Slider extends Group_Control_Query
 			return;
 		}
 
-		printf('<%1$s class="upk-title" data-swiper-parallax-x="100"><a href="%2$s" title="%3$s">%3$s</a></%1$s>', Utils::get_valid_html_tag($settings['title_tags']), get_permalink(), get_the_title());
+		printf('<%1$s class="upk-title" data-swiper-parallax-x="100"><a href="%2$s" title="%3$s">%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), get_permalink(), get_the_title());
 	}
 
 

@@ -1050,7 +1050,7 @@ class Newsletter extends Module_Base {
 				<div class="upk-newsletter-before-text"><?php echo esc_attr($settings['before_text']); ?></div>
 			<?php endif; ?>
 
-			<form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" class="upk-newsletter">
+			<form action="<?php echo esc_url(site_url()) ?>/wp-admin/admin-ajax.php" class="upk-newsletter">
 
 				<?php if ($settings['show_before_icon'] and !empty($settings['mailchimp_before_icon']['value'])) : ?>
 					<div class="upk-newsletter-before-icon">

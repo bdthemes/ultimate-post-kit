@@ -12,13 +12,13 @@ if (!class_exists('Ultimate_Post_Kit_Category_Image')) {
 
         public function add_new_category_image() { ?>
             <div class="form-field term-group-wrap">
-                <label for="upk-category-image-id"><?php _e('Image', 'ultimate-post-kit'); ?></label>
+                <label for="upk-category-image-id"><?php esc_html_e('Image', 'ultimate-post-kit'); ?></label>
                 <input type="hidden" id="upk-category-image-id" name="upk-category-image-id" class="upk-hidden-media-url" value="">
                 <div id="upk-category-image-wrapper">
                 </div>
                 <p>
-                    <input type="button" class="button button-secondary upk-category-image-add" id="upk-category-image-add" name="upk-category-image-add" value="<?php _e('Add Image', 'ultimate-post-kit'); ?>" />
-                    <input type="button" class="button button-secondary upk-category-image-remove" id="upk-category-image-remove" name="upk-category-image-remove" value="<?php _e('Remove Image', 'ultimate-post-kit'); ?>" />
+                    <input type="button" class="button button-secondary upk-category-image-add" id="upk-category-image-add" name="upk-category-image-add" value="<?php esc_html_e('Add Image', 'ultimate-post-kit'); ?>" />
+                    <input type="button" class="button button-secondary upk-category-image-remove" id="upk-category-image-remove" name="upk-category-image-remove" value="<?php esc_html_e('Remove Image', 'ultimate-post-kit'); ?>" />
                 </p>
             </div>
         <?php
@@ -32,7 +32,7 @@ if (!class_exists('Ultimate_Post_Kit_Category_Image')) {
         public function edit_category_image($term) { ?>
             <tr class="form-field term-group-wrap">
                 <th scope="row">
-                    <label for="upk-category-image-id"><?php _e('Image', 'ultimate-post-kit'); ?></label>
+                    <label for="upk-category-image-id"><?php esc_html_e('Image', 'ultimate-post-kit'); ?></label>
                 </th>
                 <td>
                     <?php $image_id = get_term_meta($term->term_id, 'upk-category-image-id', true); ?>
@@ -43,8 +43,8 @@ if (!class_exists('Ultimate_Post_Kit_Category_Image')) {
                         <?php } ?>
                     </div>
                     <p>
-                        <input type="button" class="button button-secondary upk-category-image-add" id="upk-category-image-add" name="upk-category-image-add" value="<?php _e('Add Image', 'ultimate-post-kit'); ?>" />
-                        <input type="button" class="button button-secondary upk-category-image-remove" id="upk-category-image-remove" name="upk-category-image-remove" value="<?php _e('Remove Image', 'ultimate-post-kit'); ?>" />
+                        <input type="button" class="button button-secondary upk-category-image-add" id="upk-category-image-add" name="upk-category-image-add" value="<?php esc_html_e('Add Image', 'ultimate-post-kit'); ?>" />
+                        <input type="button" class="button button-secondary upk-category-image-remove" id="upk-category-image-remove" name="upk-category-image-remove" value="<?php esc_html_e('Remove Image', 'ultimate-post-kit'); ?>" />
                     </p>
                 </td>
             </tr>

@@ -383,7 +383,7 @@ function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 		$links[] = $paged + 1;
 	}
 
-	printf( '<ul class="upk-pagination" data-widget-id="%s" >' . "\n", $widget_id );
+	printf( '<ul class="upk-pagination" data-widget-id="%s" >' . "\n", esc_attr($widget_id) );
 
 	/** Previous Post Link */
 	if ( get_previous_posts_link() ) {
@@ -394,7 +394,7 @@ function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 	if ( ! in_array( 1, $links ) ) {
 		$class = 1 == $paged ? ' class="current"' : '';
 
-		printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
+		printf( '<li%s><a href="%s">%s</a></li>' . "\n", wp_kses_post($class), esc_url( get_pagenum_link( 1 ) ), '1' );
 
 		if ( ! in_array( 2, $links ) ) {
 			echo '<li class="upk-pagination-dot-dot"><span>...</span></li>';
@@ -405,7 +405,7 @@ function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 	sort( $links );
 	foreach ( (array) $links as $link ) {
 		$class = $paged == $link ? ' class="upk-active"' : '';
-		printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
+		printf( '<li%s><a href="%s">%s</a></li>' . "\n", wp_kses_post($class), esc_url( get_pagenum_link( $link ) ), wp_kses_post($link) );
 	}
 
 	/** Link to last page, plus ellipses if necessary */
@@ -415,7 +415,7 @@ function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 		}
 
 		$class = $paged == $max ? ' class="upk-active"' : '';
-		printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
+		printf( '<li%s><a href="%s">%s</a></li>' . "\n", wp_kses_post($class), esc_url( get_pagenum_link( $max ) ), wp_kses_post($max) );
 	}
 
 	/** Next Post Link */

@@ -814,10 +814,10 @@ class Static_Social_Count extends Group_Control_Query {
 					</div>
 					<div class="upk-content">
 						<div class="upk-count">
-							<?php echo '<span class="counter-value">' . $social_link['social_counter'] . '</span>'; ?>
+							<?php echo '<span class="counter-value">' . esc_html($social_link['social_counter']) . '</span>'; ?>
 						</div>
 						<div class="upk-meta">
-							<?php printf('<span>%s</span>', $social_link['social_site_meta']); ?>
+							<?php printf('<span>%s</span>', esc_html($social_link['social_site_meta'])); ?>
 						</div>
 					</div>
 				</a>

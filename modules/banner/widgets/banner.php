@@ -1441,9 +1441,9 @@ class Banner extends Group_Control_Query
 		<div class="upk-content">
 			<div class="upk-content-inner">
 				<?php if ($settings['show_title'] and $settings['title_text']) : ?>
-					<<?php echo Utils::get_valid_html_tag($settings['title_size']); ?> class="upk-title">
+					<<?php echo esc_attr(Utils::get_valid_html_tag($settings['title_size'])); ?> class="upk-title">
 						<?php echo wp_kses_post($settings['title_text'], ultimate_post_kit_title_tags('title_text')); ?>
-					</<?php echo Utils::get_valid_html_tag($settings['title_size']); ?>>
+					</<?php echo esc_attr(Utils::get_valid_html_tag($settings['title_size'])); ?>>
 				<?php endif; ?>
 
 				<?php if ($settings['sub_title_text'] and 'yes' == $settings['show_sub_title']) : ?>
