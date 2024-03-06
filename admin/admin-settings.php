@@ -679,8 +679,12 @@ class UltimatePostKit_Admin_Settings {
 
             <div class="bdt-grid" bdt-grid bdt-height-match="target: > div > .bdt-card" style="max-width: 800px; margin-left: auto; margin-right: auto;">
                 <div class="bdt-width-1-1@m upk-comparision bdt-text-center">
-                    <h1 class="bdt-text-bold">WHY GO WITH PRO?</h1>
-                    <h2>Just Compare With Ultimate Post Kit Free Vs Pro</h2>
+                    <h1 class="bdt-text-bold">
+                        <?php echo esc_html_x('WHY GO WITH PRO?', 'Frontend', 'ultimate-post-kit'); ?>
+                    </h1>
+                    <h2>
+                        <?php echo esc_html_x('Just Compare With Ultimate Post Kit Free Vs Pro', 'Frontend', 'ultimate-post-kit'); ?>
+                    </h2>
 
 
                     <div>
@@ -690,105 +694,139 @@ class UltimatePostKit_Admin_Settings {
 
                             <li class="bdt-text-bold">
                                 <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">Features</div>
-                                    <div class="bdt-width-auto@m">Free</div>
-                                    <div class="bdt-width-auto@m">Pro</div>
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Features', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
+                                    <div class="bdt-width-auto@m">
+                                        <?php echo esc_html_x('Free', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
+                                    <div class="bdt-width-auto@m">
+                                        <?php echo esc_html_x('Pro', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
                                 </div>
                             </li>
                             <li class="">
                                 <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m"><span bdt-tooltip="pos: top-left; title: Lite have 35+ Widgets but Pro have 100+ core widgets">Core Widgets</span></div>
-                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                                </div>
-                            </li>
-                            <li class="">
-                                <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">Theme Compatibility</div>
-                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                                </div>
-                            </li>
-                            <li class="">
-                                <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">Dynamic Content & Custom Fields Capabilities</div>
+                                    <div class="bdt-width-expand@m"><span bdt-tooltip="pos: top-left; title: Lite have 35+ Widgets but Pro have 100+ core widgets">
+                                        <?php echo esc_html_x('Core Widgets', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </span></div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                 </div>
                             </li>
                             <li class="">
                                 <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">Proper Documentation</div>
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Theme Compatibility', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                 </div>
                             </li>
                             <li class="">
                                 <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">Updates & Support</div>
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Dynamic Content & Custom Fields Capabilities', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                 </div>
                             </li>
                             <li class="">
                                 <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">Rooten Theme Pro Features</div>
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Proper Documentation', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
+                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
+                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
+                                </div>
+                            </li>
+                            <li class="">
+                                <div class="bdt-grid">
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Updates & Support', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
+                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
+                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
+                                </div>
+                            </li>
+                            <li class="">
+                                <div class="bdt-grid">
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Rooten Theme Pro Features', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-no"></span></div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                 </div>
                             </li>
                             <li class="">
                                 <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">Priority Support</div>
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Priority Support', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-no"></span></div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                 </div>
                             </li>
                             <li class="">
                                 <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">Ready Made Pages</div>
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Ready Made Pages', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                 </div>
                             </li>
                             <li class="">
                                 <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">Ready Made Blocks</div>
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Ready Made Blocks', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                 </div>
                             </li>
                             <li class="">
                                 <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">Elementor Extended Widgets</div>
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Elementor Extended Widgets', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                 </div>
                             </li>
                             <li class="">
                                 <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">Live Copy or Paste</div>
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Live Copy or Paste', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                 </div>
                             </li>
                             <li class="">
                                 <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">Duplicator</div>
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Duplicator', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                 </div>
                             </li>
                             <li class="">
                                 <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">Video Link Meta</div>
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Video Link Meta', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                 </div>
                             </li>
                             <li class="">
                                 <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">Category Image</div>
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Category Image', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                 </div>
@@ -805,27 +843,16 @@ class UltimatePostKit_Admin_Settings {
                                 <li>
                                     <div class="bdt-grid">
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> Incredibly Advanced
+                                            <span class="dashicons dashicons-heart"></span> 
+                                            <?php echo esc_html_x('Incredibly Advanced', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> Refund or Cancel Anytime
+                                            <span class="dashicons dashicons-heart"></span> 
+                                            <?php echo esc_html_x('Refund or Cancel Anytime', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> Dynamic Content
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="bdt-grid">
-                                        <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> Super-Flexible Widgets
-                                        </div>
-                                        <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> 24/7 Premium Support
-                                        </div>
-                                        <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> Third Party Plugins
+                                            <span class="dashicons dashicons-heart"></span> 
+                                            <?php echo esc_html_x('Dynamic Content', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                     </div>
                                 </li>
@@ -833,13 +860,16 @@ class UltimatePostKit_Admin_Settings {
                                 <li>
                                     <div class="bdt-grid">
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> Special Discount!
+                                            <span class="dashicons dashicons-heart"></span> 
+                                            <?php echo esc_html_x('Super-Flexible Widgets', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> Custom Field Integration
+                                            <span class="dashicons dashicons-heart"></span> 
+                                            <?php echo esc_html_x('24/7 Premium Support', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> With Live Chat Support
+                                            <span class="dashicons dashicons-heart"></span> 
+                                            <?php echo esc_html_x('Third Party Plugins', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                     </div>
                                 </li>
@@ -847,13 +877,33 @@ class UltimatePostKit_Admin_Settings {
                                 <li>
                                     <div class="bdt-grid">
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> Trusted Payment Methods
+                                            <span class="dashicons dashicons-heart"></span> 
+                                            <?php echo esc_html_x('Special Discount!', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> Interactive Effects
+                                            <span class="dashicons dashicons-heart"></span> 
+                                            <?php echo esc_html_x('Custom Field Integration', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> Video Tutorial
+                                            <span class="dashicons dashicons-heart"></span> 
+                                            <?php echo esc_html_x('With Live Chat Support', 'Frontend', 'ultimate-post-kit'); ?>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="bdt-grid">
+                                        <div class="bdt-width-1-3@m">
+                                            <span class="dashicons dashicons-heart"></span> 
+                                            <?php echo esc_html_x('Trusted Payment Methods', 'Frontend', 'ultimate-post-kit'); ?>
+                                        </div>
+                                        <div class="bdt-width-1-3@m">
+                                            <span class="dashicons dashicons-heart"></span> 
+                                            <?php echo esc_html_x('Interactive Effects', 'Frontend', 'ultimate-post-kit'); ?>
+                                        </div>
+                                        <div class="bdt-width-1-3@m">
+                                            <span class="dashicons dashicons-heart"></span> 
+                                            <?php echo esc_html_x('Video Tutorial', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                     </div>
                                 </li>
@@ -863,7 +913,9 @@ class UltimatePostKit_Admin_Settings {
 
                             <?php if (true !== _is_upk_pro_activated()) : ?>
                                 <div class="upk-purchase-button">
-                                    <a href="https://postkit.pro/#a851ca7" target="_blank">Purchase Now</a>
+                                    <a href="https://postkit.pro/#a851ca7" target="_blank">
+                                        <?php echo esc_html_x('Purchase Now', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </a>
                                 </div>
                             <?php endif; ?>
 
@@ -902,7 +954,9 @@ class UltimatePostKit_Admin_Settings {
             <li>
                 <div>
 
-                    <span class="label1">PHP Version: </span>
+                    <span class="label1">
+                        <?php echo esc_html_x('PHP Version: ', 'Frontend', 'ultimate-post-kit'); ?>
+                    </span>
 
                     <?php
                     if (version_compare($php_version, '7.0.0', '<')) {
@@ -918,7 +972,9 @@ class UltimatePostKit_Admin_Settings {
 
             <li>
                 <div>
-                    <span class="label1">Max execution time: </span>
+                    <span class="label1">
+                        <?php echo esc_html_x('Max execution time: ', 'Frontend', 'ultimate-post-kit'); ?>
+                    </span>
 
                     <?php
                     if ($max_execution_time < '90') {
@@ -933,7 +989,9 @@ class UltimatePostKit_Admin_Settings {
             </li>
             <li>
                 <div>
-                    <span class="label1">Memory Limit: </span>
+                    <span class="label1">
+                        <?php echo esc_html_x('Memory Limit: ', 'Frontend', 'ultimate-post-kit'); ?>
+                    </span>
 
                     <?php
                     if (intval($memory_limit) < '812') {
@@ -949,7 +1007,9 @@ class UltimatePostKit_Admin_Settings {
 
             <li>
                 <div>
-                    <span class="label1">Max Post Limit: </span>
+                    <span class="label1">
+                        <?php echo esc_html_x('Max Post Limit: ', 'Frontend', 'ultimate-post-kit'); ?>
+                    </span>
 
                     <?php
                     if (intval($post_limit) < '32') {
@@ -965,7 +1025,9 @@ class UltimatePostKit_Admin_Settings {
 
             <li>
                 <div>
-                    <span class="label1">Uploads folder writable: </span>
+                    <span class="label1">
+                        <?php echo esc_html_x('Uploads folder writable: ', 'Frontend', 'ultimate-post-kit'); ?>
+                    </span>
 
                     <?php
                     if (!is_writable($upload_path)) {
@@ -979,7 +1041,9 @@ class UltimatePostKit_Admin_Settings {
 
             <li>
                 <div>
-                    <span class="label1">MultiSite: </span>
+                    <span class="label1">
+                        <?php echo esc_html_x('MultiSite: ', 'Frontend', 'ultimate-post-kit'); ?>
+                    </span>
 
                     <?php
                     if ($environment['wp_multisite']) {
@@ -995,7 +1059,9 @@ class UltimatePostKit_Admin_Settings {
 
             <li>
                 <div>
-                    <span class="label1">GZip Enabled: </span>
+                    <span class="label1">
+                        <?php echo esc_html_x('GZip Enabled: ', 'Frontend', 'ultimate-post-kit'); ?>
+                    </span>
 
                     <?php
                     if ($environment['gzip_enabled']) {
@@ -1009,7 +1075,9 @@ class UltimatePostKit_Admin_Settings {
 
             <li>
                 <div>
-                    <span class="label1">Debug Mode: </span>
+                    <span class="label1">
+                        <?php echo esc_html_x('Debug Mode: ', 'Frontend', 'ultimate-post-kit'); ?>
+                    </span>
                     <?php
                     if ($environment['wp_debug_mode']) {
                         echo $no_icon;
@@ -1025,9 +1093,12 @@ class UltimatePostKit_Admin_Settings {
         </ul>
 
         <div class="bdt-admin-alert">
-            <strong>Note:</strong> If you have multiple addons like <b>Ultimate Post Kit</b> so you need some more
-            requirement some
-            cases so make sure you added more memory for others addon too.
+            <?php 
+            printf(
+                esc_html__('%1$s If you have multiple addons like %2$s so you need some more requirement some cases so make sure you added more memory for others addon too.', 'ultimate-post-kit'),
+                '<strong>Note:</strong>', 
+                '<b>Ultimate Post Kit</b>'
+            ); ?>
         </div>
     <?php
     }
