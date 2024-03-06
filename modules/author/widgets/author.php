@@ -1373,7 +1373,7 @@ class Author extends Module_Base {
 					<div class="upk-item">
 						<?php if ($settings['show_author_avatar']) : ?>
 							<div class="upk-image">
-								<a href="<?php echo get_bloginfo('url') . "/?author=" . $author->ID; ?>">
+								<a href="<?php echo get_bloginfo('url') . "/?author=" . esc_attr($author->ID); ?>">
 									<?php echo get_avatar($author->ID, $settings['author_avatar_size']); ?>
 								</a>
 							</div>
@@ -1382,7 +1382,7 @@ class Author extends Module_Base {
 						<div class="upk-content">
 							<?php if ($settings['show_author_name']) : ?>
 								<div class="upk-name">
-									<a href="<?php echo get_bloginfo('url') . "/?author=" . $author->ID; ?>">
+									<a href="<?php echo get_bloginfo('url') . "/?author=" . esc_attr($author->ID); ?>">
 										<?php echo get_the_author_meta('display_name', $author->ID); ?>
 									</a>
 								</div>
