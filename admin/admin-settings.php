@@ -503,7 +503,7 @@ class UltimatePostKit_Admin_Settings {
 
             <div class="bdt-grid" bdt-grid bdt-height-match="target: > div > .bdt-card">
                 <div class="bdt-width-1-2@m bdt-width-1-4@l">
-                    <div class="upk-widget-status bdt-card bdt-card-body" <?php echo $track_nw_msg; ?> <?php echo $track_nw_msg; ?>>
+                    <div class="upk-widget-status bdt-card bdt-card-body" <?php echo $track_nw_msg; ?>>
 
                         <?php
                         $used_widgets    = count(self::get_used_widgets());
@@ -513,16 +513,25 @@ class UltimatePostKit_Admin_Settings {
 
                         <div class="upk-count-canvas-wrap bdt-flex bdt-flex-between">
                             <div class="upk-count-wrap">
-                                <h1 class="upk-feature-title">All Widgets</h1>
-                                <div class="upk-widget-count">Used: <b><?php echo $used_widgets; ?></b></div>
-                                <div class="upk-widget-count">Unused: <b><?php echo $un_used_widgets; ?></b></div>
-                                <div class="upk-widget-count">Total:
-                                    <b><?php echo $used_widgets + $un_used_widgets; ?></b>
+                                <h1 class="upk-feature-title">
+                                    <?php echo esc_html_x('All Widgets', 'Frontend', 'ultimate-post-kit'); ?>
+                                </h1>
+                                <div class="upk-widget-count">
+                                    <?php echo esc_html_x('Used:', 'Frontend', 'ultimate-post-kit'); ?> 
+                                    <b><?php echo esc_html($used_widgets); ?></b>
+                                </div>
+                                <div class="upk-widget-count">
+                                    <?php echo esc_html_x('Unused:', 'Frontend', 'ultimate-post-kit'); ?> 
+                                    <b><?php echo esc_html($un_used_widgets); ?></b>
+                                </div>
+                                <div class="upk-widget-count">
+                                    <?php echo esc_html_x('Total:', 'Frontend', 'ultimate-post-kit'); ?> 
+                                    <b><?php echo esc_html($used_widgets) + esc_html($un_used_widgets); ?></b>
                                 </div>
                             </div>
 
                             <div class="upk-canvas-wrap">
-                                <canvas id="bdt-db-total-status" style="height: 120px; width: 120px;" data-label="Total Widgets Status - (<?php echo $used_widgets + $un_used_widgets; ?>)" data-labels="<?php echo esc_attr('Used, Unused'); ?>" data-value="<?php echo esc_attr($used_widgets) . ',' . esc_attr($un_used_widgets); ?>" data-bg="#FFD166, #fff4d9" data-bg-hover="#0673e1, #e71522"></canvas>
+                                <canvas id="bdt-db-total-status" style="height: 120px; width: 120px;" data-label="Total Widgets Status - (<?php echo esc_attr($used_widgets) + esc_attr($un_used_widgets); ?>)" data-labels="<?php echo esc_attr('Used, Unused'); ?>" data-value="<?php echo esc_attr($used_widgets) . ',' . esc_attr($un_used_widgets); ?>" data-bg="#FFD166, #fff4d9" data-bg-hover="#0673e1, #e71522"></canvas>
                             </div>
                         </div>
 
@@ -533,10 +542,21 @@ class UltimatePostKit_Admin_Settings {
 
                         <div class="upk-count-canvas-wrap bdt-flex bdt-flex-between">
                             <div class="upk-count-wrap">
-                                <h1 class="upk-feature-title">Active</h1>
-                                <div class="upk-widget-count">Core: <b id="bdt-total-widgets-status-core"></b></div>
-                                <div class="upk-widget-count">Extensions: <b id="bdt-total-widgets-status-extensions"></b></div>
-                                <div class="upk-widget-count">Total: <b id="bdt-total-widgets-status-heading"></b></div>
+                                <h1 class="upk-feature-title">
+                                    <?php echo esc_html_x('Active', 'Frontend', 'ultimate-post-kit'); ?>
+                                </h1>
+                                <div class="upk-widget-count">
+                                    <?php echo esc_html_x('Core:', 'Frontend', 'ultimate-post-kit'); ?>
+                                    <b id="bdt-total-widgets-status-core"></b>
+                                </div>
+                                <div class="upk-widget-count">
+                                    <?php echo esc_html_x('Extensions:', 'Frontend', 'ultimate-post-kit'); ?> 
+                                    <b id="bdt-total-widgets-status-extensions"></b>
+                                </div>
+                                <div class="upk-widget-count"> 
+                                    <?php echo esc_html_x('Total:', 'Frontend', 'ultimate-post-kit'); ?>
+                                    <b id="bdt-total-widgets-status-heading"></b>
+                                </div>
                             </div>
 
                             <div class="upk-canvas-wrap">
@@ -558,21 +578,32 @@ class UltimatePostKit_Admin_Settings {
             <div class="bdt-grid" bdt-grid bdt-height-match="target: > div > .bdt-card">
                 <div class="bdt-width-1-3@m upk-support-section">
                     <div class="upk-support-content bdt-card bdt-card-body">
-                        <h1 class="upk-feature-title">Support And Feedback</h1>
-                        <p>Feeling like to consult with an expert? Take live Chat support immediately from <a href="https://postkit.pro/" target="_blank" rel="">UltimatePostKit</a>. We are always
-                            ready to help
-                            you 24/7.</p>
-                        <p><strong>Or if you’re facing technical issues with our plugin, then please create a support
-                                ticket</strong></p>
-                        <a class="bdt-button bdt-btn-blue bdt-margin-small-top bdt-margin-small-right" target="_blank" rel="" href="https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/">Knowledge
-                            Base</a>
-                        <a class="bdt-button bdt-btn-grey bdt-margin-small-top" target="_blank" href="https://bdthemes.com/support/">Get Support</a>
+                        <h1 class="upk-feature-title">
+                            <?php echo esc_html_x('Support And Feedback', 'Frontend', 'ultimate-post-kit'); ?>
+                        </h1>
+
+                        <?php
+                        $text = '<p>' . esc_html_x('Feeling like to consult with an expert? Take live Chat support immediately from', 'Frontend', 'ultimate-post-kit') . ' <a href="https://postkit.pro/" target="_blank" rel="">Ultimate Post Kit</a>. ' . esc_html_x('We are always ready to help you 24/7.', 'Frontend', 'ultimate-post-kit') . '</p>';
+                        $second_text = '<p><strong>' . esc_html_x('Or if you’re facing technical issues with our plugin, then please create a support ticket', 'Frontend', 'ultimate-post-kit') . '</strong></p>';
+                        ?>
+                        
+                        <?php echo $text; ?>
+                        <?php echo $second_text; ?>
+                        
+                        <a class="bdt-button bdt-btn-blue bdt-margin-small-top bdt-margin-small-right" target="_blank" rel="" href="https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/">
+                            <?php echo esc_html_x('Knowledge Base', 'Frontend', 'ultimate-post-kit'); ?>
+                        </a>
+                        <a class="bdt-button bdt-btn-grey bdt-margin-small-top" target="_blank" href="https://bdthemes.com/support/">
+                            <?php echo esc_html_x('Get Support', 'Frontend', 'ultimate-post-kit'); ?>
+                        </a>
                     </div>
                 </div>
 
                 <div class="bdt-width-2-3@m">
                     <div class="bdt-card bdt-card-body upk-system-requirement">
-                        <h1 class="upk-feature-title bdt-margin-small-bottom">System Requirement</h1>
+                        <h1 class="upk-feature-title bdt-margin-small-bottom">
+                            <?php echo esc_html_x('System Requirement', 'Frontend', 'ultimate-post-kit'); ?>
+                        </h1>
                         <?php $this->ultimate_post_kit_system_requirement(); ?>
                     </div>
                 </div>
@@ -581,25 +612,49 @@ class UltimatePostKit_Admin_Settings {
             <div class="bdt-grid" bdt-grid bdt-height-match="target: > div > .bdt-card">
                 <div class="bdt-width-1-2@m upk-support-section">
                     <div class="bdt-card bdt-card-body upk-feedback-bg">
-                        <h1 class="upk-feature-title">Missing Any Feature?</h1>
-                        <p style="max-width: 520px;">Are you in need of a feature that’s not available in our plugin?
-                            Feel free to do a feature request from here,</p>
-                        <a class="bdt-button bdt-btn-grey bdt-margin-small-top" target="_blank" rel="" href="https://feedback.bdthemes.com/b/6vr2250l/feature-requests">Request Feature</a>
+                        <h1 class="upk-feature-title">
+                            <?php echo esc_html_x('Missing Any Feature?', 'Frontend', 'ultimate-post-kit'); ?>
+                        </h1>
+                        <p style="max-width: 520px;">
+                            <?php echo esc_html_x('Are you in need of a feature that’s not available in our plugin?
+                            Feel free to do a feature request from here.', 'Frontend', 'ultimate-post-kit'); ?>
+                        </p>
+                        <a class="bdt-button bdt-btn-grey bdt-margin-small-top" target="_blank" rel="" href="https://feedback.bdthemes.com/b/6vr2250l/feature-requests">
+                            <?php echo esc_html_x('Request Feature', 'Frontend', 'ultimate-post-kit'); ?>
+                        </a>
                     </div>
                 </div>
 
                 <div class="bdt-width-1-2@m">
                     <div class="bdt-card bdt-card-body upk-tryaddon-bg">
-                        <h1 class="upk-feature-title">Try Our Others Addons</h1>
+                        <h1 class="upk-feature-title">
+                            <?php echo esc_html_x('Try Our Addons', 'Frontend', 'ultimate-post-kit'); ?>
+                        </h1>
                         <p style="max-width: 520px;">
-                            <b>Element Pack, Prime Slider, Ultimate Store Kit, Pixel Gallery & Live Copy Paste </b> addons for <b>Elementor</b> is the best slider, blogs and eCommerce plugin for WordPress.
+                            <?php printf(
+                                esc_html__('%1$sElement Pack, Prime Slider, Ultimate Store Kit, Pixel Gallery & Live Copy Paste %2$s addons for %3$sElementor%4$s is the best slider, blogs and eCommerce plugin for WordPress.', 'ultimate-post-kit'),
+                                '<b>',
+                                '</b>',
+                                '<b>',
+                                '</b>'
+                            ); ?>
                         </p>
                         <div class="bdt-others-plugins-link">
-                            <a class="bdt-button bdt-btn-ep bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/bdthemes-element-pack-lite/" bdt-tooltip="Element Pack Lite provides more than 50+ essential elements for everyday applications to simplify the whole web building process. It's Free! Download it.">Element pack</a>
-                            <a class="bdt-button bdt-btn-ps bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/bdthemes-prime-slider-lite/" bdt-tooltip="The revolutionary slider builder addon for Elementor with next-gen superb interface. It's Free! Download it.">Prime Slider</a>
-                            <a class="bdt-button bdt-btn-usk bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/ultimate-store-kit/" bdt-tooltip="The only eCommmerce addon for answering all your online store design problems in one package. It's Free! Download it.">Ultimate Store Kit</a>
-                            <a class="bdt-button bdt-btn-live-copy bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/live-copy-paste/" bdt-tooltip="Superfast cross-domain copy-paste mechanism for WordPress websites with true UI copy experience. It's Free! Download it.">Live Copy Paste</a>
-                            <a class="bdt-button bdt-btn-pg bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/pixel-gallery/" bdt-tooltip="Pixel Gallery provides more than 30+ essential elements for everyday applications to simplify the whole web building process. It's Free! Download it.">Pixel Gallery</a>
+                            <a class="bdt-button bdt-btn-ep bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/bdthemes-element-pack-lite/" bdt-tooltip="Element Pack Lite provides more than 50+ essential elements for everyday applications to simplify the whole web building process. It's Free! Download it.">
+                                <?php echo esc_html_x('Element pack', 'Frontend', 'ultimate-post-kit'); ?>
+                            </a>
+                            <a class="bdt-button bdt-btn-ps bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/bdthemes-prime-slider-lite/" bdt-tooltip="The revolutionary slider builder addon for Elementor with next-gen superb interface. It's Free! Download it.">
+                                <?php echo esc_html_x('Prime Slider', 'Frontend', 'ultimate-post-kit'); ?>
+                            </a>
+                            <a class="bdt-button bdt-btn-usk bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/ultimate-store-kit/" bdt-tooltip="The only eCommmerce addon for answering all your online store design problems in one package. It's Free! Download it.">
+                                <?php echo esc_html_x('Ultimate Store Kit', 'Frontend', 'ultimate-post-kit'); ?>
+                            </a>
+                            <a class="bdt-button bdt-btn-live-copy bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/live-copy-paste/" bdt-tooltip="Superfast cross-domain copy-paste mechanism for WordPress websites with true UI copy experience. It's Free! Download it.">
+                                <?php echo esc_html_x('Live Copy Paste', 'Frontend', 'ultimate-post-kit'); ?>
+                            </a>
+                            <a class="bdt-button bdt-btn-pg bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/pixel-gallery/" bdt-tooltip="Pixel Gallery provides more than 30+ essential elements for everyday applications to simplify the whole web building process. It's Free! Download it.">
+                                <?php echo esc_html_x('Pixel Gallery', 'Frontend', 'ultimate-post-kit'); ?>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -836,8 +891,8 @@ class UltimatePostKit_Admin_Settings {
         $post_limit         = ini_get('post_max_size');
         $uploads            = wp_upload_dir();
         $upload_path        = $uploads['basedir'];
-        $yes_icon           = '<span class="valid"><i class="dashicons-before dashicons-yes"></i></span>';
-        $no_icon            = '<span class="invalid"><i class="dashicons-before dashicons-no-alt"></i></span>';
+        $yes_icon           = wp_kses_post('<span class="valid"><i class="dashicons-before dashicons-yes"></i></span>');
+        $no_icon            = wp_kses_post('<span class="invalid"><i class="dashicons-before dashicons-no-alt"></i></span>');
 
         $environment = Utils::get_environment_info();
 

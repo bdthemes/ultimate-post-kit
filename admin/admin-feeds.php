@@ -79,19 +79,19 @@ class Ultimate_Post_Kit_Admin_Feeds {
 		} else {
 			$maxitems = 0;
 		}
-?>
+		?>
 		<!-- // Display the container -->
 		<div class="bdt-upk-overview__feed">
 			<ul class="bdt-upk-overview__posts">
 				<?php
 				// Check items
 				if ($maxitems == 0) {
-					echo '<li class="bdt-upk-overview__post">' . __('No item', 'ultimate-post-kit-lite') . '.</li>';
+					echo '<li class="bdt-upk-overview__post">' . esc_html__('No item', 'ultimate-post-kit') . '.</li>';
 				} else {
 					foreach ($rss_items as $item) :
 						$feed_url = $item->get_permalink();
 						$feed_title = $item->get_title();
-						$feed_date = human_time_diff($item->get_date('U'), current_time('timestamp')) . ' ' . __('ago', 'ultimate-post-kit-lite');
+						$feed_date = human_time_diff($item->get_date('U'), current_time('timestamp')) . ' ' . esc_html__('ago', 'ultimate-post-kit');
 						$content = $item->get_content();
 						$feed_content = wp_html_excerpt($content, 120) . ' [...]';
 				?>
@@ -112,23 +112,23 @@ class Ultimate_Post_Kit_Admin_Feeds {
 					$footer_link = [
 						[
 							'url'   => 'https://bdthemes.com/blog/',
-							'title' => esc_html__('Blog', 'ultimate-post-kit-lite'),
+							'title' => esc_html__('Blog', 'ultimate-post-kit'),
 						],
 						[
 							'url'   => 'https://bdthemes.com/knowledge-base/',
-							'title' => esc_html__('Docs', 'ultimate-post-kit-lite'),
+							'title' => esc_html__('Docs', 'ultimate-post-kit'),
 						],
 						[
 							'url'   => 'https://www.ultimatepostkit.pro/pricing/',
-							'title' => esc_html__('Get Pro', 'ultimate-post-kit-lite'),
+							'title' => esc_html__('Get Pro', 'ultimate-post-kit'),
 						],
 						[
 							'url'   => 'https://feedback.ultimatepostkit.pro/announcements/',
-							'title' => esc_html__('Changelog', 'ultimate-post-kit-lite'),
+							'title' => esc_html__('Changelog', 'ultimate-post-kit'),
 						],
 					];
 					foreach ($footer_link as $key => $link) {
-						printf('<li><a href="%1$s" target="_blank">%2$s<span aria-hidden="true" class="dashicons dashicons-external"></span></a></li>', $link['url'], $link['title']);
+						printf('<li><a href="%1$s" target="_blank">%2$s<span aria-hidden="true" class="dashicons dashicons-external"></span></a></li>', esc_url($link['url']), esc_html($link['title']));
 					}
 					?>
 				</ul>
