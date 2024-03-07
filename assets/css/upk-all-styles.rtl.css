@@ -5406,16 +5406,16 @@
 .upk-global-link-yes .upk-alter-grid .upk-item:hover {
   cursor: pointer; }
 
-.upk-content-on-image-yes .upk-alter-grid .upk-item {
-  height: 400px; }
-  .upk-content-on-image-yes .upk-alter-grid .upk-item:hover .upk-content {
-    height: 100% !important; }
-  .upk-content-on-image-yes .upk-alter-grid .upk-item:hover .upk-readmore,
-  .upk-content-on-image-yes .upk-alter-grid .upk-item:hover .upk-meta,
-  .upk-content-on-image-yes .upk-alter-grid .upk-item:hover .upk-text {
-    opacity: 1; }
-  .upk-content-on-image-yes .upk-alter-grid .upk-item:hover .upk-meta {
-    transition-delay: .2s; }
+.upk-content-on-image-yes .upk-alter-grid .upk-item:hover .upk-content {
+  height: 100% !important; }
+
+.upk-content-on-image-yes .upk-alter-grid .upk-item:hover .upk-readmore,
+.upk-content-on-image-yes .upk-alter-grid .upk-item:hover .upk-meta,
+.upk-content-on-image-yes .upk-alter-grid .upk-item:hover .upk-text {
+  opacity: 1; }
+
+.upk-content-on-image-yes .upk-alter-grid .upk-item:hover .upk-meta {
+  transition-delay: .2s; }
 
 .upk-content-on-image-yes .upk-alter-grid .upk-content {
   position: absolute;

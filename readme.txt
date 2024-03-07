@@ -1,14 +1,14 @@
 === Ultimate Post Kit Addons For Elementor - (Post Grid, Post Carousel, Post Slider, Category List, Post Tabs, Timeline, Post Ticker, Tag Cloud) ===
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
-Tags: elementor, posts, post grid, post carousel, post archive, post widget, live copy, elementor addon, pagebuilder addon, addons, bdthemes
-Stable tag: 3.11.0
+Tags: elementor, posts, post grid, post carousel, post archive
+Stable tag: 3.11.1
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.4.3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.19.2
+Elementor tested up to: 3.19.4
 
 Best Post Addon for Elementor WordPress Plugin with 75+ Most Popular Elements that need your everyday blog website building.
 
@@ -35,77 +35,35 @@ https://www.youtube.com/watch?v=er0uGv1yjig
 
 = Grid 🧊 =
 
-0. **[Alex Grid](https://postkit.pro/demo/alex-grid/)** - The Alex Grid widget is a tailor-made elementor addon for publishing blog and post related websites. It has a modern layout style by introducing content block with galssmorphism effect above post images. See the demo.
-0. **[Alice Grid](https://postkit.pro/demo/alice-grid/)** - The Alice Grid makes the most compact blog post that uses the minimum page but delivers maximum info. This elementor addon is best for mobile devices where minimalism required most attention. See the demo
-0. **[Alter Grid](https://postkit.pro/demo/alter-grid/)** - The Alter Grid widget let you make the best use of classical blog style that shows every details arranged neatly on the layout. You can easily create stunning blog homepage utilizing the layout style of this elementor addon. Best for news portals, gaming sites, lifestyle blogs. See the demo
-0. **[Amox Grid](https://postkit.pro/demo/amox-grid/)** - The Amox Grid is a powerful yet minimalistic post grid tool developed by the Ultimate Post Kit plugin. It has a default hover style that shifts the background into a custom designs once hovered. See the demo
-0. **[Elite Grid](https://postkit.pro/demo/elite-grid/)** - The Elite Grid widget lets you design beautiful blog posts with high end graphics and unique title style with excerpt. While displaying posts with detailed information, this elementor addon keeps its focus on the author, gives you enough space to highlight the author. See the demo
-0. **[Gratis Grid](https://postkit.pro/demo/gratis-grid/)** - Introduce your audience to a modern website with the Gratis Grid's eye-catchy post layouts. The grid can display your post category, title, meta, and show more button inside a evenly proportional grid interface, making your posts more attractive and informative.
-0. **[Hazel Grid](https://postkit.pro/demo/hazel-grid/)** - The Hazel Grid widget is one of the most prominent post tool by the Ultimate Post Kit plugin. It presents a simple style, omitting excessive detailing and rather boost its appearance through high quality graphics. It's fun to use this elementor addon for post related blog sites. See the demo
-0. **[Maple Grid](https://postkit.pro/demo/maple-grid/)** - The Maple Grid widget has a unique post layout that maximizes the delivery of blog information. It shows every detail of a post including tags, categories, and post type. Design news covers, lifestyle blogs, showdowns, inaugurations, and more. See the demo
-0. **[Ramble Grid](https://postkit.pro/demo/ramble-grid/)** - The Ramble Grid is a different type of widget. It offers a layout resembling a blank canvas with a minimum amount of detail until you hover and discover everything it contains. While users can enjoy enough white area, all info related to the post will reveal upon hover. See the demo
+**[Alex Grid](https://postkit.pro/demo/alex-grid/)** | **[Alice Grid](https://postkit.pro/demo/alice-grid/)** | **[Alter Grid](https://postkit.pro/demo/alter-grid/)** | **[Amox Grid](https://postkit.pro/demo/amox-grid/)** | **[Elite Grid](https://postkit.pro/demo/elite-grid/)** | **[Gratis Grid](https://postkit.pro/demo/gratis-grid/)** | **[Hazel Grid](https://postkit.pro/demo/hazel-grid/)** | **[Maple Grid](https://postkit.pro/demo/maple-grid/)** | **[Ramble Grid](https://postkit.pro/demo/ramble-grid/)**
 
 = List 🔢 =
 
-0. **[Buzz List](https://postkit.pro/demo/buzz-list/)** - Buzz List is for listing your blogs in the features section using hidden cover image behind the white background. The iconic point of this widget is the big counter number alongside the post titles, making it a more dynamic blog presenter. See the demo
-0. **[Exotic List](https://postkit.pro/demo/exotic-list/)** - It's boring to show your featured blog list using only text links. With the Exotic List widget, you can create stunning post lists with bolded post titles and a hover sensitive post image trigger function. With the combined animation effect, the widget looks daunting and can interact with your users for more user engagements.
-0. **[Fanel List](https://postkit.pro/demo/fanel-list/)** - The Fanel List is a list-type blogging widget developed by the Ultimate Post Kit plugin. This tool helps you lay a post list towards your readers along with a bunch of different information regarding those posts. Helps making your post list catch the readers eyes quickly. See the demo
-0. **[Featured List](https://postkit.pro/demo/featured-list/)** - The Feature list widget is a specialty for bloggers that uses featured post list in his website homepage so much easily. It is developed by the Ultimate Post Kit plugin to boost the user experience of your blogging site.
-0. **[Harold List](https://postkit.pro/demo/harold-list/)** - The Harold List widget is made for presenting blog posts in a list manner, maximizing navigational efficiency while keeping the readers informed about the next content. This is a secondary use type elementor addon which adds a new experience to the viewers. See the demo
-0. **[Scott List](https://postkit.pro/demo/scott-list/)** - Scott List is a blog navigator type widget, developed by Ultimate Post Kit plugin to enhance your blogging experience. The blog posts are displayed in a list formation with basic information & counter numbers on top of the post images. See the demo
-0. **[Tiny List](https://postkit.pro/demo/tiny-list/)** - The Tiny List widget is a miniature list type post tool developed by the Ultimate Post Kit plugin. It's designed in such a way that works as a blog assistant and navigator to lead the reader to all over your blog page. See the demo
+**[Buzz List](https://postkit.pro/demo/buzz-list/)** | **[Exotic List](https://postkit.pro/demo/exotic-list/)** | **[Fanel List](https://postkit.pro/demo/fanel-list/)** | **[Featured List](https://postkit.pro/demo/featured-list/)** | **[Harold List](https://postkit.pro/demo/harold-list/)** | **[Scott List](https://postkit.pro/demo/scott-list/)** | **[Tiny List](https://postkit.pro/demo/tiny-list/)** 
 
 = Carousel 🌅 =
 
-0. **[Alex Carousel](https://postkit.pro/demo/alex-carousel/)** - The Alex Carousel widget is a twin of Alex Grid, made for publishing blogs with a carousel style. This elementor addon gives you enough customization options to make a wide variety of layout. See the demo.
-0. **[Alice Carousel](https://postkit.pro/demo/alice-carousel/)** - The Alice Carousel widget is paired with the Alice Grid widget, boost a minimal post layout in a fancy carousel style. Use it to make a stack of blogs and post related topics inside your webpage. See the demo
-0. **[Alter Carousel](https://postkit.pro/demo/alter-carousel/)** - The Alter Carousel widget has the same basic functions of the Alter Grid widget but instead, a carousel style. It is build for publishing post related sites without the need of extra works. Just use Alter Carousel and build you blog page. See the demo
-0. **[Amox Carousel](https://postkit.pro/demo/amox-carousel/)** - Amox carousel is a minimalistic post carousel widget developed by ultimate post kit plugin. The widget has a power interface, having a sturdy design, and a smooth carousel animation, making it the best blogging tool. See the demo
-0. **[Buzz List Carousel](https://postkit.pro/demo/buzz-list-carousel/)** - Buzz List Carousel is the later version of the original one (Buzz List) but with a carousel type layout. Now, you can display hundreds of blog posts using the dynamic counter number and carousel animation style. See the demo
-0. **[Category Carousel](https://postkit.pro/demo/category-carousel/)** - Category carousel widget makes it possible to show the status of existing category using a floating box on top of the selected category image. See the demo
-0. **[Elite Carousel](https://postkit.pro/demo/elite-carousel/)** - The Elite Carousel widget is an identical carousel version of the Elite Grid widget. Has almost the same performance, best as a slider. This elementor addon supports any kinds of blog posts. See the demo
-0. **[Harold List Carousel](https://postkit.pro/demo/harold-list-carousel/)** - Harold list carousel for your next elementor page builder to show it more dynamically with title, date excerpt, thumbnail style modifier.
-0. **[Hazel Carousel](https://postkit.pro/demo/hazel-carousel/)** - The Hazel Carousel widget is an identical twin of the Hazel Grid in terms of general appearance and settings, instead, having a carousel type layout. This tool helps you keep the readers focused on the post image as much as possible, reducing total content delivery into a modernized glassmorphism effect. See the demo
-0. **[Maple Carousel](https://postkit.pro/demo/maple-carousel/)** - The Maple Carousel widget is no different in content deliver style from the Maple Grid widget except for a carousel style. This dynamic elementor addon can boost your blogging experience, publishing all kinds of post related info. See the demo
-0. **[Ramble Carousel](https://postkit.pro/demo/ramble-carousel/)** - The Ramble Carousel widget is the carousel version of the Ramble Grid widget. It offers such a post layout that boosts user experience by arranging posts in a calm manner and delivers them when necessary. See the demo
+**[Alex Carousel](https://postkit.pro/demo/alex-carousel/)** | **[Alice Carousel](https://postkit.pro/demo/alice-carousel/)** | **[Alter Carousel](https://postkit.pro/demo/alter-carousel/)** | **[Amox Carousel](https://postkit.pro/demo/amox-carousel/)** | **[Buzz List Carousel](https://postkit.pro/demo/buzz-list-carousel/)** | **[Category Carousel](https://postkit.pro/demo/category-carousel/)** | **[Elite Carousel](https://postkit.pro/demo/elite-carousel/)** | **[Harold List Carousel](https://postkit.pro/demo/harold-list-carousel/)** | **[Hazel Carousel](https://postkit.pro/demo/hazel-carousel/)** | **[Maple Carousel](https://postkit.pro/demo/maple-carousel/)** | **[Ramble Carousel](https://postkit.pro/demo/ramble-carousel/)** 
 
 = Slider 🎴 =
 
-0. **[Camux Slider](https://postkit.pro/demo/camux-slider/)** - Camux slider is totally unique and stylish slider widget for building modern blog pages on WordPress. As a part of the Ultimate Post Kit plugin, Camux can boost your blogs outreach with it's high-quality interface and SEO integration. See the demo
-0. **[Carbon Slider](https://postkit.pro/demo/carbon-slider/)** - The carbon slider widget is one of our favorite sliders that is crafted combining modern navigation styles a vintage looking layout to add more taste to the user experience. See the demo
-0. **[Crystal Slider](https://postkit.pro/demo/crystal-slider/)** - Crystal is a blogging slider widget for the Ultimate Post Kit plugin. This is a very unique slider that helps your visitors keeping their focus on the blog content while amazed by the serene view on the background. This widget has set everything on fire. See the demo
-0. **[Noxe Slider](https://postkit.pro/demo/noxe-slider/)** - Noxe is the most minimalistic slider widget with a quick-eye-grabber appearance. Displays high resolution images with distraction less content delivery.
-0. **[Paradox Slider](https://postkit.pro/demo/paradox-slider/)** - The Paradox Slider is the only slider widget developed by the Ultimate Post Kit that is dedicated to bloggers. This awesome slider widget has a responsive structure that is suitable for viewing blog info on any kind of devices. See the demo
-0. **[Pholox Slider](https://postkit.pro/demo/pholox-slider/)** - Pholox slider widget makes the perfect interface to laydown your beautiful blogging site with a detailed first-person view. The slider has a full banner with thumb style text content and a thumb post gallery at the bottom
-0. **[Skide Slider](https://postkit.pro/demo/skide-slider/)** - The Skide slider is a unique slider widget having a full-width background and compact info delivery. The slider is best for featuring blog post on the sites' hero page. See the demo
-0. **[Snog Slider](https://postkit.pro/demo/snog-slider/)** - Having a unique post interface, Snog, is the perfect slider to bring a major impact on your WordPress blogging site with a powerful double projection layout by boosting the visible charm of a page off the margin. Snog is packed with charming animation effects and a robust slider mechanism with pixel perfect graphics.
+**[Camux Slider](https://postkit.pro/demo/camux-slider/)** | **[Carbon Slider](https://postkit.pro/demo/carbon-slider/)** | **[Crystal Slider](https://postkit.pro/demo/crystal-slider/)** | **[Noxe Slider](https://postkit.pro/demo/noxe-slider/)** | **[Paradox Slider](https://postkit.pro/demo/paradox-slider/)** | **[Pholox Slider](https://postkit.pro/demo/pholox-slider/)** | **[Skide Slider](https://postkit.pro/demo/skide-slider/)** | **[Snog Slider](https://postkit.pro/demo/snog-slider/)** 
 
 = Timeline 🎏 =
 
-0. **[Oras Timeline](https://postkit.pro/demo/timeline/)** - The timeline widget is a specialty for bloggers that uses a dynamic flow chart to display posts, pages, or events in a timely manner. It is developed by the Ultimate Post Kit plugin to boost the user experience of your blogging site.
+**[Oras Timeline](https://postkit.pro/demo/timeline/)** 
 
 = Others 💠 =
 
-0. **[Author](https://postkit.pro/demo/author/)** - The Author widget is a unique development from the Ultimate Post Kit plugin. Unlike most of the blog sites, you can create an attractive author section and perfectly illustrate your blog authors in an amazing way. See the demo.
-0. **[Banner](https://postkit.pro/demo/banner/)** - Banner lets you display a quick news feed to keep your audience updated about the deals, offers, or pieces of information that could be vital for your blog. Customizable and full of features for your needs.
-0. **[News Ticker](https://postkit.pro/demo/news-ticker/)** - The News Ticker widget is designed by the Ultimate Post Kit plugin as a miniature post presentation on your blogging site. The layout is identical to that seen often on a news channel. See the demo.
-0. **[Newsletter](https://postkit.pro/demo/newsletter/)** - The Newsletter widget helps you collect emails from your visitors and let you create mail lists easily. It's one of the most important feature for a blog site that you can get for free along with a customization interface at Ultimate Post Kit plugin. See the demo
-0. **[Post Accordion](https://postkit.pro/demo/post-accordion/)** - Using Accordion widget, you can create a stunning layout to display your blog posts with the all-known accordion effect. Unlike the old ones where only text or image has the effect, it creates the effect for the whole post block. See the demo.
-0. **[Post Category](https://postkit.pro/demo/post-category/)** - The Category widget is a blog based widget that shows total posts on a website by categories. On it, numerical values such as the number of posts belonging to a certain category are displayed. See the demo.
-0. **[Reading Progress Bar](https://postkit.pro/demo/reading-progress/)** - The Reading Progress Bar widget creates a progress tracker on your blog page to help the visitors track the total reading progress of the current page. Just place it inside your blog page and the counter go up to 100% according to the position you are at on the page. See the demo
-0. **[Recent Comments](https://postkit.pro/demo/recent-comments/)** - The Recent Comments widget shows your visitors' recent comments on your blog posts. It's a simplified widget for creating a positive impact on your website based on peoples' words. See the demo
-0. **[Social share](https://postkit.pro/demo/social-share/)** - Social share widget gives sharing feature for your website. Also, it helps the visitor to share their feelings about the site.
-0. **[Social Count - Static](https://postkit.pro/demo/static-social-count/)** - The social count widget let's you display the stats of your social media profile through the number of likes, views, followers, etc. It can greatly boost your conversion rate by leading the traffic into a positive attitude. See the demo
-0. **[Tag Cloud](https://postkit.pro/demo/tag-cloud/)** - A commercial blogging website often has a huge volume of tags behind the posts. The Tag Cloud widget helps you display the large number of post tags in a uniquely stylish format. Can bring out the charm of your blog page. See the demo.
+**[Author](https://postkit.pro/demo/author/)** | **[Banner](https://postkit.pro/demo/banner/)** | **[News Ticker](https://postkit.pro/demo/news-ticker/)** | **[Newsletter](https://postkit.pro/demo/newsletter/)** | **[Post Accordion](https://postkit.pro/demo/post-accordion/)** | **[Post Category](https://postkit.pro/demo/post-category/)** | **[Reading Progress Bar](https://postkit.pro/demo/reading-progress/)** | **[Recent Comments](https://postkit.pro/demo/recent-comments/)** | **[Social share](https://postkit.pro/demo/social-share/)** | **[Social Count - Static](https://postkit.pro/demo/static-social-count/)** | **[Tag Cloud](https://postkit.pro/demo/tag-cloud/)** 
 
 == Free Extensions for Lifetime 🔥 ==
 
-0. **Animations** - You can add entrance animation effects to your post widgets for a more zesty experience in viewing and interacting with the grids from the users' perspective.
+**[Animations](https://postkit.pro/demo/alter-grid/)** 
 
 == Free Features for Lifetime 🔥 ==
 
-0. **[Live Copy or Paste](https://www.elementpack.pro/knowledge-base/how-to-use-live-copy-option/)** - Live copy is a copy feature that allow you to copy and paste content from one domain to another. For example you can copy demo content directly from our demo website.
-0. **[Duplicator](https://www.elementpack.pro/knowledge-base/how-to-use-element-pack-duplicator/)** - Turn on this switcher to enable the Duplicator. It's available for posts, pages and elementor templates
+**[Live Copy or Paste](https://www.elementpack.pro/knowledge-base/how-to-use-live-copy-option/)** | **[Duplicator](https://www.elementpack.pro/knowledge-base/how-to-use-element-pack-duplicator/)** 
 
 More widgets & extensions are coming soon...
 
@@ -113,68 +71,43 @@ More widgets & extensions are coming soon...
 
 = Grid 🧊 =
 
-0. **[Kalon Grid](https://postkit.pro/demo/kalon-grid/)** - Kalon Grid adds thumb-size post grid with dynamic tags and a seamless title on the post images. Ultimate Post Kit made it to show the post date & author name below the title of the post images. See the demo.
-0. **[Pixina Grid](https://postkit.pro/demo/pixina-grid/)** - Use Pixina Grid to transform your blog page into ultra modern grid with artistic board-view and prime colored bezel. This impossible layout would catch people's attention like honey-driven bear. See the demos
-0. **[Wixer Grid](https://postkit.pro/demo/wixer-grid/)** - Wixer Grid has a clean & calm interface while displaying posts in a fancy manner. Use this widget to bring out feature posts along with image-less post navigation right below. See the demo
+**[Kalon Grid](https://postkit.pro/demo/kalon-grid/)** | **[Pixina Grid](https://postkit.pro/demo/pixina-grid/)** | **[Wixer Grid](https://postkit.pro/demo/wixer-grid/)** 
 
 = List 🔢 =
 
-0. **[Classic List](https://postkit.pro/demo/classic-list/)** - Any blog page looks awesome with the new Classic List widget by Ultimate Post Kit. The wide image section with separated detail portion makes it look classy and stylish.
-0. **[Candy List](https://postkit.pro/demo/candy-list/)** - Using the Candy List widget to show your post list, you can surprise your visitors with a sudden content reveal. Because by default, the widget only shows the post title, category, and meta. Only when hovered, visitors will see the post images popping up with stylish animations.
-0. **[Welsh List](https://postkit.pro/demo/welsh-list/)** - The Welsh List widget is a blogging tool that displays your blog posts with a broad detailing, including the post publishing date in a timestamp. The list looks a lot like a calendar and best for featuring upcoming posts on your website. See the demo
+**[Classic List](https://postkit.pro/demo/classic-list/)** | **[Candy List](https://postkit.pro/demo/candy-list/)** | **[Welsh List](https://postkit.pro/demo/welsh-list/)** 
 
 = Gallery 💠 =
 
-0. **[Featured Gallery](https://postkit.pro/demo/featured-gallery/)** - Create the most outstanding post gallery within your website and entertain your visitors with maximum engagement using the Featured Gallery widget.
+**[Featured Gallery](https://postkit.pro/demo/featured-gallery/)** 
 
 = Carousel 🌅 =
 
-0. **[Eldora Carousel](https://postkit.pro/demo/eldora-carousel/)** - The Eldora Carousel presents a slider-type interface to onboard your posts into the webpage with a compact card view of the post image and details (title, description, meta, button) along with the next and previous post images on both sides.
-0. **[Gratis Carousel](https://postkit.pro/demo/gratis-carousel/)** - Revolutionize your website with the Gratis Carousel widget and unveil a stunning post layout that will make your content stand out like never before. Prepare to captivate your audience with a visually striking and engaging website experience.
-0. **[Kalon Carousel](https://postkit.pro/demo/kalon-carousel/)** - Kalon Carousel is the animated carousel version of the Kalon Grid widget. It displays posts with minimal information that is suitable for featuring up coming posts on your website. See the demo.
-0. **[Pixina Carousel](https://postkit.pro/demo/pixina-carousel/)** - Pixina Carousel can transform your blog page into ultra modern grid with artistic board-view. This carousel layout has a description bezel that has the ability to catch people's attention like honey-driven bear. See the demos
-0. **[Wixer Carousel](https://postkit.pro/demo/wixer-carousel/)** - The Wixer Carousel is the brother of Wixer Grid widget. It has a clean & calm interface for displaying your blog posts. The widget can bring out the beauty of the feature posts along with image-less post navigation right below. See the demo
+**[Eldora Carousel](https://postkit.pro/demo/eldora-carousel/)** | **[Gratis Carousel](https://postkit.pro/demo/gratis-carousel/)** | **[Kalon Carousel](https://postkit.pro/demo/kalon-carousel/)** | **[Pixina Carousel](https://postkit.pro/demo/pixina-carousel/)** | **[Wixer Carousel](https://postkit.pro/demo/wixer-carousel/)** 
 
 = Slider 🎴 =
 
-0. **[Atlas Slider](https://postkit.pro/demo/atlas-slider/)** - The Atlas Slider widget is a unique whole section slider having a primary post display along with a thumb post gallery. Best for blogging site, the slider can create a one-item hero page easily. See the demo
-0. **[Berlin Slider](https://postkit.pro/demo/berlin-slider/)** - The Berlin slider adds a classy vibe to your blogging website by it's vintage post layout with a built-in video player button. The slider is perfect for displaying product video, recipe video, etc. in a fancy way. See the demo
-0. **[Foxico Slider](https://postkit.pro/demo/foxico-slider/)** - Foxico Slider is a revolutionary slider widget by that presents a high-resolution slider interface with dynamic paginations and navigation along with a thumb post layout. See the demo
-0. **[Hansel Slider](https://postkit.pro/demo/hansel-slider/)** - Hansel slider makes the most outstanding slider layout for your blog homepage with exquisite graphics and extraordinary content delivery. Use it to learn it. See the demo
-0. **[Iconic Slider](https://postkit.pro/demo/iconic-slider/)** - Ultimate Post Kit presents the Iconic slider widget which is a full-width post slider having a highlighted date badge, a new stylish read more button, and smart navigations to make things easier for your visitors. Packed with cool animation effects, Iconic is really the iconic widget for your blogging site.
-0. **[Optick Slider](https://postkit.pro/demo/optick-slider/)** - Optick Slider creates a unique slider layout with a blurred image animation and colorful category, buttons, and counters. Make your blog page more stunning with an outstanding slider widget.
-0. **[Sline Slider](https://postkit.pro/demo/sline-slider/)** - Looking for a fancy slider that looks and works as smooth as butter when all your visitors have to do is scroll? Yes, this is the Sline slider widget by UPK that makes the cool slider interface that you dreamt of! See the demo
+**[Atlas Slider](https://postkit.pro/demo/atlas-slider/)** | **[Berlin Slider](https://postkit.pro/demo/berlin-slider/)** | **[Foxico Slider](https://postkit.pro/demo/foxico-slider/)** | **[Hansel Slider](https://postkit.pro/demo/hansel-slider/)** | **[Iconic Slider](https://postkit.pro/demo/iconic-slider/)** | **[Optick Slider](https://postkit.pro/demo/optick-slider/)** | **[Sline Slider](https://postkit.pro/demo/sline-slider/)** 
 
 = Tabs 🧀 =
 
-0. **[Forbes Tabs](https://postkit.pro/demo/forbes-tabs/)** - Forbes tabs is best for blogs that has a newspaper like interface as this widget also has it. Display posts with a in colorful tabs in a clean white layout. See the demo
-0. **[Holux Tabs](https://postkit.pro/demo/holux-tabs/)** - Holux tabs is your best blogging tool for displaying upcoming posts in your main blog page. Creates a refreshing interface with eye catchy colors. See the demo
+**[Forbes Tabs](https://postkit.pro/demo/forbes-tabs/)** | **[Holux Tabs](https://postkit.pro/demo/holux-tabs/)** 
 
 = Timeline 🎏 =
 
-0. **[Grove Timeline](https://postkit.pro/demo/grove-timeline/)** - Grove Timeline is a special widget for bloggers that displays posts in a timeline with randomized style. you can infact see how unique it is and what things it can do. See the demo
-0. **[Snap Timeline](https://postkit.pro/demo/snap-timeline/)** - Snap Timeline is another unique time-based blog widget that can create a modern & calm blog layout on your website. The idea is to capture people's heart with simple yet emotional post layout with time stamps. See the demo
-0. **[Soft Timeline](https://postkit.pro/demo/soft-timeline/)** - Soft Timeline is a sleek time-based blog post widget with a tree-formation layout style. This minimalist widget presents a professional attribute towards the viewers, making the unable to avoid their gaze from it. See the demo
-0. **[Checkerboard](https://postkit.pro/demo/checkerboard/)** - You might call the Checkboard widget a post list or a grid-type, but this is one of the iconic post widgets that forms a chain of posts in a visually attractive interface layout. Display your main posts or shrink them to show featured posts, do whatever you like.
+**[Grove Timeline](https://postkit.pro/demo/grove-timeline/)** | **[Snap Timeline](https://postkit.pro/demo/snap-timeline/)** | **[Soft Timeline](https://postkit.pro/demo/soft-timeline/)** | **[Checkerboard](https://postkit.pro/demo/checkerboard/)** 
 
 = Others 💠 =
 
-0. **[Post Calendar](https://postkit.pro/demo/post-calendar/)** - Post calendar can perform as the cookie chief on your blog site, serving blogs date wise to the visitors. This unique widget is capable of piquing public's attention quickly. See the demo
-0. **[Reading Progress Circle](https://postkit.pro/demo/reading-progress-circle/)** - The Reading Progress widget creates a progress tracker on your blog page to help the visitors track the total reading progress of the current page. Just place it inside your blog page and the counter go up to 100% according to the position you are at on the page. See the demo
-0. **[Social Link](https://postkit.pro/demo/social-link/)** - Display social media link button with colorful icons, boxes, full-custom colours and shapes. Supports more than 30 social media platforms.
-0. **[Stone Hover](https://postkit.pro/demo/stone-hover/)** - Create scalable post sliders with an inline full-width picture frame that interacts and unfolds the image on user action. Let you design the perfect canvas with changeable panels upon hover.
-0. **[Instagram Gallery](https://postkit.pro/demo/instagram-gallery/)** - With the next level gallery interface by Instagram Gallery widget, it's now possible to change the design sense of such amazing gallery in WordPress.
+**[Post Calendar](https://postkit.pro/demo/post-calendar/)** | **[Reading Progress Circle](https://postkit.pro/demo/reading-progress-circle/)** | **[Social Link](https://postkit.pro/demo/social-link/)** | **[Stone Hover](https://postkit.pro/demo/stone-hover/)** | **[Instagram Gallery](https://postkit.pro/demo/instagram-gallery/)** 
 
 == Pro Extensions 🔥 ==
 
-0. **[MultiColor Item](https://postkit.pro/demo/multicolor-item/)** - The ability to create a variety of colorful posts inside your blogging site will make you stay one step ahead of your competitor in terms of presentation. Now you can do that with the Multicolor Extension and get more attention from your visitors.
+**[MultiColor Item](https://postkit.pro/demo/multicolor-item/)** 
 
 == Template Builder 🧊 ==
 
-0. **[Post Title](https://postkit.pro/archive/)** - A Single page widget that lets you arrange the element to your preferred style and help you change the single post layout. To be used with other single page elements.
-0. **[Post Content](https://postkit.pro/archive/)** - A Single page widget that lets you arrange the element to your preferred style and help you change the single post layout. To be used with other single page elements.
-0. **[Post Info](https://postkit.pro/archive/)** - A Single page widget that lets you arrange the element to your preferred style and help you change the single post layout. To be used with other single page elements.
-0. **[Post Featured Image](https://postkit.pro/archive/)** - A Single page widget that lets you arrange the element to your preferred style and help you change the single post layout. To be used with other single page elements.
+**[Post Title](https://postkit.pro/archive/)** | **[Post Content](https://postkit.pro/archive/)** | **[Post Info](https://postkit.pro/archive/)** | **[Post Featured Image](https://postkit.pro/archive/)** 
 
 == Template Shortcode 🌅 ==
 
@@ -229,6 +162,10 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 
 == Changelog ==
+
+= 3.11.1 [7th March 2024] =
+
+* Fixed: Content on image height issue fixed in alter grid widget
 
 = 3.11.0 [19th February 2024] =
 
