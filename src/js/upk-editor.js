@@ -127,6 +127,7 @@
       onMouseDown: function () {
         void this.constructor.__super__.onMouseDown.call(this);
         var promotion = this.getWedgetOption(this.model.get("name"));
+
         elementor.promotion.showDialog({
           title: sprintf(
             wp.i18n.__("%s", "elementor"),
