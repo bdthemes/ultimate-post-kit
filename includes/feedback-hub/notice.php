@@ -175,6 +175,15 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 				wp_die();
 			}
 
+			if (!current_user_can('manage_options')) {
+				wp_send_json(array(
+					'status'	=> 'error',
+					'title'		=> 'Error',
+					'message'	=> 'Denied, you don\'t have right permission',
+				));
+				wp_die();
+			}
+
 			if ( 'disallow' == $sanitized_status ) {
 				update_option( $allow_name, 'disallow' );
 			}
@@ -281,6 +290,15 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 					'title'   => 'Error',
 					'message' => 'Nonce verification failed',
 				) );
+				wp_die();
+			}
+
+			if (!current_user_can('manage_options')) {
+				wp_send_json(array(
+					'status'	=> 'error',
+					'title'		=> 'Error',
+					'message'	=> 'Denied, you don\'t have right permission',
+				));
 				wp_die();
 			}
 
