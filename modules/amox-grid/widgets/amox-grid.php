@@ -123,6 +123,23 @@ class Amox_Grid extends Group_Control_Query
                 ],
             ]
         );
+        
+        $this->add_responsive_control(
+			'image_height',
+			[
+				'label'     => esc_html__('Image Height', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => [
+					'px' => [
+						'min' => 100,
+						'max' => 800,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-amox-grid .upk-img-wrap' => 'height: {{SIZE}}px;',
+				],
+			]
+		);
 
         $this->add_group_control(
             Group_Control_Image_Size::get_type(),

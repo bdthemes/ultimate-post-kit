@@ -5,7 +5,7 @@
   .upk-amox-carousel .upk-item.active {
     position: relative; }
     .upk-amox-carousel .upk-item.active .upk-img-wrap {
-      height: 100%;
+      height: 100% !important;
       position: relative; }
       .upk-amox-carousel .upk-item.active .upk-img-wrap::before {
         position: absolute;
@@ -39,7 +39,8 @@
 
 .upk-amox-carousel .upk-img-wrap {
   overflow: hidden;
-  cursor: pointer; }
+  cursor: pointer;
+  display: flex; }
   .upk-amox-carousel .upk-img-wrap .upk-img {
     width: 100%;
     height: 100%;

@@ -117,7 +117,7 @@ class Maple_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'row_gap',
 			[
-				'label'     => esc_html__('Row Gap', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Row Gap', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}} .upk-maple-grid .upk-post-grid' => 'grid-row-gap: {{SIZE}}{{UNIT}};',
@@ -139,7 +139,7 @@ class Maple_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'primary_item_height',
 			[
-				'label' => esc_html__('Primary Item Height', 'ultimate-post-kit'),
+				'label' => esc_html__('Primary Image Height', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -148,10 +148,30 @@ class Maple_Grid extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n+1) .upk-main-image .upk-img, {{WRAPPER}} .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n+2) .upk-main-image .upk-img, {{WRAPPER}} .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n+1) .upk-main-image .upk-img, {{WRAPPER}} .upk-maple-grid .upk-style-4 .upk-item:nth-child(n+1) .upk-main-image .upk-img, {{WRAPPER}} .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n+3) .upk-main-image .upk-img' => 'height: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n+1) .upk-main-image .upk-img, {{WRAPPER}} .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n+2) .upk-main-image .upk-img, {{WRAPPER}} .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n+1) .upk-main-image .upk-img, {{WRAPPER}} .upk-maple-grid .upk-style-4 .upk-item:nth-child(n+1) .upk-main-image .upk-img, {{WRAPPER}} .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n+3) .upk-main-image .upk-img, {{WRAPPER}} .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n+1) .upk-main-image .upk-img' => 'height: {{SIZE}}px;',
 				],
 				'condition' => [
 					'grid_style' => ['1', '2', '4', '5']
+				]
+			]
+		);
+
+		$this->add_responsive_control(
+			'secondary_image_height',
+			[
+				'label' => esc_html__('Secondary Image Height', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'  => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 100,
+						'max' => 800,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n+3) .upk-main-image, {{WRAPPER}} .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n+4) .upk-main-image, {{WRAPPER}} .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n+5) .upk-main-image, {{WRAPPER}} .upk-maple-grid .upk-style-1 .upk-item:nth-child(6n+6) .upk-main-image, {{WRAPPER}} .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n+2) .upk-main-image, {{WRAPPER}} .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n+3) .upk-main-image, {{WRAPPER}} .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n+4) .upk-main-image, {{WRAPPER}} .upk-maple-grid .upk-style-2 .upk-item:nth-child(5n+5) .upk-main-image, {{WRAPPER}} .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n+2) .upk-main-image, {{WRAPPER}} .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n+4) .upk-main-image, {{WRAPPER}} .upk-maple-grid .upk-style-5 .upk-item:nth-child(5n+5) .upk-main-image, {{WRAPPER}} .upk-maple-grid .upk-style-3 .upk-item:nth-child(n+1) .upk-main-image' => 'height: {{SIZE}}px;',
+				],
+				'condition' => [
+					'grid_style!' => ['4']
 				]
 			]
 		);
@@ -188,7 +208,7 @@ class Maple_Grid extends Group_Control_Query {
 		$this->add_control(
 			'content_alignment',
 			[
-				'label'   => __('Alignment', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'   => __('Alignment', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::CHOOSE,
 				'options' => [
 					'left'   => [
@@ -218,7 +238,7 @@ class Maple_Grid extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => __('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -375,7 +395,7 @@ class Maple_Grid extends Group_Control_Query {
 		$this->add_control(
 			'meta_separator',
 			[
-				'label'       => __('Separator', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'       => __('Separator', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => '-',
 				'label_block' => false,
@@ -771,7 +791,7 @@ class Maple_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'avatar_border_radius',
 			[
-				'label'      => esc_html__('Avatar Radius', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'      => esc_html__('Avatar Radius', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
@@ -786,7 +806,7 @@ class Maple_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'meta_space_between',
 			[
-				'label'     => esc_html__('Space Between', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Space Between', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -887,7 +907,7 @@ class Maple_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'category_margin',
 			[
-				'label'      => esc_html__('Margin', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'      => esc_html__('Margin', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
