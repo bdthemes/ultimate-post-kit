@@ -163,6 +163,12 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.11.2 [XXX March 2024] =
+
+* Added: Image height option added in alter grid, amox grid, amox carousel widgets
+* Added: Secondary image height option added in maple grid widgets
+* Fixed: Pagination issue fixed
+
 = 3.11.1 [7th March 2024] =
 
 * Fixed: Content on image height issue fixed in alter grid widget

@@ -134,11 +134,31 @@ class Alter_Grid extends Group_Control_Query {
 				]
 			]
 		);
+		
+		$this->add_responsive_control(
+			'image_height',
+			[
+				'label'     => esc_html__('Image Height', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => [
+					'px' => [
+						'min' => 100,
+						'max' => 800,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-alter-grid .upk-img-wrap .upk-main-img .upk-img' => 'height: {{SIZE}}px;',
+				],
+				'condition' => [
+					'grid_style' => ['1']
+				]
+			]
+		);
 
 		$this->add_responsive_control(
 			'secondary_image_height',
 			[
-				'label'     => esc_html__('Secondary Item Height', 'ultimate-post-kit'),
+				'label'     => esc_html__('Secondary Image Height', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
