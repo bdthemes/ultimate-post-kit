@@ -34,12 +34,22 @@ class Notices {
 	 * Dismiss Notice.
 	 */
 	public function dismiss() {
-
+		$nonce = (isset($_POST['_wpnonce'])) ? sanitize_text_field($_POST['_wpnonce']) : '';
 		$id   = (isset($_POST['id'])) ? esc_attr($_POST['id']) : '';
 		$time = (isset($_POST['time'])) ? esc_attr($_POST['time']) : '';
 		$meta = (isset($_POST['meta'])) ? esc_attr($_POST['meta']) : '';
 
-		// Valid inputs?
+		if ( ! wp_verify_nonce($nonce, 'ultimate-post-kit') ) {
+			wp_send_json_error();
+		}
+
+		if ( ! current_user_can('manage_options') ) {
+			wp_send_json_error();
+		}
+
+		/**
+		 * Valid inputs?
+		 */
 		if (!empty($id)) {
 
 			if ('user' === $meta) {

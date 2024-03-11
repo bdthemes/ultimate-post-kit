@@ -161,6 +161,12 @@ class Admin
 		wp_enqueue_script('jquery-form');
 		wp_enqueue_script('upk-notice', BDTUPK_ADMIN_ASSETS_URL . 'js/upk-notice.min.js', ['jquery'], BDTUPK_VER,  true);
 
+		$script_config = [
+			'ajaxurl'	=> admin_url('admin-ajax.php'),
+			'nonce'		=> wp_create_nonce('ultimate-post-kit'),
+		];
+		wp_localize_script('upk-notice', 'UltimatePostKitNoticeConfig', $script_config);
+
 		if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_post_kit_options')) {
 			wp_enqueue_script('chart', BDTUPK_ADMIN_ASSETS_URL . 'js/chart.min.js', ['jquery'], '3.9.1', true);
 			wp_enqueue_script('upk-admin', BDTUPK_ADMIN_ASSETS_URL  . 'js/upk-admin.min.js', ['jquery', 'chart'], BDTUPK_VER, true);
