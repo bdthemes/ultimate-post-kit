@@ -238,7 +238,7 @@ if ( ! class_exists( 'RC_Reviews_Collector' ) ) {
 
 						<div class="bdt-notice-rc-content">
 							<h3>
-								<?php printf( esc_html($plugin_title) ); ?>
+								<?php printf(wp_kses_post($plugin_title) ); ?>
 							</h3>
 							<?php printf( wp_kses_post($plugin_msg) ); ?>
 							<input type="hidden" name="rc_name" value="<?php echo esc_html( $this->rc_name ); ?>">
