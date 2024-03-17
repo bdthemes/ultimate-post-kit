@@ -389,7 +389,7 @@ if (!class_exists('Insights_SDK')) {
 			$plugin_icon  = isset($this->params['plugin_icon']) ? $this->params['plugin_icon'] : '';
 
 ?>
-			<div class="dci-global-notice dci-notice-data notice notice-success is-dismissible">
+			<div class="dci-global-notice dci-notice-data notice notice-success is-dismissible <?php echo esc_attr(substr($this->dci_name, 0, -33)); ?>">
 				<div class="dci-global-header bdt-dci-notice-global-header">
 					<?php if (!empty($plugin_icon)) : ?>
 						<div class="bdt-dci-notice-logo">
