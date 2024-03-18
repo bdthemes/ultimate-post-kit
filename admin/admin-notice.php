@@ -143,15 +143,23 @@ class Notices {
 	 * @param  array $notice Notice notice_layout.
 	 * @return void
 	 */
-	public static function notice_layout($notice = []) {
+	public static function notice_layout( $notice = [] ) {
 
-?>
-		<div id="<?php echo esc_attr($notice['id']); ?>" class="<?php echo esc_attr($notice['classes']); ?>" <?php echo esc_attr($notice['data']); ?>>
+		?>
+		<div id="<?php echo esc_attr( $notice['id'] ); ?>" class="<?php echo esc_attr( $notice['classes'] ); ?>" <?php echo esc_attr( $notice['data'] ); ?>>
+		<?php if(isset($notice['message']) && !empty($notice['message'])): ?>
 			<p>
-				<?php echo wp_kses_post($notice['message']); ?>
+				<?php echo wp_kses_post( $notice['message'] ); ?>
 			</p>
+		<?php endif; ?>
+
+		<?php 
+		if(isset($notice['html_message']) && !empty($notice['html_message'])):
+			echo wp_kses_post( $notice['html_message'] );
+		endif; ?>
+
 		</div>
-<?php
+		<?php
 	}
 }
 
