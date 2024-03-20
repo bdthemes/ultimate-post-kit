@@ -3,19 +3,19 @@
  * todo: need to this move another file
  */
 .ultimate-post-kit-notice {
-  padding: 0;
-  border: 0; }
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important; }
   .ultimate-post-kit-notice .notice-dismiss {
     padding: 15px; }
   .ultimate-post-kit-notice .bdt-license-notice-global {
-    border-left: 4px solid #60DF54 !important;
+    border-left: 4px solid #60df54 !important;
     display: flex;
     align-items: flex-start;
     gap: 15px;
     padding: 25px;
     border-color: #e2e2e5;
     z-index: 99;
-    box-shadow: none;
     /**
      * Start Ultimate Post Kit
      */ }
@@ -46,15 +46,15 @@
       color: #fff; }
     .ultimate-post-kit-notice .bdt-license-notice-global .bdt-button-skip {
       border: 0;
-      color: #212225; }
+      color: #08c972; }
     .ultimate-post-kit-notice .bdt-license-notice-global.ultimate_post_kit .bdt-button-allow {
-      --primaryColor: #60DF54;
-      --secondaryColor: #08C972;
+      --primaryColor: #60df54;
+      --secondaryColor: #08c972;
       background: linear-gradient(313deg, var(--primaryColor), var(--secondaryColor) 100%); }
     .ultimate-post-kit-notice .bdt-license-notice-global.ultimate_post_kit .bdt-button-allow:hover {
-      --primaryColor: #08C972;
-      --secondaryColor: #60DF54; }
+      --primaryColor: #08c972;
+      --secondaryColor: #60df54; }
     .ultimate-post-kit-notice .bdt-license-notice-global.ultimate_post_kit .bdt-button-skip {
-      background-color: rgba(86, 220, 88, 0.212); }
+      background-color: rgba(86, 220, 88, 0.15); }
     .ultimate-post-kit-notice .bdt-license-notice-global.ultimate_post_kit .bdt-button-skip:hover {
-      background-color: rgba(86, 220, 88, 0.348); }
+      background-color: rgba(86, 220, 88, 0.2); }

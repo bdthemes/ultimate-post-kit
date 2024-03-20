@@ -1,89 +1,86 @@
-
 /**
  * ultimate-post-kit license notice 
  * todo: need to this move another file
  */
 
- .ultimate-post-kit-notice {
-  padding: 0;
-  border: 0;
-  .notice-dismiss {
-      padding: 15px;
-  }
-  .bdt-license-notice-global {
-    border-left: 4px solid #60DF54 !important;
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    padding: 25px;
-    border-color: #e2e2e5;
-    z-index: 99;
-    box-shadow: none;
-  
-    .bdt-license-notice-logo img {
-        width: 45px;
-        height: auto;
-        vertical-align: middle;
+.ultimate-post-kit-notice {
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    .notice-dismiss {
+        padding: 15px;
     }
-  
-    .bdt-license-notice-content {
-        h3 {
-            margin: 0 0 10px;
-            font-size: 20px;
-        }
-        p {
-            margin: 0;
-            color: #5f6169;
-            max-width: 750px;
-        }
-    } 
-    
-    .bdt-license-notice-button-wrap {
-        margin-top: 14px;
+    .bdt-license-notice-global {
+        border-left: 4px solid #60df54 !important;
         display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-  
-    .bdt-button {
-        padding: 12px 16px;
-        border-radius: 3px;
-        line-height: 1;
-        font-size: 12px;
-        font-weight: 500;
-        text-decoration: none;
-    }
-    .bdt-button-allow {
-        color: #fff;
-    }
-    .bdt-button-skip {
-        border: 0;
-        color: #212225;
-    }
-  
-    /**
+        align-items: flex-start;
+        gap: 15px;
+        padding: 25px;
+        border-color: #e2e2e5;
+        z-index: 99;
+
+        .bdt-license-notice-logo img {
+            width: 45px;
+            height: auto;
+            vertical-align: middle;
+        }
+
+        .bdt-license-notice-content {
+            h3 {
+                margin: 0 0 10px;
+                font-size: 20px;
+            }
+            p {
+                margin: 0;
+                color: #5f6169;
+                max-width: 750px;
+            }
+        }
+
+        .bdt-license-notice-button-wrap {
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bdt-button {
+            padding: 12px 16px;
+            border-radius: 3px;
+            line-height: 1;
+            font-size: 12px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .bdt-button-allow {
+            color: #fff;
+        }
+        .bdt-button-skip {
+            border: 0;
+            color: #08c972;
+        }
+
+        /**
      * Start Ultimate Post Kit
      */
-    
-     &.ultimate_post_kit .bdt-button-allow {
-         --primaryColor: #60DF54;
-         --secondaryColor: #08C972;
-         background: linear-gradient(313deg, var(--primaryColor), var(--secondaryColor) 100%);
-     }
-    
-     &.ultimate_post_kit .bdt-button-allow:hover {
-         --primaryColor: #08C972;
-         --secondaryColor: #60DF54;
-     }
-  
-     &.ultimate_post_kit .bdt-button-skip {
-         background-color: rgba(86, 220, 88, 0.212);
-     }
-    
-     &.ultimate_post_kit .bdt-button-skip:hover {
-         background-color: rgba(86, 220, 88, 0.348);
-     }
-  }
-  
-}
 
+        &.ultimate_post_kit .bdt-button-allow {
+            --primaryColor: #60df54;
+            --secondaryColor: #08c972;
+            background: linear-gradient(313deg, var(--primaryColor), var(--secondaryColor) 100%);
+        }
+
+        &.ultimate_post_kit .bdt-button-allow:hover {
+            --primaryColor: #08c972;
+            --secondaryColor: #60df54;
+        }
+
+        &.ultimate_post_kit .bdt-button-skip {
+            background-color: rgba(86, 220, 88, 0.15);
+        }
+
+        &.ultimate_post_kit .bdt-button-skip:hover {
+            background-color: rgba(86, 220, 88, 0.2);
+        }
+    }
+}
