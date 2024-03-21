@@ -37,9 +37,13 @@ class Admin
 
 		// register_activation_hook(BDTUPK__FILE__, 'install_and_activate');
 
+		add_action('admin_init', [ $this, 'notice_styles' ] );
+
+
+	}
+
+	function notice_styles(){
 		wp_enqueue_style('upk-admin-notice', BDTUPK_ADMIN_ASSETS_URL . 'css/upk-admin-notice.css', [], BDTUPK_VER);
-
-
 	}
 
 
