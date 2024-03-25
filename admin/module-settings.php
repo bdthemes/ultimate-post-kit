@@ -588,7 +588,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'template-builder',
-                    'demo_url'     => 'https://postkit.pro/demo/post-comments/',
+                    'demo_url'     => 'https://postkit.pro/archive/',
                 ],
                 [
                     'name'         => 'post-content',
@@ -597,7 +597,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'template-builder',
-                    'demo_url'     => 'https://postkit.pro/demo/post-content/',
+                    'demo_url'     => 'https://postkit.pro/archive/',
                     'video_url'    => 'https://youtu.be/rfU_LqHpbb8?si=O32oHaQ43RTdRucM',
                 ],
                 [
@@ -607,7 +607,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'template-builder',
-                    'demo_url'     => 'https://postkit.pro/demo/post-featured-image/',
+                    'demo_url'     => 'https://postkit.pro/archive/',
                     'video_url'    => 'https://youtu.be/rfU_LqHpbb8?si=O32oHaQ43RTdRucM',
                 ],
                 [
@@ -617,7 +617,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'template-builder',
-                    'demo_url'     => 'https://postkit.pro/demo/post-info/',
+                    'demo_url'     => 'https://postkit.pro/archive/',
                     'video_url'    => 'https://youtu.be/rfU_LqHpbb8?si=O32oHaQ43RTdRucM',
                 ],
                 [
@@ -627,7 +627,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'template-builder',
-                    'demo_url'     => 'https://postkit.pro/demo/post-title/',
+                    'demo_url'     => 'https://postkit.pro/archive/',
                     'video_url'    => 'https://youtu.be/rfU_LqHpbb8?si=O32oHaQ43RTdRucM',
                 ],
                 [

@@ -1495,7 +1495,7 @@ class Pholox_Slider extends Group_Control_Query
 	?>
 		<div class="upk-flex upk-flex-middle">
 			<div class="upk-date">
-				<i class="eicon-calendar upk-author-icon" aria-hidden="true"></i>
+				<i class="upk-icon-calendar upk-author-icon" aria-hidden="true"></i>
 				<span>
 					<?php if ($settings['human_diff_time'] == 'yes') {
 						echo ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
@@ -1523,7 +1523,7 @@ class Pholox_Slider extends Group_Control_Query
 		}
 	?>
 		<div class="upk-author">
-			<i class="eicon-user-circle-o upk-author-icon" aria-hidden="true"></i>
+			<i class="upk-icon-user upk-author-icon" aria-hidden="true"></i>
 			<a href="<?php echo get_author_posts_url(get_the_author_meta('ID')) ?>"><?php echo get_the_author() ?></a>
 		</div>
 

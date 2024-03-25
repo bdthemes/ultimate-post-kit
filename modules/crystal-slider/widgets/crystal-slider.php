@@ -1725,7 +1725,7 @@ class Crystal_Slider extends Group_Control_Query {
 					<?php if ($settings['show_readmore'] === 'yes') : ?>
 						<div class="upk-link-btn">
 							<a href="<?php echo esc_url(get_permalink()); ?>">
-								<i class="eicon-plus"></i>
+								<i class="upk-icon-plus"></i>
 							</a>
 						</div>
 					<?php endif; ?>
