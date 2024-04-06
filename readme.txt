@@ -163,6 +163,10 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.11.4 [XXX March 2024] =
+
+* Fixed: Icon not showing issue fixed
+
 = 3.11.3 [23th March 2024] =
 
 * Updated: Admin dashboard license notice improved

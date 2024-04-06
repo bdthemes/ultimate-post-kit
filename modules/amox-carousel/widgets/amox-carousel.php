@@ -843,7 +843,7 @@ class Amox_Carousel extends Group_Control_Query
 ?>
 
 		<div class="upk-comments upk-flex upk-flex-middle">
-			<i class="eicon-comments"></i>
+			<i class="upk-icon-post-comments"></i>
 			<span><?php echo get_comments_number($id) ?></span>
 		</div>
 
