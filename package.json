@@ -3,7 +3,7 @@
 	"version": "2.0.0",
 	"main": "index.php",
 	"scripts": {
-		"build": "npm run lint:fix && npm run clean && cross-env NODE_ENV=production grunt",
+		"build": "npm run && npm run clean && cross-env NODE_ENV=production grunt",
 		"clean": "rimraf ./assets",
 		"dev": "cross-env NODE_ENV=development grunt watch",
 		"lint:fix": "eslint \"src/js/**/*.js\" --fix"
@@ -16,11 +16,11 @@
 	"license": "ISC",
 	"devDependencies": {
 		"cross-env": "^7.0.3",
-		"eslint": "^8.48.0",
+		"eslint": "^9.0.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-jquery": "^1.5.1",
 		"eslint-plugin-prettier": "^5.0.0",
-		"goodshare.js": "^4.1.2",
+		"goodshare.js": "^6.3.0",
 		"grunt": "^1.6.1",
 		"grunt-contrib-concat": "^2.1.0",
 		"grunt-contrib-copy": "^1.0.0",
@@ -29,10 +29,12 @@
 		"grunt-sass": "^3.1.0",
 		"grunt-terser": "^2.0.0",
 		"jquery": "^3.7.0",
-		"node-sass": "^9.0.0",
 		"prettier": "^3.0.2",
 		"rimraf": "^5.0.1",
-		"terser": "^5.18.2",
+		"terser": "^5.30.3",
 		"uikit": "3.16.24"
+	},
+	"dependencies": {
+		"sass": "^1.72.0"
 	}
 }

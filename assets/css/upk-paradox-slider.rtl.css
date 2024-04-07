@@ -1,24 +1,24 @@
 .upk-paradox-slider .upk-item {
   display: flex;
   height: clamp(29.375rem, 60vw, 40.625rem);
-  overflow: hidden; }
-
+  overflow: hidden;
+}
 .upk-paradox-slider .upk-image-wrapper:before {
-  content: '';
+  content: "";
   position: absolute;
   height: 100%;
   width: 100%;
   background: rgba(43, 45, 66, 0.5);
   right: 0;
   top: 0;
-  z-index: 1; }
-
+  z-index: 1;
+}
 .upk-paradox-slider .upk-img {
   position: absolute;
   object-fit: cover;
   height: 100%;
-  width: 100%; }
-
+  width: 100%;
+}
 .upk-paradox-slider .upk-content-box {
   display: flex;
   align-items: center;
@@ -27,102 +27,116 @@
   width: 100%;
   max-width: 780px;
   padding: clamp(1.25rem, 4vw, 2.5rem);
-  z-index: 10; }
-
+  z-index: 10;
+}
 .upk-paradox-slider .upk-category-date-wrap {
-  padding-bottom: clamp(0.625rem, 2vw, 0.938rem); }
-
+  padding-bottom: clamp(0.625rem, 2vw, 0.938rem);
+}
 .upk-paradox-slider .upk-category {
-  display: flex; }
-  .upk-paradox-slider .upk-category a {
-    color: #EDF2F4;
-    background: #EF233C;
-    display: inline-flex;
-    padding: clamp(0.25rem, 1.5vw, 0.375rem) clamp(0.5rem, 1.5vw, 0.75rem);
-    font-size: clamp(0.688rem, 2vw, 0.75rem);
-    line-height: 1;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-radius: 2px;
-    letter-spacing: 0.5px; }
-  .upk-paradox-slider .upk-category a + a {
-    margin-right: 5px; }
-
+  display: flex;
+}
+.upk-paradox-slider .upk-category a {
+  color: #EDF2F4;
+  background: #EF233C;
+  display: inline-flex;
+  padding: clamp(0.25rem, 1.5vw, 0.375rem) clamp(0.5rem, 1.5vw, 0.75rem);
+  font-size: clamp(0.688rem, 2vw, 0.75rem);
+  line-height: 1;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+}
+.upk-paradox-slider .upk-category a + a {
+  margin-right: 5px;
+}
 .upk-paradox-slider .upk-post-time {
-  margin-right: 5px; }
-  .upk-paradox-slider .upk-post-time i {
-    margin-left: 2px; }
-
+  margin-right: 5px;
+}
+.upk-paradox-slider .upk-post-time i {
+  margin-left: 2px;
+}
 .upk-paradox-slider .upk-meta {
   color: #EDF2F4;
   font-size: clamp(0.75rem, 2vw, 0.875rem);
   text-transform: uppercase;
-  padding-right: clamp(0.625rem, 1.5vw, 0.938rem); }
-  .upk-paradox-slider .upk-meta > div {
-    position: relative;
-    display: inline-flex; }
-    .upk-paradox-slider .upk-meta > div:before {
-      content: attr(data-separator);
-      margin: 0 8px; }
-    .upk-paradox-slider .upk-meta > div:nth-child(1)::before {
-      display: none; }
-
+  padding-right: clamp(0.625rem, 1.5vw, 0.938rem);
+}
+.upk-paradox-slider .upk-meta > div {
+  position: relative;
+  display: inline-flex;
+}
+.upk-paradox-slider .upk-meta > div:before {
+  content: attr(data-separator);
+  margin: 0 8px;
+}
+.upk-paradox-slider .upk-meta > div:nth-child(1)::before {
+  display: none;
+}
 .upk-paradox-slider .upk-title-wrap {
   font-size: clamp(1.5rem, 5vw, 3rem);
   padding-bottom: clamp(0.938rem, 3vw, 1.875rem);
-  margin: 0; }
-  .upk-paradox-slider .upk-title-wrap .upk-title {
-    color: #fff; }
-
+  margin: 0;
+}
+.upk-paradox-slider .upk-title-wrap .upk-title {
+  color: #fff;
+}
 .upk-paradox-slider .upk-text {
   color: #EDF2F4;
   font-size: clamp(0.875rem, 2vw, 1rem);
-  padding-bottom: clamp(1.25rem, 3vw, 2.188rem); }
-  .upk-paradox-slider .upk-text p {
-    margin: 0; }
-
+  padding-bottom: clamp(1.25rem, 3vw, 2.188rem);
+}
+.upk-paradox-slider .upk-text p {
+  margin: 0;
+}
 .upk-paradox-slider .upk-author-image {
-  display: flex; }
-  .upk-paradox-slider .upk-author-image img {
-    border-radius: 80px;
-    margin-left: clamp(0.625rem, 2vw, 0.938rem); }
-
+  display: flex;
+}
+.upk-paradox-slider .upk-author-image img {
+  border-radius: 80px;
+  margin-left: clamp(0.625rem, 2vw, 0.938rem);
+}
 .upk-paradox-slider .upk-author-name a {
   font-size: clamp(0.875rem, 2vw, 1rem);
-  margin-bottom: 2px; }
-
+  margin-bottom: 2px;
+}
 .upk-paradox-slider .upk-author-role {
-  font-size: clamp(0.75rem, 2vw, 0.875rem); }
-
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+}
 .upk-paradox-slider .upk-author-role,
 .upk-paradox-slider .upk-author-name a {
   text-transform: capitalize;
   color: #EDF2F4;
-  display: flex; }
+  display: flex;
+}
 
 .upk-content--left .upk-paradox-slider .upk-content-box {
-  text-align: right; }
-
+  text-align: right;
+}
 .upk-content--left .upk-paradox-slider .upk-author-wrapper,
 .upk-content--left .upk-paradox-slider .upk-category-date-wrap {
-  justify-content: left; }
+  justify-content: left;
+}
 
 .upk-content--center .upk-paradox-slider .upk-content-box {
-  text-align: center; }
-
+  text-align: center;
+}
 .upk-content--center .upk-paradox-slider .upk-author-wrapper,
 .upk-content--center .upk-paradox-slider .upk-category-date-wrap {
-  justify-content: center; }
+  justify-content: center;
+}
 
 .upk-content--right .upk-paradox-slider .upk-content-box {
-  text-align: left; }
-
+  text-align: left;
+}
 .upk-content--right .upk-paradox-slider .upk-author-wrapper,
 .upk-content--right .upk-paradox-slider .upk-category-date-wrap {
-  justify-content: flex-end; }
+  justify-content: flex-end;
+}
 
 .upk-global-link-yes .upk-item:hover {
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .upk-paradox-slider .upk-navigation-prev,
 .upk-paradox-slider .upk-navigation-next {
@@ -130,20 +144,23 @@
   border: 1px solid #fff;
   padding: 15px;
   border-radius: 60px;
-  transition: all .3s ease; }
-  .upk-paradox-slider .upk-navigation-prev i,
-  .upk-paradox-slider .upk-navigation-next i {
-    font-size: 18px;
-    transition: all .3s ease; }
-  .upk-paradox-slider .upk-navigation-prev:hover,
-  .upk-paradox-slider .upk-navigation-next:hover {
-    color: #EF233C;
-    background: #fff; }
-
+  transition: all 0.3s ease;
+}
+.upk-paradox-slider .upk-navigation-prev i,
+.upk-paradox-slider .upk-navigation-next i {
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+.upk-paradox-slider .upk-navigation-prev:hover,
+.upk-paradox-slider .upk-navigation-next:hover {
+  color: #EF233C;
+  background: #fff;
+}
 .upk-paradox-slider .upk-slider .swiper-pagination .swiper-pagination-bullet,
 .upk-paradox-slider .upk-dots-container .swiper-pagination .swiper-pagination-bullet,
 .upk-paradox-slider .upk-arrows-dots-container .swiper-pagination .swiper-pagination-bullet {
   width: 40px;
   height: 6px;
   border-radius: 0;
-  background: #fff; }
+  background: #fff;
+}

@@ -38,10 +38,6 @@ class UltimatePostKit_Admin_Settings {
             add_action('admin_menu', [$this, 'admin_menu'], 201);
         }
 
-        if (!Tracker::is_allow_track()) {
-            add_action('admin_notices', [$this, 'allow_tracker_activate_notice'], 10, 3);
-        }
-
         /**
          * Mini-Cart issue fixed
          * Check if MiniCart activate in EP and Elementor
@@ -517,15 +513,15 @@ class UltimatePostKit_Admin_Settings {
                                     <?php echo esc_html_x('All Widgets', 'Frontend', 'ultimate-post-kit'); ?>
                                 </h1>
                                 <div class="upk-widget-count">
-                                    <?php echo esc_html_x('Used:', 'Frontend', 'ultimate-post-kit'); ?> 
+                                    <?php echo esc_html_x('Used:', 'Frontend', 'ultimate-post-kit'); ?>
                                     <b><?php echo esc_html($used_widgets); ?></b>
                                 </div>
                                 <div class="upk-widget-count">
-                                    <?php echo esc_html_x('Unused:', 'Frontend', 'ultimate-post-kit'); ?> 
+                                    <?php echo esc_html_x('Unused:', 'Frontend', 'ultimate-post-kit'); ?>
                                     <b><?php echo esc_html($un_used_widgets); ?></b>
                                 </div>
                                 <div class="upk-widget-count">
-                                    <?php echo esc_html_x('Total:', 'Frontend', 'ultimate-post-kit'); ?> 
+                                    <?php echo esc_html_x('Total:', 'Frontend', 'ultimate-post-kit'); ?>
                                     <b><?php echo esc_html($used_widgets) + esc_html($un_used_widgets); ?></b>
                                 </div>
                             </div>
@@ -550,10 +546,10 @@ class UltimatePostKit_Admin_Settings {
                                     <b id="bdt-total-widgets-status-core"></b>
                                 </div>
                                 <div class="upk-widget-count">
-                                    <?php echo esc_html_x('Extensions:', 'Frontend', 'ultimate-post-kit'); ?> 
+                                    <?php echo esc_html_x('Extensions:', 'Frontend', 'ultimate-post-kit'); ?>
                                     <b id="bdt-total-widgets-status-extensions"></b>
                                 </div>
-                                <div class="upk-widget-count"> 
+                                <div class="upk-widget-count">
                                     <?php echo esc_html_x('Total:', 'Frontend', 'ultimate-post-kit'); ?>
                                     <b id="bdt-total-widgets-status-heading"></b>
                                 </div>
@@ -574,6 +570,17 @@ class UltimatePostKit_Admin_Settings {
                 </div>
             </div>
 
+            <?php if (!Tracker::is_allow_track()) : ?>
+                <div class="bdt-border-rounded bdt-box-shadow-small bdt-alert-warning" bdt-alert>
+                    <a href class="bdt-alert-close" bdt-close></a>
+                    <div class="bdt-text-default">
+                        <?php
+                        esc_html_e('To view widgets analytics, Elementor Usage Data Sharing feature by Elementor needs to be activated. Please activate the feature to get widget analytics instantly ', 'ultimate-post-kit');
+                        echo '<a href="' . esc_url(admin_url('admin.php?page=elementor')) . '">from here.</a>';
+                        ?>
+                    </div>
+                </div>
+            <?php endif; ?>
 
             <div class="bdt-grid" bdt-grid bdt-height-match="target: > div > .bdt-card">
                 <div class="bdt-width-1-3@m upk-support-section">
@@ -586,10 +593,10 @@ class UltimatePostKit_Admin_Settings {
                         $text = '<p>' . esc_html_x('Feeling like to consult with an expert? Take live Chat support immediately from', 'Frontend', 'ultimate-post-kit') . ' <a href="https://postkit.pro/" target="_blank" rel="">Ultimate Post Kit</a>. ' . esc_html_x('We are always ready to help you 24/7.', 'Frontend', 'ultimate-post-kit') . '</p>';
                         $second_text = '<p><strong>' . esc_html_x('Or if you’re facing technical issues with our plugin, then please create a support ticket', 'Frontend', 'ultimate-post-kit') . '</strong></p>';
                         ?>
-                        
+
                         <?php echo $text; ?>
                         <?php echo $second_text; ?>
-                        
+
                         <a class="bdt-button bdt-btn-blue bdt-margin-small-top bdt-margin-small-right" target="_blank" rel="" href="https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/">
                             <?php echo esc_html_x('Knowledge Base', 'Frontend', 'ultimate-post-kit'); ?>
                         </a>
@@ -640,7 +647,7 @@ class UltimatePostKit_Admin_Settings {
                             ); ?>
                         </p>
                         <div class="bdt-others-plugins-link">
-                            <a class="bdt-button bdt-btn-ep bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/bdthemes-element-pack-lite/" bdt-tooltip="Element Pack Lite provides more than 50+ essential elements for everyday applications to simplify the whole web building process. It's Free! Download it.">
+                            <a class="bdt-button bdt-btn-ep bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/ultimate-post-kit-lite/" bdt-tooltip="Element Pack Lite provides more than 50+ essential elements for everyday applications to simplify the whole web building process. It's Free! Download it.">
                                 <?php echo esc_html_x('Element pack', 'Frontend', 'ultimate-post-kit'); ?>
                             </a>
                             <a class="bdt-button bdt-btn-ps bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/bdthemes-prime-slider-lite/" bdt-tooltip="The revolutionary slider builder addon for Elementor with next-gen superb interface. It's Free! Download it.">
@@ -708,8 +715,8 @@ class UltimatePostKit_Admin_Settings {
                             <li class="">
                                 <div class="bdt-grid">
                                     <div class="bdt-width-expand@m"><span bdt-tooltip="pos: top-left; title: Lite have 35+ Widgets but Pro have 100+ core widgets">
-                                        <?php echo esc_html_x('Core Widgets', 'Frontend', 'ultimate-post-kit'); ?>
-                                    </span></div>
+                                            <?php echo esc_html_x('Core Widgets', 'Frontend', 'ultimate-post-kit'); ?>
+                                        </span></div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                 </div>
@@ -843,15 +850,15 @@ class UltimatePostKit_Admin_Settings {
                                 <li>
                                     <div class="bdt-grid">
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> 
+                                            <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('Incredibly Advanced', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> 
+                                            <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('Refund or Cancel Anytime', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> 
+                                            <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('Dynamic Content', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                     </div>
@@ -860,15 +867,15 @@ class UltimatePostKit_Admin_Settings {
                                 <li>
                                     <div class="bdt-grid">
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> 
+                                            <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('Super-Flexible Widgets', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> 
+                                            <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('24/7 Premium Support', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> 
+                                            <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('Third Party Plugins', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                     </div>
@@ -877,15 +884,15 @@ class UltimatePostKit_Admin_Settings {
                                 <li>
                                     <div class="bdt-grid">
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> 
+                                            <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('Special Discount!', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> 
+                                            <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('Custom Field Integration', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> 
+                                            <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('With Live Chat Support', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                     </div>
@@ -894,15 +901,15 @@ class UltimatePostKit_Admin_Settings {
                                 <li>
                                     <div class="bdt-grid">
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> 
+                                            <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('Trusted Payment Methods', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> 
+                                            <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('Interactive Effects', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                         <div class="bdt-width-1-3@m">
-                                            <span class="dashicons dashicons-heart"></span> 
+                                            <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('Video Tutorial', 'Frontend', 'ultimate-post-kit'); ?>
                                         </div>
                                     </div>
@@ -1093,10 +1100,10 @@ class UltimatePostKit_Admin_Settings {
         </ul>
 
         <div class="bdt-admin-alert">
-            <?php 
+            <?php
             printf(
                 esc_html__('%1$s If you have multiple addons like %2$s so you need some more requirement some cases so make sure you added more memory for others addon too.', 'ultimate-post-kit'),
-                '<strong>Note:</strong>', 
+                '<strong>Note:</strong>',
                 '<b>Ultimate Post Kit</b>'
             ); ?>
         </div>
@@ -1425,26 +1432,6 @@ class UltimatePostKit_Admin_Settings {
                 'dismissible'      => true,
                 'dismissible-time' => MONTH_IN_SECONDS / 2,
                 'message'          => __('We can see you activated the <strong>Mini-Cart</strong> of Elementor Pro and also Ultimate Post Kit Pro. We will recommend you to choose one of them, otherwise you will get conflict. Thank you.', 'ultimate-post-kit'),
-            ]
-        );
-    }
-    /**
-     * 
-     * Allow Tracker deactivated warning
-     * If Allow Tracker disable in elementor then this notice will be show
-     *
-     * @access public
-     */
-
-    public function allow_tracker_activate_notice() {
-
-        Notices::add_notice(
-            [
-                'id'               => 'upk-allow-tracker',
-                'type'             => 'warning',
-                'dismissible'      => true,
-                'dismissible-time' => MONTH_IN_SECONDS * 2,
-                'message'          => __('Please activate <strong>Usage Data Sharing</strong> features from Elementor, otherwise Widgets Analytics will not work. Please activate the settings from <strong>Elementor > Settings > General Tab >  Usage Data Sharing.</strong> Thank you.', 'ultimate-post-kit'),
             ]
         );
     }
