@@ -140,7 +140,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                     $class .= ' upk-widget-' . esc_attr($field['args']['widget_type']);
                 }
 
-                if (!empty($field['args']['widget_type']) && 'pro' == $field['args']['widget_type'] && true !== _is_upk_pro_activated()) {
+                if (!empty($field['args']['widget_type']) && 'pro' == $field['args']['widget_type'] && true !== upk_license_validation()) {
                     $class .= ' upk-pro-inactive';
                 }
 

@@ -14,12 +14,12 @@
         UltimatePostKitEditor.onPreviewLoaded();
       });
       // eslint-disable-next-line prettier/prettier
-			elementor.channels.editor.on(
+      elementor.channels.editor.on(
         "ultimatePostKitProBuilderSetting:applySinglePagePostOnPreview",
         UltimatePostKitEditor.ApplyPreviewPostId,
       );
       // eslint-disable-next-line prettier/prettier
-			elementor.channels.editor.on('saved', UltimatePostKitEditor.savedBuilder);
+      elementor.channels.editor.on('saved', UltimatePostKitEditor.savedBuilder);
     },
     savedBuilder: function () {
       if (UltimatePostKitEditor.shouldReload) {
@@ -30,9 +30,9 @@
     ApplyPreviewPostId: function () {
       UltimatePostKitEditor.shouldReload = true;
       // eslint-disable-next-line prettier/prettier
-			$('#elementor-panel-saver-button-publish').trigger('click');
+      $('#elementor-panel-saver-button-publish').trigger('click');
       // eslint-disable-next-line prettier/prettier
-		},
+    },
     onPreviewLoaded: function () {
       var elementorFrontend = $("#elementor-preview-iframe")[0].contentWindow
         .elementorFrontend;
@@ -87,7 +87,7 @@
     });
 
     elementsCollection.each(function (widget) {
-      "ultimate-post-kit-pro" === widget.get("categories")[0] &&
+      "ultimate-post-kit-pro-tweeks" === widget.get("categories")[0] &&
         proWidgets.push(widget);
     });
 
@@ -98,8 +98,8 @@
     freeCategoryIndex &&
       categories.add(
         {
-          name: "ultimate-post-kit-pro",
-          title: "Ultimate Post Kit Pro",
+          name: "ultimate-post-kit-pro-tweeks",
+          title: "Ultimate Post Kit ( Pro )",
           defaultActive: !1,
           items: proWidgets,
         },
