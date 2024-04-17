@@ -20,6 +20,31 @@
   background-position: bottom left;
   background-repeat: no-repeat;
 }
+.ultimate-post-kit-dashboard.wrap #ultimate_post_kit_other_settings_page .upk-pro-inactive .upk-option-item-inner {
+  background-color: transparent !important;
+}
+.ultimate-post-kit-dashboard.wrap #ultimate_post_kit_other_settings_page .upk-pro-inactive .upk-option-item-inner:after {
+  left: 0;
+}
+.ultimate-post-kit-dashboard.wrap .upk-pro-inactive .upk-option-item-inner {
+  background-color: #f8f8f8 !important;
+}
+.ultimate-post-kit-dashboard.wrap .upk-pro-inactive .upk-option-item-inner:after {
+  content: "PRO";
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  font-weight: 600;
+  color: #EF476F;
+  padding: 5px 9px;
+  border-radius: 20px;
+  background-color: #ffe4eb;
+}
+.ultimate-post-kit-dashboard.wrap .upk-pro-inactive .upk-option-item-inner .switch {
+  display: none;
+}
 .ultimate-post-kit-dashboard.wrap .bdt-tab li {
   margin: 0;
 }

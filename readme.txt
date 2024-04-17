@@ -163,6 +163,10 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.11.XX [XXX April 2024] =
+
+* Updated: System improved
+
 = 3.11.4 [6th April 2024] =
 
 * Fixed: Icon not showing issue fixed
