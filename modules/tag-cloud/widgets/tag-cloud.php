@@ -629,7 +629,11 @@ class Tag_Cloud extends Module_Base {
 
 		if (!empty($categories)) :
 
-?>
+			if ( 'rand' == $settings["orderby"] ) {
+				shuffle($categories);
+			}
+			
+			?>
 			<div class="upk-tag-cloud">
 				<?php
 				$multiple_bg = explode(',', rtrim($settings['multiple_background'], ','));
