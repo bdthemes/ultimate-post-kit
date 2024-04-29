@@ -39,7 +39,6 @@
 .upk-alter-grid .upk-img-wrap {
   position: relative;
   display: flex;
-  height: 100%;
 }
 .upk-alter-grid .upk-img-wrap .upk-main-img {
   overflow: hidden;

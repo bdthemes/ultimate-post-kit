@@ -163,6 +163,11 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.11.X [XX April 2024] =
+
+* Fixed: Random order issue fixed in tag cloud widget
+* Fixed: Image crop issue fixed in alter grid widget
+
 = 3.11.5 [18th April 2024] =
 
 * Updated: Admin dashboard system improved
