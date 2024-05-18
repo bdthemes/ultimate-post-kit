@@ -37,3 +37,4 @@ jobs:
                   allowUpdates: true
                   makeLatest: true
                   tag: ${{ github.ref_name }}
+                  changelog: CHANGELOG.md
