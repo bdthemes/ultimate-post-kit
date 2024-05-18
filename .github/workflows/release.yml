@@ -15,6 +15,17 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
+            - uses: taiki-e/create-gh-release-action@v1
+              with:
+                # (Optional)
+                changelog: CHANGELOG.md
+                # (Optional) Format of title.
+                # [default value: $tag]
+                # [possible values: variables $tag, $version, and any string]
+                title: $version
+                # (Required) GitHub token for creating GitHub Releases.
+                token: ${{ secrets.GITHUB_TOKEN }}
+
             - name: Create ultimate-post-kit directory and move files
               run: |
                   mkdir -p ultimate-post-kit &&
