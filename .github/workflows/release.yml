@@ -33,7 +33,7 @@ jobs:
               uses: dorny/paths-filter@v2
               with:
                   filters: |
-                      CHANGELOG.md
+                      changelog.txt
 
             - name: Create Release
               uses: ncipollo/release-action@v1.14.0
