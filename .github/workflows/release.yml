@@ -15,17 +15,6 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - uses: taiki-e/create-gh-release-action@v1
-              with:
-                # (Optional)
-                changelog: CHANGELOG.md
-                # (Optional) Format of title.
-                # [default value: $tag]
-                # [possible values: variables $tag, $version, and any string]
-                title: $version
-                # (Required) GitHub token for creating GitHub Releases.
-                token: ${{ secrets.GITHUB_TOKEN }}
-
             - name: Create ultimate-post-kit directory and move files
               run: |
                   mkdir -p ultimate-post-kit &&
@@ -39,6 +28,13 @@ jobs:
             - name: Display release
               run: ls -a
 
+            - name: Build Change Log
+              id: changelog
+              uses: dorny/paths-filter@v2
+              with:
+                  filters: |
+                      CHANGELOG.md
+
             - name: Create Release
               uses: ncipollo/release-action@v1.14.0
               with:
@@ -48,4 +44,3 @@ jobs:
                   allowUpdates: true
                   makeLatest: true
                   tag: ${{ github.ref_name }}
-                  changelog: CHANGELOG.md
