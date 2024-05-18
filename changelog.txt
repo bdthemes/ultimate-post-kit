@@ -1,0 +1,5 @@
+## 3.10.6 [17th May 2024]
+
+### Fixed
+
+- Folder structure issue fixed
