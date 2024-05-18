@@ -28,14 +28,6 @@ jobs:
             - name: Display release
               run: ls -a
 
-            - name: Build Changelog
-              uses: release-changelog-builder/action@v1.0.0
-              with:
-                  token: ${{ secrets.TOKEN }}
-                  repo: ${{ github.repository }}
-                  categories: ${{ toJson(steps.changelog.outputs.categories) }}
-                  output: CHANGELOG.md
-
             - name: Create Release
               uses: ncipollo/release-action@v1.14.0
               with:
