@@ -8,6 +8,19 @@ on:
 permissions:
     contents: write
 
+# .github/release.yml
+
+changelog:
+    categories:
+      - title: 🏕 Features
+        labels:
+          - '*'
+        exclude:
+          labels:
+            - dependencies
+      - title: 👒 Dependencies
+        labels:
+          - dependencies
 jobs:
     release-pro:
         runs-on: ubuntu-latest
@@ -37,3 +50,11 @@ jobs:
                   allowUpdates: true
                   makeLatest: true
                   tag: ${{ github.ref_name }}
+
+            - name: Update Changelog
+                uses: release-drafter/release-drafter@v5
+                with:
+                    token: ${{ secrets.TOKEN }}
+                    config-file: .github/release-drafter.yml
+                    changelog-path: CHANGELOG.md
+                    version-template: "{{name}}"
