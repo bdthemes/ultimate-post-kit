@@ -28,13 +28,6 @@ jobs:
             - name: Display release
               run: ls -a
 
-            - name: Build Change Log
-              id: changelog
-              uses: dorny/paths-filter@v2
-              with:
-                  filters: |
-                      changelog.txt
-
             - name: Create Release
               uses: ncipollo/release-action@v1.14.0
               with:
