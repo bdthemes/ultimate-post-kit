@@ -636,18 +636,22 @@ class Tag_Cloud extends Module_Base {
 			?>
 			<div class="upk-tag-cloud">
 				<?php
-				$multiple_bg = explode(',', rtrim($settings['multiple_background'], ','));
-				$total_category = count($categories);
 
-				// re-creating array for the multiple colors
-				$jCount = count($multiple_bg);
-				$j = 0;
-				for ($i = 0; $i < $total_category; $i++) {
-					if ($j == $jCount) {
-						$j = 0;
+				if (isset($settings['multiple_background'])) {
+					$multiple_bg_create = [];
+					$multiple_bg = explode(',', rtrim($settings['multiple_background'], ','));
+					$total_category = count($categories);
+
+					// re-creating array for the multiple colors
+					$jCount = count($multiple_bg);
+					$j = 0;
+					for ($i = 0; $i < $total_category; $i++) {
+						if ($j == $jCount) {
+							$j = 0;
+						}
+						$multiple_bg_create[$i] = $multiple_bg[$j];
+						$j++;
 					}
-					$multiple_bg_create[$i] = $multiple_bg[$j];
-					$j++;
 				}
 
 
