@@ -165,9 +165,9 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
-= 3.XX.X [XXth May 2024] =
+= 3.XX.X [XXth June 2024] =
 
-* Fixed: Deprication issue fixed in tag cloud widget
+* Fixed: Deprication issue fixed in Tag Cloud widget (Thanks to dzoidberg)
 
 = 3.11.7 [18th May 2024] =
 
