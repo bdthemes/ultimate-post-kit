@@ -1,7 +1,5 @@
 <?php
 
-use UltimatePostKit\Admin\AssetMinifier\Asset_Minifier;
-
 if (!class_exists('UltimatePostKit_Settings_API')) :
 
     class UltimatePostKit_Settings_API {
@@ -810,15 +808,6 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             if (isset($_POST[$moudle_id])) {
                 update_option($moudle_id, $_POST[$moudle_id]);
             }
-
-            // if( ultimate_post_kit_is_asset_optimization_enabled() ){
-            //     $optimize_assets = new Asset_Minifier();
-            //     $optimize_assets->minifyCss();
-            //     $optimize_assets->minifyJs();
-            //     update_option( 'ultimate-post-kit-minified-asset-manager-version', time()) ;
-            // } else {
-            //     delete_option('ultimate-post-kit-minified-asset-manager-version') ;
-            // }
 
             wp_send_json_success();
         }
