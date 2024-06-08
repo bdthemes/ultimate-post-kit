@@ -310,22 +310,24 @@
   transform: scaleX(1);
 }
 
-/* swiper for 3rd party style */
-.swiper-pagination-fraction,
-.swiper-pagination-custom,
-.swiper-horizontal .swiper-pagination-bullets,
-.swiper-horizontal + .swiper-pagination-bullets,
-.swiper-container-horizontal .swiper-pagination-bullets,
-.swiper-container-horizontal + .swiper-pagination-bullets {
+[class*=elementor-widget-upk-] {
+  /* swiper for 3rd party style */
+}
+[class*=elementor-widget-upk-] .swiper-pagination-fraction,
+[class*=elementor-widget-upk-] .swiper-pagination-custom,
+[class*=elementor-widget-upk-] .swiper-horizontal .swiper-pagination-bullets,
+[class*=elementor-widget-upk-] .swiper-horizontal + .swiper-pagination-bullets,
+[class*=elementor-widget-upk-] .swiper-container-horizontal .swiper-pagination-bullets,
+[class*=elementor-widget-upk-] .swiper-container-horizontal + .swiper-pagination-bullets {
   bottom: -50px;
   width: 100%;
 }
-.swiper-pagination-fraction .swiper-pagination-bullet,
-.swiper-pagination-custom .swiper-pagination-bullet,
-.swiper-horizontal .swiper-pagination-bullets .swiper-pagination-bullet,
-.swiper-horizontal + .swiper-pagination-bullets .swiper-pagination-bullet,
-.swiper-container-horizontal .swiper-pagination-bullets .swiper-pagination-bullet,
-.swiper-container-horizontal + .swiper-pagination-bullets .swiper-pagination-bullet {
+[class*=elementor-widget-upk-] .swiper-pagination-fraction .swiper-pagination-bullet,
+[class*=elementor-widget-upk-] .swiper-pagination-custom .swiper-pagination-bullet,
+[class*=elementor-widget-upk-] .swiper-horizontal .swiper-pagination-bullets .swiper-pagination-bullet,
+[class*=elementor-widget-upk-] .swiper-horizontal + .swiper-pagination-bullets .swiper-pagination-bullet,
+[class*=elementor-widget-upk-] .swiper-container-horizontal .swiper-pagination-bullets .swiper-pagination-bullet,
+[class*=elementor-widget-upk-] .swiper-container-horizontal + .swiper-pagination-bullets .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
   margin: 0 5px;
@@ -350,26 +352,25 @@
   flex-direction: row-reverse;
 }
 
-/* Swiper */
-.swiper .elementor-lightbox-content-source,
-.swiper-container .elementor-lightbox-content-source {
+[class*=elementor-widget-upk-] {
+  /* Swiper */
+}
+[class*=elementor-widget-upk-] .swiper .elementor-lightbox-content-source,
+[class*=elementor-widget-upk-] .swiper-container .elementor-lightbox-content-source {
   display: none;
 }
-
-.swiper-horizontal + .swiper-pagination-progressbar,
-.swiper-vertical + .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
-.swiper-container-horizontal + .swiper-pagination-progressbar,
-.swiper-container-vertical + .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
+[class*=elementor-widget-upk-] .swiper-horizontal + .swiper-pagination-progressbar,
+[class*=elementor-widget-upk-] .swiper-vertical + .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
+[class*=elementor-widget-upk-] .swiper-container-horizontal + .swiper-pagination-progressbar,
+[class*=elementor-widget-upk-] .swiper-container-vertical + .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
   width: 100%;
   height: 4px;
 }
-
-.swiper-pagination-progressbar {
+[class*=elementor-widget-upk-] .swiper-pagination-progressbar {
   background: rgba(0, 0, 0, 0.25);
   position: absolute;
 }
-
-.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+[class*=elementor-widget-upk-] .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
   background: #007aff;
   position: absolute;
   left: 0;

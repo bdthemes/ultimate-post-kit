@@ -101,20 +101,22 @@
   }
 }
 
-/* swiper for 3rd party style */
-.swiper-pagination-fraction,
-.swiper-pagination-custom,
-.swiper-horizontal .swiper-pagination-bullets,
-.swiper-horizontal+.swiper-pagination-bullets, 
-.swiper-container-horizontal .swiper-pagination-bullets,
-.swiper-container-horizontal+.swiper-pagination-bullets {
-  bottom: -50px;
-  width: 100%;
-
-  .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
-    margin: 0 5px;
+[class*="elementor-widget-upk-"] {
+  /* swiper for 3rd party style */
+  .swiper-pagination-fraction,
+  .swiper-pagination-custom,
+  .swiper-horizontal .swiper-pagination-bullets,
+  .swiper-horizontal+.swiper-pagination-bullets, 
+  .swiper-container-horizontal .swiper-pagination-bullets,
+  .swiper-container-horizontal+.swiper-pagination-bullets {
+    bottom: -50px;
+    width: 100%;
+  
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+    }
   }
 }
 
@@ -141,34 +143,37 @@
   }
 }
 
-/* Swiper */
-.swiper .elementor-lightbox-content-source,
-.swiper-container .elementor-lightbox-content-source {
-  display: none;
-}
+[class*="elementor-widget-upk-"] {
+  /* Swiper */
+  .swiper .elementor-lightbox-content-source,
+  .swiper-container .elementor-lightbox-content-source {
+    display: none;
+  }
+  
+  .swiper-horizontal+.swiper-pagination-progressbar,
+  .swiper-vertical+.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite, 
+  .swiper-container-horizontal+.swiper-pagination-progressbar,
+  .swiper-container-vertical+.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
+    width: 100%;
+    height: 4px;
+  }
+  
+  .swiper-pagination-progressbar {
+    background: rgba(0, 0, 0, 0.25);
+    position: absolute;
+  }
+  
+  .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    background: #007aff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    transform-origin: left top;
+  }
 
-.swiper-horizontal+.swiper-pagination-progressbar,
-.swiper-vertical+.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite, 
-.swiper-container-horizontal+.swiper-pagination-progressbar,
-.swiper-container-vertical+.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
-  width: 100%;
-  height: 4px;
-}
-
-.swiper-pagination-progressbar {
-  background: rgba(0, 0, 0, 0.25);
-  position: absolute;
-}
-
-.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-  background: #007aff;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  transform: scale(0);
-  transform-origin: left top;
 }
 
 //Alert Css

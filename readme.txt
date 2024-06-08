@@ -5,10 +5,11 @@ Tags: elementor, posts, post grid, post carousel, post archive
 Stable tag: 3.11.7
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
-Tested up to: 6.5.3
+Tested up to: 6.5.4
+License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.21.5
+Elementor tested up to: 3.21.8
 
 Best Post Addon for Elementor WordPress Plugin with 75+ Most Popular Elements that need your everyday blog website building.
 
@@ -165,12 +166,9 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
-= 3.XX.X [XXth June 2024] =
+= 3.11.7 [8th June 2024] =
 
 * Fixed: Deprication issue fixed in Tag Cloud widget (Thanks to dzoidberg)
-
-= 3.11.7 [18th May 2024] =
-
 * Updated: System improved
 
 = 3.11.6 [30th April 2024] =
