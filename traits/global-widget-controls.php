@@ -478,7 +478,7 @@ trait Global_Widget_Controls {
 				'type'      => Controls_Manager::SELECT,
 				'default'   => '0',
 				'options'   => [
-					'0'        => esc_html__('Default', 'bdthemes-element-pack'),
+					'0'        => esc_html__('Default', 'ultimate-post-kit'),
 					'1'        => esc_html__('Style 1', 'ultimate-post-kit'),
 					'2'        => esc_html__('Style 2', 'ultimate-post-kit'),
 					'3'        => esc_html__('Style 3', 'ultimate-post-kit'),
@@ -1035,7 +1035,7 @@ trait Global_Widget_Controls {
 		$this->add_control(
 			'dots_heading',
 			[
-				'label'     => __('DOTS', 'bdthemes-element-pack'),
+				'label'     => __('DOTS', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => [
 					'navigation!' => ['arrows', 'arrows-fraction', 'progressbar', 'none'],
@@ -1048,7 +1048,7 @@ trait Global_Widget_Controls {
 		$this->start_controls_tab(
 			'tabs_nav_dots_normal',
 			[
-				'label'     => __('Normal', 'bdthemes-element-pack'),
+				'label'     => __('Normal', 'ultimate-post-kit'),
 				'condition' => [
 					'navigation!' => ['arrows', 'arrows-fraction', 'progressbar', 'none'],
 				],
@@ -1058,7 +1058,7 @@ trait Global_Widget_Controls {
 		$this->add_control(
 			'dots_color',
 			[
-				'label'     => __('Color', 'bdthemes-element-pack'),
+				'label'     => __('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .swiper-pagination-bullet' => 'background-color: {{VALUE}}',
@@ -1072,7 +1072,7 @@ trait Global_Widget_Controls {
 		$this->add_responsive_control(
 			'dots_space_between',
 			[
-				'label'     => __('Space Between', 'bdthemes-element-pack'),
+				'label'     => __('Space Between', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}}' => '--upk-swiper-dots-space-between: {{SIZE}}{{UNIT}};',
@@ -1086,7 +1086,7 @@ trait Global_Widget_Controls {
 		$this->add_responsive_control(
 			'dots_width_size',
 			[
-				'label'     => __('Width(px)', 'bdthemes-element-pack'),
+				'label'     => __('Width(px)', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -1106,7 +1106,7 @@ trait Global_Widget_Controls {
 		$this->add_responsive_control(
 			'dots_height_size',
 			[
-				'label'     => __('Height(px)', 'bdthemes-element-pack'),
+				'label'     => __('Height(px)', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -1126,7 +1126,7 @@ trait Global_Widget_Controls {
 		$this->add_responsive_control(
 			'dots_border_radius',
 			[
-				'label'      => esc_html__('Border Radius', 'bdthemes-element-pack'),
+				'label'      => esc_html__('Border Radius', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
@@ -1154,7 +1154,7 @@ trait Global_Widget_Controls {
 		$this->start_controls_tab(
 			'tabs_nav_dots_active',
 			[
-				'label'     => __('Active', 'bdthemes-element-pack'),
+				'label'     => __('Active', 'ultimate-post-kit'),
 				'condition' => [
 					'navigation!' => ['arrows', 'arrows-fraction', 'progressbar', 'none'],
 				],
@@ -1164,7 +1164,7 @@ trait Global_Widget_Controls {
 		$this->add_control(
 			'active_dot_color',
 			[
-				'label'     => __('Color', 'bdthemes-element-pack'),
+				'label'     => __('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .swiper-pagination-bullet-active' => 'background-color: {{VALUE}}',
@@ -1178,7 +1178,7 @@ trait Global_Widget_Controls {
 		$this->add_responsive_control(
 			'active_advanced_dots_width',
 			[
-				'label'     => __('Width(px)', 'bdthemes-element-pack'),
+				'label'     => __('Width(px)', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -1198,7 +1198,7 @@ trait Global_Widget_Controls {
 		$this->add_responsive_control(
 			'active_dots_height',
 			[
-				'label'     => __('Height(px)', 'bdthemes-element-pack'),
+				'label'     => __('Height(px)', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -1219,7 +1219,7 @@ trait Global_Widget_Controls {
 		$this->add_responsive_control(
 			'active_dots_radius',
 			[
-				'label'      => esc_html__('Border Radius', 'bdthemes-element-pack'),
+				'label'      => esc_html__('Border Radius', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
@@ -1234,19 +1234,19 @@ trait Global_Widget_Controls {
 		$this->add_responsive_control(
 			'active_dots_align',
 			[
-				'label'   => __('Alignment', 'bdthemes-element-pack'),
+				'label'   => __('Alignment', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::CHOOSE,
 				'options' => [
 					'flex-start' => [
-						'title' => __('Top', 'bdthemes-element-pack'),
+						'title' => __('Top', 'ultimate-post-kit'),
 						'icon'  => 'eicon-v-align-top',
 					],
 					'center' => [
-						'title' => __('Center', 'bdthemes-element-pack'),
+						'title' => __('Center', 'ultimate-post-kit'),
 						'icon'  => 'eicon-v-align-middle',
 					],
 					'flex-end' => [
-						'title' => __('Bottom', 'bdthemes-element-pack'),
+						'title' => __('Bottom', 'ultimate-post-kit'),
 						'icon'  => 'eicon-v-align-bottom',
 					],
 				],

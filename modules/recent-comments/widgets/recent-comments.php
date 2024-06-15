@@ -369,13 +369,13 @@ class Recent_Comments extends Group_Control_Query {
 		$this->add_control(
 			'author_middle_text',
 			[
-				'label'   => __( 'Author Middle Text', 'bdthemes-element-pack' ),
+				'label'   => __( 'Author Middle Text', 'ultimate-post-kit' ),
 				'type'    => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
 				],
 				'default'     => ' @ ',
-				'placeholder' => __( 'Enter your text', 'bdthemes-element-pack' ),
+				'placeholder' => __( 'Enter your text', 'ultimate-post-kit' ),
 				'label_block' => false,
 				'condition' => [
 					'show_author' => 'yes'

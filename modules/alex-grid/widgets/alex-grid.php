@@ -1440,7 +1440,7 @@ class Alex_Grid extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'post_format_background',
-				'label' => esc_html__('Background', 'bdthemes-prime-slider'),
+				'label' => esc_html__('Background', 'ultimate-post-kit'),
 				'types' => ['classic', 'gradient'],
 				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .upk-alex-grid .upk-post-format a',

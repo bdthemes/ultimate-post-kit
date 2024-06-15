@@ -221,7 +221,7 @@ abstract class Group_Control_Query extends Module_Base {
         $this->add_control(
             'posts_offset',
             [
-                'label'   => __('Offset', 'bdthemes-element-pack') . BDTUPK_NC,
+                'label'   => __('Offset', 'ultimate-post-kit') . BDTUPK_NC,
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 0,
                 'condition' => [
@@ -685,8 +685,8 @@ abstract class Group_Control_Query extends Module_Base {
         $post_types = array_diff_key($post_types, $ignorePostTypes);
 
         $extra_types = [
-            'manual_selection'   => __('Manual Selection', 'bdthemes-element-pack'),
-            'current_query'      => __('Current Query', 'bdthemes-element-pack'),
+            'manual_selection'   => __('Manual Selection', 'ultimate-post-kit'),
+            'current_query'      => __('Current Query', 'ultimate-post-kit'),
             '_ultimate_post_kit_pro_related_post_type' => __('Related', 'ultimate-post-kit'),
         ];
 

@@ -108,16 +108,16 @@ class Pholox_Slider extends Group_Control_Query
 		$this->add_control(
 			'content_position',
 			[
-				'label'       => __('Content Position', 'bdthemes-element-pack'),
+				'label'       => __('Content Position', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::CHOOSE,
 				'default' 	  => 'left',
 				'options'     => [
 					'left'  => [
-						'title' => __('Left', 'bdthemes-element-pack'),
+						'title' => __('Left', 'ultimate-post-kit'),
 						'icon'  => 'eicon-h-align-left',
 					],
 					'right' => [
-						'title' => __('Right', 'bdthemes-element-pack'),
+						'title' => __('Right', 'ultimate-post-kit'),
 						'icon'  => 'eicon-h-align-right',
 					],
 				],
@@ -129,19 +129,19 @@ class Pholox_Slider extends Group_Control_Query
 		$this->add_responsive_control(
 			'content_alignment',
 			[
-				'label'       => __('Text Alignment', 'bdthemes-element-pack'),
+				'label'       => __('Text Alignment', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::CHOOSE,
 				'options'     => [
 					'left'  => [
-						'title' => __('Left', 'bdthemes-element-pack'),
+						'title' => __('Left', 'ultimate-post-kit'),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => __('Center', 'bdthemes-element-pack'),
+						'title' => __('Center', 'ultimate-post-kit'),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => __('Right', 'bdthemes-element-pack'),
+						'title' => __('Right', 'ultimate-post-kit'),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
