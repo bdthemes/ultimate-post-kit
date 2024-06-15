@@ -453,19 +453,19 @@ class Banner extends Group_Control_Query
 		$this->add_responsive_control(
 			'alignment',
 			[
-				'label'   => esc_html__('Alignment', 'ultimate-post-kit-pro'),
+				'label'   => esc_html__('Alignment', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__('Left', 'ultimate-post-kit-pro'),
+						'title' => esc_html__('Left', 'ultimate-post-kit'),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__('Center', 'ultimate-post-kit-pro'),
+						'title' => esc_html__('Center', 'ultimate-post-kit'),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__('Right', 'ultimate-post-kit-pro'),
+						'title' => esc_html__('Right', 'ultimate-post-kit'),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
