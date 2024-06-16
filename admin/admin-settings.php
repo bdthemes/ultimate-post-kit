@@ -1120,7 +1120,7 @@ class UltimatePostKit_Admin_Settings {
     function plugin_page() {
 
         echo '<div class="wrap ultimate-post-kit-dashboard">';
-        echo '<h1>' . BDTUPK_TITLE . ' Settings</h1>';
+        echo '<h1>' . BDTUPK_TITLE . ' '.esc_html__('Settings', 'ultimate-post-kit').'</h1>';
 
         $this->settings_api->show_navigation();
 

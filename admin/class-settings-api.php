@@ -110,7 +110,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                 }
                 echo '<div class="upk-options bdt-grid bdt-child-width-1-1 bdt-child-width-1-2@m bdt-child-width-1-3@l' . esc_attr($section_class) . '" role="presentation" bdt-grid="masonry: true" ' . esc_attr($data_settings) . '>';
 
-                echo '<p class="upk-no-result bdt-text-center bdt-width-1-1 bdt-margin-small-top bdt-h4">Ops! Your Searched widget not found! Do you have any idea? If yes, <a href="https://feedback.ultimatepostkit.pro/b/3v2gg80n/feature-requests/idea/new" target="_blank">Submit here</a></p>';
+                echo '<p class="upk-no-result bdt-text-center bdt-width-1-1 bdt-margin-small-top bdt-h4">'.esc_html__('Ops! Your Searched widget not found! Do you have any idea? If yes, ', 'ultimate-post-kit').'<a href="https://feedback.ultimatepostkit.pro/b/3v2gg80n/feature-requests/idea/new" target="_blank">'.esc_html__('Submit here', 'ultimate-post-kit').'</a></p>';
 
                 $this->do_settings_fields($page, $section['id']);
 
@@ -164,7 +164,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 
 
                 if (!empty($field['args']['widget_type']) && 'pro' == $field['args']['widget_type'] && true !== _is_upk_pro_activated()) {
-                    $data_type .= ' bdt-tooltip="Pro widget only works with Pro version."';
+                    $data_type .= ' bdt-tooltip="'.esc_html__('Pro widget only works with Pro version.', 'ultimate-post-kit').'"';
                 }
 
                 echo "<div class='upk-option-item {$class} {$widget_used_status}' {$data_type}>";
@@ -376,7 +376,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                 }
             }
 
-            $widget_using_status = '</span> <br><span class="upk-widget-count-text">Total Used  - ' . esc_html($used_widgets_count) . ' </span>';
+            $widget_using_status = '</span> <br><span class="upk-widget-count-text">'.esc_html__('Total Used', 'ultimate-post-kit').'  - ' . esc_html($used_widgets_count) . ' </span>';
 
             // remove counts
             if (isset($args['id']) && $args['id'] == 'not') {
@@ -417,14 +417,14 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                     }
                     if (!is_plugin_active($plugin_path)) {
                         $active_link = wp_nonce_url('plugins.php?action=activate&amp;plugin=' . $plugin_path . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin_path);
-                        $html .= '<a href="' . $active_link . '" class="ultimate-post-kit-3pp-active" bdt-tooltip="Activate the plugin first then you can activate this widget."><span class="dashicons dashicons-admin-plugins"></span></a>';
+                        $html .= '<a href="' . $active_link . '" class="ultimate-post-kit-3pp-active" bdt-tooltip="'.esc_html__('Activate the plugin first then you can activate this widget.', 'ultimate-post-kit').'"><span class="dashicons dashicons-admin-plugins"></span></a>';
                     }
                 } else {
                     if ($paid) {
-                        $html .= '<a href="' . $paid . '" class="ultimate-post-kit-3pp-download" bdt-tooltip="Download and install plugin first then you can activate this widget."><span class="dashicons dashicons-download"></span></a>';
+                        $html .= '<a href="' . $paid . '" class="ultimate-post-kit-3pp-download" bdt-tooltip="'.esc_html__('Download and install plugin first then you can activate this widget.', 'ultimate-post-kit').'"><span class="dashicons dashicons-download"></span></a>';
                     } else {
                         $install_link = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_name), 'install-plugin_' . $plugin_name);
-                        $html .= '<a href="' . $install_link . '" class="ultimate-post-kit-3pp-install" bdt-tooltip="Install the plugin first then you can activate this widget."><span class="dashicons dashicons-download"></span></a>';
+                        $html .= '<a href="' . $install_link . '" class="ultimate-post-kit-3pp-install" bdt-tooltip="'.esc_html__('Install the plugin first then you can activate this widget.', 'ultimate-post-kit').'"><span class="dashicons dashicons-download"></span></a>';
                     }
                 }
 
@@ -571,7 +571,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $value = esc_attr($this->get_option($args['id'], $args['section'], $args['std']));
             $size  = isset($args['size']) && !is_null($args['size']) ? $args['size'] : 'regular';
             $id    = $args['section']  . '[' . $args['id'] . ']';
-            $label = isset($args['options']['button_label']) ? $args['options']['button_label'] : __('Choose File');
+            $label = isset($args['options']['button_label']) ? $args['options']['button_label'] : __('Choose File', 'ultimate-post-kit');
 
             $html  = sprintf('<input type="text" class="%1$s-text wpsa-url" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value);
             $html  .= '<input type="button" class="button wpsa-browse" value="' . $label . '" />';
@@ -765,7 +765,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html = '<div class="bdt-dashboard-navigation">';
             $html .= '<ul class="bdt-tab" bdt-tab="animation: bdt-animation-slide-bottom-small;connect: .bdt-tab-container;">';
 
-            $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="0">%2$s</a></li>', 'ultimate_post_kit_welcome', 'Dashboard');
+            $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="0">%2$s</a></li>', 'ultimate_post_kit_welcome', esc_html__('Dashboard', 'ultimate-post-kit'));
 
             $count = 1;
 
@@ -774,7 +774,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             }
 
             if (true !== _is_upk_pro_activated()) {
-                $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="5">%2$s</a></li>', 'ultimate_post_kit_get_pro', 'Get Pro');
+                $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="5">%2$s</a></li>', 'ultimate_post_kit_get_pro', esc_html__('Get Pro', 'ultimate-post-kit'));
             }
 
             // if ( !defined('BDTUPK_LO') ) {
@@ -782,7 +782,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             // }
 
             if ((true == _is_upk_pro_activated()) && !defined('BDTUPK_LO')) {
-                $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="5">%2$s</a></li>', 'ultimate_post_kit_license_settings', 'License');
+                $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="5">%2$s</a></li>', 'ultimate_post_kit_license_settings', esc_html__('License', 'ultimate-post-kit'));
             }
 
             $html .= '</ul>';
@@ -837,9 +837,9 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 
                                         <div>
                                             <ul class="bdt-subnav bdt-subnav-pill upk-widget-filter bdt-widget-type-content bdt-flex-inline">
-                                                <li class="upk-widget-all bdt-active" bdt-filter-control="*"><a href="#">All</a></li>
-                                                <li class="upk-widget-free" bdt-filter-control="filter: [data-widget-type='free']; group: data-content-type"><a href="#">Free</a></li>
-                                                <li class="upk-widget-pro" bdt-filter-control="filter: [data-widget-type='pro']; group: data-content-type"><a href="#">Pro</a></li>
+                                                <li class="upk-widget-all bdt-active" bdt-filter-control="*"><a href="#"><?php esc_html_e('All', 'ultimate-post-kit'); ?></a></li>
+                                                <li class="upk-widget-free" bdt-filter-control="filter: [data-widget-type='free']; group: data-content-type"><a href="#"><?php esc_html_e('Free', 'ultimate-post-kit'); ?></a></li>
+                                                <li class="upk-widget-pro" bdt-filter-control="filter: [data-widget-type='pro']; group: data-content-type"><a href="#"><?php esc_html_e('Pro', 'ultimate-post-kit'); ?></a></li>
 
                                             </ul>
                                         </div>
@@ -847,21 +847,21 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                                         <?php if ($form['id'] == 'ultimate_post_kit_active_modules' or $form['id'] == 'ultimate_post_kit_third_party_widget') : ?>
 
                                             <div>
-                                                <button class="bdt-button bdt-button-default" type="button">Filter By</button>
+                                                <button class="bdt-button bdt-button-default" type="button"><?php esc_html_e('Filter By', 'ultimate-post-kit'); ?></button>
                                                 <div bdt-dropdown="animation: bdt-animation-slide-top-small; duration: 300">
                                                     <ul class="bdt-nav bdt-subnav-pill bdt-dropdown-nav upk-widget-filter upk-widget-content-type">
-                                                        <li class="upk-widget-new" bdt-filter-control="filter: [data-content-type*='new']; group: data-widget-type"><a href="#">New</a></li>
-                                                        <li class="upk-widget-grid" bdt-filter-control="filter: [data-content-type*='grid']; group: data-widget-type"><a href="#">Grid</a></li>
+                                                        <li class="upk-widget-new" bdt-filter-control="filter: [data-content-type*='new']; group: data-widget-type"><a href="#"><?php esc_html_e('New', 'ultimate-post-kit'); ?></a></li>
+                                                        <li class="upk-widget-grid" bdt-filter-control="filter: [data-content-type*='grid']; group: data-widget-type"><a href="#"><?php esc_html_e('Grid', 'ultimate-post-kit'); ?></a></li>
                                                         <?php if ($form['id'] == 'ultimate_post_kit_active_modules') : ?>
-                                                            <li class="upk-widget-list" bdt-filter-control="filter: [data-content-type*='list']; group: data-widget-type"><a href="#">List</a></li>
+                                                            <li class="upk-widget-list" bdt-filter-control="filter: [data-content-type*='list']; group: data-widget-type"><a href="#"><?php esc_html_e('List', 'ultimate-post-kit'); ?></a></li>
                                                         <?php endif; ?>
-                                                        <li class="upk-widget-carousel" bdt-filter-control="filter: [data-content-type*='carousel']; group: data-widget-type"><a href="#">Carousel</a></li>
-                                                        <li class="upk-widget-slider" bdt-filter-control="filter: [data-content-type*='slider']; group: data-widget-type"><a href="#">Slider</a></li>
-                                                        <li class="upk-widget-tabs" bdt-filter-control="filter: [data-content-type*='tabs']; group: data-widget-type"><a href="#">Tabs</a></li>
-                                                        <li class="upk-widget-timeline" bdt-filter-control="filter: [data-content-type*='timeline']; group: data-widget-type"><a href="#">Timeline</a></li>
-                                                        <li class="upk-widget-template-builder" bdt-filter-control="filter: [data-content-type*='template-builder']; group: data-widget-type"><a href="#">Template Builder</a></li>
+                                                        <li class="upk-widget-carousel" bdt-filter-control="filter: [data-content-type*='carousel']; group: data-widget-type"><a href="#"><?php esc_html_e('Carousel', 'ultimate-post-kit'); ?></a></li>
+                                                        <li class="upk-widget-slider" bdt-filter-control="filter: [data-content-type*='slider']; group: data-widget-type"><a href="#"><?php esc_html_e('Slider', 'ultimate-post-kit'); ?></a></li>
+                                                        <li class="upk-widget-tabs" bdt-filter-control="filter: [data-content-type*='tabs']; group: data-widget-type"><a href="#"><?php esc_html_e('Tabs', 'ultimate-post-kit'); ?></a></li>
+                                                        <li class="upk-widget-timeline" bdt-filter-control="filter: [data-content-type*='timeline']; group: data-widget-type"><a href="#"><?php esc_html_e('Timeline', 'ultimate-post-kit'); ?></a></li>
+                                                        <li class="upk-widget-template-builder" bdt-filter-control="filter: [data-content-type*='template-builder']; group: data-widget-type"><a href="#"><?php esc_html_e('Template Builder', 'ultimate-post-kit'); ?></a></li>
 
-                                                        <li class="upk-widget-others" bdt-filter-control="filter: [data-content-type*='others']; group: data-widget-type"><a href="#">Others</a></li>
+                                                        <li class="upk-widget-others" bdt-filter-control="filter: [data-content-type*='others']; group: data-widget-type"><a href="#"><?php esc_html_e('Others', 'ultimate-post-kit'); ?></a></li>
                                                     </ul>
                                                 </div>
 
@@ -872,11 +872,11 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                                                 <div>
                                                     <ul class="bdt-subnav bdt-subnav-pill upk-widget-filter upk-used-unused-widgets bdt-flex-inline">
                                                         <li class="upk-widget--" bdt-filter-control="filter: [data-content-type*='upk-used']; group: data-content-type">
-                                                            <a href="#">Used
+                                                            <a href="#"><?php esc_html_e('Used', 'ultimate-post-kit'); ?>
                                                                 <span class="bdt-badge upk-used-widget"></span>
                                                             </a>
                                                         </li>
-                                                        <li class="upk-widget--" bdt-filter-control="filter: [data-content-type*='upk-unused']; group: data-content-type"><a href="#" bdt-tooltip="Don't need unused widget? Click on the Deactivate All button.">Unused
+                                                        <li class="upk-widget--" bdt-filter-control="filter: [data-content-type*='upk-unused']; group: data-content-type"><a href="#" bdt-tooltip="<?php esc_html_e('Don\'t need unused widget? Click on the Deactivate All button.', 'ultimate-post-kit'); ?>"><?php esc_html_e('Unused', 'ultimate-post-kit'); ?>
                                                                 <span class="bdt-badge upk-unused-widget bdt-danger"></span>
                                                             </a>
                                                         </li>
@@ -949,7 +949,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 
                                         <?php if (isset($this->settings_fields[$form['id']])) : ?>
 
-                                            <button class="bdt-button bdt-button-primary ultimate-post-kit-settings-save-btn" type="submit">Save Settings</button>
+                                            <button class="bdt-button bdt-button-primary ultimate-post-kit-settings-save-btn" type="submit"><?php esc_html_e('Save Settings', 'ultimate-post-kit'); ?></button>
 
                                         <?php endif; ?>
 
