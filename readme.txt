@@ -169,6 +169,7 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 = 3.XX.X [Xth June 2024] =
 
 * Fixed: Text Domain issue fixed (Thanks to itapress)
+* Fixed: Security issue fixed
 
 = 3.11.7 [8th June 2024] =
 

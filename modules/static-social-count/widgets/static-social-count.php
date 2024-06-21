@@ -797,7 +797,7 @@ class Static_Social_Count extends Group_Control_Query {
 						$link_key,
 						[
 							'href' => [
-								$social_link['social_site_link']['url']
+								esc_url($social_link['social_site_link']['url'])
 							],
 							'target' => '_blank'
 						],
