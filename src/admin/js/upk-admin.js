@@ -13,13 +13,6 @@ jQuery(document).ready(function ($) {
 
             total_widget_active_status.push(totalActivatedWidgets.length);
 
-            var totalActivated3rdparty = [];
-            jQuery('#ultimate_post_kit_third_party_widget_page input:checked').each(function () {
-                totalActivated3rdparty.push(jQuery(this).attr('name'));
-            });
-
-            total_widget_active_status.push(totalActivated3rdparty.length);
-
             var totalActivatedExtensions = [];
             jQuery('#ultimate_post_kit_elementor_extend_page input:checked').each(function () {
                 totalActivatedExtensions.push(jQuery(this).attr('name'));
