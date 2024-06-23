@@ -279,7 +279,7 @@ class Static_Social_Count extends Group_Control_Query {
 		$repeater->add_control(
 			'heading_icon_social_single',
 			[
-				'label'     => esc_html__('ICON NORMAL', 'ultiamte-post-kit-pro'),
+				'label'     => esc_html__('ICON NORMAL', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -317,7 +317,7 @@ class Static_Social_Count extends Group_Control_Query {
 		$repeater->add_control(
 			'heading_icon_h_social_single',
 			[
-				'label'     => esc_html__('ICON HOVER', 'ultiamte-post-kit-pro'),
+				'label'     => esc_html__('ICON HOVER', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -355,7 +355,7 @@ class Static_Social_Count extends Group_Control_Query {
 		$repeater->add_control(
 			'heading_number_social_single',
 			[
-				'label'     => esc_html__('NUMBER', 'ultiamte-post-kit-pro'),
+				'label'     => esc_html__('NUMBER', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -374,7 +374,7 @@ class Static_Social_Count extends Group_Control_Query {
 		$repeater->add_control(
 			'heading_meta_social_single',
 			[
-				'label'     => esc_html__('META', 'ultiamte-post-kit-pro'),
+				'label'     => esc_html__('META', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -527,7 +527,7 @@ class Static_Social_Count extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'      => 'static_social_hover_bg',
-				'label'     => esc_html__('Background', 'ultiamte-post-kit-pro'),
+				'label'     => esc_html__('Background', 'ultimate-post-kit'),
 				'types'     => ['classic', 'gradient'],
 				'exclude' => ['image'],
 				'selector'  => '{{WRAPPER}} .upk-static-social-count .upk-item:hover',
