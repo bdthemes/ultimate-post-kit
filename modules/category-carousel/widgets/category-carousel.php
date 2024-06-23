@@ -275,7 +275,7 @@ class Category_Carousel extends Module_Base {
 		// $this->add_control(
 		// 	'hide_empty',
 		// 	[
-		// 		'label'         => esc_html__('Hide Empty', 'ultiamte-post-kit-pro'),
+		// 		'label'         => esc_html__('Hide Empty', 'ultimate-post-kit'),
 		// 		'type'          => Controls_Manager::SWITCHER,
 		// 	]
 		// );
