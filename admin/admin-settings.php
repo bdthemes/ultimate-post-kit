@@ -1264,7 +1264,8 @@ class UltimatePostKit_Admin_Settings {
                     jQuery(this).parent().addClass('current');
                 });
 
-                jQuery('#ultimate_post_kit_active_modules_page a.upk-active-all-widget').click(function() {
+                jQuery('#ultimate_post_kit_active_modules_page a.upk-active-all-widget').click(function(e) {
+                    e.preventDefault();
 
                     jQuery('#ultimate_post_kit_active_modules_page .upk-option-item:not(.upk-pro-inactive) .checkbox:visible').each(function() {
                         jQuery(this).attr('checked', 'checked').prop("checked", true);
@@ -1274,8 +1275,8 @@ class UltimatePostKit_Admin_Settings {
                     jQuery('a.upk-deactive-all-widget').removeClass('bdt-active');
                 });
 
-                jQuery('#ultimate_post_kit_active_modules_page a.upk-deactive-all-widget').click(function() {
-
+                jQuery('#ultimate_post_kit_active_modules_page a.upk-deactive-all-widget').click(function(e) {
+                    e.preventDefault();
                     jQuery('#ultimate_post_kit_active_modules_page .upk-option-item:not(.upk-pro-inactive) .checkbox:visible').each(function() {
                         jQuery(this).removeAttr('checked');
                     });
@@ -1284,27 +1285,8 @@ class UltimatePostKit_Admin_Settings {
                     jQuery('a.upk-active-all-widget').removeClass('bdt-active');
                 });
 
-                jQuery('#ultimate_post_kit_third_party_widget_page a.upk-active-all-widget').click(function() {
-
-                    jQuery('#ultimate_post_kit_third_party_widget_page .checkbox:visible').each(function() {
-                        jQuery(this).attr('checked', 'checked').prop("checked", true);
-                    });
-
-                    jQuery(this).addClass('bdt-active');
-                    jQuery('a.upk-deactive-all-widget').removeClass('bdt-active');
-                });
-
-                jQuery('#ultimate_post_kit_third_party_widget_page a.upk-deactive-all-widget').click(function() {
-
-                    jQuery('#ultimate_post_kit_third_party_widget_page .checkbox:visible').each(function() {
-                        jQuery(this).removeAttr('checked');
-                    });
-
-                    jQuery(this).addClass('bdt-active');
-                    jQuery('a.upk-active-all-widget').removeClass('bdt-active');
-                });
-
-                jQuery('#ultimate_post_kit_elementor_extend_page a.upk-active-all-widget').click(function() {
+                jQuery('#ultimate_post_kit_elementor_extend_page a.upk-active-all-widget').click(function(e) {
+                    e.preventDefault();
 
                     jQuery('#ultimate_post_kit_elementor_extend_page .checkbox:visible').each(function() {
                         jQuery(this).attr('checked', 'checked').prop("checked", true);
@@ -1314,8 +1296,8 @@ class UltimatePostKit_Admin_Settings {
                     jQuery('a.upk-deactive-all-widget').removeClass('bdt-active');
                 });
 
-                jQuery('#ultimate_post_kit_elementor_extend_page a.upk-deactive-all-widget').click(function() {
-
+                jQuery('#ultimate_post_kit_elementor_extend_page a.upk-deactive-all-widget').click(function(e) {
+                    e.preventDefault();
                     jQuery('#ultimate_post_kit_elementor_extend_page .checkbox:visible').each(function() {
                         jQuery(this).removeAttr('checked');
                     });
