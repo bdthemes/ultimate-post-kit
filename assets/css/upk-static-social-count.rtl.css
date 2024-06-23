@@ -21,8 +21,7 @@
   font-size: 14px;
   border: 1px solid #c8c6c6;
   color: #565252;
-  width: 40px;
-  height: 40px;
+  padding: 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -32,6 +31,10 @@
 }
 .upk-static-social-count .upk-icon span:hover {
   color: #000;
+}
+.upk-static-social-count .upk-icon span i, .upk-static-social-count .upk-icon span svg {
+  height: 1em;
+  width: 1em;
 }
 .upk-static-social-count .upk-count {
   font-size: 14px;

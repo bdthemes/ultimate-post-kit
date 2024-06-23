@@ -168,6 +168,7 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 = 3.XX.X [Xth June 2024] =
 
+* Fixed: Icon size issue fixed in static social count widget
 * Fixed: Text Domain issue fixed (Thanks to itapress)
 * Fixed: Security issue fixed
 

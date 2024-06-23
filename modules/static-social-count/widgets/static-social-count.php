@@ -355,7 +355,7 @@ class Static_Social_Count extends Group_Control_Query {
 		$repeater->add_control(
 			'heading_number_social_single',
 			[
-				'label'     => esc_html__('N U M B E R', 'ultiamte-post-kit-pro'),
+				'label'     => esc_html__('NUMBER', 'ultiamte-post-kit-pro'),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -374,7 +374,7 @@ class Static_Social_Count extends Group_Control_Query {
 		$repeater->add_control(
 			'heading_meta_social_single',
 			[
-				'label'     => esc_html__('M E T A', 'ultiamte-post-kit-pro'),
+				'label'     => esc_html__('META', 'ultiamte-post-kit-pro'),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -539,7 +539,7 @@ class Static_Social_Count extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_social_count_style',
 			[
-				'label' => esc_html__('Icons', 'ultimate-post-kit'),
+				'label' => esc_html__('Icon', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -617,7 +617,7 @@ class Static_Social_Count extends Group_Control_Query {
 					]
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-static-social-count .upk-icon span i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-static-social-count .upk-icon span' => 'font-size: {{SIZE}}{{UNIT}};',
 				]
 			]
 		);
