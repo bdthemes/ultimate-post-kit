@@ -115,7 +115,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		$widget->add_control(
 			'upk_in_animation_transform_origin',
 			[
-				'label'     => esc_html__('Transform Origin', 'bdthemes-prime-slider'),
+				'label'     => esc_html__('Transform Origin', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::TEXT,
 				'default'   => 'center top',
 				'condition' 	=> [
@@ -132,7 +132,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		$widget->add_control(
 			'upk_in_animation_transform_heading',
 			[
-				'label' 	=> __( 'TRANSFORM', 'bdthemes-element-pack' ),
+				'label' 	=> __( 'TRANSFORM', 'ultimate-post-kit' ),
 				'type' 		=> Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
@@ -144,7 +144,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		$widget->add_control(
 			'upk_in_animation_translate_toggle',
 			[
-				'label' 		=> __( 'Translate', 'bdthemes-element-pack' ),
+				'label' 		=> __( 'Translate', 'ultimate-post-kit' ),
 				'type' 			=> Controls_Manager::POPOVER_TOGGLE,
 				'return_value' 	=> 'yes',
 				'condition' 	=> [
@@ -160,7 +160,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		$widget->add_responsive_control(
 			'upk_in_animation_translate_x',
 			[
-				'label'      => esc_html__( 'Translate X', 'bdthemes-element-pack' ),
+				'label'      => esc_html__( 'Translate X', 'ultimate-post-kit' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => ['px', '%'],
 				'default' => [
@@ -190,7 +190,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		$widget->add_responsive_control(
 			'upk_in_animation_translate_y',
 			[
-				'label'      => esc_html__( 'Translate Y', 'bdthemes-element-pack' ),
+				'label'      => esc_html__( 'Translate Y', 'ultimate-post-kit' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => ['px', '%'],
 				'default' => [
@@ -224,7 +224,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		$widget->add_control(
 			'upk_in_animation_rotate_toggle',
 			[
-				'label' 		=> __( 'Rotate', 'bdthemes-element-pack' ),
+				'label' 		=> __( 'Rotate', 'ultimate-post-kit' ),
 				'type' 			=> Controls_Manager::POPOVER_TOGGLE,
 				'return_value' 	=> 'yes',
 				'condition' 	=> [
@@ -241,7 +241,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		$widget->add_responsive_control(
 			'upk_in_animation_rotate_x',
 			[
-				'label'      => esc_html__( 'Rotate X', 'bdthemes-element-pack' ),
+				'label'      => esc_html__( 'Rotate X', 'ultimate-post-kit' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'default' => [
@@ -267,7 +267,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		$widget->add_responsive_control(
 			'upk_in_animation_rotate_y',
 			[
-				'label'      => esc_html__( 'Rotate Y', 'bdthemes-element-pack' ),
+				'label'      => esc_html__( 'Rotate Y', 'ultimate-post-kit' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range'      => [
@@ -291,7 +291,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		$widget->add_responsive_control(
 			'upk_in_animation_rotate_z',
 			[
-				'label'   => __( 'Rotate Z', 'bdthemes-element-pack' ),
+				'label'   => __( 'Rotate Z', 'ultimate-post-kit' ),
 				'type'    => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -317,7 +317,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		$widget->add_control(
 			'upk_in_animation_scale',
 			[
-				'label' 		=> __( 'Scale', 'bdthemes-element-pack' ),
+				'label' 		=> __( 'Scale', 'ultimate-post-kit' ),
 				'type' 			=> Controls_Manager::POPOVER_TOGGLE,
 				'return_value' 	=> 'yes',
 				'condition' 	=> [
@@ -333,7 +333,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		$widget->add_responsive_control(
 			'upk_in_animation_scale_x',
 			[
-				'label'      => esc_html__( 'Scale X', 'bdthemes-element-pack' ),
+				'label'      => esc_html__( 'Scale X', 'ultimate-post-kit' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range'      => [
@@ -357,7 +357,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		$widget->add_responsive_control(
 			'upk_in_animation_scale_y',
 			[
-				'label'      => esc_html__( 'Scale Y', 'bdthemes-element-pack' ),
+				'label'      => esc_html__( 'Scale Y', 'ultimate-post-kit' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range'      => [
@@ -383,7 +383,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		$widget->add_control(
 			'upk_in_animation_skew',
 			[
-				'label' 		=> __( 'Skew', 'bdthemes-element-pack' ),
+				'label' 		=> __( 'Skew', 'ultimate-post-kit' ),
 				'type' 			=> Controls_Manager::POPOVER_TOGGLE,
 				'return_value' 	=> 'yes',
 				'condition' 	=> [
@@ -399,7 +399,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		$widget->add_responsive_control(
 			'upk_in_animation_skew_x',
 			[
-				'label'      => esc_html__( 'Skew X', 'bdthemes-element-pack' ),
+				'label'      => esc_html__( 'Skew X', 'ultimate-post-kit' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -422,7 +422,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		$widget->add_responsive_control(
 			'upk_in_animation_skew_y',
 			[
-				'label'      => esc_html__( 'Skew Y', 'bdthemes-element-pack' ),
+				'label'      => esc_html__( 'Skew Y', 'ultimate-post-kit' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [

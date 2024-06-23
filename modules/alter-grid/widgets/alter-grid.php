@@ -1226,7 +1226,7 @@ class Alter_Grid extends Group_Control_Query {
 			$this->start_controls_section(
 				'section_style_readmore',
 				[
-					'label'     => esc_html__('Read More', 'bdthemes-element-pack'),
+					'label'     => esc_html__('Read More', 'ultimate-post-kit'),
 					'tab'       => Controls_Manager::TAB_STYLE,
 					'condition' => [
 						'readmore_type' => 'classic',
@@ -1239,14 +1239,14 @@ class Alter_Grid extends Group_Control_Query {
 			$this->start_controls_tab(
 				'tab_readmore_normal',
 				[
-					'label' => esc_html__('Normal', 'bdthemes-element-pack'),
+					'label' => esc_html__('Normal', 'ultimate-post-kit'),
 				]
 			);
 
 			$this->add_control(
 				'readmore_color',
 				[
-					'label'     => esc_html__('Color', 'bdthemes-element-pack'),
+					'label'     => esc_html__('Color', 'ultimate-post-kit'),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .upk-alter-grid .upk-item .upk-readmore' => 'color: {{VALUE}};',
@@ -1267,7 +1267,7 @@ class Alter_Grid extends Group_Control_Query {
 				Group_Control_Border::get_type(),
 				[
 					'name'        => 'readmore_border',
-					'label'       => esc_html__('Border', 'bdthemes-element-pack'),
+					'label'       => esc_html__('Border', 'ultimate-post-kit'),
 					'placeholder' => '1px',
 					'default'     => '1px',
 					'selector'    => '{{WRAPPER}} .upk-alter-grid .upk-item .upk-readmore',
@@ -1277,7 +1277,7 @@ class Alter_Grid extends Group_Control_Query {
 			$this->add_responsive_control(
 				'readmore_border_radius',
 				[
-					'label'      => esc_html__('Border Radius', 'bdthemes-element-pack'),
+					'label'      => esc_html__('Border Radius', 'ultimate-post-kit'),
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => ['px', '%'],
 					'selectors'  => [
@@ -1289,7 +1289,7 @@ class Alter_Grid extends Group_Control_Query {
 			$this->add_responsive_control(
 				'readmore_padding',
 				[
-					'label'      => esc_html__('Padding', 'bdthemes-element-pack'),
+					'label'      => esc_html__('Padding', 'ultimate-post-kit'),
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => ['px', 'em', '%'],
 					'selectors'  => [
@@ -1322,7 +1322,7 @@ class Alter_Grid extends Group_Control_Query {
 				Group_Control_Typography::get_type(),
 				[
 					'name'     => 'readmore_typography',
-					'label'    => esc_html__('Typography', 'bdthemes-element-pack'),
+					'label'    => esc_html__('Typography', 'ultimate-post-kit'),
 					'selector' => '{{WRAPPER}} .upk-alter-grid .upk-item .upk-readmore',
 				]
 			);
@@ -1332,14 +1332,14 @@ class Alter_Grid extends Group_Control_Query {
 			$this->start_controls_tab(
 				'tab_readmore_hover',
 				[
-					'label' => esc_html__('Hover', 'bdthemes-element-pack'),
+					'label' => esc_html__('Hover', 'ultimate-post-kit'),
 				]
 			);
 
 			$this->add_control(
 				'readmore_hover_color',
 				[
-					'label'     => esc_html__('Color', 'bdthemes-element-pack'),
+					'label'     => esc_html__('Color', 'ultimate-post-kit'),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .upk-alter-grid .upk-item .upk-readmore:hover' => 'color: {{VALUE}};',
@@ -1359,7 +1359,7 @@ class Alter_Grid extends Group_Control_Query {
 			$this->add_control(
 				'readmore_hover_border_color',
 				[
-					'label'     => esc_html__('Border Color', 'bdthemes-element-pack'),
+					'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
 					'type'      => Controls_Manager::COLOR,
 					'condition' => [
 						'readmore_border_border!' => '',
@@ -1373,7 +1373,7 @@ class Alter_Grid extends Group_Control_Query {
 			$this->add_control(
 				'readmore_hover_animation',
 				[
-					'label' => esc_html__('Animation', 'bdthemes-element-pack'),
+					'label' => esc_html__('Animation', 'ultimate-post-kit'),
 					'type'  => Controls_Manager::HOVER_ANIMATION,
 				]
 			);
@@ -1387,7 +1387,7 @@ class Alter_Grid extends Group_Control_Query {
 			$this->start_controls_section(
 				'section_style_readmore_on_image',
 				[
-					'label'     => esc_html__('Read More On Image', 'bdthemes-element-pack'),
+					'label'     => esc_html__('Read More On Image', 'ultimate-post-kit'),
 					'tab'       => Controls_Manager::TAB_STYLE,
 					'condition' => [
 						'readmore_type' => 'on_image',

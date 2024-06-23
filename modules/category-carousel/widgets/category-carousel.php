@@ -98,7 +98,7 @@ class Category_Carousel extends Module_Base {
 		$this->add_responsive_control(
 			'columns',
 			[
-				'label'          => __('Columns', 'ultimate-post-kit-pro'),
+				'label'          => __('Columns', 'ultimate-post-kit'),
 				'type'           => Controls_Manager::SELECT,
 				'default'        => 3,
 				'tablet_default' => 2,
@@ -139,7 +139,7 @@ class Category_Carousel extends Module_Base {
 		$this->add_responsive_control(
 			'item_height',
 			[
-				'label'   => esc_html__('Item Height(px)', 'ultimate-post-kit-pro'),
+				'label'   => esc_html__('Item Height(px)', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -159,7 +159,7 @@ class Category_Carousel extends Module_Base {
 		$this->add_responsive_control(
 			'item_height_skin_3',
 			[
-				'label'   => esc_html__('Item Height(px)', 'ultimate-post-kit-pro'),
+				'label'   => esc_html__('Item Height(px)', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -189,14 +189,14 @@ class Category_Carousel extends Module_Base {
 		$this->start_controls_section(
 			'section_post_grid_query',
 			[
-				'label' => esc_html__('Query', 'ultimate-post-kit-pro'),
+				'label' => esc_html__('Query', 'ultimate-post-kit'),
 			]
 		);
 
 		// $this->add_control(
 		// 	'item_limit',
 		// 	[
-		// 		'label' => esc_html__('Item Limit', 'ultimate-post-kit-pro'),
+		// 		'label' => esc_html__('Item Limit', 'ultimate-post-kit'),
 		// 		'type'  => Controls_Manager::SLIDER,
 		// 		'range' => [
 		// 			'px' => [
@@ -213,7 +213,7 @@ class Category_Carousel extends Module_Base {
 		$this->add_control(
 			'taxonomy',
 			[
-				'label'   => esc_html__('Taxonomy', 'ultimate-post-kit-pro'),
+				'label'   => esc_html__('Taxonomy', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'category',
 				'options' => ultimate_post_kit_get_taxonomies(),
@@ -223,15 +223,15 @@ class Category_Carousel extends Module_Base {
 		$this->add_control(
 			'orderby',
 			[
-				'label'   => esc_html__('Order By', 'ultimate-post-kit-pro'),
+				'label'   => esc_html__('Order By', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'name',
 				'options' => [
-					'name'       => esc_html__('Name', 'ultimate-post-kit-pro'),
-					'post_date'  => esc_html__('Date', 'ultimate-post-kit-pro'),
-					'post_title' => esc_html__('Title', 'ultimate-post-kit-pro'),
-					'menu_order' => esc_html__('Menu Order', 'ultimate-post-kit-pro'),
-					'rand'       => esc_html__('Random', 'ultimate-post-kit-pro'),
+					'name'       => esc_html__('Name', 'ultimate-post-kit'),
+					'post_date'  => esc_html__('Date', 'ultimate-post-kit'),
+					'post_title' => esc_html__('Title', 'ultimate-post-kit'),
+					'menu_order' => esc_html__('Menu Order', 'ultimate-post-kit'),
+					'rand'       => esc_html__('Random', 'ultimate-post-kit'),
 				],
 			]
 		);
@@ -239,37 +239,37 @@ class Category_Carousel extends Module_Base {
 		$this->add_control(
 			'order',
 			[
-				'label'   => esc_html__('Order', 'ultimate-post-kit-pro'),
+				'label'   => esc_html__('Order', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'asc',
 				'options' => [
-					'asc'  => esc_html__('ASC', 'ultimate-post-kit-pro'),
-					'desc' => esc_html__('DESC', 'ultimate-post-kit-pro'),
+					'asc'  => esc_html__('ASC', 'ultimate-post-kit'),
+					'desc' => esc_html__('DESC', 'ultimate-post-kit'),
 				],
 			]
 		);
 		// $this->add_control(
 		// 	'include',
 		// 	[
-		// 		'label'       => esc_html__('Include', 'ultimate-post-kit-pro'),
+		// 		'label'       => esc_html__('Include', 'ultimate-post-kit'),
 		// 		'type'        => Controls_Manager::TEXT,
-		// 		'placeholder' => __('Category ID: 12,3,1', 'ultimate-post-kit-pro'),
+		// 		'placeholder' => __('Category ID: 12,3,1', 'ultimate-post-kit'),
 		// 	]
 		// );
 		$this->add_control(
 			'exclude',
 			[
-				'label'       => esc_html__('Exclude', 'ultimate-post-kit-pro'),
+				'label'       => esc_html__('Exclude', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
-				'placeholder' => __('Category ID: 12,3,1', 'ultimate-post-kit-pro'),
+				'placeholder' => __('Category ID: 12,3,1', 'ultimate-post-kit'),
 			]
 		);
 		$this->add_control(
 			'parent',
 			[
-				'label'       => esc_html__('Parent', 'ultimate-post-kit-pro'),
+				'label'       => esc_html__('Parent', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
-				'placeholder' => __('Category ID: 12', 'ultimate-post-kit-pro'),
+				'placeholder' => __('Category ID: 12', 'ultimate-post-kit'),
 			]
 		);
 		// $this->add_control(
@@ -292,7 +292,7 @@ class Category_Carousel extends Module_Base {
 		$this->add_control(
 			'show_image',
 			[
-				'label'     => esc_html__('Show Image', 'ultimate-post-kit-pro'),
+				'label'     => esc_html__('Show Image', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SWITCHER,
 				'default'   => 'yes',
 			]
@@ -301,7 +301,7 @@ class Category_Carousel extends Module_Base {
 		$this->add_control(
 			'show_count',
 			[
-				'label'     => esc_html__('Show Count', 'ultimate-post-kit-pro'),
+				'label'     => esc_html__('Show Count', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SWITCHER,
 				'default'   => 'yes',
 			]
@@ -309,7 +309,7 @@ class Category_Carousel extends Module_Base {
 		$this->add_control(
 			'show_text',
 			[
-				'label'   => esc_html__('Show Text', 'ultimate-post-kit-pro'),
+				'label'   => esc_html__('Show Text', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SWITCHER,
 				'default'   => 'yes',
 			]
@@ -317,10 +317,10 @@ class Category_Carousel extends Module_Base {
 		$this->add_control(
 			'count_text_label',
 			[
-				'label'       => esc_html__('Count Label', 'ultimate-post-kit-pro'),
+				'label'       => esc_html__('Count Label', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
-				'placeholder' => esc_html__('Posts', 'ultimate-post-kit-pro'),
-				'default' => esc_html__('Posts', 'ultimate-post-kit-pro'),
+				'placeholder' => esc_html__('Posts', 'ultimate-post-kit'),
+				'default' => esc_html__('Posts', 'ultimate-post-kit'),
 				'condition' => [
 					'show_text' => 'yes'
 				]

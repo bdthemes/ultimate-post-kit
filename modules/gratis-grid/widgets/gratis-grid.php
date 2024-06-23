@@ -164,7 +164,7 @@ class Gratis_Grid extends Group_Control_Query
 		$this->add_control(
             'active_item',
             [
-                'label' => __('Active Item', 'bdthemes-element-pack') . BDTUPK_PC,
+                'label' => __('Active Item', 'ultimate-post-kit') . BDTUPK_PC,
                 'type' => Controls_Manager::NUMBER,
                 'default' => 2,
                 'description' => __('Be more creative with your design by typing in your item number.', 'ultimate-post-kit'),
@@ -318,20 +318,20 @@ class Gratis_Grid extends Group_Control_Query
 		$this->start_controls_tab(
 			'tab_item_normal',
 			[
-				'label' => esc_html__('Normal', 'pixel-gallery'),
+				'label' => esc_html__('Normal', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'overlay_type',
 			[
-				'label'   => esc_html__('Overlay', 'pixel-gallery'),
+				'label'   => esc_html__('Overlay', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'background',
 				'options' => [
-					'none'       => esc_html__('None', 'pixel-gallery'),
-					'background' => esc_html__('Background', 'pixel-gallery'),
-					'blend'      => esc_html__('Blend', 'pixel-gallery'),
+					'none'       => esc_html__('None', 'ultimate-post-kit'),
+					'background' => esc_html__('Background', 'ultimate-post-kit'),
+					'blend'      => esc_html__('Blend', 'ultimate-post-kit'),
 				],
 			]
 		);
@@ -340,7 +340,7 @@ class Gratis_Grid extends Group_Control_Query
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'overlay_color',
-				'label' => esc_html__('Background', 'pixel-gallery'),
+				'label' => esc_html__('Background', 'ultimate-post-kit'),
 				'types' => ['classic', 'gradient'],
 				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .upk-gratis-grid .upk-img-wrap::before',
@@ -361,7 +361,7 @@ class Gratis_Grid extends Group_Control_Query
 		$this->add_control(
 			'blend_type',
 			[
-				'label'     => esc_html__('Blend Type', 'pixel-gallery'),
+				'label'     => esc_html__('Blend Type', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'multiply',
 				'options'   => ultimate_post_kit_blend_options(),
@@ -379,7 +379,7 @@ class Gratis_Grid extends Group_Control_Query
 			Group_Control_Border::get_type(),
 			[
 				'name'     => 'item_border',
-				'label'    => esc_html__('Border', 'pixel-gallery'),
+				'label'    => esc_html__('Border', 'ultimate-post-kit'),
 				'selector' => '{{WRAPPER}} .upk-gratis-grid .upk-item',
 				'separator' => 'before'
 			]
@@ -388,7 +388,7 @@ class Gratis_Grid extends Group_Control_Query
 		$this->add_responsive_control(
 			'item_border_radius',
 			[
-				'label'      => esc_html__('Border Radius', 'pixel-gallery'),
+				'label'      => esc_html__('Border Radius', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
@@ -400,7 +400,7 @@ class Gratis_Grid extends Group_Control_Query
 		$this->add_responsive_control(
 			'item_padding',
 			[
-				'label'      => esc_html__('Padding', 'pixel-gallery'),
+				'label'      => esc_html__('Padding', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
@@ -413,7 +413,7 @@ class Gratis_Grid extends Group_Control_Query
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'item_box_shadow',
-				'label'    => esc_html__('Box Shadow', 'pixel-gallery'),
+				'label'    => esc_html__('Box Shadow', 'ultimate-post-kit'),
 				'selector' => '{{WRAPPER}} .upk-gratis-grid .upk-item',
 			]
 		);
@@ -423,20 +423,20 @@ class Gratis_Grid extends Group_Control_Query
 		$this->start_controls_tab(
 			'tab_item_hover',
 			[
-				'label' => esc_html__('Hover', 'pixel-gallery'),
+				'label' => esc_html__('Hover', 'ultimate-post-kit'),
 			]
 		);
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'overlay_hover_color',
-				'label' => esc_html__('Background', 'pixel-gallery'),
+				'label' => esc_html__('Background', 'ultimate-post-kit'),
 				'types' => ['classic', 'gradient'],
 				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .upk-gratis-grid .upk-img-wrap::after',
 				'fields_options' => [
 					'background' => [
-						'label' => esc_html__('Overlay Color', 'pixel-gallery'),
+						'label' => esc_html__('Overlay Color', 'ultimate-post-kit'),
 						'default' => 'gradient',
 					],
 					'color' => [
@@ -461,7 +461,7 @@ class Gratis_Grid extends Group_Control_Query
 		$this->add_control(
 			'item_border_color_hover',
 			[
-				'label'     => esc_html__('Border Color', 'pixel-gallery'),
+				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-gratis-grid .upk-item:hover' => 'border-color: {{VALUE}};',
@@ -476,7 +476,7 @@ class Gratis_Grid extends Group_Control_Query
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'item_box_shadow_hover',
-				'label'    => esc_html__('Box Shadow', 'pixel-gallery'),
+				'label'    => esc_html__('Box Shadow', 'ultimate-post-kit'),
 				'selector' => '{{WRAPPER}} .upk-gratis-grid .upk-item:hover',
 			]
 		);
@@ -485,14 +485,14 @@ class Gratis_Grid extends Group_Control_Query
 		$this->start_controls_tab(
 			'tab_item_active',
 			[
-				'label' => esc_html__('Active', 'pixel-gallery'),
+				'label' => esc_html__('Active', 'ultimate-post-kit'),
 			]
 		);
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'overlay_active_color',
-				'label' => esc_html__('Background', 'pixel-gallery'),
+				'label' => esc_html__('Background', 'ultimate-post-kit'),
 				'types' => ['classic', 'gradient'],
 				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .upk-gratis-grid .upk-item.active .upk-img-wrap::after',
@@ -502,7 +502,7 @@ class Gratis_Grid extends Group_Control_Query
 		$this->add_control(
 			'item_border_color_active',
 			[
-				'label'     => esc_html__('Border Color', 'pixel-gallery'),
+				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-gratis-grid .upk-item.active' => 'border-color: {{VALUE}};',
@@ -518,7 +518,7 @@ class Gratis_Grid extends Group_Control_Query
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'item_box_shadow_active',
-				'label'    => esc_html__('Box Shadow', 'pixel-gallery'),
+				'label'    => esc_html__('Box Shadow', 'ultimate-post-kit'),
 				'selector' => '{{WRAPPER}} .upk-gratis-grid .upk-item.active',
 			]
 		);

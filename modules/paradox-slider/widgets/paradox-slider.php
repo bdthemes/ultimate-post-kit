@@ -395,7 +395,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'type'    => Controls_Manager::SELECT,
 				'default' => '0',
 				'options' => [
-					'0' => esc_html__( 'Default', 'bdthemes-element-pack' ),
+					'0' => esc_html__( 'Default', 'ultimate-post-kit' ),
 					'1' => esc_html__('Style 1', 'ultimate-post-kit'),
 					'2' => esc_html__('Style 2', 'ultimate-post-kit'),
 					'3' => esc_html__('Style 3', 'ultimate-post-kit'),

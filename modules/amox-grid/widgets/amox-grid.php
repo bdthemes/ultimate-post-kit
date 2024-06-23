@@ -178,7 +178,7 @@ class Amox_Grid extends Group_Control_Query
         $this->add_control(
             'active_item',
             [
-                'label' => __('Active Item', 'bdthemes-element-pack') . BDTUPK_PC,
+                'label' => __('Active Item', 'ultimate-post-kit') . BDTUPK_PC,
                 'type' => Controls_Manager::NUMBER,
                 'default' => 2,
                 'description' => __('Be more creative with your design by typing in your item number.', 'ultimate-post-kit'),

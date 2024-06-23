@@ -791,13 +791,13 @@ class Static_Social_Count extends Group_Control_Query {
 					'elementor-repeater-item-' . $social_link['_id'],
 				]);
 				if ($social_link['social_site_link']['is_external'] !== 'on') {
-					$this->add_render_attribute($link_key, 'href', $social_link['social_site_link']['url']);
+					$this->add_render_attribute($link_key, 'href', esc_url($social_link['social_site_link']['url']));
 				} else {
 					$this->add_render_attribute(
 						$link_key,
 						[
 							'href' => [
-								$social_link['social_site_link']['url']
+								esc_url($social_link['social_site_link']['url'])
 							],
 							'target' => '_blank'
 						],

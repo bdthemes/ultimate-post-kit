@@ -185,7 +185,7 @@ class Amox_Carousel extends Group_Control_Query
 		$this->add_control(
 			'carousel_active_item',
 			[
-				'label'        => __('Carousel Active Item', 'bdthemes-element-pack') . BDTUPK_PC,
+				'label'        => __('Carousel Active Item', 'ultimate-post-kit') . BDTUPK_PC,
 				'type'         => Controls_Manager::SWITCHER,
 				'prefix_class' => 'upk-amox-carousel-active--',
 				'render_type'  => 'template',
@@ -197,7 +197,7 @@ class Amox_Carousel extends Group_Control_Query
 		$this->add_control(
 			'active_item',
 			[
-				'label'       => __('Custom Active Item', 'bdthemes-element-pack') . BDTUPK_PC,
+				'label'       => __('Custom Active Item', 'ultimate-post-kit') . BDTUPK_PC,
 				'type'        => Controls_Manager::NUMBER,
 				'default'	  => 2,
 				'description' => __('Be more creative with your design by typing in your item number.', 'ultimate-post-kit'),

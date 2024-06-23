@@ -29,7 +29,7 @@ class Pro_Widget_Map
                             'icon'       => 'upk-icon-' . $widget['name'] . ' bdt-pro-unlock-icon',
                             'action_button' => [
                                 'classes'   => ['elementor-button', 'elementor-button-success'],
-                                'text'      => esc_html__('See it in Action', 'bdthemes-element-pack'),
+                                'text'      => esc_html__('See it in Action', 'ultimate-post-kit'),
                                 'url'       => esc_url($widget['demo_url'])
                             ]
                         ];

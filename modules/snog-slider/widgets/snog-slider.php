@@ -404,13 +404,13 @@ class Snog_Slider extends Group_Control_Query {
 		$this->add_control(
 			'overlay_type',
 			[
-				'label'   => esc_html__('Overlay', 'ultimate-post-kit-pro'),
+				'label'   => esc_html__('Overlay', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'background',
 				'options' => [
-					'none'       => esc_html__('None', 'ultimate-post-kit-pro'),
-					'background' => esc_html__('Background', 'ultimate-post-kit-pro'),
-					'blend'      => esc_html__('Blend', 'ultimate-post-kit-pro'),
+					'none'       => esc_html__('None', 'ultimate-post-kit'),
+					'background' => esc_html__('Background', 'ultimate-post-kit'),
+					'blend'      => esc_html__('Blend', 'ultimate-post-kit'),
 				],
 			]
 		);
@@ -432,7 +432,7 @@ class Snog_Slider extends Group_Control_Query {
 		$this->add_control(
 			'blend_type',
 			[
-				'label'     => esc_html__('Blend Type', 'ultimate-post-kit-pro'),
+				'label'     => esc_html__('Blend Type', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'multiply',
 				'options'   => ultimate_post_kit_blend_options(),
@@ -1075,7 +1075,7 @@ class Snog_Slider extends Group_Control_Query {
 				'type'      => Controls_Manager::SELECT,
 				'default'   => '0',
 				'options'   => [
-					'0'        => esc_html__('Default', 'bdthemes-element-pack'),
+					'0'        => esc_html__('Default', 'ultimate-post-kit'),
 					'1'        => esc_html__('Style 1', 'ultimate-post-kit'),
 					'2'        => esc_html__('Style 2', 'ultimate-post-kit'),
 					'3'        => esc_html__('Style 3', 'ultimate-post-kit'),

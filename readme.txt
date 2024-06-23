@@ -166,6 +166,11 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.XX.X [Xth June 2024] =
+
+* Fixed: Text Domain issue fixed (Thanks to itapress)
+* Fixed: Security issue fixed
+
 = 3.11.7 [8th June 2024] =
 
 * Fixed: Deprecation issue fixed in Tag Cloud widget (Thanks to dzoidberg)

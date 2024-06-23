@@ -112,7 +112,7 @@ class Banner extends Group_Control_Query
 		$this->add_control(
 			'description_text',
 			[
-				'label'       => esc_html__('Text', 'bdthemes-prime-slider'),
+				'label'       => esc_html__('Text', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::WYSIWYG,
 				'default'     => esc_html__('It is a long established fact that a reader will be distracted by the readable', 'ultimate-post-kit', 'ultimate-post-kit'),
 				'label_block' => true,
@@ -453,19 +453,19 @@ class Banner extends Group_Control_Query
 		$this->add_responsive_control(
 			'alignment',
 			[
-				'label'   => esc_html__('Alignment', 'ultimate-post-kit-pro'),
+				'label'   => esc_html__('Alignment', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__('Left', 'ultimate-post-kit-pro'),
+						'title' => esc_html__('Left', 'ultimate-post-kit'),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__('Center', 'ultimate-post-kit-pro'),
+						'title' => esc_html__('Center', 'ultimate-post-kit'),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__('Right', 'ultimate-post-kit-pro'),
+						'title' => esc_html__('Right', 'ultimate-post-kit'),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
@@ -523,7 +523,7 @@ class Banner extends Group_Control_Query
 		$this->add_control(
 			'readmore',
 			[
-				'label'   => esc_html__( 'Show Read More', 'bdthemes-element-pack' ),
+				'label'   => esc_html__( 'Show Read More', 'ultimate-post-kit' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			]
@@ -602,7 +602,7 @@ class Banner extends Group_Control_Query
 		$this->start_controls_section(
 			'section_content_readmore',
 			[
-				'label'     => esc_html__( 'Read More', 'bdthemes-element-pack' ),
+				'label'     => esc_html__( 'Read More', 'ultimate-post-kit' ),
 				'condition' => [
 					'readmore' => 'yes',
 				],
@@ -612,17 +612,17 @@ class Banner extends Group_Control_Query
 		$this->add_control(
 			'readmore_text',
 			[
-				'label'       => esc_html__( 'Read More Text', 'bdthemes-element-pack' ),
+				'label'       => esc_html__( 'Read More Text', 'ultimate-post-kit' ),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Read More', 'bdthemes-element-pack' ),
-				'placeholder' => esc_html__( 'Read More', 'bdthemes-element-pack' ),
+				'default'     => esc_html__( 'Read More', 'ultimate-post-kit' ),
+				'placeholder' => esc_html__( 'Read More', 'ultimate-post-kit' ),
 			]
 		);
 
 		$this->add_control(
 			'readmore_link',
 			[
-				'label'       => esc_html__( 'Link', 'bdthemes-element-pack' ),
+				'label'       => esc_html__( 'Link', 'ultimate-post-kit' ),
 				'type'        => Controls_Manager::URL,
 				'dynamic'     => [ 'active' => true ],
 				'placeholder' => 'http://your-link.com',
@@ -636,7 +636,7 @@ class Banner extends Group_Control_Query
 		$this->add_control(
 			'readmore_icon',
 			[
-				'label'       => esc_html__( 'Icon', 'bdthemes-element-pack' ),
+				'label'       => esc_html__( 'Icon', 'ultimate-post-kit' ),
 				'type'        => Controls_Manager::ICONS,
 				'label_block' => false,
 				'skin' => 'inline'
@@ -646,17 +646,17 @@ class Banner extends Group_Control_Query
 		$this->add_control(
 			'icon_align',
 			[
-				'label'   => esc_html__( 'Icon Position', 'bdthemes-element-pack' ),
+				'label'   => esc_html__( 'Icon Position', 'ultimate-post-kit' ),
                 'type'      => Controls_Manager::CHOOSE,
 				'default' => 'right',
                 'toggle' => false,
                 'options'   => [
                     'left' => [
-						'title' => __( 'Left', 'bdthemes-element-pack' ),
+						'title' => __( 'Left', 'ultimate-post-kit' ),
 						'icon' => 'eicon-h-align-left',
 					],
 					'right' => [
-						'title' => __( 'Right', 'bdthemes-element-pack' ),
+						'title' => __( 'Right', 'ultimate-post-kit' ),
 						'icon' => 'eicon-h-align-right',
 					],
                 ],
@@ -669,7 +669,7 @@ class Banner extends Group_Control_Query
 		$this->add_responsive_control(
 			'icon_indent',
 			[
-				'label'   => esc_html__( 'Icon Spacing', 'bdthemes-element-pack' ),
+				'label'   => esc_html__( 'Icon Spacing', 'ultimate-post-kit' ),
 				'type'    => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 8,
@@ -703,13 +703,13 @@ class Banner extends Group_Control_Query
 		$this->add_control(
 			'overlay_type',
 			[
-				'label'   => esc_html__('Overlay', 'pixel-gallery'),
+				'label'   => esc_html__('Overlay', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'none',
 				'options' => [
-					'none'       => esc_html__('None', 'pixel-gallery'),
-					'background' => esc_html__('Background', 'pixel-gallery'),
-					'blend'      => esc_html__('Blend', 'pixel-gallery'),
+					'none'       => esc_html__('None', 'ultimate-post-kit'),
+					'background' => esc_html__('Background', 'ultimate-post-kit'),
+					'blend'      => esc_html__('Blend', 'ultimate-post-kit'),
 				],
 			]
 		);
@@ -718,7 +718,7 @@ class Banner extends Group_Control_Query
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'overlay_color',
-				'label' => esc_html__('Background', 'pixel-gallery'),
+				'label' => esc_html__('Background', 'ultimate-post-kit'),
 				'types' => ['classic', 'gradient'],
 				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .upk-banner-wrap .upk-item::before',
@@ -739,7 +739,7 @@ class Banner extends Group_Control_Query
 		$this->add_control(
 			'blend_type',
 			[
-				'label'     => esc_html__('Blend Type', 'pixel-gallery'),
+				'label'     => esc_html__('Blend Type', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'multiply',
 				'options'   => ultimate_post_kit_blend_options(),
@@ -1124,7 +1124,7 @@ class Banner extends Group_Control_Query
 		$this->add_control(
 			'readmore_hover_animation',
 			[
-				'label' => esc_html__( 'Animation', 'bdthemes-element-pack' ),
+				'label' => esc_html__( 'Animation', 'ultimate-post-kit' ),
 				'type'  => Controls_Manager::HOVER_ANIMATION,
 			]
 		);
