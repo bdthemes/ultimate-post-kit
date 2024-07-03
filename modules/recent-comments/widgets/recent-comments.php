@@ -888,7 +888,7 @@ class Recent_Comments extends Group_Control_Query {
 				echo '</div>';
 				wp_reset_postdata();
 			} else {
-				echo esc_html('No Comments Found.', 'ultimate-post-kit');
+				echo esc_html__('No Comments Found.', 'ultimate-post-kit');
 			}
 		}
 	}

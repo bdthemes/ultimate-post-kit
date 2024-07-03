@@ -166,6 +166,10 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.11.X [XXth July 2024] =
+
+* Fixed: Translation support issue fixed (Thanks to itapress)
+
 = 3.11.8 [24th June 2024] =
 
 * Fixed: Icon size issue fixed in static social count widget

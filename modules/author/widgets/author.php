@@ -1411,11 +1411,11 @@ class Author extends Module_Base {
 											<?php
 
 											$final_url = get_the_author_meta($link, $author->ID);
-											$alt_title = esc_html('Click here to go ' . ucwords($link), 'ultimate-post-kit');
+											$alt_title = esc_html__('Click here to go ' . ucwords($link), 'ultimate-post-kit');
 
 											if ($link == 'email') {
 												$final_url = 'mailto:' . get_the_author_meta($link, $author->ID);
-												$alt_title = esc_html('Click here to ' . ucwords($link), 'ultimate-post-kit');
+												$alt_title = esc_html__('Click here to ' . ucwords($link), 'ultimate-post-kit');
 											}
 
 											?>
