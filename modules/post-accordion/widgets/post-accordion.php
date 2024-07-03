@@ -1128,9 +1128,9 @@ class Post_Accordion extends Group_Control_Query {
 
 		<div class="upk-accordion-comments">
 			<i class="upk-icon-bubbles" aria-hidden="true"></i>
-			<span <?php printf('data-hover="%s"', get_comments_number($id) . ' ' . esc_html('Comments', 'ultimate-post-kit')); ?>>
+			<span <?php printf('data-hover="%s"', get_comments_number($id) . ' ' . esc_html__('Comments', 'ultimate-post-kit')); ?>>
 				<?php echo get_comments_number($id); ?>
-				<?php echo esc_html('Comments', 'ultimate-post-kit'); ?>
+				<?php echo esc_html__('Comments', 'ultimate-post-kit'); ?>
 			</span>
 		</div>
 
