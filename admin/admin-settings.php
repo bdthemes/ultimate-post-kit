@@ -635,11 +635,11 @@ class UltimatePostKit_Admin_Settings {
                 <div class="bdt-width-1-2@m">
                     <div class="bdt-card bdt-card-body upk-tryaddon-bg">
                         <h1 class="upk-feature-title">
-                            <?php echo esc_html_x('Try Our Addons', 'Frontend', 'ultimate-post-kit'); ?>
+                            <?php echo esc_html_x('Try Our Plugins', 'Frontend', 'ultimate-post-kit'); ?>
                         </h1>
                         <p style="max-width: 520px;">
                             <?php printf(
-                                esc_html__('%1$sElement Pack, Prime Slider, Ultimate Store Kit, Pixel Gallery & Live Copy Paste %2$s addons for %3$sElementor%4$s is the best slider, blogs and eCommerce plugin for WordPress.', 'ultimate-post-kit'),
+                                esc_html__('%1$sElement Pack, Prime Slider, Ultimate Store Kit, Pixel Gallery & Live Copy Paste %2$s addons for %3$sElementor%4$s is the best slider, blogs and eCommerce plugin for WordPress. Also, try our new plugin ZoloBlocks for Gutenberg.', 'ultimate-post-kit'),
                                 '<b>',
                                 '</b>',
                                 '<b>',
@@ -653,6 +653,7 @@ class UltimatePostKit_Admin_Settings {
                             <a class="bdt-button bdt-btn-ps bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/bdthemes-prime-slider-lite/" bdt-tooltip="The revolutionary slider builder addon for Elementor with next-gen superb interface. It's Free! Download it.">
                                 <?php echo esc_html_x('Prime Slider', 'Frontend', 'ultimate-post-kit'); ?>
                             </a>
+                            <a class="bdt-button bdt-btn-zb bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/zoloblocks/" bdt-tooltip="<?php echo esc_html__('ZoloBlocks is a collection of creative Gutenberg blocks for WordPress. It\'s Free! Download it.', 'bdthemes-prime-slider'); ?>">ZoloBlocks</a><br>
                             <a class="bdt-button bdt-btn-usk bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/ultimate-store-kit/" bdt-tooltip="The only eCommmerce addon for answering all your online store design problems in one package. It's Free! Download it.">
                                 <?php echo esc_html_x('Ultimate Store Kit', 'Frontend', 'ultimate-post-kit'); ?>
                             </a>
