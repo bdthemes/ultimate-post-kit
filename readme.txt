@@ -166,6 +166,10 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.XXX [6th July 2024] =
+
+* Fixed: Translation support issue fixed (Thanks to itapress)
+
 = 3.11.9 [6th July 2024] =
 
 * Fixed: Translation support issue fixed (Thanks to itapress)
