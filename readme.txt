@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 3.11.9
+Stable tag: 3.11.10
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.5.5
@@ -166,9 +166,9 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
-= 3.XXX [6th July 2024] =
+= 3.11.10 [14th July 2024] =
 
-* Fixed: Translation support issue fixed (Thanks to itapress)
+* Fixed: Translation support issue fixed in author widget
 
 = 3.11.9 [6th July 2024] =
 
@@ -242,24 +242,6 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 = 3.9.10 [4th January 2024] =
 
 * Fixed: Duplicator issue Fixed
-
-= 3.9.9 [31th December 2023] =
-
-* Updated: System improved
-
-= 3.9.8 [11th December 2023] =
-
-* Fixed: Live copy paste issue fixed
-* Fixed: Deprecated issue fixed
-
-= 3.9.7 [6th December 2023] =
-
-* Added: Alignment & counter number controls added in buzz list carousel widget
-
-= 3.9.6 [29th November 2023] =
-
-* Fixed: Comments date issue fixed in recent comments widget
-* Updated: Sline slider widget optimized
 
 Details [changelog here](https://feedback.bdthemes.com/announcements?category=category_nld48ndl)
 
