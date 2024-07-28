@@ -59,7 +59,7 @@ if ( ! function_exists( '_is_upk_pro_activated' ) ) {
 
 
 // Helper function here
-require_once( dirname( __FILE__ ) . '/includes/helper.php' );
+require_once ( dirname( __FILE__ ) . '/includes/helper.php' );
 
 if ( ! _is_upk_pro_activated() ) {
 	require_once BDTUPK_INC_PATH . 'class-pro-widget-map.php';
@@ -69,10 +69,10 @@ if ( function_exists( 'upk_license_validation' ) && true !== upk_license_validat
 	require_once BDTUPK_INC_PATH . 'class-pro-widget-map.php';
 }
 
-require_once( dirname( __FILE__ ) . '/includes/utils.php' );
+require_once ( dirname( __FILE__ ) . '/includes/utils.php' );
 
 // Widgets filters here
-require_once( BDTUPK_INC_PATH . 'ultimate-post-kit-filters.php' );
+require_once ( BDTUPK_INC_PATH . 'ultimate-post-kit-filters.php' );
 
 
 /**
@@ -89,7 +89,7 @@ function ultimate_post_kit_load_plugin() {
 	}
 
 	// Element pack widget and assets loader
-	require_once( BDTUPK_PATH . 'loader.php' );
+	require_once ( BDTUPK_PATH . 'loader.php' );
 }
 
 add_action( 'plugins_loaded', 'ultimate_post_kit_load_plugin' );
@@ -177,18 +177,21 @@ if ( ! function_exists( 'dci_plugin_ultimate_post_kit' ) ) {
 		require_once dirname( __FILE__ ) . '/dci/start.php';
 
 		dci_dynamic_init( array(
-			'sdk_version'  => '1.1.0',
-			'product_id'   => 1,
-			'plugin_name'  => 'Ultimate Post Kit', // make simple, must not empty
-			'plugin_title' => 'Love using Ultimate Post Kit? Congrats 🎉 ( Never miss an Important Update )', // You can describe your plugin title here
-			'plugin_icon'  => BDTUPK_ASSETS_URL . 'images/logo.svg',
-			'api_endpoint' => 'https://analytics.bdthemes.com/wp-json/dci/v1/data-insights',
-			'menu'         => array(
+			'sdk_version'         => '1.2.0',
+			'product_id'          => 1,
+			'plugin_name'         => 'Ultimate Post Kit', // make simple, must not empty
+			'plugin_title'        => 'Love using Ultimate Post Kit? Congrats 🎉 ( Never miss an Important Update )', // You can describe your plugin title here
+			'plugin_icon'         => BDTUPK_ASSETS_URL . 'images/logo.svg',
+			'api_endpoint'        => 'https://analytics.bdthemes.com/wp-json/dci/v1/data-insights',
+			'slug'                => 'ultimate-post-kit',
+			'menu'                => array(
 				'slug' => 'ultimate_post_kit_options',
 			),
-			'public_key'   => 'pk_yLi403LFWfR4A0u4CKhH9uLR9pmZ0KOF',
-			'is_premium'   => false,
-			'plugin_msg'   => '<p>Be Top-contributor by sharing non-sensitive plugin data and create an impact to the global WordPress community today! You can receive valuable emails periodically.</p>',
+			'public_key'          => 'pk_yLi403LFWfR4A0u4CKhH9uLR9pmZ0KOF',
+			'is_premium'          => false,
+			'popup_notice'        => true,
+			'deactivate_feedback' => true,
+			'plugin_msg'          => '<p>Be Top-contributor by sharing non-sensitive plugin data and create an impact to the global WordPress community today! You can receive valuable emails periodically.</p>',
 		) );
 
 	}
