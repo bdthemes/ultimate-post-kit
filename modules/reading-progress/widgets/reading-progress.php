@@ -43,6 +43,10 @@ class Reading_Progress extends Module_Base {
 		return 'https://youtu.be/9N_2WDXUjo0';
 	}
 
+	protected function is_dynamic_content(): bool {
+		return false;
+	}
+
 	protected function register_controls() {
 		$this->start_controls_section(
 			'section_style_reading_progress',

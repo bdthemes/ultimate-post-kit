@@ -56,6 +56,10 @@ class Recent_Comments extends Group_Control_Query {
 	}
 
 
+	protected function is_dynamic_content(): bool {
+		return false;
+	}
+
 	protected function register_controls() {
 		$this->start_controls_section(
 			'section_content_layout',

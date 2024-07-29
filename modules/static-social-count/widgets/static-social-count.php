@@ -55,7 +55,11 @@ class Static_Social_Count extends Group_Control_Query {
 		return 'https://youtu.be/MmbdYPee9qw';
 	}
 
-	public function register_controls() {
+	protected function is_dynamic_content(): bool {
+		return false;
+	}
+
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_layout',
 			[

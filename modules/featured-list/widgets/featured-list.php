@@ -62,6 +62,10 @@ class Featured_List extends Group_Control_Query {
 		return $this->_query;
 	}
 
+	protected function is_dynamic_content(): bool {
+		return false;
+	}
+
 	protected function register_controls() {
 		$this->start_controls_section(
 			'section_content_layout',
