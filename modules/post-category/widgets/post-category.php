@@ -53,6 +53,10 @@ class Post_Category extends Module_Base {
 		return $this->_query;
 	}
 
+	protected function is_dynamic_content(): bool {
+		return false;
+	}
+
 	protected function register_controls() {
 
 		$image_settings = ultimate_post_kit_option( 'category_image', 'ultimate_post_kit_other_settings', 'off' );

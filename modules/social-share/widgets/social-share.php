@@ -66,6 +66,10 @@ class Social_Share extends Module_Base {
 		return 'https://youtu.be/77S087dzK3Q';
 	}
 
+	protected function is_dynamic_content(): bool {
+		return false;
+	}
+
 	protected function register_controls() {
 		$this->start_controls_section(
 			'section_buttons_content',
