@@ -1373,11 +1373,14 @@ class Author extends Module_Base {
 			<div class="upk-author-wrapper upk-<?php echo esc_html($settings['layout_style']) ?>">
 				<?php
 				foreach ($users as $author) {
+
 				?>
 					<div class="upk-item">
-						<?php if ($settings['show_author_avatar']) : ?>
+						<?php if ($settings['show_author_avatar']) :
+							$author_posts_url = get_author_posts_url($author->ID);
+							?>
 							<div class="upk-image">
-								<a href="<?php echo get_author_posts_url($author->ID) ?>">
+								<a href="<?php echo esc_url($author_posts_url); ?>">
 									<?php echo get_avatar($author->ID, $settings['author_avatar_size']); ?>
 								</a>
 							</div>
