@@ -166,6 +166,10 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.12.X [XXth July 2024] =
+
+* Fixed: Author page link issue fixed in Author widget (Thanks to Rob)
+
 = 3.12.0 [29th July 2024] =
 
 * Added: Element caching feature added
