@@ -177,7 +177,7 @@ if ( ! function_exists( 'dci_plugin_ultimate_post_kit' ) ) {
 		require_once dirname( __FILE__ ) . '/dci/start.php';
 
 		dci_dynamic_init( array(
-			'sdk_version'         => '1.2.0',
+			'sdk_version'         => '1.2.1',
 			'product_id'          => 1,
 			'plugin_name'         => 'Ultimate Post Kit', // make simple, must not empty
 			'plugin_title'        => 'Love using Ultimate Post Kit? Congrats 🎉 ( Never miss an Important Update )', // You can describe your plugin title here
@@ -188,8 +188,8 @@ if ( ! function_exists( 'dci_plugin_ultimate_post_kit' ) ) {
 				'slug' => 'ultimate_post_kit_options',
 			),
 			'public_key'          => 'pk_yLi403LFWfR4A0u4CKhH9uLR9pmZ0KOF',
-			'is_premium'          => false,
-			'popup_notice'        => true,
+			'is_premium'          => true,
+			'popup_notice'        => false,
 			'deactivate_feedback' => true,
 			'plugin_msg'          => '<p>Be Top-contributor by sharing non-sensitive plugin data and create an impact to the global WordPress community today! You can receive valuable emails periodically.</p>',
 		) );
