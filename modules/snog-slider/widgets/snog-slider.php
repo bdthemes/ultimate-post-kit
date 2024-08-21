@@ -114,11 +114,21 @@ class Snog_Slider extends Group_Control_Query {
 		$this->add_responsive_control(
 			'content_width',
 			[
-				'label' => esc_html__('Content Width(%)', 'ultimate-post-kit'),
+				'label' => esc_html__('Content Width', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 200,
+						'max' => 1200,
+					],
+					'%' => [
+						'min' => 10,
+						'max' => 100,
+					],
+				],
 				'selectors'   => [
-					'{{WRAPPER}} .upk-snog-slider-wrap .upk-content-wrap' => 'width: {{SIZE}}%;',
-					'{{WRAPPER}} .upk-snog-slider-wrap .upk-content-wrap' => 'min-width: {{SIZE}}%;',
+					'{{WRAPPER}} .upk-snog-slider-wrap .upk-content-slider' => 'width: {{SIZE}}{{UNIT}}; min-width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -143,7 +153,7 @@ class Snog_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .upk-snog-slider .upk-content-wrap' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .upk-snog-slider-wrap .upk-content-wrap' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
