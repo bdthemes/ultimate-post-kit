@@ -170,6 +170,7 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 * Added: Thumbs image height option added in pholox slider widget
 * Fixed: Item height issue fixed in noxe slider widget
+* Fixed: Content width & alignment issue fixed in snog slider widget
 
 = 3.12.1 [11th August 2024] =
 

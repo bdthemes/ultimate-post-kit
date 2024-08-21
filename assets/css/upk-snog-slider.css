@@ -79,7 +79,7 @@
   z-index: 11;
   transform: translateY(-50%);
   width: 40%;
-  min-width: 240px;
+  min-width: 275px;
 }
 .upk-snog-slider-wrap .upk-content-slider .swiper-slide-active .upk-link-btn a,
 .upk-snog-slider-wrap .upk-content-slider .swiper-slide-duplicate .upk-link-btn a {
@@ -95,6 +95,7 @@
   top: 50%;
   transform: translateY(-50%);
   padding: 30px 55px 30px 20px;
+  width: 100%;
 }
 .upk-snog-slider-wrap .upk-category {
   margin-bottom: 10px;
