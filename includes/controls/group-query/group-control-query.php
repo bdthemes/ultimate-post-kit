@@ -290,7 +290,7 @@ abstract class Group_Control_Query extends Module_Base {
                     'author'        => __('Author', 'ultimate-post-kit'),
                     'comment_count' => __('Comment Count', 'ultimate-post-kit'),
                     'menu_order'    => __('Menu Order', 'ultimate-post-kit'),
-					'modified'      => __( 'Modified', 'ultimate-post-kit' ),
+					'modified'      => __( 'Last Modified', 'ultimate-post-kit' ),
                     'rand'          => __('Random', 'ultimate-post-kit'),
                 ],
                 'condition' => [
