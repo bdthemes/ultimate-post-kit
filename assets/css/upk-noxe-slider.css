@@ -4,10 +4,21 @@
 .upk-noxe-slider .upk-noxe-item {
   background: #fff;
   padding: 30px;
+  position: relative;
+  height: auto;
+}
+.upk-noxe-slider .upk-noxe-item-box-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .upk-noxe-slider .upk-noxe-image-wrap {
   position: relative;
   margin-bottom: 1.5rem;
+  overflow: hidden;
+  height: 100%;
+  z-index: 10;
 }
 .upk-noxe-slider .upk-noxe-img {
   width: 100%;
@@ -52,10 +63,7 @@
 }
 .upk-noxe-slider .upk-noxe-content {
   display: inline-block;
-  overflow: hidden;
-}
-.upk-noxe-slider .upk-noxe-content .upk-noxe-inner-content {
-  overflow: hidden;
+  z-index: -1;
 }
 .upk-noxe-slider .upk-title {
   font-size: 16px;

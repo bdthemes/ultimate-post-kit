@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 3.12.1
+Stable tag: 3.12.2
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.6.1
@@ -166,6 +166,11 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.12.2 [21th August 2024] =
+
+* Added: Thumbs image height option added in pholox slider widget
+* Fixed: Item height issue fixed in noxe slider widget
+
 = 3.12.1 [11th August 2024] =
 
 * Fixed: Author page link issue fixed in Author widget (Thanks to Rob)
@@ -175,87 +180,6 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 * Added: Element caching feature added
 * Updated: Dashboard system improved
-
-= 3.11.11 [18th July 2024] =
-
-* Updated: Version compatibility Added
-
-= 3.11.10 [14th July 2024] =
-
-* Fixed: Translation support issue fixed in author widget
-
-= 3.11.9 [6th July 2024] =
-
-* Fixed: Translation support issue fixed (Thanks to itapress)
-* Updated: Dashboard improved
-
-= 3.11.8 [24th June 2024] =
-
-* Fixed: Icon size issue fixed in static social count widget
-* Fixed: Text Domain issue fixed (Thanks to itapress)
-* Fixed: Security issue fixed
-
-= 3.11.7 [8th June 2024] =
-
-* Fixed: Deprecation issue fixed in Tag Cloud widget (Thanks to dzoidberg)
-* Updated: System improved
-
-= 3.11.6 [30th April 2024] =
-
-* Fixed: Random order issue fixed in tag cloud widget
-* Fixed: Image crop issue fixed in alter grid widget
-
-= 3.11.5 [18th April 2024] =
-
-* Updated: Admin dashboard system improved
-
-= 3.11.4 [6th April 2024] =
-
-* Fixed: Icon not showing issue fixed
-
-= 3.11.3 [23th March 2024] =
-
-* Updated: Admin dashboard license notice improved
-
-= 3.11.2 [13th March 2024] =
-
-* Added: Image height option added in alter grid, amox grid, amox carousel widgets
-* Added: Secondary image height option added in maple grid widgets
-* Fixed: Security issue fixed
-* Fixed: Pagination issue fixed
-
-= 3.11.1 [7th March 2024] =
-
-* Fixed: Content on image height issue fixed in alter grid widget
-
-= 3.11.0 [19th February 2024] =
-
-* Added: Content on image feature added in alter grid widget
-
-= 3.10.1 [30th January 2024] =
-
-* Fixed: Play icon issue fixed in pholox slider widget
-
-= 3.10.0 [29th January 2024] =
-
-* Added: Featured Gallery widget added (pro)
-* Added: Custom audio meta fields added
-* Added: Arrows icon select option added in crystal slider widget
-* Fixed: Notice js file not found issue fixed
-* Fixed: Category multicolor issue fixed in featured list widget
-* Fixed: Post title typography global fonts issue fixed (Thanks to Greg)
-
-= 3.9.12 [10th January 2024] =
-
-* Updated: System improved
-
-= 3.9.11 [4th January 2024] =
-
-* Removed: Unnecessary assets file removed
-
-= 3.9.10 [4th January 2024] =
-
-* Fixed: Duplicator issue Fixed
 
 Details [changelog here](https://feedback.bdthemes.com/announcements?category=category_nld48ndl)
 
