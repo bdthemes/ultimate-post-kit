@@ -86,7 +86,7 @@ class Noxe_Slider extends Group_Control_Query {
 		$this->add_responsive_control(
 			'item_height',
 			[
-				'label' => esc_html__('Image Height', 'ultimate-post-kit'),
+				'label' => esc_html__('Item Height', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SLIDER,
 				'size_units' => ['px', 'vh'],
 				'range' => [
@@ -100,7 +100,7 @@ class Noxe_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .upk-noxe-slider .upk-noxe-img' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-noxe-slider .upk-noxe-item' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);

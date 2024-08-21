@@ -3,10 +3,21 @@
 	.upk-noxe-item  {
 		background: #fff;
 		padding: 30px;
+		position: relative;
+		height: auto;
+	}
+	.upk-noxe-item-box-wrap {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
 	}
 	.upk-noxe-image-wrap {
 		position: relative;
 		margin-bottom: 1.5rem;
+		overflow: hidden;
+		height: 100%;
+		z-index: 10;
 	}
 	.upk-noxe-img{
 		width: 100%;
@@ -51,10 +62,7 @@
 	}
 	.upk-noxe-content {
 		display: inline-block;
-		overflow: hidden;
-		.upk-noxe-inner-content {
-			overflow: hidden;
-		}
+		z-index: -1;
 	}
 	.upk-title {
 		font-size: 16px;
@@ -115,7 +123,6 @@
 		}
 	}
 
-	//navigation css here
 	.upk-noxe-navigation {
 		position: absolute;
 		right: 30px;		
@@ -127,18 +134,13 @@
 		.upk-navigation-prev:after {
 			content: '';
 		}
-		// i {
-		// 	font-size: 18px;
-		// 	color: #181D23;
-		// }
+
 		.upk-navigation-next,
 		.upk-navigation-prev {
 			position: static;
-			display: inline-block;
-			// margin-left: 20px      
+			display: inline-block; 
 		}
 
-		// css edit by asik start
 		.upk-link--arrowed {
 			display: inline-flex;
 			font-size: 32px;
@@ -179,22 +181,7 @@
 				margin-right: 10px;
 			}
 		}
-		// css edit by asik end
 	}
-	// .upk-noxe-pagination {
-	// 	position: absolute;
-	// 	bottom: 0;
-	// 	left: 0;
-	// 	.swiper-pagination {
-	// 		position: static;
-	// 		.swiper-pagination-bullet {
-	// 			display: inline;
-	// 			border-radius: 0;
-	// 			background: transparent;
-	// 			margin-right:14px;
-	// 		}
-	// 	}
-	// }
 }
 //Responsive Css Here
 @media  (min-width:768px)  {

@@ -251,7 +251,7 @@ class Pholox_Slider extends Group_Control_Query
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => __('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -564,7 +564,7 @@ class Pholox_Slider extends Group_Control_Query
 		);
 
 		$this->end_controls_tab();
-		// main slider title tab
+
 		$this->start_controls_tab(
 			'style_main_slider_title_tab',
 			[
@@ -607,7 +607,7 @@ class Pholox_Slider extends Group_Control_Query
 			Group_Control_Text_Stroke::get_type(),
 			[
 				'name'      => 'title_text_stroke',
-				'label'     => __('Text Stroke', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => __('Text Stroke', 'ultimate-post-kit'),
 				'selector'  => '{{WRAPPER}} .upk-pholox-slider .upk-main-slider .upk-title a',
 			]
 		);
@@ -631,8 +631,6 @@ class Pholox_Slider extends Group_Control_Query
 		);
 
 		$this->end_controls_tab();
-
-		//main slider category tab
 
 		$this->start_controls_tab(
 			'style_main_slider_category_tab',
@@ -970,8 +968,6 @@ class Pholox_Slider extends Group_Control_Query
 
 		$this->end_controls_tab();
 
-		// thumbs slider image tab
-
 		$this->start_controls_tab(
 			'style_thumbs_slide_image_tab',
 			[
@@ -980,15 +976,15 @@ class Pholox_Slider extends Group_Control_Query
 		);
 
 		$this->add_responsive_control(
-			'playlist_thumb_width',
+			'playlist_thumb_height',
 			[
-				'label'   => esc_html__('Width', 'ultimate-post-kit'),
+				'label'   => esc_html__('Height', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SLIDER,
 				'size_units' => ['px', '%'],
 				'range' => [
 					'px' => [
-						'min' => 60,
-						'max' => 100,
+						'min' => 100,
+						'max' => 500,
 					],
 					'%' => [
 						'min' => 10,
@@ -996,7 +992,7 @@ class Pholox_Slider extends Group_Control_Query
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-img-wrap' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-img-wrap' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
