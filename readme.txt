@@ -168,6 +168,7 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 = 3.12.2 [21th August 2024] =
 
+* Added: Order by Last Modified feature added in query builder
 * Added: Thumbs image height option added in pholox slider widget
 * Fixed: Item height issue fixed in noxe slider widget
 * Fixed: Content width & alignment issue fixed in snog slider widget
