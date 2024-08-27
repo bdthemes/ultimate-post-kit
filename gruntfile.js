@@ -173,7 +173,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: "src/vendor/js/",
-                        src: ["newsticker.js", "!jquery.scrolline.js"],
+                        src: ["newsticker.js", "fslightbox.js", "!jquery.scrolline.js"],
                         dest: "assets/vendor/js/",
                         ext: ".min.js",
                     },

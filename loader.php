@@ -192,6 +192,7 @@ class Ultimate_Post_Kit_Loader {
 		wp_register_script('goodshare', BDTUPK_ASSETS_URL . 'vendor/js/goodshare.min.js', ['jquery'], '4.1.2', true);
 		wp_register_script('scrolline', BDTUPK_ASSETS_URL . 'vendor/js/jquery.scrolline.min.js', ['jquery'], '4.1.2', true);
 		wp_register_script('news-ticker-js', BDTUPK_ASSETS_URL . 'vendor/js/newsticker.min.js', ['jquery'], '', true);
+		wp_register_script('fslightbox', BDTUPK_ASSETS_URL . 'vendor/js/fslightbox.min.js', [], '3.4.1', true);
 		wp_register_script('upk-animations', BDTUPK_ASSETS_URL . 'js/extensions/upk-animations.min.js', ['jquery'], '', true);
 
 		wp_register_script('upk-all-scripts', BDTUPK_ASSETS_URL . 'js/upk-all-scripts.min.js', [
