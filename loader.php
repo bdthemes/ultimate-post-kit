@@ -195,6 +195,8 @@ class Ultimate_Post_Kit_Loader {
 		wp_register_script('fslightbox', BDTUPK_ASSETS_URL . 'vendor/js/fslightbox.min.js', [], '3.4.1', true);
 		wp_register_script('upk-animations', BDTUPK_ASSETS_URL . 'js/extensions/upk-animations.min.js', ['jquery'], '', true);
 
+		wp_register_script('upk-ajax-loadmore', BDTUPK_ASSETS_URL . 'js/extensions/upk-ajax-loadmore.min.js', ['jquery'], '', true);
+
 		wp_register_script('upk-all-scripts', BDTUPK_ASSETS_URL . 'js/upk-all-scripts.min.js', [
 			'jquery',
 			'elementor-frontend',

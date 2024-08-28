@@ -13,6 +13,219 @@ defined('ABSPATH') || die();
 trait Global_Widget_Controls {
 
 	/**
+	 * Register Ajax Load More controls
+	 */
+	protected function register_ajax_loadmore_controls() {
+		$this->add_control(
+			'ajax_loadmore_enable',
+			[
+				'label' => esc_html__('Ajax Load More', 'ultimate-post-kit') . BDTUPK_NC . BDTUPK_PC,
+				'type'  => Controls_Manager::SWITCHER,
+				'separator' => 'before',
+				'condition' => [
+					'show_pagination!' => 'yes',
+				],
+				'classes'        => BDTUPK_IS_PC
+			]
+		);
+		$this->add_control(
+			'ajax_loadmore_items',
+			[
+				'label' => esc_html__('Load More Items', 'ultimate-post-kit'),
+				'type'  => Controls_Manager::NUMBER,
+				'default' => 3,
+				'condition' => [
+					'show_pagination!' => 'yes',
+					'ajax_loadmore_enable' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'ajax_loadmore_btn',
+			[
+				'label' => esc_html__('Load More Button', 'ultimate-post-kit'),
+				'type'  => Controls_Manager::SWITCHER,
+				'condition' => [
+					'show_pagination!' => 'yes',
+					'ajax_loadmore_enable' => 'yes',
+				],
+				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'ajax_loadmore_infinite_scroll',
+			[
+				'label' => esc_html__('Infinite Scroll', 'ultimate-post-kit'),
+				'type'  => Controls_Manager::SWITCHER,
+				'condition' => [
+					'show_pagination!' => 'yes',
+					'ajax_loadmore_enable' => 'yes',
+					'ajax_loadmore_btn!' => 'yes',
+				],
+			]
+		);
+	}
+
+	/**
+	 * Register Ajax loadmore style controls
+	 */
+	protected function register_ajax_loadmore_style_controls() {
+		$this->start_controls_section(
+			'section_style_loadmore',
+			[
+				'label'     => esc_html__('Load More', 'ultimate-post-kit'),
+				'tab'       => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'ajax_loadmore_enable' => 'yes',
+					'ajax_loadmore_btn' => 'yes',
+				],
+			]
+		);
+
+		$this->start_controls_tabs('tabs_load_button_style');
+
+		$this->start_controls_tab(
+			'tab_load_button_normal',
+			[
+				'label' => esc_html__('Normal', 'ultimate-post-kit'),
+			]
+		);
+
+		$this->add_control(
+			'load_button_color',
+			[
+				'label'     => esc_html__('Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .upk-loadmore-container .upk-loadmore-btn' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'load_button_background',
+			[
+				'label'     => esc_html__('Background', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .upk-loadmore-container .upk-loadmore-btn' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'        => 'load_button_border',
+				'selector'    => '{{WRAPPER}} .upk-loadmore-container .upk-loadmore-btn',
+			]
+		);
+
+		$this->add_responsive_control(
+			'load_button_border_radius',
+			[
+				'label'      => esc_html__('Border Radius', 'ultimate-post-kit'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .upk-loadmore-container .upk-loadmore-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => 'load_button_shadow',
+				'selector' => '{{WRAPPER}} .upk-loadmore-container .upk-loadmore-btn',
+			]
+		);
+
+		$this->add_responsive_control(
+			'load_button_padding',
+			[
+				'label'      => esc_html__('Padding', 'ultimate-post-kit'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .upk-loadmore-container .upk-loadmore-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator' => 'before',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'load_button_typography',
+				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
+				'selector' => '{{WRAPPER}} .upk-loadmore-container .upk-loadmore-btn',
+			]
+		);
+
+		$this->add_responsive_control(
+			'load_button_top_spacing',
+			[
+				'label'         => __('Top Spacing', 'ultimate-post-kit'),
+				'type'          => Controls_Manager::SLIDER,
+				'size_units'    => ['px'],
+				'selectors' => [
+					'{{WRAPPER}} .upk-loadmore-container' => 'margin-top: {{SIZE}}{{UNIT}};',
+				],
+				'separator' => 'before',
+			]
+		);
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tab_load_button_hover',
+			[
+				'label' => esc_html__('Hover', 'ultimate-post-kit'),
+			]
+		);
+
+		$this->add_control(
+			'load_button_hover_color',
+			[
+				'label'     => esc_html__('Text Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .upk-loadmore-container .upk-loadmore-btn:hover' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'load_button_hover_background',
+			[
+				'label'     => esc_html__('Background Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .upk-loadmore-container .upk-loadmore-btn:hover' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'load_button_hover_border_color',
+			[
+				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'load_button_border_border!' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-loadmore-container .upk-loadmore-btn:hover' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
+		$this->end_controls_section();
+	}
+
+	/**
 	 * Register Group of pagination controls
 	 */
 	protected function register_pagination_controls() {

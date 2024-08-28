@@ -166,6 +166,10 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.12.X [XX August 2024] =
+
+* added: Ajax load more feature added in alex grid widget
+
 = 3.12.2 [21th August 2024] =
 
 * Added: Order by Last Modified feature added in query builder
