@@ -1479,8 +1479,7 @@ class Camux_Slider extends Group_Control_Query {
 			]
 		);
 
-		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
-		$this->add_render_attribute('swiper', 'class', 'swiper-carousel ' . $swiper_class);
+		$this->add_render_attribute('swiper', 'class', 'swiper-carousel swiper');
 
 	?>
 		<div <?php echo $this->get_render_attribute_string('camux-slider'); ?>>
@@ -1593,8 +1592,7 @@ class Camux_Slider extends Group_Control_Query {
 					return;
 				}
 
-				$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
-		$this->add_render_attribute('swiper-thumbs', 'class', 'upk-camux-thumbs ' . $swiper_class);
+		$this->add_render_attribute('swiper-thumbs', 'class', 'upk-camux-thumbs swiper');
 
 	?>
 		<div class="upk-camux-slider-wrap">

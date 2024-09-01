@@ -922,8 +922,7 @@ class Category_Carousel extends Module_Base {
 		$this->render_header_attribute('category');
 
 		$skin_layout = $settings['skin_layout'];
-		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
-		$this->add_render_attribute('swiper', 'class', 'swiper-carousel upk-category-carousel-wrap upk-category-carousel-' . $skin_layout .' ' . $swiper_class );
+		$this->add_render_attribute('swiper', 'class', 'swiper-carousel swiper upk-category-carousel-wrap upk-category-carousel-' . $skin_layout );
 		?>
 		<div <?php $this->print_render_attribute_string('carousel'); ?>>
 			<div class="upk-category-carousel-wrapper">

@@ -1576,7 +1576,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .swiper-container-horizontal > .swiper-scrollbar, {{WRAPPER}} .upk-paradox-slider .swiper-horizontal > .swiper-scrollbar' => 'height: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-paradox-slider .swiper-horizontal > .swiper-scrollbar' => 'height: {{SIZE}}px;',
 				],
 				'condition'   => [
 					'show_scrollbar' => 'yes'
@@ -2110,7 +2110,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'label'   => __( 'Scrollbar Offset', 'ultimate-post-kit' ),
 				'type'    => Controls_Manager::SLIDER,
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .swiper-container-horizontal > .swiper-scrollbar, {{WRAPPER}} .upk-paradox-slider .swiper-horizontal > .swiper-scrollbar' => 'bottom: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-paradox-slider .swiper-horizontal > .swiper-scrollbar' => 'bottom: {{SIZE}}px;',
 				],
 				'condition'   => [
 					'show_scrollbar' => 'yes'
@@ -2322,8 +2322,7 @@ class Paradox_Slider extends Group_Control_Query {
 			]
 		);
 
-		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
-		$this->add_render_attribute('swiper', 'class', 'swiper-carousel ' . $swiper_class);
+		$this->add_render_attribute('swiper', 'class', 'swiper-carousel swiper');
 
 		?>
 		<div <?php $this->print_render_attribute_string( 'paradox-slider' ); ?>>

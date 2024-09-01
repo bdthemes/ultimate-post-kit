@@ -1347,8 +1347,7 @@ class Carbon_Slider extends Group_Control_Query {
 			]
 		);
 
-		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
-		$this->add_render_attribute('swiper', 'class', 'swiper-carousel ' . $swiper_class);
+		$this->add_render_attribute('swiper', 'class', 'swiper-carousel swiper');
 
 	?>
 		<div <?php $this->print_render_attribute_string('carbon-slider'); ?>>
@@ -1448,8 +1447,7 @@ class Carbon_Slider extends Group_Control_Query {
 					return;
 				}
 
-				$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
-		$this->add_render_attribute('swiper-thumbs', 'class', 'upk-carbon-thumbs ' . $swiper_class);
+		$this->add_render_attribute('swiper-thumbs', 'class', 'upk-carbon-thumbs swiper');
 
 	?>
 		<div class="upk-carbon-slider-wrap" id="<?php echo esc_html($id_wrapper); ?>">

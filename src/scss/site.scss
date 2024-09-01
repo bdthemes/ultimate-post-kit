@@ -106,9 +106,7 @@
   .swiper-pagination-fraction,
   .swiper-pagination-custom,
   .swiper-horizontal .swiper-pagination-bullets,
-  .swiper-horizontal+.swiper-pagination-bullets, 
-  .swiper-container-horizontal .swiper-pagination-bullets,
-  .swiper-container-horizontal+.swiper-pagination-bullets {
+  .swiper-horizontal+.swiper-pagination-bullets {
     bottom: -50px;
     width: 100%;
   
@@ -145,15 +143,12 @@
 
 [class*="elementor-widget-upk-"] {
   /* Swiper */
-  .swiper .elementor-lightbox-content-source,
-  .swiper-container .elementor-lightbox-content-source {
+  .swiper .elementor-lightbox-content-source {
     display: none;
   }
   
   .swiper-horizontal+.swiper-pagination-progressbar,
-  .swiper-vertical+.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite, 
-  .swiper-container-horizontal+.swiper-pagination-progressbar,
-  .swiper-container-vertical+.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
+  .swiper-vertical+.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
     width: 100%;
     height: 4px;
   }
@@ -368,8 +363,7 @@
   .upk-navigation-prev, .upk-navigation-next {
     cursor: pointer;
   }
-  .swiper-coverflow, 
-  .swiper-container-coverflow {
+  .swiper-coverflow {
     padding-top: 15px;
 
     .swiper-slide {
@@ -377,8 +371,7 @@
     }
   }
 
-  .swiper-horizontal>.swiper-pagination-progress, 
-  .swiper-container-horizontal>.swiper-pagination-progress {
+  .swiper-horizontal>.swiper-pagination-progress {
     top: auto;
     bottom: 0;
   }
@@ -387,21 +380,18 @@
 .elementor-pagination-position-inside {
 
   .swiper-pagination-fraction,
-  .swiper-horizontal>.swiper-pagination-bullets, 
-  .swiper-container-horizontal>.swiper-pagination-bullets {
+  .swiper-horizontal>.swiper-pagination-bullets {
     bottom: 10px;
   }
 }
 
 .elementor-pagination-position-outside {
-  .swiper, 
-  .swiper-container {
+  .swiper {
     padding-bottom: 40px;
   }
 
   .swiper-pagination-fraction,
-  .swiper-horizontal>.swiper-pagination-bullets, 
-  .swiper-container-horizontal>.swiper-pagination-bullets {
+  .swiper-horizontal>.swiper-pagination-bullets {
     bottom: 0;
   }
 }
@@ -1369,24 +1359,3 @@
     display: none !important;
   }
 }
-
-// Loading issue
-// [class*="elementor-widget-upk-"] {
-//   .swiper,
-//   .swiper-container {
-//     &:not(.swiper-horizontal),
-//     &:not(.swiper-container-horizontal) {
-//       opacity: 0;
-
-//       div>div {
-//         max-width: 350px;
-//       }
-//     }
-
-//     &.swiper-horizontal, 
-//     &.swiper-container-horizontal {
-//       opacity: 1;
-//       transition: opacity 400ms ease-out;
-//     }
-//   }
-// }

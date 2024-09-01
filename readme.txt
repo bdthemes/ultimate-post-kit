@@ -166,6 +166,10 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.12.X [XX August 2024] =
+
+* Updated: Swiper library old support completely removed
+
 = 3.12.3 [29th August 2024] =
 
 * Added: Ajax load more feature added in alex grid widget
