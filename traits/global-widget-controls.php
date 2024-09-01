@@ -1689,7 +1689,7 @@ trait Global_Widget_Controls {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .swiper-container-horizontal > .swiper-scrollbar' => 'height: {{SIZE}}px;',
+					'{{WRAPPER}} .swiper-horizontal > .swiper-scrollbar' => 'height: {{SIZE}}px;',
 				],
 				'condition' => [
 					'show_scrollbar' => 'yes'
@@ -2223,7 +2223,7 @@ trait Global_Widget_Controls {
 				'label'     => __('Scrollbar Offset', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
-					'{{WRAPPER}} .swiper-container-horizontal > .swiper-scrollbar' => 'bottom: {{SIZE}}px;',
+					'{{WRAPPER}} .swiper-horizontal > .swiper-scrollbar' => 'bottom: {{SIZE}}px;',
 				],
 				'condition' => [
 					'show_scrollbar' => 'yes'

@@ -1714,9 +1714,8 @@ class Pholox_Slider extends Group_Control_Query
 			return;
 		}
 
-		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
-		$this->add_render_attribute('swiper', 'class', 'swiper-carousel ' . $swiper_class);
-		$this->add_render_attribute('swiper-thumbs', 'class', 'swiper-thumbs ' . $swiper_class);
+		$this->add_render_attribute('swiper', 'class', 'swiper-carousel swiper');
+		$this->add_render_attribute('swiper-thumbs', 'class', 'swiper-thumbs swiper');
 
 		$this->render_header();
 	?>

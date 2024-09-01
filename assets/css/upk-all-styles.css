@@ -2820,18 +2820,14 @@
 [class*=elementor-widget-upk-] .swiper-pagination-fraction,
 [class*=elementor-widget-upk-] .swiper-pagination-custom,
 [class*=elementor-widget-upk-] .swiper-horizontal .swiper-pagination-bullets,
-[class*=elementor-widget-upk-] .swiper-horizontal + .swiper-pagination-bullets,
-[class*=elementor-widget-upk-] .swiper-container-horizontal .swiper-pagination-bullets,
-[class*=elementor-widget-upk-] .swiper-container-horizontal + .swiper-pagination-bullets {
+[class*=elementor-widget-upk-] .swiper-horizontal + .swiper-pagination-bullets {
   bottom: -50px;
   width: 100%;
 }
 [class*=elementor-widget-upk-] .swiper-pagination-fraction .swiper-pagination-bullet,
 [class*=elementor-widget-upk-] .swiper-pagination-custom .swiper-pagination-bullet,
 [class*=elementor-widget-upk-] .swiper-horizontal .swiper-pagination-bullets .swiper-pagination-bullet,
-[class*=elementor-widget-upk-] .swiper-horizontal + .swiper-pagination-bullets .swiper-pagination-bullet,
-[class*=elementor-widget-upk-] .swiper-container-horizontal .swiper-pagination-bullets .swiper-pagination-bullet,
-[class*=elementor-widget-upk-] .swiper-container-horizontal + .swiper-pagination-bullets .swiper-pagination-bullet {
+[class*=elementor-widget-upk-] .swiper-horizontal + .swiper-pagination-bullets .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
   margin: 0 5px;
@@ -2859,14 +2855,11 @@
 [class*=elementor-widget-upk-] {
   /* Swiper */
 }
-[class*=elementor-widget-upk-] .swiper .elementor-lightbox-content-source,
-[class*=elementor-widget-upk-] .swiper-container .elementor-lightbox-content-source {
+[class*=elementor-widget-upk-] .swiper .elementor-lightbox-content-source {
   display: none;
 }
 [class*=elementor-widget-upk-] .swiper-horizontal + .swiper-pagination-progressbar,
-[class*=elementor-widget-upk-] .swiper-vertical + .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
-[class*=elementor-widget-upk-] .swiper-container-horizontal + .swiper-pagination-progressbar,
-[class*=elementor-widget-upk-] .swiper-container-vertical + .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
+[class*=elementor-widget-upk-] .swiper-vertical + .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
   width: 100%;
   height: 4px;
 }
@@ -3033,33 +3026,27 @@
 [class*=elementor-widget-upk-] .upk-navigation-prev, [class*=elementor-widget-upk-] .upk-navigation-next {
   cursor: pointer;
 }
-[class*=elementor-widget-upk-] .swiper-coverflow,
-[class*=elementor-widget-upk-] .swiper-container-coverflow {
+[class*=elementor-widget-upk-] .swiper-coverflow {
   padding-top: 15px;
 }
-[class*=elementor-widget-upk-] .swiper-coverflow .swiper-slide,
-[class*=elementor-widget-upk-] .swiper-container-coverflow .swiper-slide {
+[class*=elementor-widget-upk-] .swiper-coverflow .swiper-slide {
   transition-property: transform, border, background;
 }
-[class*=elementor-widget-upk-] .swiper-horizontal > .swiper-pagination-progress,
-[class*=elementor-widget-upk-] .swiper-container-horizontal > .swiper-pagination-progress {
+[class*=elementor-widget-upk-] .swiper-horizontal > .swiper-pagination-progress {
   top: auto;
   bottom: 0;
 }
 
 .elementor-pagination-position-inside .swiper-pagination-fraction,
-.elementor-pagination-position-inside .swiper-horizontal > .swiper-pagination-bullets,
-.elementor-pagination-position-inside .swiper-container-horizontal > .swiper-pagination-bullets {
+.elementor-pagination-position-inside .swiper-horizontal > .swiper-pagination-bullets {
   bottom: 10px;
 }
 
-.elementor-pagination-position-outside .swiper,
-.elementor-pagination-position-outside .swiper-container {
+.elementor-pagination-position-outside .swiper {
   padding-bottom: 40px;
 }
 .elementor-pagination-position-outside .swiper-pagination-fraction,
-.elementor-pagination-position-outside .swiper-horizontal > .swiper-pagination-bullets,
-.elementor-pagination-position-outside .swiper-container-horizontal > .swiper-pagination-bullets {
+.elementor-pagination-position-outside .swiper-horizontal > .swiper-pagination-bullets {
   bottom: 0;
 }
 

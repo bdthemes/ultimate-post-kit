@@ -1409,8 +1409,7 @@ class Snog_Slider extends Group_Control_Query {
 			]
 		);
 
-		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
-		$this->add_render_attribute('swiper', 'class', 'upk-main-slider ' . $swiper_class);
+		$this->add_render_attribute('swiper', 'class', 'upk-main-slider swiper');
 
 		?>
 		<div <?php echo $this->get_render_attribute_string( 'snog-slider' ); ?>>
@@ -1553,9 +1552,8 @@ class Snog_Slider extends Group_Control_Query {
 			return;
 		}
 
-		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
-		$this->add_render_attribute('swiper-thumbs', 'class', 'upk-snog-thumbs ' . $swiper_class);
-		$this->add_render_attribute('swiper-content', 'class', 'upk-content-slider ' . $swiper_class);
+		$this->add_render_attribute('swiper-thumbs', 'class', 'upk-snog-thumbs swiper');
+		$this->add_render_attribute('swiper-content', 'class', 'upk-content-slider swiper');
 
 		?>
 		<div class="upk-snog-slider-wrap" id="<?php echo esc_attr($id); ?>">
