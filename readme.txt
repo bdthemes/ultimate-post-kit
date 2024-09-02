@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 3.12.3
+Stable tag: 3.12.4
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.6.1
@@ -166,7 +166,7 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
-= 3.12.X [XX August 2024] =
+= 3.12.4 [2nd September 2024] =
 
 * Updated: Swiper library old support completely removed
 
