@@ -1,6 +1,23 @@
 (function ($, elementor) {
   "use strict";
 
+  function postKitObserveTarget(target, callback) {
+    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    // Set the rootMargin to trigger when the target is 10% past the viewport
+    options.rootMargin = options.rootMargin || '10% 0px 0px 0px';
+    var observer = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          callback(entry);
+
+          if (!options.loop)
+            observer.unobserve(entry.target); // Unobserve after the first intersection
+        }
+      });
+    }, options);
+    observer.observe(target);
+  }
+
   var extensionAnimations = function ($scope, $) {
     var $animations = $scope.find(".upk-in-animation");
 
@@ -28,16 +45,14 @@
       }, delay);
     }
 
-    elementorFrontend.waypoint(
-      jQuery(".upk-in-animation .upk-item"),
-      function () {
-        itemQueue.push($(this));
-        processItemQueue();
-      },
-      {
-        offset: "90%",
-      },
-    );
+    postKitObserveTarget($($animations[0]).find('.upk-item')[0], function () {
+      itemQueue.push($($animations[0]).find('.upk-item'));
+      processItemQueue();
+    }, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.8
+    });
   };
 
   jQuery(window).on("elementor/frontend/init", function () {
