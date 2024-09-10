@@ -1,6 +1,24 @@
 /* eslint-disable prettier/prettier */
 (function ($, elementor) {
     "use strict";
+
+    function postKitObserveTarget(target, callback) {
+        var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+        // Set the rootMargin to trigger when the target is 10% past the viewport
+        options.rootMargin = options.rootMargin || '10% 0px 0px 0px';
+        var observer = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    callback(entry);
+
+                    if (!options.loop)
+                        observer.unobserve(entry.target); // Unobserve after the first intersection
+                }
+            });
+        }, options);
+        observer.observe(target);
+    }
+
     const widgetAjaxGrid = function ($scope, $) {
         let ajaxGrid = $scope.find(".upk-ajax-grid"),
             loadmoreSettings = ajaxGrid.data("loadmore"),
@@ -11,13 +29,9 @@
             animation =
                 parentSettings.upk_in_animation_show !== undefined ? "yes" : "";
         }
-
         if (!ajaxGrid.length) {
             return;
         }
-
-
-
         if (loadmoreSettings.loadmore_enable !== "yes") {
             return;
         }
@@ -85,16 +99,16 @@
                                 }
                             }, delay);
                         }
-                        elementorFrontend.waypoint(
-                            $(".upk-ajax-grid .upk-item:not(.is-inview)"),
-                            function () {
-                                itemQueue.push($(this));
-                                processItemQueue();
-                            },
-                            {
-                                offset: "99%",
-                            }
-                        );
+
+                        postKitObserveTarget($('.upk-ajax-grid .upk-item:not(.is-inview)')[0], function () {
+                            itemQueue.push($('.upk-ajax-grid .upk-item:not(.is-inview)'));
+                            processItemQueue();
+                        }, {
+                            root: null,
+                            rootMargin: '0px',
+                            threshold: 0.8
+                        });
+                        
                     }
                 },
             });
