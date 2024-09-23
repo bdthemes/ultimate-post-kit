@@ -618,13 +618,13 @@ class News_Ticker extends Group_Control_Query {
 
 		<span class="upk-news-ticker-date bdt-margin-small-right" title="<?php esc_html_e( 'Published on:', 'ultimate-post-kit' ); ?> <?php echo get_the_date(); ?>">
 			<?php if ('yes' == $settings['date_reverse']) : ?>
-				<span class="upk-news-ticker-date-day"><?php echo esc_attr( $news_day ); ?></span>
+				<span class="upk-news-ticker-date-day"><?php echo wp_kses_post( $news_day ); ?></span>
 				<span class="upk-news-ticker-date-sep">/</span>
-				<span class="upk-news-ticker-date-month"><?php echo esc_attr( $news_month ); ?></span>
+				<span class="upk-news-ticker-date-month"><?php echo wp_kses_post( $news_month ); ?></span>
 			<?php else: ?>
-				<span class="upk-news-ticker-date-month"><?php echo esc_attr( $news_month ); ?></span>
+				<span class="upk-news-ticker-date-month"><?php echo wp_kses_post( $news_month ); ?></span>
 				<span class="upk-news-ticker-date-sep">/</span>
-				<span class="upk-news-ticker-date-day"><?php echo esc_attr( $news_day ); ?></span>
+				<span class="upk-news-ticker-date-day"><?php echo wp_kses_post( $news_day ); ?></span>
 			<?php endif; ?>
 			<span>:</span>
 		</span>
@@ -643,7 +643,7 @@ class News_Ticker extends Group_Control_Query {
 		?>
 
 		<span class="upk-news-ticker-time bdt-margin-small-right" title="<?php esc_html_e( 'Published on:', 'ultimate-post-kit' ); ?> <?php echo get_the_date(); ?> <?php echo get_the_time(); ?>">
-			<span class="bdt-text-uppercase"><?php echo esc_attr( $news_hour ); ?></span>
+			<span class="bdt-text-uppercase"><?php echo wp_kses_post( $news_hour ); ?></span>
 			<span>:</span>
 		</span>
 
