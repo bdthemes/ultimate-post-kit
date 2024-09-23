@@ -1051,7 +1051,7 @@ class Newsletter extends Module_Base {
 		<div class="upk-newsletter-wrapper">
 
 			<?php if (!empty($settings['before_text'])) : ?>
-				<div class="upk-newsletter-before-text"><?php echo esc_attr($settings['before_text']); ?></div>
+				<div class="upk-newsletter-before-text"><?php echo esc_html($settings['before_text']); ?></div>
 			<?php endif; ?>
 
 			<form action="<?php echo esc_url(site_url()) ?>/wp-admin/admin-ajax.php" class="upk-newsletter">
@@ -1066,12 +1066,12 @@ class Newsletter extends Module_Base {
 
 				<?php if ($settings['show_fname'] == 'yes') : ?>
 					<div <?php $this->print_render_attribute_string('input-wrapper'); ?>>
-						<input type="text" name="fname" placeholder="<?php echo esc_attr($settings['fname_field_placeholder']); ?>" class="upk-input" />
+						<input type="text" name="fname" placeholder="<?php echo esc_html($settings['fname_field_placeholder']); ?>" class="upk-input" />
 					</div>
 				<?php endif; ?>
 
 				<div <?php $this->print_render_attribute_string('input-wrapper'); ?>>
-					<input type="email" name="email" placeholder="<?php echo esc_attr($settings['email_field_placeholder']); ?>" required class="upk-input" />
+					<input type="email" name="email" placeholder="<?php echo esc_html($settings['email_field_placeholder']); ?>" required class="upk-input" />
 					<input type="hidden" name="action" value="ultimate_post_kit_mailchimp_subscribe" />
 					<!-- we need action parameter to receive ajax request in WordPress -->
 				</div>
@@ -1093,7 +1093,7 @@ class Newsletter extends Module_Base {
 
 			<!-- after text -->
 			<?php if (!empty($settings['after_text'])) : ?>
-				<div class="upk-newsletter-after-text"><?php echo esc_attr($settings['after_text']); ?></div>
+				<div class="upk-newsletter-after-text"><?php echo esc_html($settings['after_text']); ?></div>
 			<?php endif; ?>
 
 		</div><!-- end newsletter-signup -->
