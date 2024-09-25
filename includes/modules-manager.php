@@ -116,7 +116,7 @@ final class Manager
             }
             // register widget JS
             if (ModuleService::has_module_script( $module_id, BDTUPK_MODULES_PATH )) {
-                wp_register_script('upk-' . $module_id, BDTUPK_URL . 'assets/js/widgets/upk-' . $module_id . $suffix . '.js', ['jquery', 'elementor-frontend'], BDTUPK_VER, true);
+                wp_register_script('upk-' . $module_id, BDTUPK_URL . 'assets/js/widgets/upk-' . $module_id . $suffix . '.js', ['jquery'], BDTUPK_VER, true);
             }
         }
 
