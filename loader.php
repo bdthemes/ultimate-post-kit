@@ -199,7 +199,6 @@ class Ultimate_Post_Kit_Loader {
 
 		wp_register_script( 'upk-all-scripts', BDTUPK_ASSETS_URL . 'js/upk-all-scripts.min.js', [ 
 			'jquery',
-			'elementor-frontend',
 			'scrolline'
 		], BDTUPK_VER, true );
 	}
@@ -228,8 +227,7 @@ class Ultimate_Post_Kit_Loader {
 
 
 		wp_register_script( 'upk-site', BDTUPK_ASSETS_URL . 'js/upk-site.min.js', [ 
-			'jquery',
-			'elementor-frontend'
+			'jquery'
 		], BDTUPK_VER, true ); // tooltip file should be separate
 
 		wp_enqueue_script( 'upk-site' );

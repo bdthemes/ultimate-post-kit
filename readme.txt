@@ -166,6 +166,10 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.12.X [Xth October 2024] =
+
+* Fixed: JS dependency Error fixed ( Thanks to Hasan )
+
 = 3.12.9 [9th October 2024] =
 
 * Added: Date format added in timeline widget
