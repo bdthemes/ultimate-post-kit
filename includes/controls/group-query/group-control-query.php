@@ -224,9 +224,6 @@ abstract class Group_Control_Query extends Module_Base {
                 'label'   => __('Offset', 'ultimate-post-kit') . BDTUPK_NC,
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 0,
-                'condition' => [
-                    'posts_source!' => 'current_query',
-                ]
             ]
         );
 
@@ -293,9 +290,6 @@ abstract class Group_Control_Query extends Module_Base {
 					'modified'      => __( 'Last Modified', 'ultimate-post-kit' ),
                     'rand'          => __('Random', 'ultimate-post-kit'),
                 ],
-                'condition' => [
-                    'posts_source!' => 'current_query',
-                ]
             ]
         );
 
@@ -309,9 +303,6 @@ abstract class Group_Control_Query extends Module_Base {
                     'asc'  => __('ASC', 'ultimate-post-kit'),
                     'desc' => __('DESC', 'ultimate-post-kit'),
                 ],
-                'condition' => [
-                    'posts_source!' => 'current_query',
-                ]
             ]
         );
 
@@ -535,7 +526,7 @@ abstract class Group_Control_Query extends Module_Base {
 
         // fixing custom offset
         ## https://codex.wordpress.org/Making_Custom_Queries_using_Offset_and_Pagination
-        add_action('pre_get_posts', [$this, 'fix_query_offset'], 1);
+        add_action('pre_get_posts', [$this, 'fix_query'], 1);
         add_filter('found_posts', [$this, 'prefix_adjust_offset_pagination'], 1, 2);
 
         return $args;
@@ -700,7 +691,12 @@ abstract class Group_Control_Query extends Module_Base {
      * @param WP_Query $query fix the offset
      */
 
-    function fix_query_offset(&$query) {
+    function fix_query(&$query) {
+
+        $settings = $this->get_settings_for_display();
+
+        $query->set('order', $settings['posts_order']);
+        $query->set('orderby', $settings['posts_orderby']);
 
         if (isset($query->query_vars['offset_to_fix'])) {
 
@@ -709,6 +705,13 @@ abstract class Group_Control_Query extends Module_Base {
                 $query->set('offset', $page_offset);
             } else {
                 $query->set('offset', $query->query_vars['offset_to_fix']);
+            }
+        } else {
+            if ($query->is_paged) {
+                $page_offset = $settings['posts_offset'] + (($query->query_vars['paged'] - 1) * $query->query_vars['posts_per_page']);
+                $query->set('offset', $page_offset);
+            } else {
+                $query->set('offset', $settings['posts_offset']);
             }
         }
     }
