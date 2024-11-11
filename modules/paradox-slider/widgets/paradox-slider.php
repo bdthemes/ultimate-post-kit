@@ -70,7 +70,7 @@ class Paradox_Slider extends Group_Control_Query {
 	}
 
 	protected function is_dynamic_content(): bool {
-		return false;
+		return true;
 	}
 
 	protected function register_controls() {

@@ -67,7 +67,7 @@ class Social_Share extends Module_Base {
 	}
 
 	protected function is_dynamic_content(): bool {
-		return false;
+		return true;
 	}
 
 	protected function register_controls() {

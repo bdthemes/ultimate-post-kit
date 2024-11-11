@@ -166,6 +166,10 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 == Changelog ==
 
+= 3.12.XX [XXth November 2024] =
+
+* Updated: Dynamic post content escaped from elementor caching
+
 = 3.12.11 [28th October 2024] =
 
 * Added: Offset, Order, Order By arg added in Current Query
