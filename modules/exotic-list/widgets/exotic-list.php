@@ -293,7 +293,7 @@
 						],
 					],
 					'selectors' => [
-						'{{WRAPPER}} .upk-exotic-list .upk-image-wrap' => 'height: {{SIZE}}{{UNIT}}; min-height: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .upk-exotic-list' => 'height: {{SIZE}}{{UNIT}};',
 					],
 				]
 			);
