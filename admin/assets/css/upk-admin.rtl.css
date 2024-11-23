@@ -9,6 +9,9 @@
   outline: none;
   box-shadow: none;
 }
+.ultimate-post-kit-dashboard.wrap .upk-count-wrap {
+  flex: none;
+}
 .ultimate-post-kit-dashboard.wrap .bdt-dashboard-navigation {
   background-color: #fff;
   border-radius: 5px;
@@ -735,10 +738,8 @@
   background-image: url("../images/server.svg");
 }
 .upk-dashboard-panel .bdt-card.upk-elementor-addons {
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: contain;
-  background-image: url("../images/elementor-banner.svg");
+  background: linear-gradient(-86deg, #08AEEC, #ffffff 100%);
+  height: 220px;
 }
 .upk-dashboard-panel .bdt-card.upk-elementor-addons a {
   position: absolute;
@@ -749,6 +750,10 @@
   top: 0;
   bottom: 0;
   z-index: 1;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-image: url(../images/elementor-banner.svg);
+  background-size: cover;
 }
 
 @media (min-width: 1400px) {
@@ -841,17 +846,11 @@
   font-weight: 700;
 }
 
-.upk-dashboard-panel .upk-purchase-button {
-  position: absolute;
-  top: -120px;
-  left: 20px;
-}
-
 .upk-purchase-button a {
   color: #ffffff;
   border-style: none;
   border-radius: 4px 4px 4px 4px;
-  box-shadow: 0px 10px 40px 0px rgba(0, 130, 117, 0.29);
+  box-shadow: 0px 10px 40px 0px rgba(8, 201, 114, 0.25);
   padding: 18px 45px 18px 45px;
   font-weight: 700;
   cursor: pointer;
@@ -864,14 +863,14 @@
   text-align: center;
   overflow: hidden;
   background-color: transparent;
-  background-image: linear-gradient(-145deg, #20e2ad 0%, #08aeec 100%);
+  background-image: linear-gradient(-145deg, #60DF54 0%, #08C972 100%);
   text-decoration: none;
   letter-spacing: 1px;
 }
 
 .upk-purchase-button a:hover {
-  background-image: linear-gradient(-145deg, #08aeec 0%, #20e2ad 100%);
-  box-shadow: 0px 10px 40px 0px rgba(0, 130, 117, 0.46);
+  background-image: linear-gradient(-145deg, #08C972 0%, #60DF54 100%);
+  box-shadow: 0px 10px 40px 0px rgba(8, 201, 114, 0.35);
 }
 
 /* license page style */
@@ -1115,8 +1114,103 @@
   text-shadow: -1px 1px 1px #eee;
 }
 
-@media (min-width: 1200px) {
-  .upk-dashboard-panel .bdt-card-body {
-    padding: 45px 45px;
+#adminmenu #toplevel_page_ultimate_post_kit_options a[href="admin.php?page=ultimate_post_kit_options#ultimate_post_kit_get_pro"] {
+  font-weight: 600;
+  background-image: linear-gradient(-45deg, #60DF54 0%, #08C972 100%);
+  color: #ffffff;
+  margin: 3px 10px 0;
+  display: block;
+  text-align: center;
+  border-radius: 3px;
+  transition: background-image 0.3s ease, color 0.3s ease;
+  /* Transition for background and color */
+}
+
+#adminmenu #toplevel_page_ultimate_post_kit_options a[href="admin.php?page=ultimate_post_kit_options#ultimate_post_kit_get_pro"]:hover {
+  box-shadow: none;
+  background-image: linear-gradient(-45deg, #08C972 0%, #60DF54 100%);
+  /* Change the gradient on hover */
+  color: #ffffff;
+  /* Ensure text color stays consistent */
+}
+
+#bdt-ultimate_post_kit_get_pro {
+  letter-spacing: 2px;
+  overflow: hidden;
+  padding: 15px;
+  margin: 20px 5px;
+}
+#bdt-ultimate_post_kit_get_pro span:nth-child(1) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to left, #60DF54, #08C972);
+  animation: animate1 2s linear infinite;
+}
+#bdt-ultimate_post_kit_get_pro span:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, #60DF54, #08C972);
+  animation: animate2 2s linear infinite;
+  animation-delay: 1s;
+}
+#bdt-ultimate_post_kit_get_pro span:nth-child(3) {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #60DF54, #08C972);
+  animation: animate3 2s linear infinite;
+}
+#bdt-ultimate_post_kit_get_pro span:nth-child(4) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to top, #60DF54, #08C972);
+  animation: animate4 2s linear infinite;
+  animation-delay: 1s;
+}
+#bdt-ultimate_post_kit_get_pro:after {
+  display: none;
+}
+
+@keyframes animate1 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@keyframes animate2 {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+@keyframes animate3 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes animate4 {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
   }
 }
