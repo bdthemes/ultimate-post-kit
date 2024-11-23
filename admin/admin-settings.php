@@ -497,7 +497,7 @@ class UltimatePostKit_Admin_Settings {
 
         <div class="upk-dashboard-panel" bdt-scrollspy="target: > div > div > .bdt-card; cls: bdt-animation-slide-bottom-small; delay: 300">
 
-            <div class="bdt-grid" bdt-grid bdt-height-match="target: > div > .bdt-card">
+            <div class="bdt-grid bdt-grid-medium" bdt-grid bdt-height-match="target: > div > .bdt-card">
                 <div class="bdt-width-1-2@m bdt-width-1-4@l">
                     <div class="upk-widget-status bdt-card bdt-card-body" <?php echo $track_nw_msg; ?>>
 
@@ -507,27 +507,29 @@ class UltimatePostKit_Admin_Settings {
                         ?>
 
 
-                        <div class="upk-count-canvas-wrap bdt-flex bdt-flex-between">
-                            <div class="upk-count-wrap">
-                                <h1 class="upk-feature-title">
-                                    <?php echo esc_html_x('All Widgets', 'Frontend', 'ultimate-post-kit'); ?>
-                                </h1>
-                                <div class="upk-widget-count">
-                                    <?php echo esc_html_x('Used:', 'Frontend', 'ultimate-post-kit'); ?>
-                                    <b><?php echo esc_html($used_widgets); ?></b>
+                        <div class="upk-count-canvas-wrap">
+                            <h1 class="upk-feature-title">
+                                <?php echo esc_html_x('All Widgets', 'Frontend', 'ultimate-post-kit'); ?>
+                            </h1>
+                            <div class="bdt-flex bdt-flex-between bdt-flex-middle">
+                                <div class="upk-count-wrap">
+                                    <div class="upk-widget-count">
+                                        <?php echo esc_html_x('Used:', 'Frontend', 'ultimate-post-kit'); ?>
+                                        <b><?php echo esc_html($used_widgets); ?></b>
+                                    </div>
+                                    <div class="upk-widget-count">
+                                        <?php echo esc_html_x('Unused:', 'Frontend', 'ultimate-post-kit'); ?>
+                                        <b><?php echo esc_html($un_used_widgets); ?></b>
+                                    </div>
+                                    <div class="upk-widget-count">
+                                        <?php echo esc_html_x('Total:', 'Frontend', 'ultimate-post-kit'); ?>
+                                        <b><?php echo esc_html($used_widgets) + esc_html($un_used_widgets); ?></b>
+                                    </div>
                                 </div>
-                                <div class="upk-widget-count">
-                                    <?php echo esc_html_x('Unused:', 'Frontend', 'ultimate-post-kit'); ?>
-                                    <b><?php echo esc_html($un_used_widgets); ?></b>
-                                </div>
-                                <div class="upk-widget-count">
-                                    <?php echo esc_html_x('Total:', 'Frontend', 'ultimate-post-kit'); ?>
-                                    <b><?php echo esc_html($used_widgets) + esc_html($un_used_widgets); ?></b>
-                                </div>
-                            </div>
 
-                            <div class="upk-canvas-wrap">
-                                <canvas id="bdt-db-total-status" style="height: 120px; width: 120px;" data-label="Total Widgets Status - (<?php echo esc_attr($used_widgets) + esc_attr($un_used_widgets); ?>)" data-labels="<?php echo esc_attr('Used, Unused'); ?>" data-value="<?php echo esc_attr($used_widgets) . ',' . esc_attr($un_used_widgets); ?>" data-bg="#FFD166, #fff4d9" data-bg-hover="#0673e1, #e71522"></canvas>
+                                <div class="upk-canvas-wrap">
+                                    <canvas id="bdt-db-total-status" style="height: 100px; width: 100px;" data-label="Total Widgets Status - (<?php echo esc_attr($used_widgets) + esc_attr($un_used_widgets); ?>)" data-labels="<?php echo esc_attr('Used, Unused'); ?>" data-value="<?php echo esc_attr($used_widgets) . ',' . esc_attr($un_used_widgets); ?>" data-bg="#FFD166, #fff4d9" data-bg-hover="#0673e1, #e71522"></canvas>
+                                </div>
                             </div>
                         </div>
 
@@ -536,34 +538,36 @@ class UltimatePostKit_Admin_Settings {
                 <div class="bdt-width-1-2@m bdt-width-1-4@l">
                     <div class="upk-widget-status bdt-card bdt-card-body" <?php echo $track_nw_msg; ?>>
 
-                        <div class="upk-count-canvas-wrap bdt-flex bdt-flex-between">
-                            <div class="upk-count-wrap">
-                                <h1 class="upk-feature-title">
-                                    <?php echo esc_html_x('Active', 'Frontend', 'ultimate-post-kit'); ?>
-                                </h1>
-                                <div class="upk-widget-count">
-                                    <?php echo esc_html_x('Core:', 'Frontend', 'ultimate-post-kit'); ?>
-                                    <b id="bdt-total-widgets-status-core"></b>
+                        <div class="upk-count-canvas-wrap">
+                            <h1 class="upk-feature-title">
+                                <?php echo esc_html_x('Active', 'Frontend', 'ultimate-post-kit'); ?>
+                            </h1>
+                            <div class="bdt-flex bdt-flex-between bdt-flex-middle">
+                                <div class="upk-count-wrap">
+                                    <div class="upk-widget-count">
+                                        <?php echo esc_html_x('Core:', 'Frontend', 'ultimate-post-kit'); ?>
+                                        <b id="bdt-total-widgets-status-core"></b>
+                                    </div>
+                                    <div class="upk-widget-count">
+                                        <?php echo esc_html_x('Extensions:', 'Frontend', 'ultimate-post-kit'); ?>
+                                        <b id="bdt-total-widgets-status-extensions"></b>
+                                    </div>
+                                    <div class="upk-widget-count">
+                                        <?php echo esc_html_x('Total:', 'Frontend', 'ultimate-post-kit'); ?>
+                                        <b id="bdt-total-widgets-status-heading"></b>
+                                    </div>
                                 </div>
-                                <div class="upk-widget-count">
-                                    <?php echo esc_html_x('Extensions:', 'Frontend', 'ultimate-post-kit'); ?>
-                                    <b id="bdt-total-widgets-status-extensions"></b>
-                                </div>
-                                <div class="upk-widget-count">
-                                    <?php echo esc_html_x('Total:', 'Frontend', 'ultimate-post-kit'); ?>
-                                    <b id="bdt-total-widgets-status-heading"></b>
-                                </div>
-                            </div>
 
-                            <div class="upk-canvas-wrap">
-                                <canvas id="bdt-total-widgets-status" style="height: 120px; width: 120px;" data-label="Total Active Widgets Status" data-labels="<?php echo esc_attr('Core, Extensions'); ?>" data-bg="#0680d6, #E6F9FF" data-bg-hover="#0673e1, #b6f9e8">
-                                </canvas>
+                                <div class="upk-canvas-wrap">
+                                    <canvas id="bdt-total-widgets-status" style="height: 100px; width: 100px;" data-label="Total Active Widgets Status" data-labels="<?php echo esc_attr('Core, Extensions'); ?>" data-bg="#0680d6, #E6F9FF" data-bg-hover="#0673e1, #b6f9e8">
+                                    </canvas>
+                                </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <div class="bdt-width-1-2@m bdt-width-1-2@l">
+                <div class="bdt-width-1-2@m bdt-width-2-4@l">
                     <div class="upk-elementor-addons bdt-card bdt-card-body">
                         <a target="_blank" rel="" href="https://www.elementpack.pro/elements-demo/"></a>
                     </div>
@@ -582,8 +586,8 @@ class UltimatePostKit_Admin_Settings {
                 </div>
             <?php endif; ?>
 
-            <div class="bdt-grid" bdt-grid bdt-height-match="target: > div > .bdt-card">
-                <div class="bdt-width-1-3@m upk-support-section">
+            <div class="bdt-grid bdt-grid-medium" bdt-grid bdt-height-match="target: > div > .bdt-card">
+                <div class="bdt-width-2-5@m upk-support-section">
                     <div class="upk-support-content bdt-card bdt-card-body">
                         <h1 class="upk-feature-title">
                             <?php echo esc_html_x('Support And Feedback', 'Frontend', 'ultimate-post-kit'); ?>
@@ -606,7 +610,7 @@ class UltimatePostKit_Admin_Settings {
                     </div>
                 </div>
 
-                <div class="bdt-width-2-3@m">
+                <div class="bdt-width-3-5@m">
                     <div class="bdt-card bdt-card-body upk-system-requirement">
                         <h1 class="upk-feature-title bdt-margin-small-bottom">
                             <?php echo esc_html_x('System Requirement', 'Frontend', 'ultimate-post-kit'); ?>
@@ -616,7 +620,7 @@ class UltimatePostKit_Admin_Settings {
                 </div>
             </div>
 
-            <div class="bdt-grid" bdt-grid bdt-height-match="target: > div > .bdt-card">
+            <div class="bdt-grid bdt-grid-medium" bdt-grid bdt-height-match="target: > div > .bdt-card">
                 <div class="bdt-width-1-2@m upk-support-section">
                     <div class="bdt-card bdt-card-body upk-feedback-bg">
                         <h1 class="upk-feature-title">
@@ -687,17 +691,30 @@ class UltimatePostKit_Admin_Settings {
 
             <div class="bdt-grid" bdt-grid bdt-height-match="target: > div > .bdt-card" style="max-width: 800px; margin-left: auto; margin-right: auto;">
                 <div class="bdt-width-1-1@m upk-comparision bdt-text-center">
-                    <h1 class="bdt-text-bold">
-                        <?php echo esc_html_x('WHY GO WITH PRO?', 'Frontend', 'ultimate-post-kit'); ?>
-                    </h1>
-                    <h2>
-                        <?php echo esc_html_x('Just Compare With Ultimate Post Kit Free Vs Pro', 'Frontend', 'ultimate-post-kit'); ?>
-                    </h2>
+
+                    <div class="bdt-flex bdt-flex-between bdt-flex-middle">
+                        <div class="bdt-text-left">
+                            <h1 class="bdt-text-bold">
+                                <?php echo esc_html_x('WHY GO WITH PRO?', 'Frontend', 'ultimate-post-kit'); ?>
+                            </h1>
+                            <h2>
+                                <?php echo esc_html_x('Just Compare With Ultimate Post Kit Free Vs Pro', 'Frontend', 'ultimate-post-kit'); ?>
+                            </h2>
+
+                        </div>
+                        <?php if (true !== _is_upk_pro_activated()) : ?>
+                            <div class="upk-purchase-button">
+                                <a href="https://postkit.pro/#a851ca7" target="_blank">
+                                    <?php echo esc_html_x('Purchase Now', 'Frontend', 'ultimate-post-kit'); ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
 
 
                     <div>
 
-                        <ul class="bdt-list bdt-list-divider bdt-text-left bdt-text-normal" style="font-size: 16px;">
+                        <ul class="bdt-list bdt-list-divider bdt-text-left bdt-text-normal" style="font-size: 15px;">
 
 
                             <li class="bdt-text-bold">
@@ -758,24 +775,7 @@ class UltimatePostKit_Admin_Settings {
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                 </div>
                             </li>
-                            <li class="">
-                                <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">
-                                        <?php echo esc_html_x('Rooten Theme Pro Features', 'Frontend', 'ultimate-post-kit'); ?>
-                                    </div>
-                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-no"></span></div>
-                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                                </div>
-                            </li>
-                            <li class="">
-                                <div class="bdt-grid">
-                                    <div class="bdt-width-expand@m">
-                                        <?php echo esc_html_x('Priority Support', 'Frontend', 'ultimate-post-kit'); ?>
-                                    </div>
-                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-no"></span></div>
-                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                                </div>
-                            </li>
+                            
                             <li class="">
                                 <div class="bdt-grid">
                                     <div class="bdt-width-expand@m">
@@ -839,17 +839,35 @@ class UltimatePostKit_Admin_Settings {
                                     <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                                 </div>
                             </li>
+                            <li class="">
+                                <div class="bdt-grid">
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Rooten Theme Pro Features', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
+                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-no"></span></div>
+                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
+                                </div>
+                            </li>
+                            <li class="">
+                                <div class="bdt-grid">
+                                    <div class="bdt-width-expand@m">
+                                        <?php echo esc_html_x('Priority Support', 'Frontend', 'ultimate-post-kit'); ?>
+                                    </div>
+                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-no"></span></div>
+                                    <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
+                                </div>
+                            </li>
 
                         </ul>
 
 
-                        <div class="upk-dashboard-divider"></div>
+                        <!-- <div class="upk-dashboard-divider"></div> -->
 
 
-                        <div class="upk-more-features">
-                            <ul class="bdt-list bdt-list-divider bdt-text-left" style="font-size: 16px;">
+                        <div class="upk-more-features bdt-card bdt-card-body bdt-margin-medium-top bdt-padding-large">
+                            <ul class="bdt-list bdt-list-divider bdt-text-left" style="font-size: 15px;">
                                 <li>
-                                    <div class="bdt-grid">
+                                    <div class="bdt-grid bdt-grid-small">
                                         <div class="bdt-width-1-3@m">
                                             <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('Incredibly Advanced', 'Frontend', 'ultimate-post-kit'); ?>
@@ -866,7 +884,7 @@ class UltimatePostKit_Admin_Settings {
                                 </li>
 
                                 <li>
-                                    <div class="bdt-grid">
+                                    <div class="bdt-grid bdt-grid-small">
                                         <div class="bdt-width-1-3@m">
                                             <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('Super-Flexible Widgets', 'Frontend', 'ultimate-post-kit'); ?>
@@ -883,7 +901,7 @@ class UltimatePostKit_Admin_Settings {
                                 </li>
 
                                 <li>
-                                    <div class="bdt-grid">
+                                    <div class="bdt-grid bdt-grid-small">
                                         <div class="bdt-width-1-3@m">
                                             <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('Special Discount!', 'Frontend', 'ultimate-post-kit'); ?>
@@ -900,7 +918,7 @@ class UltimatePostKit_Admin_Settings {
                                 </li>
 
                                 <li>
-                                    <div class="bdt-grid">
+                                    <div class="bdt-grid bdt-grid-small">
                                         <div class="bdt-width-1-3@m">
                                             <span class="dashicons dashicons-heart"></span>
                                             <?php echo esc_html_x('Trusted Payment Methods', 'Frontend', 'ultimate-post-kit'); ?>
@@ -920,7 +938,7 @@ class UltimatePostKit_Admin_Settings {
                             <!-- <div class="upk-dashboard-divider"></div> -->
 
                             <?php if (true !== _is_upk_pro_activated()) : ?>
-                                <div class="upk-purchase-button">
+                                <div class="upk-purchase-button bdt-margin-medium-top">
                                     <a href="https://postkit.pro/#a851ca7" target="_blank">
                                         <?php echo esc_html_x('Purchase Now', 'Frontend', 'ultimate-post-kit'); ?>
                                     </a>

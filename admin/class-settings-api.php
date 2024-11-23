@@ -85,16 +85,16 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                 return;
             }
 
-            $matched_height = ' bdt-grid bdt-height-match="target: > div > .upk-option-item-inner"';
+            // $matched_height = ' bdt-grid bdt-height-match="target: > div > .upk-option-item-inner"';
             $data_settings = '';
 
             foreach ((array) $wp_settings_sections[$page] as $section) {
 
                 if ($section['id'] == 'ultimate_post_kit_api_settings') {
-                    $section_class = ' bdt-child-width-1-3@xl';
+                    $section_class = ' bdt-grid-small bdt-child-width-1-3@xl';
                 } elseif ($section['id'] == 'ultimate_post_kit_other_settings') {
-                    $data_settings = $matched_height;
-                    $section_class = ' bdt-child-width-1-3@xl';
+                    // $data_settings = $matched_height;
+                    $section_class = ' bdt-grid-small bdt-child-width-1-3@xl';
                 } else {
                     $section_class = ' bdt-grid-small bdt-child-width-1-4@xl';
                 }
@@ -774,7 +774,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             }
 
             if (true !== _is_upk_pro_activated()) {
-                $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="5">%2$s</a></li>', 'ultimate_post_kit_get_pro', esc_html__('Get Pro', 'ultimate-post-kit'));
+                $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="5"><span></span><span></span><span></span><span></span>%2$s</a></li>', 'ultimate_post_kit_get_pro', esc_html__('Get Pro', 'ultimate-post-kit'));
             }
 
             // if ( !defined('BDTUPK_LO') ) {
