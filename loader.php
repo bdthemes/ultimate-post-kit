@@ -135,17 +135,6 @@ class Ultimate_Post_Kit_Loader {
 				require_once BDTUPK_PATH . 'includes/live-copy/class-live-copy.php';
 			}
 		}
-
-		if ( is_admin() ) {
-			if ( ! defined( 'BDTUPK_CH' ) ) {
-				// Notice class
-				require_once BDTUPK_ADMIN_PATH . 'admin-notice.php';
-				require_once BDTUPK_ADMIN_PATH . 'admin.php';
-
-				// Load admin class for admin related content process
-				new Admin();
-			}
-		}
 	}
 
 	/**
@@ -337,6 +326,17 @@ class Ultimate_Post_Kit_Loader {
 		add_action( 'elementor/preview/enqueue_styles', [ $this, 'enqueue_preview_styles' ] );
 	}
 
+	public function init(){
+		if ( ! defined( 'BDTUPK_CH' ) && is_admin() ) {
+			// Notice class
+			require_once BDTUPK_ADMIN_PATH . 'admin-notice.php';
+			require_once BDTUPK_ADMIN_PATH . 'admin.php';
+
+			// Load admin class for admin related content process
+			new Admin();
+		}
+	}
+
 	/**
 	 * Ultimate_Post_Kit_Loader constructor.
 	 */
@@ -348,6 +348,8 @@ class Ultimate_Post_Kit_Loader {
 
 		// Finally hooked up all things here
 		$this->setup_hooks();
+
+		add_action( 'init', [ $this, 'init' ] );
 	}
 }
 

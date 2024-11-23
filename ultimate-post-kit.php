@@ -22,6 +22,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'BDTUPK_VER', '3.12.13' );
 define( 'BDTUPK__FILE__', __FILE__ );
 
+/**
+ * Loads translations
+ *
+ * @return void
+ */
+
+if ( ! function_exists( 'ultimate_post_kit_load_textdomain' ) ) {
+	function ultimate_post_kit_load_textdomain() {
+		load_plugin_textdomain( 'ultimate-post-kit', false, basename( dirname( __FILE__ ) ) . '/languages' );
+	}
+	add_action( 'init', 'ultimate_post_kit_load_textdomain' );
+}
+
 
 if ( ! function_exists( '_is_upk_pro_installed' ) ) {
 
@@ -80,7 +93,6 @@ require_once ( BDTUPK_INC_PATH . 'ultimate-post-kit-filters.php' );
  * Also loaded the language file from here
  */
 function ultimate_post_kit_load_plugin() {
-	load_plugin_textdomain( 'ultimate-post-kit', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 	if ( ! did_action( 'elementor/loaded' ) ) {
 		add_action( 'admin_notices', 'ultimate_post_kit_fail_load' );
