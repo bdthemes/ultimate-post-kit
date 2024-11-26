@@ -991,6 +991,9 @@
   .ultimate-post-kit-dashboard.wrap .bdt-card {
     background-image: none;
   }
+  .ultimate-post-kit-dashboard.wrap .bdt-card.upk-elementor-addons {
+    background-image: linear-gradient(86deg, #08AEEC, #ffffff 100%);
+  }
   .ultimate-post-kit-dashboard.wrap .bdt-button {
     width: 100%;
   }
