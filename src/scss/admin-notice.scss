@@ -7,9 +7,11 @@
     padding: 0 !important;
     border: 0 !important;
     box-shadow: none !important;
+
     .notice-dismiss {
         padding: 15px;
     }
+
     .bdt-license-notice-global {
         border-left: 4px solid #60df54 !important;
         display: flex;
@@ -30,6 +32,7 @@
                 margin: 0 0 10px;
                 font-size: 20px;
             }
+
             p {
                 margin: 0;
                 color: #5f6169;
@@ -52,9 +55,11 @@
             font-weight: 500;
             text-decoration: none;
         }
+
         .bdt-button-allow {
             color: #fff;
         }
+
         .bdt-button-skip {
             border: 0;
             color: #08c972;
@@ -82,5 +87,24 @@
         &.ultimate_post_kit .bdt-button-skip:hover {
             background-color: rgba(86, 220, 88, 0.2);
         }
+    }
+}
+
+#adminmenu #toplevel_page_ultimate_post_kit_options a[href="admin.php?page=ultimate_post_kit_options_get_pro"] {
+    font-weight: 600;
+    background-image: linear-gradient(45deg, #60DF54 0%, #08C972 100%);
+    color: #ffffff;
+    margin: 3px 10px 0;
+    display: block;
+    text-align: center;
+    border-radius: 3px;
+    transition: background-image 0.3s ease, color 0.3s ease;
+    &:hover {
+        box-shadow: none;
+        background-image: linear-gradient(45deg, #08C972 0%, #60DF54 100%);
+        color: #ffffff;
+    }
+    &:focus {
+        box-shadow: none;
     }
 }

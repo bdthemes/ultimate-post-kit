@@ -494,7 +494,8 @@
 #ultimate_post_kit_api_settings_page .upk-options > .upk-option-item > .upk-option-item-inner {
   padding: 35px;
 }
-#ultimate_post_kit_api_settings_page input, #ultimate_post_kit_api_settings_page textarea {
+#ultimate_post_kit_api_settings_page input,
+#ultimate_post_kit_api_settings_page textarea {
   border-color: #ddd;
 }
 #ultimate_post_kit_api_settings_page input[type=text]:focus,
@@ -991,6 +992,9 @@
   .ultimate-post-kit-dashboard.wrap .bdt-card {
     background-image: none;
   }
+  .ultimate-post-kit-dashboard.wrap .bdt-card.upk-elementor-addons {
+    background-image: linear-gradient(86deg, #08AEEC, #ffffff 100%);
+  }
   .ultimate-post-kit-dashboard.wrap .bdt-button {
     width: 100%;
   }
@@ -1112,26 +1116,6 @@
   font-weight: bold;
   color: #f44336;
   text-shadow: 1px 1px 1px #eee;
-}
-
-#adminmenu #toplevel_page_ultimate_post_kit_options a[href="admin.php?page=ultimate_post_kit_options#ultimate_post_kit_get_pro"] {
-  font-weight: 600;
-  background-image: linear-gradient(45deg, #60DF54 0%, #08C972 100%);
-  color: #ffffff;
-  margin: 3px 10px 0;
-  display: block;
-  text-align: center;
-  border-radius: 3px;
-  transition: background-image 0.3s ease, color 0.3s ease;
-  /* Transition for background and color */
-}
-
-#adminmenu #toplevel_page_ultimate_post_kit_options a[href="admin.php?page=ultimate_post_kit_options#ultimate_post_kit_get_pro"]:hover {
-  box-shadow: none;
-  background-image: linear-gradient(45deg, #08C972 0%, #60DF54 100%);
-  /* Change the gradient on hover */
-  color: #ffffff;
-  /* Ensure text color stays consistent */
 }
 
 #bdt-ultimate_post_kit_get_pro {
