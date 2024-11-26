@@ -23,10 +23,9 @@ jQuery(document).ready(function ($) {
 
             jQuery('#bdt-total-widgets-status').attr('data-value', total_widget_active_status);
             jQuery('#bdt-total-widgets-status-core').text(total_widget_active_status[0]);
-            jQuery('#bdt-total-widgets-status-3rd').text(total_widget_active_status[1]);
-            jQuery('#bdt-total-widgets-status-extensions').text(total_widget_active_status[2]);
+            jQuery('#bdt-total-widgets-status-extensions').text(total_widget_active_status[1]);
 
-            jQuery('#bdt-total-widgets-status-heading').text(total_widget_active_status[0] + total_widget_active_status[1] + total_widget_active_status[2]);
+            jQuery('#bdt-total-widgets-status-heading').text(total_widget_active_status[0] + total_widget_active_status[1]);
 
         }
 

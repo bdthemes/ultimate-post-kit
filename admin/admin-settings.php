@@ -133,44 +133,6 @@ class UltimatePostKit_Admin_Settings {
     }
 
     /**
-     * Get used only separate 3rdParty widgets.
-     *
-     * @access public
-     * @return array
-     * @since 6.0.0
-     *
-     */
-
-    public static function get_used_only_3rdparty() {
-
-        $used_widgets = array();
-
-        if (class_exists('Elementor\Modules\Usage\Module')) {
-
-            $module     = Module::instance();
-            $elements   = $module->get_formatted_usage('raw');
-            $upk_widgets = self::get_upk_only_3rdparty_names();
-
-            if (is_array($elements) || is_object($elements)) {
-
-                foreach ($elements as $post_type => $data) {
-                    foreach ($data['elements'] as $element => $count) {
-                        if (in_array($element, $upk_widgets, true)) {
-                            if (isset($used_widgets[$element])) {
-                                $used_widgets[$element] += $count;
-                            } else {
-                                $used_widgets[$element] = $count;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        return $used_widgets;
-    }
-
-    /**
      * Get unused widgets.
      *
      * @access public
@@ -212,30 +174,6 @@ class UltimatePostKit_Admin_Settings {
         $upk_widgets = self::get_upk_only_widgets();
 
         $used_widgets = self::get_used_only_widgets();
-
-        $unused_widgets = array_diff($upk_widgets, array_keys($used_widgets));
-
-        return $unused_widgets;
-    }
-
-    /**
-     * Get unused separate 3rdparty widgets.
-     *
-     * @access public
-     * @return array
-     * @since 6.0.0
-     *
-     */
-
-    public static function get_unused_only_3rdparty() {
-
-        if (!current_user_can('install_plugins')) {
-            die();
-        }
-
-        $upk_widgets = self::get_upk_only_3rdparty_names();
-
-        $used_widgets = self::get_used_only_3rdparty();
 
         $unused_widgets = array_diff($upk_widgets, array_keys($used_widgets));
 
@@ -340,6 +278,7 @@ class UltimatePostKit_Admin_Settings {
 
         //initialize settings
         $this->settings_api->admin_init();
+        $this->upk_redirect_to_get_pro();
     }
 
     /**
@@ -348,6 +287,14 @@ class UltimatePostKit_Admin_Settings {
      * @access public
      *
      */
+
+     // Redirect to Ultimate Post Kit Pro pricing page
+    public function upk_redirect_to_get_pro() {
+        if (isset($_GET['page']) && $_GET['page'] === self::PAGE_ID . '_get_pro') {
+            wp_redirect('https://postkit.pro/pricing/');
+            exit;
+        }
+    }
 
     public function admin_menu() {
         add_menu_page(
@@ -388,7 +335,6 @@ class UltimatePostKit_Admin_Settings {
         );
 
         if (!defined('BDTUPK_LO')) {
-
             add_submenu_page(
                 self::PAGE_ID,
                 BDTUPK_TITLE,
@@ -397,15 +343,6 @@ class UltimatePostKit_Admin_Settings {
                 self::PAGE_ID . '#ultimate_post_kit_other_settings',
                 [$this, 'display_page']
             );
-
-            // add_submenu_page(
-            //     self::PAGE_ID,
-            //     BDTUPK_TITLE,
-            //     esc_html__('License', 'ultimate-post-kit'),
-            //     'manage_options',
-            //     self::PAGE_ID . '#ultimate_post_kit_license_settings',
-            //     [$this, 'display_page']
-            // );
         }
 
         if (true !== _is_upk_pro_activated()) {
@@ -414,7 +351,7 @@ class UltimatePostKit_Admin_Settings {
                 BDTUPK_TITLE,
                 esc_html__('Get Pro', 'ultimate-post-kit'),
                 'manage_options',
-                self::PAGE_ID . '#ultimate_post_kit_get_pro',
+                self::PAGE_ID . '_get_pro',
                 [$this, 'display_page']
             );
         }
@@ -504,6 +441,9 @@ class UltimatePostKit_Admin_Settings {
                         <?php
                         $used_widgets    = count(self::get_used_widgets());
                         $un_used_widgets = count(self::get_unused_widgets());
+
+                        $core = $used_widgets + $un_used_widgets;
+                        
                         ?>
 
 
@@ -1358,6 +1298,13 @@ class UltimatePostKit_Admin_Settings {
                     jQuery(this).attr("disabled", true);
                 });
 
+            });
+
+            jQuery(document).ready(function ($) {
+                const getProLink = $('a[href="admin.php?page=ultimate_post_kit_options_get_pro"]');
+                if (getProLink.length) {
+                    getProLink.attr('target', '_blank');
+                }
             });
         </script>
     <?php
