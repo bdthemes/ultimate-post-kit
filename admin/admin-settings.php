@@ -507,7 +507,7 @@ class UltimatePostKit_Admin_Settings {
 
                     </div>
                 </div>
-                <div class="bdt-width-1-2@m bdt-width-2-4@l">
+                <div class="bdt-width-1-1@m bdt-width-1-2@l">
                     <div class="upk-elementor-addons bdt-card bdt-card-body">
                         <a target="_blank" rel="" href="https://www.elementpack.pro/elements-demo/"></a>
                     </div>
