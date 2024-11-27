@@ -1,26 +1,26 @@
-=== Ultimate Post Kit Addons For Elementor - (Post Grid, Post Carousel, Post Slider, Category List, Post Tabs, Timeline, Post Ticker, Tag Cloud) ===
+=== Ultimate Post Kit Addons For Elementor - (Post Grid, Post Carousel, Post Slider, Category List, Post Tabs, Timeline, Post Ticker and Tag Cloud) ===
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 3.12.14
+Stable tag: 3.12.15
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.7.1
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.25.9
+Elementor tested up to: 3.25.10
 
-Best Post Addon for Elementor WordPress Plugin with 75+ Most Popular Elements that need your everyday blog website building.
+Best Post Addon for Elementor WordPress Plugin with 80+ Most Popular Elements that need your everyday blog website building.
 
 == Description ==
 
-Ultimate Post Kit addons for **[Elementor](https://wordpress.org/plugins/elementor/)** is the first-ever addon that lets you design blogging websites with a completely new and refreshing outlook. This is the best tool for bloggers, marketers, and post-type web owners.
-Ultimate Post Kit addons for Elementor provides fine-tuned post interface having the all-famous drag-n-drop editing feature of Elementor. The number of unique widgets by Ultimate Post Kit helps you present your blogs or posts with SEO-optimized layouts, cool sliders, eye-catchy designs, and more.
+Ultimate Post Kit addons for **[Elementor](https://wordpress.org/plugins/elementor/)** is the first-ever addon that lets you design blogging websites with a completely new and refreshing outlook. This is the best tool for bloggers, marketers and post-type web owners.
+Ultimate Post Kit addons for Elementor provides fine-tuned post interface having the all-famous drag-n-drop editing feature of Elementor. The number of unique widgets by Ultimate Post Kit helps you present your blogs or posts with SEO-optimized layouts, cool sliders, eye-catchy designs and more.
 
 **[Ultimate Post Kit](https://postkit.pro/)** doesn’t require you any coding knowledge. The plugin is simple enough to be used by beginners, yet so amazing that professional developers will love the fully customizable widgets for a pro web design experience. Use Ultimate Post Kit to design your blogging site in minutes with a next-gen blogging architect to help you capture more traffic.
 
-Ultimate Post Kit is developed using the best code practices for WordPress, having the highest compatibility with the latest PHP, CSS, JS, HTML5, and WordPress core vital. Instead of slowing down, Ultimate Post Kit boosts your website with an intelligent SEO-optimized site-booster framework. Just one plugin gets you many facilities!
+Ultimate Post Kit is developed using the best code practices for WordPress, having the highest compatibility with the latest PHP, CSS, JS, HTML5 and WordPress core vital. Instead of slowing down, Ultimate Post Kit boosts your website with an intelligent SEO-optimized site-booster framework. Just one plugin gets you many facilities!
 
 Ultimate Post Kit supports and translates into multiple languages with the RTL feature. (open for more translations)
 
@@ -32,87 +32,154 @@ https://www.youtube.com/watch?v=er0uGv1yjig
 **Introducing Ultimate Post Kit Elementor Addon**
 
 
-== Free Widgets for Lifetime 🔥 ==
+== Free Widgets for Elementor 🔥 ==
 
 = Grid 🧊 =
 
-**[Alex Grid](https://postkit.pro/demo/alex-grid/)** | **[Alice Grid](https://postkit.pro/demo/alice-grid/)** | **[Alter Grid](https://postkit.pro/demo/alter-grid/)** | **[Amox Grid](https://postkit.pro/demo/amox-grid/)** | **[Elite Grid](https://postkit.pro/demo/elite-grid/)** | **[Gratis Grid](https://postkit.pro/demo/gratis-grid/)** | **[Hazel Grid](https://postkit.pro/demo/hazel-grid/)** | **[Maple Grid](https://postkit.pro/demo/maple-grid/)** | **[Ramble Grid](https://postkit.pro/demo/ramble-grid/)**
+* [Alex Grid](https://postkit.pro/demo/alex-grid/) - Modern grid with a stunning glassmorphism effect, offering sleek blog post designs. Perfect for visually appealing websites.  
+* [Alice Grid](https://postkit.pro/demo/alice-grid/) - Minimalist and compact grid, crafted for mobile-friendly blog layouts. Ideal for enhancing readability on smaller screens.  
+* [Alter Grid](https://postkit.pro/demo/alter-grid/) - Classic and detailed grid layout, ideal for news portals, gaming sites and lifestyle blogs.  
+* [Amox Grid](https://postkit.pro/demo/amox-grid/) - Stylish grid featuring customizable hover effects with sleek transitions, perfect for creative and professional blogs.  
+* [Elite Grid](https://postkit.pro/demo/elite-grid/) - High-end grid emphasizing authorship with premium graphics and detailed post information. Best for showcasing contributor highlights.  
+* [Gratis Grid](https://postkit.pro/demo/gratis-grid/) - Clean and minimalistic grid, designed for smooth and seamless blog presentations. Great for simple yet elegant styles.  
+* [Hazel Grid](https://postkit.pro/demo/hazel-grid/) - Simple and visually-driven grid focusing on high-quality images for blogs. Reduces unnecessary clutter to highlight content.  
+* [Maple Grid](https://postkit.pro/demo/maple-grid/) - Comprehensive grid displaying tags, categories and post types. Versatile for news, lifestyle or event blogs.  
+* [Ramble Grid](https://postkit.pro/demo/ramble-grid/) - Interactive grid revealing hidden details upon hover, providing a unique browsing experience for users.
 
 = List 🔢 =
 
-**[Buzz List](https://postkit.pro/demo/buzz-list/)** | **[Exotic List](https://postkit.pro/demo/exotic-list/)** | **[Fanel List](https://postkit.pro/demo/fanel-list/)** | **[Featured List](https://postkit.pro/demo/featured-list/)** | **[Harold List](https://postkit.pro/demo/harold-list/)** | **[Scott List](https://postkit.pro/demo/scott-list/)** | **[Tiny List](https://postkit.pro/demo/tiny-list/)** 
+* [Buzz List](https://postkit.pro/demo/buzz-list/) - Dynamic list with bold counters and hidden cover images for featured blogs. Ideal for creating engaging blog sections.  
+* [Exotic List](https://postkit.pro/demo/exotic-list/) - Vibrant blog list with hover-sensitive image triggers and bold titles for maximum user interaction.  
+* [Fanel List](https://postkit.pro/demo/fanel-list/) - Informative post list layout showcasing detailed post information in a compact and attractive style.  
+* [Featured List](https://postkit.pro/demo/featured-list/) - User-friendly list designed to highlight featured posts on homepage blog sections. Highly customizable for better visibility.  
+* [Harold List](https://postkit.pro/demo/harold-list/) - Efficient and navigable list, perfect for guiding readers to related content in a structured format.  
+* [Scott List](https://postkit.pro/demo/scott-list/) - Simple blog navigator featuring numbered posts and basic details, designed for easy content browsing.  
+* [Tiny List](https://postkit.pro/demo/tiny-list/) - Compact and lightweight list for guiding readers across blog pages, acting as a miniature post navigator.  
 
 = Carousel 🌅 =
 
-**[Alex Carousel](https://postkit.pro/demo/alex-carousel/)** | **[Alice Carousel](https://postkit.pro/demo/alice-carousel/)** | **[Alter Carousel](https://postkit.pro/demo/alter-carousel/)** | **[Amox Carousel](https://postkit.pro/demo/amox-carousel/)** | **[Buzz List Carousel](https://postkit.pro/demo/buzz-list-carousel/)** | **[Category Carousel](https://postkit.pro/demo/category-carousel/)** | **[Elite Carousel](https://postkit.pro/demo/elite-carousel/)** | **[Harold List Carousel](https://postkit.pro/demo/harold-list-carousel/)** | **[Hazel Carousel](https://postkit.pro/demo/hazel-carousel/)** | **[Maple Carousel](https://postkit.pro/demo/maple-carousel/)** | **[Ramble Carousel](https://postkit.pro/demo/ramble-carousel/)** 
+* [Alex Carousel](https://postkit.pro/demo/alex-carousel/) - Stylish post carousel with smooth transitions and image-centered display. Great for portfolios or galleries.  
+* [Alice Carousel](https://postkit.pro/demo/alice-carousel/) - Clean and minimalist carousel layout for displaying posts with titles and meta details.  
+* [Alter Carousel](https://postkit.pro/demo/alter-carousel/) - Adaptive carousel design with customizable settings for modern content presentation.  
+* [Amox Carousel](https://postkit.pro/demo/amox-carousel/) - Dynamic multi-slide carousel for showcasing images or blogs in a scrollable view.  
+* [Buzz List Carousel](https://postkit.pro/demo/buzz-list-carousel/) - Interactive carousel combining list-based navigation with rotating post previews.  
+* [Category Carousel](https://postkit.pro/demo/category-carousel/) - Efficient post carousel filtered by categories for targeted audience engagement.  
+* [Elite Carousel](https://postkit.pro/demo/elite-carousel/) - Premium carousel with sleek design and hover effects for high-end websites.  
+* [Harold List Carousel](https://postkit.pro/demo/harold-list-carousel/) - Unique carousel blending list structure with slider navigation for diverse content.  
+* [Hazel Carousel](https://postkit.pro/demo/hazel-carousel/) - Multi-functional carousel with focus on high-quality imagery and clickable posts.  
+* [Maple Carousel](https://postkit.pro/demo/maple-carousel/) - Advanced carousel with detailed post summaries, perfect for blog showcases.  
+* [Ramble Carousel](https://postkit.pro/demo/ramble-carousel/) - Engaging carousel featuring horizontal scrolling and post highlights for a seamless UX.  
 
 = Slider 🎴 =
 
-**[Camux Slider](https://postkit.pro/demo/camux-slider/)** | **[Carbon Slider](https://postkit.pro/demo/carbon-slider/)** | **[Crystal Slider](https://postkit.pro/demo/crystal-slider/)** | **[Noxe Slider](https://postkit.pro/demo/noxe-slider/)** | **[Paradox Slider](https://postkit.pro/demo/paradox-slider/)** | **[Pholox Slider](https://postkit.pro/demo/pholox-slider/)** | **[Skide Slider](https://postkit.pro/demo/skide-slider/)** | **[Snog Slider](https://postkit.pro/demo/snog-slider/)** 
+* [Camux Slider](https://postkit.pro/demo/camux-slider/) - Modern and responsive slider offering full-width image or video displays. Perfect for immersive content presentation.  
+* [Carbon Slider](https://postkit.pro/demo/carbon-slider/) - Minimalistic slider emphasizing bold captions over high-resolution visuals, suitable for professional portfolios or presentations.  
+* [Crystal Slider](https://postkit.pro/demo/crystal-slider/) - Eye-catching slider with crystal-clear transitions, customizable animations and vibrant design for impactful storytelling.  
+* [Noxe Slider](https://postkit.pro/demo/noxe-slider/) - Unique slider with parallax effects, creating an engaging and cutting-edge visual experience for any audience.  
+* [Paradox Slider](https://postkit.pro/demo/paradox-slider/) - Innovative slider featuring overlapping layers, dynamic layouts and smooth animations for creative website designs.  
+* [Pholox Slider](https://postkit.pro/demo/pholox-slider/) - Intuitive slider supporting both auto-play and manual navigation, offering flexibility for diverse web projects.  
+* [Skide Slider](https://postkit.pro/demo/skide-slider/) - Interactive slider designed for showcasing content with bold typography and sharp visual hierarchy. Ideal for modern branding.  
+* [Snog Slider](https://postkit.pro/demo/snog-slider/) - Lightweight slider optimized for fast performance, seamless transitions and mobile-friendly displays for versatile usage.  
 
 = Timeline 🎏 =
 
-**[Oras Timeline](https://postkit.pro/demo/timeline/)** 
+* [Oras Timeline](https://postkit.pro/demo/timeline/) - Elegant timeline widget for narrating events or milestones in chronological order.  
 
 = Others 💠 =
 
-**[Author](https://postkit.pro/demo/author/)** | **[Banner](https://postkit.pro/demo/banner/)** | **[News Ticker](https://postkit.pro/demo/news-ticker/)** | **[Newsletter](https://postkit.pro/demo/newsletter/)** | **[Post Accordion](https://postkit.pro/demo/post-accordion/)** | **[Post Category](https://postkit.pro/demo/post-category/)** | **[Reading Progress Bar](https://postkit.pro/demo/reading-progress/)** | **[Recent Comments](https://postkit.pro/demo/recent-comments/)** | **[Social share](https://postkit.pro/demo/social-share/)** | **[Social Count - Static](https://postkit.pro/demo/static-social-count/)** | **[Tag Cloud](https://postkit.pro/demo/tag-cloud/)** 
+* [Author](https://postkit.pro/demo/author/) - Showcase author details with a personalized and professional layout, complete with profile images and bios.  
+* [Banner](https://postkit.pro/demo/banner/) - Design engaging banners for promotions, ads or announcements, supporting vibrant images and compelling text.  
+* [News Ticker](https://postkit.pro/demo/news-ticker/) - Scrollable news ticker widget to display updates or breaking news in a compact and attention-grabbing format.  
+* [Newsletter](https://postkit.pro/demo/newsletter/) - User-friendly subscription form to grow your email audience effectively, featuring customizable fields and layouts.  
+* [Post Accordion](https://postkit.pro/demo/post-accordion/) - Interactive accordion layout for organized post summaries, ideal for conserving space and enhancing readability.  
+* [Post Category](https://postkit.pro/demo/post-category/) - Filter posts by categories for better content discoverability, perfect for blogs or news portals.  
+* [Reading Progress Bar](https://postkit.pro/demo/reading-progress/) - Visual progress indicator enhancing the reader's experience by showing how far they've read.  
+* [Recent Comments](https://postkit.pro/demo/recent-comments/) - Highlight latest comments dynamically, encouraging user engagement and community interaction.  
+* [Social share](https://postkit.pro/demo/social-share/) - Interactive social share buttons for seamless content sharing across popular platforms.  
+* [Social Count - Static](https://postkit.pro/demo/static-social-count/) - Display static social media follower counts attractively, boosting your brand's credibility.  
+* [Tag Cloud](https://postkit.pro/demo/tag-cloud/) - Stylish tag cloud for showcasing popular tags in your content, encouraging user exploration and engagement.  
 
-== Free Extensions for Lifetime 🔥 ==
+== Free Extensions 🔥 ==
 
-**[Animations](https://postkit.pro/demo/alter-grid/)** 
+* [Animations](https://postkit.pro/demo/alter-grid/) - Add modern animations for an interactive user experience without extra cost.  
 
-== Free Features for Lifetime 🔥 ==
+== Free Features 🔥 ==
 
-**[Live Copy or Paste](https://www.elementpack.pro/knowledge-base/how-to-use-live-copy-option/)** | **[Duplicator](https://www.elementpack.pro/knowledge-base/how-to-use-element-pack-duplicator/)** 
+* [Live Copy or Paste](https://www.elementpack.pro/knowledge-base/how-to-use-live-copy-option/) - Copy and paste designs effortlessly across websites for consistent branding.  
+* [Duplicator](https://www.elementpack.pro/knowledge-base/how-to-use-element-pack-duplicator/) - Duplicate widgets and sections for faster editing and layout replication.  
 
-More widgets & extensions are coming soon...
+More widgets and extensions are coming soon...
 
-== Pro version Widgets 🔥 ==
+== Elementor Pro Widgets 🔥 ==
 
 = Grid 🧊 =
 
-**[Kalon Grid](https://postkit.pro/demo/kalon-grid/)** | **[Pixina Grid](https://postkit.pro/demo/pixina-grid/)** | **[Wixer Grid](https://postkit.pro/demo/wixer-grid/)** 
+* [Kalon Grid](https://postkit.pro/demo/kalon-grid/) - A flexible grid layout with vibrant visuals, ideal for modern content presentation.  
+* [Pixina Grid](https://postkit.pro/demo/pixina-grid/) - Sleek and stylish grid layout designed for professional portfolio displays, emphasizing visual appeal.  
+* [Wixer Grid](https://postkit.pro/demo/wixer-grid/) - Dynamic grid showcasing content with smooth animations and hover effects, enhancing user interaction.  
 
 = List 🔢 =
 
-**[Classic List](https://postkit.pro/demo/classic-list/)** | **[Candy List](https://postkit.pro/demo/candy-list/)** | **[Welsh List](https://postkit.pro/demo/welsh-list/)** 
+* [Classic List](https://postkit.pro/demo/classic-list/) - Timeless list style with clean formatting, perfect for news and blogs.  
+* [Candy List](https://postkit.pro/demo/candy-list/) - Fun and engaging list design with colorful accents for creative projects.  
+* [Welsh List](https://postkit.pro/demo/welsh-list/) - Minimalist list layout with an elegant focus on text and icons.  
 
 = Gallery 💠 =
 
-**[Featured Gallery](https://postkit.pro/demo/featured-gallery/)** 
+* [Featured Gallery](https://postkit.pro/demo/featured-gallery/) - Stunning gallery widget with customizable layouts for impactful visuals.  
 
 = Carousel 🌅 =
 
-**[Eldora Carousel](https://postkit.pro/demo/eldora-carousel/)** | **[Gratis Carousel](https://postkit.pro/demo/gratis-carousel/)** | **[Kalon Carousel](https://postkit.pro/demo/kalon-carousel/)** | **[Pixina Carousel](https://postkit.pro/demo/pixina-carousel/)** | **[Wixer Carousel](https://postkit.pro/demo/wixer-carousel/)** 
+* [Eldora Carousel](https://postkit.pro/demo/eldora-carousel/) - A refined carousel layout with multi-layered content transitions, offering a smooth browsing experience.  
+* [Gratis Carousel](https://postkit.pro/demo/gratis-carousel/) - Lightweight and responsive carousel perfect for minimalistic themes, ensuring fast loading and clean design.  
+* [Kalon Carousel](https://postkit.pro/demo/kalon-carousel/) - Versatile carousel featuring sleek design and engaging hover effects, ideal for interactive showcases.  
+* [Pixina Carousel](https://postkit.pro/demo/pixina-carousel/) - Vibrant carousel widget tailored for creative and colorful websites, adding flair to your content.  
+* [Wixer Carousel](https://postkit.pro/demo/wixer-carousel/) - Dynamic carousel with bold animations for eye-catching presentations, keeping users engaged.  
 
 = Slider 🎴 =
 
-**[Atlas Slider](https://postkit.pro/demo/atlas-slider/)** | **[Berlin Slider](https://postkit.pro/demo/berlin-slider/)** | **[Foxico Slider](https://postkit.pro/demo/foxico-slider/)** | **[Hansel Slider](https://postkit.pro/demo/hansel-slider/)** | **[Iconic Slider](https://postkit.pro/demo/iconic-slider/)** | **[Optick Slider](https://postkit.pro/demo/optick-slider/)** | **[Sline Slider](https://postkit.pro/demo/sline-slider/)** 
+* [Atlas Slider](https://postkit.pro/demo/atlas-slider/) - Bold and professional slider layout with smooth, interactive transitions, perfect for impactful presentations.  
+* [Berlin Slider](https://postkit.pro/demo/berlin-slider/) - Clean slider design with full-screen visuals and sharp typography, ideal for modern websites.  
+* [Foxico Slider](https://postkit.pro/demo/foxico-slider/) - Sophisticated slider emphasizing content hierarchy and vibrant imagery to captivate viewers.  
+* [Hansel Slider](https://postkit.pro/demo/hansel-slider/) - Unique slider with intricate animations and hover-responsive elements for an engaging experience.  
+* [Iconic Slider](https://postkit.pro/demo/iconic-slider/) - Trendy slider widget with customizable icons and overlay text effects for a stylish look.  
+* [Optick Slider](https://postkit.pro/demo/optick-slider/) - Innovative slider with smooth auto-play functionality and modern visuals for sleek presentations.  
+* [Sline Slider](https://postkit.pro/demo/sline-slider/) - Minimalistic slider focused on typography and concise presentations, great for portfolios or blogs.  
 
 = Tabs 🧀 =
 
-**[Forbes Tabs](https://postkit.pro/demo/forbes-tabs/)** | **[Holux Tabs](https://postkit.pro/demo/holux-tabs/)** 
+* [Forbes Tabs](https://postkit.pro/demo/forbes-tabs/) - Elegant tab layout with smooth transitions and clean interface.  
+* [Holux Tabs](https://postkit.pro/demo/holux-tabs/) - Interactive tabs featuring a creative design for better content organization.  
 
 = Timeline 🎏 =
 
-**[Grove Timeline](https://postkit.pro/demo/grove-timeline/)** | **[Snap Timeline](https://postkit.pro/demo/snap-timeline/)** | **[Soft Timeline](https://postkit.pro/demo/soft-timeline/)** | **[Checkerboard](https://postkit.pro/demo/checkerboard/)** 
+* [Grove Timeline](https://postkit.pro/demo/grove-timeline/) - A visually appealing timeline for narrating detailed events or stories.  
+* [Snap Timeline](https://postkit.pro/demo/snap-timeline/) - Dynamic timeline with engaging transitions and clear content flow.  
+* [Soft Timeline](https://postkit.pro/demo/soft-timeline/) - Subtle timeline design with soft animations for a polished experience.  
+* [Checkerboard](https://postkit.pro/demo/checkerboard/) - Unique checkerboard layout combining timeline and grid elements seamlessly.  
 
 = Others 💠 =
 
-**[Post Calendar](https://postkit.pro/demo/post-calendar/)** | **[Reading Progress Circle](https://postkit.pro/demo/reading-progress-circle/)** | **[Social Link](https://postkit.pro/demo/social-link/)** | **[Stone Hover](https://postkit.pro/demo/stone-hover/)** | **[Instagram Gallery](https://postkit.pro/demo/instagram-gallery/)** 
+* [Post Calendar](https://postkit.pro/demo/post-calendar/) - Interactive calendar widget to organize and highlight scheduled posts.  
+* [Reading Progress Circle](https://postkit.pro/demo/reading-progress-circle/) - A circular progress indicator for immersive reader engagement.  
+* [Social Link](https://postkit.pro/demo/social-link/) - Minimal and effective widget for displaying social media links elegantly.  
+* [Stone Hover](https://postkit.pro/demo/stone-hover/) - Creative hover effect widget to make images or content stand out.  
+* [Instagram Gallery](https://postkit.pro/demo/instagram-gallery/) - Showcase Instagram feeds in an attractive gallery layout effortlessly.  
 
 == Pro Extensions 🔥 ==
 
-**[MultiColor Item](https://postkit.pro/demo/multicolor-item/)** 
+* [MultiColor Item](https://postkit.pro/demo/multicolor-item/) - Add multicolor elements for vibrant and attention-grabbing designs.  
 
 == Template Builder 🧊 ==
 
-**[Post Title](https://postkit.pro/archive/)** | **[Post Content](https://postkit.pro/archive/)** | **[Post Info](https://postkit.pro/archive/)** | **[Post Featured Image](https://postkit.pro/archive/)** 
+* [Post Title](https://postkit.pro/archive/) - Customize and display post titles with advanced styling options, enhancing visibility.  
+* [Post Content](https://postkit.pro/archive/) - Flexible content block for displaying post details dynamically with full customization options.  
+* [Post Info](https://postkit.pro/archive/) - Highlight meta details like author, date and categories attractively to improve content engagement.  
+* [Post Featured Image](https://postkit.pro/archive/) - Display featured images with modern effects and responsive design, making them stand out visually.  
 
 == Template Shortcode 🌅 ==
 
-Now you can create shortcodes for templates created with the Ultimate Post Kit widgets with the Template Builder menu, and display the template as it is inside any page builder. Works on Gutenberg, Divi, Oxygen, Beaver Builder, etc.
+Now you can create shortcodes for templates created with the Ultimate Post Kit widgets with the Template Builder menu and display the template as it is inside any page builder. Works on Gutenberg, Divi, Oxygen, Beaver Builder, etc.
 
 
 **[PURCHASE ULTIMATE POST KIT PRO FROM OUR WEBSITE]( https://postkit.pro/pricing/ )**
@@ -133,6 +200,8 @@ Feel free to [Contact us](https://bdthemes.com/support/) 💌 or check our widge
 
 == Check out our other Addons 👑 ==
 
+Explore the best free addons for Elementor and Gutenberg to boost your site with advanced blocks, sliders and eCommerce tools.
+
 * **[ZoloBlocks](https://wordpress.org/plugins/zoloblocks/)** 🆕☀️ - Mind-blowing dynamic block plugin for Gutenberg with powerful and advanced features offering greater web design experience.
 
 * **[Element Pack](https://wordpress.org/plugins/bdthemes-element-pack-lite/)** - Element Pack Lite Build responsive website from scratch with an all-rounder package for Elementor
@@ -146,7 +215,7 @@ Feel free to [Contact us](https://bdthemes.com/support/) 💌 or check our widge
 * **[Live Copy Paste](https://wordpress.org/plugins/live-copy-paste/)** - Superfast cross-domain copy-paste mechanism for WordPress websites with true UI copy experience.
 
 
-Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor page builder based products, informative blogs, and documentations.
+Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor page builder based products, informative blogs and documentations.
 
 
 == Installation ==
@@ -165,6 +234,10 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 
 
 == Changelog ==
+
+= 3.12.15 [27th November 2024] =
+
+* Updated: System improved
 
 = 3.12.14 [23th November 2024] =
 
@@ -257,7 +330,7 @@ Details [changelog here](https://feedback.bdthemes.com/announcements?category=ca
 
 ### Does your plugin offer responsive blog post layouts?
 
-- Every widget by the Ultimate Post Kit plugin offers greater flexibility and responsiveness to adapt to any size of the screen regardless of PC, tablet, or smartphone.
+- Every widget by the Ultimate Post Kit plugin offers greater flexibility and responsiveness to adapt to any size of the screen regardless of PC, tablet or smartphone.
 
 ### How to show featured posts on my website?
 
@@ -269,11 +342,11 @@ Details [changelog here](https://feedback.bdthemes.com/announcements?category=ca
 
 ### Can I show related posts using Ultimate Post Kit?
 
-- You can display related posts, featured posts, or custom-related posts using our plugin. It’s possible to achieve with all post-type grids, carousels, lists, and layouts.
+- You can display related posts, featured posts or custom-related posts using our plugin. It’s possible to achieve with all post-type grids, carousels, lists and layouts.
 
 ### Can I manually display my post?
 
-- For manual post-selection, our plugin provides a selective query system to display or remove specific post categories, individual posts, or posts by authors.
+- For manual post-selection, our plugin provides a selective query system to display or remove specific post categories, individual posts or posts by authors.
 
 ### Can I stack multiple widgets on a single page?
 
