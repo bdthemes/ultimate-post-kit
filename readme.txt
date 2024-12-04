@@ -16,11 +16,12 @@ Best Post Addon for Elementor WordPress Plugin with 80+ Most Popular Elements th
 == Description ==
 
 Ultimate Post Kit addons for **[Elementor](https://wordpress.org/plugins/elementor/)** is the first-ever addon that lets you design blogging websites with a completely new and refreshing outlook. This is the best tool for bloggers, marketers and post-type web owners.
-Ultimate Post Kit addons for Elementor provides fine-tuned post interface having the all-famous drag-n-drop editing feature of Elementor. The number of unique widgets by Ultimate Post Kit helps you present your blogs or posts with SEO-optimized layouts, cool sliders, eye-catchy designs and more.
 
-**[Ultimate Post Kit](https://postkit.pro/)** doesn’t require you any coding knowledge. The plugin is simple enough to be used by beginners, yet so amazing that professional developers will love the fully customizable widgets for a pro web design experience. Use Ultimate Post Kit to design your blogging site in minutes with a next-gen blogging architect to help you capture more traffic.
+Ultimate Post Kit add-ons for Elementor provide a fine-tuned post interface that supports Elementor's famous drag-n-drop editing feature. The number of unique widgets by Ultimate Post Kit helps you present your blogs or posts with SEO-optimized layouts, cool sliders, eye-catching designs and more.
 
-Ultimate Post Kit is developed using the best code practices for WordPress, having the highest compatibility with the latest PHP, CSS, JS, HTML5 and WordPress core vital. Instead of slowing down, Ultimate Post Kit boosts your website with an intelligent SEO-optimized site-booster framework. Just one plugin gets you many facilities!
+**[Ultimate Post Kit](https://postkit.pro/)** doesn’t require you any coding knowledge. The plugin is simple enough for beginners to use. Even professional developers will love its fully customizable widgets. Use Ultimate Post Kit to design your blogging site in minutes with a next-gen blogging architect to help you capture more traffic.
+
+We developed the tool using the best code practices for WordPress, having the highest compatibility with the latest PHP, CSS, JS, HTML5 and WordPress core vital. Instead of slowing down, Ultimate Post Kit boosts your website with an intelligent SEO-optimized site-booster framework. Just one plugin gets you many facilities!
 
 Ultimate Post Kit supports and translates into multiple languages with the RTL feature. (open for more translations)
 
@@ -66,7 +67,7 @@ https://www.youtube.com/watch?v=er0uGv1yjig
 * [Category Carousel](https://postkit.pro/demo/category-carousel/) - Efficient post carousel filtered by categories for targeted audience engagement.  
 * [Elite Carousel](https://postkit.pro/demo/elite-carousel/) - Premium carousel with sleek design and hover effects for high-end websites.  
 * [Harold List Carousel](https://postkit.pro/demo/harold-list-carousel/) - Unique carousel blending list structure with slider navigation for diverse content.  
-* [Hazel Carousel](https://postkit.pro/demo/hazel-carousel/) - Multi-functional carousel with focus on high-quality imagery and clickable posts.  
+* [Hazel Carousel](https://postkit.pro/demo/hazel-carousel/) - Multi-functional carousel with a focus on high-quality imagery and clickable posts.  
 * [Maple Carousel](https://postkit.pro/demo/maple-carousel/) - Advanced carousel with detailed post summaries, perfect for blog showcases.  
 * [Ramble Carousel](https://postkit.pro/demo/ramble-carousel/) - Engaging carousel featuring horizontal scrolling and post highlights for a seamless UX.  
 
@@ -179,7 +180,7 @@ More widgets and extensions are coming soon...
 
 == Template Shortcode 🌅 ==
 
-Now you can create shortcodes for templates created with the Ultimate Post Kit widgets with the Template Builder menu and display the template as it is inside any page builder. Works on Gutenberg, Divi, Oxygen, Beaver Builder, etc.
+Now you can create shortcodes for templates created with the Ultimate Post Kit widgets with the Template Builder menu and display the template as it is inside any page builder. Works on Gutenberg, Divi, Oxygen, Beaver Builder etc.
 
 
 **[PURCHASE ULTIMATE POST KIT PRO FROM OUR WEBSITE]( https://postkit.pro/pricing/ )**
@@ -188,15 +189,15 @@ Now you can create shortcodes for templates created with the Ultimate Post Kit w
 == Common Issues and Solutions: 🐣 ==
 
 1. **Elementor editor fails to load**
-Ans. It is due to your server PHP setting. You can increase PHP memory limit from wp-config.php file or php.ini file
+Ans. This is due to your server's PHP settings. You can increase the PHP memory limit from the wp-config.php file or php.ini file
 [View Documentation](https://bdthemes.com/fix-elementor-stuck-on-loading-screen-instantly/)
 
 == Need Help? ==
 
-Is there any feature that you want to get in this plugins?
+Is there any feature that you want to get in this plugin?
 Please use the suggest page to send us a message about the feature you think we should add to our products.
-Needs assistance to use this plugins?
-Feel free to [Contact us](https://bdthemes.com/support/) 💌 or check our widget Tutorials to learn about how to use them efficiently.
+Needs assistance to use this plugin?
+Feel free to [Contact us](https://bdthemes.com/support/) 💌 or check our widget Tutorials to learn how to use them efficiently.
 
 == Check out our other Addons 👑 ==
 
@@ -215,7 +216,7 @@ Explore the best free addons for Elementor and Gutenberg to boost your site with
 * **[Live Copy Paste](https://wordpress.org/plugins/live-copy-paste/)** - Superfast cross-domain copy-paste mechanism for WordPress websites with true UI copy experience.
 
 
-Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor page builder based products, informative blogs and documentations.
+Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor page builder-based products, informative blogs and documentation.
 
 
 == Installation ==
@@ -226,16 +227,16 @@ e.g.
 
 1. Upload `ultimate-post-kit` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Start use it by go to elementor editor.
+3. Start using it by going to the Elementor editor.
 
 You can also watch this video for more details:
 
-https://www.youtube.com/watch?v=kVUWaMvZN9s
+https://youtu.be/UbeudwmLQHU?si=3QcikSFSSWAE4iQr
 
 
 == Changelog ==
 
-= 3.12.15 [27th November 2024] =
+= 3.12.15 [4th December 2024] =
 
 * Updated: System improved
 
@@ -293,7 +294,7 @@ https://www.youtube.com/watch?v=kVUWaMvZN9s
 * Added: Order by Last Modified feature added in query builder
 * Added: Thumbs image height option added in pholox slider widget
 * Fixed: Item height issue fixed in noxe slider widget
-* Fixed: Content width & alignment issue fixed in snog slider widget
+* Fixed: Content width & alignment issue fixed in the snog slider widget
 
 = 3.12.1 [11th August 2024] =
 
@@ -326,7 +327,7 @@ Details [changelog here](https://feedback.bdthemes.com/announcements?category=ca
 
 ### Do you provide tutorials on the plugin?
 
-- Of course we provide detailed documentation and video to support our users with thorough guidelines of our plugin and widgets.
+- Of course, we provide detailed documentation and video to support our users with thorough guidelines for our plugins and widgets.
 
 ### Does your plugin offer responsive blog post layouts?
 
@@ -340,9 +341,9 @@ Details [changelog here](https://feedback.bdthemes.com/announcements?category=ca
 
 - Absolutely not. The Ultimate Post Kit plugin is developed using industry-standard green codes, so it doesn’t clash with other 3rd party plugins or themes.
 
-### Can I show related posts using Ultimate Post Kit?
+### Can I show related posts using the Ultimate Post Kit?
 
-- You can display related posts, featured posts or custom-related posts using our plugin. It’s possible to achieve with all post-type grids, carousels, lists and layouts.
+- You can display related posts, featured posts or custom-related posts using our plugin. It’s possible to achieve this with all post-type grids, carousels, lists and layouts.
 
 ### Can I manually display my post?
 
@@ -354,11 +355,11 @@ Details [changelog here](https://feedback.bdthemes.com/announcements?category=ca
 
 ### How do I get a solution for any issue?
 
-- Just contact us and we will follow up within 24-hour with our expert technical team.
+- Just contact us and we will follow up within 24 hours with our expert technical team.
 
 ### How should I get updates and support
 
-- When we release a update version, then automatically you will get a notification on WordPress plugin manager, so you can update from there. Thereafter you want to update manually just knock us, we will send you update version via mail. You will get our ultimate post kit related all [knowledge base](https://bdthemes.com/knowledgebase/ultimate-post-kit/) from our [bdthemes](https://bdthemes.com/knowledgebase/) website.
+- When we release a update version, then automatically you will get a notification on WordPress plugin manager, so you can update from there. Thereafter you want to update manually just knock us, we will send you update version via mail. You will get our ultimate post kit related all [knowledge base](https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/) from our [bdthemes](https://bdthemes.com/knowledge-base/) website.
 
 
 == Screenshots ==
