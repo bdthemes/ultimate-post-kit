@@ -55,6 +55,9 @@ class Static_Social_Count extends Group_Control_Query {
 		return 'https://youtu.be/MmbdYPee9qw';
 	}
 
+	public function has_widget_inner_wrapper(): bool {
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+    }
 	protected function is_dynamic_content(): bool {
 		return true;
 	}
