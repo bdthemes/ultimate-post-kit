@@ -81,7 +81,7 @@ $window.on("elementor/frontend/init", function () {
         },
 
         run: function () {
-            var $element = this.findElement(".elementor-widget-container").get(0);
+            var $element = this.findElement(".elementor-widget").get(0);
 
             if (this.settings("hide_orphan_tablet") == "yes") {
                 var tablet_column = this.settings("columns_tablet"),
