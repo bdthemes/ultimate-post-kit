@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 3.12.16
+Stable tag: 3.13.0
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.7.1
@@ -236,9 +236,10 @@ https://youtu.be/UbeudwmLQHU?si=3QcikSFSSWAE4iQr
 
 == Changelog ==
 
-= 3.12.16 [XX December 2024] =
+= 3.13.0 [17th December 2024] =
 
 * Added: Optimized Markup feature compatibility added
+* Added: Upgrade Swiper Library compatibility added
 
 = 3.12.15 [4th December 2024] =
 
