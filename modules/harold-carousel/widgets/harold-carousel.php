@@ -49,17 +49,17 @@ class Harold_Carousel extends Group_Control_Query {
 
 	public function get_style_depends() {
 		if ($this->upk_is_edit_mode()) {
-			return ['upk-all-styles'];
+			return ['swiper', 'upk-all-styles'];
 		} else {
-			return ['upk-font', 'upk-harold-carousel'];
+			return ['swiper', 'upk-font', 'upk-harold-carousel'];
 		}
 	}
 
 	public function get_script_depends() {
 		if ($this->upk_is_edit_mode()) {
-			return ['upk-all-scripts'];
+			return ['swiper', 'upk-all-scripts'];
 		} else {
-			return ['upk-harold-carousel'];
+			return ['swiper', 'upk-harold-carousel'];
 		}
 	}
 

@@ -47,17 +47,17 @@ class Category_Carousel extends Module_Base {
 
 	public function get_style_depends() {
 		if ($this->upk_is_edit_mode()) {
-			return ['upk-all-styles'];
+			return ['swiper', 'upk-all-styles'];
 		} else {
-			return ['upk-font', 'upk-category-carousel'];
+			return ['swiper', 'upk-font', 'upk-category-carousel'];
 		}
 	}
 
 	public function get_script_depends() {
 		if ($this->upk_is_edit_mode()) {
-			return ['upk-all-scripts'];
+			return ['swiper', 'upk-all-scripts'];
 		} else {
-			return ['upk-category-carousel'];
+			return ['swiper', 'upk-category-carousel'];
 		}
 	}
 

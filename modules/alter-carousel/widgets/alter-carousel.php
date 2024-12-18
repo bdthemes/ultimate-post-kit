@@ -56,18 +56,18 @@ class Alter_Carousel extends Group_Control_Query
 	public function get_style_depends()
 	{
 		if ($this->upk_is_edit_mode()) {
-			return ['upk-all-styles'];
+			return ['swiper', 'upk-all-styles'];
 		} else {
-			return ['upk-font', 'upk-alter-carousel'];
+			return ['swiper', 'upk-font', 'upk-alter-carousel'];
 		}
 	}
 
 	public function get_script_depends()
 	{
 		if ($this->upk_is_edit_mode()) {
-			return ['upk-all-scripts'];
+			return ['swiper', 'upk-all-scripts'];
 		} else {
-			return ['upk-alter-carousel'];
+			return ['swiper', 'upk-alter-carousel'];
 		}
 	}
 

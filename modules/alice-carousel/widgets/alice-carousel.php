@@ -48,17 +48,17 @@ class Alice_Carousel extends Group_Control_Query {
 
 	public function get_style_depends() {
 		if ($this->upk_is_edit_mode()) {
-			return ['upk-all-styles'];
+			return ['swiper', 'upk-all-styles'];
 		} else {
-			return ['upk-font', 'upk-alice-carousel'];
+			return ['swiper', 'upk-font', 'upk-alice-carousel'];
 		}
 	}
 
 	public function get_script_depends() {
 		if ($this->upk_is_edit_mode()) {
-			return ['upk-all-scripts'];
+			return ['swiper', 'upk-all-scripts'];
 		} else {
-			return ['upk-alice-carousel'];
+			return ['swiper', 'upk-alice-carousel'];
 		}
 	}
 
