@@ -54,18 +54,18 @@ class Pholox_Slider extends Group_Control_Query
 	public function get_style_depends()
 	{
 		if ($this->upk_is_edit_mode()) {
-			return ['upk-all-styles'];
+			return ['swiper', 'upk-all-styles'];
 		} else {
-			return ['upk-font', 'upk-pholox-slider'];
+			return ['swiper', 'upk-font', 'upk-pholox-slider'];
 		}
 	}
 
 	public function get_script_depends()
 	{
 		if ($this->upk_is_edit_mode()) {
-			return ['upk-all-scripts'];
+			return ['swiper', 'upk-all-scripts'];
 		} else {
-			return ['upk-pholox-slider'];
+			return ['swiper', 'upk-pholox-slider'];
 		}
 	}
 

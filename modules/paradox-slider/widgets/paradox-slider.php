@@ -47,17 +47,17 @@ class Paradox_Slider extends Group_Control_Query {
 
 	public function get_style_depends() {
 		if ($this->upk_is_edit_mode()) {
-			return ['upk-all-styles'];
+			return ['swiper', 'upk-all-styles'];
 		} else {
-			return ['upk-font', 'upk-paradox-slider'];
+			return ['swiper', 'upk-font', 'upk-paradox-slider'];
 		}
 	}
 
 	public function get_script_depends() {
 		if ( $this->upk_is_edit_mode() ) {
-			return [ 'upk-all-scripts' ];
+			return [ 'swiper', 'upk-all-scripts' ];
 		} else {
-			return [ 'upk-paradox-slider' ];
+			return [ 'swiper', 'upk-paradox-slider' ];
 		}
 	}
 
