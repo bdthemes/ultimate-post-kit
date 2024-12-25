@@ -307,6 +307,16 @@ class UltimatePostKit_Admin_Settings {
             58
         );
 
+        if (true == _is_upk_pro_activated()) {
+            add_submenu_page(
+                self::PAGE_ID,
+                BDTUPK_TITLE,
+                esc_html__('Template Builder', 'ultimate-post-kit'),
+                'edit_pages',
+                'edit.php?post_type=upk-template-builder',
+            );
+        }
+
         add_submenu_page(
             self::PAGE_ID,
             BDTUPK_TITLE,
