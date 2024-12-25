@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 3.13.1
+Stable tag: 3.13.2
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.7.1
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.26.0
+Elementor tested up to: 3.26.3
 
 Best Post Addon for Elementor WordPress Plugin with 80+ Most Popular Elements that need your everyday blog website building.
 
@@ -235,6 +235,10 @@ https://youtu.be/UbeudwmLQHU?si=3QcikSFSSWAE4iQr
 
 
 == Changelog ==
+
+= 3.13.2 [25th December 2024] =
+
+* Updated: Dashboard system improved
 
 = 3.13.1 [19th December 2024] =
 
