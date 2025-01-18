@@ -236,6 +236,10 @@ https://youtu.be/UbeudwmLQHU?si=3QcikSFSSWAE4iQr
 
 == Changelog ==
 
+= 3.13.X [XXth January 2024] =
+
+* Fixed: Global pagination issue fixed ( Thanks to Sylvain L-Mizon )
+
 = 3.13.2 [25th December 2024] =
 
 * Updated: Dashboard system improved
