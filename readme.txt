@@ -236,7 +236,7 @@ https://youtu.be/UbeudwmLQHU?si=3QcikSFSSWAE4iQr
 
 == Changelog ==
 
-= 3.13.X [XXth January 2024] =
+= 3.13.X [XXth January 2025] =
 
 * Fixed: Global pagination issue fixed ( Thanks to Sylvain L-Mizon )
 
