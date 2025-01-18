@@ -420,7 +420,7 @@ function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 
 	/** Next Post Link */
 	if ( get_next_posts_link( null, $paged ) ) {
-		printf( '<li class="upk-pagination-next>%s</li>' . "\n", get_next_posts_link( '<span data-upk-pagination-next><i class="upk-icon-arrow-right-5" aria-hidden="true"></i></span>' ) );
+		printf( '<li class="upk-pagination-next">%s</li>' . "\n", get_next_posts_link( '<span data-upk-pagination-next><i class="upk-icon-arrow-right-5" aria-hidden="true"></i></span>' ) );
 	}
 
 	echo '</ul>' . "\n";
