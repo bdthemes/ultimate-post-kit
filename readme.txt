@@ -231,10 +231,14 @@ e.g.
 
 You can also watch this video for more details:
 
-https://youtu.be/UbeudwmLQHU?si=3QcikSFSSWAE4iQr
+https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 
 == Changelog ==
+
+= 3.13.X [XX February 2025] =
+
+* Fixed: Link open in a new tab feature added
 
 = 3.13.3 [18th January 2025] =
 

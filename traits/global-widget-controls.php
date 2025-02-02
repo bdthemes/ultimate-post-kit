@@ -13,6 +13,21 @@ defined('ABSPATH') || die();
 trait Global_Widget_Controls {
 
 	/**
+	 * Link open in a new tab
+	 */
+	protected function register_upk_link_new_tab_controls() {
+		$this->add_control(
+			'upk_link_new_tab',
+			[ 
+				'label'              => esc_html__( 'Link Open in a New Tab', 'ultimate-post-kit' ) . BDTUPK_NC,
+				'type'               => Controls_Manager::SWITCHER,
+				'separator'          => 'before',
+				'frontend_available' => true,
+			]
+		);
+	}
+
+	/**
 	 * Register Ajax Load More controls
 	 */
 	protected function register_ajax_loadmore_controls() {
@@ -537,6 +552,17 @@ trait Global_Widget_Controls {
 				'condition'   => [
 					'show_reading_time'       => 'yes'
 				]
+			]
+		);
+
+		/**
+		 * Global upk_link_new_tab control
+		 */
+		$this->register_upk_link_new_tab_controls();
+		$this->add_control(
+			'hr_link',
+			[
+				'type'      => Controls_Manager::DIVIDER,
 			]
 		);
 	}
