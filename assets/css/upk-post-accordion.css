@@ -70,18 +70,18 @@
 .upk-accordion-wrapper .upk-accordion-content .upk-accordion-category a + a {
   margin-left: 5px;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-title {
+.upk-accordion-wrapper .upk-accordion-content .upk-title {
   margin: 0;
   margin-bottom: 15px;
   font-size: 18px;
   font-weight: 600;
   line-height: 1.4;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-title a {
+.upk-accordion-wrapper .upk-accordion-content .upk-title a {
   color: #fff;
   transition: all 0.3s ease;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-title a:hover {
+.upk-accordion-wrapper .upk-accordion-content .upk-title a:hover {
   color: #EF233C;
 }
 .upk-accordion-wrapper .upk-accordion-content .upk-accordion-text {
@@ -166,12 +166,12 @@
 }
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-date,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-category,
-.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-title,
+.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-title,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-comments {
   overflow: hidden;
 }
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-category a,
-.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-title a,
+.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-title a,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-date span,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-comments span {
   position: relative;
@@ -181,7 +181,7 @@
   transform-origin: 100% 0%;
 }
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-category a::before,
-.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-title a::before,
+.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-title a::before,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-date span::before,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-comments span::before {
   position: absolute;
@@ -191,7 +191,7 @@
   content: attr(data-hover);
 }
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-item:hover .upk-accordion-category a,
-.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-item:hover .upk-accordion-title a,
+.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-item:hover .upk-title a,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-item:hover .upk-accordion-date span,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-item:hover .upk-accordion-comments span {
   -webkit-transform: translateY(-100%);
@@ -228,7 +228,7 @@
     padding: 8px 12px;
     font-size: 10px;
   }
-  .upk-accordion-wrapper .upk-accordion-title {
+  .upk-accordion-wrapper .upk-title {
     font-size: 22px;
     margin-bottom: 10px;
   }
