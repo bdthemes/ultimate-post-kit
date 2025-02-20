@@ -236,6 +236,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 3.13.X [XX February 2025] =
+
+* Updated: System Improved
+
 = 3.13.6 [19th February 2025] =
 
 * Fixed: Link open in new tab issue fixed in post accordion widget
