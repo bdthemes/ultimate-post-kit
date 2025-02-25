@@ -1670,10 +1670,10 @@ class Crystal_Slider extends Group_Control_Query {
 				<?php if ($settings['show_navigation']) : ?>
 					<div class="upk-navigation-wrap">
 						<div class="upk-navigation-prev">
-							<i class="upk-icon-arrow-right-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
+							<i class="upk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
 						</div>
 						<div class="upk-navigation-next">
-							<i class="upk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
+							<i class="upk-icon-arrow-right-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
 						</div>
 					</div>
 				<?php endif; ?>
