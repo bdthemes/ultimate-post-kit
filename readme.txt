@@ -239,6 +239,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 = 3.13.7 [25th February 2025] =
 
 * Added: Title default style added in tiny list widget
+* Fixed: Navigation direction issue fixed in crystal slider widget (Thanks to Alex)
 
 = 3.13.6 [19th February 2025] =
 

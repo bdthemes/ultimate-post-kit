@@ -13040,10 +13040,10 @@
   background: #D90429;
 }
 .upk-crystal-slider .upk-navigation-next {
-  left: 5%;
+  right: 5%;
 }
 .upk-crystal-slider .upk-navigation-prev {
-  right: 5%;
+  left: 5%;
 }
 
 @media (min-width: 768px) {
