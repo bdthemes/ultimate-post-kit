@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 3.13.6
+Stable tag: 3.13.7
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.7.2
@@ -236,9 +236,9 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 3.13.X [XX February 2025] =
+= 3.13.7 [25th February 2025] =
 
-* Updated: System Improved
+* Added: Title default style added in tiny list widget
 
 = 3.13.6 [19th February 2025] =
 
