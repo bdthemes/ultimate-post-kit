@@ -568,6 +568,7 @@ class Tiny_List extends Group_Control_Query {
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'underline',
 				'options' => [
+					''        => esc_html__('Default', 'ultimate-post-kit'),
 					'underline'        => esc_html__('Underline', 'ultimate-post-kit'),
 					'middle-underline' => esc_html__('Middle Underline', 'ultimate-post-kit'),
 					'overline'         => esc_html__('Overline', 'ultimate-post-kit'),
