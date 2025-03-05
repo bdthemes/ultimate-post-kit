@@ -12,6 +12,7 @@ use Elementor\Group_Control_Background;
 use UltimatePostKit\Utils;
 
 use UltimatePostKit\Traits\Global_Widget_Controls;
+use UltimatePostKit\Traits\Global_Widget_Functions;
 use UltimatePostKit\Traits\Global_Swiper_Functions;
 use UltimatePostKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use WP_Query;
@@ -23,6 +24,7 @@ if (!defined('ABSPATH')) {
 class Maple_Carousel extends Group_Control_Query {
 
 	use Global_Widget_Controls;
+	use Global_Widget_Functions;
 	use Global_Swiper_Functions;
 
 	private $_query = null;
@@ -160,7 +162,7 @@ class Maple_Carousel extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => __('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -275,7 +277,7 @@ class Maple_Carousel extends Group_Control_Query {
 		$this->add_control(
 			'meta_separator',
 			[
-				'label'       => __('Separator', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'       => __('Separator', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => '-',
 				'label_block' => false,
@@ -472,6 +474,22 @@ class Maple_Carousel extends Group_Control_Query {
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'show_title' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'title_style',
+			[
+				'label'   => esc_html__('Style', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'underline',
+				'options' => [
+					''				=> esc_html__('Default', 'ultimate-post-kit'),
+					'underline'        => esc_html__('Underline', 'ultimate-post-kit'),
+					'middle-underline' => esc_html__('Middle Underline', 'ultimate-post-kit'),
+					'overline'         => esc_html__('Overline', 'ultimate-post-kit'),
+					'middle-overline'  => esc_html__('Middle Overline', 'ultimate-post-kit'),
 				],
 			]
 		);
@@ -694,17 +712,6 @@ class Maple_Carousel extends Group_Control_Query {
 			]
 		);
 
-		// $this->add_control(
-		// 	'meta_divider_color',
-		// 	[
-		// 		'label'     => esc_html__('Divider Color', 'ultimate-post-kit'),
-		// 		'type'      => Controls_Manager::COLOR,
-		// 		'selectors' => [
-		// 			'{{WRAPPER}} .upk-maple-carousel .upk-meta .upk-blog-date:before' => 'background: {{VALUE}};',
-		// 		],
-		// 	]
-		// );
-
 		$this->add_responsive_control(
 			'avatar_spacing',
 			[
@@ -725,7 +732,7 @@ class Maple_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'avatar_border_radius',
 			[
-				'label'      => esc_html__('Avatar Radius', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'      => esc_html__('Avatar Radius', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
@@ -737,7 +744,7 @@ class Maple_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'meta_space_between',
 			[
-				'label'     => esc_html__('Space Between', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Space Between', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -837,7 +844,7 @@ class Maple_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'category_margin',
 			[
-				'label'      => esc_html__('Margin', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'      => esc_html__('Margin', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
@@ -1127,32 +1134,6 @@ class Maple_Carousel extends Group_Control_Query {
 		$this->_query = new WP_Query($args);
 	}
 
-	public function render_image($image_id, $size) {
-		$placeholder_image_src = Utils::get_placeholder_image_src();
-
-		$image_src = wp_get_attachment_image_src($image_id, $size);
-
-		if (!$image_src) {
-			$image_src = $placeholder_image_src;
-		} else {
-			$image_src = $image_src[0];
-		}
-
-?>
-		<img class="upk-img" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
-	<?php
-	}
-
-	public function render_title() {
-		$settings = $this->get_settings_for_display();
-
-		if (!$this->get_settings('show_title')) {
-			return;
-		}
-
-		printf('<%1$s class="upk-title"><a href="%2$s" title="%3$s">%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), get_permalink(), get_the_title());
-	}
-
 	public function render_author() {
 		$settings = $this->get_settings_for_display();
 
@@ -1206,76 +1187,6 @@ class Maple_Carousel extends Group_Control_Query {
 				<?php echo get_the_time(); ?>
 			</div>
 		<?php endif;
-	}
-
-	public function render_category() {
-
-		if (!$this->get_settings('show_category')) {
-			return;
-		}
-
-	?>
-		<div class="upk-category">
-			<?php echo upk_get_category($this->get_settings('posts_source')); ?>
-		</div>
-	<?php
-	}
-
-	public function render_post_format() {
-		$settings = $this->get_settings_for_display();
-
-		if (!$this->get_settings('show_post_format')) {
-			return;
-		}
-
-	?>
-		<div class="upk-post-format">
-			<a href="<?php echo esc_url(get_permalink()) ?>">
-				<?php if (has_post_format('aside')) : ?>
-					<i class="upk-icon-aside" aria-hidden="true"></i>
-				<?php elseif (has_post_format('gallery')) : ?>
-					<i class="upk-icon-gallery" aria-hidden="true"></i>
-				<?php elseif (has_post_format('link')) : ?>
-					<i class="upk-icon-link" aria-hidden="true"></i>
-				<?php elseif (has_post_format('image')) : ?>
-					<i class="upk-icon-image" aria-hidden="true"></i>
-				<?php elseif (has_post_format('quote')) : ?>
-					<i class="upk-icon-quote" aria-hidden="true"></i>
-				<?php elseif (has_post_format('status')) : ?>
-					<i class="upk-icon-status" aria-hidden="true"></i>
-				<?php elseif (has_post_format('video')) : ?>
-					<i class="upk-icon-video" aria-hidden="true"></i>
-				<?php elseif (has_post_format('audio')) : ?>
-					<i class="upk-icon-music" aria-hidden="true"></i>
-				<?php elseif (has_post_format('chat')) : ?>
-					<i class="upk-icon-chat" aria-hidden="true"></i>
-				<?php else : ?>
-					<i class="upk-icon-post" aria-hidden="true"></i>
-				<?php endif; ?>
-			</a>
-		</div>
-	<?php
-	}
-
-	public function render_excerpt($excerpt_length) {
-
-		if (!$this->get_settings('show_excerpt')) {
-			return;
-		}
-
-		$strip_shortcode = $this->get_settings_for_display('strip_shortcode');
-
-	?>
-		<div class="upk-text">
-			<?php
-			if (has_excerpt()) {
-				the_excerpt();
-			} else {
-				echo ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode);
-			}
-			?>
-		</div>
-	<?php
 	}
 
 	public function render_header() {

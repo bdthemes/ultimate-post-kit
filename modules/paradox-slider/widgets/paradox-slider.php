@@ -10,10 +10,9 @@ use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Text_Stroke;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
-use Elementor\Plugin;
-use UltimatePostKit\Utils;
 
 use UltimatePostKit\Traits\Global_Widget_Controls;
+use UltimatePostKit\Traits\Global_Widget_Functions;
 use UltimatePostKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use WP_Query;
 
@@ -22,6 +21,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class Paradox_Slider extends Group_Control_Query {
 
 	use Global_Widget_Controls;
+	use Global_Widget_Functions;
 
 	private $_query = null;
 
@@ -251,7 +251,7 @@ class Paradox_Slider extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __( 'Query', 'ultimate-post-kit' ) . BDTUPK_NC,
+				'label' => __( 'Query', 'ultimate-post-kit' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -601,12 +601,28 @@ class Paradox_Slider extends Group_Control_Query {
 		);
 
 		$this->add_control(
+			'title_style',
+			[
+				'label'   => esc_html__('Style', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'    => Controls_Manager::SELECT,
+				'default' => '',
+				'options' => [
+					'' 			  => esc_html__('Default', 'ultimate-post-kit'),
+					'underline'        => esc_html__('Underline', 'ultimate-post-kit'),
+					'middle-underline' => esc_html__('Middle Underline', 'ultimate-post-kit'),
+					'overline'         => esc_html__('Overline', 'ultimate-post-kit'),
+					'middle-overline'  => esc_html__('Middle Overline', 'ultimate-post-kit'),
+				],
+			]
+		);
+
+		$this->add_control(
 			'title_color',
 			[
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-title-wrap .upk-title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-title a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -617,7 +633,7 @@ class Paradox_Slider extends Group_Control_Query {
 				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-title-wrap .upk-title:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-title a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -634,7 +650,7 @@ class Paradox_Slider extends Group_Control_Query {
 					],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-paradox-slider .upk-title-wrap' => 'padding-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-paradox-slider .upk-title' => 'padding-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -644,7 +660,7 @@ class Paradox_Slider extends Group_Control_Query {
 			[
 				'name'      => 'title_typography',
 				'label'     => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector'  => '{{WRAPPER}} .upk-paradox-slider .upk-title-wrap',
+				'selector'  => '{{WRAPPER}} .upk-paradox-slider .upk-title',
 			]
 		);
 
@@ -653,7 +669,7 @@ class Paradox_Slider extends Group_Control_Query {
 			[
 				'name' => 'title_text_shadow',
 				'label' => __('Text Shadow', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-paradox-slider .upk-title-wrap',
+				'selector' => '{{WRAPPER}} .upk-paradox-slider .upk-title a',
 			]
 		);
 
@@ -661,8 +677,8 @@ class Paradox_Slider extends Group_Control_Query {
 			Group_Control_Text_Stroke::get_type(),
 			[
 				'name'      => 'title_text_stroke',
-				'label'     => __('Text Stroke', 'ultimate-post-kit') . BDTUPK_NC,
-				'selector'  => '{{WRAPPER}} .upk-paradox-slider .upk-title-wrap',
+				'label'     => __('Text Stroke', 'ultimate-post-kit'),
+				'selector'  => '{{WRAPPER}} .upk-paradox-slider .upk-title a',
 			]
 		);
 
@@ -848,7 +864,7 @@ class Paradox_Slider extends Group_Control_Query {
 		$this->add_responsive_control(
 			'meta_space_between',
 			[
-				'label'     => esc_html__('Space Between', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Space Between', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -2139,55 +2155,6 @@ class Paradox_Slider extends Group_Control_Query {
 		$this->_query = new WP_Query( $args );
 	}
 
-	public function render_image($image_id, $size) {
-		$placeholder_image_src = Utils::get_placeholder_image_src();
-
-		$image_src = wp_get_attachment_image_src($image_id, $size);
-
-		if (!$image_src) {
-			$image_src = $placeholder_image_src;
-		} else {
-			$image_src = $image_src[0];
-		}
-
-		?>
-
-		<img class="upk-img swiper-lazy" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
-
-		<?php
-	}
-
-	public function render_title() {
-		$settings = $this->get_settings_for_display();
-
-		if (!$this->get_settings('show_title')) {
-			return;
-		}
-
-		printf('<%1$s class="upk-title-wrap"><a href="%2$s" title="%3$s" class="upk-title">%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), get_permalink(), get_the_title());
-
-	}
-
-	public function render_excerpt( $excerpt_length ) {
-
-		if ( ! $this->get_settings( 'show_excerpt' ) ) {
-			return;
-		}
-		$strip_shortcode = $this->get_settings_for_display( 'strip_shortcode' );
-		?>
-		<div class="upk-text">
-			<?php
-				if ( has_excerpt() ) {
-					the_excerpt();
-				} else {
-					echo ultimate_post_kit_custom_excerpt( $excerpt_length, $strip_shortcode );
-				}
-			?>
-		</div>
-
-		<?php
-	}
-
 	public function render_author() {
 
 		if (!$this->get_settings('show_author')) {
@@ -2217,45 +2184,6 @@ class Paradox_Slider extends Group_Control_Query {
 			</div>
 		</div>
 
-		<?php
-	}
-
-	public function render_date() {
-		$settings = $this->get_settings_for_display();
-
-		if (!$this->get_settings('show_date')) {
-			return;
-		}
-
-		?>
-
-		<div class="upk-date">
-			<?php if ($settings['human_diff_time'] == 'yes') {
-				echo ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
-			} else {
-				echo get_the_date();
-			} ?>
-		</div>
-
-		<?php if ($settings['show_time']) : ?>
-		<div class="upk-post-time">
-			<i class="upk-icon-clock" aria-hidden="true"></i>
-			<?php echo get_the_time(); ?>
-		</div>
-		<?php endif; ?>
-
-		<?php
-	}
-
-	public function render_category() {
-
-		if (!$this->get_settings('show_category')) {
-			return;
-		}
-		?>
-		<div class="upk-category">
-			<?php echo upk_get_category($this->get_settings('posts_source')); ?>
-		</div>
 		<?php
 	}
 

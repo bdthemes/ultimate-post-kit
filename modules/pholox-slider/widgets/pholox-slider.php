@@ -576,6 +576,22 @@ class Pholox_Slider extends Group_Control_Query
 		);
 
 		$this->add_control(
+			'title_style',
+			[
+				'label'   => esc_html__('Style', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'    => Controls_Manager::SELECT,
+				'default' => '',
+				'options' => [
+					'' 			  => esc_html__('Default', 'ultimate-post-kit'),
+					'underline'        => esc_html__('Underline', 'ultimate-post-kit'),
+					'middle-underline' => esc_html__('Middle Underline', 'ultimate-post-kit'),
+					'overline'         => esc_html__('Overline', 'ultimate-post-kit'),
+					'middle-overline'  => esc_html__('Middle Overline', 'ultimate-post-kit'),
+				],
+			]
+		);
+
+		$this->add_control(
 			'title_color',
 			[
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
@@ -1429,25 +1445,6 @@ class Pholox_Slider extends Group_Control_Query
 		$this->_query = new WP_Query($args);
 	}
 
-	public function render_image($image_id, $size)
-	{
-		$placeholder_image_src = Utils::get_placeholder_image_src();
-
-		$image_src = wp_get_attachment_image_src($image_id, $size);
-
-		if (!$image_src) {
-			$image_src = $placeholder_image_src;
-		} else {
-			$image_src = $image_src[0];
-		}
-
-?>
-
-		<img class="upk-img" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
-
-	<?php
-	}
-
 	public function render_playlist_title()
 	{
 		$settings = $this->get_settings_for_display();
@@ -1471,19 +1468,6 @@ class Pholox_Slider extends Group_Control_Query
 		</div>
 	<?php
 	}
-
-
-	public function render_title()
-	{
-		$settings = $this->get_settings_for_display();
-
-		if (!$this->get_settings('show_title')) {
-			return;
-		}
-
-		printf('<%1$s class="upk-title" data-swiper-parallax-x="100"><a href="%2$s" title="%3$s">%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), get_permalink(), get_the_title());
-	}
-
 
 	public function render_date()
 	{
@@ -1531,30 +1515,6 @@ class Pholox_Slider extends Group_Control_Query
 
 	<?php
 	}
-
-	public function render_excerpt($excerpt_length)
-	{
-
-		if (!$this->get_settings('show_excerpt')) {
-			return;
-		}
-		$strip_shortcode = $this->get_settings_for_display('strip_shortcode');
-	?>
-		<div class="upk-text">
-			<?php
-			if (has_excerpt()) {
-				the_excerpt();
-			} else {
-				echo ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode);
-			}
-			?>
-		</div>
-
-	<?php
-	}
-
-
-
 
 	public function video_link_render($video)
 	{

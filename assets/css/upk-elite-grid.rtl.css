@@ -78,14 +78,14 @@
 }
 .upk-elite-grid .upk-title {
   position: relative;
-  display: inline-flex;
+  padding-right: 50px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 0;
 }
 .upk-elite-grid .upk-title a {
   color: #283D58;
-  font-weight: 600;
-  line-height: 1.4;
   transition: all 0.5s ease;
-  padding-right: 50px;
 }
 .upk-elite-grid .upk-title a:hover {
   color: #EF233C;
@@ -136,6 +136,7 @@
 }
 .upk-elite-grid .upk-category {
   display: flex;
+  margin-right: 10px;
 }
 .upk-elite-grid .upk-category a {
   font-size: 14px;
@@ -151,11 +152,11 @@
 .upk-elite-grid .upk-category a + a {
   margin-right: 5px;
 }
+.upk-elite-grid .upk-reading-time,
 .upk-elite-grid .upk-post-time,
-.upk-elite-grid .upk-elite-grid-date {
+.upk-elite-grid .upk-date {
   font-size: 14px;
   color: #ffffff;
-  margin-left: 10px;
   display: flex;
   line-height: 1;
   z-index: 1;
@@ -186,8 +187,6 @@
 }
 .upk-elite-grid .upk-style-1 .upk-item:nth-child(n+1) .upk-title {
   margin-bottom: 10px;
-}
-.upk-elite-grid .upk-style-1 .upk-item:nth-child(n+1) .upk-title a {
   font-size: 16px;
 }
 .upk-elite-grid .upk-style-1 .upk-item:nth-child(n+1) .upk-title a:before {
@@ -225,8 +224,6 @@
 }
 .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+1) .upk-title {
   margin-bottom: 10px;
-}
-.upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+1) .upk-title a {
   font-size: 16px;
 }
 .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+1) .upk-title a:before {
@@ -259,8 +256,6 @@
 }
 .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+2) .upk-title, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+3) .upk-title, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+4) .upk-title, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+5) .upk-title {
   margin-bottom: 10px;
-}
-.upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+2) .upk-title a, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+3) .upk-title a, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+4) .upk-title a, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+5) .upk-title a {
   font-size: 16px;
 }
 .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+2) .upk-title a:before, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+3) .upk-title a:before, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+4) .upk-title a:before, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+5) .upk-title a:before {
@@ -296,8 +291,6 @@
 }
 .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+1) .upk-title {
   margin-bottom: 10px;
-}
-.upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+1) .upk-title a {
   font-size: 16px;
 }
 .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+1) .upk-title a:before {
@@ -340,8 +333,6 @@
 }
 .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+2) .upk-title, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+3) .upk-title, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+4) .upk-title {
   margin-bottom: 10px;
-}
-.upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+2) .upk-title a, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+3) .upk-title a, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+4) .upk-title a {
   font-size: 12px;
 }
 .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+2) .upk-title a:before, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+3) .upk-title a:before, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+4) .upk-title a:before {
@@ -357,9 +348,32 @@
   display: flex;
   padding-right: 50px;
 }
-.upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+2) .upk-meta-list .upk-elite-grid-date, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+3) .upk-meta-list .upk-elite-grid-date, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+4) .upk-meta-list .upk-elite-grid-date {
+.upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+2) .upk-meta-list .upk-date, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+3) .upk-meta-list .upk-date, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+4) .upk-meta-list .upk-date {
   margin-right: 10px;
   margin-left: 0;
+}
+.upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+2) .upk-category, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+3) .upk-category, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+4) .upk-category {
+  margin-right: 0;
+}
+.upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+2) .upk-reading-time,
+.upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+2) .upk-post-time,
+.upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+2) .upk-date, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+3) .upk-reading-time,
+.upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+3) .upk-post-time,
+.upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+3) .upk-date, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+4) .upk-reading-time,
+.upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+4) .upk-post-time,
+.upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+4) .upk-date {
+  color: #999;
+}
+.upk-elite-grid .upk-date-reading-wrap > div {
+  position: relative;
+  display: inline-flex;
+}
+.upk-elite-grid .upk-date-reading-wrap > div:before {
+  content: attr(data-separator);
+  margin: 0 5px;
+}
+.upk-elite-grid .upk-date-reading-wrap > div:nth-child(1)::before {
+  display: none;
 }
 
 .upk-global-link-yes .upk-elite-grid .upk-item:hover {
@@ -372,8 +386,6 @@
   }
   .upk-elite-grid .upk-style-1 .upk-item:nth-child(n+1) .upk-title {
     margin-bottom: 20px;
-  }
-  .upk-elite-grid .upk-style-1 .upk-item:nth-child(n+1) .upk-title a {
     font-size: 20px;
   }
   .upk-elite-grid .upk-style-1 .upk-item:nth-child(n+1) .upk-text-wrap .upk-text {
@@ -391,8 +403,6 @@
   }
   .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+1) .upk-title {
     margin-bottom: 20px;
-  }
-  .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+1) .upk-title a {
     font-size: 25px;
   }
   .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+1) .upk-text {
@@ -403,8 +413,6 @@
   }
   .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+2) .upk-title, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+3) .upk-title, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+4) .upk-title, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+5) .upk-title {
     margin-bottom: 20px;
-  }
-  .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+2) .upk-title a, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+3) .upk-title a, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+4) .upk-title a, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+5) .upk-title a {
     font-size: 20px;
   }
   .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+2) .upk-text, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+3) .upk-text, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+4) .upk-text, .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+5) .upk-text {
@@ -415,8 +423,6 @@
   }
   .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+1) .upk-title {
     margin-bottom: 20px;
-  }
-  .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+1) .upk-title a {
     font-size: 25px;
   }
   .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+1) .upk-title a:before {
@@ -458,8 +464,6 @@
   }
   .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+2) .upk-title, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+3) .upk-title, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+4) .upk-title {
     margin-bottom: 10px;
-  }
-  .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+2) .upk-title a, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+3) .upk-title a, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+4) .upk-title a {
     font-size: 16px;
   }
   .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+2) .upk-title a:before, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+3) .upk-title a:before, .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+4) .upk-title a:before {
@@ -476,7 +480,7 @@
   .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+1) {
     grid-column: span 6/auto;
   }
-  .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+1) .upk-title a {
+  .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+1) .upk-title {
     font-size: 20px;
   }
   .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+1) .upk-title a:before {

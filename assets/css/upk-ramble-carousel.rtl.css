@@ -11,7 +11,7 @@
   -webkit-box-shadow: 0px 3px 10px -5px rgba(151, 163, 184, 0.5);
   box-shadow: 0px 3px 10px -5px rgba(151, 163, 184, 0.5);
 }
-.upk-ramble-carousel .upk-item:hover .upk-image-wrap:before {
+.upk-ramble-carousel .upk-item:hover .upk-img-wrap:before {
   background-color: rgba(239, 35, 60, 0.5);
 }
 .upk-ramble-carousel .upk-item:hover .upk-meta {
@@ -58,11 +58,11 @@
   visibility: visible;
   transition-delay: 0.1s;
 }
-.upk-ramble-carousel .upk-image-wrap {
+.upk-ramble-carousel .upk-img-wrap {
   display: flex;
   width: 100%;
 }
-.upk-ramble-carousel .upk-image-wrap:before {
+.upk-ramble-carousel .upk-img-wrap:before {
   position: absolute;
   content: "";
   top: 0;
@@ -73,7 +73,7 @@
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.upk-ramble-carousel .upk-image {
+.upk-ramble-carousel .upk-img {
   object-fit: cover;
   height: 100%;
   width: 100%;

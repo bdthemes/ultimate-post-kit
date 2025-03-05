@@ -12,6 +12,7 @@ use Elementor\Group_Control_Background;
 use UltimatePostKit\Utils;
 
 use UltimatePostKit\Traits\Global_Widget_Controls;
+use UltimatePostKit\Traits\Global_Widget_Functions;
 use UltimatePostKit\Traits\Global_Swiper_Functions;
 use UltimatePostKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use WP_Query;
@@ -23,6 +24,7 @@ if (!defined('ABSPATH')) {
 class Harold_Carousel extends Group_Control_Query {
 
 	use Global_Widget_Controls;
+	use Global_Widget_Functions;
 	use Global_Swiper_Functions;
 
 	private $_query = null;
@@ -140,7 +142,7 @@ class Harold_Carousel extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => __('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -212,7 +214,7 @@ class Harold_Carousel extends Group_Control_Query {
 		$this->add_control(
 			'meta_separator',
 			[
-				'label'       => __('Separator', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'       => __('Separator', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => '.',
 				'label_block' => false,
@@ -453,12 +455,28 @@ class Harold_Carousel extends Group_Control_Query {
 		);
 
 		$this->add_control(
+			'title_style',
+			[
+				'label'   => esc_html__('Style', 'ultimate-post-kit') . BDTUPK_UC,
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'underline',
+				'options' => [
+					''            => esc_html__('Default', 'ultimate-post-kit'),
+					'underline'        => esc_html__('Underline', 'ultimate-post-kit'),
+					'middle-underline' => esc_html__('Middle Underline', 'ultimate-post-kit'),
+					'overline'         => esc_html__('Overline', 'ultimate-post-kit'),
+					'middle-overline'  => esc_html__('Middle Overline', 'ultimate-post-kit'),
+				],
+			]
+		);
+
+		$this->add_control(
 			'title_color',
 			[
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-harold-carousel .upk-harold-title-wrap .upk-harold-title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-harold-carousel .upk-title a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -469,7 +487,7 @@ class Harold_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-harold-carousel .upk-harold-title-wrap .upk-harold-title:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-harold-carousel .upk-title a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -486,7 +504,7 @@ class Harold_Carousel extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-harold-carousel .upk-harold-title-wrap' => 'padding-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-harold-carousel .upk-title' => 'padding-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -496,7 +514,7 @@ class Harold_Carousel extends Group_Control_Query {
 			[
 				'name'     => 'title_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-harold-carousel .upk-harold-title-wrap',
+				'selector' => '{{WRAPPER}} .upk-harold-carousel .upk-title',
 			]
 		);
 
@@ -505,7 +523,7 @@ class Harold_Carousel extends Group_Control_Query {
 			[
 				'name'     => 'title_text_shadow',
 				'label'    => __('Text Shadow', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-harold-carousel .upk-harold-title-wrap .upk-harold-title',
+				'selector' => '{{WRAPPER}} .upk-harold-carousel .upk-title a',
 			]
 		);
 
@@ -831,16 +849,6 @@ class Harold_Carousel extends Group_Control_Query {
 	<?php
 	}
 
-	public function render_title() {
-		$settings = $this->get_settings_for_display();
-
-		if (!$this->get_settings('show_title')) {
-			return;
-		}
-
-		printf('<%1$s class="upk-harold-title-wrap"><a href="%2$s" title="%3$s" class="upk-harold-title">%3$s</a></%1$s>', Utils::get_valid_html_tag($settings['title_tags']), get_permalink(), get_the_title());
-	}
-
 	public function render_author() {
 
 		if (!$this->get_settings('show_author')) {
@@ -887,18 +895,6 @@ class Harold_Carousel extends Group_Control_Query {
 			<?php endif; ?>
 		</div>
 
-	<?php
-	}
-
-	public function render_category() {
-
-		if (!$this->get_settings('show_category')) {
-			return;
-		}
-	?>
-		<div class="upk-category">
-			<?php echo upk_get_category($this->get_settings('posts_source')); ?>
-		</div>
 	<?php
 	}
 

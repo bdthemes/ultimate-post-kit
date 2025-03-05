@@ -104,14 +104,14 @@
 
 	.upk-title {
 		position: relative;
-		display: inline-flex;
+		padding-left: 50px;
+		font-weight: 600;
+		line-height: 1.4;
+		margin-top: 0;
 
 		a {
 			color: #283D58;
-			font-weight: 600;
-			line-height: 1.4;
 			transition: all 0.5s ease;
-			padding-left: 50px;
 
 			&:hover {
 				color: #EF233C;
@@ -176,6 +176,7 @@
 
 	.upk-category {
 		display: flex;
+		margin-left: 10px;
 
 		a {
 			font-size: 14px;
@@ -194,11 +195,12 @@
 		}
 	}
 
+	.upk-reading-time, 
 	.upk-post-time,
-	.upk-elite-grid-date {
+	.upk-date {
 		font-size: 14px;
 		color: #ffffff;
-		margin-right: 10px;
+		// margin-right: 10px;
 		display: flex;
 		line-height: 1;
 		z-index: 1;
@@ -245,10 +247,7 @@
 
 			.upk-title {
 				margin-bottom: 10px;
-
-				a {
-					font-size: 16px;
-				}
+				font-size: 16px;
 
 				a:before {
 					top: 12px;
@@ -308,10 +307,7 @@
 
 				.upk-title {
 					margin-bottom: 10px;
-
-					a {
-						font-size: 16px;
-					}
+					font-size: 16px;
 
 					a:before {
 						top: 18px;
@@ -367,10 +363,7 @@
 
 				.upk-title {
 					margin-bottom: 10px;
-
-					a {
-						font-size: 16px;
-					}
+					font-size: 16px;
 
 					a:before {
 						top: 12px;
@@ -425,10 +418,7 @@
 
 				.upk-title {
 					margin-bottom: 10px;
-
-					a {
-						font-size: 16px;
-					}
+					font-size: 16px;
 
 					a:before {
 						top: 12px;
@@ -494,10 +484,7 @@
 
 				.upk-title {
 					margin-bottom: 10px;
-
-					a {
-						font-size: 12px;
-					}
+					font-size: 12px;
 
 					a:before {
 						top: 12px;
@@ -516,11 +503,34 @@
 					display: flex;
 					padding-left: 50px;
 
-					.upk-elite-grid-date {
+					.upk-date {
 						margin-left: 10px;
 						margin-right: 0;
 					}
 				}
+
+				.upk-category {
+					margin-left: 0;
+				}
+				.upk-reading-time, 
+				.upk-post-time,
+				.upk-date {
+					color: #999;
+				}
+			}
+		}
+	}
+
+	.upk-date-reading-wrap > div {
+		position: relative;
+		display: inline-flex;
+		&:before {
+			content: attr(data-separator);
+			margin: 0 5px;
+		}
+		&:nth-child(1) {
+			&::before {
+				display:  none;
 			}
 		}
 	}
@@ -544,10 +554,7 @@
 			.upk-item:nth-child(n+1) {
 				.upk-title {
 					margin-bottom: 20px;
-
-					a {
-						font-size: 20px;
-					}
+					font-size: 20px;
 				}
 
 				.upk-text-wrap {
@@ -576,10 +583,7 @@
 
 					.upk-title {
 						margin-bottom: 20px;
-
-						a {
-							font-size: 25px;
-						}
+						font-size: 25px;
 					}
 
 					.upk-text {
@@ -595,10 +599,7 @@
 
 					.upk-title {
 						margin-bottom: 20px;
-
-						a {
-							font-size: 20px;
-						}
+						font-size: 20px;
 					}
 
 					.upk-text {
@@ -615,11 +616,7 @@
 
 					.upk-title {
 						margin-bottom: 20px;
-
-						a {
-							font-size: 25px;
-						}
-
+						font-size: 25px;
 						a:before {
 							top: 16px;
 						}
@@ -685,11 +682,7 @@
 
 					.upk-title {
 						margin-bottom: 10px;
-
-						a {
-							font-size: 16px;
-						}
-
+						font-size: 16px;
 						a:before {
 							top: 12px;
 						}
@@ -722,10 +715,7 @@
 					grid-column: span 6/auto;
 
 					.upk-title {
-						a {
-							font-size: 20px;
-						}
-
+						font-size: 20px;
 
 						a:before {
 							top: 14px;

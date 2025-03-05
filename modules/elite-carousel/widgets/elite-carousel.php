@@ -12,6 +12,7 @@ use Elementor\Group_Control_Background;
 use UltimatePostKit\Utils;
 
 use UltimatePostKit\Traits\Global_Widget_Controls;
+use UltimatePostKit\Traits\Global_Widget_Functions;
 use UltimatePostKit\Traits\Global_Swiper_Functions;
 use UltimatePostKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use WP_Query;
@@ -23,6 +24,7 @@ if (!defined('ABSPATH')) {
 class Elite_Carousel extends Group_Control_Query {
 
 	use Global_Widget_Controls;
+	use Global_Widget_Functions;
 	use Global_Swiper_Functions;
 
 	private $_query = null;
@@ -149,7 +151,7 @@ class Elite_Carousel extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-main-image .upk-blog-image' => 'height: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-elite-carousel .upk-main-image .upk-blog-image' => 'height: {{SIZE}}px;',
 				],
 			]
 		);
@@ -251,6 +253,17 @@ class Elite_Carousel extends Group_Control_Query {
 
 		//Global Date Controls
 		$this->register_date_controls();
+		//Global Reading Time Controls 
+		$this->register_reading_time_controls();
+		$this->add_control(
+			'meta_separator',
+			[
+				'label'       => __('Separator', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'        => Controls_Manager::TEXT,
+				'default'     => '|',
+				'label_block' => false,
+			]
+		);
 
 		$this->add_control(
 			'item_match_height',
@@ -295,7 +308,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-blog-box-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -313,7 +326,7 @@ class Elite_Carousel extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'itam_background',
-				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item',
+				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-item',
 			]
 		);
 
@@ -324,7 +337,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'label'       => __('Border', 'ultimate-post-kit'),
 				'placeholder' => '1px',
 				'default'     => '1px',
-				'selector'    => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item',
+				'selector'    => '{{WRAPPER}} .upk-elite-carousel .upk-item',
 			]
 		);
 
@@ -335,7 +348,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -344,7 +357,7 @@ class Elite_Carousel extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'item_box_shadow',
-				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item',
+				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-item',
 			]
 		);
 
@@ -361,7 +374,7 @@ class Elite_Carousel extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'itam_background_color_hover',
-				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item:hover',
+				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-item:hover',
 			]
 		);
 
@@ -371,7 +384,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item:hover' => 'border-color: {{VALUE}};'
+					'{{WRAPPER}} .upk-elite-carousel .upk-item:hover' => 'border-color: {{VALUE}};'
 				],
 				'condition' => [
 					'item_border_border!' => ''
@@ -383,7 +396,7 @@ class Elite_Carousel extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'item_box_shadow_hover',
-				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item:hover',
+				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-item:hover',
 			]
 		);
 
@@ -425,6 +438,21 @@ class Elite_Carousel extends Group_Control_Query {
 				],
 			]
 		);
+		$this->add_control(
+			'title_style',
+			[
+				'label'   => esc_html__('Style', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'    => Controls_Manager::SELECT,
+				'default' => '',
+				'options' => [
+					'' 			  => esc_html__('Default', 'ultimate-post-kit'),
+					'underline'        => esc_html__('Underline', 'ultimate-post-kit'),
+					'middle-underline' => esc_html__('Middle Underline', 'ultimate-post-kit'),
+					'overline'         => esc_html__('Overline', 'ultimate-post-kit'),
+					'middle-overline'  => esc_html__('Middle Overline', 'ultimate-post-kit'),
+				],
+			]
+		);
 
 		$this->add_control(
 			'title_color',
@@ -432,7 +460,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content .upk-blog-title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-title a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -443,7 +471,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content .upk-blog-title:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-title a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -460,7 +488,7 @@ class Elite_Carousel extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content .upk-blog-title-wrap' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -470,7 +498,7 @@ class Elite_Carousel extends Group_Control_Query {
 			[
 				'name'     => 'title_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content .upk-blog-title',
+				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-title',
 			]
 		);
 
@@ -488,7 +516,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Line Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content .upk-blog-title-wrap .upk-blog-title:before' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-title a:before' => 'border-color: {{VALUE}};',
 				],
 				'condition' => [
 					'title_advanced_style' => 'yes'
@@ -501,7 +529,7 @@ class Elite_Carousel extends Group_Control_Query {
 			[
 				'name'      => 'title_background',
 				'label'     => __('Background', 'ultimate-post-kit'),
-				'selector'  => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content .upk-blog-title',
+				'selector'  => '{{WRAPPER}} .upk-elite-carousel .upk-title a',
 				'condition' => [
 					'title_advanced_style' => 'yes'
 				]
@@ -513,7 +541,7 @@ class Elite_Carousel extends Group_Control_Query {
 			[
 				'name'      => 'title_text_shadow',
 				'label'     => __('Text Shadow', 'ultimate-post-kit'),
-				'selector'  => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content .upk-blog-title',
+				'selector'  => '{{WRAPPER}} .upk-elite-carousel .upk-title a',
 				'condition' => [
 					'title_advanced_style' => 'yes'
 				]
@@ -524,7 +552,7 @@ class Elite_Carousel extends Group_Control_Query {
 			Group_Control_Border::get_type(),
 			[
 				'name'      => 'title_border',
-				'selector'  => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content .upk-blog-title',
+				'selector'  => '{{WRAPPER}} .upk-elite-carousel .upk-title a',
 				'condition' => [
 					'title_advanced_style' => 'yes'
 				]
@@ -538,7 +566,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content .upk-blog-title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-title a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition'  => [
 					'title_advanced_style' => 'yes'
@@ -550,7 +578,7 @@ class Elite_Carousel extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'      => 'title_box_shadow',
-				'selector'  => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content .upk-blog-title',
+				'selector'  => '{{WRAPPER}} .upk-elite-carousel .upk-title a',
 				'condition' => [
 					'title_advanced_style' => 'yes'
 				]
@@ -564,7 +592,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content .upk-blog-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-title a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition'  => [
 					'title_advanced_style' => 'yes'
@@ -591,7 +619,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content .upk-blog-desc' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-text' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -601,7 +629,7 @@ class Elite_Carousel extends Group_Control_Query {
 			[
 				'name'     => 'text_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item .upk-post-grid-item-box .upk-blog-box-content .upk-blog-desc',
+				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-text',
 			]
 		);
 
@@ -625,7 +653,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-blog-image-wrapper .upk-blog-post-author-wrap' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-blog-post-author-wrap' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -634,7 +662,7 @@ class Elite_Carousel extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'author_background',
-				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-blog-image-wrapper .upk-blog-post-author-wrap',
+				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-blog-post-author-wrap',
 			]
 		);
 
@@ -645,7 +673,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-blog-image-wrapper .upk-blog-post-author-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-blog-post-author-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -665,7 +693,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Size', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-blog-image-wrapper .upk-blog-post-author-wrap .upk-author-img-wrap img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-author-img-wrap img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -682,7 +710,7 @@ class Elite_Carousel extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid-item-box .upk-blog-post-author-wrap .upk-author-info-warp' => 'padding-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-author-info-warp' => 'padding-left: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -702,7 +730,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-blog-image-wrapper .upk-blog-post-author-wrap .upk-author-info-warp .author-name .name' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-author-info-warp .author-name .name' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -713,7 +741,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-blog-image-wrapper .upk-blog-post-author-wrap .upk-author-info-warp .author-name .name:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-author-info-warp .author-name .name:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -723,7 +751,7 @@ class Elite_Carousel extends Group_Control_Query {
 			[
 				'name'     => 'author_name_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-blog-image-wrapper .upk-blog-post-author-wrap .upk-author-info-warp .author-name .name',
+				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-author-info-warp .author-name .name',
 			]
 		);
 
@@ -742,7 +770,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-blog-image-wrapper .upk-blog-post-author-wrap .upk-author-info-warp .author-depertment' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-author-info-warp .author-depertment' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -752,7 +780,7 @@ class Elite_Carousel extends Group_Control_Query {
 			[
 				'name'     => 'author_role_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-blog-image-wrapper .upk-blog-post-author-wrap .upk-author-info-warp .author-depertment',
+				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-author-info-warp .author-depertment',
 			]
 		);
 
@@ -768,7 +796,7 @@ class Elite_Carousel extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-blog-image-wrapper .upk-blog-post-author-wrap .upk-author-info-warp .author-name' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-author-info-warp .author-name' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -778,7 +806,7 @@ class Elite_Carousel extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_style_category',
 			[
-				'label'     => esc_html__('Category/Date', 'ultimate-post-kit'),
+				'label'     => esc_html__('Meta', 'ultimate-post-kit') . BDTUPK_UC,
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'conditions' => [
 					'relation' => 'or',
@@ -789,6 +817,10 @@ class Elite_Carousel extends Group_Control_Query {
 						],
 						[
 							'name'     => 'show_date',
+							'value'    => 'yes'
+						],
+						[
+							'name'     => 'show_reading_time',
 							'value'    => 'yes'
 						]
 					]
@@ -809,55 +841,33 @@ class Elite_Carousel extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-category-meta-wrap' => 'top: {{SIZE}}{{UNIT}}; right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-category-meta-wrap' => 'top: {{SIZE}}{{UNIT}}; right: {{SIZE}}{{UNIT}};',
 				],
-			]
-		);
-
-		$this->add_control(
-			'category_date_heading',
-			[
-				'label'     => esc_html__('Date', 'ultimate-post-kit'),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-				'condition' => [
-					'show_date' => 'yes'
-				]
 			]
 		);
 
 		$this->add_control(
 			'category_date_color',
 			[
-				'label'     => esc_html__('Color', 'ultimate-post-kit'),
+				'label'     => esc_html__('Text Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-elite-carousel-date, {{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-post-time' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-date, {{WRAPPER}} .upk-elite-carousel .upk-post-time, {{WRAPPER}} .upk-elite-carousel .upk-reading-time' => 'color: {{VALUE}};',
 				],
-				'condition' => [
-					'show_date' => 'yes'
-				]
-			]
-		);
-
-		$this->add_responsive_control(
-			'date_spacing',
-			[
-				'label'   => esc_html__('Date Spacing', 'ultimate-post-kit'),
-				'type'    => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'min'  => 0,
-						'max'  => 50,
-						'step' => 2,
-					],
+				'separator' => 'before',
+				'conditions' => [
+					'relation' => 'or',
+					'terms'    => [
+						[
+							'name'     => 'show_date',
+							'value'    => 'yes'
+						],
+						[
+							'name'     => 'show_reading_time',
+							'value'    => 'yes'
+						]
+					]
 				],
-				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-elite-carousel-date' => 'margin-right: {{SIZE}}{{UNIT}};',
-				],
-				'condition' => [
-					'show_date' => 'yes'
-				]
 			]
 		);
 
@@ -866,10 +876,20 @@ class Elite_Carousel extends Group_Control_Query {
 			[
 				'name'     => 'category_date_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-elite-carousel-date, {{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-post-time',
-				'condition' => [
-					'show_date' => 'yes'
-				]
+				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-date, {{WRAPPER}} .upk-elite-carousel .upk-post-time, {{WRAPPER}} .upk-elite-carousel .upk-reading-time',
+				'conditions' => [
+					'relation' => 'or',
+					'terms'    => [
+						[
+							'name'     => 'show_date',
+							'value'    => 'yes'
+						],
+						[
+							'name'     => 'show_reading_time',
+							'value'    => 'yes'
+						]
+					]
+				],
 			]
 		);
 
@@ -878,10 +898,50 @@ class Elite_Carousel extends Group_Control_Query {
 			[
 				'name' => 'date_text_shadow',
 				'label' => __('Text Shadow', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-elite-carousel-date, {{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-post-time',
-				'condition' => [
-					'show_date' => 'yes'
-				]
+				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-date, {{WRAPPER}} .upk-elite-carousel .upk-post-time, {{WRAPPER}} .upk-elite-carousel .upk-reading-time',
+				'conditions' => [
+					'relation' => 'or',
+					'terms'    => [
+						[
+							'name'     => 'show_date',
+							'value'    => 'yes'
+						],
+						[
+							'name'     => 'show_reading_time',
+							'value'    => 'yes'
+						]
+					]
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'date_spacing',
+			[
+				'label'   => esc_html__('Space Between', 'ultimate-post-kit'),
+				'type'    => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min'  => 0,
+						'max'  => 50,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-elite-carousel .upk-category' => 'margin-left: {{SIZE}}{{UNIT}};',
+				],
+				'conditions' => [
+					'relation' => 'or',
+					'terms'    => [
+						[
+							'name'     => 'show_date',
+							'value'    => 'yes'
+						],
+						[
+							'name'     => 'show_reading_time',
+							'value'    => 'yes'
+						]
+					]
+				],
 			]
 		);
 
@@ -897,25 +957,13 @@ class Elite_Carousel extends Group_Control_Query {
 			]
 		);
 
-		$this->start_controls_tabs('tabs_category_style');
-
-		$this->start_controls_tab(
-			'tab_category_normal',
-			[
-				'label' => esc_html__('Normal', 'ultimate-post-kit'),
-				'condition' => [
-					'show_category' => 'yes'
-				]
-			]
-		);
-
 		$this->add_control(
 			'category_color',
 			[
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-elite-carousel-category a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-category a' => 'color: {{VALUE}};',
 				],
 				'condition' => [
 					'show_category' => 'yes'
@@ -927,7 +975,7 @@ class Elite_Carousel extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'      => 'category_background',
-				'selector'  => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-elite-carousel-category a',
+				'selector'  => '{{WRAPPER}} .upk-elite-carousel .upk-category a',
 				'condition' => [
 					'show_category' => 'yes'
 				]
@@ -956,7 +1004,7 @@ class Elite_Carousel extends Group_Control_Query {
 						'default' => '#dddfe2',
 					],
 				],
-				'selector'       => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-elite-carousel-category a',
+				'selector'       => '{{WRAPPER}} .upk-elite-carousel .upk-category a',
 				'condition' => [
 					'show_category' => 'yes'
 				]
@@ -970,7 +1018,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-elite-carousel-category a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-category a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => [
 					'show_category' => 'yes'
@@ -985,7 +1033,7 @@ class Elite_Carousel extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-elite-carousel-category a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-category a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => [
 					'show_category' => 'yes'
@@ -1006,7 +1054,7 @@ class Elite_Carousel extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-elite-carousel-category a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-carousel .upk-category a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'show_category' => 'yes'
@@ -1018,7 +1066,7 @@ class Elite_Carousel extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'category_shadow',
-				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-elite-carousel-category a',
+				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-category a',
 				'condition' => [
 					'show_category' => 'yes'
 				]
@@ -1030,68 +1078,12 @@ class Elite_Carousel extends Group_Control_Query {
 			[
 				'name'     => 'category_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-elite-carousel-category a',
+				'selector' => '{{WRAPPER}} .upk-elite-carousel .upk-category a',
 				'condition' => [
 					'show_category' => 'yes'
 				]
 			]
 		);
-
-		$this->end_controls_tab();
-
-		$this->start_controls_tab(
-			'tab_category_hover',
-			[
-				'label' => esc_html__('Hover', 'ultimate-post-kit'),
-				'condition' => [
-					'show_category' => 'yes'
-				]
-			]
-		);
-
-		$this->add_control(
-			'category_hover_color',
-			[
-				'label'     => esc_html__('Color', 'ultimate-post-kit'),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-elite-carousel-category a:hover' => 'color: {{VALUE}};',
-				],
-				'condition' => [
-					'show_category' => 'yes'
-				]
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
-			[
-				'name'      => 'category_hover_background',
-				'selector'  => '{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-elite-carousel-category a:hover',
-				'condition' => [
-					'show_category' => 'yes'
-				]
-			]
-		);
-
-		$this->add_control(
-			'category_hover_border_color',
-			[
-				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
-				'type'      => Controls_Manager::COLOR,
-				'condition' => [
-					'category_border_border!' => '',
-					'show_category' => 'yes'
-				],
-				'selectors' => [
-					'{{WRAPPER}} .upk-elite-carousel .upk-post-grid .upk-post-grid-item .upk-post-grid-item-box .upk-elite-carousel-category a:hover' => 'border-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
 
 		$this->end_controls_section();
 
@@ -1130,16 +1122,6 @@ class Elite_Carousel extends Group_Control_Query {
 	<?php
 	}
 
-	public function render_title() {
-		$settings = $this->get_settings_for_display();
-
-		if (!$this->get_settings('show_title')) {
-			return;
-		}
-
-		printf('<%1$s class="upk-blog-title-wrap"><a href="%2$s" title="%3$s" class="upk-blog-title">%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), get_permalink(), get_the_title());
-	}
-
 	public function render_author() {
 
 		if (!$this->get_settings('show_author')) {
@@ -1153,68 +1135,13 @@ class Elite_Carousel extends Group_Control_Query {
 	<?php
 	}
 
-	public function render_category() {
-
-		if (!$this->get_settings('show_category')) {
-			return;
-		}
-	?>
-		<div class="upk-elite-carousel-category">
-			<?php echo upk_get_category($this->get_settings('posts_source')); ?>
-		</div>
-	<?php
-	}
-
-	public function render_date() {
-		$settings = $this->get_settings_for_display();
-		if (!$this->get_settings('show_date')) {
-			return;
-		}
-
-	?>
-		<div class="upk-elite-carousel-date">
-			<?php if ($settings['human_diff_time'] == 'yes') {
-				echo ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
-			} else {
-				echo get_the_date();
-			} ?>
-		</div>
-		<?php if ($settings['show_time']) : ?>
-			<div class="upk-post-time">
-				<i class="upk-icon-clock" aria-hidden="true"></i>
-				<?php echo get_the_time(); ?>
-			</div>
-		<?php endif; ?>
-	<?php
-	}
-
-	public function render_excerpt($excerpt_length) {
-
-		if (!$this->get_settings('show_excerpt')) {
-			return;
-		}
-		$strip_shortcode = $this->get_settings_for_display('strip_shortcode');
-
-	?>
-		<div class="upk-blog-desc">
-			<?php
-			if (has_excerpt()) {
-				the_excerpt();
-			} else {
-				echo ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode);
-			}
-			?>
-		</div>
-	<?php
-	}
-
 	public function render_header() {
 		//Global Function
 		$this->render_header_attribute('elite');
 
 	?>
 		<div <?php $this->print_render_attribute_string('carousel'); ?>>
-			<div class="upk-post-grid">
+			<div class="upk-post-carousel-wrap">
 				<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 					<?php
@@ -1227,11 +1154,11 @@ class Elite_Carousel extends Group_Control_Query {
 
 						$this->add_render_attribute('grid-item', 'onclick', "window.open('" . esc_url(get_permalink()) . "', '_self')", true);
 					}
-					$this->add_render_attribute('grid-item', 'class', 'upk-post-grid-item swiper-slide', true);
+					$this->add_render_attribute('grid-item', 'class', 'upk-item swiper-slide', true);
 
 					?>
 						<div <?php $this->print_render_attribute_string('grid-item'); ?>>
-							<div class="upk-post-grid-item-box">
+							<div class="upk-item-box">
 								<div class="upk-blog-image-wrapper">
 									<div class="upk-main-image">
 										<?php $this->render_image(get_post_thumbnail_id($post_id), $image_size); ?>
@@ -1260,7 +1187,22 @@ class Elite_Carousel extends Group_Control_Query {
 
 									<?php if ($settings['show_category'] == 'yes' or $settings['show_date'] == 'yes') : ?>
 										<div class="upk-category-meta-wrap upk-flex upk-flex-middle">
-											<?php $this->render_date(); ?>
+
+											<?php if ( 'yes' === $settings['show_date'] or 'yes' === $settings['show_reading_time'] ) : ?>
+											<div class="upk-flex upk-flex-middle upk-date-reading-wrap">
+
+												<?php $this->render_date(); ?>
+												
+												<?php if (_is_upk_pro_activated()) :
+													if ('yes' === $settings['show_reading_time']) : ?>
+														<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+															<?php echo ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
+														</div>
+													<?php endif; ?>
+												<?php endif; ?>
+											</div>
+											<?php endif; ?>
+
 											<?php $this->render_category(); ?>
 										</div>
 									<?php endif; ?>
@@ -1271,7 +1213,7 @@ class Elite_Carousel extends Group_Control_Query {
 
 									<?php $this->render_title(substr($this->get_name(), 4)); ?>
 
-									<div class="upk-blog-desc-wrap">
+									<div class="upk-text-wrap">
 										<?php $this->render_excerpt($excerpt_length); ?>
 									</div>
 

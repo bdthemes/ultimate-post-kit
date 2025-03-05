@@ -115,13 +115,13 @@
 .upk-timeline .upk-title a:hover {
   color: #D90429;
 }
-.upk-timeline .upk-desc {
+.upk-timeline .upk-text {
   margin-bottom: 15px;
   color: #6f6f6f;
   line-height: 1.6;
   font-size: 12px;
 }
-.upk-timeline .upk-desc p {
+.upk-timeline .upk-text p {
   margin: 0;
 }
 .upk-timeline .upk-meta {
@@ -326,7 +326,7 @@
     padding-bottom: 15px;
     font-size: 24px;
   }
-  .upk-timeline .upk-desc {
+  .upk-timeline .upk-text {
     display: inherit;
     margin-bottom: 15px;
     font-size: 14px;

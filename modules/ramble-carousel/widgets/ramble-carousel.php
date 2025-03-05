@@ -10,9 +10,9 @@ use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
 use Elementor\Icons_Manager;
-use UltimatePostKit\Utils;
 
 use UltimatePostKit\Traits\Global_Widget_Controls;
+use UltimatePostKit\Traits\Global_Widget_Functions;
 use UltimatePostKit\Traits\Global_Swiper_Functions;
 use UltimatePostKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use WP_Query;
@@ -22,6 +22,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class Ramble_Carousel extends Group_Control_Query {
 
 	use Global_Widget_Controls;
+	use Global_Widget_Functions;
 	use Global_Swiper_Functions;
 
 	private $_query = null;
@@ -167,7 +168,7 @@ class Ramble_Carousel extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => __('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -264,7 +265,7 @@ class Ramble_Carousel extends Group_Control_Query {
 		$this->add_control(
 			'meta_separator',
 			[
-				'label'       => __('Separator', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'       => __('Separator', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => '/',
 				'label_block' => false,
@@ -417,7 +418,7 @@ class Ramble_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Overlay Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-ramble-carousel .upk-item .upk-image-wrap:before' => 'background-color: {{VALUE}};'
+					'{{WRAPPER}} .upk-ramble-carousel .upk-item .upk-img-wrap:before' => 'background-color: {{VALUE}};'
 				],
 			]
 		);
@@ -468,7 +469,7 @@ class Ramble_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Overlay Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-ramble-carousel .upk-item:hover .upk-image-wrap:before' => 'background-color: {{VALUE}};'
+					'{{WRAPPER}} .upk-ramble-carousel .upk-item:hover .upk-img-wrap:before' => 'background-color: {{VALUE}};'
 				],
 			]
 		);
@@ -531,6 +532,13 @@ class Ramble_Carousel extends Group_Control_Query {
 				'condition' => [
 					'show_title' => 'yes',
 				],
+			]
+		);
+
+		$this->add_control(
+			'title_style',
+			[
+				'type'    => Controls_Manager::HIDDEN,
 			]
 		);
 
@@ -920,7 +928,7 @@ class Ramble_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'meta_space_between',
 			[
-				'label'     => esc_html__('Space Between', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Space Between', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -1271,53 +1279,6 @@ class Ramble_Carousel extends Group_Control_Query {
 		$this->_query = new WP_Query($args);
 	}
 
-	public function render_image($image_id, $size) {
-		$placeholder_image_src = Utils::get_placeholder_image_src();
-
-		$image_src = wp_get_attachment_image_src($image_id, $size);
-
-		if (!$image_src) {
-			$image_src = $placeholder_image_src;
-		} else {
-			$image_src = $image_src[0];
-		}
-
-?>
-		<img class="upk-image" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
-	<?php
-	}
-
-	public function render_title() {
-		$settings = $this->get_settings_for_display();
-
-		if (!$this->get_settings('show_title')) {
-			return;
-		}
-
-		printf('<%1$s class="upk-title"><a href="%2$s" title="%3$s" class="upk-ramble-title">%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), get_permalink(), get_the_title());
-	}
-
-	public function render_excerpt($excerpt_length) {
-
-		if (!$this->get_settings('show_excerpt')) {
-			return;
-		}
-
-		$strip_shortcode = $this->get_settings_for_display('strip_shortcode');
-
-	?>
-		<div class="upk-text">
-			<?php
-			if (has_excerpt()) {
-				the_excerpt();
-			} else {
-				echo ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode);
-			}
-			?>
-		</div>
-		<?php
-	}
-
 	public function render_post_meta() {
 		$settings = $this->get_settings_for_display();
 
@@ -1361,47 +1322,6 @@ class Ramble_Carousel extends Group_Control_Query {
 
 			</div>
 		<?php endif;
-	}
-
-	public function render_date() {
-		$settings = $this->get_settings_for_display();
-
-		if (!$this->get_settings('show_date')) {
-			return;
-		}
-
-		?>
-		<div class="upk-flex">
-			<div class="upk-date">
-				<?php if ($settings['human_diff_time'] == 'yes') {
-					echo ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
-				} else {
-					echo get_the_date();
-				} ?>
-			</div>
-			<?php if ($settings['show_time']) : ?>
-				<div class="upk-post-time">
-					<i class="upk-icon-clock" aria-hidden="true"></i>
-					<?php echo get_the_time(); ?>
-				</div>
-			<?php endif; ?>
-		</div>
-	<?php
-	}
-
-	public function render_category() {
-
-		if (!$this->get_settings('show_category')) {
-			return;
-		}
-
-	?>
-		<div class="upk-category">
-			<span>
-				<?php echo upk_get_category($this->get_settings('posts_source')); ?>
-			</span>
-		</div>
-	<?php
 	}
 
 	public function render_comments($id = 0) {
@@ -1467,7 +1387,7 @@ class Ramble_Carousel extends Group_Control_Query {
 
 					?>
 						<div <?php $this->print_render_attribute_string('grid-item'); ?>>
-							<div class="upk-image-wrap">
+							<div class="upk-img-wrap">
 								<?php $this->render_image(get_post_thumbnail_id($post_id), $image_size); ?>
 
 								<div class="upk-content">

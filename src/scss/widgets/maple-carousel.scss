@@ -72,7 +72,7 @@
 		flex-wrap: wrap;
 		align-items: center;
 		margin-bottom: 15px;
-		font-size: 13px;
+		font-size: clamp(13px, 2vw, 14px);
 		.upk-author {
 			display: flex;
 			align-items: center;
@@ -84,26 +84,15 @@
 		.author-name {
 			color: #8d99ae;
 			font-weight: 600;
-			// margin-right: 10px;
 		}
 
 		.upk-blog-date {
-			// padding-left: 20px;
 			position: relative;
 			display: flex;
 			.date {
 				color: #8d99ae;
 			}
 
-			// &::before {
-			// 	content: "";
-			// 	position: absolute;
-			// 	height: 1px;
-			// 	width: 15px;
-			// 	background: #8d99ae;
-			// 	left: 0;
-			// 	top: 53%;
-			// }
 			i {
 				margin: 0 5px;
 			}
@@ -135,31 +124,22 @@
 
 	.upk-title {
 		width: 100%;
-		font-size: 18px;
+		font-size: clamp(18px, 2vw, 20px);
 		font-weight: 600;
 		line-height: 1.4;
 		margin-top: 0;
 		margin-bottom: 15px;
 		a {
 			color: #2b2d42;
-			background-image: linear-gradient(currentColor, currentColor);
-			background-position: 0% 100%;
-			background-repeat: no-repeat;
-			background-size: 0% 2px;
-			transition: background-size 0.3s;
 			&:hover {
 				color: #ef233c;
-				background-size: 100% 2px;
-			}
-			&:focus {
-				background-size: 100% 2px;
 			}
 		}
 	}
 
 	.upk-text {
 		color: #8d99ae;
-		font-size: 14px;
+		font-size: clamp(14px, 2vw, 16px);
 		P {
 			margin: 0;
 		}
@@ -178,21 +158,6 @@
 	.upk-maple-carousel {
 		.upk-item:hover {
 			cursor: pointer;
-		}
-	}
-}
-
-//Responsive Css Here
-@media (min-width: 768px) {
-	.upk-maple-carousel {
-		.upk-title {
-			font-size: 20px;
-		}
-		.upk-text {
-			font-size: 16px;
-		}
-		.upk-meta {
-			font-size: 14px;
 		}
 	}
 }

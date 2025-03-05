@@ -101,7 +101,7 @@ class Ramble_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'row_gap',
 			[
-				'label' => esc_html__('Row Gap', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => esc_html__('Row Gap', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 20,
@@ -158,7 +158,7 @@ class Ramble_Grid extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => __('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -255,7 +255,7 @@ class Ramble_Grid extends Group_Control_Query {
 		$this->add_control(
 			'meta_separator',
 			[
-				'label'       => __('Separator', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'       => __('Separator', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => '/',
 				'label_block' => false,
@@ -911,7 +911,7 @@ class Ramble_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'meta_space_between',
 			[
-				'label'     => esc_html__('Space Between', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Space Between', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [

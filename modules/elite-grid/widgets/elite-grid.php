@@ -122,7 +122,7 @@ class Elite_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'row_gap',
 			[
-				'label'     => esc_html__('Row Gap', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Row Gap', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}} .upk-elite-grid .upk-post-grid' => 'grid-row-gap: {{SIZE}}{{UNIT}};',
@@ -153,7 +153,7 @@ class Elite_Grid extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-image-wrap .upk-main-image .upk-img' => 'height: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-elite-grid .upk-image-wrap .upk-main-image .upk-img' => 'height: {{SIZE}}px;',
 				],
 				'condition' => [
 					'grid_style' => ['1']
@@ -196,7 +196,7 @@ class Elite_Grid extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => __('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -332,6 +332,17 @@ class Elite_Grid extends Group_Control_Query {
 
 		//Global Date Controls
 		$this->register_date_controls();
+		//Global Reading Time Controls 
+		$this->register_reading_time_controls();
+		$this->add_control(
+			'meta_separator',
+			[
+				'label'       => __('Separator', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'        => Controls_Manager::TEXT,
+				'default'     => '|',
+				'label_block' => false,
+			]
+		);
 
 		$this->add_control(
 			'show_pagination',
@@ -482,7 +493,16 @@ class Elite_Grid extends Group_Control_Query {
 		$this->add_control(
 			'title_style',
 			[
-				'type'    => Controls_Manager::HIDDEN,
+				'label'   => esc_html__('Style', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'    => Controls_Manager::SELECT,
+				'default' => '',
+				'options' => [
+					'' 			  => esc_html__('Default', 'ultimate-post-kit'),
+					'underline'        => esc_html__('Underline', 'ultimate-post-kit'),
+					'middle-underline' => esc_html__('Middle Underline', 'ultimate-post-kit'),
+					'overline'         => esc_html__('Overline', 'ultimate-post-kit'),
+					'middle-overline'  => esc_html__('Middle Overline', 'ultimate-post-kit'),
+				],
 			]
 		);
 
@@ -492,7 +512,7 @@ class Elite_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-item .upk-item-box .upk-content .upk-title a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-title a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -503,7 +523,7 @@ class Elite_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-item .upk-item-box .upk-content .upk-title a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-title a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -520,7 +540,7 @@ class Elite_Grid extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-item .upk-item-box .upk-content .upk-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -530,7 +550,7 @@ class Elite_Grid extends Group_Control_Query {
 			[
 				'name'     => 'title_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-item .upk-item-box .upk-content .upk-title a',
+				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-title',
 			]
 		);
 
@@ -539,7 +559,7 @@ class Elite_Grid extends Group_Control_Query {
 			[
 				'name'      => 'secondary_title_typography',
 				'label'     => esc_html__('Secondary Typography', 'ultimate-post-kit'),
-				'selector'  => '{{WRAPPER}} .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+2) .upk-item-box .upk-content .upk-title a, {{WRAPPER}} .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+3) .upk-item-box .upk-content .upk-title a, {{WRAPPER}} .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+4) .upk-item-box .upk-content .upk-title a, {{WRAPPER}} .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+5) .upk-item-box .upk-content .upk-title a, {{WRAPPER}} .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+2) .upk-item-box .upk-content .upk-title a, {{WRAPPER}} .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+3) .upk-item-box .upk-content .upk-title a, {{WRAPPER}} .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+4) .upk-item-box .upk-content .upk-title a',
+				'selector'  => '{{WRAPPER}} .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+2) .upk-title, {{WRAPPER}} .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+3) .upk-title, {{WRAPPER}} .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+4) .upk-title, {{WRAPPER}} .upk-elite-grid .upk-style-2 .upk-item:nth-child(5n+5) .upk-title, {{WRAPPER}} .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+2) .upk-title, {{WRAPPER}} .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+3) .upk-title, {{WRAPPER}} .upk-elite-grid .upk-style-3 .upk-item:nth-child(4n+4) .upk-title',
 				'condition' => [
 					'grid_style' => ['2', '3']
 				]
@@ -560,7 +580,7 @@ class Elite_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Line Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-content .upk-title a:before' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-content .upk-title a:before' => 'border-color: {{VALUE}};',
 				],
 				'condition' => [
 					'title_advanced_style' => 'yes'
@@ -573,7 +593,7 @@ class Elite_Grid extends Group_Control_Query {
 			[
 				'name'      => 'title_background',
 				'label'     => __('Background', 'ultimate-post-kit'),
-				'selector'  => '{{WRAPPER}} .upk-elite-grid .upk-item .upk-item-box .upk-content .upk-title a',
+				'selector'  => '{{WRAPPER}} .upk-elite-grid .upk-title a',
 				'condition' => [
 					'title_advanced_style' => 'yes'
 				]
@@ -585,7 +605,7 @@ class Elite_Grid extends Group_Control_Query {
 			[
 				'name'      => 'title_text_shadow',
 				'label'     => __('Text Shadow', 'ultimate-post-kit'),
-				'selector'  => '{{WRAPPER}} .upk-elite-grid .upk-item .upk-item-box .upk-content .upk-title a',
+				'selector'  => '{{WRAPPER}} .upk-elite-grid .upk-title a',
 				'condition' => [
 					'title_advanced_style' => 'yes'
 				]
@@ -596,7 +616,7 @@ class Elite_Grid extends Group_Control_Query {
 			Group_Control_Border::get_type(),
 			[
 				'name'      => 'title_border',
-				'selector'  => '{{WRAPPER}} .upk-elite-grid .upk-item .upk-item-box .upk-content .upk-title a',
+				'selector'  => '{{WRAPPER}} .upk-elite-grid .upk-title a',
 				'condition' => [
 					'title_advanced_style' => 'yes'
 				]
@@ -610,7 +630,7 @@ class Elite_Grid extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-elite-grid .upk-item .upk-item-box .upk-content .upk-title a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-title a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition'  => [
 					'title_advanced_style' => 'yes'
@@ -622,7 +642,7 @@ class Elite_Grid extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'      => 'title_box_shadow',
-				'selector'  => '{{WRAPPER}} .upk-elite-grid .upk-item .upk-item-box .upk-content .upk-title a',
+				'selector'  => '{{WRAPPER}} .upk-elite-grid .upk-title a',
 				'condition' => [
 					'title_advanced_style' => 'yes'
 				]
@@ -636,7 +656,7 @@ class Elite_Grid extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-elite-grid .upk-item .upk-item-box .upk-content .upk-title a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-title a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition'  => [
 					'title_advanced_style' => 'yes'
@@ -663,7 +683,7 @@ class Elite_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-item .upk-item-box .upk-content .upk-text' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-text' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -673,7 +693,7 @@ class Elite_Grid extends Group_Control_Query {
 			[
 				'name'     => 'text_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-item .upk-item-box .upk-content .upk-text',
+				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-text',
 			]
 		);
 
@@ -697,7 +717,7 @@ class Elite_Grid extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-image-wrap .upk-author-wrap' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-image-wrap .upk-author-wrap' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -706,7 +726,7 @@ class Elite_Grid extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'author_background',
-				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-image-wrap .upk-author-wrap',
+				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-image-wrap .upk-author-wrap',
 			]
 		);
 
@@ -717,7 +737,7 @@ class Elite_Grid extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-image-wrap .upk-author-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-image-wrap .upk-author-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -737,7 +757,7 @@ class Elite_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Size', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-image-wrap .upk-author-wrap .upk-author-img-wrap img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-author-img-wrap img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -774,7 +794,7 @@ class Elite_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-image-wrap .upk-author-wrap .upk-author-info-warp .author-name .name' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-author-info-warp .author-name .name' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -785,7 +805,7 @@ class Elite_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-image-wrap .upk-author-wrap .upk-author-info-warp .author-name .name:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-author-info-warp .author-name .name:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -795,7 +815,7 @@ class Elite_Grid extends Group_Control_Query {
 			[
 				'name'     => 'author_name_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-image-wrap .upk-author-wrap .upk-author-info-warp .author-name .name',
+				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-author-info-warp .author-name .name',
 			]
 		);
 
@@ -814,7 +834,7 @@ class Elite_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-image-wrap .upk-author-wrap .upk-author-info-warp .author-depertment' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-author-info-warp .author-depertment' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -824,7 +844,7 @@ class Elite_Grid extends Group_Control_Query {
 			[
 				'name'     => 'author_role_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-image-wrap .upk-author-wrap .upk-author-info-warp .author-depertment',
+				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-author-info-warp .author-depertment',
 			]
 		);
 
@@ -840,7 +860,7 @@ class Elite_Grid extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-image-wrap .upk-author-wrap .upk-author-info-warp .author-name' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-author-info-warp .author-name' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -850,7 +870,7 @@ class Elite_Grid extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_style_category',
 			[
-				'label'     => esc_html__('Category/Date', 'ultimate-post-kit'),
+				'label'     => esc_html__('Meta', 'ultimate-post-kit') . BDTUPK_UC,
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'conditions' => [
 					'relation' => 'or',
@@ -861,6 +881,10 @@ class Elite_Grid extends Group_Control_Query {
 						],
 						[
 							'name'     => 'show_date',
+							'value'    => 'yes'
+						],
+						[
+							'name'     => 'show_reading_time',
 							'value'    => 'yes'
 						]
 					]
@@ -880,56 +904,33 @@ class Elite_Grid extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-meta-wrap' => 'top: {{SIZE}}{{UNIT}}; right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-meta-wrap' => 'top: {{SIZE}}{{UNIT}}; right: {{SIZE}}{{UNIT}};',
 				],
-			]
-		);
-
-		$this->add_control(
-			'category_date_heading',
-			[
-				'label'     => esc_html__('Date', 'ultimate-post-kit'),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-				'condition' => [
-					'show_date' => 'yes'
-				]
 			]
 		);
 
 		$this->add_control(
 			'category_date_color',
 			[
-				'label'     => esc_html__('Color', 'ultimate-post-kit'),
+				'label'     => esc_html__('Text Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-elite-grid-date, {{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-post-time' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-date, {{WRAPPER}} .upk-elite-grid .upk-post-time, {{WRAPPER}} .upk-elite-grid .upk-reading-time' => 'color: {{VALUE}};',
 				],
-				'condition' => [
-					'show_date' => 'yes'
-				]
-			]
-		);
-
-		$this->add_responsive_control(
-			'date_spacing',
-			[
-				'label'   => esc_html__('Date Spacing', 'ultimate-post-kit'),
-				'type'    => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'min'  => 0,
-						'max'  => 50,
-						'step' => 2,
-					],
+				'separator' => 'before',
+				'conditions' => [
+					'relation' => 'or',
+					'terms'    => [
+						[
+							'name'     => 'show_date',
+							'value'    => 'yes'
+						],
+						[
+							'name'     => 'show_reading_time',
+							'value'    => 'yes'
+						]
+					]
 				],
-				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-meta-wrap .upk-elite-grid-date' => 'margin-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-meta-list .upk-elite-grid-date' => 'margin-left: {{SIZE}}{{UNIT}};',
-				],
-				'condition' => [
-					'show_date' => 'yes'
-				]
 			]
 		);
 
@@ -938,10 +939,20 @@ class Elite_Grid extends Group_Control_Query {
 			[
 				'name'     => 'category_date_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-elite-grid-date, {{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-post-time',
-				'condition' => [
-					'show_date' => 'yes'
-				]
+				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-date, {{WRAPPER}} .upk-elite-grid .upk-post-time, {{WRAPPER}} .upk-elite-grid .upk-reading-time',
+				'conditions' => [
+					'relation' => 'or',
+					'terms'    => [
+						[
+							'name'     => 'show_date',
+							'value'    => 'yes'
+						],
+						[
+							'name'     => 'show_reading_time',
+							'value'    => 'yes'
+						]
+					]
+				],
 			]
 		);
 
@@ -950,10 +961,50 @@ class Elite_Grid extends Group_Control_Query {
 			[
 				'name' => 'date_text_shadow',
 				'label' => __('Text Shadow', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-elite-grid-date, {{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-post-time',
-				'condition' => [
-					'show_date' => 'yes'
-				]
+				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-date, {{WRAPPER}} .upk-elite-grid .upk-post-time, {{WRAPPER}} .upk-elite-grid .upk-reading-time',
+				'conditions' => [
+					'relation' => 'or',
+					'terms'    => [
+						[
+							'name'     => 'show_date',
+							'value'    => 'yes'
+						],
+						[
+							'name'     => 'show_reading_time',
+							'value'    => 'yes'
+						]
+					]
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'date_spacing',
+			[
+				'label'   => esc_html__('Space Between', 'ultimate-post-kit'),
+				'type'    => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min'  => 0,
+						'max'  => 50,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-elite-grid .upk-category' => 'margin-left: {{SIZE}}{{UNIT}};',
+				],
+				'conditions' => [
+					'relation' => 'or',
+					'terms'    => [
+						[
+							'name'     => 'show_date',
+							'value'    => 'yes'
+						],
+						[
+							'name'     => 'show_reading_time',
+							'value'    => 'yes'
+						]
+					]
+				],
 			]
 		);
 
@@ -987,7 +1038,7 @@ class Elite_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-category a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-category a' => 'color: {{VALUE}};',
 				],
 				'condition' => [
 					'show_category' => 'yes'
@@ -999,7 +1050,7 @@ class Elite_Grid extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'      => 'category_background',
-				'selector'  => '{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-category a',
+				'selector'  => '{{WRAPPER}} .upk-elite-grid .upk-category a',
 				'condition' => [
 					'show_category' => 'yes'
 				]
@@ -1028,7 +1079,7 @@ class Elite_Grid extends Group_Control_Query {
 						'default' => '#dddfe2',
 					],
 				],
-				'selector'       => '{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-category a',
+				'selector'       => '{{WRAPPER}} .upk-elite-grid .upk-category a',
 				'condition' => [
 					'show_category' => 'yes'
 				]
@@ -1042,7 +1093,7 @@ class Elite_Grid extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-category a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-category a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => [
 					'show_category' => 'yes'
@@ -1057,7 +1108,7 @@ class Elite_Grid extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-category a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-category a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => [
 					'show_category' => 'yes'
@@ -1078,7 +1129,7 @@ class Elite_Grid extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-category a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-category a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'show_category' => 'yes'
@@ -1090,7 +1141,7 @@ class Elite_Grid extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'category_shadow',
-				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-category a',
+				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-category a',
 				'condition' => [
 					'show_category' => 'yes'
 				]
@@ -1102,7 +1153,7 @@ class Elite_Grid extends Group_Control_Query {
 			[
 				'name'     => 'category_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-category a',
+				'selector' => '{{WRAPPER}} .upk-elite-grid .upk-category a',
 				'condition' => [
 					'show_category' => 'yes'
 				]
@@ -1127,7 +1178,7 @@ class Elite_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-category a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-category a:hover' => 'color: {{VALUE}};',
 				],
 				'condition' => [
 					'show_category' => 'yes'
@@ -1139,7 +1190,7 @@ class Elite_Grid extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'      => 'category_hover_background',
-				'selector'  => '{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-category a:hover',
+				'selector'  => '{{WRAPPER}} .upk-elite-grid .upk-category a:hover',
 				'condition' => [
 					'show_category' => 'yes'
 				]
@@ -1156,7 +1207,7 @@ class Elite_Grid extends Group_Control_Query {
 					'show_category' => 'yes'
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-elite-grid .upk-post-grid .upk-item .upk-item-box .upk-category a:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-elite-grid .upk-category a:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1201,29 +1252,6 @@ class Elite_Grid extends Group_Control_Query {
 	<?php
 	}
 
-	public function render_date() {
-		$settings = $this->get_settings_for_display();
-		if (!$this->get_settings('show_date')) {
-			return;
-		}
-
-	?>
-		<div class="upk-elite-grid-date">
-			<?php if ($settings['human_diff_time'] == 'yes') {
-				echo ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
-			} else {
-				echo get_the_date();
-			} ?>
-		</div>
-		<?php if ($settings['show_time']) : ?>
-			<div class="upk-post-time">
-				<i class="upk-icon-clock" aria-hidden="true"></i>
-				<?php echo get_the_time(); ?>
-			</div>
-		<?php endif; ?>
-	<?php
-	}
-
 	public function render_post_grid_item($post_id, $image_size, $excerpt_length) {
 		$settings = $this->get_settings_for_display();
 
@@ -1264,7 +1292,22 @@ class Elite_Grid extends Group_Control_Query {
 
 					<?php if ($settings['show_category'] == 'yes' or $settings['show_date'] == 'yes') : ?>
 						<div class="upk-meta-wrap">
-							<?php $this->render_date(); ?>
+
+							<?php if ( 'yes' === $settings['show_date'] or 'yes' === $settings['show_reading_time'] ) : ?>
+							<div class="upk-flex upk-flex-middle upk-date-reading-wrap">
+
+								<?php $this->render_date(); ?>
+								
+								<?php if (_is_upk_pro_activated()) :
+									if ('yes' === $settings['show_reading_time']) : ?>
+										<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+											<?php echo ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
+										</div>
+									<?php endif; ?>
+								<?php endif; ?>
+							</div>
+							<?php endif; ?>
+
 							<?php $this->render_category(); ?>
 						</div>
 					<?php endif; ?>
@@ -1280,7 +1323,22 @@ class Elite_Grid extends Group_Control_Query {
 						<?php if ($settings['show_category'] == 'yes' or $settings['show_date'] == 'yes') : ?>
 							<div class="upk-meta-list upk-flex upk-flex-middle">
 								<?php $this->render_category(); ?>
-								<?php $this->render_date(); ?>
+
+								<?php if ( 'yes' === $settings['show_date'] or 'yes' === $settings['show_reading_time'] ) : ?>
+								<div class="upk-flex upk-flex-middle upk-date-reading-wrap">
+
+									<?php $this->render_date(); ?>
+									
+									<?php if (_is_upk_pro_activated()) :
+										if ('yes' === $settings['show_reading_time']) : ?>
+											<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+												<?php echo ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
+											</div>
+										<?php endif; ?>
+									<?php endif; ?>
+								</div>
+								<?php endif; ?>
+
 							</div>
 						<?php endif; ?>
 
