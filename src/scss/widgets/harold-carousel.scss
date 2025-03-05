@@ -3,7 +3,7 @@
 		position: relative;
 		overflow: hidden;
 		display: flex;
-		padding: 10px;
+		padding: clamp(10px, 2vw, 20px);
 		border-radius: 8px;
 		border: 1px solid #e8ecf3;
 		transition: all .3s ease;
@@ -12,8 +12,8 @@
 		display: flex;
 	}
 	.upk-image {
-		max-width: 100px;
-		min-width: 100px;
+		max-width: clamp(100px, 10vw, 130px);
+		min-width: clamp(100px, 10vw, 130px);
 		width: 100%;
 		display: flex;
 		.upk-harold-img {
@@ -26,15 +26,15 @@
 	.upk-content {
 		display: flex;
 		align-items: center;
-		padding: 10px;
+		padding: clamp(10px, 2vw, 20px);
 	}
 	.upk-category {
-		margin-bottom: 10px;
+		margin-bottom: clamp(10px, 1vw, 15px);
 		a {
 			text-transform: capitalize;
 			color: #8D99AE;
 			font-size: 10px;
-			padding: 3px 7px;
+			padding: clamp(3px, 1vw, 4px) clamp(7px, 1vw, 10px);
 			text-transform: uppercase;
 			font-weight: 600;
 			border-radius: 4px;
@@ -50,27 +50,15 @@
 		}
 	}
 
-	.upk-harold-title-wrap {
-		font-size: 16px;
+	.upk-title {
+		font-size: clamp(16px, 2vw, 20px);
 		font-weight: 600;
 		margin: 0px;
-		padding-bottom: 10px;
+		padding-bottom: clamp(10px, 1vw, 15px);
 		text-transform: capitalize;
-		.upk-harold-title {
-			transition: all .3s ease;
-			text-decoration: none;
+		a {
 			color: #2B2D42;
-			& {
-				text-decoration: none;
-				background-image: linear-gradient(currentColor, currentColor);
-				background-position: 0% 100%;
-				background-repeat: no-repeat;
-				background-size: 0% 2px;
-				transition: background-size .3s;
-				}
-			&:hover, 
-			&:focus {
-				background-size: 100% 2px;
+			&:hover {
 				color: #EF233C;
 			}
 		}
@@ -131,32 +119,6 @@
 	.upk-harold-carousel {
 		.swiper-slide {
 			height: initial;
-		}
-	}
-}
-
-//Responsive Css Here
-@media (min-width: 768px) { 
-	.upk-harold-carousel {
-		.upk-item {
-			padding: 20px;
-		}
-		.upk-image {
-			max-width: 130px;
-			min-width: 130px;
-		}
-		.upk-content {
-			padding: 20px;
-		}
-		.upk-category {
-			margin-bottom: 15px;
-			a {
-				padding: 4px 10px;
-			}
-		}
-		.upk-harold-title-wrap {
-			font-size: 20px;
-			padding-bottom: 15px;
 		}
 	}
 }

@@ -35,16 +35,17 @@
 .upk-pholox-slider .upk-title a {
   color: #2B2D42;
 }
+.upk-pholox-slider .upk-title a:hover {
+  color: #D90429;
+}
 .upk-pholox-slider .upk-category a + a {
   margin-right: 5px;
 }
-.upk-pholox-slider .upk-title a,
 .upk-pholox-slider .upk-category a,
 .upk-pholox-slider .upk-author a {
   text-decoration: none;
   transition: color 0.3s ease-in;
 }
-.upk-pholox-slider .upk-title a:hover,
 .upk-pholox-slider .upk-category a:hover,
 .upk-pholox-slider .upk-author a:hover {
   color: #D90429;

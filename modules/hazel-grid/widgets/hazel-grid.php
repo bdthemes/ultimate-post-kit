@@ -12,6 +12,7 @@ use Elementor\Group_Control_Background;
 use UltimatePostKit\Utils;
 
 use UltimatePostKit\Traits\Global_Widget_Controls;
+use UltimatePostKit\Traits\Global_Widget_Functions;
 use UltimatePostKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use WP_Query;
 
@@ -22,6 +23,7 @@ if (!defined('ABSPATH')) {
 class Hazel_Grid extends Group_Control_Query {
 
 	use Global_Widget_Controls;
+	use Global_Widget_Functions;
 
 	private $_query = null;
 
@@ -236,15 +238,15 @@ class Hazel_Grid extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-2 .upk-item:nth-child(6n+2), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-2 .upk-item:nth-child(6n+3), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-2 .upk-item:nth-child(6n+4), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-2 .upk-item:nth-child(6n+5), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-2 .upk-item:nth-child(6n+6), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-3 .upk-item:nth-child(5n+2), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-3 .upk-item:nth-child(5n+3), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-3 .upk-item:nth-child(5n+4), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-3 .upk-item:nth-child(5n+5), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-4 .upk-item:nth-child(5n+1), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-4 .upk-item:nth-child(5n+3), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-4 .upk-item:nth-child(5n+4), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-4 .upk-item:nth-child(5n+5), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-5 .upk-item:nth-child(5n+3), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-5 .upk-item:nth-child(5n+5), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-6 .upk-item:nth-child(5n+1), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-6 .upk-item:nth-child(5n+2), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-6 .upk-item:nth-child(5n+4), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-6 .upk-item:nth-child(5n+5), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-7 .upk-item:nth-child(7n+2), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-7 .upk-item:nth-child(7n+3), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-7 .upk-item:nth-child(7n+4), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-7 .upk-item:nth-child(7n+6), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-7 .upk-item:nth-child(7n+7), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-9 .upk-item:nth-child(4n+2), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-9 .upk-item:nth-child(4n+3), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-9 .upk-item:nth-child(4n+4), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-10 .upk-item:nth-child(6n+1), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-10 .upk-item:nth-child(6n+2), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-10 .upk-item:nth-child(6n+3), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-10 .upk-item:nth-child(6n+4), {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-10 .upk-item:nth-child(6n+6)' => 'height: {{SIZE}}px;',
-					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-2 .upk-item:nth-child(6n+1)' => 'height: {{SIZE}}px;',
-					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-3 .upk-item:nth-child(5n+1)' => 'height: {{SIZE}}px;',
-					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-4 .upk-item:nth-child(5n+2)' => 'height: {{SIZE}}px;',
-					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-6 .upk-item:nth-child(5n+3)' => 'height: {{SIZE}}px;',
-					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-7 .upk-item:nth-child(7n+1)' => 'height: {{SIZE}}px;',
-					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-7 .upk-item:nth-child(7n+5)' => 'height: {{SIZE}}px;',
-					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-9 .upk-item:nth-child(4n+1)' => 'height: {{SIZE}}px;',
-					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-10 .upk-item:nth-child(6n+5)' => 'height: {{SIZE}}px;',
+					'{{WRAPPER}} .upk-hazel-grid .upk-style-2 .upk-item:nth-child(6n+2), {{WRAPPER}} .upk-hazel-grid .upk-style-2 .upk-item:nth-child(6n+3), {{WRAPPER}} .upk-hazel-grid .upk-style-2 .upk-item:nth-child(6n+4), {{WRAPPER}} .upk-hazel-grid .upk-style-2 .upk-item:nth-child(6n+5), {{WRAPPER}} .upk-hazel-grid .upk-style-2 .upk-item:nth-child(6n+6), {{WRAPPER}} .upk-hazel-grid .upk-style-3 .upk-item:nth-child(5n+2), {{WRAPPER}} .upk-hazel-grid .upk-style-3 .upk-item:nth-child(5n+3), {{WRAPPER}} .upk-hazel-grid .upk-style-3 .upk-item:nth-child(5n+4), {{WRAPPER}} .upk-hazel-grid .upk-style-3 .upk-item:nth-child(5n+5), {{WRAPPER}} .upk-hazel-grid .upk-style-4 .upk-item:nth-child(5n+1), {{WRAPPER}} .upk-hazel-grid .upk-style-4 .upk-item:nth-child(5n+3), {{WRAPPER}} .upk-hazel-grid .upk-style-4 .upk-item:nth-child(5n+4), {{WRAPPER}} .upk-hazel-grid .upk-style-4 .upk-item:nth-child(5n+5), {{WRAPPER}} .upk-hazel-grid .upk-style-5 .upk-item:nth-child(5n+3), {{WRAPPER}} .upk-hazel-grid .upk-style-5 .upk-item:nth-child(5n+5), {{WRAPPER}} .upk-hazel-grid .upk-style-6 .upk-item:nth-child(5n+1), {{WRAPPER}} .upk-hazel-grid .upk-style-6 .upk-item:nth-child(5n+2), {{WRAPPER}} .upk-hazel-grid .upk-style-6 .upk-item:nth-child(5n+4), {{WRAPPER}} .upk-hazel-grid .upk-style-6 .upk-item:nth-child(5n+5), {{WRAPPER}} .upk-hazel-grid .upk-style-7 .upk-item:nth-child(7n+2), {{WRAPPER}} .upk-hazel-grid .upk-style-7 .upk-item:nth-child(7n+3), {{WRAPPER}} .upk-hazel-grid .upk-style-7 .upk-item:nth-child(7n+4), {{WRAPPER}} .upk-hazel-grid .upk-style-7 .upk-item:nth-child(7n+6), {{WRAPPER}} .upk-hazel-grid .upk-style-7 .upk-item:nth-child(7n+7), {{WRAPPER}} .upk-hazel-grid .upk-style-9 .upk-item:nth-child(4n+2), {{WRAPPER}} .upk-hazel-grid .upk-style-9 .upk-item:nth-child(4n+3), {{WRAPPER}} .upk-hazel-grid .upk-style-9 .upk-item:nth-child(4n+4), {{WRAPPER}} .upk-hazel-grid .upk-style-10 .upk-item:nth-child(6n+1), {{WRAPPER}} .upk-hazel-grid .upk-style-10 .upk-item:nth-child(6n+2), {{WRAPPER}} .upk-hazel-grid .upk-style-10 .upk-item:nth-child(6n+3), {{WRAPPER}} .upk-hazel-grid .upk-style-10 .upk-item:nth-child(6n+4), {{WRAPPER}} .upk-hazel-grid .upk-style-10 .upk-item:nth-child(6n+6)' => 'height: {{SIZE}}px;',
+					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-style-2 .upk-item:nth-child(6n+1)' => 'height: {{SIZE}}px;',
+					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-style-3 .upk-item:nth-child(5n+1)' => 'height: {{SIZE}}px;',
+					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-style-4 .upk-item:nth-child(5n+2)' => 'height: {{SIZE}}px;',
+					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-style-6 .upk-item:nth-child(5n+3)' => 'height: {{SIZE}}px;',
+					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-style-7 .upk-item:nth-child(7n+1)' => 'height: {{SIZE}}px;',
+					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-style-7 .upk-item:nth-child(7n+5)' => 'height: {{SIZE}}px;',
+					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-style-9 .upk-item:nth-child(4n+1)' => 'height: {{SIZE}}px;',
+					'(mobile){{WRAPPER}} .upk-hazel-grid .upk-style-10 .upk-item:nth-child(6n+5)' => 'height: {{SIZE}}px;',
 				],
 				'condition' => [
 					'grid_style!' => ['1', '8']
@@ -512,7 +514,7 @@ class Hazel_Grid extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-post-grid .upk-item .upk-item-box .upk-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -531,12 +533,31 @@ class Hazel_Grid extends Group_Control_Query {
 		);
 
 		$this->add_control(
+			'title_style',
+			[
+				'label'   => esc_html__('Style', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'    => Controls_Manager::SELECT,
+				'default' => '',
+				'options' => [
+					''				=> esc_html__('Default', 'ultimate-post-kit'),
+					'underline'        => esc_html__('Underline', 'ultimate-post-kit'),
+					'middle-underline' => esc_html__('Middle Underline', 'ultimate-post-kit'),
+					'overline'         => esc_html__('Overline', 'ultimate-post-kit'),
+					'middle-overline'  => esc_html__('Middle Overline', 'ultimate-post-kit'),
+				],
+				'condition' => [
+					'content_style!' => '3'
+				]
+			]
+		);
+
+		$this->add_control(
 			'title_color',
 			[
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-title a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -547,7 +568,7 @@ class Hazel_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-title:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-title a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -557,7 +578,7 @@ class Hazel_Grid extends Group_Control_Query {
 			[
 				'name'     => 'title_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-title',
+				'selector' => '{{WRAPPER}} .upk-hazel-grid .upk-title',
 			]
 		);
 
@@ -566,7 +587,7 @@ class Hazel_Grid extends Group_Control_Query {
 			[
 				'name'      => 'secondary_title_typography',
 				'label'     => esc_html__('Secondary Typography', 'ultimate-post-kit'),
-				'selector'  => '{{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-2 .upk-item:nth-child(6n+2) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-2 .upk-item:nth-child(6n+3) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-2 .upk-item:nth-child(6n+4) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-2 .upk-item:nth-child(6n+5) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-2 .upk-item:nth-child(6n+6) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-3 .upk-item:nth-child(5n+2) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-3 .upk-item:nth-child(5n+3) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-3 .upk-item:nth-child(5n+4) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-3 .upk-item:nth-child(5n+5) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-4 .upk-item:nth-child(5n+1) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-4 .upk-item:nth-child(5n+3) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-4 .upk-item:nth-child(5n+4) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-4 .upk-item:nth-child(5n+5) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-5 .upk-item:nth-child(5n+2) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-5 .upk-item:nth-child(5n+3) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-5 .upk-item:nth-child(5n+5) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-6 .upk-item:nth-child(5n+1) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-6 .upk-item:nth-child(5n+2) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-6 .upk-item:nth-child(5n+4) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-6 .upk-item:nth-child(5n+5) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-7 .upk-item:nth-child(7n+2) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-7 .upk-item:nth-child(7n+3) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-7 .upk-item:nth-child(7n+4) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-7 .upk-item:nth-child(7n+6) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-7 .upk-item:nth-child(7n+7) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-9 .upk-item:nth-child(4n+2) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-9 .upk-item:nth-child(4n+3) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-9 .upk-item:nth-child(4n+4) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-10 .upk-item:nth-child(6n+1) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-10 .upk-item:nth-child(6n+2) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-10 .upk-item:nth-child(6n+3) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-10 .upk-item:nth-child(6n+4) .upk-content .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-post-grid.upk-style-10 .upk-item:nth-child(6n+6) .upk-content .upk-title',
+				'selector'  => '{{WRAPPER}} .upk-hazel-grid .upk-style-2 .upk-item:nth-child(6n+2) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-2 .upk-item:nth-child(6n+3) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-2 .upk-item:nth-child(6n+4) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-2 .upk-item:nth-child(6n+5) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-2 .upk-item:nth-child(6n+6) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-3 .upk-item:nth-child(5n+2) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-3 .upk-item:nth-child(5n+3) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-3 .upk-item:nth-child(5n+4) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-3 .upk-item:nth-child(5n+5) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-4 .upk-item:nth-child(5n+1) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-4 .upk-item:nth-child(5n+3) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-4 .upk-item:nth-child(5n+4) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-4 .upk-item:nth-child(5n+5) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-5 .upk-item:nth-child(5n+2) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-5 .upk-item:nth-child(5n+3) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-5 .upk-item:nth-child(5n+5) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-6 .upk-item:nth-child(5n+1) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-6 .upk-item:nth-child(5n+2) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-6 .upk-item:nth-child(5n+4) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-6 .upk-item:nth-child(5n+5) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-7 .upk-item:nth-child(7n+2) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-7 .upk-item:nth-child(7n+3) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-7 .upk-item:nth-child(7n+4) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-7 .upk-item:nth-child(7n+6) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-7 .upk-item:nth-child(7n+7) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-9 .upk-item:nth-child(4n+2) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-9 .upk-item:nth-child(4n+3) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-9 .upk-item:nth-child(4n+4) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-10 .upk-item:nth-child(6n+1) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-10 .upk-item:nth-child(6n+2) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-10 .upk-item:nth-child(6n+3) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-10 .upk-item:nth-child(6n+4) .upk-title, {{WRAPPER}} .upk-hazel-grid .upk-style-10 .upk-item:nth-child(6n+6) .upk-title',
 				'condition' => [
 					'grid_style!' => ['1', '8']
 				]
@@ -586,7 +607,7 @@ class Hazel_Grid extends Group_Control_Query {
 			[
 				'name'      => 'title_background',
 				'label'     => __('Background', 'ultimate-post-kit'),
-				'selector'  => '{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-title',
+				'selector'  => '{{WRAPPER}} .upk-hazel-grid .upk-title a',
 				'condition' => [
 					'title_advanced_style' => 'yes'
 				]
@@ -598,7 +619,7 @@ class Hazel_Grid extends Group_Control_Query {
 			[
 				'name'      => 'title_text_shadow',
 				'label'     => __('Text Shadow', 'ultimate-post-kit'),
-				'selector'  => '{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-title',
+				'selector'  => '{{WRAPPER}} .upk-hazel-grid .upk-title a',
 				'condition' => [
 					'title_advanced_style' => 'yes'
 				]
@@ -609,7 +630,7 @@ class Hazel_Grid extends Group_Control_Query {
 			Group_Control_Border::get_type(),
 			[
 				'name'      => 'title_border',
-				'selector'  => '{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-title',
+				'selector'  => '{{WRAPPER}} .upk-hazel-grid .upk-title a',
 				'condition' => [
 					'title_advanced_style' => 'yes'
 				]
@@ -623,7 +644,7 @@ class Hazel_Grid extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-title a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition'  => [
 					'title_advanced_style' => 'yes'
@@ -635,7 +656,7 @@ class Hazel_Grid extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'      => 'title_box_shadow',
-				'selector'  => '{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-title',
+				'selector'  => '{{WRAPPER}} .upk-hazel-grid .upk-title a',
 				'condition' => [
 					'title_advanced_style' => 'yes'
 				]
@@ -649,7 +670,7 @@ class Hazel_Grid extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-title a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition'  => [
 					'title_advanced_style' => 'yes'
@@ -664,7 +685,7 @@ class Hazel_Grid extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition'  => [
 					'title_advanced_style' => 'yes'
@@ -722,7 +743,7 @@ class Hazel_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Text Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-meta *' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-meta *' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -733,21 +754,10 @@ class Hazel_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Hover Text Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-meta .upk-blog-author a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-meta .upk-blog-author a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
-
-		// $this->add_control(
-		// 	'date_divider_color',
-		// 	[
-		// 		'label'     => esc_html__('Divider Color', 'ultimate-post-kit'),
-		// 		'type'      => Controls_Manager::COLOR,
-		// 		'selectors' => [
-		// 			'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-meta .upk-date:before' => 'background: {{VALUE}};',
-		// 		],
-		// 	]
-		// );
 
 		$this->add_responsive_control(
 			'meta_space_between',
@@ -761,7 +771,7 @@ class Hazel_Grid extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-meta > div:before' => 'margin: 0 {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-meta > div:before' => 'margin: 0 {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -771,7 +781,7 @@ class Hazel_Grid extends Group_Control_Query {
 			[
 				'name'     => 'author_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-meta',
+				'selector' => '{{WRAPPER}} .upk-hazel-grid .upk-meta',
 			]
 		);
 
@@ -803,7 +813,7 @@ class Hazel_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-badge a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-category a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -812,7 +822,7 @@ class Hazel_Grid extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'category_background',
-				'selector' => '{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-badge a',
+				'selector' => '{{WRAPPER}} .upk-hazel-grid .upk-category a',
 			]
 		);
 
@@ -820,7 +830,7 @@ class Hazel_Grid extends Group_Control_Query {
 			Group_Control_Border::get_type(),
 			[
 				'name'     => 'category_border',
-				'selector' => '{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-badge a',
+				'selector' => '{{WRAPPER}} .upk-hazel-grid .upk-category a',
 			]
 		);
 
@@ -831,7 +841,7 @@ class Hazel_Grid extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-badge a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-category a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -843,7 +853,7 @@ class Hazel_Grid extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-badge a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-category a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -861,7 +871,7 @@ class Hazel_Grid extends Group_Control_Query {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-badge span' => 'gap: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-category a+a' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -871,7 +881,7 @@ class Hazel_Grid extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'category_shadow',
-				'selector' => '{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-badge a',
+				'selector' => '{{WRAPPER}} .upk-hazel-grid .upk-category a',
 			]
 		);
 
@@ -880,7 +890,7 @@ class Hazel_Grid extends Group_Control_Query {
 			[
 				'name'     => 'category_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-badge a',
+				'selector' => '{{WRAPPER}} .upk-hazel-grid .upk-category a',
 			]
 		);
 
@@ -899,7 +909,7 @@ class Hazel_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-badge a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-category a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -908,7 +918,7 @@ class Hazel_Grid extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'category_hover_background',
-				'selector' => '{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-badge a:hover',
+				'selector' => '{{WRAPPER}} .upk-hazel-grid .upk-category a:hover',
 			]
 		);
 
@@ -921,7 +931,7 @@ class Hazel_Grid extends Group_Control_Query {
 					'category_border_border!' => '',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-hazel-grid .upk-item .upk-item-box .upk-content .upk-blog-badge a:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-hazel-grid .upk-category a:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -949,34 +959,6 @@ class Hazel_Grid extends Group_Control_Query {
 		}
 		$args         = array_merge($default, $args);
 		$this->_query = new WP_Query($args);
-	}
-
-	public function render_image($image_id, $size) {
-		$placeholder_image_src = Utils::get_placeholder_image_src();
-
-		$image_src = wp_get_attachment_image_src($image_id, $size);
-
-		if (!$image_src) {
-			$image_src = $placeholder_image_src;
-		} else {
-			$image_src = $image_src[0];
-		}
-
-?>
-
-		<img class="upk-blog-image" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
-
-	<?php
-	}
-
-	public function render_title() {
-		$settings = $this->get_settings_for_display();
-
-		if (!$this->get_settings('show_title')) {
-			return;
-		}
-
-		printf('<%1$s class="upk-title"><a href="%2$s" title="%3$s" class="upk-blog-title">%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), get_permalink(), get_the_title());
 	}
 
 	public function render_author() {
@@ -1013,20 +995,6 @@ class Hazel_Grid extends Group_Control_Query {
 		}
 	}
 
-	public function render_category() {
-
-		if (!$this->get_settings('show_category')) {
-			return;
-		}
-	?>
-		<div class="upk-blog-badge">
-			<span>
-				<?php echo upk_get_category($this->get_settings('posts_source')); ?>
-			</span>
-		</div>
-	<?php
-	}
-
 	public function render_post_grid_item($post_id, $image_size) {
 		$settings = $this->get_settings_for_display();
 
@@ -1042,9 +1010,7 @@ class Hazel_Grid extends Group_Control_Query {
 				<?php $this->render_image(get_post_thumbnail_id($post_id), $image_size); ?>
 
 				<div class="upk-content">
-					<div class="upk-cetagory">
-						<?php $this->render_category(); ?>
-					</div>
+					<?php $this->render_category(); ?>
 
 					<div class="upk-title-wrap">
 						<?php $this->render_title(substr($this->get_name(), 4)); ?>

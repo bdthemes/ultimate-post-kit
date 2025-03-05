@@ -73,12 +73,12 @@
 .upk-paradox-slider .upk-meta > div:nth-child(1)::before {
   display: none;
 }
-.upk-paradox-slider .upk-title-wrap {
+.upk-paradox-slider .upk-title {
   font-size: clamp(1.5rem, 5vw, 3rem);
   padding-bottom: clamp(0.938rem, 3vw, 1.875rem);
   margin: 0;
 }
-.upk-paradox-slider .upk-title-wrap .upk-title {
+.upk-paradox-slider .upk-title a {
   color: #fff;
 }
 .upk-paradox-slider .upk-text {

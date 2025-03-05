@@ -44,6 +44,9 @@
 
         a {
             color: #2B2D42;
+            &:hover {
+                color: #D90429;
+            }
         }
     }
 
@@ -53,7 +56,6 @@
         }
     }
 
-    .upk-title,
     .upk-category,
     .upk-author {
         a {

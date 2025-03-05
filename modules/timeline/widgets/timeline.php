@@ -645,7 +645,7 @@ class Timeline extends Group_Control_Query {
 				'label'     => esc_html__( 'Color', 'ultimate-post-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
-					'{{WRAPPER}} .upk-timeline .upk-item .upk-desc' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-text' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -655,7 +655,7 @@ class Timeline extends Group_Control_Query {
 			[ 
 				'name'     => 'text_typography',
 				'label'    => esc_html__( 'Typography', 'ultimate-post-kit' ),
-				'selector' => '{{WRAPPER}} .upk-timeline .upk-item .upk-desc',
+				'selector' => '{{WRAPPER}} .upk-timeline .upk-item .upk-text',
 			]
 		);
 
@@ -666,7 +666,7 @@ class Timeline extends Group_Control_Query {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [ 
-					'{{WRAPPER}} .upk-timeline .upk-item .upk-desc' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-timeline .upk-item .upk-text' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				]
 			]
 		);
@@ -1024,41 +1024,6 @@ class Timeline extends Group_Control_Query {
 		$this->_query = new WP_Query( $args );
 	}
 
-	public function render_image( $image_id, $size ) {
-
-		if ( ! $this->get_settings( 'show_image' ) ) {
-			return;
-		}
-
-		$placeholder_image_src = Utils::get_placeholder_image_src();
-		$image_src             = wp_get_attachment_image_src( $image_id, $size );
-
-		if ( ! $image_src ) {
-			$image_src = $placeholder_image_src;
-		} else {
-			$image_src = $image_src[0];
-		}
-
-		?>
-
-		<div class="upk-image-wrapper">
-			<img class="upk-img" src="<?php echo esc_url( $image_src ); ?>" alt="<?php echo esc_html( get_the_title() ); ?>">
-		</div>
-		<?php
-	}
-
-	public function render_category() {
-
-		if ( ! $this->get_settings( 'show_category' ) ) {
-			return;
-		}
-		?>
-		<div class="upk-category">
-			<?php echo upk_get_category( $this->get_settings( 'posts_source' ) ); ?>
-		</div>
-		<?php
-	}
-
 	public function render_author() {
 
 		if ( ! $this->get_settings( 'show_author' ) ) {
@@ -1071,26 +1036,6 @@ class Timeline extends Group_Control_Query {
 				<?php echo get_the_author() ?>
 			</a>
 		</div>
-		<?php
-	}
-
-	public function render_excerpt( $excerpt_length ) {
-
-		if ( ! $this->get_settings( 'show_excerpt' ) ) {
-			return;
-		}
-		$strip_shortcode = $this->get_settings_for_display( 'strip_shortcode' );
-		?>
-		<div class="upk-desc">
-			<?php
-			if ( has_excerpt() ) {
-				the_excerpt();
-			} else {
-				echo ultimate_post_kit_custom_excerpt( $excerpt_length, $strip_shortcode );
-			}
-			?>
-		</div>
-
 		<?php
 	}
 
@@ -1162,7 +1107,9 @@ class Timeline extends Group_Control_Query {
 				<?php endif; ?>
 
 				<div class="upk-image-and-content-wrapper">
-					<?php $this->render_image( get_post_thumbnail_id( $post_id ), $image_size ); ?>
+					<div class="upk-image-wrapper">
+						<?php $this->render_image( get_post_thumbnail_id( $post_id ), $image_size ); ?>
+					</div>
 					<div class="upk-content-wrap">
 
 						<?php $this->render_category(); ?>

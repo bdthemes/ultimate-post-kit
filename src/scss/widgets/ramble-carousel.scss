@@ -10,7 +10,7 @@
 		-webkit-box-shadow: 0px 3px 10px -5px rgba(151, 163, 184, 0.5);
 		box-shadow: 0px 3px 10px -5px rgba(151, 163, 184, 0.5);
 		&:hover {
-			.upk-image-wrap {
+			.upk-img-wrap {
 				&:before {
 					background-color: rgba(239, 35, 60, 0.5);
 				}
@@ -68,7 +68,7 @@
 			}
 		}
 	}
-	.upk-image-wrap {
+	.upk-img-wrap {
 		display: flex;
 		width: 100%;
 		&:before {
@@ -83,7 +83,7 @@
 			transition: all .3s ease;
 		}
 	}
-	.upk-image {
+	.upk-img {
 		object-fit: cover;
 		height: 100%;
 		width: 100%;

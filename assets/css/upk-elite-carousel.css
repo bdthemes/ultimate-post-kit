@@ -1,16 +1,16 @@
-.upk-elite-carousel .upk-post-grid-item {
+.upk-elite-carousel .upk-item {
   position: relative;
   overflow: hidden;
 }
-.upk-elite-carousel .upk-post-grid-item:hover .upk-main-image::before {
+.upk-elite-carousel .upk-item:hover .upk-main-image::before {
   opacity: 0;
   transform: translateY(-200px);
 }
-.upk-elite-carousel .upk-post-grid-item:hover .upk-category-meta-wrap {
+.upk-elite-carousel .upk-item:hover .upk-category-meta-wrap {
   opacity: 0;
   transform: translateX(100px);
 }
-.upk-elite-carousel .upk-post-grid-item-box {
+.upk-elite-carousel .upk-item-box {
   position: relative;
 }
 .upk-elite-carousel .upk-blog-image-wrapper {
@@ -65,37 +65,39 @@
   letter-spacing: 1px;
   text-transform: capitalize;
 }
-.upk-elite-carousel .upk-blog-title-wrap {
+.upk-elite-carousel .upk-title {
   position: relative;
-  display: inline-flex;
-}
-.upk-elite-carousel .upk-blog-title {
-  color: #283D58;
   font-weight: 600;
   line-height: 1.4;
-  transition: all 0.5s ease;
   padding-left: 50px;
+  margin-top: 0;
 }
-.upk-elite-carousel .upk-blog-title:hover {
+.upk-elite-carousel .upk-title a {
+  color: #283D58;
+  transition: all 0.5s ease;
+}
+.upk-elite-carousel .upk-title a:hover {
   color: #EF233C;
   background-size: 100% 2px;
 }
-.upk-elite-carousel .upk-blog-title:before {
+.upk-elite-carousel .upk-title a:before {
   position: absolute;
   content: "";
   border: 1px solid #EF233C;
   width: 37px;
   left: 0;
 }
-.upk-elite-carousel .upk-blog-desc-wrap {
+.upk-elite-carousel .upk-text-wrap {
   padding-left: 50px;
+  margin-bottom: clamp(20px, 2vw, 35px);
 }
-.upk-elite-carousel .upk-blog-desc {
+.upk-elite-carousel .upk-text {
+  font-size: clamp(13px, 1vw, 15px);
   line-height: 1.5;
   letter-spacing: 0.5px;
   color: #8D99AE;
 }
-.upk-elite-carousel .upk-blog-desc p {
+.upk-elite-carousel .upk-text p {
   margin: 0;
 }
 .upk-elite-carousel .upk-blog-post-meta {
@@ -118,10 +120,11 @@
   transform: translateX(0);
   transition: all 0.8s cubic-bezier(0.17, 0.73, 0.66, 0.99) 0s, z-index 0s step-end, opacity 0.6s ease;
 }
-.upk-elite-carousel .upk-elite-carousel-category {
+.upk-elite-carousel .upk-category {
   display: flex;
+  margin-left: 10px;
 }
-.upk-elite-carousel .upk-elite-carousel-category a {
+.upk-elite-carousel .upk-category a {
   font-size: 14px;
   color: #dddfe2;
   font-weight: 600;
@@ -131,14 +134,14 @@
   border-radius: 3px;
   transition: all 0.3s ease;
 }
-.upk-elite-carousel .upk-elite-carousel-category a + a {
+.upk-elite-carousel .upk-category a + a {
   margin-left: 5px;
 }
+.upk-elite-carousel .upk-reading-time,
 .upk-elite-carousel .upk-post-time,
-.upk-elite-carousel .upk-elite-carousel-date {
+.upk-elite-carousel .upk-date {
   font-size: 14px;
   color: #ffffff;
-  margin-right: 10px;
   display: flex;
   line-height: 1;
 }
@@ -171,41 +174,29 @@
   padding-top: 30px;
   padding-right: 30px;
 }
-.upk-elite-carousel .upk-blog-title-wrap {
-  margin-bottom: 10px;
+.upk-elite-carousel .upk-title {
+  margin-bottom: clamp(10px, 2vw, 20px);
+  font-size: clamp(16px, 2vw, 20px);
 }
-.upk-elite-carousel .upk-blog-title {
-  font-size: 16px;
-}
-.upk-elite-carousel .upk-blog-title:before {
+.upk-elite-carousel .upk-title a:before {
   top: 12px;
 }
-.upk-elite-carousel .upk-blog-desc-wrap {
-  margin-bottom: 20px;
+.upk-elite-carousel .upk-date-reading-wrap > div {
+  position: relative;
+  display: inline-flex;
 }
-.upk-elite-carousel .upk-blog-desc {
-  font-size: 13px;
+.upk-elite-carousel .upk-date-reading-wrap > div:before {
+  content: attr(data-separator);
+  margin: 0 5px;
+}
+.upk-elite-carousel .upk-date-reading-wrap > div:nth-child(1)::before {
+  display: none;
 }
 
-.upk-global-link-yes .upk-elite-carousel .upk-post-grid-item:hover {
+.upk-global-link-yes .upk-elite-carousel .upk-item:hover {
   cursor: pointer;
 }
 
 .upk-item-match-height--yes .upk-elite-carousel .swiper-slide {
   height: initial;
-}
-
-@media only screen and (min-width: 640px) {
-  .upk-elite-carousel .upk-blog-title-wrap {
-    margin-bottom: 20px;
-  }
-  .upk-elite-carousel .upk-blog-title {
-    font-size: 20px;
-  }
-  .upk-elite-carousel .upk-blog-desc-wrap {
-    margin-bottom: 35px;
-  }
-  .upk-elite-carousel .upk-blog-desc {
-    font-size: 15px;
-  }
 }

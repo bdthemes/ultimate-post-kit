@@ -67,7 +67,7 @@
   flex-wrap: wrap;
   align-items: center;
   margin-bottom: 15px;
-  font-size: 13px;
+  font-size: clamp(13px, 2vw, 14px);
 }
 .upk-maple-carousel .upk-meta .upk-author {
   display: flex;
@@ -114,7 +114,7 @@
 }
 .upk-maple-carousel .upk-title {
   width: 100%;
-  font-size: 18px;
+  font-size: clamp(18px, 2vw, 20px);
   font-weight: 600;
   line-height: 1.4;
   margin-top: 0;
@@ -122,22 +122,13 @@
 }
 .upk-maple-carousel .upk-title a {
   color: #2b2d42;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-position: 100% 100%;
-  background-repeat: no-repeat;
-  background-size: 0% 2px;
-  transition: background-size 0.3s;
 }
 .upk-maple-carousel .upk-title a:hover {
   color: #ef233c;
-  background-size: 100% 2px;
-}
-.upk-maple-carousel .upk-title a:focus {
-  background-size: 100% 2px;
 }
 .upk-maple-carousel .upk-text {
   color: #8d99ae;
-  font-size: 14px;
+  font-size: clamp(14px, 2vw, 16px);
 }
 .upk-maple-carousel .upk-text P {
   margin: 0;
@@ -149,16 +140,4 @@
 
 .upk-global-link-yes .upk-maple-carousel .upk-item:hover {
   cursor: pointer;
-}
-
-@media (min-width: 768px) {
-  .upk-maple-carousel .upk-title {
-    font-size: 20px;
-  }
-  .upk-maple-carousel .upk-text {
-    font-size: 16px;
-  }
-  .upk-maple-carousel .upk-meta {
-    font-size: 14px;
-  }
 }

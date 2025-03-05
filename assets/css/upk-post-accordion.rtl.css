@@ -46,12 +46,12 @@
   padding: 20px;
   width: 100%;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-category {
+.upk-accordion-wrapper .upk-category {
   display: inline-block;
   margin-bottom: 10px;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-category a,
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-category a:before {
+.upk-accordion-wrapper .upk-category a,
+.upk-accordion-wrapper .upk-category a:before {
   display: block;
   color: #fff;
   background: #EF233C;
@@ -63,36 +63,36 @@
   text-transform: uppercase;
   transition: all 0.3s ease;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-category a:hover,
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-category a:hover::before {
+.upk-accordion-wrapper .upk-category a:hover,
+.upk-accordion-wrapper .upk-category a:hover::before {
   background: #D90429;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-category a + a {
+.upk-accordion-wrapper .upk-category a + a {
   margin-right: 5px;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-title {
+.upk-accordion-wrapper .upk-title {
   margin: 0;
   margin-bottom: 15px;
   font-size: 18px;
   font-weight: 600;
   line-height: 1.4;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-title a {
+.upk-accordion-wrapper .upk-title a {
   color: #fff;
   transition: all 0.3s ease;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-title a:hover {
+.upk-accordion-wrapper .upk-title a:hover {
   color: #EF233C;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-text {
+.upk-accordion-wrapper .upk-text {
   font-size: 14px;
   color: #cad1d4;
   margin-bottom: 15px;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-text p {
+.upk-accordion-wrapper .upk-text p {
   margin: 0;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-meta {
+.upk-accordion-wrapper .upk-accordion-meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -100,29 +100,29 @@
   font-weight: 500;
   font-size: 14px;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-meta .upk-post-time {
+.upk-accordion-wrapper .upk-accordion-meta .upk-post-time {
   margin-right: 5px;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-meta .upk-post-time i {
+.upk-accordion-wrapper .upk-accordion-meta .upk-post-time i {
   margin-left: 2px;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-meta .upk-accordion-date i {
+.upk-accordion-wrapper .upk-accordion-meta .upk-accordion-date i {
   margin-left: 4px;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-meta > div {
+.upk-accordion-wrapper .upk-accordion-meta > div {
   position: relative;
   display: inline-flex;
   align-items: center;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-meta > div:before {
+.upk-accordion-wrapper .upk-accordion-meta > div:before {
   content: attr(data-separator);
   margin: 0 8px;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-meta > div:nth-child(1)::before {
+.upk-accordion-wrapper .upk-accordion-meta > div:nth-child(1)::before {
   display: none;
 }
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-meta .upk-accordion-comments,
-.upk-accordion-wrapper .upk-accordion-content .upk-accordion-meta .upk-accordion-date {
+.upk-accordion-wrapper .upk-accordion-meta .upk-accordion-comments,
+.upk-accordion-wrapper .upk-accordion-meta .upk-accordion-date {
   display: flex;
   align-items: center;
   gap: 7px;
@@ -161,16 +161,16 @@
   height: 750px;
   flex-direction: column;
 }
-.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-text {
+.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-text {
   display: none;
 }
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-date,
-.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-category,
+.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-category,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-title,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-comments {
   overflow: hidden;
 }
-.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-category a,
+.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-category a,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-title a,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-date span,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-comments span {
@@ -180,7 +180,7 @@
   transition: transform 0.2s;
   transform-origin: 0% 0%;
 }
-.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-category a::before,
+.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-category a::before,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-title a::before,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-date span::before,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-comments span::before {
@@ -190,7 +190,7 @@
   right: 0;
   content: attr(data-hover);
 }
-.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-item:hover .upk-accordion-category a,
+.upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-item:hover .upk-category a,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-item:hover .upk-title a,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-item:hover .upk-accordion-date span,
 .upk-accordion-wrapper.upk-accordion-contentstyle-2 .upk-accordion-item:hover .upk-accordion-comments span {
@@ -223,8 +223,8 @@
   .upk-accordion-wrapper .upk-accordion-content {
     width: 370px;
   }
-  .upk-accordion-wrapper .upk-accordion-category a,
-  .upk-accordion-wrapper .upk-accordion-category a::before {
+  .upk-accordion-wrapper .upk-category a,
+  .upk-accordion-wrapper .upk-category a::before {
     padding: 8px 12px;
     font-size: 10px;
   }
@@ -232,7 +232,7 @@
     font-size: 22px;
     margin-bottom: 10px;
   }
-  .upk-accordion-wrapper .upk-accordion-text {
+  .upk-accordion-wrapper .upk-text {
     font-size: 16px;
     margin-bottom: 20px;
   }

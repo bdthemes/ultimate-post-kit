@@ -90,28 +90,14 @@
 		.author-name {
 			color: #8d99ae;
 			font-weight: 600;
-			// margin-right: 10px;
-			// text-transform: capitalize;
 		}
 
 		.upk-blog-date {
-			// padding-left: 20px;
 			position: relative;
 			display: flex;
 			.date {
 				color: #8d99ae;
-				//   text-transform: capitalize;
 			}
-
-			// &::before {
-			// 	content: "";
-			// 	position: absolute;
-			// 	height: 1px;
-			// 	width: 15px;
-			// 	background: #8d99ae;
-			// 	left: 0;
-			// 	top: 53%;
-			// }
 			i {
 				margin: 0 5px;
 			}

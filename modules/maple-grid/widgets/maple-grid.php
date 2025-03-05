@@ -166,7 +166,7 @@ class Maple_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'secondary_image_height',
 			[
-				'label' => esc_html__('Secondary Image Height', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => esc_html__('Secondary Image Height', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -523,6 +523,7 @@ class Maple_Grid extends Group_Control_Query {
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'underline',
 				'options' => [
+					'' 			  => esc_html__('Default', 'ultimate-post-kit'),
 					'underline'        => esc_html__('Underline', 'ultimate-post-kit'),
 					'middle-underline' => esc_html__('Middle Underline', 'ultimate-post-kit'),
 					'overline'         => esc_html__('Overline', 'ultimate-post-kit'),
@@ -1238,41 +1239,6 @@ class Maple_Grid extends Group_Control_Query {
 		} else {
 			echo get_the_date();
 		}
-	}
-
-	public function render_post_format() {
-		$settings = $this->get_settings_for_display();
-
-		if (!$settings['show_post_format']) {
-			return;
-		}
-	?>
-		<div class="upk-post-format">
-			<a href="<?php echo esc_url(get_permalink()) ?>">
-				<?php if (has_post_format('aside')) : ?>
-					<i class="upk-icon-aside" aria-hidden="true"></i>
-				<?php elseif (has_post_format('gallery')) : ?>
-					<i class="upk-icon-gallery" aria-hidden="true"></i>
-				<?php elseif (has_post_format('link')) : ?>
-					<i class="upk-icon-link" aria-hidden="true"></i>
-				<?php elseif (has_post_format('image')) : ?>
-					<i class="upk-icon-image" aria-hidden="true"></i>
-				<?php elseif (has_post_format('quote')) : ?>
-					<i class="upk-icon-quote" aria-hidden="true"></i>
-				<?php elseif (has_post_format('status')) : ?>
-					<i class="upk-icon-status" aria-hidden="true"></i>
-				<?php elseif (has_post_format('video')) : ?>
-					<i class="upk-icon-video" aria-hidden="true"></i>
-				<?php elseif (has_post_format('audio')) : ?>
-					<i class="upk-icon-music" aria-hidden="true"></i>
-				<?php elseif (has_post_format('chat')) : ?>
-					<i class="upk-icon-chat" aria-hidden="true"></i>
-				<?php else : ?>
-					<i class="upk-icon-post" aria-hidden="true"></i>
-				<?php endif; ?>
-			</a>
-		</div>
-	<?php
 	}
 
 	public function render_post_grid_item($post_id, $image_size, $excerpt_length) {

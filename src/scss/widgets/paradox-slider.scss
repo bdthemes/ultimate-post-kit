@@ -78,11 +78,11 @@
 			}
 		}
 	}
-	.upk-title-wrap {
+	.upk-title {
 		font-size: clamp(1.5rem, 5vw, 3rem);
 		padding-bottom: clamp(0.938rem, 3vw, 1.875rem);
 		margin: 0;
-		.upk-title {
+		a {
 			color: #fff;
 		}
 	}

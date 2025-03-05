@@ -236,6 +236,13 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 3.13.X [XX March 2025] =
+
+* Added: Reading time feature added in elite grid & elite carousel widgets
+* Added: Title animations style added in elite grid, elite carousel, harold list carousel, hazel carousel, hazel grid, maple carousel, paradox slider, pholox slider widgets
+* Fixed: Link open in new tab issue fixed in elite grid, elite carousel, harold list carousel, hazel carousel, hazel grid widgets
+* Updated: Assets and widgets optimized
+
 = 3.13.7 [25th February 2025] =
 
 * Added: Title default style added in tiny list widget
