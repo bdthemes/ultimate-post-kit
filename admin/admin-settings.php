@@ -291,7 +291,7 @@ class UltimatePostKit_Admin_Settings {
      // Redirect to Ultimate Post Kit Pro pricing page
     public function upk_redirect_to_get_pro() {
         if (isset($_GET['page']) && $_GET['page'] === self::PAGE_ID . '_get_pro') {
-            wp_redirect('https://postkit.pro/pricing/');
+            wp_redirect('https://postkit.pro/pricing/?utm_source=UPK&utm_medium=PluginPage&utm_campaign=30%OffOnUPK&coupon=FREETOPRO');
             exit;
         }
     }
@@ -359,7 +359,7 @@ class UltimatePostKit_Admin_Settings {
             add_submenu_page(
                 self::PAGE_ID,
                 BDTUPK_TITLE,
-                esc_html__('Get Pro', 'ultimate-post-kit'),
+                esc_html__('Upgrade For 30% Off!', 'ultimate-post-kit'),
                 'manage_options',
                 self::PAGE_ID . '_get_pro',
                 [$this, 'display_page']
