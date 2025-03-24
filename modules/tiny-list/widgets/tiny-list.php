@@ -9,6 +9,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Text_Stroke;
 use Elementor\Icons_Manager;
 
 use UltimatePostKit\Traits\Global_Widget_Controls;
@@ -615,6 +616,30 @@ class Tiny_List extends Group_Control_Query {
 				'name'     => 'title_text_shadow',
 				'label'    => __('Text Shadow', 'ultimate-post-kit'),
 				'selector' => '{{WRAPPER}} .upk-tiny-list .upk-item .upk-title',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Stroke::get_type(),
+			[
+				'name'     => 'title_text_stroke',
+				'label'    => __('Text Stroke', 'ultimate-post-kit') . BDTUPK_NC,
+				'selector' => '{{WRAPPER}} .upk-tiny-list .upk-item .upk-title a',
+			]
+		);
+
+		$this->add_control(
+			'title_hover_transition_duration',
+			[
+				'label' => esc_html__( 'Transition Duration', 'ultimate-post-kit' ) . BDTUPK_NC,
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 's', 'ms', 'custom' ],
+				'default' => [
+					'unit' => 's',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-tiny-list .upk-item .upk-title a' => 'transition-duration: {{SIZE}}{{UNIT}};',
+				],
 			]
 		);
 

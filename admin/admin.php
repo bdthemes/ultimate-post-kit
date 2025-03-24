@@ -39,6 +39,7 @@ class Admin
 
 		add_action('admin_init', [$this, 'admin_notice_styles']);
 
+		add_filter('plugin_action_links_' . BDTUPK_PBNAME, [$this, 'plugin_action_links']);
 
 	}
 
@@ -118,6 +119,30 @@ class Admin
 
 		return $links;
 	}
+
+	/**
+	 * Plugin action links
+	 * @access public
+	 * @return array
+	 */
+
+	 public function plugin_action_links( $plugin_meta ) {
+
+        if ( true !== _is_upk_pro_activated() ) {
+            $row_meta = [
+                'settings' => '<a href="'.admin_url( 'admin.php?page=ultimate_post_kit_options' ) .'" aria-label="' . esc_attr(__('Go to settings', 'ultimate-post-kit')) . '" >' . __('Settings', 'ultimate-post-kit') . '</b></a>',
+                'gopro' => '<a href="https://postkit.pro/pricing/?utm_source=UPK&utm_medium=PluginPage&utm_campaign=30%OffOnUPK&coupon=FREETOPRO" aria-label="' . esc_attr(__('Go get the pro version', 'ultimate-post-kit')) . '" target="_blank" title="When you purchase through this link you will get 30% discount!" class="upk-go-pro">' . __('Upgrade For 30% Off!', 'ultimate-post-kit') . '</a>',
+            ];
+        } else {
+            $row_meta = [
+                'settings' => '<a href="'.admin_url( 'admin.php?page=ultimate_post_kit_options' ) .'" aria-label="' . esc_attr(__('Go to settings', 'ultimate-post-kit')) . '" >' . __('Settings', 'ultimate-post-kit') . '</b></a>',
+            ];
+        }
+
+        $plugin_meta = array_merge($plugin_meta, $row_meta);
+
+        return $plugin_meta;
+    }
 
 	/**
 	 * Change Ultimate Post Kit Name
