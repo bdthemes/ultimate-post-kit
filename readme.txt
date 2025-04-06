@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 3.14.1
+Stable tag: 3.14.2
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.7.2
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.28.1
+Elementor tested up to: 3.28.3
 
 Best Post Addon for Elementor WordPress Plugin with 80+ Most Popular Elements that need your everyday blog website building.
 
@@ -235,6 +235,11 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 
 == Changelog ==
+
+= 3.14.2 [6th April 2025] =
+
+* Added: Date position option added in fanel list widget
+* Fixed: Columns issue fixed in gratis grid widget
 
 = 3.14.1 [24th March 2025] =
 

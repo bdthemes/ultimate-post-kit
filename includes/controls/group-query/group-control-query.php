@@ -221,7 +221,7 @@ abstract class Group_Control_Query extends Module_Base {
         $this->add_control(
             'posts_offset',
             [
-                'label'   => __('Offset', 'ultimate-post-kit') . BDTUPK_NC,
+                'label'   => __('Offset', 'ultimate-post-kit'),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 0,
             ]
