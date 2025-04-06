@@ -99,7 +99,7 @@ class Fanel_List extends Group_Control_Query {
 		$this->add_responsive_control(
 			'row_gap',
 			[
-				'label'     => esc_html__('Row Gap', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Row Gap', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => [
 					'size' => 20,
@@ -139,7 +139,7 @@ class Fanel_List extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => __('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -168,7 +168,7 @@ class Fanel_List extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_content_additional',
 			[
-				'label' => esc_html__('Additional', 'ultimate-post-kit'),
+				'label' => esc_html__('Additional Settings', 'ultimate-post-kit'),
 			]
 		);
 
@@ -595,12 +595,36 @@ class Fanel_List extends Group_Control_Query {
 				],
 			]
 		);
+		$this->add_responsive_control(
+			'date_position',
+			[
+				'label'   => esc_html__('Position', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'bottom-right',
+				'options' => [
+					'top-left'     => esc_html__('Top Left', 'ultimate-post-kit'),
+					'top-right'    => esc_html__('Top Right', 'ultimate-post-kit'),
+					'bottom-left'  => esc_html__('Bottom Left', 'ultimate-post-kit'),
+					'bottom-right' => esc_html__('Bottom Right', 'ultimate-post-kit'),
+				],
+				'selectors_dictionary' => [
+					'top-left' => 'top: 0; left: 0; bottom: auto; right: auto;',
+					'top-right' => 'top: 0; left: auto; bottom: auto; right: 0;',
+					'bottom-left' => 'top: auto; left: 0; bottom: 0; right: auto;',
+					'bottom-right' => 'top: auto; left: auto; bottom: 0; right: 0;',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .upk-fanel-list .upk-item .upk-fanel-date-wrap' => '{{VALUE}};',
+				],
+			]
+		);
 
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'date_background',
 				'selector' => '{{WRAPPER}} .upk-fanel-list .upk-item .upk-fanel-date-wrap',
+				'separator' => 'before'
 			]
 		);
 
@@ -767,6 +791,17 @@ class Fanel_List extends Group_Control_Query {
 				],
 			]
 		);
+		$this->add_responsive_control(
+			'readmore_margin',
+			[
+				'label'      => __('Margin', 'ultimate-post-kit'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .upk-fanel-list .upk-item .upk-fanel-read-more' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				]
+			]
+		);
 
 		$this->add_responsive_control(
 			'readmore_size',
@@ -788,7 +823,7 @@ class Fanel_List extends Group_Control_Query {
 		$this->add_responsive_control(
 			'readmore_button_height',
 			[
-				'label'     => esc_html__('Button Height', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Button Height', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}} .upk-fanel-list .upk-item .upk-fanel-read-more' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
@@ -799,7 +834,7 @@ class Fanel_List extends Group_Control_Query {
 		$this->add_responsive_control(
 			'readmore_button_width',
 			[
-				'label'     => esc_html__('Button Width', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Button Width', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}} .upk-fanel-list .upk-item .upk-fanel-read-more' => 'width: {{SIZE}}{{UNIT}};',

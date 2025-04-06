@@ -21,8 +21,7 @@ if (!defined('ABSPATH')) {
 	exit;
 } // Exit if accessed directly
 
-class Gratis_Grid extends Group_Control_Query
-{
+class Gratis_Grid extends Group_Control_Query {
 
 	use Global_Widget_Controls;
 	use Global_Widget_Functions;
@@ -87,8 +86,6 @@ class Gratis_Grid extends Group_Control_Query
 			]
 		);
 
-		$column_size = apply_filters('upk_column_size', '');
-
 		$this->add_responsive_control(
 			'columns',
 			[
@@ -106,11 +103,8 @@ class Gratis_Grid extends Group_Control_Query
 					'6' => '6',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-gratis-grid .upk-gratis-wrap' => $column_size,
+					'{{WRAPPER}} .upk-gratis-grid .upk-gratis-wrap' => 'grid-template-columns: repeat({{SIZE}}, 1fr);',
 				],
-				// 'condition' => [
-				// 	'grid_style' => ['1']
-				// ],
 				'classes' => BDTUPK_IS_PC
 			]
 		);
