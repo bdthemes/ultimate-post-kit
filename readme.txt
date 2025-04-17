@@ -236,6 +236,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 3.14.X [Xth April 2025] =
+
+* Updated: Only one plugin DCI notice will show at a time
+
 = 3.14.2 [6th April 2025] =
 
 * Added: Date position option added in fanel list widget
