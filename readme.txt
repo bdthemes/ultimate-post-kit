@@ -2,10 +2,10 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 3.14.2
+Stable tag: 3.14.3
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
-Tested up to: 6.7.2
+Tested up to: 6.8
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
@@ -236,8 +236,9 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 3.14.X [Xth April 2025] =
+= 3.14.3 [21th April 2025] =
 
+* Added: WordPress Version 6.8 compatibility added
 * Updated: Only one plugin DCI notice will show at a time
 * Updated: System improved
 
