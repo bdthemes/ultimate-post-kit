@@ -5,3 +5,4 @@ package.json export-ignore
 package-lock.json export-ignore
 .eslintrc export-ignore
 /src export-ignore
+.buildignore export-ignore

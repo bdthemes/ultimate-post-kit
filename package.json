@@ -1,12 +1,12 @@
 {
 	"name": "ultimate-post-kit",
-	"version": "2.0.0",
+	"version": "3.14.3",
 	"main": "index.php",
 	"scripts": {
 		"build": "npm run && npm run clean && cross-env NODE_ENV=production grunt",
-		"clean": "rimraf ./assets",
-		"dev": "cross-env NODE_ENV=development grunt watch",
-		"lint:fix": "eslint \"src/js/**/*.js\" --fix"
+			"clean": "rimraf ./assets",
+			"dev": "cross-env NODE_ENV=development grunt watch",
+			"zip": "npm run && npm run clean && cross-env NODE_ENV=production grunt && rsync -av --exclude-from=.buildignore . ultimate-post-kit && zip -r ultimate-post-kit-v.$npm_package_version.zip ultimate-post-kit/*"
 	},
 	"keywords": [
 		"ultimate-post-kit",
