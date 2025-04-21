@@ -279,6 +279,9 @@ class UltimatePostKit_Admin_Settings {
         //initialize settings
         $this->settings_api->admin_init();
         $this->upk_redirect_to_get_pro();
+        if (true === _is_upk_pro_activated()) {
+            $this->bdt_redirect_to_renew_link();
+        }
     }
 
     /**
@@ -292,6 +295,19 @@ class UltimatePostKit_Admin_Settings {
     public function upk_redirect_to_get_pro() {
         if (isset($_GET['page']) && $_GET['page'] === self::PAGE_ID . '_get_pro') {
             wp_redirect('https://postkit.pro/pricing/?utm_source=UPK&utm_medium=PluginPage&utm_campaign=30%OffOnUPK&coupon=FREETOPRO');
+            exit;
+        }
+    }
+
+    /**
+     * Redirect to license renewal page
+     *
+     * @access public
+     *
+     */
+    public function bdt_redirect_to_renew_link() {
+        if (isset($_GET['page']) && $_GET['page'] === self::PAGE_ID . '_license_renew') {
+            wp_redirect('https://account.bdthemes.com/');
             exit;
         }
     }
@@ -1314,6 +1330,14 @@ class UltimatePostKit_Admin_Settings {
                 const getProLink = $('a[href="admin.php?page=ultimate_post_kit_options_get_pro"]');
                 if (getProLink.length) {
                     getProLink.attr('target', '_blank');
+                }
+            });
+
+            // License Renew Redirect
+            jQuery(document).ready(function ($) {
+                const renewalLink = $('a[href="admin.php?page=ultimate_post_kit_options_license_renew"]');
+                if (renewalLink.length) {
+                    renewalLink.attr('target', '_blank');
                 }
             });
         </script>
