@@ -72,7 +72,12 @@ class UltimatePostKit_Admin_Settings {
         if (class_exists('Elementor\Modules\Usage\Module')) {
 
             $module     = Module::instance();
-            $elements   = $module->get_formatted_usage('raw');
+            
+            $old_error_level = error_reporting();
+ 			error_reporting(E_ALL & ~E_WARNING); // Suppress warnings
+ 			$elements = $module->get_formatted_usage('raw');
+ 			error_reporting($old_error_level); // Restore
+            
             $upk_widgets = self::get_upk_widgets_names();
 
             if (is_array($elements) || is_object($elements)) {
@@ -110,7 +115,12 @@ class UltimatePostKit_Admin_Settings {
         if (class_exists('Elementor\Modules\Usage\Module')) {
 
             $module     = Module::instance();
-            $elements   = $module->get_formatted_usage('raw');
+            
+            $old_error_level = error_reporting();
+ 			error_reporting(E_ALL & ~E_WARNING); // Suppress warnings
+ 			$elements = $module->get_formatted_usage('raw');
+ 			error_reporting($old_error_level); // Restore
+            
             $upk_widgets = self::get_upk_only_widgets();
 
             if (is_array($elements) || is_object($elements)) {
