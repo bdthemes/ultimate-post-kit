@@ -238,6 +238,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 = 3.14.X [XXth April 2025] =
 
+### Updated
+
+- Only one plugin RC notice will show at a time
+
 * Fixed: Dashboard widget usage warning error fixed
 
 = 3.14.3 [21th April 2025] =
