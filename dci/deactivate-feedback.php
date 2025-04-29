@@ -45,8 +45,8 @@ if ( ! function_exists( 'dci_deactivate_feedback' ) ) {
 		?>
 		<div class="dci-feedback-wrapper" id="<?php echo esc_attr( $plugin_deactivate_id ); ?>" style="display:none;">
 			<div class="dci-feedback-card">
-				<h2><?php esc_html_e( 'Give feedback', 'data-collector-insights' ); ?></h2>
-				<p><?php esc_html_e( 'Goodbyes are never easy. If you have a moment, please share your feedback on how we can improve.', 'data-collector-insights' ); ?>
+				<h2><?php esc_html_e( 'Give feedback', 'ultimate-post-kit' ); ?></h2>
+				<p><?php esc_html_e( 'Goodbyes are never easy. If you have a moment, please share your feedback on how we can improve.', 'ultimate-post-kit' ); ?>
 				</p>
 				<form method="get" class="dci-notice-data">
 					<input type="hidden" name="nonce" value="<?php echo esc_html( $nonce ); ?>">
@@ -72,7 +72,7 @@ if ( ! function_exists( 'dci_deactivate_feedback' ) ) {
 											</svg>
 										</span>
 										<span
-											class="checkbox-label"><?php esc_html_e( 'Switching Domain', 'data-collector-insights' ); ?></span>
+											class="checkbox-label"><?php esc_html_e( 'Switching Domain', 'ultimate-post-kit' ); ?></span>
 									</span>
 								</label>
 							</div>
@@ -96,7 +96,7 @@ if ( ! function_exists( 'dci_deactivate_feedback' ) ) {
 											</svg>
 										</span>
 										<span
-											class="checkbox-label"><?php esc_html_e( 'Couldn\'t understand', 'data-collector-insights' ); ?></span>
+											class="checkbox-label"><?php esc_html_e( 'Couldn\'t understand', 'ultimate-post-kit' ); ?></span>
 									</span>
 								</label>
 							</div>
@@ -144,7 +144,7 @@ if ( ! function_exists( 'dci_deactivate_feedback' ) ) {
 											</svg>
 										</span>
 										<span
-											class="checkbox-label"><?php esc_html_e( 'Found a better plugin', 'data-collector-insights' ); ?></span>
+											class="checkbox-label"><?php esc_html_e( 'Found a better plugin', 'ultimate-post-kit' ); ?></span>
 									</span>
 								</label>
 							</div>
@@ -161,7 +161,7 @@ if ( ! function_exists( 'dci_deactivate_feedback' ) ) {
 											</svg>
 										</span>
 										<span
-											class="checkbox-label"><?php esc_html_e( 'Missing a specific feature', 'data-collector-insights' ); ?></span>
+											class="checkbox-label"><?php esc_html_e( 'Missing a specific feature', 'ultimate-post-kit' ); ?></span>
 									</span>
 								</label>
 							</div>
@@ -200,7 +200,7 @@ if ( ! function_exists( 'dci_deactivate_feedback' ) ) {
 											</svg>
 										</span>
 										<span
-											class="checkbox-label"><?php esc_html_e( 'Not working', 'data-collector-insights' ); ?></span>
+											class="checkbox-label"><?php esc_html_e( 'Not working', 'ultimate-post-kit' ); ?></span>
 									</span>
 								</label>
 							</div>
@@ -225,7 +225,7 @@ if ( ! function_exists( 'dci_deactivate_feedback' ) ) {
 											</svg>
 										</span>
 										<span
-											class="checkbox-label"><?php esc_html_e( 'Others', 'data-collector-insights' ); ?></span>
+											class="checkbox-label"><?php esc_html_e( 'Others', 'ultimate-post-kit' ); ?></span>
 									</span>
 								</label>
 							</div>
@@ -233,22 +233,22 @@ if ( ! function_exists( 'dci_deactivate_feedback' ) ) {
 					</div>
 					<div class="dci-feedback-comments">
 						<label>
-							<?php esc_html_e( 'What is the main reason for deactivating?', 'data-collector-insights' ); ?>
+							<?php esc_html_e( 'What is the main reason for deactivating?', 'ultimate-post-kit' ); ?>
 						</label>
 						<textarea name="dci-feedback-input-comments" rows="4"></textarea>
 					</div>
 					<div class="dci-feedback-actions">
 						<a class="button" href="<?php echo esc_url( $deactivate_url ); ?>">
-							<?php esc_html_e( 'Skip & Deactivate', 'data-collector-insights' ); ?>
+							<?php esc_html_e( 'Skip & Deactivate', 'ultimate-post-kit' ); ?>
 						</a>
 						<div>
 							<a class="button" href="<?php echo esc_url( $plugin_page_url ); ?>">
-								<?php esc_html_e( 'Cancel', 'data-collector-insights' ); ?>
+								<?php esc_html_e( 'Cancel', 'ultimate-post-kit' ); ?>
 							</a>
 							<button name="dci_status_sub_and_dea" value="skip" type="button"
 								class="dci-feedback-submit-btn button button-secondary"
 								data-deactivate-url="<?php echo esc_url( $deactivate_url ); ?>">
-								<?php esc_html_e( 'Submit & Deactivate', 'data-collector-insights' ); ?>
+								<?php esc_html_e( 'Submit & Deactivate', 'ultimate-post-kit' ); ?>
 							</button>
 						</div>
 					</div>
