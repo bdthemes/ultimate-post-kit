@@ -242,6 +242,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 - Only one plugin RC notice will show at a time
 
+* Fixed: Resolved jQuery Migrate warning ( Thanks to BackuPs )
 * Fixed: Dashboard widget usage warning error fixed
 
 = 3.14.3 [21th April 2025] =
