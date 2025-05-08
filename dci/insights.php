@@ -653,7 +653,7 @@ if ( ! class_exists( 'Insights_SDK' ) ) {
 						</h3>
 						<?php echo wp_kses_post( $plugin_msg ); ?>
 						<p>
-							<a href="<?php echo esc_url( $admin_url ); ?>">Learn More</a>?
+							<a href="<?php echo esc_url( $admin_url ); ?>"><?php esc_html_e( 'Learn More?', 'ultimate-post-kit' ); ?></a>
 						</p>
 						<input type="hidden" name="dci_name" value="<?php echo esc_html( $this->dci_name ); ?>">
 						<input type="hidden" name="dci_date_name" value="<?php echo esc_html( $this->dci_date_name ); ?>">
@@ -662,13 +662,13 @@ if ( ! class_exists( 'Insights_SDK' ) ) {
 
 						<div class="bdt-dci-notice-button-wrap">
 							<button name="dci_allow_status" value="yes" class="dci-button-allow">
-								Yes, I'd Love To Contribute
+								<?php esc_html_e( 'Yes, I\'d Love To Contribute', 'ultimate-post-kit' ); ?>
 							</button>
 							<button name="dci_allow_status" value="skip" class="dci-button-skip">
-								Skip For Now
+								<?php esc_html_e( 'Skip For Now', 'ultimate-post-kit' ); ?>
 							</button>
 							<button name="dci_allow_status" value="disallow" class="dci-button-disallow dci-button-danger">
-								No Thanks
+								<?php esc_html_e( 'No Thanks', 'ultimate-post-kit' ); ?>
 							</button>
 						</div>
 					</div>
@@ -702,7 +702,8 @@ if ( ! class_exists( 'Insights_SDK' ) ) {
 				</div>
 				<?php printf( $plugin_msg ); ?>
 				<p>
-					What we <a href="<?php echo esc_url( $admin_url ); ?>">collect</a>?
+					<?php esc_html_e( 'What we ', 'ultimate-post-kit' ); ?>
+					<a href="<?php echo esc_url( $admin_url ); ?>"><?php esc_html_e( 'collect', 'ultimate-post-kit' ); ?></a>
 				</p>
 				<input type="hidden" name="dci_name" value="<?php echo esc_html( $this->dci_name ); ?>">
 				<input type="hidden" name="dci_date_name" value="<?php echo esc_html( $this->dci_date_name ); ?>">
@@ -710,13 +711,13 @@ if ( ! class_exists( 'Insights_SDK' ) ) {
 				<input type="hidden" name="nonce" value="<?php echo esc_html( wp_create_nonce( 'dci_sdk' ) ); ?>">
 				<p>
 					<button name="dci_allow_status" value="yes" class="button button-primary dci-button-allow">
-						Allow
+						<?php esc_html_e( 'Allow', 'ultimate-post-kit' ); ?>
 					</button>
 					<button name="dci_allow_status" value="skip" class="button dci-button-skip button-secondary">
-						I'll Skip For Now
+						<?php esc_html_e( "I'll Skip For Now", 'ultimate-post-kit' ); ?>
 					</button>
 					<button name="dci_allow_status" value="disallow" class="button dci-button-disallow dci-button-danger">
-						Don't Allow
+						<?php esc_html_e( "Don't Allow", 'ultimate-post-kit' ); ?>
 					</button>
 				</p>
 			</div>

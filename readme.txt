@@ -236,13 +236,12 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 3.14.X [XXth April 2025] =
+= 3.14.X [XX April 2025] =
 
-### Updated
-
-- Only one plugin RC notice will show at a time
-
+* Updated: Only one plugin RC notice will show at a time
 * Fixed: Resolved jQuery Migrate warning ( Thanks to BackuPs )
+* Added: Title style default added in amox grid and amox carousel widget
+* Fixed: DCI Notice transition issue fixed
 * Fixed: Dashboard widget usage warning error fixed
 
 = 3.14.3 [21th April 2025] =
