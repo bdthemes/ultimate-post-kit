@@ -39,7 +39,7 @@
 
     var langStr = window.UltimatePostKitConfig.mailchimp;
 
-    $mailChimp.submit(function () {
+    $mailChimp.on("submit", function () {
       var mailchimpform = $(this);
 
       $.alert(
