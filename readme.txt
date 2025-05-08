@@ -238,6 +238,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 = 3.14.X [XX April 2025] =
 
+* Added: Title style default added in amox grid and amox carousel widget
 * Fixed: DCI Notice transition issue fixed
 * Fixed: Dashboard widget usage warning error fixed
 
