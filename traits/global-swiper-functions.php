@@ -59,6 +59,7 @@ trait Global_Swiper_Functions {
 							"direction"             => $settings['direction'],
 							"watchSlidesVisibility" => true,
 							"watchSlidesProgress"   => true,
+							"mousewheel"            => ( $settings["mousewheel"] === "yes" ) ? true : false,
 							"breakpoints"           => [
 								(int) $viewport_md => [
 									"slidesPerView"  => isset($settings["columns_tablet"]) ? (int)$settings["columns_tablet"] : 2,
