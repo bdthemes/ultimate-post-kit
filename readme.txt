@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 3.14.3
+Stable tag: 3.14.4
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
-Tested up to: 6.8
+Tested up to: 6.8.1
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.28.3
+Elementor tested up to: 3.28.4
 
 Best Post Addon for Elementor WordPress Plugin with 80+ Most Popular Elements that need your everyday blog website building.
 
@@ -236,11 +236,12 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 3.14.X [XX April 2025] =
+= 3.14.4 [12th May 2025] =
 
+* Added: Mousewheel control added in carousel type widgets
+* Added: Title style default added in amox grid and amox carousel widget
 * Updated: Only one plugin RC notice will show at a time
 * Fixed: Resolved jQuery Migrate warning ( Thanks to BackuPs )
-* Added: Title style default added in amox grid and amox carousel widget
 * Fixed: DCI Notice transition issue fixed
 * Fixed: Dashboard widget usage warning error fixed
 

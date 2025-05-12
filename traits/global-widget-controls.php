@@ -1005,6 +1005,13 @@ trait Global_Widget_Controls {
 		);
 
 		$this->add_control(
+			'mousewheel',
+			[
+				'label' => __('Mousewheel', 'ultimate-post-kit'),
+				'type'  => Controls_Manager::SWITCHER,
+			]
+		);
+		$this->add_control(
 			'loop',
 			[
 				'label'   => __('Loop', 'ultimate-post-kit'),
