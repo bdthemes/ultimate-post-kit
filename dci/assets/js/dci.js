@@ -140,19 +140,23 @@
     /**
      * Button Color
      */
-    window.CSS.registerProperty({
-      name: "--primaryColor",
-      syntax: "<color>",
-      inherits: false,
-      initialValue: "#AA00FF",
-    });
+    try {
+      window.CSS.registerProperty({
+        name: "--primaryColor",
+        syntax: "<color>",
+        inherits: false,
+        initialValue: "#AA00FF",
+      });
 
-    window.CSS.registerProperty({
-      name: "--secondaryColor",
-      syntax: "<color>",
-      inherits: false,
-      initialValue: "#FF2661",
-    });
+      window.CSS.registerProperty({
+        name: "--secondaryColor",
+        syntax: "<color>",
+        inherits: false,
+        initialValue: "#FF2661",
+      });
+    } catch (e) {
+      // Property already registered
+    }
 
     // Show only the first DCI notice
     var $notices = $('.dci-global-notice');

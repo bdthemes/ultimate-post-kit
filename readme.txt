@@ -236,6 +236,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 3.14.X [XXth May 2025] =
+
+* Fixed: JS error fixed in Dashboard Settings
+
 = 3.14.4 [12th May 2025] =
 
 * Added: Mousewheel control added in carousel type widgets
