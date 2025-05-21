@@ -169,41 +169,7 @@ class Carbon_Slider extends Group_Control_Query {
 
 		//Global Title Controls
 		$this->register_title_controls();
-
-		$this->add_control(
-			'show_excerpt',
-			[
-				'label'   => esc_html__('Show Text', 'ultimate-post-kit'),
-				'type'    => Controls_Manager::SWITCHER,
-				'default' => 'yes',
-				'separator' => 'before'
-			]
-		);
-
-		$this->add_control(
-			'excerpt_length',
-			[
-				'label'       => esc_html__('Text Limit', 'ultimate-post-kit'),
-				'description' => esc_html__('It\'s just work for main content, but not working with excerpt. If you set 0 so you will get full main content.', 'ultimate-post-kit'),
-				'type'        => Controls_Manager::NUMBER,
-				'default'     => 30,
-				'condition'   => [
-					'show_excerpt' => 'yes'
-				],
-			]
-		);
-
-		$this->add_control(
-			'strip_shortcode',
-			[
-				'label'     => esc_html__('Strip Shortcode', 'ultimate-post-kit'),
-				'type'      => Controls_Manager::SWITCHER,
-				'default'   => 'yes',
-				'condition' => [
-					'show_excerpt' => 'yes',
-				],
-			]
-		);
+		$this->register_text_controls();
 
 		$this->add_control(
 			'show_category',
