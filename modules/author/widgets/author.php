@@ -451,7 +451,7 @@ class Author extends Module_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name'           => 'item_border',
-				'label'          => __('Border', 'elementor'),
+				'label'          => __('Border', 'ultimate-post-kit'),
 				'fields_options' => [
 					'border' => [
 						'default' => 'solid',

@@ -633,7 +633,7 @@ class UltimatePostKit_Admin_Settings {
                             <a class="bdt-button bdt-btn-ps bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/bdthemes-prime-slider-lite/" bdt-tooltip="The revolutionary slider builder addon for Elementor with next-gen superb interface. It's Free! Download it.">
                                 <?php echo esc_html_x('Prime Slider', 'Frontend', 'ultimate-post-kit'); ?>
                             </a>
-                            <a class="bdt-button bdt-btn-zb bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/zoloblocks/" bdt-tooltip="<?php echo esc_html__('ZoloBlocks is a collection of creative Gutenberg blocks for WordPress. It\'s Free! Download it.', 'bdthemes-prime-slider'); ?>">ZoloBlocks</a><br>
+                            <a class="bdt-button bdt-btn-zb bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/zoloblocks/" bdt-tooltip="<?php echo esc_html__('ZoloBlocks is a collection of creative Gutenberg blocks for WordPress. It\'s Free! Download it.', 'ultimate-post-kit'); ?>">ZoloBlocks</a><br>
                             <a class="bdt-button bdt-btn-usk bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/ultimate-store-kit/" bdt-tooltip="The only eCommmerce addon for answering all your online store design problems in one package. It's Free! Download it.">
                                 <?php echo esc_html_x('Ultimate Store Kit', 'Frontend', 'ultimate-post-kit'); ?>
                             </a>

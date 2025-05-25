@@ -447,7 +447,7 @@ class Timeline extends Group_Control_Query {
 			Group_Control_Border::get_type(),
 			[ 
 				'name'           => 'item_image_border',
-				'label'          => __( 'Border', 'elementor' ),
+				'label'          => __( 'Border', 'ultimate-post-kit' ),
 				'fields_options' => [ 
 					'border' => [ 
 						'default' => 'solid',
