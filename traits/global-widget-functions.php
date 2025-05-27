@@ -360,21 +360,25 @@ trait Global_Widget_Functions {
 	}
 
 	function render_excerpt($excerpt_length) {
+		$settings = $this->get_settings_for_display();
+
 		if (!$this->get_settings('show_excerpt')) {
 			return;
 		}
 		$strip_shortcode = $this->get_settings_for_display('strip_shortcode');
-	?>
+
+		$ellipsis = isset($settings['ellipsis']) ? $settings['ellipsis'] : '' ;
+		?>
 		<div class="upk-text">
 			<?php
 			if (has_excerpt()) {
 				the_excerpt();
 			} else {
-				echo ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode);
+				echo ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode, $ellipsis);
 			}
 			?>
 		</div>
-	<?php
+		<?php
 	}
 
 	function render_post_format() {
