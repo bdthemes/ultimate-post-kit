@@ -6,7 +6,7 @@
 		"build": "npm run && npm run clean && cross-env NODE_ENV=production grunt",
 			"clean": "rimraf ./assets",
 			"dev": "cross-env NODE_ENV=development grunt watch",
-			"zip": "npm run && npm run clean && cross-env NODE_ENV=production grunt && rsync -av --exclude-from=.buildignore . ultimate-post-kit && zip -r ultimate-post-kit-v.$npm_package_version.zip ultimate-post-kit/*"
+			"zip": "npm run && npm run clean && cross-env NODE_ENV=production grunt && rsync -av --exclude-from=.buildignore . ultimate-post-kit && zip -r ultimate-post-kit-v.$npm_package_version.zip ultimate-post-kit/* && rm -rf ultimate-post-kit"
 	},
 	"keywords": [
 		"ultimate-post-kit",
