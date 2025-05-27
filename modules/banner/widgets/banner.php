@@ -121,7 +121,7 @@ class Banner extends Group_Control_Query
 			[
 				'label'       => esc_html__('Text', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::WYSIWYG,
-				'default'     => esc_html__('It is a long established fact that a reader will be distracted by the readable', 'ultimate-post-kit', 'ultimate-post-kit'),
+				'default'     => esc_html__('It is a long established fact that a reader will be distracted by the readable', 'ultimate-post-kit'),
 				'label_block' => true,
 				'dynamic'     => ['active' => true],
 				'separator' => 'before'
@@ -175,22 +175,22 @@ class Banner extends Group_Control_Query
 		$this->add_responsive_control(
 			'position', 
 			[
-				'label' => esc_html_x( 'Position', 'Background Control', 'elementor' ),
+				'label' => esc_html_x( 'Position', 'Background Control', 'ultimate-post-kit' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => '',
 				'responsive' => true,
 				'options' => [
-					'' => esc_html_x( 'Default', 'Background Control', 'elementor' ),
-					'center center' => esc_html_x( 'Center Center', 'Background Control', 'elementor' ),
-					'center left' => esc_html_x( 'Center Left', 'Background Control', 'elementor' ),
-					'center right' => esc_html_x( 'Center Right', 'Background Control', 'elementor' ),
-					'top center' => esc_html_x( 'Top Center', 'Background Control', 'elementor' ),
-					'top left' => esc_html_x( 'Top Left', 'Background Control', 'elementor' ),
-					'top right' => esc_html_x( 'Top Right', 'Background Control', 'elementor' ),
-					'bottom center' => esc_html_x( 'Bottom Center', 'Background Control', 'elementor' ),
-					'bottom left' => esc_html_x( 'Bottom Left', 'Background Control', 'elementor' ),
-					'bottom right' => esc_html_x( 'Bottom Right', 'Background Control', 'elementor' ),
-					'initial' => esc_html_x( 'Custom', 'Background Control', 'elementor' ),
+					'' => esc_html_x( 'Default', 'Background Control', 'ultimate-post-kit' ),
+					'center center' => esc_html_x( 'Center Center', 'Background Control', 'ultimate-post-kit' ),
+					'center left' => esc_html_x( 'Center Left', 'Background Control', 'ultimate-post-kit' ),
+					'center right' => esc_html_x( 'Center Right', 'Background Control', 'ultimate-post-kit' ),
+					'top center' => esc_html_x( 'Top Center', 'Background Control', 'ultimate-post-kit' ),
+					'top left' => esc_html_x( 'Top Left', 'Background Control', 'ultimate-post-kit' ),
+					'top right' => esc_html_x( 'Top Right', 'Background Control', 'ultimate-post-kit' ),
+					'bottom center' => esc_html_x( 'Bottom Center', 'Background Control', 'ultimate-post-kit' ),
+					'bottom left' => esc_html_x( 'Bottom Left', 'Background Control', 'ultimate-post-kit' ),
+					'bottom right' => esc_html_x( 'Bottom Right', 'Background Control', 'ultimate-post-kit' ),
+					'initial' => esc_html_x( 'Custom', 'Background Control', 'ultimate-post-kit' ),
 
 				],
 				'selectors' => [
@@ -205,7 +205,7 @@ class Banner extends Group_Control_Query
 		$this->add_responsive_control(
 			'xpos',
 			[
-				'label' => esc_html_x( 'X Position', 'Background Control', 'elementor' ),
+				'label' => esc_html_x( 'X Position', 'Background Control', 'ultimate-post-kit' ),
 				'type' => Controls_Manager::SLIDER,
 				'responsive' => true,
 				'size_units' => [ 'px', 'em', '%', 'vw' ],
@@ -253,7 +253,7 @@ class Banner extends Group_Control_Query
 		$this->add_responsive_control(
 			'ypos',
 			[
-				'label' => esc_html_x( 'Y Position', 'Background Control', 'elementor' ),
+				'label' => esc_html_x( 'Y Position', 'Background Control', 'ultimate-post-kit' ),
 				'type' => Controls_Manager::SLIDER,
 				'responsive' => true,
 				'size_units' => [ 'px', 'em', '%', 'vh' ],
@@ -301,13 +301,13 @@ class Banner extends Group_Control_Query
 		$this->add_responsive_control(
 			'attachment',
 			[
-				'label' => esc_html_x( 'Attachment', 'Background Control', 'elementor' ),
+				'label' => esc_html_x( 'Attachment', 'Background Control', 'ultimate-post-kit' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => '',
 				'options' => [
-					'' => esc_html_x( 'Default', 'Background Control', 'elementor' ),
-					'scroll' => esc_html_x( 'Scroll', 'Background Control', 'elementor' ),
-					'fixed' => esc_html_x( 'Fixed', 'Background Control', 'elementor' ),
+					'' => esc_html_x( 'Default', 'Background Control', 'ultimate-post-kit' ),
+					'scroll' => esc_html_x( 'Scroll', 'Background Control', 'ultimate-post-kit' ),
+					'fixed' => esc_html_x( 'Fixed', 'Background Control', 'ultimate-post-kit' ),
 				],
 				'selectors' => [
 					'(desktop+){{WRAPPER}} .upk-banner-wrap .upk-item' => 'background-attachment: {{VALUE}};',
@@ -323,7 +323,7 @@ class Banner extends Group_Control_Query
 			[
 				'type' => Controls_Manager::RAW_HTML,
 				'content_classes' => 'elementor-control-field-description',
-				'raw' => esc_html__( 'Note: Attachment Fixed works only on desktop.', 'elementor' ),
+				'raw' => esc_html__( 'Note: Attachment Fixed works only on desktop.', 'ultimate-post-kit' ),
 				'separator' => 'none',
 				'condition' => [
 					'image[url]!' => '',
@@ -335,16 +335,16 @@ class Banner extends Group_Control_Query
 		$this->add_responsive_control(
 			'repeat',
 			[
-				'label' => esc_html_x( 'Repeat', 'Background Control', 'elementor' ),
+				'label' => esc_html_x( 'Repeat', 'Background Control', 'ultimate-post-kit' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => '',
 				'responsive' => true,
 				'options' => [
-					'' => esc_html_x( 'Default', 'Background Control', 'elementor' ),
-					'no-repeat' => esc_html_x( 'No-repeat', 'Background Control', 'elementor' ),
-					'repeat' => esc_html_x( 'Repeat', 'Background Control', 'elementor' ),
-					'repeat-x' => esc_html_x( 'Repeat-x', 'Background Control', 'elementor' ),
-					'repeat-y' => esc_html_x( 'Repeat-y', 'Background Control', 'elementor' ),
+					'' => esc_html_x( 'Default', 'Background Control', 'ultimate-post-kit' ),
+					'no-repeat' => esc_html_x( 'No-repeat', 'Background Control', 'ultimate-post-kit' ),
+					'repeat' => esc_html_x( 'Repeat', 'Background Control', 'ultimate-post-kit' ),
+					'repeat-x' => esc_html_x( 'Repeat-x', 'Background Control', 'ultimate-post-kit' ),
+					'repeat-y' => esc_html_x( 'Repeat-y', 'Background Control', 'ultimate-post-kit' ),
 				],
 				'selectors' => [
 					'{{WRAPPER}} .upk-banner-wrap .upk-item' => 'background-repeat: {{VALUE}};',
@@ -358,16 +358,16 @@ class Banner extends Group_Control_Query
 		$this->add_responsive_control(
 			'size',
 			[
-				'label' => esc_html_x( 'Size', 'Background Control', 'elementor' ),
+				'label' => esc_html_x( 'Size', 'Background Control', 'ultimate-post-kit' ),
 				'type' => Controls_Manager::SELECT,
 				'responsive' => true,
 				'default' => '',
 				'options' => [
-					'' => esc_html_x( 'Default', 'Background Control', 'elementor' ),
-					'auto' => esc_html_x( 'Auto', 'Background Control', 'elementor' ),
-					'cover' => esc_html_x( 'Cover', 'Background Control', 'elementor' ),
-					'contain' => esc_html_x( 'Contain', 'Background Control', 'elementor' ),
-					'initial' => esc_html_x( 'Custom', 'Background Control', 'elementor' ),
+					'' => esc_html_x( 'Default', 'Background Control', 'ultimate-post-kit' ),
+					'auto' => esc_html_x( 'Auto', 'Background Control', 'ultimate-post-kit' ),
+					'cover' => esc_html_x( 'Cover', 'Background Control', 'ultimate-post-kit' ),
+					'contain' => esc_html_x( 'Contain', 'Background Control', 'ultimate-post-kit' ),
+					'initial' => esc_html_x( 'Custom', 'Background Control', 'ultimate-post-kit' ),
 				],
 				'selectors' => [
 					'{{WRAPPER}} .upk-banner-wrap .upk-item' => 'background-size: {{VALUE}};',
@@ -381,7 +381,7 @@ class Banner extends Group_Control_Query
 		$this->add_responsive_control(
 			'bg_width',
 			[
-				'label' => esc_html_x( 'Width', 'Background Control', 'elementor' ),
+				'label' => esc_html_x( 'Width', 'Background Control', 'ultimate-post-kit' ),
 				'type' => Controls_Manager::SLIDER,
 				'responsive' => true,
 				'size_units' => [ 'px', 'em', '%', 'vw' ],
