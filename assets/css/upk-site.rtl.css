@@ -480,6 +480,7 @@
   border: 1px solid #8d99ae;
   padding: 10px;
   border-radius: 3px;
+  display: inline-block;
 }
 .ep-pagination .upk-pagination {
   display: flex;
