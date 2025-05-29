@@ -239,6 +239,8 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 = 3.15.0 [27th May 2025] =
 
 * Added: Ellipsis feature added in post type widgets
+* Fixed: Title Style And Hover Color Issue Fixed in Noxe Slider Widget
+* Fixed: Pagination Next Button issue fixed
 * Fixed: JS error fixed in Dashboard Settings
 
 = 3.14.4 [12th May 2025] =
