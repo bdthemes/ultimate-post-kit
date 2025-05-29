@@ -236,7 +236,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 3.15.0 [27th May 2025] =
+= 3.15.0 [29th May 2025] =
 
 * Added: Ellipsis feature added in post type widgets
 * Fixed: Title Style And Hover Color Issue Fixed in Noxe Slider Widget
