@@ -239,6 +239,9 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 = 3.14.X [XXth May 2025] =
 
 * Added: Text ellipsis control added
+* Fixed: Iconic Slider Title Style Issue Fixed
+* Fixed: Title Style And Hover Color Issue Fixed in Noxe Slider Widget
+* Fixed: Pagination Next Button issue fixed
 * Fixed: JS error fixed in Dashboard Settings
 
 = 3.14.4 [12th May 2025] =

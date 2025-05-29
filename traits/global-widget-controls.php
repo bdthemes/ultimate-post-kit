@@ -369,7 +369,7 @@ trait Global_Widget_Controls {
 				'label'     => esc_html__('Arrow Size', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [
-					'{{WRAPPER}} ul.upk-pagination li a svg' => 'height: {{SIZE}}px; width: auto;',
+					'{{WRAPPER}} ul.upk-pagination li.upk-pagination-previous a i, {{WRAPPER}} ul.upk-pagination li.upk-pagination-next a i' => 'font-size: {{SIZE}}px;',
 				],
 			]
 		);
