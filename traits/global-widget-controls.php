@@ -614,7 +614,7 @@ trait Global_Widget_Controls {
 				'label'       => esc_html__('Text Limit', 'ultimate-post-kit'),
 				'description' => esc_html__('It\'s just work for main content, but not working with excerpt. If you set 0 so you will get full main content.', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::NUMBER,
-				'default'     => 30,
+				'default'     => 20,
 				'condition'   => [
 					'show_excerpt' => 'yes'
 				],
