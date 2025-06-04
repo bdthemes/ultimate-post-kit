@@ -619,11 +619,12 @@ class UltimatePostKit_Admin_Settings {
                         </h1>
                         <p style="max-width: 520px;">
                             <?php printf(
+                                /* translators: 1: opening strong tag 2: closing strong tag 3: opening strong tag 4: closing strong tag */
                                 esc_html__('%1$sElement Pack, Prime Slider, Ultimate Store Kit, Pixel Gallery & Live Copy Paste %2$s addons for %3$sElementor%4$s is the best slider, blogs and eCommerce plugin for WordPress. Also, try our new plugin ZoloBlocks for Gutenberg.', 'ultimate-post-kit'),
-                                '<b>',
-                                '</b>',
-                                '<b>',
-                                '</b>'
+                                '<strong>',
+                                '</strong>',
+                                '<strong>',
+                                '</strong>'
                             ); ?>
                         </p>
                         <div class="bdt-others-plugins-link">
@@ -1097,9 +1098,10 @@ class UltimatePostKit_Admin_Settings {
         <div class="bdt-admin-alert">
             <?php
             printf(
+                /* translators: 1: Note, 2: Ultimate Post Kit */
                 esc_html__('%1$s If you have multiple addons like %2$s so you need some more requirement some cases so make sure you added more memory for others addon too.', 'ultimate-post-kit'),
-                '<strong>Note:</strong>',
-                '<b>Ultimate Post Kit</b>'
+                '<strong>'.esc_html__('Note:', 'ultimate-post-kit').'</strong>',
+                '<strong>'.esc_html__('Ultimate Post Kit', 'ultimate-post-kit').'</strong>'
             ); ?>
         </div>
     <?php
