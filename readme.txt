@@ -236,6 +236,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 3.15.X [XXth May 2025] =
+
+* Fixed: Error fix for pagination ( Thanks to Tomas Andrlik )
+
 = 3.15.0 [29th May 2025] =
 
 * Added: Ellipsis feature added in post type widgets

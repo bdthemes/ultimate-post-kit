@@ -708,7 +708,7 @@ abstract class Group_Control_Query extends Module_Base {
             }
         } else {
             if ($query->is_paged) {
-                $page_offset = $settings['posts_offset'] + (($query->query_vars['paged'] - 1) * $query->query_vars['posts_per_page']);
+                $page_offset = (int) $settings['posts_offset'] + (($query->query_vars['paged'] - 1) * $query->query_vars['posts_per_page']);
                 $query->set('offset', $page_offset);
             } else {
                 $query->set('offset', $settings['posts_offset']);
