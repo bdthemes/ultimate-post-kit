@@ -15,7 +15,7 @@ if (!class_exists('Ultimate_Post_Kit_Metabox')) {
         }
 
         public function upk_additional_features_fields() {
-            add_meta_box('upk_video_link_metabox', __('Ultimate Post Kit Additional'), [$this, 'upk_video_link_metabox_callback'], 'post', 'side', 'default');
+            add_meta_box('upk_video_link_metabox', __('Ultimate Post Kit Additional', 'ultimate-post-kit'), [$this, 'upk_video_link_metabox_callback'], 'post', 'side', 'default');
         }
         public function upk_video_link_metabox_callback($post) {
             wp_nonce_field('upk_additional_features_nonce_action', 'upk_additional_features_nonce_field');
