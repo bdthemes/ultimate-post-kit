@@ -119,6 +119,20 @@
   left: -20px;
   top: 4px;
 }
+.ultimate-post-kit-dashboard.wrap .upk-option-page .upk-option-item[data-content-type~=comming] > .upk-option-item-inner:before {
+  background-color: #073B4C;
+  content: "COMING";
+  width: 70px;
+  height: 20px;
+  color: #fff;
+  position: absolute;
+  transform: rotate(-45deg);
+  text-align: center;
+  line-height: 20px;
+  font-size: 9px;
+  left: -20px;
+  top: 4px;
+}
 .ultimate-post-kit-dashboard.wrap .upk-option-page .upk-option-item .upk-option-label {
   font-size: 15px;
   font-weight: 500;

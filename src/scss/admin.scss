@@ -172,6 +172,20 @@ $global-link-color: #1e87f0;
 					left: -20px;
 					top: 4px;
 				}
+				&[data-content-type~="comming"]>.upk-option-item-inner:before {
+					background-color: $navyblue-color;
+					content: 'COMING';
+					width: 70px;
+					height: 20px;
+					color: #fff;
+					position: absolute;
+					transform: rotate(-45deg);
+					text-align: center;
+					line-height: 20px;
+					font-size: 9px;
+					left: -20px;
+					top: 4px;
+				}
 
 				.upk-option-label {
 					font-size: 15px;

@@ -3,10 +3,10 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?9pdzvf') format('woff2'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?9pdzvf') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?9pdzvf') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?9pdzvf##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?cv0wug') format('woff2'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?cv0wug') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?cv0wug') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?cv0wug##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,6 +27,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.upk-icon-remote-fraction {
+  &:before {
+    content: $upk-icon-remote-fraction; 
+  }
+}
+.upk-icon-remote-thumbs {
+  &:before {
+    content: $upk-icon-remote-thumbs; 
+  }
+}
+.upk-icon-remote-pagination {
+  &:before {
+    content: $upk-icon-remote-pagination; 
+  }
+}
+.upk-icon-remote-arrows {
+  &:before {
+    content: $upk-icon-remote-arrows; 
+  }
+}
 .upk-icon-featured-gallery {
   &:before {
     content: $upk-icon-featured-gallery; 

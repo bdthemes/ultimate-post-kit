@@ -357,18 +357,6 @@ class Alter_Grid extends Group_Control_Query {
 		$this->register_text_controls();
 
 		$this->add_control(
-			'strip_shortcode',
-			[
-				'label'     => esc_html__('Strip Shortcode', 'ultimate-post-kit'),
-				'type'      => Controls_Manager::SWITCHER,
-				'default'   => 'yes',
-				'condition' => [
-					'show_excerpt' => 'yes',
-				],
-			]
-		);
-
-		$this->add_control(
 			'show_author',
 			[
 				'label'   => esc_html__('Show Author', 'ultimate-post-kit'),
