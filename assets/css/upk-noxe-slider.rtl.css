@@ -111,13 +111,13 @@
 .upk-noxe-slider .upk-noxe-meta > div:nth-child(1)::before {
   display: none;
 }
-.upk-noxe-slider .upk-desc {
+.upk-noxe-slider .upk-text {
   font-size: 14px;
   color: #2f3f50;
   line-height: 1.6;
   margin-bottom: 35px;
 }
-.upk-noxe-slider .upk-desc p {
+.upk-noxe-slider .upk-text p {
   margin: 0;
 }
 .upk-noxe-slider .upk-noxe-navigation {
@@ -215,7 +215,7 @@
     font-size: 25px;
     margin-bottom: 20px;
   }
-  .upk-noxe-slider .upk-desc {
+  .upk-noxe-slider .upk-text {
     font-size: 16px;
     margin-bottom: 0;
   }

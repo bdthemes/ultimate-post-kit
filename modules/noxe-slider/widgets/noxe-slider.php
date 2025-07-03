@@ -439,7 +439,7 @@ class Noxe_Slider extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-noxe-slider .upk-desc' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-noxe-slider .upk-text' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -452,7 +452,7 @@ class Noxe_Slider extends Group_Control_Query {
 				'type' 		 => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-noxe-slider .upk-desc' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-noxe-slider .upk-text' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -462,7 +462,7 @@ class Noxe_Slider extends Group_Control_Query {
 			[
 				'name'      => 'text_typography',
 				'label'     => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector'  => '{{WRAPPER}} .upk-noxe-slider .upk-desc',
+				'selector'  => '{{WRAPPER}} .upk-noxe-slider .upk-text',
 			]
 		);
 
@@ -851,26 +851,6 @@ class Noxe_Slider extends Group_Control_Query {
 	<?php
 	}
 
-	public function render_excerpt($excerpt_length) {
-
-		if (!$this->get_settings('show_excerpt')) {
-			return;
-		}
-		$strip_shortcode = $this->get_settings_for_display('strip_shortcode');
-	?>
-		<div class="upk-desc" data-swiper-parallax-y="-100">
-			<?php
-			if (has_excerpt()) {
-				the_excerpt();
-			} else {
-				echo ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode);
-			}
-			?>
-		</div>
-
-	<?php
-	}
-
 	public function render_category() {
 
 		if (!$this->get_settings('show_category')) {
@@ -1052,7 +1032,12 @@ class Noxe_Slider extends Group_Control_Query {
 
 					</div>
 
-					<?php $this->render_excerpt($excerpt_length); ?>
+					<?php if ($settings['show_excerpt']) : ?>
+						<div class="upk-text=wrap" data-swiper-parallax-y="-100">
+							<?php $this->render_excerpt($excerpt_length); ?>
+						</div>
+					<?php endif; ?>
+
 				</div>
 			</div>
 		</div>

@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 3.15.2
+Stable tag: 3.15.3
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.8.1
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.29.2
+Elementor tested up to: 3.30.0
 
 Best Post Addon for Elementor WordPress Plugin with 80+ Most Popular Elements that need your everyday blog website building.
 
@@ -235,6 +235,11 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 
 == Changelog ==
+
+= 3.15.3 [3rd July 2025] =
+
+* Added: Ellipsis added in noxe slider & maple grid widgets
+* Fixed: Alter grid widget error fixed
 
 = 3.15.2 [15th June 2025] =
 

@@ -331,6 +331,21 @@ class Maple_Grid extends Group_Control_Query {
 				],
 			]
 		);
+		$this->add_control(
+            'ellipsis',
+            [
+                'label' => esc_html__('Ellipsis', 'ultimate-post-kit') . BDTUPK_NC,
+                'type' => Controls_Manager::TEXT,
+                'condition' => [
+                    'show_excerpt' => 'yes',
+					'excerpt_length!' => [0, ''],
+					'grid_style!' => '3'
+                ],
+				'ai' => [
+                    'active' => false,
+                ],
+            ]
+        );
 
 		$this->add_control(
 			'strip_shortcode',

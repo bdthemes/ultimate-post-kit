@@ -119,6 +119,20 @@
   right: -20px;
   top: 4px;
 }
+.ultimate-post-kit-dashboard.wrap .upk-option-page .upk-option-item[data-content-type~=comming] > .upk-option-item-inner:before {
+  background-color: #073B4C;
+  content: "COMING";
+  width: 70px;
+  height: 20px;
+  color: #fff;
+  position: absolute;
+  transform: rotate(45deg);
+  text-align: center;
+  line-height: 20px;
+  font-size: 9px;
+  right: -20px;
+  top: 4px;
+}
 .ultimate-post-kit-dashboard.wrap .upk-option-page .upk-option-item .upk-option-label {
   font-size: 15px;
   font-weight: 500;
@@ -1541,7 +1555,7 @@
 
 @font-face {
   font-family: "ultimate-post-kit";
-  src: url("../fonts/ultimate-post-kit.woff2?9pdzvf") format("woff2"), url("../fonts/ultimate-post-kit.ttf?9pdzvf") format("truetype"), url("../fonts/ultimate-post-kit.woff?9pdzvf") format("woff"), url("../fonts/ultimate-post-kit.svg?9pdzvf#ultimate-post-kit") format("svg");
+  src: url("../fonts/ultimate-post-kit.woff2?cv0wug") format("woff2"), url("../fonts/ultimate-post-kit.ttf?cv0wug") format("truetype"), url("../fonts/ultimate-post-kit.woff?cv0wug") format("woff"), url("../fonts/ultimate-post-kit.svg?cv0wug#ultimate-post-kit") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -1558,6 +1572,22 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.upk-icon-remote-fraction:before {
+  content: "\e9a5";
+}
+
+.upk-icon-remote-thumbs:before {
+  content: "\e9a6";
+}
+
+.upk-icon-remote-pagination:before {
+  content: "\e9a7";
+}
+
+.upk-icon-remote-arrows:before {
+  content: "\e9a9";
 }
 
 .upk-icon-featured-gallery:before {
@@ -12116,13 +12146,13 @@
 .upk-noxe-slider .upk-noxe-meta > div:nth-child(1)::before {
   display: none;
 }
-.upk-noxe-slider .upk-desc {
+.upk-noxe-slider .upk-text {
   font-size: 14px;
   color: #2f3f50;
   line-height: 1.6;
   margin-bottom: 35px;
 }
-.upk-noxe-slider .upk-desc p {
+.upk-noxe-slider .upk-text p {
   margin: 0;
 }
 .upk-noxe-slider .upk-noxe-navigation {
@@ -12220,7 +12250,7 @@
     font-size: 25px;
     margin-bottom: 20px;
   }
-  .upk-noxe-slider .upk-desc {
+  .upk-noxe-slider .upk-text {
     font-size: 16px;
     margin-bottom: 0;
   }
