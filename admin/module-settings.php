@@ -222,6 +222,46 @@ class ModuleService {
                     'video_url'    => 'https://youtu.be/1NNnJRZxxpc',
                 ],
                 [
+                    'name'         => 'dynamic-grid',
+                    'label'        => esc_html__('Dynamic Grid', 'ultimate-post-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'widget_type'  => 'pro',
+                    'content_type' => 'grid new',
+                    'demo_url'     => 'https://postkit.pro/demo/dynamic-grid/',
+                    'video_url'    => '',
+                ],
+                [
+                    'name'         => 'dynamic-carousel',
+                    'label'        => esc_html__('Dynamic Carousel', 'ultimate-post-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'widget_type'  => 'pro',
+                    'content_type' => 'carousel new',
+                    'demo_url'     => 'https://postkit.pro/demo/dynamic-carousel/',
+                    'video_url'    => '',
+                ],
+                [
+                    'name'         => 'dynamic-accordion',
+                    'label'        => esc_html__('Dynamic Accordion', 'ultimate-post-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'widget_type'  => 'pro',
+                    'content_type' => 'dynamic new',
+                    'demo_url'     => 'https://postkit.pro/demo/dynamic-accordion/',
+                    'video_url'    => '',
+                ],
+                [
+                    'name'         => 'dynamic-tabs',
+                    'label'        => esc_html__('Dynamic Tabs', 'ultimate-post-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'widget_type'  => 'pro',
+                    'content_type' => 'dynamic new',
+                    'demo_url'     => 'https://postkit.pro/demo/dynamic-tabs/',
+                    'video_url'    => '',
+                ],
+                [
                     'name'         => 'eldora-carousel',
                     'label'        => esc_html__('Eldora Carousel', 'ultimate-post-kit'),
                     'type'         => 'checkbox',
@@ -973,12 +1013,35 @@ class ModuleService {
             ],
             'ultimate_post_kit_other_settings'   => [
 
+
+                [
+                    'name'  => 'enable_dynamic_content_group_start',
+                    'label' => esc_html__('Dynamic Content', 'ultimate-post-kit'),
+                    'desc'  => __('The Dynamic Content feature allows users to automatically populate Elementor widgets with real-time data from WordPress.', 'ultimate-post-kit'),
+                    'type'  => 'start_group',
+                    'content_type' => 'new',
+                ],
+
+                [
+                    'name'    => 'dynamic-content',
+                    'label'   => esc_html__('Dynamic Content', 'ultimate-post-kit'),
+                    'type'    => 'checkbox',
+                    'default' => "off",
+                    'widget_type' => 'pro',
+                    'demo_url'  => 'https://postkit.pro/demo/dynamic-content/',
+                    'video_url' => 'https://youtu.be/JEqXbIETdDE',
+                ],
+
+                [
+                    'name' => 'dynamic_content_group_end',
+                    'type' => 'end_group',
+                ],
+
                 [
                     'name'  => 'enable_category_image_group_start',
                     'label' => esc_html__('Category Image', 'ultimate-post-kit'),
                     'desc'  => __('Display exclusive category avatar by turning on this switcher. The Category image will be visible for all post widgets if the category is turned on from the widget controls.', 'ultimate-post-kit'),
                     'type'  => 'start_group',
-                    // 'content_type' => 'new',
                 ],
 
                 [
@@ -987,8 +1050,6 @@ class ModuleService {
                     'type'    => 'checkbox',
                     'default' => "off",
                     'widget_type' => 'free',
-                    // 'demo_url'  => 'https://elementpack.pro/knowledge-base/how-to-use-element-pack-template-library/',
-                    // 'video_url' => 'https://youtu.be/IZw_iRBWbC8',
                 ],
 
                 [
@@ -1001,7 +1062,6 @@ class ModuleService {
                     'label'        => esc_html__('Duplicator', 'ultimate-post-kit'),
                     'desc'         => __('Just hit the button below to enable the duplicator. It can duplicate anything like posts,pages and elementor templates. A masterclass duplication with just one click.', 'ultimate-post-kit'),
                     'type'         => 'start_group',
-                    // 'content_type' => 'new',
                 ],
 
                 [
@@ -1024,7 +1084,6 @@ class ModuleService {
                     'label' => esc_html__('Live Copy or Paste', 'ultimate-post-kit'),
                     'desc'  => __('Live copy is a copy feature that allow you to copy and paste content from one domain to another. For example you can copy demo content directly from our demo website.', 'ultimate-post-kit'),
                     'type'  => 'start_group',
-                    // 'content_type' => 'new',
                 ],
 
                 [
@@ -1067,7 +1126,6 @@ class ModuleService {
                     'label' => esc_html__('Video Link Meta', 'ultimate-post-kit'),
                     'desc'  => __('If you need to display video features in your website so please enable this option.', 'ultimate-post-kit'),
                     'type'  => 'start_group',
-                    // 'content_type' => 'new',
                 ],
 
                 [
