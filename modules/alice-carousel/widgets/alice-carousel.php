@@ -862,7 +862,7 @@ class Alice_Carousel extends Group_Control_Query {
 ?>
 		<div class="upk-author">
 			<span><?php echo esc_html_x('by', 'Frontend', 'ultimate-post-kit') ?></span>
-			<a href="<?php echo get_author_posts_url(get_the_author_meta('ID')) ?>">
+			<a href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
 				<?php echo get_the_author() ?>
 			</a>
 		</div>

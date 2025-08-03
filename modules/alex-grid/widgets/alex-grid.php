@@ -1590,7 +1590,7 @@ class Alex_Grid extends Group_Control_Query {
 				<div>
 					<?php if ($settings['show_author']) : ?>
 						<div class="upk-author-name">
-							<a href="<?php echo get_author_posts_url(get_the_author_meta('ID')) ?>">
+							<a href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
 								<?php echo get_the_author() ?>
 							</a>
 						</div>

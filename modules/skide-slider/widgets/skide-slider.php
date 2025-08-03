@@ -983,7 +983,7 @@ class Skide_Slider extends Group_Control_Query {
 	?>
 		<div class="upk-author-wrap">
 			<span class="upk-by"><?php echo esc_html_x('by', 'Frontend', 'ultimate-post-kit'); ?></span>
-			<a class="upk-name" href="<?php echo get_author_posts_url(get_the_author_meta('ID')) ?>">
+			<a class="upk-name" href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
 				<?php echo get_the_author() ?>
 			</a>
 		</div>
@@ -1086,7 +1086,7 @@ class Skide_Slider extends Group_Control_Query {
 					</div>
 					<div class="upk-meta-info">
 						<div class="upk-author-name">
-							<a href="<?php echo get_author_posts_url(get_the_author_meta('ID')) ?>">
+							<a href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
 								<?php echo get_the_author() ?>
 							</a>
 						</div>
