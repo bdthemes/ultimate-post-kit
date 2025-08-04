@@ -860,7 +860,7 @@ class Harold_Carousel extends Group_Control_Query {
 		<div class="upk-author">
 			<a href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
 				<i class="upk-icon-user"></i>
-				<span class="upk-author-name"><?php echo get_the_author() ?></span>
+				<span class="upk-author-name"><?php echo esc_html( get_the_author() ); ?></span>
 			</a>
 		</div>
 

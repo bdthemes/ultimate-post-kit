@@ -1244,7 +1244,7 @@ class Gratis_Grid extends Group_Control_Query {
 			</svg>
 			<span><?php echo esc_html__('by', 'ultimate-post-kit') ?></span>
 			<a class="upk-author-name" href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
-				<span><?php echo get_the_author() ?></span>
+				<span><?php echo esc_html( get_the_author() ); ?></span>
 			</a>
 		</div>
 

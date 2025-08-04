@@ -1234,7 +1234,7 @@ class Maple_Grid extends Group_Control_Query {
 				<?php endif; ?>
 
 				<?php if ($settings['show_author_name'] == 'yes') : ?>
-					<a class="author-name" href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>"><?php echo get_the_author() ?></a>
+					<a class="author-name" href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>"><?php echo esc_html( get_the_author() ); ?></a>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>
