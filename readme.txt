@@ -1,17 +1,17 @@
 === Ultimate Post Kit Addons For Elementor - (Post Grid, Post Carousel, Post Slider, Category List, Post Tabs, Timeline, Post Ticker and Tag Cloud) ===
-Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
+Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 3.15.3
+Stable tag: 3.15.4
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
-Tested up to: 6.8.1
+Tested up to: 6.8.2
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.30.0
+Elementor tested up to: 3.31.0
 
-Best Post Addon for Elementor WordPress Plugin with 80+ Most Popular Elements that need your everyday blog website building.
+Best Post Addon for Elementor WordPress Plugin with 90+ Most Popular Elements that need your everyday blog website building.
 
 == Description ==
 
@@ -236,9 +236,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 3.15.X [Xrd August 2025] =
+= 3.15.4 [6th August 2025] =
 
 * Fixed: Offset issue fixed in Alter Grid ( Thanks to S.podboraczynski ) 
+* Updated: Security improved
 
 = 3.15.3 [3rd July 2025] =
 

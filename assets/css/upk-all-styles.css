@@ -119,8 +119,8 @@
   left: -20px;
   top: 4px;
 }
-.ultimate-post-kit-dashboard.wrap .upk-option-page .upk-option-item[data-content-type~=comming] > .upk-option-item-inner:before {
-  background-color: #073B4C;
+.ultimate-post-kit-dashboard.wrap .upk-option-page .upk-option-item[data-content-type~=coming] > .upk-option-item-inner:before {
+  background-color: #3F51B5;
   content: "COMING";
   width: 70px;
   height: 20px;

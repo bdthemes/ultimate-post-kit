@@ -860,6 +860,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                                                         <li class="upk-widget-tabs" bdt-filter-control="filter: [data-content-type*='tabs']; group: data-widget-type"><a href="#"><?php esc_html_e('Tabs', 'ultimate-post-kit'); ?></a></li>
                                                         <li class="upk-widget-timeline" bdt-filter-control="filter: [data-content-type*='timeline']; group: data-widget-type"><a href="#"><?php esc_html_e('Timeline', 'ultimate-post-kit'); ?></a></li>
                                                         <li class="upk-widget-template-builder" bdt-filter-control="filter: [data-content-type*='template-builder']; group: data-widget-type"><a href="#"><?php esc_html_e('Template Builder', 'ultimate-post-kit'); ?></a></li>
+                                                        <li class="upk-widget-loop" bdt-filter-control="filter: [data-content-type*='loop']; group: data-widget-type"><a href="#"><?php esc_html_e('Loop Builder', 'ultimate-post-kit'); ?></a></li>
 
                                                         <li class="upk-widget-others" bdt-filter-control="filter: [data-content-type*='others']; group: data-widget-type"><a href="#"><?php esc_html_e('Others', 'ultimate-post-kit'); ?></a></li>
                                                     </ul>
