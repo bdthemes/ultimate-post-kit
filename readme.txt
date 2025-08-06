@@ -236,6 +236,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 3.15.X [Xrd August 2025] =
+
+* Fixed: Offset issue fixed in Alter Grid ( Thanks to S.podboraczynski ) 
+
 = 3.15.3 [3rd July 2025] =
 
 * Added: Ellipsis added in noxe slider & maple grid widgets

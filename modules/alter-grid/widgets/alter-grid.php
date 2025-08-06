@@ -1676,7 +1676,7 @@ class Alter_Grid extends Group_Control_Query {
 
 		$wp_query = $this->get_query();
 
-		if (!$wp_query->found_posts) {
+		if (!$wp_query->have_posts()) {
 			return;
 		}
 
