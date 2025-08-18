@@ -236,6 +236,11 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 3.15.X [Xth August 2025] =
+
+* Fixed: Admin API Notice loading issue fixed 
+* Updated: Admin API Notice updated
+
 = 3.15.4 [6th August 2025] =
 
 * Fixed: Offset issue fixed in Alter Grid ( Thanks to S.podboraczynski ) 
