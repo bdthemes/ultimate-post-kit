@@ -129,5 +129,4 @@ jQuery(document).ready(function ($) {
         'margin-right': '8px',
         'vertical-align': 'middle'
     });
-
 });

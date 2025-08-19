@@ -236,6 +236,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 3.15.X [Xth August 2025] =
+
+* Added: Admin Store API Notice added
+
 = 3.15.4 [6th August 2025] =
 
 * Fixed: Offset issue fixed in Alter Grid ( Thanks to S.podboraczynski ) 
