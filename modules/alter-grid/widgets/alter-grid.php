@@ -1634,7 +1634,7 @@ class Alter_Grid extends Group_Control_Query {
 								<?php if ($settings['show_author']) : ?>
 									<div class="upk-blog-author" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
 										<a class="author-name" href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
-											<?php echo get_the_author() ?>
+											<?php echo esc_html( get_the_author() ) ?>
 										</a>
 									</div>
 								<?php endif; ?>

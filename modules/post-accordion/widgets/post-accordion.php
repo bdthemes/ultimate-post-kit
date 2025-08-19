@@ -1128,7 +1128,7 @@ class Post_Accordion extends Group_Control_Query {
 			<div class="upk-author-info-warp upk-flex">
 				<div class="upk-author-name">
 					<a href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
-						<?php echo get_the_author() ?>
+						<?php echo esc_html( get_the_author() ) ?>
 					</a>
 				</div>
 				<div class="upk-author-role">

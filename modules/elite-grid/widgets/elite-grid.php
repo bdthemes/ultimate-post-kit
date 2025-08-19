@@ -1243,7 +1243,7 @@ class Elite_Grid extends Group_Control_Query {
 							<div class="upk-author-info-warp">
 								<span class="author-name">
 									<a class="name" href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
-										<?php echo get_the_author() ?>
+										<?php echo esc_html( get_the_author() ) ?>
 									</a>
 								</span>
 
