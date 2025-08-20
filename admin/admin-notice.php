@@ -269,44 +269,6 @@ class Notices {
 	}
 
 	/**
-	 * Get plugin priority for notice display
-	 * This helps determine which plugin should show notices when both are installed
-	 *
-	 * @return int Priority number (lower = higher priority)
-	 */
-	private function get_plugin_priority() {
-		$current_plugin_slug = $this->get_current_plugin_slug();
-		
-		// Lite version has higher priority (shows notices first)
-		if ($current_plugin_slug === 'ultimate-post-kit') {
-			return 1;
-		}
-		
-		// Pro version has lower priority
-		if ($current_plugin_slug === 'ultimate-post-kit-pro') {
-			return 2;
-		}
-		
-		// Default priority
-		return 999;
-	}
-
-	/**
-	 * Check if both plugins are installed and active
-	 *
-	 * @return bool
-	 */
-	private function are_both_plugins_installed() {
-		// Check if lite plugin is active
-		$lite_active = is_plugin_active('ultimate-post-kit/ultimate-post-kit.php');
-		
-		// Check if pro plugin is active
-		$pro_active = is_plugin_active('ultimate-post-kit-pro/ultimate-post-kit-pro.php');
-		
-		return $lite_active && $pro_active;
-	}
-
-	/**
 	 * Get current plugin slug
 	 *
 	 * @return string
