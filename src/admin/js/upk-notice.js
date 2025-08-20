@@ -1,22 +1,20 @@
-(function ($) {
-    "use strict";
-    jQuery(document).ready(function () {
-        $('.ultimate-post-kit-notice.is-dismissible .notice-dismiss').on('click', function () {
-            var $this = $(this).parents('.ultimate-post-kit-notice');
-            var $id = $this.attr('id') || '';
-            var $time = $this.attr('dismissible-time') || '';
-            var $meta = $this.attr('dismissible-meta') || '';
-            $.ajax({
-                url: ajaxurl,
-                type: 'POST',
-                data: {
-                    action: 'ultimate-post-kit-notices',
-                    id: $id,
-                    meta: $meta,
-                    time: $time,
-                    _wpnonce: UltimatePostKitNoticeConfig.nonce
-                }
-            });
+jQuery(document).ready(function ($) {
+    // Delegate to capture dynamically injected notices as well
+    $(document).on('click', '.ultimate-post-kit-notice.is-dismissible .notice-dismiss', function () {
+        $this = $(this).parents('.ultimate-post-kit-notice');
+        var $id = $this.attr('id') || '';
+        var $time = $this.attr('dismissible-time') || '';
+        var $meta = $this.attr('dismissible-meta') || '';
+        $.ajax({
+            url: (window.UltimatePostKitNoticeConfig && UltimatePostKitNoticeConfig.ajaxurl) ? UltimatePostKitNoticeConfig.ajaxurl : (typeof ajaxurl !== 'undefined' ? ajaxurl : ''),
+            type: 'POST',
+            data: {
+                action: 'ultimate-post-kit-notices',
+                id: $id,
+                meta: $meta,
+                time: $time,
+                _wpnonce: UltimatePostKitNoticeConfig.nonce
+            }
         });
     });
 
@@ -101,8 +99,73 @@
         initAPINoticeCountdown();
     });
 
+    // Fetch API notices after full page load, with try/catch
+    $(window).on('load', function () {
+        try {
+            $.ajax({
+                url: (window.UltimatePostKitNoticeConfig && UltimatePostKitNoticeConfig.ajaxurl) ? UltimatePostKitNoticeConfig.ajaxurl : (typeof ajaxurl !== 'undefined' ? ajaxurl : ''),
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    action: 'upk_fetch_api_notices',
+                    _wpnonce: UltimatePostKitNoticeConfig.nonce
+                }
+            })
+            .done(function (res) {
+                if (res && res.success && res.data && res.data.html) {
+                    var $markup = $(res.data.html);
+                    var $target = $('#wpbody-content .wrap').first();
+
+                    if (!$target.length) {
+                        $target = $('.wrap').first();
+                    }
+                    if (!$target.length) {
+                        $target = $('#wpbody-content');
+                    }
+
+                    // insert right after the <h1> if exists, otherwise at top
+                    if ($target.children('hr.wp-header-end').length) {
+                        $target.children('hr.wp-header-end').first().after($markup);
+                    } else {
+                        $target.prepend($markup);
+                    }
+
+                    // Re-initialize WP dismiss buttons for dynamically added notices
+                    if (typeof wp !== 'undefined' && wp.a11y && window.jQuery) {
+                        $(document).trigger('wp-updates-notice-added');
+                    } else {
+                        // fallback: manually add close button + click handler
+                        $markup.each(function () {
+                            var $el = $(this);
+                            if ($el.hasClass('is-dismissible') && !$el.find('.notice-dismiss').length) {
+                                var $button = $('<button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>');
+                                $el.append($button);
+                                $button.on('click', function () {
+                                    $el.fadeTo(100, 0, function () {
+                                        $el.slideUp(100, function () {
+                                            $el.remove();
+                                        });
+                                    });
+                                });
+                            }
+                        });
+                    }
+
+
+                    // Initialize countdowns in injected content
+                    initAPINoticeCountdown();
+                }
+            })
+            .fail(function () {
+                // swallow errors silently
+            });
+        } catch (e) {
+            // ignore
+        }
+    });
+
     /* ===================================
        END Admin Store API NOTICE
        =================================== */
 
-})(jQuery);
+});
