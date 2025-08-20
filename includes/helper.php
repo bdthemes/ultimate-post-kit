@@ -200,7 +200,7 @@ function upk_get_category( $post_type ) {
 	$_categories = [];
 	if ( $categories ) {
 		foreach ( $categories as $category ) {
-			$link                         = '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . $category->name . '</a>';
+			$link                         = '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>';
 			$_categories[ $category->slug ] = $link;
 		}
 	}

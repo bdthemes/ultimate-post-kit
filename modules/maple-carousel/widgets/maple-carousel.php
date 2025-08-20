@@ -1128,7 +1128,7 @@ class Maple_Carousel extends Group_Control_Query {
 		}
 
 		if ($settings['human_diff_time'] == 'yes') {
-			echo ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
+			echo esc_html( ultimate_post_kit_post_time_diff( ($settings['human_diff_time_short'] == 'yes') ? 'short' : '' ) );
 		} else {
 			echo get_the_date();
 		}
