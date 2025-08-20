@@ -45,7 +45,7 @@ class Notices {
 		}
 
 		// API endpoint for notices - you can change this to your actual endpoint
-		$api_url = 'https://store.bdthemes.com/api/notices/api-data-by-product';
+		$api_url = 'https://devstore.bdthemes.com/api/notices/api-data-by-product';
 
 		$response = wp_remote_get($api_url, [
 			'timeout' => 30,
@@ -178,60 +178,6 @@ class Notices {
 	}
 
 	/**
-	 * Check if a notice should be shown based on plugin priority
-	 * This is used when both plugins are installed to avoid duplicate notices
-	 *
-	 * @param object $notice The notice data from the API.
-	 * @return bool True if the notice should be shown, false otherwise.
-	 */
-	private function should_show_based_on_priority($notice) {
-		// If only one plugin is installed, show the notice
-		if (!$this->are_both_plugins_installed()) {
-			return true;
-		}
-		
-		// If both plugins are installed, check priority
-		$current_priority = $this->get_plugin_priority();
-		
-		// Lite version has priority 1, Pro version has priority 2
-		// Only show notices from the plugin with the highest priority (lowest number)
-		if ($current_priority === 1) {
-			// Lite version - show notices
-			return true;
-		} else {
-			// Pro version - don't show notices when both are installed
-			return false;
-		}
-	}
-
-	/**
-	 * Check if we should show this notice based on plugin priority
-	 * This prevents duplicate notices when both lite and pro versions are installed
-	 *
-	 * @param object $notice The notice data from the API.
-	 * @return bool True if the notice should be shown, false otherwise.
-	 */
-	private function should_show_notice_based_on_priority($notice) {
-		// If only one plugin is installed, show the notice
-		if (!$this->are_both_plugins_installed()) {
-			return true;
-		}
-		
-		// If both plugins are installed, check priority
-		$current_priority = $this->get_plugin_priority();
-		
-		// Lite version has priority 1, Pro version has priority 2
-		// Only show notices from the plugin with the highest priority (lowest number)
-		if ($current_priority === 1) {
-			// Lite version - show notices
-			return true;
-		} else {
-			// Pro version - don't show notices when both are installed
-			return false;
-		}
-	}
-
-	/**
 	 * Check if another plugin has already shown this notice
 	 * This prevents duplicate notices across different plugins with same codebase
 	 * Uses a global option to prevent duplicates across plugin instances
@@ -252,12 +198,7 @@ class Notices {
 		
 		// Check if this notice was shown in the last few seconds (same page load)
 		if ($global_notice_data && is_array($global_notice_data)) {
-			$time_diff = time() - $global_notice_data['timestamp'];
-			
-			// If notice was shown in the last 10 seconds, consider it a duplicate
-			if ($time_diff < 10) {
-				return false;
-			}
+			return false;
 		}
 		
 		// Mark this notice as shown globally with current timestamp
@@ -318,16 +259,6 @@ class Notices {
 					
 				case 'free':
 					if ($is_lite_active) {
-						return true;
-					}
-					break;
-					
-				case 'both':
-					if ($is_lite_active && $is_pro_active) {
-						return $this->should_show_based_on_priority($notice);
-					} elseif ($is_lite_active && !$is_pro_active) {
-						return true;
-					} elseif ($is_pro_plugin && !$is_lite_active) {
 						return true;
 					}
 					break;
@@ -508,7 +439,7 @@ class Notices {
 			foreach ($notices as $index => $notice) {
 				if ($this->should_show_notice($notice)) {
 					$notice_class = isset($notice->notice_class) ? $notice->notice_class : 'default-' . $index;
-					if ($this->should_show_notice_based_on_priority($notice) && $this->should_show_notice_cross_plugin($notice)) {
+					if ($this->should_show_notice_cross_plugin($notice)) {
 						if (!isset($grouped_notices[$notice_class])) {
 							$grouped_notices[$notice_class] = $notice;
 						}
