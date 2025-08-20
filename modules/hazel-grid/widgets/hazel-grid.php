@@ -1030,7 +1030,7 @@ class Hazel_Grid extends Group_Control_Query {
 									<?php if ($settings['show_time']) : ?>
 									<div class="upk-post-time">
 										<i class="upk-icon-clock" aria-hidden="true"></i>
-										<?php echo get_the_time(); ?>
+										<?php echo esc_html( get_the_time() ); ?>
 									</div>
 									<?php endif; ?>
 								</div>

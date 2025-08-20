@@ -1091,7 +1091,7 @@ class Timeline extends Group_Control_Query {
 								<?php if ( $settings['show_time'] ) : ?>
 									<span class="upk-post-time">
 										<i class="upk-icon-clock" aria-hidden="true"></i>
-										<?php echo get_the_time(); ?>
+										<?php echo esc_html( get_the_time() ); ?>
 									</span>
 								<?php endif; ?>
 							</div>
