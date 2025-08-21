@@ -178,40 +178,6 @@ class Notices {
 	}
 
 	/**
-	 * Check if another plugin has already shown this notice
-	 * This prevents duplicate notices across different plugins with same codebase
-	 * Uses a global option to prevent duplicates across plugin instances
-	 *
-	 * @param object $notice The notice data from the API.
-	 * @return bool True if the notice should be shown, false if already shown by another plugin.
-	 */
-	private function should_show_notice_cross_plugin($notice) {
-		$notice_class = isset($notice->notice_class) ? $notice->notice_class : '';
-		
-		if (empty($notice_class)) {
-			return true; // No notice_class, show it
-		}
-		
-		// Use a global option to track notices shown across all plugin instances
-		$global_notice_key = 'bdt_global_notice_' . $notice_class;
-		$global_notice_data = get_option($global_notice_key, false);
-		
-		// Check if this notice was shown in the last few seconds (same page load)
-		if ($global_notice_data && is_array($global_notice_data)) {
-			return false;
-		}
-		
-		// Mark this notice as shown globally with current timestamp
-		update_option($global_notice_key, [
-			'plugin' => $this->get_current_plugin_slug(),
-			'timestamp' => time(),
-			'notice_class' => $notice_class
-		]);
-		
-		return true;
-	}
-
-	/**
 	 * Check if a notice is compatible with the current plugin installation
 	 *
 	 * @param object $notice The notice data from the API.
@@ -266,44 +232,6 @@ class Notices {
 		}
 		
 		return false;
-	}
-
-	/**
-	 * Get plugin priority for notice display
-	 * This helps determine which plugin should show notices when both are installed
-	 *
-	 * @return int Priority number (lower = higher priority)
-	 */
-	private function get_plugin_priority() {
-		$current_plugin_slug = $this->get_current_plugin_slug();
-		
-		// Lite version has higher priority (shows notices first)
-		if ($current_plugin_slug === 'ultimate-post-kit') {
-			return 1;
-		}
-		
-		// Pro version has lower priority
-		if ($current_plugin_slug === 'ultimate-post-kit-pro') {
-			return 2;
-		}
-		
-		// Default priority
-		return 999;
-	}
-
-	/**
-	 * Check if both plugins are installed and active
-	 *
-	 * @return bool
-	 */
-	private function are_both_plugins_installed() {
-		// Check if lite plugin is active
-		$lite_active = is_plugin_active('ultimate-post-kit/ultimate-post-kit.php');
-		
-		// Check if pro plugin is active
-		$pro_active = is_plugin_active('ultimate-post-kit-pro/ultimate-post-kit-pro.php');
-		
-		return $lite_active && $pro_active;
 	}
 
 	/**
@@ -439,10 +367,8 @@ class Notices {
 			foreach ($notices as $index => $notice) {
 				if ($this->should_show_notice($notice)) {
 					$notice_class = isset($notice->notice_class) ? $notice->notice_class : 'default-' . $index;
-					if ($this->should_show_notice_cross_plugin($notice)) {
-						if (!isset($grouped_notices[$notice_class])) {
-							$grouped_notices[$notice_class] = $notice;
-						}
+					if (!isset($grouped_notices[$notice_class])) {
+						$grouped_notices[$notice_class] = $notice;
 					}
 				}
 			}
