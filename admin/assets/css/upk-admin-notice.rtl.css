@@ -93,14 +93,14 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
 /**
  * admin store api notice style start
  */
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-plugin-logo-wrapper img {
+[id^=bdt-admin-notice-api-notice] .bdt-plugin-logo-wrapper img {
   vertical-align: middle;
   width: clamp(25px, 3vw, 40px);
   height: auto;
   animation: logoSlideIn 0.6s ease-out 0.3s both;
   transition: transform 0.3s ease;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-plugin-logo-wrapper:hover img {
+[id^=bdt-admin-notice-api-notice] .bdt-plugin-logo-wrapper:hover img {
   transform: scale(1.1) rotate(-5deg);
 }
 @keyframes wrapperSlideInTop {
@@ -121,7 +121,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
     transform: scale(1) rotate(0deg);
   }
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-wrapper {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-wrapper {
   align-items: center;
   background-color: #000;
   padding: 0 clamp(10px, 2vw, 30px) 0 clamp(10px, 3vw, 50px);
@@ -133,19 +133,19 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   overflow: hidden;
   margin: 0;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .has-background-image {
+[id^=bdt-admin-notice-api-notice] .has-background-image {
   background-position: right;
   background-repeat: no-repeat;
   background-color: #000;
   background-size: cover;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-api-notice-content {
+[id^=bdt-admin-notice-api-notice] .bdt-api-notice-content {
   display: flex;
   align-items: center;
   width: 100%;
   min-height: 100px;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-content {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -157,27 +157,27 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   backface-visibility: hidden;
   transform: translateZ(0);
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-content-right,
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-content-inner {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-content-right,
+[id^=bdt-admin-notice-api-notice] .bdt-notice-content-inner {
   display: flex;
   align-items: center;
   gap: 20px;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-title-description {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-title-description {
   max-width: 450px;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-logo-wrapper {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-logo-wrapper {
   animation: noticeLogoSlideIn 0.7s ease-out 0.35s both;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-logo-wrapper img {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-logo-wrapper img {
   width: clamp(50px, 5vw, 100px);
   height: auto;
   transition: transform 0.3s ease;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-logo-wrapper:hover img {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-logo-wrapper:hover img {
   transform: scale(1.05);
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-title-description .bdt-notice-title {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-title-description .bdt-notice-title {
   color: #fff;
   margin: 0;
   font-size: clamp(12px, 1.5vw, 22px);
@@ -186,12 +186,12 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   transform-origin: right center;
   text-shadow: -2px 2px 2px #000000;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-html-content {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-html-content {
   color: #ffffff;
   text-shadow: -2px 2px 2px #000000;
   animation: titleSlideIn 0.8s ease-out 0.4s both;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .notice-dismiss:before {
+[id^=bdt-admin-notice-api-notice] .notice-dismiss:before {
   color: rgba(255, 255, 255, 0.568627451);
 }
 @keyframes titleSlideIn {
@@ -204,11 +204,11 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
     transform: translateX(0);
   }
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-countdown {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-countdown {
   height: 100%;
   animation: countdownSlideIn 0.8s ease-out 0.5s both;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-countdown .countdown-timer {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-countdown .countdown-timer {
   display: flex;
   align-items: center;
   gap: clamp(5px, 1.5vw, 20px);
@@ -219,7 +219,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   padding: 0 15px;
   min-height: 100px;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-countdown .countdown-item {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-countdown .countdown-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -227,7 +227,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   min-width: 40px;
   flex-shrink: 0;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-countdown .number {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-countdown .number {
   color: #fff;
   font-size: clamp(14px, 2vw, 22px);
   font-weight: 600;
@@ -237,14 +237,14 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   text-align: center;
   font-family: "Courier New", monospace;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-countdown .label {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-countdown .label {
   color: #d2d5f4;
   text-transform: capitalize;
   font-size: clamp(10px, 1vw, 13px);
   font-weight: 500;
   white-space: nowrap;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-countdown .separator {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-countdown .separator {
   height: 30px;
   width: 1px;
   background: rgba(255, 255, 255, 0.251);
@@ -273,7 +273,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
     transform: scale(1) translateY(0);
   }
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-btn {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-btn {
   --nm-text-primary: #fff;
   --nm-accent: #5affdb;
   --nm-shadow-color: #fffdef;
@@ -284,16 +284,16 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   /* Button Styles */
   /* Star Hover Positions */
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-btn a {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-btn a {
   background: transparent;
   border: 0;
   padding: 0;
   margin: 0;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-btn a:hover {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-btn a:hover {
   background: transparent;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-btn .nm-notice-btn {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn {
   color: var(--nm-text-primary);
   text-decoration: none;
   font-size: clamp(9px, 1.8vw, 22px);
@@ -308,41 +308,41 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   text-align: right;
   transition: all var(--nm-anim-duration-fast) ease;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-btn .nm-notice-btn:hover {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover {
   color: var(--nm-accent);
   border-color: var(--nm-accent);
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star {
   opacity: 1;
   z-index: 2;
   filter: drop-shadow(0 0 10px var(--nm-shadow-color));
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-btn .nm-notice-btn svg {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn svg {
   width: 16px;
   height: 16px;
   display: block;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-1 {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-1 {
   top: 21%;
   right: -18%;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-2 {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-2 {
   top: -25%;
   right: 10%;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-3 {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-3 {
   top: 69%;
   right: 25%;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-4 {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-4 {
   top: -34%;
   right: 80%;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-5 {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-5 {
   top: 25%;
   right: 115%;
 }
-[id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-6 {
+[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-6 {
   top: 5%;
   right: 60%;
 }
@@ -356,17 +356,17 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
     transform: translateX(0);
   }
 }
-[id^=ultimate-post-kit-notice-id-api-notice].animations-complete * {
+[id^=bdt-admin-notice-api-notice].animations-complete * {
   will-change: auto;
   animation: none;
 }
 
 @media (min-width: 1460px) {
-  [id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-content-right,
-  [id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-content-inner {
+  [id^=bdt-admin-notice-api-notice] .bdt-notice-content-right,
+  [id^=bdt-admin-notice-api-notice] .bdt-notice-content-inner {
     gap: 30px;
   }
-  [id^=ultimate-post-kit-notice-id-api-notice] .bdt-notice-countdown .countdown-timer {
+  [id^=bdt-admin-notice-api-notice] .bdt-notice-countdown .countdown-timer {
     padding: 0 30px;
   }
 }

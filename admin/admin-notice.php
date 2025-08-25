@@ -20,14 +20,12 @@ class Notices {
 
 	public function __construct() {
 
-		// Admin API Notices
-		add_action('admin_notices', [$this, 'cleanup_expired_dismissals']);
-
 		add_action('admin_notices', [$this, 'show_notices']);
 		add_action('wp_ajax_ultimate-post-kit-notices', [$this, 'dismiss']);
 
 		// AJAX endpoint to fetch API notices on demand (after page load)
 		add_action('wp_ajax_upk_fetch_api_notices', [$this, 'ajax_fetch_api_notices']);
+
 	}
 
 	/**
@@ -45,7 +43,7 @@ class Notices {
 		}
 
 		// API endpoint for notices - you can change this to your actual endpoint
-		$api_url = 'https://store.bdthemes.com/api/notices/api-data-by-product';
+		$api_url = 'https://store.bdthemes.com/api/notices/api-data-records';
 
 		$response = wp_remote_get($api_url, [
 			'timeout' => 30,
@@ -75,48 +73,6 @@ class Notices {
 		}
 
 		return [];
-	}
-
-	/**
-	 * Check if a notice is dismissed
-	 *
-	 * @param string $notice_id
-	 * @return bool
-	 */
-	private function is_notice_dismissed($notice_id) {
-		$dismissed_notices = get_user_meta(get_current_user_id(), 'upk_dismissed_notices', true);
-		
-		if (!is_array($dismissed_notices)) {
-			$dismissed_notices = [];
-		}
-
-		// Check if notice is dismissed and if the end date has passed
-		if (isset($dismissed_notices[$notice_id])) {
-			$dismissal_data = $dismissed_notices[$notice_id];
-			
-			// If it's just a string (old format), treat it as permanently dismissed
-			if (is_string($dismissal_data)) {
-				return true;
-			}
-			
-			// If it's an array with end_date, check if end date has passed
-			if (is_array($dismissal_data) && isset($dismissal_data['end_date'])) {
-				$end_date = new \DateTime($dismissal_data['end_date'], new \DateTimeZone($dismissal_data['timezone'] ?? 'UTC'));
-				$current_date = new \DateTime('now', new \DateTimeZone($dismissal_data['timezone'] ?? 'UTC'));
-				
-				// If end date has passed, allow notice to show again
-				if ($current_date > $end_date) {
-					// Remove from dismissed list since end date has passed
-					unset($dismissed_notices[$notice_id]);
-					update_user_meta(get_current_user_id(), 'upk_dismissed_notices', $dismissed_notices);
-					return false;
-				}
-				
-				return true;
-			}
-		}
-
-		return false;
 	}
 
 	/**
@@ -190,14 +146,13 @@ class Notices {
 		$is_lite_active = $current_plugin_slug === 'ultimate-post-kit';
 		$is_pro_plugin = $current_plugin_slug === 'ultimate-post-kit-pro';
 		
-		// Get notice targets from API, default to ['both']
+		// Get client targets, default to ['both'] if not set or not an array
 		$client_targets = (isset($notice->client_targets) && is_array($notice->client_targets))
-			? $notice->client_targets
-			: ['both'];
+		? $notice->client_targets
+		: ['both'];
 
-		// True if 'pro_targeted' is one of the targets
-		$pro_targeted = in_array('pro_targeted', $client_targets, true);
-
+		// Determine if this is targeted at Pro users
+		$pro_targeted = in_array('pro', $client_targets, true);
 		
 		// Ensure client_targets is always an array
 		if (!is_array($client_targets)) {
@@ -377,10 +332,6 @@ class Notices {
 		// Build notices using the same pipeline as synchronous rendering
 		foreach ($grouped_notices as $notice_class => $notice) {
 			$notice_id = isset($notice->id) ? $notice_class : $notice->id;
-			if ($this->is_notice_dismissed($notice_id)) {
-				continue;
-			}
-			$this->store_notice_data($notice_id, $notice);
 
 			self::add_notice([
 				'id' => 'api-notice-' . $notice_id,
@@ -388,7 +339,7 @@ class Notices {
 				'dismissible' => true,
 				'html_message' => $this->render_api_notice($notice),
 				'dismissible-meta' => 'transient',
-				'dismissible-time' => WEEK_IN_SECONDS,
+				'dismissible-time' => isset($notice->end_date) ? max((new \DateTime($notice->end_date, new \DateTimeZone('UTC')))->getTimestamp() - time(), 0) : WEEK_IN_SECONDS,
 			]);
 		}
 
@@ -420,7 +371,7 @@ class Notices {
 		 * Valid inputs?
 		 */
 		if (!empty($id)) {
-
+			// Handle regular notices
 			if ('user' === $meta) {
 				update_user_meta(get_current_user_id(), $id, true);
 			} else {
@@ -433,138 +384,6 @@ class Notices {
 		wp_send_json_error();
 	}
 
-
-	/**
-	 * Store notice data for dismissal reference
-	 *
-	 * @param string $notice_id
-	 * @param object $notice
-	 */
-	private function store_notice_data($notice_id, $notice) {
-		$stored_notices = get_user_meta(get_current_user_id(), 'upk_stored_notices', true);
-		
-		if (!is_array($stored_notices)) {
-			$stored_notices = [];
-		}
-		
-		$stored_notices[$notice_id] = [
-			'end_date' => isset($notice->end_date) ? $notice->end_date : null,
-			'timezone' => isset($notice->timezone) ? $notice->timezone : 'UTC',
-			'stored_at' => current_time('mysql')
-		];
-		
-		update_user_meta(get_current_user_id(), 'upk_stored_notices', $stored_notices);
-	}
-
-	/**
-	 * Dismiss API notice
-	 *
-	 * @param string $notice_id
-	 */
-	private function dismiss_api_notice($notice_id) {
-		$dismissed_notices = get_user_meta(get_current_user_id(), 'upk_dismissed_notices', true);
-		
-		if (!is_array($dismissed_notices)) {
-			$dismissed_notices = [];
-		}
-
-		// Get the stored notice data
-		$stored_notices = get_user_meta(get_current_user_id(), 'upk_stored_notices', true);
-		$notice_data = null;
-		
-		if (is_array($stored_notices) && isset($stored_notices[$notice_id])) {
-			$notice_data = $stored_notices[$notice_id];
-		}
-		
-		// Store dismissal with end date and timezone for future reference
-		if ($notice_data && isset($notice_data['end_date'])) {
-			$dismissed_notices[$notice_id] = [
-				'end_date' => $notice_data['end_date'],
-				'timezone' => $notice_data['timezone'],
-				'dismissed_at' => current_time('mysql')
-			];
-		} else {
-			// Fallback: store as permanently dismissed if no end date
-			$dismissed_notices[$notice_id] = true;
-		}
-		
-		update_user_meta(get_current_user_id(), 'upk_dismissed_notices', $dismissed_notices);
-	}
-
-	/**
-	 * Clean up expired dismissals to keep user meta clean
-	 */
-	public function cleanup_expired_dismissals() {
-		$dismissed_notices = get_user_meta(get_current_user_id(), 'upk_dismissed_notices', true);
-		$stored_notices = get_user_meta(get_current_user_id(), 'upk_stored_notices', true);
-		
-		if (!is_array($dismissed_notices)) {
-			$dismissed_notices = [];
-		}
-		
-		if (!is_array($stored_notices)) {
-			$stored_notices = [];
-		}
-		
-		$cleaned_dismissed = false;
-		$cleaned_stored = false;
-		$current_time = new \DateTime('now', new \DateTimeZone('UTC'));
-		
-		// Clean up expired dismissals
-		foreach ($dismissed_notices as $notice_id => $dismissal_data) {
-			// Skip if it's not an array (old format)
-			if (!is_array($dismissal_data) || !isset($dismissal_data['end_date'])) {
-				continue;
-			}
-			
-			try {
-				$timezone = isset($dismissal_data['timezone']) ? $dismissal_data['timezone'] : 'UTC';
-				$end_date = new \DateTime($dismissal_data['end_date'], new \DateTimeZone($timezone));
-				
-				// If end date has passed, remove from dismissed list
-				if ($current_time > $end_date) {
-					unset($dismissed_notices[$notice_id]);
-					$cleaned_dismissed = true;
-				}
-			} catch (Exception $e) {
-				// If there's an error parsing the date, remove the invalid entry
-				unset($dismissed_notices[$notice_id]);
-				$cleaned_dismissed = true;
-			}
-		}
-		
-		// Clean up stored notices that are no longer valid
-		foreach ($stored_notices as $notice_id => $stored_data) {
-			if (!isset($stored_data['end_date'])) {
-				continue;
-			}
-			
-			try {
-				$timezone = isset($stored_data['timezone']) ? $stored_data['timezone'] : 'UTC';
-				$end_date = new \DateTime($stored_data['end_date'], new \DateTimeZone($timezone));
-				
-				// If end date has passed, remove from stored list
-				if ($current_time > $end_date) {
-					unset($stored_notices[$notice_id]);
-					$cleaned_stored = true;
-				}
-			} catch (Exception $e) {
-				// If there's an error parsing the date, remove the invalid entry
-				unset($stored_notices[$notice_id]);
-				$cleaned_stored = true;
-			}
-		}
-		
-		// Update user meta if we cleaned anything
-		if ($cleaned_dismissed) {
-			update_user_meta(get_current_user_id(), 'upk_dismissed_notices', $dismissed_notices);
-		}
-		
-		if ($cleaned_stored) {
-			update_user_meta(get_current_user_id(), 'upk_stored_notices', $stored_notices);
-		}
-	}
-
 	/**
 	 * Notice Types
 	 */
@@ -574,12 +393,14 @@ class Notices {
 			'id'               => '',
 			'type'             => 'info',
 			'show_if'          => true,
+			'title'            => '',
 			'message'          => '',
 			'class'            => 'ultimate-post-kit-notice',
 			'dismissible'      => false,
 			'dismissible-meta' => 'transient',
 			'dismissible-time' => WEEK_IN_SECONDS,
 			'data'             => '',
+			'action_link'      => '',
 		];
 
 		foreach (self::$notices as $key => $notice) {
@@ -602,10 +423,10 @@ class Notices {
 			}
 
 			// Notice ID.
-			$notice_id    = 'ultimate-post-kit-notice-id-' . $notice['id'];
+			$notice_id    = 'bdt-admin-notice-' . $notice['id'];
 			$notice['id'] = $notice_id;
 			if (!isset($notice['id'])) {
-				$notice_id    = 'ultimate-post-kit-notice-id-' . $notice['id'];
+				$notice_id    = 'bdt-admin-notice-' . $notice['id'];
 				$notice['id'] = $notice_id;
 			} else {
 				$notice_id = $notice['id'];
@@ -657,7 +478,7 @@ class Notices {
 		<div id="<?php echo esc_attr($notice['id']); ?>" class="<?php echo esc_attr($notice['classes']); ?>" <?php echo esc_attr($notice['data']); ?>>
 			<div class="bdt-notice-wrapper">
 				<div class="bdt-notice-icon-wrapper">
-					<img height="25" width="25" src="<?php echo esc_url (BDTEP_ASSETS_URL ); ?>images/logo.svg">
+					<img height="25" width="25" src="<?php echo esc_url (BDTUPK_ASSETS_URL ); ?>images/logo.svg">
 				</div>
 
 				<div class="bdt-notice-content">
@@ -681,8 +502,11 @@ class Notices {
 	public static function new_notice_layout( $notice = [] ) {
 		?>
 		<div id="<?php echo esc_attr( $notice['id'] ); ?>" class="<?php echo esc_attr( $notice['classes'] ); ?>" <?php echo esc_attr( $notice['data'] ); ?>>	
-			<?php echo wp_kses_post( $notice['html_message'] ); ?>
+			<?php 
+				echo wp_kses_post( $notice['html_message'] );
+			?>
 		</div>
+		
 		<?php
 	}
 }

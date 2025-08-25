@@ -111,7 +111,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
  * admin store api notice style start
  */
 
-[id^="ultimate-post-kit-notice-id-api-notice"] {
+[id^="bdt-admin-notice-api-notice"] {
 
     .bdt-plugin-logo-wrapper {
         img {
@@ -431,7 +431,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
 }
 
 @media (min-width: 1460px) {
-    [id^="ultimate-post-kit-notice-id-api-notice"] {
+    [id^="bdt-admin-notice-api-notice"] {
         .bdt-notice-content-right,
         .bdt-notice-content-inner {
             gap: 30px;
