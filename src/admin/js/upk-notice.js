@@ -149,6 +149,8 @@ jQuery(document).ready(function ($) {
                         // insert right after the <h1> if exists, otherwise at top
                         if ($target.children('hr.wp-header-end').length) {
                             $target.children('hr.wp-header-end').first().after($markup);
+                        } else if ($target.children('h1').length) {
+                            $target.children('h1').first().after($markup);
                         } else {
                             $target.prepend($markup);
                         }
