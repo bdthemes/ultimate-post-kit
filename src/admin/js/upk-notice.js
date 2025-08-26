@@ -188,7 +188,7 @@ jQuery(document).ready(function ($) {
             } catch (e) {
                 // ignore
             }
-        }, 500); // 500ms delay to ensure DOM is ready
+        }, 400); // 400ms delay to ensure DOM is ready
     });
 
     /* ===================================
