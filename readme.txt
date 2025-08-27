@@ -239,6 +239,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 = 3.15.X [Xth August 2025] =
 
 * Added: Admin Store API Notice added
+* Fixed: Deprication error fixed
 
 = 3.15.4 [6th August 2025] =
 
