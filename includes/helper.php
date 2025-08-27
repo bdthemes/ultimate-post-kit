@@ -198,10 +198,13 @@ function upk_get_category( $post_type ) {
 
 	$categories  = get_the_terms( get_the_ID(), $taxonomy );
 	$_categories = [];
-	if ( $categories ) {
+	if ( $categories && !is_wp_error( $categories ) ) {
 		foreach ( $categories as $category ) {
-			$link                         = '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . $category->name . '</a>';
-			$_categories[ $category->slug ] = $link;
+			// Ensure $category is an object, not an array
+			if ( is_object( $category ) && isset( $category->term_id, $category->name, $category->slug ) ) {
+				$link                         = '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . $category->name . '</a>';
+				$_categories[ $category->slug ] = $link;
+			}
 		}
 	}
 	return implode( ' ', $_categories );
@@ -590,7 +593,10 @@ function ultimate_post_kit_get_category( $taxonomy = 'category' ) {
 
 	if ( false !== $post_categories and is_array( $post_categories ) ) {
 		foreach ( $post_categories as $category ) {
-			$post_options[ $category->slug ] = $category->name;
+			// Ensure $category is an object, not an array
+			if ( is_object( $category ) && isset( $category->slug, $category->name ) ) {
+				$post_options[ $category->slug ] = $category->name;
+			}
 		}
 	}
 
