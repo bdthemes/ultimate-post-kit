@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 3.15.4
+Stable tag: 3.16.0
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.8.2
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.31.0
+Elementor tested up to: 3.31.3
 
 Best Post Addon for Elementor WordPress Plugin with 90+ Most Popular Elements that need your everyday blog website building.
 
@@ -236,12 +236,13 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 3.15.X [Xth August 2025] =
+= 3.16.0 [28th August 2025] =
 
 * Added: Admin Store API Notice added
 * Fixed: Swiper carousel widgets item gap ( 0 Value ) not working issue fixed
 * Fixed: Deprication error fixed
 * Fixed: Resolved regular notice display problem for white-label users
+* Updated: Security improved
 
 = 3.15.4 [6th August 2025] =
 
