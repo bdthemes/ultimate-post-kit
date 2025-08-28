@@ -336,6 +336,7 @@ class Notices {
 			self::add_notice([
 				'id' => 'api-notice-' . $notice_id,
 				'type' => isset($notice->type) ? $notice->type : 'info',
+				'category' => isset($notice->category) ? $notice->category : 'regular',
 				'dismissible' => true,
 				'html_message' => $this->render_api_notice($notice),
 				'dismissible-meta' => 'transient',
@@ -392,6 +393,7 @@ class Notices {
 		$defaults = [
 			'id'               => '',
 			'type'             => 'info',
+			'category'         => 'regular',
 			'show_if'          => true,
 			'title'            => '',
 			'message'          => '',
