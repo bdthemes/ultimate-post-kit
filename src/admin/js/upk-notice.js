@@ -101,8 +101,10 @@ jQuery(document).ready(function ($) {
 
     // Fetch API notices after full page load, with try/catch
     $(window).on('load', function () {
-        try {
-            $.ajax({
+        // Add small delay to ensure DOM is fully ready
+        setTimeout(function() {
+            try {
+                $.ajax({
                 url: (window.UltimatePostKitNoticeConfig && UltimatePostKitNoticeConfig.ajaxurl) ? UltimatePostKitNoticeConfig.ajaxurl : (typeof ajaxurl !== 'undefined' ? ajaxurl : ''),
                 type: 'POST',
                 dataType: 'json',
@@ -123,11 +125,35 @@ jQuery(document).ready(function ($) {
                         $target = $('#wpbody-content');
                     }
 
-                    // insert right after the <h1> if exists, otherwise at top
-                    if ($target.children('hr.wp-header-end').length) {
-                        $target.children('hr.wp-header-end').first().after($markup);
-                    } else {
-                        $target.prepend($markup);
+                    // Check for existing notices with same class to avoid duplicates
+                     var shouldInsert = true;
+                     $markup.each(function() {
+                         var $notice = $(this);
+                         var noticeId = $notice.attr('id');
+                         
+                         // Extract class pattern from notice ID (e.g., bdt-admin-notice-api-notice-class-xxxxx)
+                         if (noticeId && noticeId.indexOf('bdt-admin-notice-api-notice-class-') !== -1) {
+                             var classPattern = noticeId.substring(noticeId.indexOf('bdt-admin-notice-api-notice-class-'));
+                             
+                             // Check if any existing notice in DOM has similar class pattern from any plugin
+                             var existingNotices = $('[id$="' + classPattern + '"]');
+                             if (existingNotices.length > 0) {
+                                 shouldInsert = false;
+                                 return false; // break out of each loop
+                             }
+                         }
+                     });
+
+                    // Only insert if no duplicate class pattern found
+                    if (shouldInsert) {
+                        // insert right after the <h1> if exists, otherwise at top
+                        if ($target.children('hr.wp-header-end').length) {
+                            $target.children('hr.wp-header-end').first().after($markup);
+                        } else if ($target.children('h1').length) {
+                            $target.children('h1').first().after($markup);
+                        } else {
+                            $target.prepend($markup);
+                        }
                     }
 
                     // Re-initialize WP dismiss buttons for dynamically added notices
@@ -159,9 +185,10 @@ jQuery(document).ready(function ($) {
             .fail(function () {
                 // swallow errors silently
             });
-        } catch (e) {
-            // ignore
-        }
+            } catch (e) {
+                // ignore
+            }
+        }, 400); // 400ms delay to ensure DOM is ready
     });
 
     /* ===================================

@@ -1394,26 +1394,6 @@ class UltimatePostKit_Admin_Settings {
 
 <?php
     }
-
-    /**
-     * v6 Notice
-     * This notice is very important to show minimum 3 to 5 next update released version.
-     *
-     * @access public
-     */
-
-    public function v6_activate_notice() {
-
-        Notices::add_notice(
-            [
-                'id'               => 'version-6',
-                'type'             => 'warning',
-                'dismissible'      => true,
-                'dismissible-time' => 43200,
-                'message'          => __('There are very important changes in our major version <strong>v6.0.0</strong>. If you are continuing with the Ultimate Post Kit plugin from an earlier version of v6.0.0 then you must read this article carefully <a href="https://bdthemes.com/knowledge-base/read-before-upgrading-to-ultimate-post-kit-pro-version-6-0" target="_blank">from here</a>. <br> And if you are using this plugin from v6.0.0 there is nothing to worry about you. Thank you.', 'ultimate-post-kit'),
-            ]
-        );
-    }
     /**
      * 
      * Check mini-Cart of Elementor Activated or Not
@@ -1429,6 +1409,7 @@ class UltimatePostKit_Admin_Settings {
             [
                 'id'               => 'upk-el-use-mini-cart',
                 'type'             => 'warning',
+                'category'         => 'critical',
                 'dismissible'      => true,
                 'dismissible-time' => MONTH_IN_SECONDS / 2,
                 'message'          => __('We can see you activated the <strong>Mini-Cart</strong> of Elementor Pro and also Ultimate Post Kit Pro. We will recommend you to choose one of them, otherwise you will get conflict. Thank you.', 'ultimate-post-kit'),
