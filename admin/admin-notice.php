@@ -409,6 +409,11 @@ class Notices {
 
 			$notice = wp_parse_args($notice, $defaults);
 
+			// Check if notice is for White Label
+			if (defined('BDTUPK_WL') && $notice['category'] === 'regular') {
+				continue;
+			}
+
 			$classes = ['notice'];
 
 			$classes[] = $notice['class'];
