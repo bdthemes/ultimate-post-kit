@@ -239,8 +239,9 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 = 3.15.X [Xth August 2025] =
 
 * Added: Admin Store API Notice added
+* Fixed: Swiper carousel widgets item gap ( 0 Value ) not working issue fixed
 * Fixed: Deprication error fixed
-* Resolved regular notice display problem for white-label users
+* Fixed: Resolved regular notice display problem for white-label users
 
 = 3.15.4 [6th August 2025] =
 
