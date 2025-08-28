@@ -999,8 +999,8 @@ class Timeline extends Group_Control_Query {
 		?>
 		<div class="upk-author-name-wrap">
 			<span class="upk-by"><?php echo esc_html_x( 'by', 'Frontend', 'ultimate-post-kit' ) ?></span>
-			<a class="upk-author-name" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ) ?>">
-				<?php echo get_the_author() ?>
+			<a class="upk-author-name" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) ?>">
+				<?php echo esc_html( get_the_author() ); ?>
 			</a>
 		</div>
 		<?php
@@ -1029,7 +1029,7 @@ class Timeline extends Group_Control_Query {
 		}
 
 		if ( $settings['human_diff_time'] == 'yes' ) {
-			echo ultimate_post_kit_post_time_diff( ( $settings['human_diff_time_short'] == 'yes' ) ? 'short' : '' );
+			echo esc_html( ultimate_post_kit_post_time_diff( ( $settings['human_diff_time_short'] == 'yes' ) ? 'short' : '' ) );
 		} else {
 			echo get_the_date();
 		}
@@ -1091,7 +1091,7 @@ class Timeline extends Group_Control_Query {
 								<?php if ( $settings['show_time'] ) : ?>
 									<span class="upk-post-time">
 										<i class="upk-icon-clock" aria-hidden="true"></i>
-										<?php echo get_the_time(); ?>
+										<?php echo esc_html( get_the_time() ); ?>
 									</span>
 								<?php endif; ?>
 							</div>

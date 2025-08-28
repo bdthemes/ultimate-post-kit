@@ -1213,7 +1213,7 @@ class Gratis_Grid extends Group_Control_Query {
 				<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
 			</svg>
 			<?php if ($settings['human_diff_time'] == 'yes') {
-				echo ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
+				echo esc_html( ultimate_post_kit_post_time_diff( ( $settings['human_diff_time_short'] == 'yes' ) ? 'short' : '' ) );
 			} else {
 				echo get_the_date();
 			} ?>
@@ -1222,7 +1222,7 @@ class Gratis_Grid extends Group_Control_Query {
 		<?php if ($settings['show_time']) : ?>
 			<div class="upk-post-time">
 				<i class="upk-icon-clock" aria-hidden="true"></i>
-				<?php echo get_the_time(); ?>
+				<?php echo esc_html( get_the_time() ); ?>
 			</div>
 		<?php endif; ?>
 
@@ -1243,8 +1243,8 @@ class Gratis_Grid extends Group_Control_Query {
 				<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
 			</svg>
 			<span><?php echo esc_html__('by', 'ultimate-post-kit') ?></span>
-			<a class="upk-author-name" href="<?php echo get_author_posts_url(get_the_author_meta('ID')) ?>">
-				<span><?php echo get_the_author() ?></span>
+			<a class="upk-author-name" href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
+				<span><?php echo esc_html( get_the_author() ); ?></span>
 			</a>
 		</div>
 
@@ -1280,7 +1280,7 @@ class Gratis_Grid extends Group_Control_Query {
 								<?php $this->render_date(); ?>
 								<?php if ('yes' === $settings['show_reading_time']) : ?>
 									<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
-										<?php echo ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
+										<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'] ) ); ?>
 									</div>
 								<?php endif; ?>
 							</div>

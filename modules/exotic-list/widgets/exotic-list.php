@@ -756,8 +756,8 @@
 			
 			?>
             <div class="upk-author">
-                <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ) ?>">
-                    <?php echo get_the_author() ?>
+                <a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) ?>">
+                    <?php echo esc_html( get_the_author() ) ?>
                 </a>
             </div>
 			
@@ -775,7 +775,7 @@
 				<div class="upk-date-wrap">
 					<span>
 						<?php if ($settings['human_diff_time'] == 'yes') {
-							echo ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
+							echo esc_html( ultimate_post_kit_post_time_diff( ( $settings['human_diff_time_short'] == 'yes' ) ? 'short' : '' ) );
 						} else {
 							echo get_the_date();
 						} ?>
@@ -784,7 +784,7 @@
 				<?php if ($settings['show_time']) : ?>
 				<div class="upk-post-time">
 					<i class="upk-icon-clock" aria-hidden="true"></i>
-					<?php echo get_the_time(); ?>
+					<?php echo esc_html( get_the_time() ); ?>
 				</div>
 				<?php endif; ?>
 			
@@ -818,7 +818,7 @@
 								<?php if (_is_upk_pro_activated()) :
 									if ('yes' === $settings['show_reading_time']) : ?>
 										<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
-											<?php echo ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
+											<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'] ) ); ?>
 										</div>
 									<?php endif; ?>
 								<?php endif; ?>
