@@ -881,7 +881,7 @@ class Harold_Carousel extends Group_Control_Query {
 				<i class="upk-icon-calendar"></i>
 				<span class="upk-harold-date">
 					<?php if ($settings['human_diff_time'] == 'yes') {
-						echo ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
+						echo esc_html( ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '') );
 					} else {
 						echo get_the_date();
 					} ?>

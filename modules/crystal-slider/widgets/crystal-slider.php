@@ -1579,8 +1579,9 @@ class Crystal_Slider extends Group_Control_Query {
 		<div class="upk-date-and-time upk-flex upk-flex-middle">
 			<div class="upk-date">
 				<i class="upk-icon-calendar" aria-hidden="true"></i>
-				<span><?php if ($settings['human_diff_time'] == 'yes') {
-							echo ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
+				<span>
+					<?php if ($settings['human_diff_time'] == 'yes') {
+							echo esc_html( ultimate_post_kit_post_time_diff( ( $settings['human_diff_time_short'] == 'yes' ) ? 'short' : '' ) );
 						} else {
 							echo get_the_date();
 						} ?>

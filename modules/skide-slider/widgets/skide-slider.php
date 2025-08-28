@@ -959,7 +959,7 @@ class Skide_Slider extends Group_Control_Query {
 		<div class="upk-date upk-flex upk-flex-middle">
 			<div class="upk-date">
 				<?php if ($settings['human_diff_time'] == 'yes') {
-					echo ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
+					echo esc_html( ultimate_post_kit_post_time_diff( ($settings['human_diff_time_short'] == 'yes') ? 'short' : '' ) );
 				} else {
 					echo get_the_date();
 				} ?>
