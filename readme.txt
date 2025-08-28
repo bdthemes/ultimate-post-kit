@@ -240,6 +240,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 * Added: Admin Store API Notice added
 * Fixed: Deprication error fixed
+* Resolved regular notice display problem for white-label users
 
 = 3.15.4 [6th August 2025] =
 

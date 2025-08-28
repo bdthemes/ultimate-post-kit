@@ -182,7 +182,7 @@ if ( ! function_exists( 'rc_upk_core_plugin' ) ) {
  * DCI SDK Integration
  */
 
-if ( ! function_exists( 'dci_plugin_ultimate_post_kit' ) ) {
+if ( ! function_exists( 'dci_plugin_ultimate_post_kit' ) && ! defined( 'BDTUPK_WL' ) ) {
 	function dci_plugin_ultimate_post_kit() {
 
 		// Include DCI SDK.
