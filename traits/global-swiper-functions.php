@@ -50,7 +50,7 @@ trait Global_Swiper_Functions {
 							"pauseOnHover"          => ( "yes" == $settings["pauseonhover"] ) ? true : false,
 							"slidesPerView"         => isset($settings["columns_mobile"]) ? (int)$settings["columns_mobile"] : 1,
 							"slidesPerGroup"        => isset($settings["slides_to_scroll_mobile"]) ? (int)$settings["slides_to_scroll_mobile"] : 1,
-							"spaceBetween"          => !empty($settings["item_gap_mobile"]["size"]) ? (int)$settings["item_gap_mobile"]["size"] : 20,
+							"spaceBetween"          => !empty($settings["item_gap_mobile"]["size"]) ? (int)$settings["item_gap_mobile"]["size"] : 0,
 							"centeredSlides"        => ( $settings["centered_slides"] === "yes" ) ? true : false,
 							"grabCursor"            => ( $settings["grab_cursor"] === "yes" ) ? true : false,
 							"effect"                => $settings["skin"],
@@ -63,12 +63,12 @@ trait Global_Swiper_Functions {
 							"breakpoints"           => [
 								(int) $viewport_md => [
 									"slidesPerView"  => isset($settings["columns_tablet"]) ? (int)$settings["columns_tablet"] : 2,
-									"spaceBetween"   => !empty($settings["item_gap_tablet"]["size"]) ? (int)$settings["item_gap_tablet"]["size"] : 20,
+									"spaceBetween"   => !empty($settings["item_gap_tablet"]["size"]) ? (int)$settings["item_gap_tablet"]["size"] : 0,
 									"slidesPerGroup" => isset($settings["slides_to_scroll_tablet"]) ? (int)$settings["slides_to_scroll_tablet"] : 1,
 								],
 								(int) $viewport_lg => [
 									"slidesPerView"  => isset($settings["columns"]) ? (int)$settings["columns"] : 3,
-									"spaceBetween"   => !empty($settings["item_gap"]["size"]) ? (int)$settings["item_gap"]["size"] : 20,
+									"spaceBetween"   => !empty($settings["item_gap"]["size"]) ? (int)$settings["item_gap"]["size"] : 0,
 									"slidesPerGroup" => isset($settings["slides_to_scroll"]) ? (int)$settings["slides_to_scroll"] : 1,
 								]
 							],

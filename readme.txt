@@ -239,6 +239,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 = 3.15.X [Xth August 2025] =
 
 * Added: Admin Store API Notice added
+* Fixed: Swiper carousel widgets item gap ( 0 Value ) not working issue fixed
 
 = 3.15.4 [6th August 2025] =
 
