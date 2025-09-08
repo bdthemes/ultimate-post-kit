@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 3.16.0
+Stable tag: 3.16.1
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.8.2
@@ -235,6 +235,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 
 == Changelog ==
+
+= 3.16.1 [8th September 2025] =
+
+* Fixed: DCI Notice removed for security reason
 
 = 3.16.0 [28th August 2025] =
 

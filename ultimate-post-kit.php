@@ -4,7 +4,7 @@
  * Plugin Name: Ultimate Post Kit
  * Plugin URI: https://postkit.pro/
  * Description: <a href="https://postkit.pro/">Ultimate Post Kit</a> is a packed of post related elementor widgets. This plugin gives you post related widget features for elementor page builder plugin.
- * Version: 3.16.0
+ * Version: 3.16.1
  * Author: BdThemes
  * Author URI: https://bdthemes.com/
  * Text Domain: ultimate-post-kit
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Some pre define value for easy use
-define( 'BDTUPK_VER', '3.16.0' );
+define( 'BDTUPK_VER', '3.16.1' );
 define( 'BDTUPK__FILE__', __FILE__ );
 
 /**
@@ -176,36 +176,4 @@ if ( ! function_exists( 'rc_upk_core_plugin' ) ) {
 
 	}
 	add_action( 'admin_init', 'rc_upk_core_plugin' );
-}
-
-/**
- * DCI SDK Integration
- */
-
-if ( ! function_exists( 'dci_plugin_ultimate_post_kit' ) && ! defined( 'BDTUPK_WL' ) ) {
-	function dci_plugin_ultimate_post_kit() {
-
-		// Include DCI SDK.
-		require_once dirname( __FILE__ ) . '/dci/start.php';
-
-		dci_dynamic_init( array(
-			'sdk_version'         => '1.2.1',
-			'product_id'          => 1,
-			'plugin_name'         => 'Ultimate Post Kit', // make simple, must not empty
-			'plugin_title'        => 'Love using Ultimate Post Kit? Congrats 🎉 ( Never miss an Important Update )', // You can describe your plugin title here
-			'plugin_icon'         => BDTUPK_ASSETS_URL . 'images/logo.svg',
-			'api_endpoint'        => 'https://analytics.bdthemes.com/wp-json/dci/v1/data-insights',
-			'slug'                => 'ultimate-post-kit',
-			'menu'                => array(
-				'slug' => 'ultimate_post_kit_options',
-			),
-			'public_key'          => 'pk_yLi403LFWfR4A0u4CKhH9uLR9pmZ0KOF',
-			'is_premium'          => true,
-			'popup_notice'        => false,
-			'deactivate_feedback' => true,
-			'plugin_msg'          => '<p>Be Top-contributor by sharing non-sensitive plugin data and create an impact to the global WordPress community today! You can receive valuable emails periodically.</p>',
-		) );
-
-	}
-	add_action( 'admin_init', 'dci_plugin_ultimate_post_kit' );
 }
