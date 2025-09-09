@@ -484,6 +484,9 @@ class UltimatePostKit_Admin_Settings {
 
 
                         <div class="upk-count-canvas-wrap">
+                            <a href="<?php echo admin_url('?upk_setup_wizard=show'); ?>"
+						class="bdt-button bdt-button-primary bdt-welcome-button bdt-margin-small-top"
+						target="_blank"><?php esc_html_e('Setup Ultimate Post Kit', 'ultimate-post-kit'); ?></a>
                             <h1 class="upk-feature-title">
                                 <?php echo esc_html_x('All Widgets', 'Frontend', 'ultimate-post-kit'); ?>
                             </h1>

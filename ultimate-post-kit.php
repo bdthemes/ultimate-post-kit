@@ -100,6 +100,8 @@ function ultimate_post_kit_load_plugin() {
 		return;
 	}
 
+	require_once( dirname( __FILE__ ) . '/includes/setup-wizard/init.php' );
+
 	// Element pack widget and assets loader
 	require_once ( BDTUPK_PATH . 'loader.php' );
 }
