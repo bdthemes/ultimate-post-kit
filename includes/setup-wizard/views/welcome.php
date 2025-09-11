@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <div class="bdt-feature-icon">
                     <span class="dashicons dashicons-admin-customizer"></span>
                 </div>
-                <h3><?php esc_html_e( '300+ Widgets', 'ultimate-post-kit' ); ?></h3>
+                <h3><?php esc_html_e( '100+ Widgets', 'ultimate-post-kit' ); ?></h3>
                 <p><?php esc_html_e( 'Powerful elements for unlimited design possibilities', 'ultimate-post-kit' ); ?></p>
             </div>
             <div class="bdt-feature-item">

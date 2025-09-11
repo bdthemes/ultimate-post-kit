@@ -55,7 +55,7 @@ $templates      = json_decode( file_get_contents( $templates_path ), true );
         <h3><?php esc_html_e( 'Helpful Resources', 'ultimate-post-kit' ); ?></h3>
         
         <div class="bdt-resources-grid">
-            <a href="https://bdthemes.com/all-knowledge-base-of-element-pack/" target="_blank" class="bdt-resource-item">
+            <a href="https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/" target="_blank" class="bdt-resource-item">
                 <div class="resource-icon">
                     <i class="dashicons dashicons-book"></i>
                 </div>
@@ -71,7 +71,7 @@ $templates      = json_decode( file_get_contents( $templates_path ), true );
                 <p><?php esc_html_e( 'Contact our customer support team', 'ultimate-post-kit' ); ?></p>
             </a>
             
-            <a href="https://www.youtube.com/watch?v=97wb3JwAoPM&list=PLP0S85GEw7DOJf_cbgUIL20qqwqb5x8KA" target="_blank" class="bdt-resource-item">
+            <a href="https://www.youtube.com/watch?v=zNeoRz94cPw&list=PLP0S85GEw7DNBnZCb4RtJzlf38GCJ7z1b" target="_blank" class="bdt-resource-item">
                 <div class="resource-icon">
                     <i class="dashicons dashicons-video-alt3"></i>
                 </div>

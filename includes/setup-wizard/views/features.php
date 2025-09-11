@@ -32,12 +32,14 @@ $active_modules = get_option( 'ultimate_post_kit_active_modules', array() );
 					<select id="category-select">
 						<option value="all"><?php esc_html_e('All', 'ultimate-post-kit'); ?></option>
 						<option value="new"><?php esc_html_e('New', 'ultimate-post-kit'); ?></option>
-						<option value="post"><?php esc_html_e('Post', 'ultimate-post-kit'); ?></option>
-						<option value="custom"><?php esc_html_e('Custom', 'ultimate-post-kit'); ?></option>
-						<option value="gallery"><?php esc_html_e('Gallery', 'ultimate-post-kit'); ?></option>
-						<option value="slider"><?php esc_html_e('Slider', 'ultimate-post-kit'); ?></option>
+						<option value="grid"><?php esc_html_e('Grid', 'ultimate-post-kit'); ?></option>
+						<option value="list"><?php esc_html_e('List', 'ultimate-post-kit'); ?></option>
 						<option value="carousel"><?php esc_html_e('Carousel', 'ultimate-post-kit'); ?></option>
+						<option value="slider"><?php esc_html_e('Slider', 'ultimate-post-kit'); ?></option>
+						<option value="tabs"><?php esc_html_e('Tabs', 'ultimate-post-kit'); ?></option>
+						<option value="timeline"><?php esc_html_e('Timeline', 'ultimate-post-kit'); ?></option>
 						<option value="template-builder"><?php esc_html_e('Template Builder', 'ultimate-post-kit'); ?></option>
+						<option value="loop"><?php esc_html_e('Loop Builder', 'ultimate-post-kit'); ?></option>
 						<option value="others"><?php esc_html_e('Others', 'ultimate-post-kit'); ?></option>
 					</select>
 				</div>

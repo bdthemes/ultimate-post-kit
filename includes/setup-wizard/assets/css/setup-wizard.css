@@ -944,6 +944,18 @@
   display: grid;
   gap: 20px;
   margin-top: 30px;
+  height: 415px;
+  padding: 5px 10px 20px 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--upk-primary) transparent;
+  -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+  overflow-y: auto;
+}
+.bdt-setup-wizard .bdt-plugin-logo img {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
 }
 
 .bdt-setup-wizard .plugin-item {
@@ -1234,6 +1246,123 @@
 @keyframes spinner-border-animation {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Rating Section Styles */
+.rating-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* margin: 8px 0; */
+}
+
+.rating-label {
+  font-weight: 600;
+  color: var(--upk-text-dark);
+  font-size: 14px;
+}
+
+.wporg-ratings {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.wporg-ratings .dashicons {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.rating-text {
+  font-size: 13px;
+  color: var(--upk-text-light);
+  margin-left: 4px;
+}
+
+/* Default Plugin Icon */
+.default-plugin-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--upk-gray-light);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--upk-text-light);
+}
+
+/* Plugin Logo Styles */
+/* .bdt-plugin-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+} */
+
+/* Responsive Design for Rating */
+@media (max-width: 768px) {
+  .rating-section {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  .rating-text {
+    font-size: 12px;
+  }
+  
+  .wporg-ratings .dashicons {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Additional Plugin Data Styles */
+.installs-count {
+  font-size: 12px;
+  color: var(--upk-text-light);
+  font-weight: normal;
+}
+
+.rating-count {
+  font-size: 12px;
+  color: var(--upk-text-light);
+  font-weight: normal;
+}
+
+.downloads, .last-updated {
+  display: block;
+  font-size: 13px;
+  color: var(--upk-text-light);
+  margin: 4px 0;
+}
+
+.downloads {
+  color: var(--upk-success);
+  font-weight: 500;
+}
+
+.last-updated {
+  font-style: italic;
+}
+
+/* Plugin Data Grid */
+.plugin-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.plugin-item .plugin-text {
+  margin: 8px 0;
+}
+
+.plugin-item .active-installs,
+.plugin-item .downloads,
+.plugin-item .last-updated {
+  margin: 2px 0;
 }
 
 /* Import Loading States */

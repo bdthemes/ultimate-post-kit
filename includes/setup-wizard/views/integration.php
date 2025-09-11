@@ -9,62 +9,110 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$upk_plugins = array(
-    array(
-        'name'        => 'Prime Slider',
-        'slug'        => 'bdthemes-prime-slider-lite/bdthemes-prime-slider.php',
-        'description' => 'Create eye-catching sliders for your website quickly and easily.',
-        'recommended' => true,
-    ),
-    array(
-        'name'        => 'ZoloBlocks',
-        'slug'        => 'zoloblocks/zoloblocks.php',
-        'description' => 'Build amazing WordPress pages with helpful and flexible Gutenberg blocks.',
-        'recommended' => false,
-    ),
-    array(
-        'name'        => 'Ultimate Post Kit',
-        'slug'        => 'ultimate-post-kit/ultimate-post-kit.php',
-        'description' => 'Design beautiful post layouts with simple, ready-made blocks.',
-        'recommended' => true,
-    ),
-    array(
-        'name'        => 'Ultimate Store Kit',
-        'slug'        => 'ultimate-store-kit/ultimate-store-kit.php',
-        'description' => 'Improve your online store with tools to display products better.',
-        'recommended' => true,
-    ),
-    array(
-        'name'        => 'Pixel Gallery',
-        'slug'        => 'pixel-gallery/pixel-gallery.php',
-        'description' => 'Show off your photos in a stylish, responsive gallery.',
-        'recommended' => false,
-    ),
-    array(
-        'name'        => 'Live Copy Paste',
-        'slug'        => 'live-copy-paste/live-copy-paste.php',
-        'description' => 'Copy and paste website elements between WordPress sites instantly.',
-        'recommended' => false,
-    ),
-    array(
-        'name'        => 'Instant Image Generator',
-        'slug'        => 'ai-image/ai-image.php',
-        'description' => 'Generate unique images using AI directly in WordPress.',
-        'recommended' => false,
-    ),
-    array(
-        'name'        => 'AR Viewer',
-        'slug'        => 'ar-viewer/ar-viewer.php',
-        'description' => 'Let users view your products in 3D with augmented reality.',
-        'recommended' => false,
-    ),
-    array(
-        'name'        => 'Spin Wheel',
-        'slug'        => 'spin-wheel/spin-wheel.php',
-        'description' => 'Engage your visitors with a fun and interactive spin wheel.',
-        'recommended' => false,
-    ),
+// Include the plugin API fetcher and helper
+require_once __DIR__ . '/../class-plugin-api-fetcher.php';
+require_once __DIR__ . '/../class-plugin-integration-helper.php';
+
+// Function to format date in human-readable format
+function format_last_updated($date_string) {
+    if (empty($date_string)) {
+        return '';
+    }
+    
+    // Try to parse the date
+    $date = strtotime($date_string);
+    if ($date === false) {
+        return $date_string; // Return original if parsing fails
+    }
+    
+    // Calculate time difference
+    $now = time();
+    $diff = $now - $date;
+    
+    // Convert to human-readable format
+    if ($diff < 60) {
+        return __('just now', 'ultimate-post-kit');
+    } elseif ($diff < 3600) {
+        $minutes = floor($diff / 60);
+        return sprintf(_n('%d minute ago', '%d minutes ago', $minutes, 'ultimate-post-kit'), $minutes);
+    } elseif ($diff < 86400) {
+        $hours = floor($diff / 3600);
+        return sprintf(_n('%d hour ago', '%d hours ago', $hours, 'ultimate-post-kit'), $hours);
+    } elseif ($diff < 2592000) { // 30 days
+        $days = floor($diff / 86400);
+        return sprintf(_n('%d day ago', '%d days ago', $days, 'ultimate-post-kit'), $days);
+    } elseif ($diff < 31536000) { // 1 year
+        $months = floor($diff / 2592000);
+        return sprintf(_n('%d month ago', '%d months ago', $months, 'ultimate-post-kit'), $months);
+    } else {
+        $years = floor($diff / 31536000);
+        return sprintf(_n('%d year ago', '%d years ago', $years, 'ultimate-post-kit'), $years);
+    }
+}
+
+// Function to generate fallback URLs for plugin logos
+function get_plugin_fallback_urls($plugin_slug) {
+    // Handle different plugin slug formats
+    if (strpos($plugin_slug, '/') !== false) {
+        // If it's a file path like 'plugin-name/plugin-name.php', extract directory
+        $plugin_slug_clean = dirname($plugin_slug);
+    } else {
+        // If it's just the plugin directory name, use it directly
+        $plugin_slug_clean = $plugin_slug;
+    }
+    
+    // Custom icon URLs for specific plugins that might not be on WordPress.org
+    $custom_icons = [
+        'live-copy-paste' => [
+            'https://ps.w.org/live-copy-paste/assets/icon-256x256.png',
+            'https://ps.w.org/live-copy-paste/assets/icon-128x128.png',
+        ],
+        'spin-wheel' => [
+            'https://ps.w.org/spin-wheel/assets/icon-256x256.png',
+            'https://ps.w.org/spin-wheel/assets/icon-128x128.png',
+        ],
+        'ai-image' => [
+            'https://ps.w.org/ai-image/assets/icon-256x256.png',
+            'https://ps.w.org/ai-image/assets/icon-128x128.png',
+        ],
+        'smart-admin-assistant' => [
+            'https://ps.w.org/smart-admin-assistant/assets/icon-256x256.png',
+            'https://ps.w.org/smart-admin-assistant/assets/icon-128x128.png',
+        ]
+    ];
+    
+    // Return custom icons if available, otherwise use default WordPress.org URLs
+    if (isset($custom_icons[$plugin_slug_clean])) {
+        return $custom_icons[$plugin_slug_clean];
+    }
+    
+    return [
+        "https://ps.w.org/{$plugin_slug_clean}/assets/icon-256x256.gif",  // Try GIF first
+        "https://ps.w.org/{$plugin_slug_clean}/assets/icon-256x256.png",  // Then PNG
+        "https://ps.w.org/{$plugin_slug_clean}/assets/icon-128x128.gif",  // Medium GIF
+        "https://ps.w.org/{$plugin_slug_clean}/assets/icon-128x128.png",  // Medium PNG
+    ];
+}
+
+// Define plugin slugs to fetch data for
+$plugin_slugs = array(
+    'bdthemes-element-pack-lite',
+    'bdthemes-prime-slider-lite',
+    'ultimate-store-kit',
+    'zoloblocks',
+    'pixel-gallery',
+    'live-copy-paste',
+    'spin-wheel',
+    'ai-image',
+    'dark-reader',
+    'ar-viewer',
+    'smart-admin-assistant',
+
+    // Add more plugin slugs here as needed
 );
+
+// Get plugin data using the helper
+$upk_plugins = Plugin_Integration_Helper::build_plugin_data($plugin_slugs);
 ?>
 
 <div class="bdt-wizard-step bdt-setup-wizard-integration" data-step="integration">
@@ -84,9 +132,33 @@ $upk_plugins = array(
             ?>
                 <label class="plugin-item" data-slug="<?php echo esc_attr($plugin['slug']); ?>">
                     <span class="bdt-flex bdt-flex-middle bdt-flex-between bdt-margin-small-bottom">
-						<span class="bdt-plugin-name">
-							<?php echo wp_kses_post($plugin['name']); ?>
-						</span>
+                        <span class="bdt-plugin-logo">
+                            <?php 
+                            $logo_url = $plugin['logo'] ?? '';
+                            $plugin_name = $plugin['name'] ?? '';
+                            $plugin_slug = $plugin['slug'] ?? '';
+                            
+                            if (!empty($logo_url) && filter_var($logo_url, FILTER_VALIDATE_URL)) {
+                                // Show the original logo from API
+                                echo '<img src="' . esc_url($logo_url) . '" alt="' . esc_attr($plugin_name) . '" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">';
+                                echo '<div class="default-plugin-icon" style="display:none;">📦</div>';
+                            } else {
+                                // Generate fallback URLs for WordPress.org
+                                // Extract the actual plugin slug from the file path format
+                                $actual_slug = str_replace('.php', '', basename($plugin_slug));
+                                $fallback_urls = get_plugin_fallback_urls($actual_slug);
+                                
+                                // Debug logging
+                                if (defined('WP_DEBUG') && WP_DEBUG) {
+                                    error_log("UPK Logo Debug - Plugin: {$plugin_name}, Slug: {$plugin_slug}, Actual Slug: {$actual_slug}, Fallback URLs: " . implode(', ', $fallback_urls));
+                                }
+                                
+                                echo '<img src="' . esc_url($fallback_urls[0]) . '" alt="' . esc_attr($plugin_name) . '" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">';
+                                echo '<div class="default-plugin-icon" style="display:none;">📦</div>';
+                            }
+                            ?>
+                        </span>
+                        
                         <div class="bdt-plugin-badge-switch-wrap">
 
                         <?php if ($is_recommended) : ?>
@@ -108,9 +180,68 @@ $upk_plugins = array(
                          ?>
                         </div>
 					</span>
-                    <span class="plugin-text">
-						<?php echo wp_kses_post($plugin['description']); ?>
-					</span>
+                    <div class="bdt-flex bdt-flex-middle">
+                            <span class="bdt-plugin-name">
+                                <?php echo wp_kses_post($plugin['name']); ?>
+                            </span>
+                        </div>
+                        
+                    <!-- <span class="plugin-text">
+						<?php //echo wp_kses_post($plugin['description']); ?>
+					</span> -->
+                    <span class="active-installs">
+                        <?php esc_html_e('Active Installs: ', 'ultimate-post-kit'); 
+                        // echo wp_kses_post($plugin['active_installs'] ?? '0'); 
+                        if (isset($plugin['active_installs_count']) && $plugin['active_installs_count'] > 0) {
+                            echo ' <span class="installs-count">' . number_format($plugin['active_installs_count']) . '+' . '</span>';
+                        }
+                        ?>
+                    </span>
+
+                    <?php if (isset($plugin['downloaded_formatted']) && !empty($plugin['downloaded_formatted'])): ?>
+                    <span class="downloads"><?php esc_html_e('Downloads: ', 'ultimate-post-kit'); echo wp_kses_post($plugin['downloaded_formatted']); ?></span>
+                    <?php endif; ?>
+                    
+                    <div class="rating-section">
+                        <!-- <span class="rating-label"><?php //esc_html_e('Ratings', 'ultimate-post-kit'); ?></span> -->
+                        <div class="wporg-ratings" title="<?php echo esc_attr($plugin['rating'] ?? '0'); ?> out of 5 stars" style="color:var(--wp--preset--color--pomegrade-1, #e26f56);">
+                            <?php 
+                            $rating = floatval($plugin['rating'] ?? 0);
+                            $full_stars = floor($rating);
+                            $has_half_star = ($rating - $full_stars) >= 0.5;
+                            $empty_stars = 5 - $full_stars - ($has_half_star ? 1 : 0);
+                            
+                            // Full stars
+                            for ($i = 0; $i < $full_stars; $i++) {
+                                echo '<span class="dashicons dashicons-star-filled"></span>';
+                            }
+                            
+                            // Half star
+                            if ($has_half_star) {
+                                echo '<span class="dashicons dashicons-star-half"></span>';
+                            }
+                            
+                            // Empty stars
+                            for ($i = 0; $i < $empty_stars; $i++) {
+                                echo '<span class="dashicons dashicons-star-empty"></span>';
+                            }
+                            ?>
+                        </div>
+                        <span class="rating-text">
+                            <?php echo esc_html($plugin['rating'] ?? '0'); ?> out of 5 stars.
+                            <?php if (isset($plugin['num_ratings']) && $plugin['num_ratings'] > 0): ?>
+                                <span class="rating-count">(<?php echo number_format($plugin['num_ratings']); ?> ratings)</span>
+                            <?php endif; ?>
+                        </span>
+                    </div>
+                    
+                    
+                    
+                    <?php if (isset($plugin['last_updated']) && !empty($plugin['last_updated'])): ?>
+                    <span class="last-updated"><?php esc_html_e('Last Updated: ', 'ultimate-post-kit'); echo esc_html(format_last_updated($plugin['last_updated'])); ?></span>
+                    <?php endif; ?>
+
+
                 </label>
             <?php
             endforeach; ?>
