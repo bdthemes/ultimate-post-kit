@@ -76,7 +76,7 @@ class Banner extends Group_Control_Query
         return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
     }
 	protected function is_dynamic_content(): bool {
-		return true;
+		return false;
 	}
 
 	protected function register_controls() {
