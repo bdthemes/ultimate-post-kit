@@ -10,6 +10,9 @@ use Elementor\Tracker;
  * Ultimate Post Kit Admin Settings Class
  */
 
+ // Include rollback version functionality
+require_once BDTUPK_ADMIN_PATH . 'class-rollback-version.php';
+
 class UltimatePostKit_Admin_Settings {
 
     public static $modules_list  = null;
@@ -30,6 +33,13 @@ class UltimatePostKit_Admin_Settings {
     public  $showMessage  = false;
     private $is_activated = false;
 
+    /**
+	 * Rollback version instance
+	 * 
+	 * @var UltimatePostKit_Rollback_Version
+	 */
+	public $rollback_version;
+
     function __construct() {
         $this->settings_api = new UltimatePostKit_Settings_API;
 
@@ -38,23 +48,10 @@ class UltimatePostKit_Admin_Settings {
             add_action('admin_menu', [$this, 'admin_menu'], 201);
         }
 
-        /**
-         * Mini-Cart issue fixed
-         * Check if MiniCart activate in EP and Elementor
-         * If both is activated then Show Notice
-         */
 
-        $upk_3rdPartyOption = get_option('ultimate_post_kit_third_party_widget');
+        // Initialize rollback version functionality
+		$this->rollback_version = new UltimatePostKit\Admin\UltimatePostKit_Rollback_Version();
 
-        $el_use_mini_cart = get_option('elementor_use_mini_cart_template');
-
-        if ($el_use_mini_cart !== false && $upk_3rdPartyOption !== false) {
-            if ($upk_3rdPartyOption) {
-                if ('yes' == $el_use_mini_cart && isset($upk_3rdPartyOption['wc-mini-cart']) && 'off' !== trim($upk_3rdPartyOption['wc-mini-cart'])) {
-                    add_action('admin_notices', [$this, 'el_use_mini_cart'], 10, 3);
-                }
-            }
-        }
     }
 
     /**
@@ -460,13 +457,13 @@ class UltimatePostKit_Admin_Settings {
      * @return void
      */
 
-    public function ultimate_post_kit_welcome() {
+    public function old_ultimate_post_kit_welcome() {
         $track_nw_msg = '';
         if (!Tracker::is_allow_track()) {
             $track_nw = esc_html__('This feature is not working because the Elementor Usage Data Sharing feature is Not Enabled.', 'ultimate-post-kit');
             $track_nw_msg = 'bdt-tooltip="' . $track_nw . '"';
         }
-?>
+    ?>
 
         <div class="upk-dashboard-panel" bdt-scrollspy="target: > div > div > .bdt-card; cls: bdt-animation-slide-bottom-small; delay: 300">
 
@@ -620,7 +617,7 @@ class UltimatePostKit_Admin_Settings {
                         <p style="max-width: 520px;">
                             <?php printf(
                                 /* translators: 1: opening strong tag 2: closing strong tag 3: opening strong tag 4: closing strong tag */
-                                esc_html__('%1$sElement Pack, Prime Slider, Ultimate Store Kit, Pixel Gallery & Live Copy Paste %2$s addons for %3$sElementor%4$s is the best slider, blogs and eCommerce plugin for WordPress. Also, try our new plugin ZoloBlocks for Gutenberg.', 'ultimate-post-kit'),
+                                esc_html__('%1$sUltimate Post Kit, Prime Slider, Ultimate Store Kit, Pixel Gallery & Live Copy Paste %2$s addons for %3$sElementor%4$s is the best slider, blogs and eCommerce plugin for WordPress. Also, try our new plugin ZoloBlocks for Gutenberg.', 'ultimate-post-kit'),
                                 '<strong>',
                                 '</strong>',
                                 '<strong>',
@@ -628,7 +625,7 @@ class UltimatePostKit_Admin_Settings {
                             ); ?>
                         </p>
                         <div class="bdt-others-plugins-link">
-                            <a class="bdt-button bdt-btn-ep bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/ultimate-post-kit-lite/" bdt-tooltip="Element Pack Lite provides more than 50+ essential elements for everyday applications to simplify the whole web building process. It's Free! Download it.">
+                            <a class="bdt-button bdt-btn-ep bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/ultimate-post-kit-lite/" bdt-tooltip="Ultimate Post Kit Lite provides more than 50+ essential elements for everyday applications to simplify the whole web building process. It's Free! Download it.">
                                 <?php echo esc_html_x('Element pack', 'Frontend', 'ultimate-post-kit'); ?>
                             </a>
                             <a class="bdt-button bdt-btn-ps bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/bdthemes-prime-slider-lite/" bdt-tooltip="The revolutionary slider builder addon for Elementor with next-gen superb interface. It's Free! Download it.">
@@ -654,6 +651,156 @@ class UltimatePostKit_Admin_Settings {
 
     <?php
     }
+
+    /**
+	 * Get Welcome Panel
+	 *
+	 * @access public
+	 * @return void
+	 */
+
+	public function ultimate_post_kit_welcome() {
+
+		?>
+
+		<div class="upk-dashboard-panel"
+			bdt-scrollspy="target: > div > div > .bdt-card; cls: bdt-animation-slide-bottom-small; delay: 300">
+
+			<div class="upk-dashboard-welcome-container">
+
+				<div class="upk-dashboard-item upk-dashboard-welcome bdt-card bdt-card-body">
+					<h1 class="upk-feature-title upk-dashboard-welcome-title">
+						<?php esc_html_e('Welcome to Ultimate Post Kit!', 'ultimate-post-kit'); ?>
+					</h1>
+					<p class="upk-dashboard-welcome-desc">
+						<?php esc_html_e('Empower your web creation with powerful widgets, advanced extensions, and 2700+ ready templates and more.', 'ultimate-post-kit'); ?>
+					</p>
+					<a href="<?php echo admin_url('?ep_setup_wizard=show'); ?>"
+						class="bdt-button bdt-welcome-button bdt-margin-small-top"
+						target="_blank"><?php esc_html_e('Setup Ultimate Post Kit', 'ultimate-post-kit'); ?></a>
+
+					<div class="upk-dashboard-compare-section">
+						<h4 class="upk-feature-sub-title">
+							<?php printf(esc_html__('Unlock %sPremium Features%s', 'ultimate-post-kit'), '<strong class="upk-highlight-text">', '</strong>'); ?>
+						</h4>
+						<h1 class="upk-feature-title upk-dashboard-compare-title">
+							<?php esc_html_e('Create Your Sleek Website with Ultimate Post Kit Pro!', 'ultimate-post-kit'); ?>
+						</h1>
+						<p><?php esc_html_e('Don\'t need more plugins. This pro addon helps you build complex or professional websites—visually stunning, functional and customizable.', 'ultimate-post-kit'); ?>
+						</p>
+						<ul>
+							<li><?php esc_html_e('Dynamic Content and Integrations', 'ultimate-post-kit'); ?></li>
+							<li><?php esc_html_e('Enhanced Template Library', 'ultimate-post-kit'); ?></li>
+							<li><?php esc_html_e('Theme Builder', 'ultimate-post-kit'); ?></li>
+							<li><?php esc_html_e('Mega Menu Builder', 'ultimate-post-kit'); ?></li>
+							<li><?php esc_html_e('Powerful Widgets and Advanced Extensions', 'ultimate-post-kit'); ?>
+							</li>
+						</ul>
+						<div class="upk-dashboard-compare-section-buttons">
+							<a href="https://www.elementpack.pro/pricing/#a2a0062"
+								class="bdt-button bdt-welcome-button bdt-margin-small-right"
+								target="_blank"><?php esc_html_e('Compare Free Vs Pro', 'ultimate-post-kit'); ?></a>
+							<a href="https://store.bdthemes.com/element-pack?utm_source=ElementPackLite&utm_medium=PluginPage&utm_campaign=ElementPackLite&coupon=FREETOPRO"
+								class="bdt-button bdt-dashboard-sec-btn"
+								target="_blank"><?php esc_html_e('Get Premium at 30% OFF', 'ultimate-post-kit'); ?></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="upk-dashboard-item upk-dashboard-template-quick-access bdt-card bdt-card-body">
+					<div class="upk-dashboard-template-section">
+						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/template.jpg'; ?>"
+							alt="Ultimate Post Kit Dashboard Template">
+						<h1 class="upk-feature-title ">
+							<?php esc_html_e('Faster Web Creation with Sleek and Ready-to-Use Templates!', 'ultimate-post-kit'); ?>
+						</h1>
+						<p><?php esc_html_e('Build your wordpress websites of any niche—not from scratch and in a single click.', 'ultimate-post-kit'); ?>
+						</p>
+						<a href="https://www.elementpack.pro/ready-templates/"
+							class="bdt-button bdt-dashboard-sec-btn bdt-margin-small-top"
+							target="_blank"><?php esc_html_e('View Templates', 'ultimate-post-kit'); ?></a>
+					</div>
+
+					<div class="upk-dashboard-quick-access bdt-margin-medium-top">
+						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/support.svg'; ?>"
+							alt="Ultimate Post Kit Dashboard Template">
+						<h1 class="upk-feature-title">
+							<?php esc_html_e('Getting Started with Quick Access', 'ultimate-post-kit'); ?>
+						</h1>
+						<ul>
+							<li><a href="https://www.elementpack.pro/contact/"
+									target="_blank"><?php esc_html_e('Contact Us', 'ultimate-post-kit'); ?></a></li>
+							<li><a href="https://bdthemes.com/support/"
+									target="_blank"><?php esc_html_e('Help Centre', 'ultimate-post-kit'); ?></a></li>
+							<li><a href="https://feedback.bdthemes.com/b/6vr2250l/feature-requests/idea/new"
+									target="_blank"><?php esc_html_e('Request a Feature', 'ultimate-post-kit'); ?></a>
+							</li>
+						</ul>
+						<div class="upk-dashboard-support-section">
+							<h1 class="upk-feature-title">
+								<i class="dashicons dashicons-phone"></i>
+								<?php esc_html_e('24/7 Support', 'ultimate-post-kit'); ?>
+							</h1>
+							<p><?php esc_html_e('Helping you get real-time solutions related to web creation with WordPress, Elementor, and Ultimate Post Kit.', 'ultimate-post-kit'); ?>
+							</p>
+							<a href="https://bdthemes.com/support/" class="bdt-margin-small-top"
+								target="_blank"><?php esc_html_e('Get Your Support', 'ultimate-post-kit'); ?></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="upk-dashboard-item upk-dashboard-request-feature bdt-card bdt-card-body">
+					<h1 class="upk-feature-title upk-dashboard-template-quick-title">
+						<?php esc_html_e('What\'s Stacking You?', 'ultimate-post-kit'); ?>
+					</h1>
+					<p><?php esc_html_e('We are always here to help you. If you have any feature request, please let us know.', 'ultimate-post-kit'); ?>
+					</p>
+					<a href="https://feedback.elementpack.pro/b/3v2gg80n/feature-requests/idea/new"
+						class="bdt-button bdt-dashboard-sec-btn bdt-margin-small-top"
+						target="_blank"><?php esc_html_e('Request Your Features', 'ultimate-post-kit'); ?></a>
+				</div>
+
+				<a href="https://www.youtube.com/watch?v=-e-kr4Vkh4E&list=PLP0S85GEw7DOJf_cbgUIL20qqwqb5x8KA" target="_blank"
+					class="upk-dashboard-item upk-dashboard-footer-item upk-dashboard-video-tutorial bdt-card bdt-card-body bdt-card-small">
+					<span class="upk-dashboard-footer-item-icon">
+						<i class="dashicons dashicons-video-alt3"></i>
+					</span>
+					<h1 class="upk-feature-title"><?php esc_html_e('Watch Video Tutorials', 'ultimate-post-kit'); ?></h1>
+					<p><?php esc_html_e('An invaluable resource for mastering WordPress, Elementor, and Web Creation', 'ultimate-post-kit'); ?>
+					</p>
+				</a>
+				<a href="https://bdthemes.com/all-knowledge-base-of-element-pack/" target="_blank"
+					class="upk-dashboard-item upk-dashboard-footer-item upk-dashboard-documentation bdt-card bdt-card-body bdt-card-small">
+					<span class="upk-dashboard-footer-item-icon">
+						<i class="dashicons dashicons-admin-tools"></i>
+					</span>
+					</span>
+					<h1 class="upk-feature-title"><?php esc_html_e('Read Easy Documentation', 'ultimate-post-kit'); ?></h1>
+					<p><?php esc_html_e('A way to eliminate the challenges you might face', 'ultimate-post-kit'); ?></p>
+				</a>
+				<a href="https://www.facebook.com/bdthemes" target="_blank"
+					class="upk-dashboard-item upk-dashboard-footer-item upk-dashboard-community bdt-card bdt-card-body bdt-card-small">
+					<span class="upk-dashboard-footer-item-icon">
+						<i class="dashicons dashicons-admin-users"></i>
+					</span>
+					<h1 class="upk-feature-title"><?php esc_html_e('Join Our Community', 'ultimate-post-kit'); ?></h1>
+					<p><?php esc_html_e('A platform for the opportunity to network, collaboration and innovation', 'ultimate-post-kit'); ?>
+					</p>
+				</a>
+				<a href="https://wordpress.org/plugins/ultimate-post-kit-lite/#reviews" target="_blank"
+					class="upk-dashboard-item upk-dashboard-footer-item upk-dashboard-review bdt-card bdt-card-body bdt-card-small">
+					<span class="upk-dashboard-footer-item-icon">
+						<i class="dashicons dashicons-star-filled"></i>
+					</span>
+					<h1 class="upk-feature-title"><?php esc_html_e('Show Your Love', 'ultimate-post-kit'); ?></h1>
+					<p><?php esc_html_e('A way of the assessment of code', 'ultimate-post-kit'); ?></p>
+				</a>
+			</div>
+
+		</div>
+
+		<?php
+	}
 
     /**
      * Get Pro
@@ -939,7 +1086,7 @@ class UltimatePostKit_Admin_Settings {
      * @return void
      */
 
-    function ultimate_post_kit_system_requirement() {
+    function old_ultimate_post_kit_system_requirement() {
         $php_version        = phpversion();
         $max_execution_time = ini_get('max_execution_time');
         $memory_limit       = ini_get('memory_limit');
@@ -1114,7 +1261,7 @@ class UltimatePostKit_Admin_Settings {
      * @return void
      */
 
-    function plugin_page() {
+    function old_plugin_page() {
 
         echo '<div class="wrap ultimate-post-kit-dashboard">';
         echo '<h1>' . BDTUPK_TITLE . ' '.esc_html__('Settings', 'ultimate-post-kit').'</h1>';
@@ -1168,6 +1315,157 @@ class UltimatePostKit_Admin_Settings {
 
     <?php
     }
+
+    /**
+	 * Display Plugin Page
+	 *
+	 * @access public
+	 * @return void
+	 */
+
+	public function plugin_page() {
+
+		?>
+
+		<div class="wrap ultimate-post-kit-dashboard">
+			<h1></h1> <!-- don't remove this div, it's used for the notice container -->
+		
+			<div class="upk-dashboard-wrapper bdt-margin-top">
+				<div class="upk-dashboard-header bdt-flex bdt-flex-wrap bdt-flex-between bdt-flex-middle"
+					bdt-sticky="offset: 32; animation: bdt-animation-slide-top-small; duration: 300">
+
+					<div class="bdt-flex bdt-flex-wrap bdt-flex-middle">
+						<!-- Header Shape Elements -->
+						<div class="upk-header-elements">
+							<span class="upk-header-element upk-header-circle"></span>
+							<span class="upk-header-element upk-header-dots"></span>
+							<span class="upk-header-element upk-header-line"></span>
+							<span class="upk-header-element upk-header-square"></span>
+							<span class="upk-header-element upk-header-wave"></span>
+						</div>
+
+						<div class="upk-logo">
+							<img src="<?php echo BDTEP_URL . 'assets/images/logo-with-text.svg'; ?>" alt="Ultimate Post Kit Logo">
+						</div>
+					</div>
+
+					<div class="upk-dashboard-new-page-wrapper bdt-flex bdt-flex-wrap bdt-flex-middle">
+						
+
+						<!-- Always render save button, JavaScript will control visibility -->
+						<div class="upk-dashboard-save-btn" style="display: none;">
+							<button class="bdt-button bdt-button-primary ultimate-post-kit-settings-save-btn" type="submit">
+								<?php esc_html_e('Save Settings', 'ultimate-post-kit'); ?>
+							</button>
+						</div>
+
+						<!-- Custom Code Save Button Section -->
+						<div class="upk-code-save-section" style="display: none;">
+							<button type="button" id="upk-save-custom-code" class="bdt-button bdt-button-primary ultimate-post-kit-custom-code-save-btn">
+								<?php esc_html_e('Save Custom Code', 'ultimate-post-kit'); ?>
+							</button>
+							<button type="button" id="upk-reset-custom-code" class="bdt-button bdt-button-primary ultimate-post-kit-custom-code-reset-btn">
+								<?php esc_html_e('Reset Code', 'ultimate-post-kit'); ?>
+							</button>
+						</div>
+
+						<!--  White Label Save Button Section -->
+						<?php //if (self::is_white_label_license()): ?>
+							<div class="upk-white-label-save-section" style="display: none;">
+								<button type="button" 
+										id="upk-save-white-label" 
+										class="bdt-button bdt-button-primary ultimate-post-kit-white-label-save-btn">
+										<?php esc_html_e('Save White Label Settings', 'ultimate-post-kit'); ?>
+								</button>
+							</div>
+						<?php //endif; ?>
+
+						<div class="upk-dashboard-new-page">
+							<a class="bdt-flex bdt-flex-middle" href="<?php echo esc_url(admin_url('post-new.php?post_type=page')); ?>" class=""><i class="dashicons dashicons-admin-page"></i>
+								<?php echo esc_html__('Create New Page', 'ultimate-post-kit') ?>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="upk-dashboard-container bdt-flex">
+					<div class="upk-dashboard-nav-container-wrapper">
+						<div class="upk-dashboard-nav-container-inner" bdt-sticky="end: !.upk-dashboard-container; offset: 115; animation: bdt-animation-slide-top-small; duration: 300">
+
+							<!-- Navigation Shape Elements -->
+							<div class="upk-nav-elements">
+								<span class="upk-nav-element upk-nav-circle"></span>
+								<span class="upk-nav-element upk-nav-dots"></span>
+								<span class="upk-nav-element upk-nav-line"></span>
+								<span class="upk-nav-element upk-nav-square"></span>
+								<span class="upk-nav-element upk-nav-triangle"></span>
+								<span class="upk-nav-element upk-nav-plus"></span>
+								<span class="upk-nav-element upk-nav-wave"></span>
+							</div>
+
+						<?php $this->settings_api->show_navigation(); ?>
+						</div>
+					</div>
+
+
+					<div class="bdt-switcher bdt-tab-container bdt-container-xlarge bdt-flex-1">
+						<div id="ultimate_post_kit_welcome_page" class="upk-option-page group">
+							<?php $this->ultimate_post_kit_welcome(); ?>
+						</div>
+
+						<?php $this->settings_api->show_forms(); ?>
+
+						<div id="ultimate_post_kit_extra_options_page" class="upk-option-page group">
+							<?php $this->ultimate_post_kit_extra_options(); ?>
+						</div>
+
+						<div id="ultimate_post_kit_analytics_system_req_page" class="upk-option-page group">
+							<?php $this->ultimate_post_kit_analytics_system_req_content(); ?>
+						</div>
+
+						<div id="ultimate_post_kit_other_plugins_page" class="upk-option-page group">
+							<?php $this->ultimate_post_kit_others_plugin(); ?>
+						</div>
+
+						<div id="ultimate_post_kit_affiliate_page" class="upk-option-page group">
+							<?php $this->ultimate_post_kit_affiliate_content(); ?>
+						</div>
+
+						<div id="ultimate_post_kit_rollback_version_page" class="upk-option-page group">
+							<?php $this->ultimate_post_kit_rollback_version_content(); ?>
+						</div>
+
+                        <?php if (_is_upk_pro_activated() !== true) : ?>
+                            <div id="ultimate_post_kit_get_pro" class="upk-option-page group">
+                                <?php $this->ultimate_post_kit_get_pro(); ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <div id="ultimate_post_kit_license_settings_page" class="upk-option-page group">
+
+                            <?php
+                            if (_is_upk_pro_activated() == true) {
+                                apply_filters('upk_license_page', '');
+                            }
+
+                            ?>
+                        </div>
+
+					</div>
+				</div>
+
+				<?php if (!defined('BDTUPK_WL') || false == self::license_wl_status()) {
+					$this->footer_info();
+				} ?>
+			</div>
+
+		</div>
+
+		<?php
+
+		$this->script();
+
+	}
 
 
 
@@ -1394,29 +1692,7 @@ class UltimatePostKit_Admin_Settings {
 
 <?php
     }
-    /**
-     * 
-     * Check mini-Cart of Elementor Activated or Not
-     * It's better to not use multiple mini-Cart on the same time.
-     * Transient Expire on 15 days
-     *
-     * @access public
-     */
-
-    public function el_use_mini_cart() {
-
-        Notices::add_notice(
-            [
-                'id'               => 'upk-el-use-mini-cart',
-                'type'             => 'warning',
-                'category'         => 'critical',
-                'dismissible'      => true,
-                'dismissible-time' => MONTH_IN_SECONDS / 2,
-                'message'          => __('We can see you activated the <strong>Mini-Cart</strong> of Elementor Pro and also Ultimate Post Kit Pro. We will recommend you to choose one of them, otherwise you will get conflict. Thank you.', 'ultimate-post-kit'),
-            ]
-        );
-    }
-
+    
     /**
      * Get all the pages
      *
@@ -1433,6 +1709,1034 @@ class UltimatePostKit_Admin_Settings {
 
         return $pages_options;
     }
+
+
+
+    public static function license_wl_status() {
+		$status = get_option('ultimate_post_kit_license_title_status');
+		
+		if ($status) {
+			return true;
+		}
+		
+		return false;
+	}
+
+
+
+    /**
+	 * Display Analytics and System Requirements
+	 *
+	 * @access public
+	 * @return void
+	 */
+
+	public function ultimate_post_kit_analytics_system_req_content() {
+		?>
+		<div class="upk-dashboard-panel"
+			bdt-scrollspy="target: > div > div > .bdt-card; cls: bdt-animation-slide-bottom-small; delay: 300">
+			<div class="upk-dashboard-analytics-system">
+
+				<?php $this->ultimate_post_kit_widgets_status(); ?>
+
+				<div class="bdt-grid bdt-grid-medium bdt-margin-medium-top" bdt-grid
+					bdt-height-match="target: > div > .bdt-card">
+					<div class="bdt-width-1-1">
+						<div class="bdt-card bdt-card-body upk-system-requirement">
+							<h1 class="upk-feature-title bdt-margin-small-bottom">
+								<?php esc_html_e('System Requirement', 'ultimate-post-kit'); ?>
+							</h1>
+							<?php $this->ultimate_post_kit_system_requirement(); ?>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<?php
+	}
+
+    /**
+	 * Widgets Status
+	 */
+
+	public function ultimate_post_kit_widgets_status() {
+		$track_nw_msg = '';
+		if (!Tracker::is_allow_track()) {
+			$track_nw = esc_html__('This feature is not working because the Elementor Usage Data Sharing feature is Not Enabled.', 'ultimate-post-kit');
+			$track_nw_msg = 'bdt-tooltip="' . $track_nw . '"';
+		}
+		?>
+		<div class="upk-dashboard-widgets-status">
+			<div class="bdt-grid bdt-grid-medium" bdt-grid bdt-height-match="target: > div > .bdt-card">
+				<div class="bdt-width-1-2@m bdt-width-1-4@xl">
+					<div class="upk-widget-status bdt-card bdt-card-body" <?php echo wp_kses_post($track_nw_msg); ?>>
+
+						<?php
+						$used_widgets = count(self::get_used_widgets());
+						$un_used_widgets = count(self::get_unused_widgets());
+						?>
+
+						<div class="upk-count-canvas-wrap">
+							<h1 class="upk-feature-title"><?php esc_html_e('All Widgets', 'ultimate-post-kit'); ?></h1>
+							<div class="bdt-flex bdt-flex-between bdt-flex-middle">
+								<div class="upk-count-wrap">
+									<div class="upk-widget-count"><?php esc_html_e('Used:', 'ultimate-post-kit'); ?> <b>
+											<?php echo esc_html($used_widgets); ?>
+										</b></div>
+									<div class="upk-widget-count"><?php esc_html_e('Unused:', 'ultimate-post-kit'); ?> <b>
+											<?php echo esc_html($un_used_widgets); ?>
+										</b>
+									</div>
+									<div class="upk-widget-count"><?php esc_html_e('Total:', 'ultimate-post-kit'); ?>
+										<b>
+											<?php echo esc_html($used_widgets + $un_used_widgets); ?>
+										</b>
+									</div>
+								</div>
+
+								<div class="upk-canvas-wrap">
+									<canvas id="bdt-db-total-status" style="height: 100px; width: 100px;"
+										data-label="Total Widgets Status - (<?php echo esc_html($used_widgets + $un_used_widgets); ?>)"
+										data-labels="<?php echo esc_attr('Used, Unused'); ?>"
+										data-value="<?php echo esc_attr($used_widgets) . ',' . esc_attr($un_used_widgets); ?>"
+										data-bg="#FFD166, #fff4d9" data-bg-hover="#0673e1, #e71522"></canvas>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="bdt-width-1-2@m bdt-width-1-4@xl">
+					<div class="upk-widget-status bdt-card bdt-card-body" <?php echo wp_kses_post($track_nw_msg); ?>>
+
+						<?php
+						$used_only_widgets = count(self::get_used_only_widgets());
+						$unused_only_widgets = count(self::get_unused_only_widgets());
+						?>
+
+
+						<div class="upk-count-canvas-wrap">
+							<h1 class="upk-feature-title"><?php esc_html_e('Core', 'ultimate-post-kit'); ?></h1>
+							<div class="bdt-flex bdt-flex-between bdt-flex-middle">
+								<div class="upk-count-wrap">
+									<div class="upk-widget-count"><?php esc_html_e('Used:', 'ultimate-post-kit'); ?> <b>
+											<?php echo esc_html($used_only_widgets); ?>
+										</b></div>
+									<div class="upk-widget-count"><?php esc_html_e('Unused:', 'ultimate-post-kit'); ?> <b>
+											<?php echo esc_html($unused_only_widgets); ?>
+										</b></div>
+									<div class="upk-widget-count"><?php esc_html_e('Total:', 'ultimate-post-kit'); ?>
+										<b>
+											<?php echo esc_html($used_only_widgets + $unused_only_widgets); ?>
+										</b>
+									</div>
+								</div>
+
+								<div class="upk-canvas-wrap">
+									<canvas id="bdt-db-only-widget-status" style="height: 100px; width: 100px;"
+										data-label="Core Widgets Status - (<?php echo esc_html($used_only_widgets + $unused_only_widgets); ?>)"
+										data-labels="<?php echo esc_attr('Used, Unused'); ?>"
+										data-value="<?php echo esc_attr($used_only_widgets) . ',' . esc_attr($unused_only_widgets); ?>"
+										data-bg="#EF476F, #ffcdd9" data-bg-hover="#0673e1, #e71522"></canvas>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="bdt-width-1-2@m bdt-width-1-4@xl">
+					<div class="upk-widget-status bdt-card bdt-card-body" <?php echo wp_kses_post($track_nw_msg); ?>>
+
+						<div class="upk-count-canvas-wrap">
+							<h1 class="upk-feature-title"><?php esc_html_e('Active', 'ultimate-post-kit'); ?></h1>
+							<div class="bdt-flex bdt-flex-between bdt-flex-middle">
+								<div class="upk-count-wrap">
+									<div class="upk-widget-count"><?php esc_html_e('Core:', 'ultimate-post-kit'); ?> <b
+											id="bdt-total-widgets-status-core">0</b></div>
+									<div class="upk-widget-count"><?php esc_html_e('3rd Party:', 'ultimate-post-kit'); ?>
+										<b id="bdt-total-widgets-status-3rd">0</b>
+									</div>
+									<div class="upk-widget-count"><?php esc_html_e('Extensions:', 'ultimate-post-kit'); ?>
+										<b id="bdt-total-widgets-status-extensions">0</b>
+									</div>
+									<div class="upk-widget-count"><?php esc_html_e('Total:', 'ultimate-post-kit'); ?> <b
+											id="bdt-total-widgets-status-heading">0</b></div>
+								</div>
+
+								<div class="upk-canvas-wrap">
+									<canvas id="bdt-total-widgets-status" style="height: 100px; width: 100px;"
+										data-label="Total Active Widgets Status"
+										data-labels="<?php echo esc_attr('Core, 3rd Party, Extensions'); ?>"
+										data-value="0,0,0"
+										data-bg="#0680d6, #B0EBFF, #E6F9FF" data-bg-hover="#0673e1, #B0EBFF, #b6f9e8">
+									</canvas>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<?php if (!Tracker::is_allow_track()): ?>
+			<div class="bdt-border-rounded bdt-box-shadow-small bdt-alert-warning" bdt-alert>
+				<a href class="bdt-alert-close" bdt-close></a>
+				<div class="bdt-text-default">
+				<?php
+					printf(
+						esc_html__('To view widgets analytics, Elementor %1$sUsage Data Sharing%2$s feature by Elementor needs to be activated. Please activate the feature to get widget analytics instantly ', 'ultimate-post-kit'),
+						'<b>', '</b>'
+					);
+
+					echo ' <a href="' . esc_url(admin_url('admin.php?page=elementor-settings')) . '">' . esc_html__('from here.', 'ultimate-post-kit') . '</a>';
+				?>
+				</div>
+			</div>
+		<?php endif; ?>
+
+		<?php
+	}
+
+    /**
+	 * Display System Requirement
+	 *
+	 * @access public
+	 * @return void
+	 */
+
+	public function ultimate_post_kit_system_requirement() {
+		$php_version = phpversion();
+		$max_execution_time = ini_get('max_execution_time');
+		$memory_limit = ini_get('memory_limit');
+		$post_limit = ini_get('post_max_size');
+		$uploads = wp_upload_dir();
+		$upload_path = $uploads['basedir'];
+		$yes_icon = '<span class="valid"><i class="dashicons-before dashicons-yes"></i></span>';
+		$no_icon = '<span class="invalid"><i class="dashicons-before dashicons-no-alt"></i></span>';
+
+		$environment = Utils::get_environment_info();
+
+		?>
+		<ul class="check-system-status bdt-grid bdt-child-width-1-2@m  bdt-grid-small ">
+			<li>
+				<div>
+					<span class="label1"><?php esc_html_e('PHP Version:', 'ultimate-post-kit'); ?></span>
+
+					<?php
+					if (version_compare($php_version, '7.4.0', '<')) {
+						echo wp_kses_post($no_icon);
+						echo '<span class="label2" title="' . esc_attr__('Min: 7.4 Recommended', 'ultimate-post-kit') . '" bdt-tooltip>' . esc_html__('Currently:', 'ultimate-post-kit') . ' ' . esc_html($php_version) . '</span>';
+					} else {
+						echo wp_kses_post($yes_icon);
+						echo '<span class="label2">' . esc_html__('Currently:', 'ultimate-post-kit') . ' ' . esc_html($php_version) . '</span>';
+					}
+					?>
+				</div>
+
+			</li>
+
+			<li>
+				<div>
+					<span class="label1"><?php esc_html_e('Max execution time:', 'ultimate-post-kit'); ?> </span>
+					<?php
+					if ($max_execution_time < '90') {
+						echo wp_kses_post($no_icon);
+						echo '<span class="label2" title="Min: 90 Recommended" bdt-tooltip>Currently: ' . esc_html($max_execution_time) . '</span>';
+					} else {
+						echo wp_kses_post($yes_icon);
+						echo '<span class="label2">Currently: ' . esc_html($max_execution_time) . '</span>';
+					}
+					?>
+				</div>
+			</li>
+			<li>
+				<div>
+					<span class="label1"><?php esc_html_e('Memory Limit:', 'ultimate-post-kit'); ?> </span>
+
+					<?php
+					if (intval($memory_limit) < '512') {
+						echo wp_kses_post($no_icon);
+						echo '<span class="label2" title="Min: 512M Recommended" bdt-tooltip>Currently: ' . esc_html($memory_limit) . '</span>';
+					} else {
+						echo wp_kses_post($yes_icon);
+						echo '<span class="label2">Currently: ' . esc_html($memory_limit) . '</span>';
+					}
+					?>
+				</div>
+			</li>
+
+			<li>
+				<div>
+					<span class="label1"><?php esc_html_e('Max Post Limit:', 'ultimate-post-kit'); ?> </span>
+
+					<?php
+					if (intval($post_limit) < '32') {
+						echo wp_kses_post($no_icon);
+						echo '<span class="label2" title="Min: 32M Recommended" bdt-tooltip>Currently: ' . wp_kses_post($post_limit) . '</span>';
+					} else {
+						echo wp_kses_post($yes_icon);
+						echo '<span class="label2">Currently: ' . wp_kses_post($post_limit) . '</span>';
+					}
+					?>
+				</div>
+			</li>
+
+			<li>
+				<div>
+					<span class="label1"><?php esc_html_e('Uploads folder writable:', 'ultimate-post-kit'); ?></span>
+
+					<?php
+					if (!is_writable($upload_path)) {
+						echo wp_kses_post($no_icon);
+					} else {
+						echo wp_kses_post($yes_icon);
+					}
+					?>
+				</div>
+
+			</li>
+
+			<li>
+				<div>
+					<span class="label1"><?php esc_html_e('MultiSite:', 'ultimate-post-kit'); ?></span>
+
+					<?php
+					if ($environment['wp_multisite']) {
+						echo wp_kses_post($yes_icon);
+						echo '<span class="label2">' . esc_html__('MultiSite Enabled', 'ultimate-post-kit') . '</span>';
+					} else {
+						echo wp_kses_post($yes_icon);
+						echo '<span class="label2">' . esc_html__('Single Site', 'ultimate-post-kit') . '</span>';
+					}
+					?>
+				</div>
+			</li>
+
+			<li>
+				<div>
+					<span class="label1"><?php esc_html_e('GZip Enabled:', 'ultimate-post-kit'); ?></span>
+
+					<?php
+					if ($environment['gzip_enabled']) {
+						echo wp_kses_post($yes_icon);
+					} else {
+						echo wp_kses_post($no_icon);
+					}
+					?>
+				</div>
+
+			</li>
+
+			<li>
+				<div>
+					<span class="label1"><?php esc_html_e('Debug Mode:', 'ultimate-post-kit'); ?></span>
+					<?php
+					if ($environment['wp_debug_mode']) {
+						echo wp_kses_post($no_icon);
+						echo '<span class="label2">' . esc_html__('Currently Turned On', 'ultimate-post-kit') . '</span>';
+					} else {
+						echo wp_kses_post($yes_icon);
+						echo '<span class="label2">' . esc_html__('Currently Turned Off', 'ultimate-post-kit') . '</span>';
+					}
+					?>
+				</div>
+
+			</li>
+
+		</ul>
+
+		<div class="bdt-admin-alert">
+			<strong><?php esc_html_e('Note:', 'ultimate-post-kit'); ?></strong>
+			<?php
+			/* translators: %s: Plugin name 'Ultimate Post Kit' */
+			printf(
+				esc_html__('If you have multiple addons like %s so you may need to allocate additional memory for other addons as well.', 'ultimate-post-kit'),
+				'<b>Ultimate Post Kit</b>'
+			);
+			?>
+		</div>
+
+		<?php
+	}
+
+    /**
+	 * Others Plugin
+	 */
+
+	public function ultimate_post_kit_others_plugin() {
+		// Define plugins with their paths and install URLs
+		$plugins = [
+			'prime_slider' => [
+				'path' => 'bdthemes-prime-slider-lite/bdthemes-prime-slider.php',
+				'install_url' => 'https://wordpress.org/plugins/bdthemes-prime-slider-lite/',
+				'website_url' => 'https://primeslider.pro/'
+			],
+			'ultimate_post_kit' => [
+				'path' => 'ultimate-post-kit/ultimate-post-kit.php', 
+				'install_url' => 'https://wordpress.org/plugins/ultimate-post-kit/',
+				'website_url' => 'https://postkit.pro/'
+			],
+			'ultimate_store_kit' => [
+				'path' => 'ultimate-store-kit/ultimate-store-kit.php',
+				'install_url' => 'https://wordpress.org/plugins/ultimate-store-kit/',
+				'website_url' => 'https://storekit.pro/'
+			],
+			'pixel_gallery' => [
+				'path' => 'pixel-gallery/pixel-gallery.php',
+				'install_url' => 'https://wordpress.org/plugins/pixel-gallery/',
+				'website_url' => 'https://pixelgallery.pro/'
+			],
+			'live_copy_paste' => [
+				'path' => 'live-copy-paste/live-copy-paste.php',
+				'install_url' => 'https://wordpress.org/plugins/live-copy-paste/',
+				'website_url' => 'https://www.youtube.com/watch?v=KWxbZfPIcqU'
+			],
+			'zoloblocks' => [
+				'path' => 'zoloblocks/zoloblocks.php',
+				'install_url' => 'https://wordpress.org/plugins/zoloblocks/',
+				'website_url' => 'https://zoloblocks.com/'
+			],
+			'spin_wheel' => [
+				'path' => 'spin-wheel/spin-wheel.php',
+				'install_url' => 'https://wordpress.org/plugins/spin-wheel/',
+				'website_url' => 'https://spinwheel.bdthemes.com/'
+			],
+			'ai_image' => [
+				'path' => 'ai-image/ai-image.php',
+				'install_url' => 'https://wordpress.org/plugins/ai-image/',
+				'website_url' => 'https://www.youtube.com/watch?v=cGmPFU_ju4s'
+			],
+			'dark_reader' => [
+				'path' => 'dark-reader/dark-reader.php',
+				'install_url' => 'https://wordpress.org/plugins/dark-reader/',
+				'website_url' => 'https://wordpress.org/plugins/dark-reader/'
+			],
+			'ar_viewer' => [
+				'path' => 'ar-viewer/ar-viewer.php',
+				'install_url' => 'https://wordpress.org/plugins/ar-viewer/',
+				'website_url' => 'https://wordpress.org/plugins/ar-viewer/'
+			]
+		];
+		?>
+		<div class="upk-dashboard-panel"
+			bdt-scrollspy="target: > div > div > .bdt-card; cls: bdt-animation-slide-bottom-small; delay: 300">
+			<div class="upk-dashboard-others-plugin">
+				<!-- Prime Slider -->
+				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
+					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
+						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/prime-slider.svg'; ?>" alt="Prime Slider">
+						<div class="bdt-others-plugin-content-text">
+							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
+								<h1 class="upk-feature-title "><?php esc_html_e('Prime Slider', 'ultimate-post-kit'); ?></h1>
+								<span class="bdt-others-plugin-user"><?php esc_html_e('100k+ active users', 'ultimate-post-kit'); ?></span>
+							</div>
+							
+							<p><?php esc_html_e('The revolutionary slider builder addon for Elementor with next-gen superb interface. It\'s Free! Download it.', 'ultimate-post-kit'); ?></p>
+
+							<div class="bdt-others-plugin-rating bdt-margin-small-top bdt-flex bdt-flex-middle">
+								<span class="bdt-others-plugin-rating-stars">
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-half"></i>
+								</span>
+								<span class="bdt-others-plugin-rating-text bdt-margin-small-left">
+									<?php esc_html_e('4.5 out of 5 stars.', 'ultimate-post-kit'); ?>
+								</span>
+							</div>
+						</div>
+						
+					</div>
+				
+					<div class="bdt-others-plugins-link">
+				    	<?php echo $this->get_plugin_action_button($plugins['prime_slider']['path'], $plugins['prime_slider']['install_url']); ?>
+						<a class="bdt-button bdt-dashboard-sec-btn" target="_blank"
+							href="<?php echo esc_url($plugins['prime_slider']['website_url']); ?>">
+							<?php esc_html_e('View Website', 'ultimate-post-kit'); ?>
+						</a>
+					</div>
+
+					
+				</div>
+				<!-- Ultimate Post Kit -->
+				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
+					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
+						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/ultimate-post-kit.svg'; ?>" alt="zoloblocks">
+						<div class="bdt-others-plugin-content-text">
+							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
+								<h1 class="upk-feature-title "><?php esc_html_e('Ultimate Post Kit', 'ultimate-post-kit'); ?></h1>
+								<span class="bdt-others-plugin-user"><?php esc_html_e('30k+ active users', 'ultimate-post-kit'); ?></span>
+							</div>
+							
+							<p><?php esc_html_e('Best blogging addon for building quality blogging website with fine-tuned features and widgets. It\'s Free! Download it.', 'ultimate-post-kit'); ?></p>
+
+							<div class="bdt-others-plugin-rating bdt-margin-small-top bdt-flex bdt-flex-middle">
+								<span class="bdt-others-plugin-rating-stars">
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+								</span>
+								<span class="bdt-others-plugin-rating-text bdt-margin-small-left">
+									<?php esc_html_e('4.8 out of 5 stars.', 'ultimate-post-kit'); ?>
+								</span>
+							</div>
+
+						</div>
+					</div>
+				
+					<div class="bdt-others-plugins-link">
+				     	<?php echo $this->get_plugin_action_button($plugins['ultimate_post_kit']['path'], $plugins['ultimate_post_kit']['install_url']); ?>
+						<a class="bdt-button bdt-dashboard-sec-btn" target="_blank"
+							href="<?php echo esc_url($plugins['ultimate_post_kit']['website_url']); ?>">
+							<?php esc_html_e('View Website', 'ultimate-post-kit'); ?>
+						</a>
+					</div>
+				</div>
+				<!-- Ultimate Store Kit -->
+				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
+					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
+						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/ultimate-store-kit.svg'; ?>" alt="zoloblocks">
+						<div class="bdt-others-plugin-content-text">
+							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
+								<h1 class="upk-feature-title "><?php esc_html_e('Ultimate Store Kit', 'ultimate-post-kit'); ?></h1>
+								<span class="bdt-others-plugin-user"><?php esc_html_e('1000+ active users', 'ultimate-post-kit'); ?></span>
+							</div>
+							<p><?php esc_html_e('The only eCommmerce addon for answering all your online store design problems in one package. It\'s Free! Download it.', 'ultimate-post-kit'); ?></p>
+
+							<div class="bdt-others-plugin-rating bdt-margin-small-top bdt-flex bdt-flex-middle">
+								<span class="bdt-others-plugin-rating-stars">
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-half"></i>
+								</span>
+								<span class="bdt-others-plugin-rating-text bdt-margin-small-left">
+									<?php esc_html_e('4.4 out of 5 stars.', 'ultimate-post-kit'); ?>
+								</span>
+							</div>
+
+						</div>
+					</div>
+				
+					<div class="bdt-others-plugins-link">
+					    <?php echo $this->get_plugin_action_button($plugins['ultimate_store_kit']['path'], $plugins['ultimate_store_kit']['install_url']); ?>
+						<a class="bdt-button bdt-dashboard-sec-btn" target="_blank"
+							href="<?php echo esc_url($plugins['ultimate_store_kit']['website_url']); ?>">
+							<?php esc_html_e('View Website', 'ultimate-post-kit'); ?>
+						</a>
+					</div>
+				</div>
+				<!-- Pixel Gallery -->
+				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
+					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
+						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/pixel-gallery.svg'; ?>" alt="Pixel Gallery">
+						<div class="bdt-others-plugin-content-text">
+							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
+								<h1 class="upk-feature-title "><?php esc_html_e('Pixel Gallery', 'ultimate-post-kit'); ?></h1>
+								<span class="bdt-others-plugin-user"><?php esc_html_e('3000+ active users', 'ultimate-post-kit'); ?></span>
+							</div>
+							<p><?php esc_html_e('Pixel Gallery provides more than 30+ essential elements for everyday applications to simplify the whole web building process. It\'s Free! Download it.', 'ultimate-post-kit'); ?></p>
+
+							<div class="bdt-others-plugin-rating bdt-margin-small-top bdt-flex bdt-flex-middle">
+								<span class="bdt-others-plugin-rating-stars">
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+								</span>
+								<span class="bdt-others-plugin-rating-text bdt-margin-small-left">
+									<?php esc_html_e('5 out of 5 stars.', 'ultimate-post-kit'); ?>
+								</span>
+							</div>
+
+						</div>
+					</div>
+				
+					<div class="bdt-others-plugins-link">
+						<?php echo $this->get_plugin_action_button($plugins['pixel_gallery']['path'], $plugins['pixel_gallery']['install_url']); ?>
+						<a class="bdt-button bdt-dashboard-sec-btn" target="_blank"
+							href="<?php echo esc_url($plugins['pixel_gallery']['website_url']); ?>">
+							<?php esc_html_e('View Website', 'ultimate-post-kit'); ?>
+						</a>
+					</div>
+				</div>
+				<!-- Live Copy Paste -->
+				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
+					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
+						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/live-copy-paste.svg'; ?>" alt="live copy paste">
+						<div class="bdt-others-plugin-content-text">
+							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
+								<h1 class="upk-feature-title "><?php esc_html_e('Live Copy Paste', 'ultimate-post-kit'); ?></h1>
+								<span class="bdt-others-plugin-user"><?php esc_html_e('3000+ active users', 'ultimate-post-kit'); ?></span>
+							</div>
+							<p><?php esc_html_e('Superfast cross-domain copy-paste mechanism for WordPress websites with true UI copy experience. It\'s Free! Download it.', 'ultimate-post-kit'); ?></p>
+
+							<div class="bdt-others-plugin-rating bdt-margin-small-top bdt-flex bdt-flex-middle">
+								<span class="bdt-others-plugin-rating-stars">
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-half"></i>
+								</span>
+								<span class="bdt-others-plugin-rating-text bdt-margin-small-left">
+									<?php esc_html_e('4.3 out of 5 stars.', 'ultimate-post-kit'); ?>
+								</span>
+							</div>
+
+						</div>
+					</div>
+				
+					<div class="bdt-others-plugins-link">
+				        <?php echo $this->get_plugin_action_button($plugins['live_copy_paste']['path'], $plugins['live_copy_paste']['install_url']); ?>
+
+						<a class="bdt-button bdt-dashboard-sec-btn" target="_blank"
+							href="<?php echo esc_url($plugins['live_copy_paste']['website_url']); ?>">
+							<?php esc_html_e('Video Tutorial', 'ultimate-post-kit'); ?>
+						</a>
+					</div>
+				</div>
+				<!-- ZoloBlocks -->
+				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
+					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
+						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/zoloblocks.svg'; ?>" alt="zoloblocks">
+						<div class="bdt-others-plugin-content-text">
+							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
+								<h1 class="upk-feature-title "><?php esc_html_e('ZoloBlocks', 'ultimate-post-kit'); ?></h1>
+								<span class="bdt-others-plugin-user"><?php esc_html_e('300+ active users', 'ultimate-post-kit'); ?></span>
+							</div>
+							<p><?php esc_html_e('ZoloBlocks is a collection of blocks for the new WordPress block editor (Gutenberg). It\'s Free! Download it.', 'ultimate-post-kit'); ?></p>
+
+							<div class="bdt-others-plugin-rating bdt-margin-small-top bdt-flex bdt-flex-middle">
+								<span class="bdt-others-plugin-rating-stars">
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+									<i class="dashicons dashicons-star-filled"></i>
+								</span>
+								<span class="bdt-others-plugin-rating-text bdt-margin-small-left">
+									<?php esc_html_e('5 out of 5 stars.', 'ultimate-post-kit'); ?>
+								</span>
+							</div>
+
+						</div>
+					</div>
+				
+					<div class="bdt-others-plugins-link">
+						<?php echo $this->get_plugin_action_button($plugins['zoloblocks']['path'], $plugins['zoloblocks']['install_url']); ?>
+						<a class="bdt-button bdt-dashboard-sec-btn" target="_blank"
+							href="<?php echo esc_url($plugins['zoloblocks']['website_url']); ?>">
+							<?php esc_html_e('View Website', 'ultimate-post-kit'); ?>
+						</a>
+					</div>
+				</div>
+				<!-- Spin Wheel -->
+				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
+					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
+						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/spin-wheel.svg'; ?>" alt="spin wheel">
+						<div class="bdt-others-plugin-content-text">
+							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
+								<h1 class="upk-feature-title "><?php esc_html_e('Spin Wheel', 'ultimate-post-kit'); ?></h1>
+								<span class="bdt-others-plugin-user"><?php esc_html_e('100+ active users', 'ultimate-post-kit'); ?></span>
+							</div>
+							<p><?php esc_html_e('Add a fun, interactive spin wheel to offer instant coupons, boost engagement, and grow your email list. It\'s free!.', 'ultimate-post-kit'); ?></p>
+						</div>
+					</div>
+				
+					<div class="bdt-others-plugins-link">
+				        <?php echo $this->get_plugin_action_button($plugins['spin_wheel']['path'], $plugins['spin_wheel']['install_url']); ?>
+
+						<a class="bdt-button bdt-dashboard-sec-btn" target="_blank"
+							href="<?php echo esc_url($plugins['spin_wheel']['website_url']); ?>">
+							<?php esc_html_e('View Website', 'ultimate-post-kit'); ?>
+						</a>
+					</div>
+				</div>
+
+				<!-- Instant Image Generator -->
+				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
+					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
+						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/instant-image-generator.svg'; ?>" alt="instant image generator">
+						<div class="bdt-others-plugin-content-text">
+							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
+								<h1 class="upk-feature-title "><?php esc_html_e('Instant Image Generator', 'ultimate-post-kit'); ?></h1>
+								<span class="bdt-others-plugin-user"><?php esc_html_e('100+ active users', 'ultimate-post-kit'); ?></span>
+							</div>
+							<p><?php esc_html_e('Instant Image Generator (One Click Image Uploads from Pixabay, Pexels and OpenAI). It\'s Free! Download it.', 'ultimate-post-kit'); ?></p>
+						</div>
+					</div>
+				
+					<div class="bdt-others-plugins-link">
+				        <?php echo $this->get_plugin_action_button($plugins['ai_image']['path'], $plugins['ai_image']['install_url']); ?>
+
+						<a class="bdt-button bdt-dashboard-sec-btn" target="_blank"
+							href="<?php echo esc_url($plugins['ai_image']['website_url']); ?>">
+							<?php esc_html_e('Video Tutorial', 'ultimate-post-kit'); ?>
+						</a>
+					</div>
+				</div>
+
+				<!-- Dark Reader -->
+				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
+					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
+						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/dark-reader.svg'; ?>" alt="dark reader">
+						<div class="bdt-others-plugin-content-text">
+							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
+								<h1 class="upk-feature-title "><?php esc_html_e('Dark Reader', 'ultimate-post-kit'); ?></h1>
+								<span class="bdt-others-plugin-user"><?php esc_html_e('New', 'ultimate-post-kit'); ?></span>
+							</div>
+							<p><?php esc_html_e('Add beautiful dark mode to your WordPress site with customizable settings. Reduce eye strain and improve accessibility. It\'s Free! Download it.', 'ultimate-post-kit'); ?></p>
+						</div>
+					</div>
+				
+					<div class="bdt-others-plugins-link">
+				        <?php echo $this->get_plugin_action_button($plugins['dark_reader']['path'], $plugins['dark_reader']['install_url']); ?>
+
+						<a class="bdt-button bdt-dashboard-sec-btn" target="_blank"
+							href="<?php echo esc_url($plugins['dark_reader']['website_url']); ?>">
+							<?php esc_html_e('View Website', 'ultimate-post-kit'); ?>
+						</a>
+					</div>
+				</div>
+
+				<!-- AR Viewer -->
+				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
+					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
+						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/ar-viewer.svg'; ?>" alt="ar viewer">
+						<div class="bdt-others-plugin-content-text">
+							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
+								<h1 class="upk-feature-title "><?php esc_html_e('AR Viewer', 'ultimate-post-kit'); ?></h1>
+								<span class="bdt-others-plugin-user"><?php esc_html_e('60+ active users', 'ultimate-post-kit'); ?></span>
+							</div>
+							<p><?php esc_html_e('Augmented Reality Viewer – 3D Model Viewer. It\'s Free! Download it.', 'ultimate-post-kit'); ?></p>
+						</div>
+					</div>
+				
+					<div class="bdt-others-plugins-link">
+				        <?php echo $this->get_plugin_action_button($plugins['ar_viewer']['path'], $plugins['ar_viewer']['install_url']); ?>
+
+						<a class="bdt-button bdt-dashboard-sec-btn" target="_blank"
+							href="<?php echo esc_url($plugins['ar_viewer']['website_url']); ?>">
+							<?php esc_html_e('View Website', 'ultimate-post-kit'); ?>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+
+    /**
+	 * Check plugin status (installed, active, or not installed)
+	 * 
+	 * @param string $plugin_path Plugin file path
+	 * @return string 'active', 'installed', or 'not_installed'
+	 */
+	private function get_plugin_status($plugin_path) {
+		// Check if plugin is active
+		if (is_plugin_active($plugin_path)) {
+			return 'active';
+		}
+		
+		// Check if plugin is installed but not active
+		$installed_plugins = get_plugins();
+		if (isset($installed_plugins[$plugin_path])) {
+			return 'installed';
+		}
+		
+		// Plugin is not installed
+		return 'not_installed';
+	}
+
+    /**
+	 * Extract plugin slug from plugin path
+	 * 
+	 * @param string $plugin_path Plugin file path
+	 * @return string Plugin slug
+	 */
+	private function extract_plugin_slug_from_path($plugin_path) {
+		$parts = explode('/', $plugin_path);
+		return isset($parts[0]) ? $parts[0] : '';
+	}
+
+    /**
+	 * Get plugin action button HTML based on plugin status
+	 * 
+	 * @param string $plugin_path Plugin file path
+	 * @param string $install_url Plugin installation URL
+	 * @param string $plugin_slug Plugin slug for activation
+	 * @return string Button HTML
+	 */
+	private function get_plugin_action_button($plugin_path, $install_url, $plugin_slug = '') {
+		$status = $this->get_plugin_status($plugin_path);
+		
+		switch ($status) {
+			case 'active':
+				return '';
+				
+			case 'installed':
+				$activate_url = wp_nonce_url(
+					add_query_arg([
+						'action' => 'activate',
+						'plugin' => $plugin_path
+					], admin_url('plugins.php')),
+					'activate-plugin_' . $plugin_path
+				);
+				return '<a class="bdt-button bdt-welcome-button" href="' . esc_url($activate_url) . '">' . 
+				       __('Activate', 'ultimate-post-kit') . '</a>';
+				
+			case 'not_installed':
+			default:
+				$plugin_slug = $this->extract_plugin_slug_from_path($plugin_path);
+				$nonce = wp_create_nonce('ep_install_plugin_nonce');
+				return '<a class="bdt-button bdt-welcome-button upk-install-plugin" 
+				          data-plugin-slug="' . esc_attr($plugin_slug) . '" 
+				          data-nonce="' . esc_attr($nonce) . '" 
+				          href="#">' . 
+				       __('Install', 'ultimate-post-kit') . '</a>';
+		}
+	}
+
+    /**
+	 * Display Affiliate Content
+	 *
+	 * @access public
+	 * @return void
+	 */
+
+	public function ultimate_post_kit_affiliate_content() {
+		?>
+		<div class="upk-dashboard-panel"
+			bdt-scrollspy="target: > div > div > .bdt-card; cls: bdt-animation-slide-bottom-small; delay: 300">
+			<div class="upk-dashboard-affiliate">
+				<div class="bdt-card bdt-card-body">
+					<h1 class="upk-feature-title">
+						<?php printf(esc_html__('Earn %s as an Affiliate', 'ultimate-post-kit'), '<strong class="upk-highlight-text">Up to 60% Commission</strong>'); ?>
+					</h1>
+					<p>
+						<?php esc_html_e('Join our affiliate program and earn up to 60% commission on every sale you refer. It\'s a great way to earn passive income while promoting high-quality WordPress plugins.', 'ultimate-post-kit'); ?>
+					</p>
+					<div class="upk-affiliate-features">
+						<h3 class="upk-affiliate-sub-title"><?php esc_html_e('Benefits of joining our affiliate program:', 'ultimate-post-kit'); ?></h3>
+						<ul>
+							<li><?php esc_html_e('Up to 60% commission on all sales', 'ultimate-post-kit'); ?></li>
+							<li><?php esc_html_e('Real-time tracking of referrals and sales', 'ultimate-post-kit'); ?></li>
+							<li><?php esc_html_e('Dedicated affiliate support', 'ultimate-post-kit'); ?></li>
+							<li><?php esc_html_e('Marketing materials provided', 'ultimate-post-kit'); ?></li>
+							<li><?php esc_html_e('Monthly payments via PayPal', 'ultimate-post-kit'); ?></li>
+						</ul>
+					</div>
+					<a href="https://bdthemes.com/affiliate/?utm_sourcce=ep_wp_dashboard&utm_medium=affiliate_payout&utm_campaign=affiliate_onboarding" target="_blank"
+						class="bdt-button bdt-welcome-button bdt-margin-small-top"><?php esc_html_e('Join Our Affiliate Program', 'ultimate-post-kit'); ?></a>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+
+
+    /**
+	 * Extra Options Start Here
+	 */
+
+	/**
+	 * Render Custom CSS & JS Section
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function render_custom_css_js_section() {
+		?>
+		<div class="upk-custom-code-section">
+			<!-- Header Section -->
+			<div class="upk-code-section-header">
+				<h2 class="upk-section-title"><?php esc_html_e('Header Code Injection', 'ultimate-post-kit'); ?></h2>
+				<p class="upk-section-description"><?php esc_html_e('Code added here will be injected into the &lt;head&gt; section of your website.', 'ultimate-post-kit'); ?></p>
+			</div>
+			<div class="upk-code-row bdt-grid bdt-grid-small" bdt-grid>
+				<div class="bdt-width-1-2@m">
+					<div class="upk-code-editor-wrapper">
+						<h3 class="upk-code-editor-title"><?php esc_html_e('CSS', 'ultimate-post-kit'); ?></h3>
+						<p class="upk-code-editor-description"><?php esc_html_e('Enter raw CSS code without &lt;style&gt; tags.', 'ultimate-post-kit'); ?></p>
+						<div class="upk-codemirror-editor-container">
+							<textarea id="upk-custom-css" name="ep_custom_css" class="upk-code-editor" data-mode="css" placeholder=".example {&#10;    background: red;&#10;    border-radius: 5px;&#10;    padding: 15px;&#10;}&#10;&#10;"><?php echo esc_textarea(get_option('ep_custom_css', '')); ?></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="bdt-width-1-2@m">
+					<div class="upk-code-editor-wrapper">
+						<h3 class="upk-code-editor-title"><?php esc_html_e('JS', 'ultimate-post-kit'); ?></h3>
+						<p class="upk-code-editor-description"><?php esc_html_e('Enter raw JavaScript code without &lt;script&gt; tags.', 'ultimate-post-kit'); ?></p>
+						<div class="upk-codemirror-editor-container">
+							<textarea id="upk-custom-js" name="ep_custom_js" class="upk-code-editor" data-mode="javascript" placeholder="alert('Hello, Ultimate Post Kit!');"><?php echo esc_textarea(get_option('ep_custom_js', '')); ?></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Footer Section -->
+			<div class="upk-code-section-header bdt-margin-medium-top">
+				<h2 class="upk-section-title"><?php esc_html_e('Footer Code Injection', 'ultimate-post-kit'); ?></h2>
+				<p class="upk-section-description"><?php esc_html_e('Code added here will be injected before the closing &lt;/body&gt; tag of your website.', 'ultimate-post-kit'); ?></p>
+			</div>
+			<div class="upk-code-row bdt-grid bdt-grid-small bdt-margin-small-top" bdt-grid>
+				<div class="bdt-width-1-2@m">
+					<div class="upk-code-editor-wrapper">
+						<h3 class="upk-code-editor-title"><?php esc_html_e('CSS', 'ultimate-post-kit'); ?></h3>
+						<p class="upk-code-editor-description"><?php esc_html_e('Enter raw CSS code without &lt;style&gt; tags.', 'ultimate-post-kit'); ?></p>
+						<div class="upk-codemirror-editor-container">
+							<textarea id="upk-custom-css-2" name="ep_custom_css_2" class="upk-code-editor" data-mode="css" placeholder=".example {&#10;    background: green;&#10;}&#10;&#10;"><?php echo esc_textarea(get_option('ep_custom_css_2', '')); ?></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="bdt-width-1-2@m">
+					<div class="upk-code-editor-wrapper">
+						<h3 class="upk-code-editor-title"><?php esc_html_e('JS', 'ultimate-post-kit'); ?></h3>
+						<p class="upk-code-editor-description"><?php esc_html_e('Enter raw JavaScript code without &lt;script&gt; tags.', 'ultimate-post-kit'); ?></p>
+						<div class="upk-codemirror-editor-container">
+							<textarea id="upk-custom-js-2" name="ep_custom_js_2" class="upk-code-editor" data-mode="javascript" placeholder="console.log('Hello, Ultimate Post Kit!');"><?php echo esc_textarea(get_option('ep_custom_js_2', '')); ?></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Page Exclusion Section -->
+			<div class="upk-code-section-header bdt-margin-medium-top">
+				<h2 class="upk-section-title"><?php esc_html_e('Page & Post Exclusion Settings', 'ultimate-post-kit'); ?></h2>
+				<p class="upk-section-description"><?php esc_html_e('Select pages and posts where you don\'t want any custom code to be injected. This applies to all sections above.', 'ultimate-post-kit'); ?></p>
+			</div>
+			<div class="upk-page-exclusion-wrapper">
+				<label for="upk-excluded-pages" class="upk-exclusion-label">
+					<?php esc_html_e('Exclude Pages & Posts:', 'ultimate-post-kit'); ?>
+				</label>
+				<select id="upk-excluded-pages" name="ep_excluded_pages[]" multiple class="upk-page-select">
+					<option value=""><?php esc_html_e('-- Select pages/posts to exclude --', 'ultimate-post-kit'); ?></option>
+					<?php
+					$excluded_pages = get_option('ep_excluded_pages', array());
+					if (!is_array($excluded_pages)) {
+						$excluded_pages = array();
+					}
+					
+					// Get all published pages
+					$pages = get_pages(array(
+						'sort_order' => 'ASC',
+						'sort_column' => 'post_title',
+						'post_status' => 'publish'
+					));
+					
+					// Get recent posts (last 50)
+					$posts = get_posts(array(
+						'numberposts' => 50,
+						'post_status' => 'publish',
+						'post_type' => 'post',
+						'orderby' => 'date',
+						'order' => 'DESC'
+					));
+					
+					// Display pages first
+					if (!empty($pages)) {
+						echo '<optgroup label="' . esc_attr__('Pages', 'ultimate-post-kit') . '">';
+						foreach ($pages as $page) {
+							$selected = in_array($page->ID, $excluded_pages) ? 'selected' : '';
+							echo '<option value="' . esc_attr($page->ID) . '" ' . $selected . '>' . esc_html($page->post_title) . '</option>';
+						}
+						echo '</optgroup>';
+					}
+					
+					// Then display posts
+					if (!empty($posts)) {
+						echo '<optgroup label="' . esc_attr__('Recent Posts', 'ultimate-post-kit') . '">';
+						foreach ($posts as $post) {
+							$selected = in_array($post->ID, $excluded_pages) ? 'selected' : '';
+							$post_date = date('M j, Y', strtotime($post->post_date));
+							echo '<option value="' . esc_attr($post->ID) . '" ' . $selected . '>' . esc_html($post->post_title) . ' (' . $post_date . ')</option>';
+						}
+						echo '</optgroup>';
+					}
+					?>
+				</select>
+				<p class="upk-exclusion-help">
+					<?php esc_html_e('Hold Ctrl (or Cmd on Mac) to select multiple items. Selected pages and posts will not load any custom CSS or JavaScript code. The list shows all pages and the 50 most recent posts.', 'ultimate-post-kit'); ?>
+				</p>
+			</div>
+
+			<!-- Success/Error Messages -->
+			<div id="upk-custom-code-message" class="upk-code-message bdt-margin-small-top" style="display: none;">
+				<div class="bdt-alert bdt-alert-success" bdt-alert>
+					<a href class="bdt-alert-close" bdt-close></a>
+					<p><?php esc_html_e('Custom code saved successfully!', 'ultimate-post-kit'); ?></p>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+
+    /**
+	 * Extra Options Start Here
+	 */
+
+	public function ultimate_post_kit_extra_options() {
+		?>
+		<div class="upk-dashboard-panel"
+			bdt-scrollspy="target: > div > div > .bdt-card; cls: bdt-animation-slide-bottom-small; delay: 300">
+			<div class="upk-dashboard-extra-options">
+				<div class="bdt-card bdt-card-body">
+					<h1 class="upk-feature-title"><?php esc_html_e('Extra Options', 'ultimate-post-kit'); ?></h1>
+
+					<div class="upk-extra-options-tabs">
+						<ul class="bdt-tab" bdt-tab="connect: #upk-extra-options-tab-content; animation: bdt-animation-fade">
+							<li class="bdt-active"><a
+									href="#"><?php esc_html_e('Custom CSS & JS', 'ultimate-post-kit'); ?></a></li>
+							<li><a href="#"><?php esc_html_e('White Label', 'ultimate-post-kit'); ?></a></li>
+						</ul>
+
+						<div id="upk-extra-options-tab-content" class="bdt-switcher">
+							<!-- Custom CSS & JS Tab -->
+							<div>
+								<?php $this->render_custom_css_js_section(); ?>
+							</div>
+							
+							<!-- White Label Tab -->
+							<div>
+								<?php //$this->render_white_label_section(); ?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+
+
+    /**
+	 * Rollback Version Content
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function ultimate_post_kit_rollback_version_content() {
+		// Use the already initialized rollback version instance
+		$this->rollback_version->ultimate_post_kit_rollback_version_content();
+	}
+
+
+
+
+
+
+
+
+
 }
 
 new UltimatePostKit_Admin_Settings();

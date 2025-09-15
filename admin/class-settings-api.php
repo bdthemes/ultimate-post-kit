@@ -108,7 +108,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                 if (!isset($wp_settings_fields) || !isset($wp_settings_fields[$page]) || !isset($wp_settings_fields[$page][$section['id']])) {
                     continue;
                 }
-                echo '<div class="upk-options bdt-grid bdt-child-width-1-1 bdt-child-width-1-2@m bdt-child-width-1-3@l' . esc_attr($section_class) . '" role="presentation" bdt-grid="masonry: true" ' . esc_attr($data_settings) . '>';
+                echo '<div class="upk-options" role="presentation" ' . esc_attr($data_settings) . '>';
 
                 echo '<p class="upk-no-result bdt-text-center bdt-width-1-1 bdt-margin-small-top bdt-h4">'.esc_html__('Ops! Your Searched widget not found! Do you have any idea? If yes, ', 'ultimate-post-kit').'<a href="https://feedback.ultimatepostkit.pro/b/3v2gg80n/feature-requests/idea/new" target="_blank">'.esc_html__('Submit here', 'ultimate-post-kit').'</a></p>';
 
@@ -760,7 +760,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
          *
          * Shows all the settings section labels as tab
          */
-        function show_navigation() {
+        function old_show_navigation() {
 
             $html = '<div class="bdt-dashboard-navigation">';
             $html .= '<ul class="bdt-tab" bdt-tab="animation: bdt-animation-slide-bottom-small;connect: .bdt-tab-container;">';
@@ -791,6 +791,62 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             echo $html;
         }
 
+
+        /**
+		 * Show navigations as tab
+		 *
+		 * Shows all the settings section labels as tab
+		 */
+		function show_navigation() {
+			$html = '<div class="bdt-dashboard-navigation">';
+			$html .= '<ul class="bdt-tab bdt-flex-column" bdt-tab="animation: bdt-animation-slide-bottom-small;connect: .bdt-tab-container;">';
+
+			// Dashboard - always first
+			$html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="0"><i class="dashicons dashicons-admin-home"></i>%2$s</a></li>', 'ultimate_post_kit_welcome', esc_html__('Dashboard', 'ultimate-post-kit'));
+
+			$count = 1;
+
+			// Get all sections including manually created ones
+			$all_sections = $this->get_all_sections();
+
+			foreach ($all_sections as $tab) {
+				$icon = isset($tab['icon']) ? $tab['icon'] : 'dashicons dashicons-admin-generic';
+				$html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="%2$s"><i class="%4$s"></i>%3$s</a></li>', $tab['id'], $count++, $tab['title'], $icon);
+			}
+
+			// License section
+			$license_wl_status = UltimatePostKit_Admin_Settings::license_wl_status();
+
+			if (!defined('BDTUPK_LO') || false == $license_wl_status) {
+				$html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="%2$s"><i class="dashicons dashicons-admin-network"></i>%3$s</a></li>', 'ultimate_post_kit_license_settings', $count, esc_html__('License', 'ultimate-post-kit'));
+			}
+
+			$html .= '</ul>';
+			$html .= '</div>';
+
+			echo wp_kses($html, array(
+				'div' => array(
+					'class' => true,
+				),
+				'ul' => array(
+					'class' => true,
+					'bdt-tab' => true,
+				),
+				'li' => array(
+					'class' => true,
+				),
+				'a' => array(
+					'href' => true,
+					'class' => true,
+					'id' => true,
+					'data-tab-index' => true,
+				),
+				'i' => array(
+					'class' => true,
+				)
+			));
+		}
+
         function ultimate_post_kit_settings_save() {
 
             if (!check_ajax_referer('ultimate-post-kit-settings-save-nonce')) {
@@ -811,6 +867,59 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 
             wp_send_json_success();
         }
+
+        /**
+		 * Get all sections including manually created content pages
+		 */
+		private function get_all_sections() {
+			// Start with the settings sections that have forms
+			$all_sections = $this->settings_sections;
+			
+			// Add manually created content sections that don't have settings forms
+			$content_only_sections = [
+				[
+					'id' => 'ultimate_post_kit_extra_options',
+					'title' => esc_html__('Extra Options', 'ultimate-post-kit'),
+					'icon' => 'dashicons dashicons-smiley',
+				],
+				[
+					'id' => 'ultimate_post_kit_analytics_system_req',
+					'title' => esc_html__('System Status', 'ultimate-post-kit'),
+					'icon' => 'dashicons dashicons-chart-bar',
+				],
+				[
+					'id' => 'ultimate_post_kit_other_plugins',
+					'title' => esc_html__('Other Plugins', 'ultimate-post-kit'),
+					'icon' => 'dashicons dashicons-admin-plugins',
+				],
+				[
+					'id' => 'ultimate_post_kit_affiliate',
+					'title' => esc_html__('Get Up to 60%', 'ultimate-post-kit'),
+					'icon' => 'dashicons dashicons-money-alt',
+				],
+				[
+					'id' => 'ultimate_post_kit_rollback_version',
+					'title' => esc_html__('Rollback Version', 'ultimate-post-kit'),
+					'icon' => 'dashicons dashicons-update',
+				],
+			];
+			
+			// Check if each content section exists in settings sections, if not add it
+			foreach ($content_only_sections as $content_section) {
+				$exists = false;
+				foreach ($all_sections as $existing_section) {
+					if ($existing_section['id'] === $content_section['id']) {
+						$exists = true;
+						break;
+					}
+				}
+				if (!$exists) {
+					$all_sections[] = $content_section;
+				}
+			}
+			
+			return $all_sections;
+		}
 
         /**
          * Show the section settings forms
