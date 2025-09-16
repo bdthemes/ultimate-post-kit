@@ -319,16 +319,113 @@ class UltimatePostKit_Admin_Settings {
         }
     }
 
-    public function admin_menu() {
-        add_menu_page(
-            BDTUPK_TITLE . ' ' . esc_html__('Dashboard', 'ultimate-post-kit'),
-            BDTUPK_TITLE,
-            'manage_options',
-            self::PAGE_ID,
-            [$this, 'plugin_page'],
-            $this->ultimate_post_kit_icon(),
-            58
-        );
+    /**
+	 * Add Plugin Menus
+	 *
+	 * @access public
+	 *
+	 */
+
+	public function admin_menu() {
+		add_menu_page(
+			BDTUPK_TITLE . ' ' . esc_html__('Dashboard', 'ultimate-post-kit'),
+			BDTUPK_TITLE,
+			'manage_options',
+			self::PAGE_ID,
+			[$this, 'plugin_page'],
+			$this->ultimate_post_kit_icon(),
+			58
+		);
+
+		add_submenu_page(
+			self::PAGE_ID,
+			BDTUPK_TITLE,
+			esc_html__('Core Widgets', 'ultimate-post-kit'),
+			'manage_options',
+			self::PAGE_ID . '#ultimate_post_kit_active_modules',
+			[$this, 'plugin_page']
+		);
+
+		add_submenu_page(
+			self::PAGE_ID,
+			BDTUPK_TITLE,
+			esc_html__('3rd Party Widgets', 'ultimate-post-kit'),
+			'manage_options',
+			self::PAGE_ID . '#ultimate_post_kit_third_party_widget',
+			[$this, 'plugin_page']
+		);
+
+		add_submenu_page(
+			self::PAGE_ID,
+			BDTUPK_TITLE,
+			esc_html__('Extensions', 'ultimate-post-kit'),
+			'manage_options',
+			self::PAGE_ID . '#ultimate_post_kit_elementor_extend',
+			[$this, 'plugin_page']
+		);
+
+		add_submenu_page(
+			self::PAGE_ID,
+			BDTUPK_TITLE,
+			esc_html__('Special Features', 'ultimate-post-kit'),
+			'manage_options',
+			self::PAGE_ID . '#ultimate_post_kit_other_settings',
+			[$this, 'plugin_page']
+		);
+
+		add_submenu_page(
+			self::PAGE_ID,
+			BDTUPK_TITLE,
+			esc_html__('API Settings', 'ultimate-post-kit'),
+			'manage_options',
+			self::PAGE_ID . '#ultimate_post_kit_api_settings',
+			[$this, 'plugin_page']
+		);
+		
+		add_submenu_page(
+			self::PAGE_ID,
+			BDTUPK_TITLE,
+			esc_html__('Extra Options', 'ultimate-post-kit'),
+			'manage_options',
+			self::PAGE_ID . '#ultimate_post_kit_extra_options',
+			[$this, 'plugin_page']
+		);
+		
+		add_submenu_page(
+			self::PAGE_ID,
+			BDTUPK_TITLE,
+			esc_html__('System Status', 'ultimate-post-kit'),
+			'manage_options',
+			self::PAGE_ID . '#ultimate_post_kit_analytics_system_req',
+			[$this, 'plugin_page']
+		);
+		
+		add_submenu_page(
+			self::PAGE_ID,
+			BDTUPK_TITLE,
+			esc_html__('Other Plugins', 'ultimate-post-kit'),
+			'manage_options',
+			self::PAGE_ID . '#ultimate_post_kit_other_plugins',
+			[$this, 'plugin_page']
+		);
+		
+		add_submenu_page(
+			self::PAGE_ID,
+			BDTUPK_TITLE,
+			esc_html__('Get Up to 60%', 'ultimate-post-kit'),
+			'manage_options',
+			self::PAGE_ID . '#ultimate_post_kit_affiliate',
+			[$this, 'plugin_page']
+		);
+		
+		add_submenu_page(
+			self::PAGE_ID,
+			BDTUPK_TITLE,
+			esc_html__('Rollback Version', 'ultimate-post-kit'),
+			'manage_options',
+			self::PAGE_ID . '#ultimate_post_kit_rollback_version',
+			[$this, 'plugin_page']
+		);
 
         if (true == _is_upk_pro_activated()) {
             add_submenu_page(
@@ -340,55 +437,7 @@ class UltimatePostKit_Admin_Settings {
             );
         }
 
-        add_submenu_page(
-            self::PAGE_ID,
-            BDTUPK_TITLE,
-            esc_html__('Core Widgets', 'ultimate-post-kit'),
-            'manage_options',
-            self::PAGE_ID . '#ultimate_post_kit_active_modules',
-            [$this, 'display_page']
-        );
-
-        add_submenu_page(
-            self::PAGE_ID,
-            BDTUPK_TITLE,
-            esc_html__('Extensions', 'ultimate-post-kit'),
-            'manage_options',
-            self::PAGE_ID . '#ultimate_post_kit_elementor_extend',
-            [$this, 'display_page']
-        );
-
-        add_submenu_page(
-            self::PAGE_ID,
-            BDTUPK_TITLE,
-            esc_html__('API Settings', 'ultimate-post-kit'),
-            'manage_options',
-            self::PAGE_ID . '#ultimate_post_kit_api_settings',
-            [$this, 'display_page']
-        );
-
-        if (!defined('BDTUPK_LO')) {
-            add_submenu_page(
-                self::PAGE_ID,
-                BDTUPK_TITLE,
-                esc_html__('Other Settings', 'ultimate-post-kit'),
-                'manage_options',
-                self::PAGE_ID . '#ultimate_post_kit_other_settings',
-                [$this, 'display_page']
-            );
-        }
-
-        if (true !== _is_upk_pro_activated()) {
-            add_submenu_page(
-                self::PAGE_ID,
-                BDTUPK_TITLE,
-                esc_html__('Upgrade For 30% Off!', 'ultimate-post-kit'),
-                'manage_options',
-                self::PAGE_ID . '_get_pro',
-                [$this, 'display_page']
-            );
-        }
-    }
+	}
 
     /**
      * Get SVG Icons of Ultimate Post Kit
@@ -402,34 +451,38 @@ class UltimatePostKit_Admin_Settings {
     }
 
     /**
-     * Get SVG Icons of Ultimate Post Kit
-     *
-     * @access public
-     * @return array
-     */
+	 * Get SVG Icons of Element Pack
+	 *
+	 * @access public
+	 * @return array
+	 */
 
-    public function get_settings_sections() {
-        $sections = [
-            [
-                'id'    => 'ultimate_post_kit_active_modules',
-                'title' => esc_html__('Core Widgets', 'ultimate-post-kit')
-            ],
-            [
-                'id'    => 'ultimate_post_kit_elementor_extend',
-                'title' => esc_html__('Extensions', 'ultimate-post-kit')
-            ],
-            [
-                'id'    => 'ultimate_post_kit_api_settings',
-                'title' => esc_html__('API Settings', 'ultimate-post-kit'),
-            ],
-            [
-                'id'    => 'ultimate_post_kit_other_settings',
-                'title' => esc_html__('Other Settings', 'ultimate-post-kit'),
-            ],
-        ];
+	public function get_settings_sections() {
+		$sections = [
+			[
+				'id' => 'ultimate_post_kit_active_modules',
+				'title' => esc_html__('Core Widgets', 'ultimate-post-kit'),
+				'icon' => 'dashicons dashicons-screenoptions',
+			],
+			[
+				'id' => 'ultimate_post_kit_elementor_extend',
+				'title' => esc_html__('Extensions', 'ultimate-post-kit'),
+				'icon' => 'dashicons dashicons-screenoptions',
+			],
+			[
+				'id' => 'ultimate_post_kit_other_settings',
+				'title' => esc_html__('Special Features', 'ultimate-post-kit'),
+				'icon' => 'dashicons dashicons-screenoptions',
+			],
+			[
+				'id' => 'ultimate_post_kit_api_settings',
+				'title' => esc_html__('API Settings', 'ultimate-post-kit'),
+				'icon' => 'dashicons dashicons-admin-settings',
+			],
+		];
 
-        return $sections;
-    }
+		return $sections;
+	}
 
     /**
      * Merge Admin Settings
@@ -709,7 +762,7 @@ class UltimatePostKit_Admin_Settings {
 
 				<div class="upk-dashboard-item upk-dashboard-template-quick-access bdt-card bdt-card-body">
 					<div class="upk-dashboard-template-section">
-						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/template.jpg'; ?>"
+						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/template.jpg'; ?>"
 							alt="Ultimate Post Kit Dashboard Template">
 						<h1 class="upk-feature-title ">
 							<?php esc_html_e('Faster Web Creation with Sleek and Ready-to-Use Templates!', 'ultimate-post-kit'); ?>
@@ -722,7 +775,7 @@ class UltimatePostKit_Admin_Settings {
 					</div>
 
 					<div class="upk-dashboard-quick-access bdt-margin-medium-top">
-						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/support.svg'; ?>"
+						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/support.svg'; ?>"
 							alt="Ultimate Post Kit Dashboard Template">
 						<h1 class="upk-feature-title">
 							<?php esc_html_e('Getting Started with Quick Access', 'ultimate-post-kit'); ?>
@@ -1345,7 +1398,7 @@ class UltimatePostKit_Admin_Settings {
 						</div>
 
 						<div class="upk-logo">
-							<img src="<?php echo BDTEP_URL . 'assets/images/logo-with-text.svg'; ?>" alt="Ultimate Post Kit Logo">
+							<img src="<?php echo BDTUPK_URL . 'assets/images/logo-with-text.svg'; ?>" alt="Ultimate Post Kit Logo">
 						</div>
 					</div>
 
@@ -2127,7 +2180,7 @@ class UltimatePostKit_Admin_Settings {
 				<!-- Prime Slider -->
 				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
 					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
-						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/prime-slider.svg'; ?>" alt="Prime Slider">
+						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/prime-slider.svg'; ?>" alt="Prime Slider">
 						<div class="bdt-others-plugin-content-text">
 							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
 								<h1 class="upk-feature-title "><?php esc_html_e('Prime Slider', 'ultimate-post-kit'); ?></h1>
@@ -2165,7 +2218,7 @@ class UltimatePostKit_Admin_Settings {
 				<!-- Ultimate Post Kit -->
 				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
 					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
-						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/ultimate-post-kit.svg'; ?>" alt="zoloblocks">
+						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/ultimate-post-kit.svg'; ?>" alt="zoloblocks">
 						<div class="bdt-others-plugin-content-text">
 							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
 								<h1 class="upk-feature-title "><?php esc_html_e('Ultimate Post Kit', 'ultimate-post-kit'); ?></h1>
@@ -2201,7 +2254,7 @@ class UltimatePostKit_Admin_Settings {
 				<!-- Ultimate Store Kit -->
 				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
 					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
-						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/ultimate-store-kit.svg'; ?>" alt="zoloblocks">
+						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/ultimate-store-kit.svg'; ?>" alt="zoloblocks">
 						<div class="bdt-others-plugin-content-text">
 							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
 								<h1 class="upk-feature-title "><?php esc_html_e('Ultimate Store Kit', 'ultimate-post-kit'); ?></h1>
@@ -2236,7 +2289,7 @@ class UltimatePostKit_Admin_Settings {
 				<!-- Pixel Gallery -->
 				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
 					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
-						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/pixel-gallery.svg'; ?>" alt="Pixel Gallery">
+						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/pixel-gallery.svg'; ?>" alt="Pixel Gallery">
 						<div class="bdt-others-plugin-content-text">
 							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
 								<h1 class="upk-feature-title "><?php esc_html_e('Pixel Gallery', 'ultimate-post-kit'); ?></h1>
@@ -2271,7 +2324,7 @@ class UltimatePostKit_Admin_Settings {
 				<!-- Live Copy Paste -->
 				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
 					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
-						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/live-copy-paste.svg'; ?>" alt="live copy paste">
+						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/live-copy-paste.svg'; ?>" alt="live copy paste">
 						<div class="bdt-others-plugin-content-text">
 							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
 								<h1 class="upk-feature-title "><?php esc_html_e('Live Copy Paste', 'ultimate-post-kit'); ?></h1>
@@ -2307,7 +2360,7 @@ class UltimatePostKit_Admin_Settings {
 				<!-- ZoloBlocks -->
 				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
 					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
-						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/zoloblocks.svg'; ?>" alt="zoloblocks">
+						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/zoloblocks.svg'; ?>" alt="zoloblocks">
 						<div class="bdt-others-plugin-content-text">
 							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
 								<h1 class="upk-feature-title "><?php esc_html_e('ZoloBlocks', 'ultimate-post-kit'); ?></h1>
@@ -2342,7 +2395,7 @@ class UltimatePostKit_Admin_Settings {
 				<!-- Spin Wheel -->
 				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
 					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
-						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/spin-wheel.svg'; ?>" alt="spin wheel">
+						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/spin-wheel.svg'; ?>" alt="spin wheel">
 						<div class="bdt-others-plugin-content-text">
 							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
 								<h1 class="upk-feature-title "><?php esc_html_e('Spin Wheel', 'ultimate-post-kit'); ?></h1>
@@ -2365,7 +2418,7 @@ class UltimatePostKit_Admin_Settings {
 				<!-- Instant Image Generator -->
 				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
 					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
-						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/instant-image-generator.svg'; ?>" alt="instant image generator">
+						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/instant-image-generator.svg'; ?>" alt="instant image generator">
 						<div class="bdt-others-plugin-content-text">
 							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
 								<h1 class="upk-feature-title "><?php esc_html_e('Instant Image Generator', 'ultimate-post-kit'); ?></h1>
@@ -2388,7 +2441,7 @@ class UltimatePostKit_Admin_Settings {
 				<!-- Dark Reader -->
 				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
 					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
-						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/dark-reader.svg'; ?>" alt="dark reader">
+						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/dark-reader.svg'; ?>" alt="dark reader">
 						<div class="bdt-others-plugin-content-text">
 							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
 								<h1 class="upk-feature-title "><?php esc_html_e('Dark Reader', 'ultimate-post-kit'); ?></h1>
@@ -2411,7 +2464,7 @@ class UltimatePostKit_Admin_Settings {
 				<!-- AR Viewer -->
 				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
 					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle ">
-						<img src="<?php echo BDTEP_ADMIN_URL . 'assets/images/ar-viewer.svg'; ?>" alt="ar viewer">
+						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/ar-viewer.svg'; ?>" alt="ar viewer">
 						<div class="bdt-others-plugin-content-text">
 							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
 								<h1 class="upk-feature-title "><?php esc_html_e('AR Viewer', 'ultimate-post-kit'); ?></h1>

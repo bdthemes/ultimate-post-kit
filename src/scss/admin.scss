@@ -16,8 +16,8 @@ $upk-dashboard-gap-size: 20px;
 $upk-dashboard-nav-width: 240px;
 $upk-dashboard-border-color: rgba(123, 123, 123, 0.09);
 
-$shape-primary-color: #49ddb4;
-$shape-secondary-color: #3fb8e1;
+$shape-primary-color: #58D34D;
+$shape-secondary-color: #58D34D;
 
 $global-link-color: #1e87f0;
 
@@ -56,11 +56,11 @@ $global-link-color: #1e87f0;
 		.ultimate-post-kit-settings-save-btn {
 			padding: 3px 30px;
 			color: #fff;
-			background: linear-gradient(to right, #49e0af, #3fb8e1);
+			background: linear-gradient(to right, #00A85C, #58D34D);
 			border: 0;
 
 			&:hover {
-				background: linear-gradient(to right, #3fb8e1, #49e0af);
+				background: linear-gradient(to right, #58D34D, #00A85C);
 			}
 		}
 
@@ -218,12 +218,12 @@ $global-link-color: #1e87f0;
 				font-size: clamp(12px, .8vw, 14px);
 				font-weight: 600;
 				padding: clamp(10px, 1vw, 11px) clamp(10px, 1vw, 20px);
-				color: #49ddb4;
-				border: 2px solid #49ddb4;
+				color: #58D34D;
+				border: 2px solid #58D34D;
 
 				&:hover {
-					border-color: #3fb8e1;
-					color: #3fb8e1;
+					border-color: #00A85C;
+					color: #00A85C;
 				}
 
 				i {
@@ -480,7 +480,7 @@ $global-link-color: #1e87f0;
 
 			.upk-option-item {
 				.bdt-width-expand {
-					&>[class^="bdt-wi-"] {
+					&>[class^="upk-icon-"] {
 						font-size: 48px;
 						margin-right: 20px;
 					}
@@ -488,7 +488,7 @@ $global-link-color: #1e87f0;
 
 				&.upk-widget-free {
 					.bdt-width-expand {
-						&>[class^="bdt-wi-"] {
+						&>[class^="upk-icon-"] {
 							color: $icon-color;
 						}
 					}
@@ -496,7 +496,7 @@ $global-link-color: #1e87f0;
 
 				&.upk-widget-pro {
 					.bdt-width-expand {
-						&>[class^="bdt-wi-"] {
+						&>[class^="upk-icon-"] {
 							color: $icon-color;
 						}
 					}
@@ -842,7 +842,7 @@ $global-link-color: #1e87f0;
 								color: #7c99b7;
 							}
 
-							[class^="bdt-wi-"] {
+							[class^="upk-icon-"] {
 								color: #052442;
 							}
 						}
@@ -1332,22 +1332,22 @@ $global-link-color: #1e87f0;
 
 				&.bdt-welcome-button {
 					color: #fff;
-					background: linear-gradient(to right, #49e0af, #3fb8e1);
+					background: linear-gradient(to right, #00A85C, #58D34D);
 					border: 0;
 					padding: 13px 20px;
 
 					&:hover {
-						background: linear-gradient(to right, #3fb8e1, #49e0af);
+						background: linear-gradient(to right, #58D34D, #00A85C);
 					}
 				}
 
 				&.bdt-dashboard-sec-btn {
-					color: #49ddb4;
-					border: 2px solid #49ddb4;
+					color: #58D34D;
+					border: 2px solid #58D34D;
 
 					&:hover {
-						border-color: #3fb8e1;
-						color: #3fb8e1;
+						border-color: #00A85C;
+						color: #00A85C;
 					}
 				}
 
@@ -1519,7 +1519,7 @@ $global-link-color: #1e87f0;
 				border: 1px solid #f3f3f3;
 				margin-bottom: 18px;
 				background: #f5fffc;
-				color: #49ddb4;
+				color: #58D34D;
 			}
 
 			i {
@@ -1535,7 +1535,7 @@ $global-link-color: #1e87f0;
 				top: 15px;
 				right: 15px;
 				font-size: 20px;
-				color: #49ddb4;
+				color: #58D34D;
 				opacity: 0;
 				transition: all 0.3s ease;
 			}
@@ -1543,7 +1543,7 @@ $global-link-color: #1e87f0;
 			&:hover {
 				transform: translateY(-3px);
 				box-shadow: 0 10px 20px rgba(73, 221, 179, 0.065);
-				border-color: #49ddb4;
+				border-color: #58D34D;
 
 				&:after {
 					opacity: 1;
@@ -1581,7 +1581,7 @@ $global-link-color: #1e87f0;
 
 				i {
 					font-size: 20px;
-					color: #49ddb4;
+					color: #58D34D;
 					margin: 0;
 					padding: 0;
 					border: 0;
@@ -1999,7 +1999,7 @@ $global-link-color: #1e87f0;
 		letter-spacing: 1px;
 		overflow: hidden;
 		color: #fff;
-		background: linear-gradient(to right, #49e0af, #3fb8e1);
+		background: linear-gradient(to right, #00A85C, #58D34D);
 		margin: 16px 30px;
 		border-radius: 6px;
 		justify-content: center;
@@ -2062,7 +2062,7 @@ $global-link-color: #1e87f0;
 			border-top: 1px solid #f0f0f0;
 
 			.bdt-button {
-				color: #49ddb4;
+				color: #58D34D;
 				padding: 16px 24px;
 				font-size: clamp(12px, 1vw, 14px);
 				font-weight: 600;
@@ -2074,7 +2074,7 @@ $global-link-color: #1e87f0;
 				align-items: center;
 				gap: 8px;
 				line-height: normal;
-				border: 2px solid #49ddb4;
+				border: 2px solid #58D34D;
 
 				.dashicons {
 					font-size: 16px;
@@ -2489,7 +2489,7 @@ $global-link-color: #1e87f0;
 						left: 0;
 						width: 0;
 						height: 2px;
-						background: #49ddb4;
+						background: #58D34D;
 						transition: width 0.3s ease;
 					}
 
@@ -2500,7 +2500,7 @@ $global-link-color: #1e87f0;
 
 				&.bdt-active {
 					a {
-						color: #49ddb4;
+						color: #58D34D;
 
 						&:after {
 							width: 100%;
@@ -2853,7 +2853,7 @@ $global-link-color: #1e87f0;
 	.ultimate-post-kit-custom-code-reset-btn {
 		padding: 3px 30px;
 		color: #fff;
-		background: linear-gradient(to right, #49e0af, #3fb8e1);
+		background: linear-gradient(to right, #00A85C, #58D34D);
 		border: 0;
 		border-radius: 6px;
 	}
@@ -3303,7 +3303,7 @@ $global-link-color: #1e87f0;
 			.upk-option-item-inner {
 				padding: 0;
 
-				[class^="bdt-wi-"] {
+				[class^="upk-icon-"] {
 					display: none;
 				}
 			}
