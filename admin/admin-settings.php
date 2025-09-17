@@ -48,11 +48,91 @@ class UltimatePostKit_Admin_Settings {
             add_action('admin_menu', [$this, 'admin_menu'], 201);
         }
 
+		// Add custom CSS/JS functionality
+		$this->init_custom_code_functionality();
+
+		// Add AJAX handler for plugin installation
+		add_action('wp_ajax_upk_install_plugin', [$this, 'install_plugin_ajax']);
 
         // Initialize rollback version functionality
 		$this->rollback_version = new UltimatePostKit\Admin\UltimatePostKit_Rollback_Version();
 
     }
+
+
+	/**
+	 * Initialize Custom Code Functionality
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function init_custom_code_functionality() {
+		// AJAX handler for saving custom code (admin only)
+		add_action( 'wp_ajax_upk_save_custom_code', [ $this, 'save_custom_code_ajax' ] );
+		
+		
+		// Admin scripts (admin only)
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_custom_code_scripts' ] );
+		
+		// Frontend injection is now handled by global functions in the main plugin file
+		self::init_frontend_injection();
+	}
+
+	/**
+	 * Initialize frontend injection hooks (works on both admin and frontend)
+	 * 
+	 * @access public static
+	 * @return void
+	 */
+	public static function init_frontend_injection() {
+		// Frontend hooks are now registered in the main plugin file
+		// This method is kept for backwards compatibility but does nothing
+	}
+
+	/**
+	 * Enqueue scripts for custom code editor
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function enqueue_custom_code_scripts( $hook ) {
+		if ( $hook !== 'toplevel_page_ultimate_post_kit_options' ) {
+			return;
+		}
+
+		// Enqueue WordPress built-in CodeMirror 
+		wp_enqueue_code_editor( array( 'type' => 'text/css' ) );
+		wp_enqueue_code_editor( array( 'type' => 'application/javascript' ) );
+		
+		// Enqueue WordPress media library scripts
+		wp_enqueue_media();
+		
+		// Enqueue the admin script if it exists
+		$admin_script_path = BDTUPK_ASSETS_PATH . 'js/upk-admin.js';
+		if ( file_exists( $admin_script_path ) ) {
+			wp_enqueue_script( 
+				'upk-admin-script', 
+				BDTUPK_ASSETS_URL . 'js/upk-admin.js', 
+				[ 'jquery', 'media-upload', 'media-views', 'code-editor' ], 
+				BDTUPK_VER, 
+				true 
+			);
+			
+			// Localize script with AJAX data
+			wp_localize_script( 'upk-admin-script', 'upk_admin_ajax', [
+				'ajax_url' => admin_url( 'admin-ajax.php' ),
+				'nonce'    => wp_create_nonce( 'upk_custom_code_nonce' ),
+				// 'white_label_nonce' => wp_create_nonce( 'upk_white_label_nonce' )
+			] );
+		} else {
+			// Fallback: localize to jquery if the admin script doesn't exist
+			wp_localize_script( 'jquery', 'upk_admin_ajax', [
+				'ajax_url' => admin_url( 'admin-ajax.php' ),
+				'nonce'    => wp_create_nonce( 'upk_custom_code_nonce' ),
+				// 'white_label_nonce' => wp_create_nonce( 'upk_white_label_nonce' )
+			] );
+		}
+	}
 
     /**
      * Get used widgets.
@@ -595,7 +675,7 @@ class UltimatePostKit_Admin_Settings {
                 </div>
                 <div class="bdt-width-1-1@m bdt-width-1-2@l">
                     <div class="upk-elementor-addons bdt-card bdt-card-body">
-                        <a target="_blank" rel="" href="https://www.elementpack.pro/elements-demo/"></a>
+                        <a target="_blank" rel="" href="https://postkit.pro/demo/"></a>
                     </div>
                 </div>
             </div>
@@ -726,9 +806,9 @@ class UltimatePostKit_Admin_Settings {
 						<?php esc_html_e('Welcome to Ultimate Post Kit!', 'ultimate-post-kit'); ?>
 					</h1>
 					<p class="upk-dashboard-welcome-desc">
-						<?php esc_html_e('Empower your web creation with powerful widgets, advanced extensions, and 2700+ ready templates and more.', 'ultimate-post-kit'); ?>
+						<?php esc_html_e('Empower your web creation with powerful widgets, advanced extensions, ready templates and more.', 'ultimate-post-kit'); ?>
 					</p>
-					<a href="<?php echo admin_url('?ep_setup_wizard=show'); ?>"
+					<a href="<?php echo admin_url('?upk_setup_wizard=show'); ?>"
 						class="bdt-button bdt-welcome-button bdt-margin-small-top"
 						target="_blank"><?php esc_html_e('Setup Ultimate Post Kit', 'ultimate-post-kit'); ?></a>
 
@@ -743,17 +823,17 @@ class UltimatePostKit_Admin_Settings {
 						</p>
 						<ul>
 							<li><?php esc_html_e('Dynamic Content and Integrations', 'ultimate-post-kit'); ?></li>
-							<li><?php esc_html_e('Enhanced Template Library', 'ultimate-post-kit'); ?></li>
-							<li><?php esc_html_e('Theme Builder', 'ultimate-post-kit'); ?></li>
-							<li><?php esc_html_e('Mega Menu Builder', 'ultimate-post-kit'); ?></li>
+							<li><?php esc_html_e('Live Copy Paste', 'ultimate-post-kit'); ?></li>
+							<li><?php esc_html_e('Template Builder', 'ultimate-post-kit'); ?></li>
+							<li><?php esc_html_e('Custom Meta Fields - Category Image, Audio Link, Video Link', 'ultimate-post-kit'); ?></li>
 							<li><?php esc_html_e('Powerful Widgets and Advanced Extensions', 'ultimate-post-kit'); ?>
 							</li>
 						</ul>
 						<div class="upk-dashboard-compare-section-buttons">
-							<a href="https://www.elementpack.pro/pricing/#a2a0062"
+							<a href="https://postkit.pro/pricing/"
 								class="bdt-button bdt-welcome-button bdt-margin-small-right"
 								target="_blank"><?php esc_html_e('Compare Free Vs Pro', 'ultimate-post-kit'); ?></a>
-							<a href="https://store.bdthemes.com/element-pack?utm_source=ElementPackLite&utm_medium=PluginPage&utm_campaign=ElementPackLite&coupon=FREETOPRO"
+							<a href="https://store.bdthemes.com/ultimate-post-kit?utm_source=UltimatePostKit&utm_medium=PluginPage&utm_campaign=UltimatePostKit&coupon=FREETOPRO"
 								class="bdt-button bdt-dashboard-sec-btn"
 								target="_blank"><?php esc_html_e('Get Premium at 30% OFF', 'ultimate-post-kit'); ?></a>
 						</div>
@@ -769,7 +849,7 @@ class UltimatePostKit_Admin_Settings {
 						</h1>
 						<p><?php esc_html_e('Build your wordpress websites of any niche—not from scratch and in a single click.', 'ultimate-post-kit'); ?>
 						</p>
-						<a href="https://www.elementpack.pro/ready-templates/"
+						<a href="https://postkit.pro/"
 							class="bdt-button bdt-dashboard-sec-btn bdt-margin-small-top"
 							target="_blank"><?php esc_html_e('View Templates', 'ultimate-post-kit'); ?></a>
 					</div>
@@ -781,7 +861,7 @@ class UltimatePostKit_Admin_Settings {
 							<?php esc_html_e('Getting Started with Quick Access', 'ultimate-post-kit'); ?>
 						</h1>
 						<ul>
-							<li><a href="https://www.elementpack.pro/contact/"
+							<li><a href="https://postkit.pro/contact/"
 									target="_blank"><?php esc_html_e('Contact Us', 'ultimate-post-kit'); ?></a></li>
 							<li><a href="https://bdthemes.com/support/"
 									target="_blank"><?php esc_html_e('Help Centre', 'ultimate-post-kit'); ?></a></li>
@@ -808,12 +888,12 @@ class UltimatePostKit_Admin_Settings {
 					</h1>
 					<p><?php esc_html_e('We are always here to help you. If you have any feature request, please let us know.', 'ultimate-post-kit'); ?>
 					</p>
-					<a href="https://feedback.elementpack.pro/b/3v2gg80n/feature-requests/idea/new"
+					<a href="https://feedback.bdthemes.com/b/6vr2250l/feature-requests/idea/new"
 						class="bdt-button bdt-dashboard-sec-btn bdt-margin-small-top"
 						target="_blank"><?php esc_html_e('Request Your Features', 'ultimate-post-kit'); ?></a>
 				</div>
 
-				<a href="https://www.youtube.com/watch?v=-e-kr4Vkh4E&list=PLP0S85GEw7DOJf_cbgUIL20qqwqb5x8KA" target="_blank"
+				<a href="https://www.youtube.com/watch?v=zNeoRz94cPw&list=PLP0S85GEw7DNBnZCb4RtJzlf38GCJ7z1b" target="_blank"
 					class="upk-dashboard-item upk-dashboard-footer-item upk-dashboard-video-tutorial bdt-card bdt-card-body bdt-card-small">
 					<span class="upk-dashboard-footer-item-icon">
 						<i class="dashicons dashicons-video-alt3"></i>
@@ -822,7 +902,7 @@ class UltimatePostKit_Admin_Settings {
 					<p><?php esc_html_e('An invaluable resource for mastering WordPress, Elementor, and Web Creation', 'ultimate-post-kit'); ?>
 					</p>
 				</a>
-				<a href="https://bdthemes.com/all-knowledge-base-of-element-pack/" target="_blank"
+				<a href="https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/" target="_blank"
 					class="upk-dashboard-item upk-dashboard-footer-item upk-dashboard-documentation bdt-card bdt-card-body bdt-card-small">
 					<span class="upk-dashboard-footer-item-icon">
 						<i class="dashicons dashicons-admin-tools"></i>
@@ -840,7 +920,7 @@ class UltimatePostKit_Admin_Settings {
 					<p><?php esc_html_e('A platform for the opportunity to network, collaboration and innovation', 'ultimate-post-kit'); ?>
 					</p>
 				</a>
-				<a href="https://wordpress.org/plugins/ultimate-post-kit-lite/#reviews" target="_blank"
+				<a href="https://wordpress.org/plugins/ultimate-post-kit/#reviews" target="_blank"
 					class="upk-dashboard-item upk-dashboard-footer-item upk-dashboard-review bdt-card bdt-card-body bdt-card-small">
 					<span class="upk-dashboard-footer-item-icon">
 						<i class="dashicons dashicons-star-filled"></i>
@@ -1424,13 +1504,13 @@ class UltimatePostKit_Admin_Settings {
 
 						<!--  White Label Save Button Section -->
 						<?php //if (self::is_white_label_license()): ?>
-							<div class="upk-white-label-save-section" style="display: none;">
+							<!-- <div class="upk-white-label-save-section" style="display: none;">
 								<button type="button" 
 										id="upk-save-white-label" 
 										class="bdt-button bdt-button-primary ultimate-post-kit-white-label-save-btn">
-										<?php esc_html_e('Save White Label Settings', 'ultimate-post-kit'); ?>
+										<?php //esc_html_e('Save White Label Settings', 'ultimate-post-kit'); ?>
 								</button>
-							</div>
+							</div> -->
 						<?php //endif; ?>
 
 						<div class="upk-dashboard-new-page">
@@ -1660,33 +1740,70 @@ class UltimatePostKit_Admin_Settings {
                     jQuery('a.upk-active-all-widget').removeClass('bdt-active');
                 });
 
-                jQuery('form.settings-save').on('submit', function(event) {
-                    event.preventDefault();
+                // Activate/Deactivate all widgets functionality
+				$('#ultimate_post_kit_active_modules_page a.upk-active-all-widget').on('click', function (e) {
+					e.preventDefault();
 
-                    bdtUIkit.notification({
-                        message: '<div bdt-spinner></div> <?php esc_html_e('Please wait, Saving settings...', 'ultimate-post-kit') ?>',
-                        timeout: false
-                    });
+					$('#ultimate_post_kit_active_modules_page .upk-option-item:not(.upk-pro-inactive) .checkbox:visible').each(function () {
+						$(this).attr('checked', 'checked').prop("checked", true);
+					});
 
-                    jQuery(this).ajaxSubmit({
-                        success: function() {
-                            bdtUIkit.notification.closeAll();
-                            bdtUIkit.notification({
-                                message: '<span class="dashicons dashicons-yes"></span> <?php esc_html_e('Settings Saved Successfully.', 'ultimate-post-kit') ?>',
-                                status: 'primary'
-                            });
-                        },
-                        error: function(data) {
-                            bdtUIkit.notification.closeAll();
-                            bdtUIkit.notification({
-                                message: '<span bdt-icon=\'icon: warning\'></span> <?php esc_html_e('Unknown error, make sure access is correct!', 'ultimate-post-kit') ?>',
-                                status: 'warning'
-                            });
-                        }
-                    });
+					$(this).addClass('bdt-active');
+					$('#ultimate_post_kit_active_modules_page a.upk-deactive-all-widget').removeClass('bdt-active');
+					
+					// Ensure save button remains visible
+					setTimeout(function() {
+						$('.upk-dashboard-save-btn').show();
+					}, 100);
+				});
 
-                    return false;
-                });
+				$('#ultimate_post_kit_active_modules_page a.upk-deactive-all-widget').on('click', function (e) {
+					e.preventDefault();
+
+					$('#ultimate_post_kit_active_modules_page .checkbox:visible').each(function () {
+						$(this).removeAttr('checked').prop("checked", false);
+					});
+
+					$(this).addClass('bdt-active');
+					$('#ultimate_post_kit_active_modules_page a.upk-active-all-widget').removeClass('bdt-active');
+					
+					// Ensure save button remains visible
+					setTimeout(function() {
+						$('.upk-dashboard-save-btn').show();
+					}, 100);
+				});
+
+				$('#ultimate_post_kit_elementor_extend_page a.upk-active-all-widget').on('click', function (e) {
+					e.preventDefault();
+
+					$('#ultimate_post_kit_elementor_extend_page .upk-option-item:not(.upk-pro-inactive) .checkbox:visible').each(function () {
+						$(this).attr('checked', 'checked').prop("checked", true);
+					});
+
+					$(this).addClass('bdt-active');
+					$('#ultimate_post_kit_elementor_extend_page a.upk-deactive-all-widget').removeClass('bdt-active');
+					
+					// Ensure save button remains visible
+					setTimeout(function() {
+						$('.upk-dashboard-save-btn').show();
+					}, 100);
+				});
+
+				$('#ultimate_post_kit_elementor_extend_page a.upk-deactive-all-widget').on('click', function (e) {
+					e.preventDefault();
+
+					$('#ultimate_post_kit_elementor_extend_page .checkbox:visible').each(function () {
+						$(this).removeAttr('checked').prop("checked", false);
+					});
+
+					$(this).addClass('bdt-active');
+					$('#ultimate_post_kit_elementor_extend_page a.upk-active-all-widget').removeClass('bdt-active');
+					
+					// Ensure save button remains visible
+					setTimeout(function() {
+						$('.upk-dashboard-save-btn').show();
+					}, 100);
+				});
 
                 jQuery('#ultimate_post_kit_active_modules_page .upk-pro-inactive .checkbox').each(function() {
                     jQuery(this).removeAttr('checked');
@@ -1709,6 +1826,920 @@ class UltimatePostKit_Admin_Settings {
                     renewalLink.attr('target', '_blank');
                 }
             });
+
+			// Dynamic Save Button Control
+			jQuery(document).ready(function ($) {
+				// Define pages that need save button - only specific settings pages
+				const pagesWithSave = [
+					'ultimate_post_kit_active_modules',        // Core widgets
+					'ultimate_post_kit_third_party_widget',    // 3rd party widgets  
+					'ultimate_post_kit_elementor_extend',      // Extensions
+					'ultimate_post_kit_other_settings',        // Special features
+					'ultimate_post_kit_api_settings'           // API settings
+				];
+
+				function toggleSaveButton() {
+					const currentHash = window.location.hash.substring(1);
+					const saveButton = $('.upk-dashboard-save-btn');
+					
+					// Check if current page should have save button
+					if (pagesWithSave.includes(currentHash)) {
+						saveButton.fadeIn(200);
+					} else {
+						saveButton.fadeOut(200);
+					}
+				}
+
+				// Force save button to be visible for settings pages
+				function forceSaveButtonVisible() {
+					const currentHash = window.location.hash.substring(1);
+					const saveButton = $('.upk-dashboard-save-btn');
+					
+					if (pagesWithSave.includes(currentHash)) {
+						saveButton.show();
+					}
+				}
+
+				// Initial check
+				toggleSaveButton();
+
+				// Listen for hash changes
+				$(window).on('hashchange', function() {
+					toggleSaveButton();
+				});
+
+				// Listen for tab clicks
+				$('.bdt-dashboard-navigation a').on('click', function() {
+					setTimeout(toggleSaveButton, 100);
+				});
+
+				// Also listen for navigation menu clicks (from show_navigation())
+				$(document).on('click', '.bdt-tab a, .bdt-subnav a, .upk-dashboard-nav a, [href*="#ultimate_post_kit"]', function() {
+					setTimeout(toggleSaveButton, 100);
+				});
+
+				// Listen for bulk active/deactive button clicks to maintain save button visibility
+				$(document).on('click', '.upk-active-all-widget, .upk-deactive-all-widget', function() {
+					setTimeout(forceSaveButtonVisible, 50);
+				});
+
+				// Listen for individual checkbox changes to maintain save button visibility
+				$(document).on('change', '#ultimate_post_kit_third_party_widget_page .checkbox, #ultimate_post_kit_elementor_extend_page .checkbox, #ultimate_post_kit_active_modules_page .checkbox', function() {
+					setTimeout(forceSaveButtonVisible, 50);
+				});
+
+				// Update URL when navigation items are clicked
+				$(document).on('click', '.bdt-tab a, .bdt-subnav a, .upk-dashboard-nav a', function(e) {
+					const href = $(this).attr('href');
+					if (href && href.includes('#')) {
+						const hash = href.substring(href.indexOf('#'));
+						if (hash && hash.length > 1) {
+							// Update browser URL with the hash
+							const currentUrl = window.location.href.split('#')[0];
+							const newUrl = currentUrl + hash;
+							window.history.pushState(null, null, newUrl);
+							
+							// Trigger hash change event for other listeners
+							$(window).trigger('hashchange');
+						}
+					}
+				});
+
+				// Handle save button click
+				$(document).on('click', '.ultimate-post-kit-settings-save-btn', function(e) {
+					e.preventDefault();
+					
+					// Find the active form in the current tab
+					const currentHash = window.location.hash.substring(1);
+					let targetForm = null;
+					
+					// Look for forms in the active tab content
+					if (currentHash) {
+						// Try to find form in the specific tab page
+						targetForm = $('#' + currentHash + '_page form.settings-save');
+						
+						// If not found, try without _page suffix
+						if (!targetForm || targetForm.length === 0) {
+							targetForm = $('#' + currentHash + ' form.settings-save');
+						}
+						
+						// Try to find any form in the active tab content
+						if (!targetForm || targetForm.length === 0) {
+							targetForm = $('#' + currentHash + '_page form');
+						}
+					}
+					
+					// Fallback to any visible form with settings-save class
+					if (!targetForm || targetForm.length === 0) {
+						targetForm = $('form.settings-save:visible').first();
+					}
+					
+					// Last fallback - any visible form
+					if (!targetForm || targetForm.length === 0) {
+						targetForm = $('.bdt-switcher .group:visible form').first();
+					}
+					
+					if (targetForm && targetForm.length > 0) {
+						// Show loading notification
+						// bdtUIkit.notification({
+						// 	message: '<div bdt-spinner></div> <?php //esc_html_e('Please wait, Saving settings...', 'ultimate-post-kit') ?>',
+						// 	timeout: false
+						// });
+
+						// Submit form using AJAX (same logic as existing form submission)
+						targetForm.ajaxSubmit({
+							success: function () {
+								// Show success message using UIkit notification (same as main settings)
+								bdtUIkit.notification.closeAll();
+								bdtUIkit.notification({
+									message: '<span class="dashicons dashicons-yes"></span> <?php esc_html_e('Settings Saved Successfully.', 'ultimate-post-kit') ?>',
+									status: 'primary',
+									pos: 'top-center'
+								});
+							},
+							error: function (data) {
+								bdtUIkit.notification.closeAll();
+								bdtUIkit.notification({
+									message: '<span bdt-icon=\'icon: warning\'></span> <?php esc_html_e('Unknown error, make sure access is correct!', 'ultimate-post-kit') ?>',
+									status: 'warning'
+								});
+							}
+						});
+					} else {
+						// Show error if no form found
+						bdtUIkit.notification({
+							message: '<span bdt-icon="icon: warning"></span> <?php esc_html_e('No settings form found to save.', 'ultimate-post-kit') ?>',
+							status: 'warning'
+						});
+					}
+				});
+
+				// White Label Settings Functionality
+				// Check if upk_admin_ajax is available
+				// if (typeof upk_admin_ajax === 'undefined') {
+				// 	window.upk_admin_ajax = {
+				// 		ajax_url: '<?php //echo admin_url('admin-ajax.php'); ?>',
+				// 		//white_label_nonce: '<?php //echo wp_create_nonce('upk_white_label_nonce'); ?>'
+				// 	};
+				// }				
+				
+				// Initialize CodeMirror editors for custom code
+				var codeMirrorEditors = {};
+				
+				function initializeCodeMirrorEditors() {
+					// CSS Editor 1
+					if (document.getElementById('upk-custom-css')) {
+						codeMirrorEditors['upk-custom-css'] = wp.codeEditor.initialize('upk-custom-css', {
+							type: 'text/css',
+							codemirror: {
+								lineNumbers: true,
+								mode: 'css',
+								theme: 'default',
+								lineWrapping: true,
+								autoCloseBrackets: true,
+								matchBrackets: true,
+								lint: false
+							}
+						});
+					}
+					
+					// JavaScript Editor 1
+					if (document.getElementById('upk-custom-js')) {
+						codeMirrorEditors['upk-custom-js'] = wp.codeEditor.initialize('upk-custom-js', {
+							type: 'application/javascript',
+							codemirror: {
+								lineNumbers: true,
+								mode: 'javascript',
+								theme: 'default',
+								lineWrapping: true,
+								autoCloseBrackets: true,
+								matchBrackets: true,
+								lint: false
+							}
+						});
+					}
+					
+					// CSS Editor 2
+					if (document.getElementById('upk-custom-css-2')) {
+						codeMirrorEditors['upk-custom-css-2'] = wp.codeEditor.initialize('upk-custom-css-2', {
+							type: 'text/css',
+							codemirror: {
+								lineNumbers: true,
+								mode: 'css',
+								theme: 'default',
+								lineWrapping: true,
+								autoCloseBrackets: true,
+								matchBrackets: true,
+								lint: false
+							}
+						});
+					}
+					
+					// JavaScript Editor 2
+					if (document.getElementById('upk-custom-js-2')) {
+						codeMirrorEditors['upk-custom-js-2'] = wp.codeEditor.initialize('upk-custom-js-2', {
+							type: 'application/javascript',
+							codemirror: {
+								lineNumbers: true,
+								mode: 'javascript',
+								theme: 'default',
+								lineWrapping: true,
+								autoCloseBrackets: true,
+								matchBrackets: true,
+								lint: false
+							}
+						});
+					}
+					
+					// Refresh all editors after a short delay to ensure proper rendering
+					setTimeout(function() {
+						refreshAllCodeMirrorEditors();
+					}, 100);
+				}
+				
+				// Function to refresh all CodeMirror editors
+				function refreshAllCodeMirrorEditors() {
+					Object.keys(codeMirrorEditors).forEach(function(editorKey) {
+						if (codeMirrorEditors[editorKey] && codeMirrorEditors[editorKey].codemirror) {
+							codeMirrorEditors[editorKey].codemirror.refresh();
+						}
+					});
+				}
+				
+				// Function to refresh editors when tab becomes visible
+				function refreshEditorsOnTabShow() {
+					// Listen for tab changes (UIkit tab switching)
+					if (typeof bdtUIkit !== 'undefined' && bdtUIkit.tab) {
+						// When tab becomes active, refresh editors
+						bdtUIkit.util.on(document, 'shown', '.bdt-tab', function() {
+							setTimeout(function() {
+								refreshAllCodeMirrorEditors();
+							}, 50);
+						});
+					}
+					
+					// Also listen for direct tab clicks
+					$('.bdt-tab a').on('click', function() {
+						setTimeout(function() {
+							refreshAllCodeMirrorEditors();
+						}, 100);
+					});
+					
+					// Listen for switcher changes (UIkit switcher)
+					if (typeof bdtUIkit !== 'undefined' && bdtUIkit.switcher) {
+						bdtUIkit.util.on(document, 'shown', '.bdt-switcher', function() {
+							setTimeout(function() {
+								refreshAllCodeMirrorEditors();
+							}, 50);
+						});
+					}
+				}
+				
+				// Initialize editors when page loads - with delay for better rendering
+				setTimeout(function() {
+					initializeCodeMirrorEditors();
+				}, 100);
+				
+				// Setup tab switching handlers
+				setTimeout(function() {
+					refreshEditorsOnTabShow();
+				}, 100);
+				
+				// Handle window resize events
+				$(window).on('resize', function() {
+					setTimeout(function() {
+						refreshAllCodeMirrorEditors();
+					}, 100);
+				});
+				
+				// Handle page visibility changes (when switching browser tabs)
+				document.addEventListener('visibilitychange', function() {
+					if (!document.hidden) {
+						setTimeout(function() {
+							refreshAllCodeMirrorEditors();
+						}, 200);
+					}
+				});
+				
+				// Force refresh when clicking on the Custom CSS & JS tab specifically
+				$('a[href="#"]').on('click', function() {
+					var tabText = $(this).text().trim();
+					if (tabText === 'Custom CSS & JS') {
+						setTimeout(function() {
+							refreshAllCodeMirrorEditors();
+						}, 150);
+					}
+				});
+
+				// Toggle white label fields visibility
+				// $('#upk-white-label-enabled').on('change', function() {
+				// 	if ($(this).is(':checked')) {
+				// 		$('.upk-white-label-fields').slideDown(300);
+				// 	} else {
+				// 		$('.upk-white-label-fields').slideUp(300);
+				// 	}
+				// });
+
+				// WordPress Media Library Integration for Icon Upload
+				// var mediaUploader;
+				
+				// $('#upk-upload-icon').on('click', function(e) {
+				// 	e.preventDefault();
+					
+				// 	// If the uploader object has already been created, reopen the dialog
+				// 	if (mediaUploader) {
+				// 		mediaUploader.open();
+				// 		return;
+				// 	}
+					
+				// 	// Create the media frame
+				// 	mediaUploader = wp.media.frames.file_frame = wp.media({
+				// 		title: 'Select Icon',
+				// 		button: {
+				// 			text: 'Use This Icon'
+				// 		},
+				// 		library: {
+				// 			type: ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml']
+				// 		},
+				// 		multiple: false
+				// 	});
+					
+				// 	// When an image is selected, run a callback
+				// 	mediaUploader.on('select', function() {
+				// 		var attachment = mediaUploader.state().get('selection').first().toJSON();
+						
+				// 		// Set the hidden inputs
+				// 		$('#upk-white-label-icon').val(attachment.url);
+				// 		$('#upk-white-label-icon-id').val(attachment.id);
+						
+				// 		// Update preview
+				// 		$('#upk-icon-preview-img').attr('src', attachment.url);
+				// 		$('.upk-icon-preview-container').show();
+				// 	});
+					
+				// 	// Open the uploader dialog
+				// 	mediaUploader.open();
+				// });
+				
+				// Remove icon functionality
+				// $('#upk-remove-icon').on('click', function(e) {
+				// 	e.preventDefault();
+					
+				// 	// Clear the hidden inputs
+				// 	$('#upk-white-label-icon').val('');
+				// 	$('#upk-white-label-icon-id').val('');
+					
+				// 	// Hide preview
+				// 	$('.upk-icon-preview-container').hide();
+				// 	$('#upk-icon-preview-img').attr('src', '');
+				// });
+
+				// BDTUPK_HIDE Warning when checkbox is enabled
+				// $('#upk-white-label-bdtupk-hide').on('change', function() {
+				// 	if ($(this).is(':checked')) {
+				// 		// Show warning modal/alert
+				// 		var warningMessage = '⚠️ WARNING: ADVANCED FEATURE\n\n' +
+				// 			'Enabling BDTUPK_HIDE will activate advanced white label mode that:\n\n' +
+				// 			'• Hides ALL Element Pack branding and menus\n' +
+				// 			'• Makes these settings difficult to access later\n' +
+				// 			'• Requires the special access link to return\n' +
+				// 			'• Is intended for client/agency use only\n\n' +
+				// 			'An email with access instructions will be sent if you proceed.\n\n' +
+				// 			'Are you sure you want to enable this advanced mode?';
+						
+				// 		if (!confirm(warningMessage)) {
+				// 			// User cancelled, uncheck the box
+				// 			$(this).prop('checked', false);
+				// 			return false;
+				// 		}
+						
+				// 		// Show additional info message
+				// 		if ($('#upk-bdtupk-hide-info').length === 0) {
+				// 			$(this).closest('.upk-option-item').after(
+				// 				'<div id="upk-bdtupk-hide-info" class="bdt-alert bdt-alert-warning bdt-margin-small-top">' +
+				// 				'<p><strong>BDTUPK_HIDE Mode Enabled</strong></p>' +
+				// 				'<p>When you save these settings, an email will be sent with instructions to access white label settings in the future.</p>' +
+				// 				'</div>'
+				// 			);
+				// 		}
+				// 	} else {
+				// 		// Remove info message when unchecked
+				// 		$('#upk-bdtupk-hide-info').remove();
+				// 	}
+				// });
+
+				// Save custom code functionality (updated for CodeMirror)
+				$('#upk-save-custom-code').on('click', function(e) {
+					e.preventDefault();
+					
+					var $button = $(this);
+					var originalText = $button.html();
+					
+					// Check if upk_admin_ajax is available
+					if (typeof upk_admin_ajax === 'undefined') {
+						$('#upk-custom-code-message').html(
+							'<div class="bdt-alert bdt-alert-danger" bdt-alert>' +
+							'<a href="#" class="bdt-alert-close" onclick="$(this).parent().parent().hide(); return false;">&times;</a>' +
+							'<p>Error: AJAX configuration not loaded. Please refresh the page and try again.</p>' +
+							'</div>'
+						).show();
+						return;
+					}
+					
+					// Prevent multiple simultaneous saves
+					if ($button.prop('disabled') || $button.hasClass('upk-saving')) {
+						return;
+					}
+					
+					// Mark as saving
+					$button.addClass('upk-saving');
+					
+					// Get content from CodeMirror editors
+					function getCodeMirrorContent(elementId) {
+						if (codeMirrorEditors[elementId] && codeMirrorEditors[elementId].codemirror) {
+							return codeMirrorEditors[elementId].codemirror.getValue();
+						} else {
+							// Fallback to textarea value
+							return $('#' + elementId).val() || '';
+						}
+					}
+					
+					var cssContent = getCodeMirrorContent('upk-custom-css');
+					var jsContent = getCodeMirrorContent('upk-custom-js');
+					var css2Content = getCodeMirrorContent('upk-custom-css-2');
+					var js2Content = getCodeMirrorContent('upk-custom-js-2');
+					
+					// Show loading state
+					$button.prop('disabled', true);
+					
+					// Timeout safeguard - if AJAX doesn't complete in 30 seconds, restore button
+					var timeoutId = setTimeout(function() {
+						$button.removeClass('upk-saving');
+						$button.html(originalText);
+						$button.prop('disabled', false);
+						$('#upk-custom-code-message').html(
+							'<div class="bdt-alert bdt-alert-warning" bdt-alert>' +
+							'<a href="#" class="bdt-alert-close" onclick="$(this).parent().parent().hide(); return false;">&times;</a>' +
+							'<p>Save operation timed out. Please try again.</p>' +
+							'</div>'
+						).show();
+					}, 30000);
+					
+					// Collect form data
+					var formData = {
+						action: 'upk_save_custom_code',
+						nonce: upk_admin_ajax.nonce,
+						custom_css: cssContent,
+						custom_js: jsContent,
+						custom_css_2: css2Content,
+						custom_js_2: js2Content,
+						excluded_pages: $('#upk-excluded-pages').val() || []
+					};
+					
+					
+					// Verify we have some content before sending (optional check)
+					var totalContentLength = cssContent.length + jsContent.length + css2Content.length + js2Content.length;
+					if (totalContentLength === 0) {
+						var confirmEmpty = confirm('No content detected in any editor. Do you want to save empty content (this will clear all custom code)?');
+						if (!confirmEmpty) {
+							// Restore button state
+							$button.html(originalText);
+							$button.prop('disabled', false);
+							return;
+						}
+					}
+					
+					// Send AJAX request
+					$.post(upk_admin_ajax.ajax_url, formData)
+						.done(function(response) {
+							console.log('AJAX Response:', response); // Debug log
+							
+							if (response && response.success) {
+								// Show success message
+								var successMessage = response.data.message;
+								if (response.data.excluded_count) {
+									successMessage += ' (' + response.data.excluded_count + ' pages excluded)';
+								}
+								
+								$('#upk-custom-code-message').html(
+									'<div class="bdt-alert bdt-alert-success" bdt-alert>' +
+									'<a href="#" class="bdt-alert-close" onclick="$(this).parent().parent().hide(); return false;">&times;</a>' +
+									'<p>' + successMessage + '</p>' +
+									'</div>'
+								).show();
+								
+								// Auto-hide message after 5 seconds
+								setTimeout(function() {
+									$('#upk-custom-code-message').fadeOut();
+								}, 5000);
+								
+							} else {
+								// Show error message
+								var errorMessage = 'Unknown error occurred';
+								if (response && response.data && response.data.message) {
+									errorMessage = response.data.message;
+								} else if (response && response.message) {
+									errorMessage = response.message;
+								}
+								
+								$('#upk-custom-code-message').html(
+									'<div class="bdt-alert bdt-alert-danger" bdt-alert>' +
+									'<a href="#" class="bdt-alert-close" onclick="$(this).parent().parent().hide(); return false;">&times;</a>' +
+									'<p>Error: ' + errorMessage + '</p>' +
+									'</div>'
+								).show();
+							}
+						})
+						.fail(function(xhr, status, error) {
+							console.log('AJAX Error:', xhr, status, error); // Debug log
+							
+							// Try to parse error response
+							var errorMessage = 'Failed to save custom code. Please try again.';
+							try {
+								var errorResponse = JSON.parse(xhr.responseText);
+								if (errorResponse.data && errorResponse.data.message) {
+									errorMessage = errorResponse.data.message;
+								} else if (errorResponse.message) {
+									errorMessage = errorResponse.message;
+								}
+							} catch (e) {
+								// Use default error message
+							}
+							
+							// Show error message
+							$('#upk-custom-code-message').html(
+								'<div class="bdt-alert bdt-alert-danger" bdt-alert>' +
+								'<a href="#" class="bdt-alert-close" onclick="$(this).parent().parent().hide(); return false;">&times;</a>' +
+								'<p>Error: ' + errorMessage + ' (' + status + ')</p>' +
+								'</div>'
+							).show();
+						})
+						.always(function() {
+							
+							// Clear the timeout since AJAX completed
+							clearTimeout(timeoutId);
+							
+							try {
+								$button.removeClass('upk-saving');
+								$button.html(originalText);
+								$button.prop('disabled', false);
+							} catch (e) {
+								// Fallback: force button restoration
+								$('#upk-save-custom-code').removeClass('upk-saving').html('<span class="dashicons dashicons-yes"></span> Save Custom Code').prop('disabled', false);
+							}
+						});
+				});
+
+				// Reset custom code functionality (updated for CodeMirror)
+				$('#upk-reset-custom-code').on('click', function(e) {
+					e.preventDefault();
+					
+					if (confirm('Are you sure you want to reset all custom code? This action cannot be undone.')) {
+						// Clear CodeMirror editors
+						function clearCodeMirrorEditor(elementId) {
+							if (codeMirrorEditors[elementId] && codeMirrorEditors[elementId].codemirror) {
+								codeMirrorEditors[elementId].codemirror.setValue('');
+							} else {
+								// Fallback to clearing textarea
+								$('#' + elementId).val('');
+							}
+						}
+						
+						// Clear all editors
+						clearCodeMirrorEditor('upk-custom-css');
+						clearCodeMirrorEditor('upk-custom-js');
+						clearCodeMirrorEditor('upk-custom-css-2');
+						clearCodeMirrorEditor('upk-custom-js-2');
+						
+						// Clear exclusions
+						$('#upk-excluded-pages').val([]).trigger('change');
+						
+						$('#upk-custom-code-message').html(
+							'<div class="bdt-alert bdt-alert-warning" bdt-alert>' +
+							'<a href="#" class="bdt-alert-close" onclick="$(this).parent().parent().hide(); return false;">&times;</a>' +
+							'<p>All custom code has been cleared. Don\'t forget to save changes!</p>' +
+							'</div>'
+						).show();
+						
+						// Auto-hide message after 3 seconds
+						setTimeout(function() {
+							$('#upk-custom-code-message').fadeOut();
+						}, 3000);
+					}
+				});				
+			});
+
+			// Chart.js initialization for system status canvas charts
+			function initUltimatePostKitCharts() {
+				// Wait for Chart.js to be available
+				if (typeof Chart === 'undefined') {
+					setTimeout(initUltimatePostKitCharts, 500);
+					return;
+				}
+
+				// Chart instances storage
+				window.upkChartInstances = window.upkChartInstances || {};
+				window.upkChartsInitialized = false;
+
+				// Function to create a chart
+				function createChart(canvasId) {
+					var canvas = document.getElementById(canvasId);
+					if (!canvas) {
+						return;
+					}
+
+					var $canvas = jQuery('#' + canvasId);
+					var valueStr = $canvas.data('value');
+					var labelsStr = $canvas.data('labels');
+					var bgStr = $canvas.data('bg');
+
+					if (!valueStr || !labelsStr || !bgStr) {
+						return;
+					}
+
+					// Parse data
+					var values = valueStr.toString().split(',').map(v => parseInt(v.trim()) || 0);
+					var labels = labelsStr.toString().split(',').map(l => l.trim());
+					var colors = bgStr.toString().split(',').map(c => c.trim());
+
+					// Destroy existing chart using Chart.js built-in method
+					var existingChart = Chart.getChart(canvas);
+					if (existingChart) {
+						existingChart.destroy();
+					}
+
+					// Also destroy from our instance storage
+					if (window.upkChartInstances && window.upkChartInstances[canvasId]) {
+						window.upkChartInstances[canvasId].destroy();
+						delete window.upkChartInstances[canvasId];
+					}
+
+					// Create new chart
+					try {
+						var newChart = new Chart(canvas, {
+							type: 'doughnut',
+							data: {
+								labels: labels,
+								datasets: [{
+									data: values,
+									backgroundColor: colors,
+									borderWidth: 0
+								}]
+							},
+							options: {
+								responsive: true,
+								maintainAspectRatio: false,
+								plugins: {
+									legend: { display: false },
+									tooltip: { enabled: true }
+								},
+								cutout: '60%'
+							}
+						});
+						
+						// Store in our instance storage
+						if (!window.upkChartInstances) window.upkChartInstances = {};
+						window.upkChartInstances[canvasId] = newChart;
+					} catch (error) {
+						// Do nothing
+					}
+				}
+
+				// Update total widgets status
+				function updateTotalStatus() {
+					var coreCount = jQuery('#ultimate_post_kit_active_modules_page input:checked').length;
+					var thirdPartyCount = jQuery('#ultimate_post_kit_third_party_widget_page input:checked').length;
+					var extensionsCount = jQuery('#ultimate_post_kit_elementor_extend_page input:checked').length;
+
+					jQuery('#bdt-total-widgets-status-core').text(coreCount);
+					jQuery('#bdt-total-widgets-status-3rd').text(thirdPartyCount);
+					jQuery('#bdt-total-widgets-status-extensions').text(extensionsCount);
+					jQuery('#bdt-total-widgets-status-heading').text(coreCount + thirdPartyCount + extensionsCount);
+					
+					jQuery('#bdt-total-widgets-status').attr('data-value', [coreCount, thirdPartyCount, extensionsCount].join(','));
+				}
+
+				// Initialize all charts once
+				function initAllCharts() {
+					// Check if charts already exist and are properly rendered
+					if (window.upkChartInstances && Object.keys(window.upkChartInstances).length >= 4) {
+						return;
+					}
+					
+					// Update total status first
+					updateTotalStatus();
+					
+					// Create all charts
+					var chartCanvases = [
+						'bdt-db-total-status',
+						'bdt-db-only-widget-status', 
+						'bdt-db-only-3rdparty-status',
+						'bdt-total-widgets-status'
+					];
+
+					var successfulCharts = 0;
+					chartCanvases.forEach(function(canvasId) {
+						var canvas = document.getElementById(canvasId);
+						if (canvas && canvas.offsetParent !== null) { // Check if canvas is visible
+							createChart(canvasId);
+							if (window.upkChartInstances && window.upkChartInstances[canvasId]) {
+								successfulCharts++;
+							}
+						}
+					});
+				}
+
+				// Check if we're currently on system status tab and initialize
+				function checkAndInitIfOnSystemStatus() {
+					if (window.location.hash === '#ultimate_post_kit_analytics_system_req') {
+						setTimeout(initAllCharts, 300);
+					}
+				}
+
+				// Initialize charts when DOM is ready
+				jQuery(document).ready(function() {
+					// Only initialize if we're on the system status tab
+					setTimeout(checkAndInitIfOnSystemStatus, 500);
+				});
+
+				// Add click handler for System Status tab to create/refresh charts
+				jQuery(document).on('click', 'a[href="#ultimate_post_kit_analytics_system_req"], a[href*="ultimate_post_kit_analytics_system_req"]', function() {
+					setTimeout(function() {
+						// Always recreate charts when tab is clicked to ensure they're visible
+						initAllCharts();
+					}, 200);
+				});
+			}
+
+			// Start the chart initialization
+			setTimeout(initUltimatePostKitCharts, 1000);
+
+			// Handle plugin installation via AJAX
+			jQuery(document).on('click', '.upk-install-plugin', function(e) {
+				e.preventDefault();
+				
+				var $button = jQuery(this);
+				var pluginSlug = $button.data('plugin-slug');
+				var nonce = $button.data('nonce');
+				var originalText = $button.text();
+				
+				// Disable button and show loading state
+				$button.prop('disabled', true)
+					   .text('<?php echo esc_js(__('Installing...', 'ultimate-post-kit')); ?>')
+					   .addClass('bdt-installing');
+				
+				// Perform AJAX request
+				jQuery.ajax({
+					url: '<?php echo admin_url('admin-ajax.php'); ?>',
+					type: 'POST',
+					data: {
+						action: 'upk_install_plugin',
+						plugin_slug: pluginSlug,
+						nonce: nonce
+					},
+					success: function(response) {
+						if (response.success) {
+							// Show success message
+							$button.text('<?php echo esc_js(__('Installed!', 'ultimate-post-kit')); ?>')
+								   .removeClass('bdt-installing')
+								   .addClass('bdt-installed');
+							
+							// Show success notification
+							if (typeof bdtUIkit !== 'undefined' && bdtUIkit.notification) {
+								bdtUIkit.notification({
+									message: '<span class="dashicons dashicons-yes"></span> ' + response.data.message,
+									status: 'success'
+								});
+							}
+							
+							// Reload the page after 2 seconds to update button states
+							setTimeout(function() {
+								window.location.reload();
+							}, 2000);
+							
+						} else {
+							// Show error message
+							$button.prop('disabled', false)
+								   .text(originalText)
+								   .removeClass('bdt-installing');
+							
+							// Show error notification
+							if (typeof bdtUIkit !== 'undefined' && bdtUIkit.notification) {
+								bdtUIkit.notification({
+									message: '<span class="dashicons dashicons-warning"></span> ' + response.data.message,
+									status: 'danger'
+								});
+							}
+						}
+					},
+					error: function() {
+						// Handle network/server errors
+						$button.prop('disabled', false)
+							   .text(originalText)
+							   .removeClass('bdt-installing');
+						
+						// Show error notification
+						if (typeof bdtUIkit !== 'undefined' && bdtUIkit.notification) {
+							bdtUIkit.notification({
+								message: '<span class="dashicons dashicons-warning"></span> <?php echo esc_js(__('Installation failed. Please try again.', 'ultimate-post-kit')); ?>',
+								status: 'danger'
+							});
+						}
+					}
+				});
+			});
+
+			// Show/hide white label & custom code save button based on active tab
+			function toggleWhiteLabelSaveButton() {
+				
+				// Check if we're on the extra options page
+				if (window.location.hash === '#ultimate_post_kit_extra_options') {
+					// Target specifically the tabs within the Extra Options section
+					var extraOptionsTabs = jQuery('.upk-extra-options-tabs .bdt-tab li.bdt-active');
+					var activeTab = extraOptionsTabs.index();
+					
+					if (activeTab === 1) { // White Label tab is the second tab (index 1)
+						jQuery('.upk-white-label-save-section').show();
+						jQuery('.upk-code-save-section').hide();
+					} else {
+						jQuery('.upk-white-label-save-section').hide();
+						jQuery('.upk-code-save-section').show();
+					}
+				} else {
+					jQuery('.upk-white-label-save-section').hide();
+					jQuery('.upk-code-save-section').hide();
+				}
+			}
+
+			// Wait for jQuery to be ready
+			jQuery(document).ready(function($) {
+				
+				// Check if we should automatically switch to White Label tab
+				var urlParams = new URLSearchParams(window.location.search);
+				if (urlParams.get('white_label_tab') === '1') {
+					// Wait a bit for UIkit to be ready, then switch to White Label tab
+					setTimeout(function() {
+						// Use UIkit's API to switch to the second tab (index 1)
+						var tabElement = document.querySelector('.upk-extra-options-tabs [bdt-tab]');
+						if (tabElement && typeof UIkit !== 'undefined') {
+							UIkit.tab(tabElement).show(1); // Show tab at index 1 (White Label tab)
+						} else {
+							// Fallback: simply click the White Label tab link
+							var whiteLabelTab = $('.upk-extra-options-tabs .bdt-tab li').eq(1);
+							if (whiteLabelTab.length > 0) {
+								whiteLabelTab.find('a')[0].click(); // Use native click
+							}
+						}
+						
+						// Check button visibility after tab switch
+						setTimeout(function() {
+							toggleWhiteLabelSaveButton();
+						}, 300);
+					}, 800);
+				} else {
+					toggleWhiteLabelSaveButton();
+				}
+				
+				// Check on hash change (when navigating to extra options page)
+				$(window).on('hashchange', function() {
+					toggleWhiteLabelSaveButton();
+				});
+
+				// Listen for UIkit tab changes using multiple methods
+				$(document).on('click', '.bdt-tab li a', function() {
+					setTimeout(function() {
+						toggleWhiteLabelSaveButton();
+					}, 200);
+				});
+
+				// Listen for UIkit's internal tab change events
+				$(document).on('shown', '[bdt-tab]', function() {
+					setTimeout(function() {
+						toggleWhiteLabelSaveButton();
+					}, 200);
+				});
+
+				// Also listen for the specific tab content changes
+				$(document).on('show', '#upk-extra-options-tab-content > div', function() {
+					setTimeout(function() {
+						toggleWhiteLabelSaveButton();
+					}, 200);
+				});
+
+				// Alternative: Check periodically for tab changes
+				setInterval(function() {
+					if (window.location.hash === '#ultimate_post_kit_extra_options') {
+						var currentActiveTab = $('.bdt-tab li.bdt-active').index();
+						if (typeof window.lastActiveTab === 'undefined') {
+							window.lastActiveTab = currentActiveTab;
+						} else if (window.lastActiveTab !== currentActiveTab) {
+							window.lastActiveTab = currentActiveTab;
+							toggleWhiteLabelSaveButton();
+						}
+					}
+				}, 500);
+			});
+			
         </script>
     <?php
     }
@@ -2510,6 +3541,122 @@ class UltimatePostKit_Admin_Settings {
 		return 'not_installed';
 	}
 
+	/**
+	 * AJAX handler for saving custom code
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function save_custom_code_ajax() {
+		// Verify nonce
+		if ( ! wp_verify_nonce( $_POST['nonce'] ?? '', 'upk_custom_code_nonce' ) ) {
+			wp_send_json_error( [ 'message' => 'Invalid security token.' ] );
+		}
+
+		// Check user capability
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( [ 'message' => 'Insufficient permissions.' ] );
+		}
+
+		// Sanitize and save the custom code
+		$custom_css = isset( $_POST['custom_css'] ) ? wp_unslash( $_POST['custom_css'] ) : '';
+		$custom_js = isset( $_POST['custom_js'] ) ? wp_unslash( $_POST['custom_js'] ) : '';
+		$custom_css_2 = isset( $_POST['custom_css_2'] ) ? wp_unslash( $_POST['custom_css_2'] ) : '';
+		$custom_js_2 = isset( $_POST['custom_js_2'] ) ? wp_unslash( $_POST['custom_js_2'] ) : '';
+
+		// Handle excluded pages - ensure we get proper array format
+		$excluded_pages = array();
+		if ( isset( $_POST['excluded_pages'] ) ) {
+			if ( is_array( $_POST['excluded_pages'] ) ) {
+				$excluded_pages = $_POST['excluded_pages'];
+			} elseif ( is_string( $_POST['excluded_pages'] ) && ! empty( $_POST['excluded_pages'] ) ) {
+				// Handle case where it might be a single value
+				$excluded_pages = [ $_POST['excluded_pages'] ];
+			}
+		}
+		
+		// Sanitize excluded pages - convert to integers and remove empty values
+		$excluded_pages = array_map( 'intval', $excluded_pages );
+		$excluded_pages = array_filter( $excluded_pages, function( $page_id ) {
+			return $page_id > 0;
+		} );
+
+		// Save to database
+		update_option( 'upk_custom_css', $custom_css );
+		update_option( 'upk_custom_js', $custom_js );
+		update_option( 'upk_custom_css_2', $custom_css_2 );
+		update_option( 'upk_custom_js_2', $custom_js_2 );
+		update_option( 'upk_excluded_pages', $excluded_pages );
+
+		wp_send_json_success( [ 
+			'message' => 'Custom code saved successfully!',
+			'excluded_count' => count( $excluded_pages )
+		] );
+	}
+
+	/**
+	 * Handle AJAX plugin installation
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function install_plugin_ajax() {
+		// Check nonce
+		if (!wp_verify_nonce($_POST['nonce'], 'upk_install_plugin_nonce')) {
+			wp_send_json_error(['message' => __('Security check failed', 'ultimate-post-kit')]);
+		}
+
+		// Check user capability
+		if (!current_user_can('install_plugins')) {
+			wp_send_json_error(['message' => __('You do not have permission to install plugins', 'ultimate-post-kit')]);
+		}
+
+		$plugin_slug = sanitize_text_field($_POST['plugin_slug']);
+
+		if (empty($plugin_slug)) {
+			wp_send_json_error(['message' => __('Plugin slug is required', 'ultimate-post-kit')]);
+		}
+
+		// Include necessary WordPress files
+		require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+		require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+		require_once ABSPATH . 'wp-admin/includes/class-wp-ajax-upgrader-skin.php';
+
+		// Get plugin information
+		$api = plugins_api('plugin_information', [
+			'slug' => $plugin_slug,
+			'fields' => [
+				'sections' => false,
+			],
+		]);
+
+		if (is_wp_error($api)) {
+			wp_send_json_error(['message' => __('Plugin not found: ', 'ultimate-post-kit') . $api->get_error_message()]);
+		}
+
+		// Install the plugin
+		$skin = new \WP_Ajax_Upgrader_Skin();
+		$upgrader = new \Plugin_Upgrader($skin);
+		$result = $upgrader->install($api->download_link);
+
+		if (is_wp_error($result)) {
+			wp_send_json_error(['message' => __('Installation failed: ', 'ultimate-post-kit') . $result->get_error_message()]);
+		} elseif ($skin->get_errors()->has_errors()) {
+			wp_send_json_error(['message' => __('Installation failed: ', 'ultimate-post-kit') . $skin->get_error_messages()]);
+		} elseif (is_null($result)) {
+			wp_send_json_error(['message' => __('Installation failed: Unable to connect to filesystem', 'ultimate-post-kit')]);
+		}
+
+		// Get installation status
+		$install_status = install_plugin_install_status($api);
+		
+		wp_send_json_success([
+			'message' => __('Plugin installed successfully!', 'ultimate-post-kit'),
+			'plugin_file' => $install_status['file'],
+			'plugin_name' => $api->name
+		]);
+	}
+
     /**
 	 * Extract plugin slug from plugin path
 	 * 
@@ -2550,7 +3697,7 @@ class UltimatePostKit_Admin_Settings {
 			case 'not_installed':
 			default:
 				$plugin_slug = $this->extract_plugin_slug_from_path($plugin_path);
-				$nonce = wp_create_nonce('ep_install_plugin_nonce');
+				$nonce = wp_create_nonce('upk_install_plugin_nonce');
 				return '<a class="bdt-button bdt-welcome-button upk-install-plugin" 
 				          data-plugin-slug="' . esc_attr($plugin_slug) . '" 
 				          data-nonce="' . esc_attr($nonce) . '" 
@@ -2588,7 +3735,7 @@ class UltimatePostKit_Admin_Settings {
 							<li><?php esc_html_e('Monthly payments via PayPal', 'ultimate-post-kit'); ?></li>
 						</ul>
 					</div>
-					<a href="https://bdthemes.com/affiliate/?utm_sourcce=ep_wp_dashboard&utm_medium=affiliate_payout&utm_campaign=affiliate_onboarding" target="_blank"
+					<a href="https://bdthemes.com/affiliate/?utm_sourcce=upk_wp_dashboard&utm_medium=affiliate_payout&utm_campaign=affiliate_onboarding" target="_blank"
 						class="bdt-button bdt-welcome-button bdt-margin-small-top"><?php esc_html_e('Join Our Affiliate Program', 'ultimate-post-kit'); ?></a>
 				</div>
 			</div>
@@ -2621,7 +3768,7 @@ class UltimatePostKit_Admin_Settings {
 						<h3 class="upk-code-editor-title"><?php esc_html_e('CSS', 'ultimate-post-kit'); ?></h3>
 						<p class="upk-code-editor-description"><?php esc_html_e('Enter raw CSS code without &lt;style&gt; tags.', 'ultimate-post-kit'); ?></p>
 						<div class="upk-codemirror-editor-container">
-							<textarea id="upk-custom-css" name="ep_custom_css" class="upk-code-editor" data-mode="css" placeholder=".example {&#10;    background: red;&#10;    border-radius: 5px;&#10;    padding: 15px;&#10;}&#10;&#10;"><?php echo esc_textarea(get_option('ep_custom_css', '')); ?></textarea>
+							<textarea id="upk-custom-css" name="upk_custom_css" class="upk-code-editor" data-mode="css" placeholder=".example {&#10;    background: red;&#10;    border-radius: 5px;&#10;    padding: 15px;&#10;}&#10;&#10;"><?php echo esc_textarea(get_option('upk_custom_css', '')); ?></textarea>
 						</div>
 					</div>
 				</div>
@@ -2630,7 +3777,7 @@ class UltimatePostKit_Admin_Settings {
 						<h3 class="upk-code-editor-title"><?php esc_html_e('JS', 'ultimate-post-kit'); ?></h3>
 						<p class="upk-code-editor-description"><?php esc_html_e('Enter raw JavaScript code without &lt;script&gt; tags.', 'ultimate-post-kit'); ?></p>
 						<div class="upk-codemirror-editor-container">
-							<textarea id="upk-custom-js" name="ep_custom_js" class="upk-code-editor" data-mode="javascript" placeholder="alert('Hello, Ultimate Post Kit!');"><?php echo esc_textarea(get_option('ep_custom_js', '')); ?></textarea>
+							<textarea id="upk-custom-js" name="upk_custom_js" class="upk-code-editor" data-mode="javascript" placeholder="alert('Hello, Ultimate Post Kit!');"><?php echo esc_textarea(get_option('upk_custom_js', '')); ?></textarea>
 						</div>
 					</div>
 				</div>
@@ -2647,7 +3794,7 @@ class UltimatePostKit_Admin_Settings {
 						<h3 class="upk-code-editor-title"><?php esc_html_e('CSS', 'ultimate-post-kit'); ?></h3>
 						<p class="upk-code-editor-description"><?php esc_html_e('Enter raw CSS code without &lt;style&gt; tags.', 'ultimate-post-kit'); ?></p>
 						<div class="upk-codemirror-editor-container">
-							<textarea id="upk-custom-css-2" name="ep_custom_css_2" class="upk-code-editor" data-mode="css" placeholder=".example {&#10;    background: green;&#10;}&#10;&#10;"><?php echo esc_textarea(get_option('ep_custom_css_2', '')); ?></textarea>
+							<textarea id="upk-custom-css-2" name="upk_custom_css_2" class="upk-code-editor" data-mode="css" placeholder=".example {&#10;    background: green;&#10;}&#10;&#10;"><?php echo esc_textarea(get_option('upk_custom_css_2', '')); ?></textarea>
 						</div>
 					</div>
 				</div>
@@ -2656,7 +3803,7 @@ class UltimatePostKit_Admin_Settings {
 						<h3 class="upk-code-editor-title"><?php esc_html_e('JS', 'ultimate-post-kit'); ?></h3>
 						<p class="upk-code-editor-description"><?php esc_html_e('Enter raw JavaScript code without &lt;script&gt; tags.', 'ultimate-post-kit'); ?></p>
 						<div class="upk-codemirror-editor-container">
-							<textarea id="upk-custom-js-2" name="ep_custom_js_2" class="upk-code-editor" data-mode="javascript" placeholder="console.log('Hello, Ultimate Post Kit!');"><?php echo esc_textarea(get_option('ep_custom_js_2', '')); ?></textarea>
+							<textarea id="upk-custom-js-2" name="upk_custom_js_2" class="upk-code-editor" data-mode="javascript" placeholder="console.log('Hello, Ultimate Post Kit!');"><?php echo esc_textarea(get_option('upk_custom_js_2', '')); ?></textarea>
 						</div>
 					</div>
 				</div>
@@ -2671,10 +3818,10 @@ class UltimatePostKit_Admin_Settings {
 				<label for="upk-excluded-pages" class="upk-exclusion-label">
 					<?php esc_html_e('Exclude Pages & Posts:', 'ultimate-post-kit'); ?>
 				</label>
-				<select id="upk-excluded-pages" name="ep_excluded_pages[]" multiple class="upk-page-select">
+				<select id="upk-excluded-pages" name="upk_excluded_pages[]" multiple class="upk-page-select">
 					<option value=""><?php esc_html_e('-- Select pages/posts to exclude --', 'ultimate-post-kit'); ?></option>
 					<?php
-					$excluded_pages = get_option('ep_excluded_pages', array());
+					$excluded_pages = get_option('upk_excluded_pages', array());
 					if (!is_array($excluded_pages)) {
 						$excluded_pages = array();
 					}
@@ -2749,7 +3896,7 @@ class UltimatePostKit_Admin_Settings {
 						<ul class="bdt-tab" bdt-tab="connect: #upk-extra-options-tab-content; animation: bdt-animation-fade">
 							<li class="bdt-active"><a
 									href="#"><?php esc_html_e('Custom CSS & JS', 'ultimate-post-kit'); ?></a></li>
-							<li><a href="#"><?php esc_html_e('White Label', 'ultimate-post-kit'); ?></a></li>
+							<!-- <li><a href="#"><?php //esc_html_e('White Label', 'ultimate-post-kit'); ?></a></li> -->
 						</ul>
 
 						<div id="upk-extra-options-tab-content" class="bdt-switcher">

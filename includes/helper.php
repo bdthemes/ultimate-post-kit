@@ -862,3 +862,90 @@ if ( ! function_exists( 'upk_license_validation' ) ) {
 		return false;
 	}
 }
+
+/**
+ * Inject custom CSS and JS into the header
+ */
+if ( ! function_exists( 'upk_inject_header_custom_code' ) ) {
+	function upk_inject_header_custom_code() {
+		if ( upk_is_page_excluded() ) {
+			return;
+		}
+
+		$custom_css = get_option( 'upk_custom_css', '' );
+		$custom_js = get_option( 'upk_custom_js', '' );
+
+		if ( ! empty( $custom_css ) ) {
+			echo "\n<!-- Ultimate Post Kit Custom Header CSS -->\n";
+			echo '<style type="text/css">' . "\n";
+			echo $custom_css . "\n";
+			echo '</style>' . "\n";
+		}
+
+		if ( ! empty( $custom_js ) ) {
+			echo "\n<!-- Ultimate Post Kit Custom Header JS -->\n";
+			echo '<script type="text/javascript">' . "\n";
+			echo $custom_js . "\n";
+			echo '</script>' . "\n";
+		}
+	}
+}
+
+/**
+ * Inject custom CSS and JS into the footer
+ */
+if ( ! function_exists( 'upk_inject_footer_custom_code' ) ) {
+	function upk_inject_footer_custom_code() {
+		if ( upk_is_page_excluded() ) {
+			return;
+		}
+
+		$custom_css_2 = get_option( 'upk_custom_css_2', '' );
+		$custom_js_2 = get_option( 'upk_custom_js_2', '' );
+
+		if ( ! empty( $custom_css_2 ) ) {
+			echo "\n<!-- Ultimate Post Kit Custom Footer CSS -->\n";
+			echo '<style type="text/css">' . "\n";
+			echo $custom_css_2 . "\n";
+			echo '</style>' . "\n";
+		}
+
+		if ( ! empty( $custom_js_2 ) ) {
+			echo "\n<!-- Ultimate Post Kit Custom Footer JS -->\n";
+			echo '<script type="text/javascript">' . "\n";
+			echo $custom_js_2 . "\n";
+			echo '</script>' . "\n";
+		}
+	}
+}
+
+/**
+ * Check if current page should be excluded from custom code injection
+ */
+if ( ! function_exists( 'upk_is_page_excluded' ) ) {
+	function upk_is_page_excluded() {
+		$excluded_pages = get_option( 'upk_excluded_pages', array() );
+		
+		if ( empty( $excluded_pages ) || ! is_array( $excluded_pages ) ) {
+			return false;
+		}
+
+		$current_id = 0;
+		
+		if ( is_home() && ! is_front_page() ) {
+			$current_id = get_option( 'page_for_posts' );
+		} elseif ( is_front_page() ) {
+			$current_id = get_option( 'page_on_front' );
+		} elseif ( is_singular() ) {
+			$current_id = get_queried_object_id();
+		} elseif ( is_category() || is_tag() || is_tax() ) {
+			return false;
+		} elseif ( is_author() ) {
+			return false;
+		} elseif ( is_archive() ) {
+			return false;
+		}
+
+		return in_array( $current_id, $excluded_pages );
+	}
+}

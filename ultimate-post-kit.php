@@ -102,6 +102,10 @@ function ultimate_post_kit_load_plugin() {
 
 	// Element pack widget and assets loader
 	require_once ( BDTUPK_PATH . 'loader.php' );
+	
+	// Initialize custom CSS/JS injection on frontend
+	add_action( 'wp_head', 'upk_inject_header_custom_code', 999 );
+	add_action( 'wp_footer', 'upk_inject_footer_custom_code', 999 );
 }
 
 add_action( 'plugins_loaded', 'ultimate_post_kit_load_plugin' );
