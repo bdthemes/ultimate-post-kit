@@ -6,6 +6,7 @@ use UltimatePostKit\Admin\ModuleService;
 use Elementor\Modules\Usage\Module;
 use Elementor\Tracker;
 
+
 /**
  * Ultimate Post Kit Admin Settings Class
  */
@@ -2131,102 +2132,102 @@ class UltimatePostKit_Admin_Settings {
 					}
 				});
 
-				// Toggle white label fields visibility
-				// $('#upk-white-label-enabled').on('change', function() {
-				// 	if ($(this).is(':checked')) {
-				// 		$('.upk-white-label-fields').slideDown(300);
-				// 	} else {
-				// 		$('.upk-white-label-fields').slideUp(300);
-				// 	}
-				// });
+				Toggle white label fields visibility
+				$('#upk-white-label-enabled').on('change', function() {
+					if ($(this).is(':checked')) {
+						$('.upk-white-label-fields').slideDown(300);
+					} else {
+						$('.upk-white-label-fields').slideUp(300);
+					}
+				});
 
-				// WordPress Media Library Integration for Icon Upload
-				// var mediaUploader;
+				WordPress Media Library Integration for Icon Upload
+				var mediaUploader;
 				
-				// $('#upk-upload-icon').on('click', function(e) {
-				// 	e.preventDefault();
+				$('#upk-upload-icon').on('click', function(e) {
+					e.preventDefault();
 					
-				// 	// If the uploader object has already been created, reopen the dialog
-				// 	if (mediaUploader) {
-				// 		mediaUploader.open();
-				// 		return;
-				// 	}
+					// If the uploader object has already been created, reopen the dialog
+					if (mediaUploader) {
+						mediaUploader.open();
+						return;
+					}
 					
-				// 	// Create the media frame
-				// 	mediaUploader = wp.media.frames.file_frame = wp.media({
-				// 		title: 'Select Icon',
-				// 		button: {
-				// 			text: 'Use This Icon'
-				// 		},
-				// 		library: {
-				// 			type: ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml']
-				// 		},
-				// 		multiple: false
-				// 	});
+					// Create the media frame
+					mediaUploader = wp.media.frames.file_frame = wp.media({
+						title: 'Select Icon',
+						button: {
+							text: 'Use This Icon'
+						},
+						library: {
+							type: ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml']
+						},
+						multiple: false
+					});
 					
-				// 	// When an image is selected, run a callback
-				// 	mediaUploader.on('select', function() {
-				// 		var attachment = mediaUploader.state().get('selection').first().toJSON();
+					// When an image is selected, run a callback
+					mediaUploader.on('select', function() {
+						var attachment = mediaUploader.state().get('selection').first().toJSON();
 						
-				// 		// Set the hidden inputs
-				// 		$('#upk-white-label-icon').val(attachment.url);
-				// 		$('#upk-white-label-icon-id').val(attachment.id);
+						// Set the hidden inputs
+						$('#upk-white-label-icon').val(attachment.url);
+						$('#upk-white-label-icon-id').val(attachment.id);
 						
-				// 		// Update preview
-				// 		$('#upk-icon-preview-img').attr('src', attachment.url);
-				// 		$('.upk-icon-preview-container').show();
-				// 	});
+						// Update preview
+						$('#upk-icon-preview-img').attr('src', attachment.url);
+						$('.upk-icon-preview-container').show();
+					});
 					
-				// 	// Open the uploader dialog
-				// 	mediaUploader.open();
-				// });
+					// Open the uploader dialog
+					mediaUploader.open();
+				});
 				
-				// Remove icon functionality
-				// $('#upk-remove-icon').on('click', function(e) {
-				// 	e.preventDefault();
+				Remove icon functionality
+				$('#upk-remove-icon').on('click', function(e) {
+					e.preventDefault();
 					
-				// 	// Clear the hidden inputs
-				// 	$('#upk-white-label-icon').val('');
-				// 	$('#upk-white-label-icon-id').val('');
+					// Clear the hidden inputs
+					$('#upk-white-label-icon').val('');
+					$('#upk-white-label-icon-id').val('');
 					
-				// 	// Hide preview
-				// 	$('.upk-icon-preview-container').hide();
-				// 	$('#upk-icon-preview-img').attr('src', '');
-				// });
+					// Hide preview
+					$('.upk-icon-preview-container').hide();
+					$('#upk-icon-preview-img').attr('src', '');
+				});
 
-				// BDTUPK_HIDE Warning when checkbox is enabled
-				// $('#upk-white-label-bdtupk-hide').on('change', function() {
-				// 	if ($(this).is(':checked')) {
-				// 		// Show warning modal/alert
-				// 		var warningMessage = '⚠️ WARNING: ADVANCED FEATURE\n\n' +
-				// 			'Enabling BDTUPK_HIDE will activate advanced white label mode that:\n\n' +
-				// 			'• Hides ALL Element Pack branding and menus\n' +
-				// 			'• Makes these settings difficult to access later\n' +
-				// 			'• Requires the special access link to return\n' +
-				// 			'• Is intended for client/agency use only\n\n' +
-				// 			'An email with access instructions will be sent if you proceed.\n\n' +
-				// 			'Are you sure you want to enable this advanced mode?';
+				BDTUPK_HIDE Warning when checkbox is enabled
+				$('#upk-white-label-bdtupk-hide').on('change', function() {
+					if ($(this).is(':checked')) {
+						// Show warning modal/alert
+						var warningMessage = '⚠️ WARNING: ADVANCED FEATURE\n\n' +
+							'Enabling BDTUPK_HIDE will activate advanced white label mode that:\n\n' +
+							'• Hides ALL Element Pack branding and menus\n' +
+							'• Makes these settings difficult to access later\n' +
+							'• Requires the special access link to return\n' +
+							'• Is intended for client/agency use only\n\n' +
+							'An email with access instructions will be sent if you proceed.\n\n' +
+							'Are you sure you want to enable this advanced mode?';
 						
-				// 		if (!confirm(warningMessage)) {
-				// 			// User cancelled, uncheck the box
-				// 			$(this).prop('checked', false);
-				// 			return false;
-				// 		}
+						if (!confirm(warningMessage)) {
+							// User cancelled, uncheck the box
+							$(this).prop('checked', false);
+							return false;
+						}
 						
-				// 		// Show additional info message
-				// 		if ($('#upk-bdtupk-hide-info').length === 0) {
-				// 			$(this).closest('.upk-option-item').after(
-				// 				'<div id="upk-bdtupk-hide-info" class="bdt-alert bdt-alert-warning bdt-margin-small-top">' +
-				// 				'<p><strong>BDTUPK_HIDE Mode Enabled</strong></p>' +
-				// 				'<p>When you save these settings, an email will be sent with instructions to access white label settings in the future.</p>' +
-				// 				'</div>'
-				// 			);
-				// 		}
-				// 	} else {
-				// 		// Remove info message when unchecked
-				// 		$('#upk-bdtupk-hide-info').remove();
-				// 	}
-				// });
+						// Show additional info message
+						if ($('#upk-bdtupk-hide-info').length === 0) {
+							$(this).closest('.upk-option-item').after(
+								'<div id="upk-bdtupk-hide-info" class="bdt-alert bdt-alert-warning bdt-margin-small-top">' +
+								'<p><strong>BDTUPK_HIDE Mode Enabled</strong></p>' +
+								'<p>When you save these settings, an email will be sent with instructions to access white label settings in the future.</p>' +
+								'</div>'
+							);
+						}
+					} else {
+						// Remove info message when unchecked
+						$('#upk-bdtupk-hide-info').remove();
+					}
+				});
 
 				// Save custom code functionality (updated for CodeMirror)
 				$('#upk-save-custom-code').on('click', function(e) {
@@ -2794,7 +2795,304 @@ class UltimatePostKit_Admin_Settings {
         return $pages_options;
     }
 
+	/**
+	 * Check if current license supports white label features
+	 * Now includes other_param checking for AppSumo WL flag
+	 * 
+	 * @access public static
+	 * @return bool
+	 */
+	public static function is_white_label_license() {
+		// Check if pro version is activated first
+		if (!function_exists('_is_upk_pro_activated') || !_is_upk_pro_activated()) {
+			return false;
+		}
+		
+		// Since UltimatePostKitPro\Base doesn't exist, return false for now
+		// This should be replaced with actual pro license checking logic when available
+		$license_info = null;
+		
+		// Security: Validate license info structure
+		if (empty($license_info) || 
+			!is_object($license_info) || 
+			empty($license_info->license_title) || 
+			empty($license_info->is_valid)) {
+			return false;
+		}
+		
+		// Sanitize license title to prevent any potential issues
+		$license_title = sanitize_text_field(strtolower($license_info->license_title));
+		
+		// Check for other_param WL flag FIRST (for AppSumo and other special licenses)
+		if (!empty($license_info->other_param)) {
+			// Check if other_param contains WL flag
+			if (is_array($license_info->other_param)) {
+				if (in_array('WL', $license_info->other_param, true)) {
+					return true;
+				}
+			} elseif (is_string($license_info->other_param)) {
+				if (strpos($license_info->other_param, 'WL') !== false) {
+					return true;
+				}
+			}
+		}
+		
+		// Check standard license types (but NOT AppSumo - AppSumo requires WL flag)
+		$allowed_types = self::get_white_label_allowed_license_types();
+		$allowed_hashes = array_values($allowed_types);
+		
+		// Split license title into words and check each word
+		$words = preg_split('/\s+/', $license_title, -1, PREG_SPLIT_NO_EMPTY);
+		foreach ($words as $word) {
+			$word = trim($word);
+			if (empty($word) || strlen($word) > 50) { // Prevent extremely long strings
+				continue;
+			}
+			
+			// Use SHA-256 for enhanced security
+			$hash = hash('sha256', $word);
+			if (in_array($hash, $allowed_hashes, true)) { // Strict comparison
+				return true;
+			}
+		}
+		
+		return false;
+	}
 
+	/**
+	 * Render White Label Section
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function render_white_label_section() {
+
+		$is_pro_activated = _is_upk_pro_activated();
+
+		if (!$is_pro_activated): ?>
+			<div class="bdt-alert bdt-alert-danger bdt-margin-medium-top" bdt-alert>
+				<p><?php esc_html_e('You need Ultimate Post Kit Pro to access White Label functionality.', 'ultimate-post-kit'); ?></p>
+				<div class="bdt-margin-small-top">
+					<a href="https://postkit.pro/pricing/" target="_blank" class="bdt-button bdt-btn-blue">
+						<?php esc_html_e('Get Pro', 'ultimate-post-kit'); ?>
+					</a>
+				</div>
+			</div>
+		<?php 
+			return;
+		endif; ?>
+		
+		<div class="upk-white-label-section">
+			<h1 class="upk-feature-title"><?php esc_html_e('White Label Settings', 'ultimate-post-kit'); ?></h1>
+			<p><?php esc_html_e('Enable white label mode to hide Ultimate Post Kit branding from the admin interface and widgets.', 'ultimate-post-kit'); ?></p>
+
+			<?php 
+			$is_license_active = $this->is_activated;
+			$is_white_label_eligible = self::is_white_label_license();
+			
+			// Show appropriate notices based on license status
+			if (!$is_license_active): ?>
+				<div class="bdt-alert bdt-alert-danger bdt-margin-medium-top" bdt-alert>
+					<p><strong><?php esc_html_e('License Not Activated', 'ultimate-post-kit'); ?></strong></p>
+					<p><?php esc_html_e('You need to activate your Ultimate Post Kit license to access White Label functionality. Please activate your license first.', 'ultimate-post-kit'); ?></p>
+					<div class="bdt-margin-small-top">
+						<a href="<?php echo esc_url(admin_url('admin.php?page=ultimate_post_kit_options#ultimate_post_kit_license_settings')); ?>" class="bdt-button bdt-btn-blue bdt-margin-small-right">
+							<?php esc_html_e('Activate License', 'ultimate-post-kit'); ?>
+						</a>
+						<a href="https://postkit.pro/pricing/" target="_blank" class="bdt-button bdt-btn-blue">
+							<?php esc_html_e('Get License', 'ultimate-post-kit'); ?>
+						</a>
+					</div>
+				</div>
+			<?php elseif ($is_license_active && !$is_white_label_eligible): ?>
+				<div class="bdt-alert bdt-alert-warning bdt-margin-medium-top" bdt-alert>
+					<p><strong><?php esc_html_e('Eligible License Required', 'ultimate-post-kit'); ?></strong></p>
+					<p><?php esc_html_e('White Label functionality is available for Agency, Extended, Developer, AppSumo Lifetime, and other eligible license holders. Some licenses may include special white label permissions.', 'ultimate-post-kit'); ?></p>
+					<a href="https://postkit.pro/pricing/" target="_blank" class="bdt-button bdt-btn-blue bdt-margin-small-top">
+						<?php esc_html_e('Upgrade License', 'ultimate-post-kit'); ?>
+					</a>
+				</div>
+			<?php endif; ?>
+
+			<div class="upk-white-label-options <?php echo (!$is_license_active || !$is_white_label_eligible) ? 'upk-white-label-locked' : ''; ?>">
+				<div class="upk-option-item ">
+					<div class="upk-option-item-inner bdt-card">
+						<div class="bdt-flex bdt-flex-between bdt-flex-middle">
+							<div>
+								<h3 class="upk-option-title"><?php esc_html_e('Enable White Label Mode', 'ultimate-post-kit'); ?></h3>
+								<p class="upk-option-description">
+									<?php if ($is_license_active && $is_white_label_eligible): ?>
+										<?php esc_html_e('When enabled, Ultimate Post Kit branding will be hidden from the admin interface and widgets.', 'ultimate-post-kit'); ?>
+									<?php elseif (!$is_license_active): ?>
+										<?php esc_html_e('This feature requires an active Ultimate Post Kit license. Please activate your license first.', 'ultimate-post-kit'); ?>
+									<?php else: ?>
+										<?php esc_html_e('This feature requires an eligible license (Agency, Extended, Developer, AppSumo Lifetime, etc.). Upgrade your license to access white label functionality.', 'ultimate-post-kit'); ?>
+									<?php endif; ?>
+								</p>
+							</div>
+							<div class="upk-option-switch">
+								<?php
+								$white_label_enabled = ($is_license_active && $is_white_label_eligible) ? get_option('upk_white_label_enabled', false) : false;
+								// Convert to boolean to ensure proper comparison
+								$white_label_enabled = (bool) $white_label_enabled;
+								?>
+								<label class="switch">
+									<input type="checkbox" 
+										   id="upk-white-label-enabled" 
+										   name="upk_white_label_enabled" 
+										   <?php checked($white_label_enabled, true); ?>
+										   <?php disabled(!$is_license_active || !$is_white_label_eligible); ?>>
+									<span class="slider"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- White Label Title Field (conditional) -->
+				<div class="upk-option-item upk-white-label-fields" style="<?php echo ($white_label_enabled && $is_license_active && $is_white_label_eligible) ? '' : 'display: none;'; ?>">
+					<div class="upk-option-item-inner bdt-card">
+						<div class="upk-white-label-title-section bdt-margin-medium-bottom">
+							<h3 class="upk-option-title"><?php esc_html_e('White Label Title', 'ultimate-post-kit'); ?></h3>
+							<p class="upk-option-description"><?php esc_html_e('Enter a custom title to replace "Ultimate Post Kit" branding throughout the plugin.', 'ultimate-post-kit'); ?></p>
+							<div class="upk-white-label-input-wrapper bdt-margin-small-top">
+								<input type="text" 
+									   id="upk-white-label-title" 
+									   name="upk_white_label_title" 
+									   class="upk-white-label-input" 
+									   placeholder="<?php esc_attr_e('Enter your custom title...', 'ultimate-post-kit'); ?>"
+									   value="<?php echo esc_attr(get_option('upk_white_label_title', '')); ?>"
+									   <?php disabled(!$is_license_active || !$is_white_label_eligible); ?>>
+							</div>
+						</div>
+
+						<hr class="bdt-divider-small">
+						
+						<!-- White Label Title Icon Field -->
+						<div class="upk-white-label-icon-section bdt-margin-medium-top">
+							<h3 class="upk-option-title"><?php esc_html_e('White Label Title Icon', 'ultimate-post-kit'); ?></h3>
+							<p class="upk-option-description"><?php esc_html_e('Upload a custom icon to replace the Ultimate Post Kit menu icon. Supports JPG, PNG, and SVG formats.', 'ultimate-post-kit'); ?></p>
+							
+							<div class="upk-icon-upload-wrapper bdt-margin-small-top">
+								<?php 
+								$icon_url = get_option('upk_white_label_icon', '');
+								$icon_id = get_option('upk_white_label_icon_id', '');
+								?>
+								<div class="upk-icon-preview-container" style="<?php echo $icon_url ? '' : 'display: none;'; ?>">
+									<div class="upk-icon-preview">
+										<img id="upk-icon-preview-img" src="<?php echo esc_url($icon_url); ?>" alt="Icon Preview" style="max-width: 64px; max-height: 64px; border: 1px solid #ddd; border-radius: 4px; padding: 8px; background: #fff;">
+									</div>
+									<button type="button" id="upk-remove-icon" class="bdt-button bdt-btn-grey bdt-flex bdt-flex-middle bdt-margin-small-top" style="padding: 8px 12px; font-size: 12px;">
+										<span class="dashicons dashicons-trash"></span>
+										<?php esc_html_e('Remove', 'ultimate-post-kit'); ?>
+									</button>
+								</div>
+								
+								<div class="upk-icon-upload-container">
+									<button type="button" id="upk-upload-icon" class="bdt-button bdt-btn-blue bdt-margin-small-top" <?php disabled(!$is_license_active || !$is_white_label_eligible); ?>>
+										<span class="dashicons dashicons-cloud-upload"></span>
+										<?php esc_html_e('Upload Icon', 'ultimate-post-kit'); ?>
+									</button>
+									<input type="hidden" id="upk-white-label-icon" name="upk_white_label_icon" value="<?php echo esc_attr($icon_url); ?>">
+									<input type="hidden" id="upk-white-label-icon-id" name="upk_white_label_icon_id" value="<?php echo esc_attr($icon_id); ?>">
+							</div>
+						</div>
+
+							<p class="upk-input-help">
+								<?php esc_html_e('Recommended size: 20x20 pixels. The icon will be automatically resized to fit the WordPress admin menu. Supported formats: JPG, PNG, SVG.', 'ultimate-post-kit'); ?>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- License Hide Option (conditional) -->
+				<div class="upk-option-item upk-white-label-fields" style="<?php echo ($white_label_enabled && $is_license_active && $is_white_label_eligible) ? '' : 'display: none;'; ?>">
+					<div class="upk-option-item-inner bdt-card">
+						<div class="bdt-flex bdt-flex-between bdt-flex-middle">
+							<div>
+								<h3 class="upk-option-title"><?php esc_html_e('Hide License Menu', 'ultimate-post-kit'); ?></h3>
+								<p class="upk-option-description"><?php esc_html_e('Hide the license menu from the admin sidebar when white label mode is enabled.', 'ultimate-post-kit'); ?></p>
+							</div>
+							<div class="upk-option-switch">
+								<?php
+								$hide_license = get_option('upk_white_label_hide_license', false);
+								// Convert to boolean to ensure proper comparison
+								$hide_license = (bool) $hide_license;
+								?>
+								<label class="switch">
+									<input type="checkbox" 
+										   id="upk-white-label-hide-license" 
+										   name="upk_white_label_hide_license" 
+										   <?php checked($hide_license, true); ?>
+										   <?php disabled(!$is_license_active || !$is_white_label_eligible); ?>>
+									<span class="slider"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- BDTUPK_HIDE Option (conditional) -->
+				<div class="upk-option-item upk-white-label-fields" style="<?php echo ($white_label_enabled && $is_license_active && $is_white_label_eligible) ? '' : 'display: none;'; ?>">
+					<div class="upk-option-item-inner bdt-card">
+						<div class="bdt-flex bdt-flex-between bdt-flex-middle">
+							<div>
+								<h3 class="upk-option-title"><?php esc_html_e('Enable BDTUPK_HIDE Constant', 'ultimate-post-kit'); ?></h3>
+								<p class="upk-option-description"><?php esc_html_e('Define the BDTUPK_HIDE constant to hide additional Ultimate Post Kit branding and features throughout the plugin.', 'ultimate-post-kit'); ?></p>
+								<?php 
+								$bdtupk_hide = get_option('upk_white_label_bdtupk_hide', false);
+								if ($bdtupk_hide): ?>
+									<div class="bdt-alert bdt-alert-warning bdt-margin-small-top">
+										<p><strong>⚠️ BDTUPK_HIDE Currently Active</strong></p>
+										<p>Advanced white label mode is currently enabled. Ultimate Post Kit menus are hidden from the admin interface.</p>
+									</div>
+								<?php endif; ?>
+							</div>
+							<div class="upk-option-switch">
+								<?php
+								// Convert to boolean to ensure proper comparison
+								$bdtupk_hide = (bool) $bdtupk_hide;
+								?>
+								<label class="switch">
+									<input type="checkbox" 
+										   id="upk-white-label-bdtupk-hide" 
+										   name="upk_white_label_bdtupk_hide" 
+										   <?php checked($bdtupk_hide, true); ?>
+										   <?php disabled(!$is_license_active || !$is_white_label_eligible); ?>>
+									<span class="slider"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<?php if (!$bdtupk_hide && $is_license_active && $is_white_label_eligible): ?>
+				<div class="bdt-margin-small-top">
+					<div class="bdt-alert bdt-alert-danger">
+						<h4>📧 Email Access System</h4>
+						<p>When you enable BDTUPK_HIDE, an email will be automatically sent to:</p>
+						<ul style="margin: 10px 0;">
+							<li><strong>License Email:</strong> <?php echo esc_html(self::get_license_email()); ?></li>
+							<?php if (get_bloginfo('admin_email') !== self::get_license_email()): ?>
+							<li><strong>Admin Email:</strong> <?php echo esc_html(get_bloginfo('admin_email')); ?></li>
+							<?php endif; ?>
+						</ul>
+						<p>This email will contain a special access link that allows you to return to these settings even when BDTUPK_HIDE is active.</p>
+					</div>
+				</div>
+				<?php endif; ?>
+
+				<!-- Success/Error Messages -->
+				<div id="upk-white-label-message" class="upk-white-label-message bdt-margin-small-top" style="display: none;">
+					<div class="bdt-alert bdt-alert-success" bdt-alert>
+						<a href class="bdt-alert-close" bdt-close></a>
+						<p><?php esc_html_e('White label settings saved successfully!', 'ultimate-post-kit'); ?></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
 
     public static function license_wl_status() {
 		$status = get_option('ultimate_post_kit_license_title_status');
@@ -3896,7 +4194,7 @@ class UltimatePostKit_Admin_Settings {
 						<ul class="bdt-tab" bdt-tab="connect: #upk-extra-options-tab-content; animation: bdt-animation-fade">
 							<li class="bdt-active"><a
 									href="#"><?php esc_html_e('Custom CSS & JS', 'ultimate-post-kit'); ?></a></li>
-							<!-- <li><a href="#"><?php //esc_html_e('White Label', 'ultimate-post-kit'); ?></a></li> -->
+							<li><a href="#"><?php esc_html_e('White Label', 'ultimate-post-kit'); ?></a></li>
 						</ul>
 
 						<div id="upk-extra-options-tab-content" class="bdt-switcher">
@@ -3907,7 +4205,7 @@ class UltimatePostKit_Admin_Settings {
 							
 							<!-- White Label Tab -->
 							<div>
-								<?php //$this->render_white_label_section(); ?>
+								<?php $this->render_white_label_section(); ?>
 							</div>
 						</div>
 					</div>
