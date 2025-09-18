@@ -2866,22 +2866,53 @@ class UltimatePostKit_Admin_Settings {
 	 * @return void
 	 */
 	public function render_white_label_section() {
-
-		$is_pro_activated = _is_upk_pro_activated();
-
-		if (!$is_pro_activated): ?>
+		//// Safely check if helper functions exist
+		$is_pro_installed = function_exists('_is_upk_pro_installed') ? _is_upk_pro_installed() : false;
+		$is_pro_activated = function_exists('_is_upk_pro_activated') ? _is_upk_pro_activated() : false;
+	
+		// Define plugin slug (adjust if needed)
+		$plugin_slug = 'ultimate-post-kit-pro/ultimate-post-kit-pro.php';
+	
+		// Case 1: Pro not installed
+		if ( ! $is_pro_installed ) : ?>
 			<div class="bdt-alert bdt-alert-danger bdt-margin-medium-top" bdt-alert>
-				<p><?php esc_html_e('You need Ultimate Post Kit Pro to access White Label functionality.', 'ultimate-post-kit'); ?></p>
+				<p><?php esc_html_e( 'Ultimate Post Kit Pro is not installed. Please install it to access White Label functionality.', 'ultimate-post-kit' ); ?></p>
 				<div class="bdt-margin-small-top">
 					<a href="https://postkit.pro/pricing/" target="_blank" class="bdt-button bdt-btn-blue">
-						<?php esc_html_e('Get Pro', 'ultimate-post-kit'); ?>
+						<?php esc_html_e( 'Get Pro', 'ultimate-post-kit' ); ?>
 					</a>
 				</div>
 			</div>
-		<?php 
+			<?php
 			return;
-		endif; ?>
-		
+		endif;
+	
+		// Case 2: Installed but not active
+		if ( $is_pro_installed && ! $is_pro_activated ) :
+			// Generate secure activation link
+			$activate_url = wp_nonce_url(
+				add_query_arg(
+					array(
+						'action' => 'activate',
+						'plugin' => $plugin_slug,
+					),
+					admin_url( 'plugins.php' )
+				),
+				'activate-plugin_' . $plugin_slug
+			);
+			?>
+			<div class="bdt-alert bdt-alert-warning bdt-margin-medium-top" bdt-alert>
+				<p><?php esc_html_e( 'Ultimate Post Kit Pro is installed but not activated. Please activate it to access White Label functionality.', 'ultimate-post-kit' ); ?></p>
+				<div class="bdt-margin-small-top">
+					<a href="<?php echo esc_url( $activate_url ); ?>" class="bdt-button bdt-btn-blue">
+						<?php esc_html_e( 'Activate Pro', 'ultimate-post-kit' ); ?>
+					</a>
+				</div>
+			</div>
+			<?php
+			return;
+		endif;
+		?>
 		<div class="upk-white-label-section">
 			<h1 class="upk-feature-title"><?php esc_html_e('White Label Settings', 'ultimate-post-kit'); ?></h1>
 			<p><?php esc_html_e('Enable white label mode to hide Ultimate Post Kit branding from the admin interface and widgets.', 'ultimate-post-kit'); ?></p>
