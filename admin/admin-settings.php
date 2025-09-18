@@ -52,10 +52,12 @@ class UltimatePostKit_Admin_Settings {
 		// Add custom CSS/JS functionality
 		$this->init_custom_code_functionality();
 
-		// AJAX handler for saving white label settings (admin only)
+		// White label settings (admin only)
 		add_action( 'wp_ajax_upk_save_white_label', [ $this, 'save_white_label_ajax' ] );
+		add_action( 'wp_ajax_upk_revoke_white_label_token', [ $this, 'revoke_white_label_token_ajax' ] );
+		add_action( 'admin_head', [ $this, 'inject_white_label_icon_css' ] );
 
-		// Add AJAX handler for plugin installation
+		// Plugin installation (admin only)
 		add_action('wp_ajax_upk_install_plugin', [$this, 'install_plugin_ajax']);
 
         // Initialize rollback version functionality
@@ -373,6 +375,100 @@ class UltimatePostKit_Admin_Settings {
 		</html>
 		<?php
 		return ob_get_clean();
+	}
+
+	/**
+	 * Handle white label access link
+	 * 
+	 * @access private
+	 * @return void
+	 */
+	private function handle_white_label_access() {
+		// Check if this is a white label access request
+		if ( ! isset( $_GET['upk_wl'] ) || ! isset( $_GET['token'] ) ) {
+			return;
+		}
+
+		// Check user capability
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( 'You do not have sufficient permissions to access this page.' );
+		}
+
+		$upk_wl = sanitize_text_field( $_GET['upk_wl'] );
+		$access_token = sanitize_text_field( $_GET['token'] );
+
+		// Check if upk_wl is set to 1
+		if ( $upk_wl !== '1' ) {
+			$this->show_access_error( 'Invalid access parameter. Please use the correct link from your email.' );
+			return;
+		}
+
+		// Validate the access token
+		if ( ! $this->validate_white_label_access_token( $access_token ) ) {
+			$this->show_access_error( 'Invalid or expired access token. Please use the correct access link from your email.' );
+			return;
+		}
+
+		// Valid access - temporarily allow access by setting a flag
+		add_action( 'admin_init', [ $this, 'admin_init' ] );
+		add_action( 'admin_menu', [ $this, 'admin_menu' ], 201 );
+		add_action( 'admin_menu', [ $this, 'admin_license_menu' ], 202 );
+
+		// Add success notice
+		add_action( 'admin_notices', function() {
+			echo '<div class="notice notice-success is-dismissible">';
+			echo '<p><strong>✅ White Label Access Granted!</strong> You can now modify white label settings.</p>';
+			echo '</div>';
+		} );
+	}
+
+	/**
+	 * Show access error page
+	 * 
+	 * @access private
+	 * @param string $message
+	 * @return void
+	 */
+	private function show_access_error( $message ) {
+		wp_die( 
+			'<h1>🔒 Ultimate Post Kit White Label Access</h1>' .
+			'<p><strong>Access Denied:</strong> ' . esc_html( $message ) . '</p>' .
+			'<p>If you need assistance, please contact support with your license information.</p>' .
+			'<p><a href="' . admin_url() . '" class="button button-primary">← Return to Dashboard</a></p>',
+			'Access Denied',
+			[ 'response' => 403 ]
+		);
+	}
+
+	/**
+	 * Inject white label icon CSS
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function inject_white_label_icon_css() {
+		$white_label_enabled = get_option('upk_white_label_enabled', false);
+		$white_label_icon = get_option('upk_white_label_icon', '');
+		
+		// Only inject CSS when white label is enabled AND a custom icon is set
+		if ( $white_label_enabled && ! empty( $white_label_icon ) ) {
+			echo '<style type="text/css">';
+			echo '#toplevel_page_ultimate_post_kit_options .wp-menu-image {';
+			echo 'background-image: url(' . esc_url( $white_label_icon ) . ') !important;';
+			echo 'background-size: 20px 20px !important;';
+			echo 'background-repeat: no-repeat !important;';
+			echo 'background-position: center !important;';
+			echo '}';
+			echo '#toplevel_page_ultimate_post_kit_options .wp-menu-image:before {';
+			echo 'display: none !important;';
+			echo '}';
+			echo '#toplevel_page_ultimate_post_kit_options .wp-menu-image img {';
+			echo 'display: none !important;';
+			echo '}';
+			echo '</style>';
+		}
+		// When white label is disabled or no icon is set, don't inject any CSS
+		// This allows WordPress's original icon to display naturally
 	}
 
     /**
