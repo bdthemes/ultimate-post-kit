@@ -236,6 +236,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 3.16.X [XXth September 2025] =
+
+* Fixed: Resolved deprecation error in PHP 8.4
+
 = 3.16.1 [8th September 2025] =
 
 * Fixed: DCI Notice removed for security reason

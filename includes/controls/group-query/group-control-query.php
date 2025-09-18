@@ -532,7 +532,7 @@ abstract class Group_Control_Query extends Module_Base {
         return $args;
     }
 
-    private function getAuthorArgs($args, $settings, $post = null) {
+    private function getAuthorArgs($args, $settings, mixed $post = null) {
 
         $include_by = $this->getGroupControlQueryParamBy('include');
         $exclude_by = $this->getGroupControlQueryParamBy('exclude');
