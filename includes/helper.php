@@ -211,7 +211,7 @@ function upk_get_category( $post_type ) {
 }
 
 
-function ultimate_post_kit_allow_tags( $tag = null ) {
+function ultimate_post_kit_allow_tags( ?string $tag = null ) {
 	$tag_allowed = wp_kses_allowed_html( 'post' );
 
 	$tag_allowed['input']  = [ 

@@ -120,7 +120,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		],
 	];
 
-	public static function get_social_media( $media_name = null ) {
+	public static function get_social_media( ?string $media_name = null ) {
 		if ( $media_name ) {
 			return isset( self::$medias[ $media_name ] ) ? self::$medias[ $media_name ] : null;
 		}
