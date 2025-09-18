@@ -123,14 +123,12 @@ class UltimatePostKit_Admin_Settings {
 			wp_localize_script( 'upk-admin-script', 'upk_admin_ajax', [
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'nonce'    => wp_create_nonce( 'upk_custom_code_nonce' ),
-				// 'white_label_nonce' => wp_create_nonce( 'upk_white_label_nonce' )
 			] );
 		} else {
 			// Fallback: localize to jquery if the admin script doesn't exist
 			wp_localize_script( 'jquery', 'upk_admin_ajax', [
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'nonce'    => wp_create_nonce( 'upk_custom_code_nonce' ),
-				// 'white_label_nonce' => wp_create_nonce( 'upk_white_label_nonce' )
 			] );
 		}
 	}
@@ -1504,15 +1502,15 @@ class UltimatePostKit_Admin_Settings {
 						</div>
 
 						<!--  White Label Save Button Section -->
-						<?php //if (self::is_white_label_license()): ?>
-							<!-- <div class="upk-white-label-save-section" style="display: none;">
+						<?php if (self::is_white_label_license()): ?>
+							<div class="upk-white-label-save-section" style="display: none;">
 								<button type="button" 
 										id="upk-save-white-label" 
 										class="bdt-button bdt-button-primary ultimate-post-kit-white-label-save-btn">
-										<?php //esc_html_e('Save White Label Settings', 'ultimate-post-kit'); ?>
+										<?php esc_html_e('Save White Label Settings', 'ultimate-post-kit'); ?>
 								</button>
-							</div> -->
-						<?php //endif; ?>
+							</div>
+						<?php endif; ?>
 
 						<div class="upk-dashboard-new-page">
 							<a class="bdt-flex bdt-flex-middle" href="<?php echo esc_url(admin_url('post-new.php?post_type=page')); ?>" class=""><i class="dashicons dashicons-admin-page"></i>
@@ -1975,14 +1973,14 @@ class UltimatePostKit_Admin_Settings {
 					}
 				});
 
-				// White Label Settings Functionality
-				// Check if upk_admin_ajax is available
-				// if (typeof upk_admin_ajax === 'undefined') {
-				// 	window.upk_admin_ajax = {
-				// 		ajax_url: '<?php //echo admin_url('admin-ajax.php'); ?>',
-				// 		//white_label_nonce: '<?php //echo wp_create_nonce('upk_white_label_nonce'); ?>'
-				// 	};
-				// }				
+				//White Label Settings Functionality
+				//Check if upk_admin_ajax is available
+				if (typeof upk_admin_ajax === 'undefined') {
+					window.upk_admin_ajax = {
+						ajax_url: '<?php echo admin_url('admin-ajax.php'); ?>',
+						white_label_nonce: '<?php echo wp_create_nonce('upk_white_label_nonce'); ?>'
+					};
+				}				
 				
 				// Initialize CodeMirror editors for custom code
 				var codeMirrorEditors = {};
@@ -2132,7 +2130,7 @@ class UltimatePostKit_Admin_Settings {
 					}
 				});
 
-				Toggle white label fields visibility
+				//Toggle white label fields visibility
 				$('#upk-white-label-enabled').on('change', function() {
 					if ($(this).is(':checked')) {
 						$('.upk-white-label-fields').slideDown(300);
@@ -2141,7 +2139,7 @@ class UltimatePostKit_Admin_Settings {
 					}
 				});
 
-				WordPress Media Library Integration for Icon Upload
+				//WordPress Media Library Integration for Icon Upload
 				var mediaUploader;
 				
 				$('#upk-upload-icon').on('click', function(e) {
@@ -2182,7 +2180,7 @@ class UltimatePostKit_Admin_Settings {
 					mediaUploader.open();
 				});
 				
-				Remove icon functionality
+				//Remove icon functionality
 				$('#upk-remove-icon').on('click', function(e) {
 					e.preventDefault();
 					
@@ -2195,7 +2193,7 @@ class UltimatePostKit_Admin_Settings {
 					$('#upk-icon-preview-img').attr('src', '');
 				});
 
-				BDTUPK_HIDE Warning when checkbox is enabled
+				//BDTUPK_HIDE Warning when checkbox is enabled
 				$('#upk-white-label-bdtupk-hide').on('change', function() {
 					if ($(this).is(':checked')) {
 						// Show warning modal/alert
@@ -2810,7 +2808,7 @@ class UltimatePostKit_Admin_Settings {
 		
 		// Since UltimatePostKitPro\Base doesn't exist, return false for now
 		// This should be replaced with actual pro license checking logic when available
-		$license_info = null;
+		$license_info = UltimatePostKitPro\Base\Ultimate_Post_Kit_Base::GetRegisterInfo();
 		
 		// Security: Validate license info structure
 		if (empty($license_info) || 
@@ -2918,7 +2916,11 @@ class UltimatePostKit_Admin_Settings {
 			<p><?php esc_html_e('Enable white label mode to hide Ultimate Post Kit branding from the admin interface and widgets.', 'ultimate-post-kit'); ?></p>
 
 			<?php 
-			$is_license_active = $this->is_activated;
+
+			$is_license_active = false;
+			if ( function_exists( 'upk_license_validation' ) && true === upk_license_validation() ) {
+				$is_license_active = true;
+			}
 			$is_white_label_eligible = self::is_white_label_license();
 			
 			// Show appropriate notices based on license status
@@ -4258,13 +4260,116 @@ class UltimatePostKit_Admin_Settings {
 		$this->rollback_version->ultimate_post_kit_rollback_version_content();
 	}
 
+	/**
+	 * Get allowed white label license types (SHA-256 hashes)
+	 * This centralized method makes it easy to add new license types in the future
+	 * Note: AppSumo and Lifetime licenses require WL flag in other_param instead of automatic access
+	 * 
+	 * @access public static
+	 * @return array Array of SHA-256 hashes for allowed license types
+	 */
+	public static function get_white_label_allowed_license_types() {
+		$allowed_types = [
+			'agency' => 'c4b2af4722ee54e317672875b2d8cf49aa884bf5820ec6091114fea5ec6560e4',
+			'extended' => '4d7120eb6c796b04273577476eb2e20c34c51d7fa1025ec19c3414448abc241e',
+			'developer' => '88fa0d759f845b47c044c2cd44e29082cf6fea665c30c146374ec7c8f3d699e3',
+			// Note: AppSumo and Lifetime licenses removed from automatic access
+			// They require WL flag in other_param for white label functionality
+		];
 
+		return $allowed_types;
+	}
 
+	/**
+	 * Revoke white label access token
+	 * 
+	 * @access public
+	 * @return bool
+	 */
+	public function revoke_white_label_access_token() {
+		$token_data = get_option( 'upk_white_label_access_token', [] );
+		
+		if ( ! empty( $token_data ) ) {
+			delete_option( 'upk_white_label_access_token' );
+			return true;
+		}
+		
+		return false;
+	}
 
+	/**
+	 * Validate white label access token
+	 * 
+	 * @access public
+	 * @param string $token
+	 * @return bool
+	 */
+	public function validate_white_label_access_token( $token ) {
+		$stored_token_data = get_option( 'upk_white_label_access_token', [] );
+		
+		if ( empty( $stored_token_data ) || ! isset( $stored_token_data['token'] ) ) {
+			return false;
+		}
+		
+		// Check token match
+		if ( $stored_token_data['token'] !== $token ) {
+			return false;
+		}
+		
+		// Check if token was generated for current license
+		$current_license_key = self::get_license_key();
+		if ( $stored_token_data['license_key'] !== $current_license_key ) {
+			return false;
+		}
+		
+		return true;
+	}
 
+	/**
+	 * AJAX handler for revoking white label access token
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function revoke_white_label_token_ajax() {
+		// Check nonce and permissions
+		if (!wp_verify_nonce($_POST['nonce'], 'upk_white_label_nonce')) {
+			wp_send_json_error(['message' => __('Security check failed', 'ultimate-post-kit')]);
+		}
 
+		if (!current_user_can('manage_options')) {
+			wp_send_json_error(['message' => __('You do not have permission to manage white label settings', 'ultimate-post-kit')]);
+		}
 
+		// Check license eligibility
+		if (!self::is_white_label_license()) {
+			wp_send_json_error(['message' => __('Your license does not support white label features', 'ultimate-post-kit')]);
+		}
 
+		// Revoke the token
+		$revoked = $this->revoke_white_label_access_token();
+
+		if ($revoked) {
+			wp_send_json_success([
+				'message' => __('White label access token has been revoked successfully', 'ultimate-post-kit')
+			]);
+		} else {
+			wp_send_json_error([
+				'message' => __('No active access token found to revoke', 'ultimate-post-kit')
+			]);
+		}
+	}
+
+	/**
+	 * Get License Email
+	 *
+	 * @access public
+	 * @return string
+	 */
+
+	 public static function get_license_email() {
+		return trim(get_option('element_pack_license_email', get_bloginfo('admin_email')));
+	}
 
 }
 
