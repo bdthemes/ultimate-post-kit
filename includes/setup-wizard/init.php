@@ -215,6 +215,12 @@ class Setup_Wizard {
 
 	// Enqueue necessary scripts
 	public function enqueue_scripts() {
+
+		$direction_suffix = is_rtl() ? '.rtl' : '';
+
+		wp_enqueue_style('bdt-uikit', BDTUPK_ADMIN_ASSETS_URL . 'css/bdt-uikit' . $direction_suffix . '.css', [], '3.17.0');
+		wp_enqueue_script('bdt-uikit', BDTUPK_ADMIN_ASSETS_URL . 'js/bdt-uikit.min.js', ['jquery'], '3.17.0');
+
 		wp_register_script( 'upk-setup-wizard', plugins_url( 'assets/js/setup-wizard.js', __FILE__ ), array( 'jquery' ), '1.0.0', true );
 		wp_register_style( 'upk-setup-wizard', plugins_url( 'assets/css/setup-wizard.css', __FILE__ ), array(), '1.0.0' );
 
@@ -223,7 +229,7 @@ class Setup_Wizard {
 
 		wp_localize_script(
 			'upk-setup-wizard',
-			'UPK_SetupWizard',
+			'BDT_SetupWizard',
 			array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'nonce'    => wp_create_nonce( 'setup_wizard_nonce' ),

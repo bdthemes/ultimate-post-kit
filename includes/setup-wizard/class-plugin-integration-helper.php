@@ -39,7 +39,7 @@ class Plugin_Integration_Helper {
                     'logo' => 'https://ps.w.org/bdthemes-prime-slider-lite/assets/icon-256x256.gif',
                     'rating' => 4.7,
                     'num_ratings' => 500,
-                    'active_installs' => '50,000+'
+                    'active_installs' => '100,000+'
                 ]
             ],
             'live-copy-paste' => [
