@@ -52,6 +52,9 @@ class UltimatePostKit_Admin_Settings {
 		// Add custom CSS/JS functionality
 		$this->init_custom_code_functionality();
 
+		// AJAX handler for saving white label settings (admin only)
+		add_action( 'wp_ajax_upk_save_white_label', [ $this, 'save_white_label_ajax' ] );
+
 		// Add AJAX handler for plugin installation
 		add_action('wp_ajax_upk_install_plugin', [$this, 'install_plugin_ajax']);
 
@@ -123,14 +126,253 @@ class UltimatePostKit_Admin_Settings {
 			wp_localize_script( 'upk-admin-script', 'upk_admin_ajax', [
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'nonce'    => wp_create_nonce( 'upk_custom_code_nonce' ),
+				'white_label_nonce' => wp_create_nonce( 'upk_white_label_nonce' )
 			] );
 		} else {
 			// Fallback: localize to jquery if the admin script doesn't exist
 			wp_localize_script( 'jquery', 'upk_admin_ajax', [
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'nonce'    => wp_create_nonce( 'upk_custom_code_nonce' ),
+				'white_label_nonce' => wp_create_nonce( 'upk_white_label_nonce' )
 			] );
 		}
+	}
+
+	/**
+	 * AJAX handler for saving white label settings
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function save_white_label_ajax() {
+		
+		// Check nonce and permissions
+		if (!wp_verify_nonce($_POST['nonce'], 'upk_white_label_nonce')) {
+			wp_send_json_error(['message' => __('Security check failed', 'ultimate-post-kit')]);
+		}
+
+		if (!current_user_can('manage_options')) {
+			wp_send_json_error(['message' => __('You do not have permission to manage white label settings', 'ultimate-post-kit')]);
+		}
+
+		// Check license eligibility
+		if (!self::is_white_label_license()) {
+			wp_send_json_error(['message' => __('Your license does not support white label features', 'ultimate-post-kit')]);
+		}
+
+		// Get white label settings
+		$white_label_enabled = isset($_POST['upk_white_label_enabled']) ? (bool) $_POST['upk_white_label_enabled'] : false;
+		$hide_license = isset($_POST['upk_white_label_hide_license']) ? (bool) $_POST['upk_white_label_hide_license'] : false;
+		$bdtupk_hide = isset($_POST['upk_white_label_bdtupk_hide']) ? (bool) $_POST['upk_white_label_bdtupk_hide'] : false;
+		$white_label_title = isset($_POST['upk_white_label_title']) ? sanitize_text_field($_POST['upk_white_label_title']) : '';
+		$white_label_icon = isset($_POST['upk_white_label_icon']) ? esc_url_raw($_POST['upk_white_label_icon']) : '';
+		$white_label_icon_id = isset($_POST['upk_white_label_icon_id']) ? absint($_POST['upk_white_label_icon_id']) : 0;
+		
+		// Save settings
+		update_option('upk_white_label_enabled', $white_label_enabled);
+		update_option('upk_white_label_hide_license', $hide_license);
+		update_option('upk_white_label_bdtupk_hide', $bdtupk_hide);
+		update_option('upk_white_label_title', $white_label_title);
+		update_option('upk_white_label_icon', $white_label_icon);
+		update_option('upk_white_label_icon_id', $white_label_icon_id);
+
+		// Set license title status
+		if ($white_label_enabled) {
+			update_option('ultimate_post_kit_license_title_status', true);
+		} else {
+			delete_option('ultimate_post_kit_license_title_status');
+		}
+
+		// Only send access email if both white label mode AND BDTUPK_HIDE are enabled
+		if ($white_label_enabled && $bdtupk_hide) {
+			$email_sent = $this->send_white_label_access_email();
+		}
+
+		wp_send_json_success([
+			'message' => __('White label settings saved successfully', 'ultimate-post-kit'),
+			'bdtupk_hide' => $bdtupk_hide,
+			'email_sent' => isset($email_sent) ? $email_sent : false
+		]);
+	}
+
+	/**
+	 * Send white label access email with special link
+	 * 
+	 * @access private
+	 * @return bool
+	 */
+	private function send_white_label_access_email() {
+		
+		$license_email = self::get_license_email();
+		$admin_email = get_bloginfo( 'admin_email' );
+		$license_key = self::get_license_key();
+		$site_name = get_bloginfo( 'name' );
+		$site_url = get_bloginfo( 'url' );
+		
+		// Generate secure access token with additional entropy
+		$access_token = wp_hash( $license_key . time() . wp_salt() . wp_generate_password( 32, false ) );
+		
+		// Store access token in database with no expiration
+		$token_data = [
+			'token' => $access_token,
+			'license_key' => $license_key,
+			'created_at' => current_time( 'timestamp' ),
+			'user_id' => get_current_user_id()
+			];
+		
+		update_option( 'upk_white_label_access_token', $token_data );
+		
+		// Generate access URL using token instead of license key for security
+		// Add white_label_tab=1 parameter to automatically switch to White Label tab
+		$access_url = admin_url( 'admin.php?page=ultimate_post_kit_options&upk_wl=1&token=' . $access_token . '&white_label_tab=1#ultimate_post_kit_extra_options' );
+		
+		// Email subject
+		$subject = sprintf( '[%s] Ultimate Post Kit White Label Access Instructions', $site_name );
+		
+		// Email message
+		$message = $this->get_white_label_email_template( $site_name, $site_url, $access_url, $license_key );
+		
+		// Email headers
+		$headers = [
+			'Content-Type: text/html; charset=UTF-8',
+			'From: ' . $site_name . ' <' . $admin_email . '>'
+		];
+		
+		$email_sent = false;
+		
+		// Send to license email
+		if ( ! empty( $license_email ) && is_email( $license_email ) ) {
+			$email_sent = wp_mail( $license_email, $subject, $message, $headers );
+			
+			// If on localhost or email failed, save email content for manual access
+			if ( ! $email_sent || $this->is_localhost() ) {
+				$this->save_email_content_for_localhost( $access_url, $message, $license_email );
+			}
+		}
+		
+		return $email_sent;
+	}
+
+	/**
+	 * Check if running on localhost
+	 * 
+	 * @access private
+	 * @return bool
+	 */
+	private function is_localhost() {
+		$server_name = $_SERVER['SERVER_NAME'] ?? '';
+		$server_addr = $_SERVER['SERVER_ADDR'] ?? '';
+		
+		$localhost_indicators = [
+			'localhost',
+			'127.0.0.1',
+			'::1',
+			'.local',
+			'.test',
+			'.dev'
+		];
+		
+		foreach ( $localhost_indicators as $indicator ) {
+			if ( strpos( $server_name, $indicator ) !== false || 
+				 strpos( $server_addr, $indicator ) !== false ) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
+	/**
+	 * Save email content for localhost testing
+	 * 
+	 * @access private
+	 * @param string $access_url
+	 * @param string $email_content
+	 * @param string $recipient_email
+	 * @return void
+	 */
+	private function save_email_content_for_localhost( $access_url, $email_content, $recipient_email ) {
+		$email_data = [
+			'access_url' => $access_url,
+			'email_content' => $email_content,
+			'recipient_email' => $recipient_email,
+			'message' => 'Email functionality not available on localhost. Use the access URL below:'
+		];
+		
+		// Save for admin notice display
+		update_option( 'upk_localhost_email_data', $email_data );
+	}
+
+	/**
+	 * Get white label email template
+	 * 
+	 * @access private
+	 * @param string $site_name
+	 * @param string $site_url  
+	 * @param string $access_url
+	 * @param string $license_key
+	 * @return string
+	 */
+	private function get_white_label_email_template( $site_name, $site_url, $access_url, $license_key ) {
+		$masked_license = substr( $license_key, 0, 8 ) . '****-****-****-' . substr( $license_key, -4 );
+		
+		ob_start();
+		?>
+		<!DOCTYPE html>
+		<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>Ultimate Post Kit White Label Access</title>
+			<style>
+				body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+				.container { max-width: 600px; margin: 0 auto; padding: 20px; }
+				.header { background: #2196F3; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+				.content { background: #f9f9f9; padding: 30px; border-radius: 0 0 8px 8px; }
+				.access-link { background: #2196F3; color: white; padding: 15px 25px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 20px 0; }
+				.warning { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 20px 0; }
+				.footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #666; }
+			</style>
+		</head>
+		<body>
+			<div class="container">
+				<div class="header">
+					<h1>🔒 Ultimate Post Kit White Label Access</h1>
+				</div>
+				<div class="content">
+					<h2>Important: Save This Email!</h2>
+					
+					<p>Hello,</p>
+					
+					<p>You have successfully enabled <strong>BDTUPK_HIDE mode</strong> for Ultimate Post Kit Pro on <strong><?php echo esc_html( $site_name ); ?></strong>.</p>
+					
+					<div class="warning">
+						<h3>⚠️ IMPORTANT</h3>
+						<p>The plugin interface is hidden from your WordPress admin. Use below link to modify white label settings.</p>
+
+						<p style="text-align: center;">
+							<a href="<?php echo esc_url( $access_url ); ?>" class="access-link">Access White Label Settings</a>
+						</p>
+					</div>					
+					
+					<p><strong>Direct Link:</strong><br>
+					<a href="<?php echo esc_url( $access_url ); ?>"><?php echo esc_html( $access_url ); ?></a></p>
+					
+					
+					<h3>🔧 What You Can Do</h3>
+					<p>Using the access link above, you can:</p>
+					<ul>
+						<li>Disable BDTUPK_HIDE mode</li>
+						<li>Modify white label settings</li>
+					</ul>
+					
+					<p>Need help? <a href="https://bdthemes.com/support/" target="_blank">Contact support</a> with your license key.</p>
+					
+				</div>
+			</div>
+		</body>
+		</html>
+		<?php
+		return ob_get_clean();
 	}
 
     /**
@@ -2225,6 +2467,149 @@ class UltimatePostKit_Admin_Settings {
 						// Remove info message when unchecked
 						$('#upk-bdtupk-hide-info').remove();
 					}
+				});
+
+				// Save white label settings with confirmation
+				$('#upk-save-white-label').on('click', function(e) {
+					e.preventDefault();
+					
+					// Check if button is disabled (no license or no white label eligible license)
+					if ($(this).prop('disabled')) {
+						var buttonText = $(this).text().trim();
+						var alertMessage = '';
+						
+						if (buttonText.includes('License Not Activated')) {
+							alertMessage = '<div class="bdt-alert bdt-alert-danger" bdt-alert>' +
+								'<a href="#" class="bdt-alert-close" onclick="$(this).parent().parent().hide(); return false;">&times;</a>' +
+								'<p><strong>License Not Activated</strong><br>You need to activate your Ultimate Post Kit license to access White Label functionality. Please activate your license first.</p>' +
+								'</div>';
+						} else {
+							alertMessage = '<div class="bdt-alert bdt-alert-warning" bdt-alert>' +
+								'<a href="#" class="bdt-alert-close" onclick="$(this).parent().parent().hide(); return false;">&times;</a>' +
+								'<p><strong>Eligible License Required</strong><br>White Label functionality is available for Agency, Extended, Developer, AppSumo Lifetime, and other eligible license holders. Please upgrade your license to access these features.</p>' +
+								'</div>';
+						}
+						
+						$('#upk-white-label-message').html(alertMessage).show();
+						return false;
+					}
+					
+					// Check if white label mode is being enabled
+					var whiteLabelEnabled = $('#upk-white-label-enabled').is(':checked');
+					var bdtupkHideEnabled = $('#upk-white-label-bdtupk-hide').is(':checked');
+					
+					// Only show confirmation dialog if white label is enabled AND BDTUPK_HIDE is enabled
+					if (whiteLabelEnabled && bdtupkHideEnabled) {
+						var confirmMessage = '🔒 FINAL CONFIRMATION\n\n' +
+							'You are about to save settings with BDTUPK_HIDE enabled.\n\n' +
+							'This will:\n' +
+							'• Hide Ultimate Post Kit from WordPress admin immediately\n' +
+							'• Send access instructions to your email addresses\n' +
+							'• Require the special link to modify these settings\n\n' +
+							'Email will be sent to:\n' +
+							'• License email: <?php echo esc_js(self::get_license_email()); ?>\n' +
+							'Are you absolutely sure you want to proceed?';
+						
+						if (!confirm(confirmMessage)) {
+							return false;
+						}
+					}
+					
+					var $button = $(this);
+					var originalText = $button.html();
+					
+					// Show loading state
+					$button.html('Saving...');
+					$button.prop('disabled', true);
+					
+					// Collect form data
+					var formData = {
+						action: 'upk_save_white_label',
+						nonce: upk_admin_ajax.white_label_nonce,
+						upk_white_label_enabled: $('#upk-white-label-enabled').is(':checked') ? 1 : 0,
+						upk_white_label_title: $('#upk-white-label-title').val(),
+						upk_white_label_icon: $('#upk-white-label-icon').val(),
+						upk_white_label_icon_id: $('#upk-white-label-icon-id').val(),
+						upk_white_label_hide_license: $('#upk-white-label-hide-license').is(':checked') ? 1 : 0,
+						upk_white_label_bdtupk_hide: $('#upk-white-label-bdtupk-hide').is(':checked') ? 1 : 0
+					};
+					
+					// Send AJAX request
+					$.post(upk_admin_ajax.ajax_url, formData)
+						.done(function(response) {
+							if (response.success) {
+								// Show success message with countdown
+								var countdown = 2;
+								var successMessage = response.data.message;
+								
+								// Add email notification info if BDTUPK_HIDE was enabled
+								if (response.data.bdtupk_hide && response.data.email_sent) {
+									successMessage += '<br><br><strong>📧 Access Email Sent!</strong><br>Check your email for the access link to modify these settings in the future.';
+								} else if (response.data.bdtupk_hide && !response.data.email_sent && response.data.access_url) {
+									// Localhost scenario - show the access URL directly
+									successMessage += '<br><br><strong>📧 Localhost Email Notice:</strong><br>Email functionality is not available on localhost.<br><strong>Your Access URL:</strong><br><a href="' + response.data.access_url + '" target="_blank">Click here to access white label settings</a><br><small>Save this URL - you\'ll need it to modify settings when BDTUPK_HIDE is active.</small>';
+								} else if (response.data.bdtupk_hide && !response.data.email_sent) {
+									successMessage += '<br><br><strong>⚠️ Email Notice:</strong><br>There was an issue sending the access email. Please check your email settings or contact support.';
+								}
+								
+								$('#upk-white-label-message').html(
+									'<div class="bdt-alert bdt-alert-success" bdt-alert>' +
+									'<a href="#" class="bdt-alert-close" onclick="$(this).parent().parent().hide(); return false;">&times;</a>' +
+									'<p>' + successMessage + ' <span id="upk-reload-countdown">Reloading in ' + countdown + ' seconds...</span></p>' +
+									'</div>'
+								).show();
+								
+								// Update button text
+								$button.html('Reloading...');
+								
+								// Countdown timer
+								var countdownInterval = setInterval(function() {
+									countdown--;
+									if (countdown > 0) {
+										$('#upk-reload-countdown').text('Reloading in ' + countdown + ' seconds...');
+									} else {
+										$('#upk-reload-countdown').text('Reloading now...');
+										clearInterval(countdownInterval);
+									}
+								}, 1000);
+								
+								// Check if BDTUPK_HIDE is enabled and redirect accordingly
+								setTimeout(function() {
+									if (response.data.bdtupk_hide) {
+										// Redirect to admin dashboard if BDTUPK_HIDE is enabled
+										window.location.href = '<?php echo admin_url('index.php'); ?>';
+									} else {
+										// Reload current page if BDTUPK_HIDE is not enabled
+										window.location.reload();
+									}
+								}, 1500);
+							} else {
+								// Show error message
+								$('#upk-white-label-message').html(
+									'<div class="bdt-alert bdt-alert-danger" bdt-alert>' +
+									'<a href="#" class="bdt-alert-close" onclick="$(this).parent().parent().hide(); return false;">&times;</a>' +
+									'<p>Error: ' + (response.data.message || 'Unknown error occurred') + '</p>' +
+									'</div>'
+								).show();
+								
+								// Restore button state for error case
+								$button.html(originalText);
+								$button.prop('disabled', false);
+							}
+						})
+						.fail(function(xhr, status, error) {
+							// Show error message
+							$('#upk-white-label-message').html(
+								'<div class="bdt-alert bdt-alert-danger" bdt-alert>' +
+								'<a href="#" class="bdt-alert-close" onclick="$(this).parent().parent().hide(); return false;">&times;</a>' +
+								'<p>Error: Failed to save settings. Please try again. (' + status + ')</p>' +
+								'</div>'
+							).show();
+							
+							// Restore button state for failure case
+							$button.html(originalText);
+							$button.prop('disabled', false);
+						});
 				});
 
 				// Save custom code functionality (updated for CodeMirror)

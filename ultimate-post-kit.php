@@ -69,6 +69,17 @@ if ( ! function_exists( '_is_upk_pro_activated' ) ) {
 	}
 }
 
+// Load white label configuration if it exists (before defining BDTUPK_TITLE)
+if ( ! defined( 'BDTUPK_WL' ) ) {
+    if ( get_option( 'upk_white_label_enabled' ) ) {
+        define( 'BDTUPK_WL', true );
+		$white_label_config = dirname( __FILE__ ) . '/admin/white-label/white-label-config.php';
+		if ( file_exists( $white_label_config ) ) {
+			require_once( $white_label_config );
+		}
+	}
+}
+
 
 
 // Helper function here
