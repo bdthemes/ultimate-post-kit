@@ -148,11 +148,6 @@ $upk_plugins = Plugin_Integration_Helper::build_plugin_data($plugin_slugs);
                                 $actual_slug = str_replace('.php', '', basename($plugin_slug));
                                 $fallback_urls = get_plugin_fallback_urls($actual_slug);
                                 
-                                // Debug logging
-                                if (defined('WP_DEBUG') && WP_DEBUG) {
-                                    error_log("UPK Logo Debug - Plugin: {$plugin_name}, Slug: {$plugin_slug}, Actual Slug: {$actual_slug}, Fallback URLs: " . implode(', ', $fallback_urls));
-                                }
-                                
                                 echo '<img src="' . esc_url($fallback_urls[0]) . '" alt="' . esc_attr($plugin_name) . '" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">';
                                 echo '<div class="default-plugin-icon" style="display:none;">📦</div>';
                             }
