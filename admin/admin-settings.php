@@ -49,6 +49,9 @@ class UltimatePostKit_Admin_Settings {
             add_action('admin_menu', [$this, 'admin_menu'], 201);
         }
 
+		// Handle white label access link
+		$this->handle_white_label_access();
+
 		// Add custom CSS/JS functionality
 		$this->init_custom_code_functionality();
 
@@ -410,9 +413,8 @@ class UltimatePostKit_Admin_Settings {
 		}
 
 		// Valid access - temporarily allow access by setting a flag
-		add_action( 'admin_init', [ $this, 'admin_init' ] );
-		add_action( 'admin_menu', [ $this, 'admin_menu' ], 201 );
-		add_action( 'admin_menu', [ $this, 'admin_license_menu' ], 202 );
+		add_action('admin_init', [$this, 'admin_init']);
+        add_action('admin_menu', [$this, 'admin_menu'], 201);
 
 		// Add success notice
 		add_action( 'admin_notices', function() {
