@@ -489,7 +489,7 @@
     });
 
     // Handle template import button clicks
-    $('body').on('click', '.template-import', function (e) {
+    $('body').on('click', '.upk-setup-wizard .template-import', function (e) {
         e.preventDefault();
         e.stopPropagation();
         
