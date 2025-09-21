@@ -108,7 +108,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                 if (!isset($wp_settings_fields) || !isset($wp_settings_fields[$page]) || !isset($wp_settings_fields[$page][$section['id']])) {
                     continue;
                 }
-                echo '<div class="upk-options bdt-grid bdt-child-width-1-1 bdt-child-width-1-2@m bdt-child-width-1-3@l' . esc_attr($section_class) . '" role="presentation" bdt-grid="masonry: true" ' . esc_attr($data_settings) . '>';
+                echo '<div class="upk-options" role="presentation" ' . esc_attr($data_settings) . '>';
 
                 echo '<p class="upk-no-result bdt-text-center bdt-width-1-1 bdt-margin-small-top bdt-h4">'.esc_html__('Ops! Your Searched widget not found! Do you have any idea? If yes, ', 'ultimate-post-kit').'<a href="https://feedback.ultimatepostkit.pro/b/3v2gg80n/feature-requests/idea/new" target="_blank">'.esc_html__('Submit here', 'ultimate-post-kit').'</a></p>';
 
@@ -351,110 +351,136 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
         }
 
         /**
-         * Displays a checkbox for a settings field
-         *
-         * @param array   $args settings field args
-         */
-        function callback_checkbox($args) {
+		 * Displays a checkbox for a settings field
+		 *
+		 * @param array   $args settings field args
+		 */
+		function callback_checkbox($args) {
 
-            $value       = esc_attr($this->get_option($args['id'], $args['section'], $args['std']));
-            $plugin_name = isset($args['plugin_name']) ? $args['plugin_name'] : '';
-            $plugin_path = isset($args['plugin_path']) ? $args['plugin_path'] : '';
-            $paid        = isset($args['paid']) ? $args['paid'] : '';
+			$value = esc_attr($this->get_option($args['id'], $args['section'], $args['std']));
+			$plugin_name = isset($args['plugin_name']) ? $args['plugin_name'] : '';
+			$plugin_path = isset($args['plugin_path']) ? $args['plugin_path'] : '';
+			$paid = isset($args['paid']) ? $args['paid'] : '';
 
+			$parent_class = isset($args['ep_parent_switcher']) ? ' upk-feature-option-parent' : '';
 
-            $used_widgets = self::get_used_widgets_obj();
-            $widget_name = 'upk-' . $args['id'];
-            $used_widgets_count = 0;
-
-
-            if (isset($used_widgets)) {
-                $used_widgets_count = (in_array($widget_name, array_keys($used_widgets)) ? $used_widgets[$widget_name] : 0);
-                if ($used_widgets_count === 0) {
-                    $widget_name  = str_replace('_', '-', $widget_name);
-                    $used_widgets_count = (in_array($widget_name, array_keys($used_widgets)) ? $used_widgets[$widget_name] : 0);
-                }
-            }
-
-            $widget_using_status = '</span> <br><span class="upk-widget-count-text">'.esc_html__('Total Used', 'ultimate-post-kit').'  - ' . esc_html($used_widgets_count) . ' </span>';
-
-            // remove counts
-            if (isset($args['id']) && $args['id'] == 'not') {
-                $widget_using_status = '';
-            }
-
-            $html = '';
-
-            $html .= '<div class="upk-option-item-inner">';
-            $html .= '<div class="bdt-grid bdt-grid-collapse bdt-flex bdt-flex-middle">';
-
-            $html .= '<div class="bdt-width-expand bdt-flex-inline bdt-flex-middle">';
-
-            $html .= '<i class="upk-icon-' . esc_attr($args['id']) . '" aria-hidden="true"></i>';
-
-            $html  .= sprintf('<label for="bdt_upk_%1$s[%2$s]">', $args['section'], $args['id']);
-            $html .= '<span scope="row" class="upk-option-label">' . $args['name'] . $widget_using_status;
-            $html  .= '</label>';
+			$used_widgets = self::get_used_widgets_obj();
+			$widget_name = 'bdt-' . $args['id'];
+			$used_widgets_count = 0;
 
 
-            if ($args['demo_url']) {
-                $html .= '<a href=' . $args['demo_url'] . ' target="_blank" class="upk-option-demo" bdt-tooltip="View ' . $args['name'] . ' Widget Demo"><i class="upk-icon-preview" aria-hidden="true"></i></a>';
-            }
-            if ($args['video_url']) {
-                $html .= '<a href=' . $args['video_url'] . ' target="_blank" class="upk-option-video" bdt-tooltip="View ' . $args['name'] . ' Video Tutorial"><i class="upk-icon-tutorial" aria-hidden="true"></i></a>';
-            }
-            $html .= '</div>';
+			if (isset($used_widgets)) {
+				$used_widgets_count = (in_array($widget_name, array_keys($used_widgets)) ? $used_widgets[$widget_name] : 0);
+				if ($used_widgets_count === 0) {
+					$widget_name = str_replace('_', '-', $widget_name);
+					$used_widgets_count = (in_array($widget_name, array_keys($used_widgets)) ? $used_widgets[$widget_name] : 0);
+				}
+			}
 
-            $html .= '<div class="bdt-width-auto">';
+			$html = '';
+
+			$html .= '<div class="upk-option-item-inner">';
+			$html .= '<div class="bdt-grid bdt-grid-collapse bdt-flex bdt-flex-middle">';
+
+			$html .= '<div class="bdt-width-expand bdt-flex-inline bdt-flex-middle">';
+
+
+			$html .= '<i class="upk-icon-' . esc_attr($args['id']) . '" aria-hidden="true"></i>';
+			$html .= '<div class="upk-option-label-wrap">';
+			$html .= sprintf('<label for="bdt_upk_%1$s[%2$s]">', $args['section'], $args['id']);
+			$html .= '<span scope="row" class="upk-option-label">' . $args['name'] . '</span>';
+			$html .= '</label>';
+
+			$html .= '<div class="upk-option-links">';
+			if ($args['demo_url']) {
+				$html .= '<a href=' . $args['demo_url'] . ' target="_blank" class="upk-option-demo" title="' . esc_html__('View ' . $args['name'] . ' Widget Demo', 'bdthemes-element-pack') . '">' . esc_html__('Demo', 'bdthemes-element-pack') . '<i class="upk-icon-preview" aria-hidden="true"></i></a>';
+			}
+			if ($args['video_url']) {
+				$html .= '<a href=' . $args['video_url'] . ' target="_blank" class="upk-option-video" title="View ' . $args['name'] . ' Video Tutorial">Video<i class="upk-icon-tutorial" aria-hidden="true"></i></a>';
+			}
+			$html .= '</div>';
+			$html .= '</div>';
+			$html .= '</div>';
+
+			$html .= '<div class="bdt-width-auto">';
 
 
 
-            // 3rd party widgets
-            if ($plugin_name and $plugin_path) {
-                if ($this->_is_plugin_installed($plugin_name, $plugin_path)) {
-                    if (!current_user_can('activate_plugins')) {
-                        return;
-                    }
-                    if (!is_plugin_active($plugin_path)) {
-                        $active_link = wp_nonce_url('plugins.php?action=activate&amp;plugin=' . $plugin_path . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin_path);
-                        $html .= '<a href="' . $active_link . '" class="ultimate-post-kit-3pp-active" bdt-tooltip="'.esc_html__('Activate the plugin first then you can activate this widget.', 'ultimate-post-kit').'"><span class="dashicons dashicons-admin-plugins"></span></a>';
-                    }
-                } else {
-                    if ($paid) {
-                        $html .= '<a href="' . $paid . '" class="ultimate-post-kit-3pp-download" bdt-tooltip="'.esc_html__('Download and install plugin first then you can activate this widget.', 'ultimate-post-kit').'"><span class="dashicons dashicons-download"></span></a>';
-                    } else {
-                        $install_link = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_name), 'install-plugin_' . $plugin_name);
-                        $html .= '<a href="' . $install_link . '" class="ultimate-post-kit-3pp-install" bdt-tooltip="'.esc_html__('Install the plugin first then you can activate this widget.', 'ultimate-post-kit').'"><span class="dashicons dashicons-download"></span></a>';
-                    }
-                }
+			// 3rd party widgets 
+			if ($plugin_name and $plugin_path) {
 
-                if ($this->_is_plugin_installed($plugin_name, $plugin_path) and is_plugin_active($plugin_path)) {
+				if ($this->_is_plugin_installed($plugin_name, $plugin_path)) {
+					if (!current_user_can('activate_plugins')) {
+						return;
+					}
+					if (!is_plugin_active($plugin_path)) {
+						$active_link = wp_nonce_url('plugins.php?action=activate&amp;plugin=' . $plugin_path . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin_path);
+						$html .= '<a href="' . $active_link . '" class="ultimate-post-kit-3pp-active" bdt-tooltip="' . esc_html__('Activate the plugin first then you can activate this widget.', 'bdthemes-element-pack') . '"><span class="dashicons dashicons-admin-plugins"></span></a>';
+					}
+				} else {
+					if ($paid) {
+						$html .= '<a href="' . $paid . '" class="ultimate-post-kit-3pp-download" bdt-tooltip="' . esc_html__('Download and install plugin first then you can activate this widget.', 'bdthemes-element-pack') . '"><span class="dashicons dashicons-download"></span></a>';
+					} else {
+						$install_link = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_name), 'install-plugin_' . $plugin_name);
+						$html .= '<a href="' . $install_link . '" class="ultimate-post-kit-3pp-install" bdt-tooltip="' . esc_html__('Install the plugin first then you can activate this widget.', 'bdthemes-element-pack') . '"><span class="dashicons dashicons-download"></span></a>';
+					}
+				}
+				if ($this->_is_plugin_installed($plugin_name, $plugin_path) and is_plugin_active($plugin_path)) {
 
-                    $html  .= '<fieldset>';
-                    $html  .= sprintf('<label for="bdt_upk_%1$s[%2$s]">', $args['section'], $args['id']);
-                    $html  .= sprintf('<input type="hidden" name="%1$s[%2$s]" value="off" />', $args['section'], $args['id']);
-                    $html  .= sprintf('<input type="checkbox" class="checkbox" id="bdt_upk_%1$s[%2$s]" name="%1$s[%2$s]" value="on" %3$s />', $args['section'], $args['id'], checked($value, 'on', false));
-                    $html    .= '<span class="switch"></span>';
-                    $html  .= '</label>';
-                    $html  .= '</fieldset>';
-                }
-            } else { // core widgets
+					$html .= '<fieldset>';
+					$html .= sprintf('<label for="bdt_upk_%1$s[%2$s]">', $args['section'], $args['id']);
+					$html .= sprintf('<input type="hidden" name="%1$s[%2$s]" value="off" />', $args['section'], $args['id']);
+					$html .= sprintf('<input type="checkbox" class="checkbox' . $parent_class . '" id="bdt_upk_%1$s[%2$s]" name="%1$s[%2$s]" value="on" %3$s />', $args['section'], $args['id'], checked($value, 'on', false));
+					$html .= '<span class="switch"></span>';
+					$html .= '</label>';
+					$html .= '</fieldset>';
+				}
+			} else { // core widgets
 
-                $html  .= '<fieldset>';
-                $html  .= sprintf('<label for="bdt_upk_%1$s[%2$s]">', $args['section'], $args['id']);
-                $html  .= sprintf('<input type="hidden" name="%1$s[%2$s]" value="off" />', $args['section'], $args['id']);
-                $html  .= sprintf('<input type="checkbox" class="checkbox" id="bdt_upk_%1$s[%2$s]" name="%1$s[%2$s]" value="on" %3$s />', $args['section'], $args['id'], checked($value, 'on', false));
-                $html    .= '<span class="switch"></span>';
-                $html  .= '</label>';
-                $html  .= '</fieldset>';
-            }
+				$html .= '<fieldset>';
+				$html .= sprintf('<label for="bdt_upk_%1$s[%2$s]">', $args['section'], $args['id']);
+				$html .= sprintf('<input type="hidden" name="%1$s[%2$s]" value="off" />', $args['section'], $args['id']);
+				$html .= sprintf('<input type="checkbox" class="checkbox" id="bdt_upk_%1$s[%2$s]" name="%1$s[%2$s]" value="on" %3$s />', $args['section'], $args['id'], checked($value, 'on', false));
+				$html .= '<span class="switch"></span>';
+				$html .= '</label>';
+				$html .= '</fieldset>';
+			}
 
-            $html  .= '</div>';
-            $html  .= '</div>';
-            $html  .= '</div>';
+			$html .= '</div>';
+			$html .= '</div>';
+			$html .= '</div>';
 
-            echo $html;
-        }
+			echo wp_kses($html, array(
+				'div' => array(
+					'class' => array(),
+				),
+				'span' => array(
+					'class' => array(),
+				),
+				'label' => array(
+					'for' => array(),
+				),
+				'input' => array(
+					'type' => array(),
+					'class' => array(),
+					'id' => array(),
+					'name' => array(),
+					'value' => array(),
+					'checked' => array(),
+				),
+				'i' => array(
+					'class' => array(),
+					'aria-hidden' => array(),
+				),
+				'a' => array(
+					'href' => array(),
+					'target' => array(),
+					'class' => array(),
+					'bdt-tooltip' => array(),
+				),
+				'fieldset' => array(),
+			));
+		}
 
         function _is_plugin_installed($plugin, $plugin_path) {
             $installed_plugins = get_plugins();
@@ -760,7 +786,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
          *
          * Shows all the settings section labels as tab
          */
-        function show_navigation() {
+        function old_show_navigation() {
 
             $html = '<div class="bdt-dashboard-navigation">';
             $html .= '<ul class="bdt-tab" bdt-tab="animation: bdt-animation-slide-bottom-small;connect: .bdt-tab-container;">';
@@ -791,6 +817,62 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             echo $html;
         }
 
+
+        /**
+		 * Show navigations as tab
+		 *
+		 * Shows all the settings section labels as tab
+		 */
+		function show_navigation() {
+			$html = '<div class="bdt-dashboard-navigation">';
+			$html .= '<ul class="bdt-tab bdt-flex-column" bdt-tab="animation: bdt-animation-slide-bottom-small;connect: .bdt-tab-container;">';
+
+			// Dashboard - always first
+			$html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="0"><i class="dashicons dashicons-admin-home"></i>%2$s</a></li>', 'ultimate_post_kit_welcome', esc_html__('Dashboard', 'ultimate-post-kit'));
+
+			$count = 1;
+
+			// Get all sections including manually created ones
+			$all_sections = $this->get_all_sections();
+
+			foreach ($all_sections as $tab) {
+				$icon = isset($tab['icon']) ? $tab['icon'] : 'dashicons dashicons-admin-generic';
+				$html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="%2$s"><i class="%4$s"></i>%3$s</a></li>', $tab['id'], $count++, $tab['title'], $icon);
+			}
+
+			// License section
+			$license_wl_status = UltimatePostKit_Admin_Settings::license_wl_status();
+
+			if (!defined('BDTUPK_LO') || false == $license_wl_status) {
+				$html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="%2$s"><i class="dashicons dashicons-admin-network"></i>%3$s</a></li>', 'ultimate_post_kit_license_settings', $count, esc_html__('License', 'ultimate-post-kit'));
+			}
+
+			$html .= '</ul>';
+			$html .= '</div>';
+
+			echo wp_kses($html, array(
+				'div' => array(
+					'class' => true,
+				),
+				'ul' => array(
+					'class' => true,
+					'bdt-tab' => true,
+				),
+				'li' => array(
+					'class' => true,
+				),
+				'a' => array(
+					'href' => true,
+					'class' => true,
+					'id' => true,
+					'data-tab-index' => true,
+				),
+				'i' => array(
+					'class' => true,
+				)
+			));
+		}
+
         function ultimate_post_kit_settings_save() {
 
             if (!check_ajax_referer('ultimate-post-kit-settings-save-nonce')) {
@@ -813,12 +895,65 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
         }
 
         /**
+		 * Get all sections including manually created content pages
+		 */
+		private function get_all_sections() {
+			// Start with the settings sections that have forms
+			$all_sections = $this->settings_sections;
+			
+			// Add manually created content sections that don't have settings forms
+			$content_only_sections = [
+				[
+					'id' => 'ultimate_post_kit_extra_options',
+					'title' => esc_html__('Extra Options', 'ultimate-post-kit'),
+					'icon' => 'dashicons dashicons-smiley',
+				],
+				[
+					'id' => 'ultimate_post_kit_analytics_system_req',
+					'title' => esc_html__('System Status', 'ultimate-post-kit'),
+					'icon' => 'dashicons dashicons-chart-bar',
+				],
+				[
+					'id' => 'ultimate_post_kit_other_plugins',
+					'title' => esc_html__('Other Plugins', 'ultimate-post-kit'),
+					'icon' => 'dashicons dashicons-admin-plugins',
+				],
+				[
+					'id' => 'ultimate_post_kit_affiliate',
+					'title' => esc_html__('Get Up to 60%', 'ultimate-post-kit'),
+					'icon' => 'dashicons dashicons-money-alt',
+				],
+				[
+					'id' => 'ultimate_post_kit_rollback_version',
+					'title' => esc_html__('Rollback Version', 'ultimate-post-kit'),
+					'icon' => 'dashicons dashicons-update',
+				],
+			];
+			
+			// Check if each content section exists in settings sections, if not add it
+			foreach ($content_only_sections as $content_section) {
+				$exists = false;
+				foreach ($all_sections as $existing_section) {
+					if ($existing_section['id'] === $content_section['id']) {
+						$exists = true;
+						break;
+					}
+				}
+				if (!$exists) {
+					$all_sections[] = $content_section;
+				}
+			}
+			
+			return $all_sections;
+		}
+
+        /**
          * Show the section settings forms
          *
          * This function displays every sections in a different form
          */
-        function show_forms() {
-?>
+        function old_show_forms() {
+            ?>
 
             <?php $i = 0;
             foreach ($this->settings_sections as $form) {
@@ -969,8 +1104,191 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                         </form>
                     </div>
                 </div>
-<?php }
+            <?php }
         }
+
+        /**
+		 * Show the section settings forms
+		 *
+		 * This function displays every sections in a different form
+		 */
+		function show_forms() {
+			?>
+
+			<?php $i = 0;
+			foreach ($this->settings_sections as $form) {
+				$i++; ?>
+				<div id="<?php echo esc_attr($form['id']); ?>_page" class="upk-option-page">
+
+					<div bdt-filter="target: .upk-options" class="upk-options-parent" id="upk-options-parent-<?php echo esc_attr($i); ?>">
+
+
+						<?php if ($form['id'] == 'ultimate_post_kit_active_modules' or $form['id'] == 'ultimate_post_kit_elementor_extend'): ?>
+
+							<div class="bdt-widget-filter-wrapper bdt-flex bdt-flex-column bdt-flex-wrap"
+								bdt-sticky="end: !.upk-dashboard-container; offset: 115; animation: bdt-animation-slide-top-small; duration: 300">
+
+								<!-- Filter Shape Elements -->
+								<div class="upk-filter-elements">
+									<span class="upk-filter-element upk-filter-circle"></span>
+									<span class="upk-filter-element upk-filter-dots"></span>
+									<span class="upk-filter-element upk-filter-wave"></span>
+									<span class="upk-filter-element upk-filter-hexagon"></span>
+									<span class="upk-filter-element upk-filter-zigzag"></span>
+								</div>
+
+								<div class="bdt-widget-filter-header">
+
+									<div class="bdt-flex bdt-flex-wrap">
+
+										<div class="bdt-width-expand@l upk-widget-filter-nav bdt-visible@l">
+											<div class="bdt-flex-inline bdt-flex-middle">
+
+												<div>
+													<ul
+														class="bdt-subnav bdt-subnav-pill upk-widget-filter bdt-widget-type-content bdt-flex-inline">
+														<li class="upk-widget-all bdt-active" bdt-filter-control="*"><a
+																href="#"><?php esc_html_e('All', 'ultimate-post-kit'); ?></a></li>
+														<li class="upk-widget-free"
+															bdt-filter-control="filter: [data-widget-type='free']; group: data-content-type">
+															<a href="#"><?php esc_html_e('Free', 'ultimate-post-kit'); ?></a>
+														</li>
+														<li class="upk-widget-pro"
+															bdt-filter-control="filter: [data-widget-type='pro']; group: data-content-type">
+															<a href="#"><?php esc_html_e('Pro', 'ultimate-post-kit'); ?></a>
+														</li>
+
+													</ul>
+												</div>
+
+												<?php if ($form['id'] == 'ultimate_post_kit_active_modules' or $form['id'] == 'ultimate_post_kit_third_party_widget'): ?>
+
+
+													<?php if ($form['id'] != 'ultimate_post_kit_elementor_extend' or $form['id'] == 'ultimate_post_kit_third_party_widget'): ?>
+
+														<div>
+															<ul
+																class="bdt-subnav bdt-subnav-pill upk-widget-filter upk-used-unused-widgets bdt-flex-inline ">
+																<li class="upk-widget--"
+																	bdt-filter-control="filter: [data-content-type*='upk-used']; group: data-content-type">
+																	<a href="#"><?php esc_html_e('Used', 'ultimate-post-kit'); ?>
+																		<span class="bdt-badge upk-used-widget"></span>
+																	</a>
+																</li>
+																<li class="upk-widget--"
+																	bdt-filter-control="filter: [data-content-type*='upk-unused']; group: data-content-type">
+																	<a href="#"
+																		bdt-tooltip="<?php esc_html_e('Don\'t need unused widget? Click on the Deactivate All button.', 'ultimate-post-kit'); ?>"><?php esc_html_e('Unused', 'ultimate-post-kit'); ?>
+																		<span class="bdt-badge upk-unused-widget bdt-danger"></span>
+																	</a>
+																</li>
+															</ul>
+
+														</div>
+													<?php endif; ?>
+
+												<?php endif; ?>
+											</div>
+										</div>
+
+
+										<div class="bdt-width-auto@l bdt-search-active-wrap bdt-flex bdt-flex-middle bdt-flex-between">
+											<div class="bdt-widget-search">
+												<input data-id="upk-options-parent-<?php echo esc_attr($i); ?>" onkeyup="filterSearch(this);"
+													bdt-filter-control="" class="bdt-search-input bdt-flex-middle" type="search"
+													placeholder="<?php esc_html_e('Search widget...', 'ultimate-post-kit'); ?>"
+													autofocus>
+											</div>
+
+											<div>
+												<ul class="bdt-subnav bdt-subnav-pill upk-widget-onoff">
+													<li>
+														<a href="#" class="upk-active-all-widget">
+															<?php esc_html_e('Activate All', 'ultimate-post-kit'); ?>
+														</a>
+													</li>
+													<li>
+														<a href="#" class="upk-deactive-all-widget">
+															<?php esc_html_e('Deactivate All', 'ultimate-post-kit'); ?>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+
+									<?php if ($form['id'] == 'ultimate_post_kit_active_modules'): ?>
+										<div class="upk-content-type-filter bdt-margin-top">
+											<div class="bdt-flex bdt-flex-wrap bdt-flex-middle bdt-visible@l">
+												<div class="upk-filter-by-text bdt-visible@xl">
+													<?php esc_html_e('Filter By: ', 'ultimate-post-kit'); ?>
+												</div>
+												<ul class="bdt-nav xbdt-subnav-pill xbdt-dropdown-nav upk-widget-filter upk-widget-content-type bdt-flex bdt-flex-wrap ">
+													<li class="upk-widget-new" bdt-filter-control="filter: [data-content-type*='new']; group: data-widget-type">
+                                                        <a href="#"><?php esc_html_e('New', 'ultimate-post-kit'); ?></a>
+                                                    </li>
+													<li class="upk-widget-grid" bdt-filter-control="filter: [data-content-type*='grid']; group: data-widget-type">
+                                                        <a href="#"><?php esc_html_e('Grid', 'ultimate-post-kit'); ?></a>
+                                                    </li>
+                                                    <li class="upk-widget-list" bdt-filter-control="filter: [data-content-type*='list']; group: data-widget-type">
+                                                        <a href="#"><?php esc_html_e('List', 'ultimate-post-kit'); ?></a>
+                                                    </li>
+													<li class="upk-widget-carousel" bdt-filter-control="filter: [data-content-type*='carousel']; group: data-widget-type">
+                                                        <a href="#"><?php esc_html_e('Carousel', 'ultimate-post-kit'); ?></a>
+                                                    </li>
+													<li class="upk-widget-slider" bdt-filter-control="filter: [data-content-type*='slider']; group: data-widget-type">
+                                                        <a href="#"><?php esc_html_e('Slider', 'ultimate-post-kit'); ?></a>
+                                                    </li>
+													<li class="upk-widget-tabs" bdt-filter-control="filter: [data-content-type*='tabs']; group: data-widget-type">
+                                                        <a href="#"><?php esc_html_e('Tabs', 'ultimate-post-kit'); ?></a>
+                                                    </li>
+													<li class="upk-widget-timeline" bdt-filter-control="filter: [data-content-type*='timeline']; group: data-widget-type">
+                                                        <a href="#"><?php esc_html_e('Timeline', 'ultimate-post-kit'); ?></a>
+                                                    </li>
+													<li class="upk-widget-template-builder" bdt-filter-control="filter: [data-content-type*='template-builder']; group: data-widget-type">
+                                                        <a href="#"><?php esc_html_e('Template Builder', 'ultimate-post-kit'); ?></a>
+                                                    </li>
+													<li class="upk-widget-loop" bdt-filter-control="filter: [data-content-type*='loop']; group: data-widget-type">
+                                                        <a href="#"><?php esc_html_e('Loop Builder', 'ultimate-post-kit'); ?></a>
+                                                    </li>
+													<li class="upk-widget-others" bdt-filter-control="filter: [data-content-type*='others']; group: data-widget-type">
+                                                        <a href="#"><?php esc_html_e('Others', 'ultimate-post-kit'); ?></a>
+                                                    </li>
+												</ul>
+											</div>
+										</div>
+									<?php endif; ?>
+
+								</div>
+
+							</div>
+
+						<?php endif; ?>
+
+						<form class="settings-save" method="post" action="admin-ajax.php?action=ultimate_post_kit_settings_save">
+							<input type="hidden" name="id" value="<?php echo esc_attr($form['id']); ?>">
+
+							<?php
+
+							if (!current_user_can('manage_options')) {
+								return;
+							}
+
+							wp_nonce_field('ultimate-post-kit-settings-save-nonce');
+
+							do_action('wsa_form_top_' . $form['id'], $form);
+
+							$this->do_settings_sections($form['id']);
+
+							do_action('wsa_form_bottom_' . $form['id'], $form);
+
+							?>
+
+						</form>
+					</div>
+				</div>
+			<?php }
+		}
     }
 
 endif;

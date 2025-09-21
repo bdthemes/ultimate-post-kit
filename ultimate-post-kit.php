@@ -69,6 +69,17 @@ if ( ! function_exists( '_is_upk_pro_activated' ) ) {
 	}
 }
 
+// Load white label configuration if it exists (before defining BDTUPK_TITLE)
+if ( ! defined( 'BDTUPK_WL' ) ) {
+    if ( get_option( 'upk_white_label_enabled' ) ) {
+        define( 'BDTUPK_WL', true );
+		$white_label_config = dirname( __FILE__ ) . '/admin/white-label/white-label-config.php';
+		if ( file_exists( $white_label_config ) ) {
+			require_once( $white_label_config );
+		}
+	}
+}
+
 
 
 // Helper function here
@@ -104,6 +115,10 @@ function ultimate_post_kit_load_plugin() {
 
 	// Element pack widget and assets loader
 	require_once ( BDTUPK_PATH . 'loader.php' );
+	
+	// Initialize custom CSS/JS injection on frontend
+	add_action( 'wp_head', 'upk_inject_header_custom_code', 999 );
+	add_action( 'wp_footer', 'upk_inject_footer_custom_code', 999 );
 }
 
 add_action( 'plugins_loaded', 'ultimate_post_kit_load_plugin' );

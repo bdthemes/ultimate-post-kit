@@ -1013,82 +1013,43 @@ class ModuleService {
             ],
             'ultimate_post_kit_other_settings'   => [
 
-
                 [
-                    'name'  => 'enable_dynamic_content_group_start',
-                    'label' => esc_html__('Dynamic Content', 'ultimate-post-kit'),
-                    'desc'  => __('The Dynamic Content feature allows users to automatically populate Elementor widgets with real-time data from WordPress.', 'ultimate-post-kit'),
-                    'type'  => 'start_group',
-                    'content_type' => 'new',
-                ],
+					'name'        => 'dynamic-content',
+					'label'       => esc_html__('Dynamic Content', 'ultimate-post-kit'),
+					'tooltip'  => __('The Dynamic Content feature allows users to automatically populate Elementor widgets with real-time data from WordPress.', 'ultimate-post-kit'),
+					'type'        => 'checkbox',
+					'default'     => 'off',
+					'widget_type' => 'pro',
+					'content_type' => 'new',
+					'demo_url'    => 'https://postkit.pro/demo/dynamic-content/',
+					'video_url'   => 'https://youtu.be/JEqXbIETdDE',
 
-                [
-                    'name'    => 'dynamic-content',
-                    'label'   => esc_html__('Dynamic Content', 'ultimate-post-kit'),
-                    'type'    => 'checkbox',
-                    'default' => "off",
-                    'widget_type' => 'pro',
-                    'demo_url'  => 'https://postkit.pro/demo/dynamic-content/',
-                    'video_url' => 'https://youtu.be/JEqXbIETdDE',
-                ],
-
-                [
-                    'name' => 'dynamic_content_group_end',
-                    'type' => 'end_group',
-                ],
-
-                [
-                    'name'  => 'enable_category_image_group_start',
-                    'label' => esc_html__('Category Image', 'ultimate-post-kit'),
-                    'desc'  => __('Display exclusive category avatar by turning on this switcher. The Category image will be visible for all post widgets if the category is turned on from the widget controls.', 'ultimate-post-kit'),
-                    'type'  => 'start_group',
-                ],
+				],
 
                 [
                     'name'    => 'category_image',
                     'label'   => esc_html__('Category Image', 'ultimate-post-kit'),
+                    'tooltip'  => __('Display exclusive category avatar by turning on this switcher. The Category image will be visible for all post widgets if the category is turned on from the widget controls.', 'ultimate-post-kit'),
                     'type'    => 'checkbox',
                     'default' => "off",
                     'widget_type' => 'free',
                 ],
-
-                [
-                    'name' => 'category_image_group_end',
-                    'type' => 'end_group',
-                ],
-
-                [
-                    'name'         => 'duplicator_group_start',
-                    'label'        => esc_html__('Duplicator', 'ultimate-post-kit'),
-                    'desc'         => __('Just hit the button below to enable the duplicator. It can duplicate anything like posts,pages and elementor templates. A masterclass duplication with just one click.', 'ultimate-post-kit'),
-                    'type'         => 'start_group',
-                ],
-
+                
                 [
                     'name'        => 'duplicator',
                     'label'       => esc_html__('Duplicator', 'ultimate-post-kit'),
+                    'tooltip'         => __('Just hit the button below to enable the duplicator. It can duplicate anything like posts,pages and elementor templates. A masterclass duplication with just one click.', 'ultimate-post-kit'),
                     'type'        => 'checkbox',
                     'default'     => 'off',
                     'widget_type' => 'free',
                     'demo_url'    => 'https://www.ultimatepostkit.pro/knowledge-base/how-to-use-ultimate-post-kit-duplicator/',
                     'video_url'   => '',
                 ],
-
-                [
-                    'name' => 'duplicator_group_end',
-                    'type' => 'end_group',
-                ],
-
-                [
-                    'name'  => 'live_copy_group_start',
-                    'label' => esc_html__('Live Copy or Paste', 'ultimate-post-kit'),
-                    'desc'  => __('Live copy is a copy feature that allow you to copy and paste content from one domain to another. For example you can copy demo content directly from our demo website.', 'ultimate-post-kit'),
-                    'type'  => 'start_group',
-                ],
-
+                
                 [
                     'name'      => 'live-copy',
-                    'label'     => esc_html__('Live Copy/Paste', 'ultimate-post-kit'),
+                    'label'     => esc_html__('Live Copy Paste', 'ultimate-post-kit'),
+                    'tooltip'  => __('Live copy is a copy feature that allow you to copy and paste content from one domain to another. For example you can copy demo content directly from our demo website.', 'ultimate-post-kit'),
                     'type'      => 'checkbox',
                     'default'   => 'off',
                     'widget_type' => 'free',
@@ -1096,50 +1057,26 @@ class ModuleService {
                     'video_url' => 'https://youtu.be/jOdWVw2TCmo',
 
                 ],
-
-                [
-                    'name' => 'live_copy_group_end',
-                    'type' => 'end_group',
-                ],
-                [
-                    'name'  => 'enable_audio_link_group_start',
-                    'label' => esc_html__('Audio Link Meta', 'ultimate-post-kit'),
-                    'desc'  => __('If you need to display Audio features in your website so please enable this option.', 'ultimate-post-kit'),
-                    'type'  => 'start_group',
-                    'content_type' => 'new',
-                ],
-
+                
                 [
                     'name'    => 'audio_link',
                     'label'   => esc_html__('Audio Link', 'ultimate-post-kit'),
+                    'tooltip'  => __('If you need to display Audio features in your website so please enable this option.', 'ultimate-post-kit'),
                     'type'    => 'checkbox',
                     'default' => "off",
                     'widget_type' => 'free',
+                    'content_type' => 'new',
                 ],
-
-                [
-                    'name' => 'audio_link_group_end',
-                    'type' => 'end_group',
-                ],
-                [
-                    'name'  => 'enable_video_link_group_start',
-                    'label' => esc_html__('Video Link Meta', 'ultimate-post-kit'),
-                    'desc'  => __('If you need to display video features in your website so please enable this option.', 'ultimate-post-kit'),
-                    'type'  => 'start_group',
-                ],
-
+                
                 [
                     'name'    => 'video_link',
                     'label'   => esc_html__('Video Link', 'ultimate-post-kit'),
+                    'tooltip'  => __('If you need to display video features in your website so please enable this option.', 'ultimate-post-kit'),
                     'type'    => 'checkbox',
                     'default' => "off",
                     'widget_type' => 'free',
                 ],
 
-                [
-                    'name' => 'video_link_group_end',
-                    'type' => 'end_group',
-                ],
             ]
         ];
 
