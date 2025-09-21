@@ -82,10 +82,6 @@ class Plugin_Integration_Helper {
             $config = $predefined[$slug] ?? ['recommended' => false, 'fallback' => []];
             $api_data = $fetched_data[$slug] ?? null;
 
-            // Debug logging for troubleshooting
-            if (defined('WP_DEBUG') && WP_DEBUG) {
-                self::debug_plugin_data($slug, $api_data);
-            }
 
             // Ensure api_data is a valid array with required fields
             if ($api_data && self::validate_plugin_data($api_data)) {
@@ -228,15 +224,4 @@ class Plugin_Integration_Helper {
         return true;
     }
 
-    /**
-     * Debug method to log plugin data issues
-     *
-     * @param string $slug Plugin slug
-     * @param mixed $data Plugin data
-     */
-    public static function debug_plugin_data($slug, $data) {
-        if (defined('WP_DEBUG') && WP_DEBUG) {
-            error_log("UPK Plugin Data Debug - Slug: {$slug}, Data: " . print_r($data, true));
-        }
-    }
 }
