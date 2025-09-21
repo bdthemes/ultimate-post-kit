@@ -220,7 +220,7 @@ class UltimatePostKit_Admin_Settings {
 			'license_key' => $license_key,
 			'created_at' => current_time( 'timestamp' ),
 			'user_id' => get_current_user_id()
-			];
+		];
 		
 		update_option( 'upk_white_label_access_token', $token_data );
 		
@@ -4842,6 +4842,18 @@ class UltimatePostKit_Admin_Settings {
 	}
 
 	/**
+	 * Get License Key
+	 *
+	 * @access public
+	 * @return string
+	 */
+
+	public static function get_license_key() {
+		$license_key = get_option('ultimate_post_kit_license_key');
+		return trim($license_key);
+	}
+
+	/**
 	 * Get License Email
 	 *
 	 * @access public
@@ -4849,7 +4861,7 @@ class UltimatePostKit_Admin_Settings {
 	 */
 
 	 public static function get_license_email() {
-		return trim(get_option('element_pack_license_email', get_bloginfo('admin_email')));
+		return trim(get_option('ultimate_post_kit_license_email', get_bloginfo('admin_email')));
 	}
 
 }
