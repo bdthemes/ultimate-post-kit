@@ -13,8 +13,8 @@ if ( ! defined( 'BDTUPK_LO' ) ) {
 }
 
 if ( ! defined( 'BDTUPK_HIDE' ) ) {
-    $hide_ep = get_option( 'upk_white_label_bdtupk_hide', false );
-    if ( $hide_ep ) {
+    $hide_upk = get_option( 'upk_white_label_bdtupk_hide', false );
+    if ( $hide_upk ) {
         define( 'BDTUPK_HIDE', true );
     }
 }
