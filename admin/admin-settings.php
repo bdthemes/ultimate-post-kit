@@ -983,7 +983,7 @@ class UltimatePostKit_Admin_Settings {
 					</div>
 
 					<div class="upk-dashboard-quick-access bdt-margin-medium-top">
-						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/support.svg'; ?>"
+						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/support.jpg'; ?>"
 							alt="Ultimate Post Kit Dashboard Template">
 						<h1 class="upk-feature-title">
 							<?php esc_html_e('Getting Started with Quick Access', 'ultimate-post-kit'); ?>
