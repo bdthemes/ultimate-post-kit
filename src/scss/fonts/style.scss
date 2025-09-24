@@ -3,10 +3,10 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?cv0wug') format('woff2'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?cv0wug') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?cv0wug') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?cv0wug##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?gor8op') format('woff2'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?gor8op') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?gor8op') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?gor8op##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,6 +27,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.upk-icon-dynamic-carousel {
+  &:before {
+    content: $upk-icon-dynamic-carousel; 
+  }
+}
+.upk-icon-dynamic-grid {
+  &:before {
+    content: $upk-icon-dynamic-grid; 
+  }
+}
+.upk-icon-dynamic-accordion {
+  &:before {
+    content: $upk-icon-dynamic-accordion; 
+  }
+}
+.upk-icon-dynamic-tabs {
+  &:before {
+    content: $upk-icon-dynamic-tabs; 
+  }
+}
 .upk-icon-remote-fraction {
   &:before {
     content: $upk-icon-remote-fraction; 
@@ -462,6 +482,11 @@
     content: $upk-icon-maple-grid; 
   }
 }
+.upk-icon-dynamic-content {
+  &:before {
+    content: $upk-icon-dynamic-content; 
+  }
+}
 .upk-icon-audio_link {
   &:before {
     content: $upk-icon-audio_link; 
@@ -867,11 +892,6 @@
     content: $upk-icon-eye; 
   }
 }
-.upk-icon-preview {
-  &:before {
-    content: $upk-icon-preview; 
-  }
-}
 .upk-icon-email {
   &:before {
     content: $upk-icon-email; 
@@ -1147,6 +1167,16 @@
     content: $upk-icon-video-player; 
   }
 }
+.upk-icon-book-play {
+  &:before {
+    content: $upk-icon-book-play; 
+  }
+}
+.upk-icon-tutorial {
+  &:before {
+    content: $upk-icon-tutorial; 
+  }
+}
 .upk-icon-post {
   &:before {
     content: $upk-icon-post; 
@@ -1197,9 +1227,9 @@
     content: $upk-icon-display; 
   }
 }
-.upk-icon-tutorial {
+.upk-icon-preview {
   &:before {
-    content: $upk-icon-tutorial; 
+    content: $upk-icon-preview; 
   }
 }
 .upk-icon-bubble {
