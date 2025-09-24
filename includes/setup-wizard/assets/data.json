@@ -1,10 +1,86 @@
 [
   {
-    "title": "Travel Page Template Kit",
+    "title": "SnackNest – Where Cravings Meet Recipes",
     "is_pro": 1,
-    "thumbnail": "https://postkit.pro/templates/travel-page-template-kit.jpg",
-    "demo_url": "https://postkit.pro/demo-pages/travel-bd/",
-    "import_url": "https://postkit.pro/templates/travel-page-template-kit.zip"
+    "thumbnail": "https://postkit.pro/templates/snacknest.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/snacknest/",
+    "import_url": "https://postkit.pro/templates/snacknest.zip"
+  },
+  {
+    "title": "TastyTales – Stories of Flavor & Passion",
+    "is_pro": 1,
+    "thumbnail": "https://postkit.pro/templates/tastytales.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/tastytales/",
+    "import_url": "https://postkit.pro/templates/tastytales.zip"
+  },
+  {
+    "title": "TrendDesk – Where news meets now",
+    "is_pro": 1,
+    "thumbnail": "https://postkit.pro/templates/trenddesk.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/trenddesk/",
+    "import_url": "https://postkit.pro/templates/trenddesk.zip"
+  },
+  {
+    "title": "NextLevel – Gaming Beyond Reality",
+    "is_pro": 1,
+    "thumbnail": "https://postkit.pro/templates/nextlevel.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/nextlevel/",
+    "import_url": "https://postkit.pro/templates/nextlevel.zip"
+  },
+  {
+    "title": "Newsly – Quick bites. Big stories",
+    "is_pro": 1,
+    "thumbnail": "https://postkit.pro/templates/newsly.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/newsly/",
+    "import_url": "https://postkit.pro/templates/newsly.zip"
+  },
+  {
+    "title": "Travelbd – Travel moments captured",
+    "is_pro": 1,
+    "thumbnail": "https://postkit.pro/templates/travelbd.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/travelbd/",
+    "import_url": "https://postkit.pro/templates/travelbd.zip"
+  },
+  {
+    "title": "GameGeek – Where Gamers Connect",
+    "is_pro": 1,
+    "thumbnail": "https://postkit.pro/templates/game-geek.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/game-geek/",
+    "import_url": "https://postkit.pro/templates/game-geek.zip"
+  },
+  {
+    "title": "FreshMag – Your Daily Dose of Stories",
+    "is_pro": 1,
+    "thumbnail": "https://postkit.pro/templates/freshmag.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/freshmag/",
+    "import_url": "https://postkit.pro/templates/freshmag.zip"
+  },
+  {
+    "title": "FlipPage – Fresh Perspectives Every Day",
+    "is_pro": 1,
+    "thumbnail": "https://postkit.pro/templates/flippage.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/flippage/",
+    "import_url": "https://postkit.pro/templates/flippage.zip"
+  },
+  {
+    "title": "Todaynews – Smart News for Modern Minds",
+    "is_pro": 1,
+    "thumbnail": "https://postkit.pro/templates/today-news.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/today-news/",
+    "import_url": "https://postkit.pro/templates/today-news.zip"
+  },
+  {
+    "title": "Blaze – Where Stories Light the Way",
+    "is_pro": 1,
+    "thumbnail": "https://postkit.pro/templates/blaze.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/blaze/",
+    "import_url": "https://postkit.pro/templates/blaze.zip"
+  },
+  {
+    "title": "Inspire – Fuel Your Mind Spark Your Ideas",
+    "is_pro": 1,
+    "thumbnail": "https://postkit.pro/templates/inspire.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/inspire/",
+    "import_url": "https://postkit.pro/templates/inspire.zip"
   }
-
 ]
