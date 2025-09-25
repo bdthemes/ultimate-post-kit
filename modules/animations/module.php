@@ -26,7 +26,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 			'section_upk_in_animation_controls',
 			[
 				'tab'   => Controls_Manager::TAB_CONTENT,
-				'label' => esc_html__('Entrance Animation', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => esc_html__('Entrance Animation', 'ultimate-post-kit'),
 			]
 		);
 

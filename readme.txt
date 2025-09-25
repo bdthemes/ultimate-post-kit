@@ -240,6 +240,8 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 * Fixed: Resolved deprecation error in PHP 8.4
 
+* Added: Ajax Load More functionality added to the alice grid widget
+
 = 3.16.1 [8th September 2025] =
 
 * Fixed: DCI Notice removed for security reason
