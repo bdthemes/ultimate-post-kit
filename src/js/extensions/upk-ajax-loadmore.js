@@ -53,10 +53,10 @@
 
             // ajax data
             let action;
-            if (ajaxGrid.hasClass("upk-kalon-grid")) {
-                action = "upk_kalon_grid_loadmore_posts";
-            } else if (ajaxGrid.hasClass("upk-alex-grid")) {
-                action = "upk_alex_grid_loadmore_posts";
+            const match = ajaxGrid?.attr("class")?.match(/upk-([a-z0-9_-]+)-grid/);
+
+            if (match) {
+                action = `upk_${match[1]}_grid_loadmore_posts`;
             }
 
             let dataSettings = {
@@ -141,5 +141,6 @@
     jQuery(window).on('elementor/frontend/init', function () {
         elementorFrontend.hooks.addAction('frontend/element_ready/upk-kalon-grid.default', widgetAjaxGrid);
         elementorFrontend.hooks.addAction('frontend/element_ready/upk-alex-grid.default', widgetAjaxGrid);
+        elementorFrontend.hooks.addAction('frontend/element_ready/upk-alice-grid.default', widgetAjaxGrid);
     });
 })(jQuery, window.elementorFrontend);

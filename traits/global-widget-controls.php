@@ -19,7 +19,7 @@ trait Global_Widget_Controls {
 		$this->add_control(
 			'upk_link_new_tab',
 			[ 
-				'label'              => esc_html__( 'Link Open in a New Tab', 'ultimate-post-kit' ) . BDTUPK_NC,
+				'label'              => esc_html__( 'Link Open in a New Tab', 'ultimate-post-kit' ),
 				'type'               => Controls_Manager::SWITCHER,
 				'separator'          => 'before',
 				'frontend_available' => true,
