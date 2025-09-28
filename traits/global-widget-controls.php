@@ -624,7 +624,7 @@ trait Global_Widget_Controls {
 		$this->add_control(
             'ellipsis',
             [
-                'label' => esc_html__('Ellipsis', 'ultimate-post-kit') . BDTUPK_NC,
+                'label' => esc_html__('Ellipsis', 'ultimate-post-kit'),
                 'type' => Controls_Manager::TEXT,
                 'condition' => [
                     'show_excerpt' => 'yes',

@@ -241,6 +241,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 * Fixed: Resolved deprecation error in PHP 8.4
 
 * Added: Ajax Load More functionality added to the alice grid widget
+* Added: Ajax Load More functionality added to the alter grid widget
 
 = 3.16.1 [8th September 2025] =
 

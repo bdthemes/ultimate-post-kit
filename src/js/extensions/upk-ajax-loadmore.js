@@ -139,8 +139,17 @@
     };
 
     jQuery(window).on('elementor/frontend/init', function () {
-        elementorFrontend.hooks.addAction('frontend/element_ready/upk-kalon-grid.default', widgetAjaxGrid);
-        elementorFrontend.hooks.addAction('frontend/element_ready/upk-alex-grid.default', widgetAjaxGrid);
-        elementorFrontend.hooks.addAction('frontend/element_ready/upk-alice-grid.default', widgetAjaxGrid);
+        const ajaxLoadMoreWidgets = [
+            "upk-kalon-grid",
+            "upk-alex-grid",
+            "upk-alice-grid",
+            "upk-alter-grid"
+        ];
+        ajaxLoadMoreWidgets.forEach(widget => {
+            elementorFrontend.hooks.addAction(
+                `frontend/element_ready/${widget}.default`,
+                widgetAjaxGrid
+            );
+        });
     });
 })(jQuery, window.elementorFrontend);

@@ -135,7 +135,7 @@ class Alex_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'row_gap',
 			[
-				'label'     => esc_html__('Row Gap', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Row Gap', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => [
 					'size' => 20,
@@ -256,7 +256,7 @@ class Alex_Grid extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => __('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -310,7 +310,7 @@ class Alex_Grid extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_content_additional',
 			[
-				'label' => esc_html__('Additional', 'ultimate-post-kit'),
+				'label' => esc_html__('Additional Options', 'ultimate-post-kit'),
 			]
 		);
 
@@ -353,7 +353,7 @@ class Alex_Grid extends Group_Control_Query {
 		$this->add_control(
 			'meta_separator',
 			[
-				'label'       => __('Separator', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'       => __('Separator', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => '|',
 				'label_block' => false,
@@ -363,7 +363,7 @@ class Alex_Grid extends Group_Control_Query {
 		$this->add_control(
 			'show_post_format',
 			[
-				'label'   => esc_html__('Post Format', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'   => esc_html__('Post Format', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SWITCHER,
 				'separator' => 'before'
 			]
@@ -644,7 +644,7 @@ class Alex_Grid extends Group_Control_Query {
 		$this->add_control(
 			'title_style',
 			[
-				'label'   => esc_html__('Style', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'   => esc_html__('Style', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SELECT,
 				'default' => '',
 				'options' => [
@@ -1352,7 +1352,7 @@ class Alex_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'meta_spacing',
 			[
-				'label'     => esc_html__('Space Between', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Space Between', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -1399,7 +1399,7 @@ class Alex_Grid extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_style_post_format',
 			[
-				'label' => esc_html__('Post Format', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => esc_html__('Post Format', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'show_post_format' => 'yes'
@@ -1730,7 +1730,6 @@ class Alex_Grid extends Group_Control_Query {
 				]
 			);
 		}
-
 
 		if (isset($settings['upk_in_animation_show']) && ($settings['upk_in_animation_show'] == 'yes')) {
 			$this->add_render_attribute('grid-wrap', 'class', 'upk-in-animation');
