@@ -1,31 +1,38 @@
 [
   {
-    "title": "SnackNest – Where Cravings Meet Recipes",
+    "title": "Blaze – Where Stories Light the Way",
     "is_pro": 1,
-    "thumbnail": "https://postkit.pro/templates/snacknest.jpg",
-    "demo_url": "https://postkit.pro/demo-pages/snacknest/",
-    "import_url": "https://postkit.pro/templates/snacknest.zip"
+    "thumbnail": "https://postkit.pro/templates/blaze.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/blaze/",
+    "import_url": "https://postkit.pro/templates/blaze.zip"
   },
   {
-    "title": "TastyTales – Stories of Flavor & Passion",
+    "title": "FlipPage – Fresh Perspectives Every Day",
     "is_pro": 1,
-    "thumbnail": "https://postkit.pro/templates/tastytales.jpg",
-    "demo_url": "https://postkit.pro/demo-pages/tastytales/",
-    "import_url": "https://postkit.pro/templates/tastytales.zip"
+    "thumbnail": "https://postkit.pro/templates/flippage.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/flippage/",
+    "import_url": "https://postkit.pro/templates/flippage.zip"
   },
   {
-    "title": "TrendDesk – Where news meets now",
+    "title": "FreshMag – Your Daily Dose of Stories",
     "is_pro": 1,
-    "thumbnail": "https://postkit.pro/templates/trenddesk.jpg",
-    "demo_url": "https://postkit.pro/demo-pages/trenddesk/",
-    "import_url": "https://postkit.pro/templates/trenddesk.zip"
+    "thumbnail": "https://postkit.pro/templates/freshmag.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/freshmag/",
+    "import_url": "https://postkit.pro/templates/freshmag.zip"
   },
   {
-    "title": "NextLevel – Gaming Beyond Reality",
+    "title": "GameGeek – Where Gamers Connect",
     "is_pro": 1,
-    "thumbnail": "https://postkit.pro/templates/nextlevel.jpg",
-    "demo_url": "https://postkit.pro/demo-pages/nextlevel/",
-    "import_url": "https://postkit.pro/templates/nextlevel.zip"
+    "thumbnail": "https://postkit.pro/templates/gamegeek.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/game-geek/",
+    "import_url": "https://postkit.pro/templates/gamegeek.zip"
+  },
+  {
+    "title": "Inspire – Fuel Your Mind Spark Your Ideas",
+    "is_pro": 1,
+    "thumbnail": "https://postkit.pro/templates/inspire.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/inspire/",
+    "import_url": "https://postkit.pro/templates/inspire.zip"
   },
   {
     "title": "Newsly – Quick bites. Big stories",
@@ -42,45 +49,10 @@
     "import_url": "https://postkit.pro/templates/travelbd.zip"
   },
   {
-    "title": "GameGeek – Where Gamers Connect",
+    "title": "TrendDesk – Where news meets now",
     "is_pro": 1,
-    "thumbnail": "https://postkit.pro/templates/game-geek.jpg",
-    "demo_url": "https://postkit.pro/demo-pages/game-geek/",
-    "import_url": "https://postkit.pro/templates/game-geek.zip"
-  },
-  {
-    "title": "FreshMag – Your Daily Dose of Stories",
-    "is_pro": 1,
-    "thumbnail": "https://postkit.pro/templates/freshmag.jpg",
-    "demo_url": "https://postkit.pro/demo-pages/freshmag/",
-    "import_url": "https://postkit.pro/templates/freshmag.zip"
-  },
-  {
-    "title": "FlipPage – Fresh Perspectives Every Day",
-    "is_pro": 1,
-    "thumbnail": "https://postkit.pro/templates/flippage.jpg",
-    "demo_url": "https://postkit.pro/demo-pages/flippage/",
-    "import_url": "https://postkit.pro/templates/flippage.zip"
-  },
-  {
-    "title": "Todaynews – Smart News for Modern Minds",
-    "is_pro": 1,
-    "thumbnail": "https://postkit.pro/templates/today-news.jpg",
-    "demo_url": "https://postkit.pro/demo-pages/today-news/",
-    "import_url": "https://postkit.pro/templates/today-news.zip"
-  },
-  {
-    "title": "Blaze – Where Stories Light the Way",
-    "is_pro": 1,
-    "thumbnail": "https://postkit.pro/templates/blaze.jpg",
-    "demo_url": "https://postkit.pro/demo-pages/blaze/",
-    "import_url": "https://postkit.pro/templates/blaze.zip"
-  },
-  {
-    "title": "Inspire – Fuel Your Mind Spark Your Ideas",
-    "is_pro": 1,
-    "thumbnail": "https://postkit.pro/templates/inspire.jpg",
-    "demo_url": "https://postkit.pro/demo-pages/inspire/",
-    "import_url": "https://postkit.pro/templates/inspire.zip"
+    "thumbnail": "https://postkit.pro/templates/trenddesk.jpg",
+    "demo_url": "https://postkit.pro/demo-pages/trenddesk/",
+    "import_url": "https://postkit.pro/templates/trenddesk.zip"
   }
 ]

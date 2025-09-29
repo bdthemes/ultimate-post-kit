@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 3.16.1
+Stable tag: 4.0.0
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.8.2
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.31.3
+Elementor tested up to: 3.32.2
 
 Best Post Addon for Elementor WordPress Plugin with 90+ Most Popular Elements that need your everyday blog website building.
 
@@ -236,12 +236,27 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 3.16.X [XXth September 2025] =
+= 4.0.0 [29th September 2025] =
 
+* Added: Dynamic content feature added
+* Added: Remote Arrows widget added
+* Added: Remote Fraction widget added
+* Added: Remote Pagination widget added
+* Added: Remote Thumbs widget added
+* Added: Dynamic grid widget added
+* Added: Dynamic carousel widget added
+* Added: Dynamic accordion widget added
+* Added: Dynamic tabs widget added
+* Added: Admin Dashboard updated
+* Added: Custom css & js feature added
+* Added: White label feature added
+* Added: Setup wizard added
+* Added: Ajax Load More feature added in alice grid & alter widgets
 * Fixed: Resolved deprecation error in PHP 8.4
-
-* Added: Ajax Load More functionality added to the alice grid widget
-* Added: Ajax Load More functionality added to the alter grid widget
+* Fixed: Pagination arrow icon missing issue fixed in candy list widget
+* Fixed: PHP nullable parameter deprecation warning fixed
+* Fixed: Resolved regular notice display problem for white-label users
+* Fixed: Play button style controls issue fixed in atlas slider widget
 
 = 3.16.1 [8th September 2025] =
 
