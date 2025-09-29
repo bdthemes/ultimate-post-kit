@@ -63,6 +63,10 @@ function get_plugin_fallback_urls($plugin_slug) {
     
     // Custom icon URLs for specific plugins that might not be on WordPress.org
     $custom_icons = [
+        'bdthemes-element-pack-lite' => [
+            'https://ps.w.org/bdthemes-element-pack-lite/assets/icon-256x256.png',
+            'https://ps.w.org/bdthemes-element-pack-lite/assets/icon-128x128.png',
+        ],
         'live-copy-paste' => [
             'https://ps.w.org/live-copy-paste/assets/icon-256x256.png',
             'https://ps.w.org/live-copy-paste/assets/icon-128x128.png',
@@ -78,7 +82,11 @@ function get_plugin_fallback_urls($plugin_slug) {
         'smart-admin-assistant' => [
             'https://ps.w.org/smart-admin-assistant/assets/icon-256x256.png',
             'https://ps.w.org/smart-admin-assistant/assets/icon-128x128.png',
-        ]
+        ],
+        'website-accessibility' => [
+            'https://ps.w.org/website-accessibility/assets/icon-256x256.png',
+            'https://ps.w.org/website-accessibility/assets/icon-128x128.png',
+        ],
     ];
     
     // Return custom icons if available, otherwise use default WordPress.org URLs
@@ -107,6 +115,7 @@ $plugin_slugs = array(
     'dark-reader',
     'ar-viewer',
     'smart-admin-assistant',
+    'website-accessibility',
 
     // Add more plugin slugs here as needed
 );
