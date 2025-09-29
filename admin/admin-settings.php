@@ -3528,6 +3528,7 @@ class UltimatePostKit_Admin_Settings {
 			'dark-reader',
 			'ar-viewer',
 			'smart-admin-assistant',
+			'website-accessibility',
 		);
 
 		// Get plugin data using the helper (same as integration view)
@@ -3582,6 +3583,10 @@ class UltimatePostKit_Admin_Settings {
 				
 				// Custom icon URLs for specific plugins that might not be on WordPress.org
 				$custom_icons = [
+					'bdthemes-element-pack-lite' => [
+						'https://ps.w.org/bdthemes-element-pack-lite/assets/icon-256x256.png',
+						'https://ps.w.org/bdthemes-element-pack-lite/assets/icon-128x128.png',
+					],
 					'live-copy-paste' => [
 						'https://ps.w.org/live-copy-paste/assets/icon-256x256.png',
 						'https://ps.w.org/live-copy-paste/assets/icon-128x128.png',
@@ -3597,7 +3602,11 @@ class UltimatePostKit_Admin_Settings {
 					'smart-admin-assistant' => [
 						'https://ps.w.org/smart-admin-assistant/assets/icon-256x256.png',
 						'https://ps.w.org/smart-admin-assistant/assets/icon-128x128.png',
-					]
+					],
+					'website-accessibility' => [
+						'https://ps.w.org/website-accessibility/assets/icon-256x256.png',
+						'https://ps.w.org/website-accessibility/assets/icon-128x128.png',
+					],
 				];
 				
 				// Return custom icons if available, otherwise use default WordPress.org URLs
@@ -3620,7 +3629,7 @@ class UltimatePostKit_Admin_Settings {
 				
 				<?php foreach ($upk_plugins as $plugin) : 
 					$is_active = is_plugin_active($plugin['slug']);
-					$is_recommended = $plugin['recommended'] && !$is_active;
+					// $is_recommended = $plugin['recommended'] && !$is_active;
 					
 					// Get plugin logo with fallback
 					$logo_url = $plugin['logo'] ?? '';
@@ -3637,33 +3646,49 @@ class UltimatePostKit_Admin_Settings {
 				
 				<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">
 					<div class="bdt-others-plugin-content bdt-flex bdt-flex-middle">
-						<div class="bdt-plugin-logo-container">
-							<img src="<?php echo esc_url($logo_url); ?>" 
-								 alt="<?php echo esc_attr($plugin_name); ?>" 
-								 class="bdt-plugin-logo"
-								 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-							<div class="default-plugin-icon" style="display:none;">📦</div>
-						</div>
-						
-						<div class="bdt-others-plugin-content-text">
+						<div class="bdt-plugin-logo-wrap bdt-flex bdt-flex-middle">
+							<div class="bdt-plugin-logo-container">
+								<img src="<?php echo esc_url($logo_url); ?>" 
+									alt="<?php echo esc_attr($plugin_name); ?>" 
+									class="bdt-plugin-logo"
+									onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+								<div class="default-plugin-icon" style="display:none;">📦</div>
+							</div>
+
 							<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">
 								<h1 class="upk-feature-title"><?php echo esc_html($plugin_name); ?></h1>
 								
-								<?php if ($is_recommended) : ?>
-									<span class="bdt-others-plugin-recommended"><?php esc_html_e('Recommended', 'ultimate-post-kit'); ?></span>
-								<?php endif; ?>
+								<!-- <?php //if ($is_active) : ?>
+									<span class="bdt-others-plugin-active"><?php //esc_html_e('ACTIVE', 'ultimate-post-kit'); ?></span>
+								<?php //endif; ?> -->
 								
-								<?php if ($is_active) : ?>
-									<span class="bdt-others-plugin-active"><?php esc_html_e('ACTIVE', 'ultimate-post-kit'); ?></span>
-								<?php endif; ?>
-								
-								<?php if (isset($plugin['active_installs']) && !empty($plugin['active_installs'])) : ?>
-									<span class="bdt-others-plugin-user"><?php echo esc_html($plugin['active_installs']); ?> <?php esc_html_e('active users', 'ultimate-post-kit'); ?></span>
-								<?php endif; ?>
 							</div>
+						</div>	
+						<div class="bdt-others-plugin-content-text">
+							
+							
+							
+							
 							
 							<?php if (!empty($plugin['description'])) : ?>
 								<p><?php echo esc_html($plugin['description']); ?></p>
+							<?php endif; ?>
+
+							<span class="active-installs bdt-margin-small-top">
+								<?php esc_html_e('Active Installs: ', 'ultimate-post-kit'); 
+								// echo wp_kses_post($plugin['active_installs'] ?? '0'); 
+								if (isset($plugin['active_installs_count']) && $plugin['active_installs_count'] > 0) {
+									echo ' <span class="installs-count">' . number_format($plugin['active_installs_count']) . '+' . '</span>';
+								} else {
+									echo ' <span class="installs-count">Fewer than 10' . '</span>';
+								}
+								?>
+							</span>
+
+							<?php if (isset($plugin['downloaded_formatted']) && !empty($plugin['downloaded_formatted'])): ?>
+								<div class="downloads bdt-margin-small-top">
+									<span><?php esc_html_e('Downloads: ', 'ultimate-post-kit'); ?><?php echo esc_html($plugin['downloaded_formatted']); ?></span>
+								</div>
 							<?php endif; ?>
 
 							<div class="bdt-others-plugin-rating bdt-margin-small-top bdt-flex bdt-flex-middle">
@@ -3697,12 +3722,6 @@ class UltimatePostKit_Admin_Settings {
 									<?php endif; ?>
 								</span>
 							</div>
-							
-							<?php if (isset($plugin['downloaded_formatted']) && !empty($plugin['downloaded_formatted'])): ?>
-								<div class="bdt-others-plugin-downloads bdt-margin-small-top">
-									<span><?php esc_html_e('Downloads: ', 'ultimate-post-kit'); ?><?php echo esc_html($plugin['downloaded_formatted']); ?></span>
-								</div>
-							<?php endif; ?>
 							
 							<?php if (isset($plugin['last_updated']) && !empty($plugin['last_updated'])): ?>
 								<div class="bdt-others-plugin-updated bdt-margin-small-top">
