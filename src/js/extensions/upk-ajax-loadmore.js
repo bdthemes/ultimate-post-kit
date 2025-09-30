@@ -139,12 +139,15 @@
     };
 
     jQuery(window).on('elementor/frontend/init', function () {
+
         const ajaxLoadMoreWidgets = [
             "upk-kalon-grid",
             "upk-alex-grid",
             "upk-alice-grid",
-            "upk-alter-grid"
+            "upk-alter-grid",
+            "upk-elite-grid"
         ];
+        
         ajaxLoadMoreWidgets.forEach(widget => {
             elementorFrontend.hooks.addAction(
                 `frontend/element_ready/${widget}.default`,
