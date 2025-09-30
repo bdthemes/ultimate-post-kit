@@ -238,7 +238,8 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 = 4.0.X [XXth September 2025] =
 
-* Added: Ajax Load More feature added in elite widget
+* Added: Ajax Load More feature added in elite grid and gratis grid widgets
+* Fixed: Added spacing between date, time, and reading time in gratis widget
 
 = 4.0.0 [29th September 2025] =
 

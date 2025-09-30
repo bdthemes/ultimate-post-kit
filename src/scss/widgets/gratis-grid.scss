@@ -90,6 +90,7 @@
 
 	.upk-content-wrap {
 		position: absolute;
+		width: 100%;
 		left: 0;
 		padding: 40px;
 		bottom: 0;
@@ -127,6 +128,10 @@
 
 	.upk-meta {
 		gap: 10px;
+	}
+
+	.upk-meta .upk-flex-middle {
+		gap: 5px;
 	}
 
 	.upk-meta,
