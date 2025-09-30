@@ -38,7 +38,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 			$settings = map_deep( wp_unslash( $_POST['settings'] ), 'sanitize_text_field' );
 		}
 
-		$post_type = $settings['post_type'] ?? 'post';
+		$post_type = $settings['posts_source'] ?? 'post';
 	
 		$settings = array_merge(
 			[

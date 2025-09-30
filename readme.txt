@@ -236,6 +236,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.0.X [XXth September 2025] =
+
+* Added: Ajax Load More feature added in elite widget
+
 = 4.0.0 [29th September 2025] =
 
 * Added: Dynamic content feature added
