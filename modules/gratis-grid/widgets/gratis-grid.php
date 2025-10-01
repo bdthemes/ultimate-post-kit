@@ -62,6 +62,14 @@ class Gratis_Grid extends Group_Control_Query {
 		}
 	}
 
+	public function get_script_depends() {
+		if ($this->upk_is_edit_mode()) {
+			return ['upk-all-scripts'];
+		} else {
+			return ['upk-ajax-loadmore'];
+		}
+	}
+
 	public function get_custom_help_url() {
 		return 'https://youtu.be/jLBLAqxEOwQ';
 	}
@@ -206,7 +214,7 @@ class Gratis_Grid extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_content_additional',
 			[
-				'label' => esc_html__('Additional', 'ultimate-post-kit'),
+				'label' => esc_html__('Additional Options', 'ultimate-post-kit'),
 			]
 		);
 
@@ -289,6 +297,9 @@ class Gratis_Grid extends Group_Control_Query {
 				'separator' => 'before'
 			]
 		);
+
+		//Global Ajax Controls
+		$this->register_ajax_loadmore_controls();
 
 		$this->add_control(
 			'global_link',
@@ -1146,6 +1157,9 @@ class Gratis_Grid extends Group_Control_Query {
 		$this->end_controls_tabs();
 
 		$this->end_controls_section();
+
+		//Global ajax style controls
+		$this->register_ajax_loadmore_style_controls();
 	}
 
 	/**
@@ -1315,7 +1329,7 @@ class Gratis_Grid extends Group_Control_Query {
 			return;
 		}
 
-		$this->add_render_attribute('grid-wrap', 'class', 'upk-gratis-wrap');
+		$this->add_render_attribute('grid-wrap', 'class', 'upk-gratis-wrap upk-ajax-grid-wrap');
 
 		if (isset($settings['upk_in_animation_show']) && ($settings['upk_in_animation_show'] == 'yes')) {
 			$this->add_render_attribute('grid-wrap', 'class', 'upk-in-animation');
@@ -1323,9 +1337,73 @@ class Gratis_Grid extends Group_Control_Query {
 				$this->add_render_attribute('grid-wrap', 'data-in-animation-delay', $settings['upk_in_animation_delay']['size']);
 			}
 		}
+		
+		$this->add_render_attribute(
+			[
+				'upk-gratis-grid' => [
+					'class' => 'upk-gratis-grid upk-ajax-grid',
+					'data-loadmore' => [
+						wp_json_encode(array_filter([
+							'loadmore_enable' => $settings['ajax_loadmore_enable'],
+							'loadmore_btn' => $settings['ajax_loadmore_btn'],
+							'infinite_scroll' => $settings['ajax_loadmore_infinite_scroll'],
+						]))
+					]
+				]
+			]
+		);
 
+		if ($settings['ajax_loadmore_enable'] == 'yes') {
+			$ajax_settings = [
+				'posts_source' => isset($settings['posts_source']) ? $settings['posts_source'] : 'post',
+				'posts_per_page' => isset($settings['item_limit']['size']) ? $settings['item_limit']['size'] : 6,
+				'ajax_item_load' => isset($settings['ajax_loadmore_items']) ? $settings['ajax_loadmore_items'] : 3,
+				'posts_selected_ids' => isset($settings['posts_selected_ids']) ? $settings['posts_selected_ids'] : '',
+				'posts_include_by' => isset($settings['posts_include_by']) ? $settings['posts_include_by'] : [],
+				'posts_include_author_ids' => isset($settings['posts_include_author_ids']) ? $settings['posts_include_author_ids'] : '',
+				'posts_include_term_ids' => isset($settings['posts_include_term_ids']) ? $settings['posts_include_term_ids'] : '',
+				'posts_exclude_by' => isset($settings['posts_exclude_by']) ? $settings['posts_exclude_by'] : [],
+				'posts_exclude_ids' => isset($settings['posts_exclude_ids']) ? $settings['posts_exclude_ids'] : '',
+				'posts_exclude_author_ids' => isset($settings['posts_exclude_author_ids']) ? $settings['posts_exclude_author_ids'] : '',
+				'posts_exclude_term_ids' => isset($settings['posts_exclude_term_ids']) ? $settings['posts_exclude_term_ids'] : '',
+				'posts_offset' => isset($settings['posts_offset']) ? $settings['posts_offset'] : 0,
+				'posts_select_date' => isset($settings['posts_select_date']) ? $settings['posts_select_date'] : '',
+				'posts_date_before' => isset($settings['posts_date_before']) ? $settings['posts_date_before'] : '',
+				'posts_date_after' => isset($settings['posts_date_after']) ? $settings['posts_date_after'] : '',
+				'posts_orderby' => isset($settings['posts_orderby']) ? $settings['posts_orderby'] : 'date',
+				'posts_order' => isset($settings['posts_order']) ? $settings['posts_order'] : 'DESC',
+				'posts_ignore_sticky_posts' => isset($settings['posts_ignore_sticky_posts']) ? $settings['posts_ignore_sticky_posts'] : 'no',
+				'posts_only_with_featured_image' => isset($settings['posts_only_with_featured_image']) ? $settings['posts_only_with_featured_image'] : 'no',
+
+				// Grid Settings
+				'show_title' => isset($settings['show_title']) ? $settings['show_title'] : 'yes',
+				'show_meta' => isset($settings['show_meta']) ? $settings['show_meta'] : 'yes',
+				'show_author' => isset($settings['show_author']) ? $settings['show_author'] : 'yes',
+				'show_date' => isset($settings['show_date']) ? $settings['show_date'] : 'yes',
+				'human_diff_time' => isset($settings['human_diff_time']) ? $settings['human_diff_time'] : 'no',
+				'show_time' => isset($settings['show_time']) ? $settings['show_time'] : '',
+				'show_category' => isset($settings['show_category']) ? $settings['show_category'] : 'yes',
+				'show_readmore' => isset($settings['show_readmore']) ? $settings['show_readmore'] : 'yes',
+				'readmore_text' => isset($settings['readmore_text']) ? $settings['readmore_text'] : '',
+				'show_reading_time' => isset($settings['show_reading_time']) ? $settings['show_reading_time'] : 'no',
+				'avg_reading_speed' => isset($settings['avg_reading_speed']) ? $settings['avg_reading_speed'] : 200,
+				'meta_separator' => isset($settings['meta_separator']) ? $settings['meta_separator'] : '/',
+				'primary_thumbnail_size' => isset($settings['primary_thumbnail_size']) ? $settings['primary_thumbnail_size'] : 'full',
+			];
+
+			$this->add_render_attribute(
+				[
+					'upk-gratis-grid' => [
+						'data-settings' => [
+							wp_json_encode($ajax_settings)
+						]
+					]
+				]
+			);
+		}
+		
 		?>
-		<div class="upk-gratis-grid">
+		<div <?php $this->print_render_attribute_string('upk-gratis-grid'); ?>>
 			<div <?php $this->print_render_attribute_string('grid-wrap'); ?>>
 
 				<?php 
@@ -1348,6 +1426,8 @@ class Gratis_Grid extends Group_Control_Query {
 				<?php endwhile; ?>
 			</div>
 		</div>
+
+		<?php $this->render_ajax_loadmore(); ?>
 
 		<?php
 

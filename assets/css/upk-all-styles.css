@@ -15701,6 +15701,7 @@
 }
 .upk-gratis-grid .upk-content-wrap {
   position: absolute;
+  width: 100%;
   left: 0;
   padding: 40px;
   bottom: 0;
@@ -15730,6 +15731,9 @@
 }
 .upk-gratis-grid .upk-meta {
   gap: 10px;
+}
+.upk-gratis-grid .upk-meta .upk-flex-middle {
+  gap: 5px;
 }
 .upk-gratis-grid .upk-meta,
 .upk-gratis-grid .upk-author,

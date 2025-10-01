@@ -253,7 +253,8 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 = 4.0.X [XXth October 2025] =
 
-* Added: Ajax Load More feature added in hazel grid widget
+* Added: Ajax Load More feature added in elite grid, hazel grid and gratis grid widgets
+* Fixed: Added spacing between date, time, and reading time in gratis widget
 
 = 4.0.1 [30th September 2025] =
 
