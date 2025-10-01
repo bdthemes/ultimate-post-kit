@@ -251,9 +251,9 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.0.X [XXth September 2025] =
+= 4.0.X [XXth October 2025] =
 
-* Added: Ajax Load More feature added in elite grid and gratis grid widgets
+* Added: Ajax Load More feature added in elite grid, hazel grid and gratis grid widgets
 * Fixed: Added spacing between date, time, and reading time in gratis widget
 
 = 4.0.1 [30th September 2025] =

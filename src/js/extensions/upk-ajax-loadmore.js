@@ -146,6 +146,7 @@
             "upk-alice-grid",
             "upk-alter-grid",
             "upk-elite-grid",
+            "upk-hazel-grid",
             "upk-gratis-grid"
         ];
         

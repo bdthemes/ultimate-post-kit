@@ -55,6 +55,14 @@ class Hazel_Grid extends Group_Control_Query {
 		}
 	}
 
+	public function get_script_depends() {
+		if ($this->upk_is_edit_mode()) {
+			return ['upk-all-scripts'];
+		} else {
+			return ['upk-ajax-loadmore'];
+		}
+	}
+
 	public function get_custom_help_url() {
 		return 'https://youtu.be/Uy_rOg8lQJM';
 	}
@@ -128,7 +136,7 @@ class Hazel_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'row_gap',
 			[
-				'label'     => esc_html__('Row Gap', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Row Gap', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => [
 					'size' => 20,
@@ -267,7 +275,7 @@ class Hazel_Grid extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => esc_html__('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -363,7 +371,7 @@ class Hazel_Grid extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_content_additional',
 			[
-				'label' => esc_html__('Additional', 'ultimate-post-kit'),
+				'label' => esc_html__('Additional Options', 'ultimate-post-kit'),
 			]
 		);
 
@@ -397,7 +405,7 @@ class Hazel_Grid extends Group_Control_Query {
 		$this->add_control(
 			'meta_separator',
 			[
-				'label'       => __('Separator', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'       => esc_html__('Separator', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => '-',
 				'label_block' => false,
@@ -412,6 +420,9 @@ class Hazel_Grid extends Group_Control_Query {
 				'separator' => 'before'
 			]
 		);
+
+		//Global Ajax Controls
+		$this->register_ajax_loadmore_controls();
 
 		$this->add_control(
 			'global_link',
@@ -534,7 +545,7 @@ class Hazel_Grid extends Group_Control_Query {
 		$this->add_control(
 			'title_style',
 			[
-				'label'   => esc_html__('Style', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'   => esc_html__('Style', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SELECT,
 				'default' => '',
 				'options' => [
@@ -761,7 +772,7 @@ class Hazel_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'meta_space_between',
 			[
-				'label'     => esc_html__('Space Between', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Space Between', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -943,6 +954,9 @@ class Hazel_Grid extends Group_Control_Query {
 
 		//Global Pagination Controls
 		$this->register_pagination_controls();
+
+		//Global Ajax Loadmore Controls
+		$this->register_ajax_loadmore_style_controls();
 	}
 
 	/**
@@ -1070,10 +1084,73 @@ class Hazel_Grid extends Group_Control_Query {
 			return;
 		}
 
-		$this->add_render_attribute('grid-wrap', 'class', 'upk-post-grid');
+		$this->add_render_attribute('grid-wrap', 'class', 'upk-post-grid upk-ajax-grid-wrap');
 		$this->add_render_attribute('grid-wrap', 'class', 'upk-style-' . $settings['grid_style']);
 		$this->add_render_attribute('grid-wrap', 'class', 'upk-text-position-' . $settings['content_position']);
 		$this->add_render_attribute('grid-wrap', 'class', 'upk-content-style-' . $settings['content_style']);
+
+		$this->add_render_attribute(
+			[
+				'upk-hazel-grid' => [
+					'class' => 'upk-hazel-grid upk-ajax-grid',
+					'data-loadmore' => [
+						wp_json_encode(array_filter([
+							'loadmore_enable' => $settings['ajax_loadmore_enable'],
+							'loadmore_btn' => $settings['ajax_loadmore_btn'],
+							'infinite_scroll' => $settings['ajax_loadmore_infinite_scroll'],
+						]))
+					]
+				]
+			]
+		);
+
+		if ($settings['ajax_loadmore_enable'] == 'yes') {
+			$ajax_settings = [
+				'posts_source' => isset($settings['posts_source']) ? $settings['posts_source'] : 'post',
+				'posts_per_page' => isset($posts_load) ? $posts_load : 6,
+				'ajax_item_load' => isset($settings['ajax_loadmore_items']) ? $settings['ajax_loadmore_items'] : 3,
+				'posts_selected_ids' => isset($settings['posts_selected_ids']) ? $settings['posts_selected_ids'] : '',
+				'posts_include_by' => isset($settings['posts_include_by']) ? $settings['posts_include_by'] : [],
+				'posts_include_author_ids' => isset($settings['posts_include_author_ids']) ? $settings['posts_include_author_ids'] : '',
+				'posts_include_term_ids' => isset($settings['posts_include_term_ids']) ? $settings['posts_include_term_ids'] : '',
+				'posts_exclude_by' => isset($settings['posts_exclude_by']) ? $settings['posts_exclude_by'] : [],
+				'posts_exclude_ids' => isset($settings['posts_exclude_ids']) ? $settings['posts_exclude_ids'] : '',
+				'posts_exclude_author_ids' => isset($settings['posts_exclude_author_ids']) ? $settings['posts_exclude_author_ids'] : '',
+				'posts_exclude_term_ids' => isset($settings['posts_exclude_term_ids']) ? $settings['posts_exclude_term_ids'] : '',
+				'posts_offset' => isset($settings['posts_offset']) ? $settings['posts_offset'] : 0,
+				'posts_select_date' => isset($settings['posts_select_date']) ? $settings['posts_select_date'] : '',
+				'posts_date_before' => isset($settings['posts_date_before']) ? $settings['posts_date_before'] : '',
+				'posts_date_after' => isset($settings['posts_date_after']) ? $settings['posts_date_after'] : '',
+				'posts_orderby' => isset($settings['posts_orderby']) ? $settings['posts_orderby'] : 'date',
+				'posts_order' => isset($settings['posts_order']) ? $settings['posts_order'] : 'DESC',
+				'posts_ignore_sticky_posts' => isset($settings['posts_ignore_sticky_posts']) ? $settings['posts_ignore_sticky_posts'] : 'no',
+				'posts_only_with_featured_image' => isset($settings['posts_only_with_featured_image']) ? $settings['posts_only_with_featured_image'] : 'no',
+
+				// Grid Settings
+				'show_title' => isset($settings['show_title']) ? $settings['show_title'] : 'yes',
+				'show_excerpt' => isset($settings['show_excerpt']) ? $settings['show_excerpt'] : 'yes',
+				'show_author' => isset($settings['show_author']) ? $settings['show_author'] : 'yes',
+				'show_date' => isset($settings['show_date']) ? $settings['show_date'] : 'yes',
+				'show_time' => isset($settings['show_time']) ? $settings['show_time'] : 'no',
+				'show_category' => isset($settings['show_category']) ? $settings['show_category'] : 'yes',
+				'show_reading_time' => isset($settings['show_reading_time']) ? $settings['show_reading_time'] : 'no',
+				'avg_reading_speed' => isset($settings['avg_reading_speed']) ? $settings['avg_reading_speed'] : 200,
+				'meta_separator' => isset($settings['meta_separator']) ? $settings['meta_separator'] : '|',
+				'human_diff_time' => isset($settings['human_diff_time']) ? $settings['human_diff_time'] : 'no',
+				'human_diff_time_short' => isset($settings['human_diff_time_short']) ? $settings['human_diff_time_short'] : 'no',
+				'excerpt_length' => isset($settings['excerpt_length']) ? $settings['excerpt_length'] : 20,
+			];
+
+			$this->add_render_attribute(
+				[
+					'upk-hazel-grid' => [
+						'data-settings' => [
+							wp_json_encode($ajax_settings)
+						]
+					]
+				]
+			);
+		}
 
 		if (isset($settings['upk_in_animation_show']) && ($settings['upk_in_animation_show'] == 'yes')) {
 			$this->add_render_attribute('grid-wrap', 'class', 'upk-in-animation');
@@ -1083,7 +1160,7 @@ class Hazel_Grid extends Group_Control_Query {
 		}
 
 	?>
-		<div class="upk-hazel-grid">
+		<div <?php $this->print_render_attribute_string('upk-hazel-grid'); ?>>
 			<div <?php $this->print_render_attribute_string('grid-wrap'); ?>>
 
 				<?php while ($wp_query->have_posts()) :
@@ -1099,6 +1176,8 @@ class Hazel_Grid extends Group_Control_Query {
 			</div>
 		</div>
 
+		<?php $this->render_ajax_loadmore(); ?>
+		
 		<?php
 
 		if ($settings['show_pagination']) { ?>
