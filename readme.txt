@@ -2,16 +2,16 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 4.0.0
+Stable tag: 4.0.1
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.8.2
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.32.2
+Elementor tested up to: 3.32.3
 
-Best Post Addon for Elementor WordPress Plugin with 90+ Most Popular Elements that need your everyday blog website building.
+Best Post Addon for Elementor WordPress Plugin with 100+ Most Popular Elements that need your everyday blog website building.
 
 == Description ==
 
@@ -167,6 +167,21 @@ More widgets and extensions are coming soon...
 * [Stone Hover](https://postkit.pro/demo/stone-hover/) - Creative hover effect widget to make images or content stand out.  
 * [Instagram Gallery](https://postkit.pro/demo/instagram-gallery/) - Showcase Instagram feeds in an attractive gallery layout effortlessly.  
 
+= Dynamic Elements 👑 =
+
+* [Dynamic Content](https://postkit.pro/demo/dynamic-content/) - Flexible content widget for displaying posts, pages, or custom queries dynamically.  
+* [Dynamic Grid](https://postkit.pro/demo/dynamic-grid/) - Responsive grid layout to showcase posts, products, or custom content beautifully.  
+* [Dynamic Carousel](https://postkit.pro/demo/dynamic-carousel/) - Smooth carousel slider for posts, images, or custom content with advanced controls.  
+* [Dynamic Tabs](https://postkit.pro/demo/dynamic-tabs/) - Organized tabbed content display for better user experience and SEO.  
+* [Dynamic Accordion](https://postkit.pro/demo/dynamic-accordion/) - Interactive accordion widget for FAQs, content sections, or toggled layouts.  
+
+= Remote Control 👇 =
+
+* [Remote Arrows](https://postkit.pro/demo/remote-arrows/) - Separate the navigation from sliders and use remote arrows to control them from a different place on your site.
+* [Remote Fraction](https://postkit.pro/demo/remote-fraction/) - Add fraction navigation to any slider, regardless of its position, with this remote control widget.
+* [Remote Pagination](https://postkit.pro/demo/remote-pagination/) - Display the number of posts left in the query with remote pagination for enhanced user interaction.
+* [Remote Thumbs](https://postkit.pro/demo/remote-thumbs/) - Link a thumb gallery to any slider to make it more interactive and visually appealing.
+
 == Pro Extensions 🔥 ==
 
 * [MultiColor Item](https://postkit.pro/demo/multicolor-item/) - Add multicolor elements for vibrant and attention-grabbing designs.  
@@ -240,6 +255,11 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 * Added: Ajax Load More feature added in elite grid and gratis grid widgets
 * Fixed: Added spacing between date, time, and reading time in gratis widget
+
+= 4.0.1 [30th September 2025] =
+
+* Added: Ajax Load More feature added in elite grid widget
+* Updated: Admin Dashboard improved
 
 = 4.0.0 [29th September 2025] =
 
