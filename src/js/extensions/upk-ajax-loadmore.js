@@ -147,7 +147,8 @@
             "upk-alter-grid",
             "upk-elite-grid",
             "upk-hazel-grid",
-            "upk-gratis-grid"
+            "upk-gratis-grid",
+            "upk-maple-grid",
         ];
         
         ajaxLoadMoreWidgets.forEach(widget => {
