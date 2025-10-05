@@ -1,8 +1,8 @@
-=== Ultimate Post Kit Addons For Elementor - (Post Grid, Post Carousel, Post Slider, Category List, Post Tabs, Timeline, Post Ticker and Tag Cloud) ===
+=== Ultimate Post Kit Addons for Elementor ===
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 4.0.1
+Stable tag: 4.0.2
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.8.2
@@ -11,19 +11,15 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
 Elementor tested up to: 3.32.3
 
-Best Post Addon for Elementor WordPress Plugin with 100+ Most Popular Elements that need your everyday blog website building.
+Build your blogs and news sites with a feature-rich Elementor addon, offering 100+ elements for engaging layouts.
 
 == Description ==
 
-Ultimate Post Kit addons for **[Elementor](https://wordpress.org/plugins/elementor/)** is the first-ever addon that lets you design blogging websites with a completely new and refreshing outlook. This is the best tool for bloggers, marketers and post-type web owners.
+Ultimate Post Kit for Elementor is an usefull addon for bloggers, marketers, and content creators who want stunning blog layouts without coding. Packed with unique widgets, sliders, and SEO-friendly designs, it helps you showcase posts in a fresh and modern way.
 
-Ultimate Post Kit add-ons for Elementor provide a fine-tuned post interface that supports Elementor's famous drag-n-drop editing feature. The number of unique widgets by Ultimate Post Kit helps you present your blogs or posts with SEO-optimized layouts, cool sliders, eye-catching designs and more.
+Built with clean, optimized code, it’s fully compatible with the latest WordPress standards and won’t slow down your site. Whether you’re a beginner or pro, you can design beautiful, traffic-ready blogs in minutes using Elementor’s drag-and-drop editor.
 
-**[Ultimate Post Kit](https://postkit.pro/)** doesn’t require you any coding knowledge. The plugin is simple enough for beginners to use. Even professional developers will love its fully customizable widgets. Use Ultimate Post Kit to design your blogging site in minutes with a next-gen blogging architect to help you capture more traffic.
-
-We developed the tool using the best code practices for WordPress, having the highest compatibility with the latest PHP, CSS, JS, HTML5 and WordPress core vital. Instead of slowing down, Ultimate Post Kit boosts your website with an intelligent SEO-optimized site-booster framework. Just one plugin gets you many facilities!
-
-Ultimate Post Kit supports and translates into multiple languages with the RTL feature. (open for more translations)
+Ultimate Post Kit also supports RTL and multiple languages, making it ready for a global audience.
 
 ###USEFUL LINKS 👇###
 **[Live Demo](https://postkit.pro/demo/)** | **[Documentation](https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/)** | **[Video Tutorial](https://www.youtube.com/watch?v=nmMajegrTiM&list=PLP0S85GEw7DNBnZCb4RtJzlf38GCJ7z1b)** | **[Upgrade Pro](https://postkit.pro/pricing/)** | **[Need Support?](https://bdthemes.com/support/)**
@@ -216,7 +212,7 @@ Feel free to [Contact us](https://bdthemes.com/support/) 💌 or check our widge
 
 == Check out our other Addons 👑 ==
 
-Explore the best free addons for Elementor and Gutenberg to boost your site with advanced blocks, sliders and eCommerce tools.
+Explore more free addons for Elementor and Gutenberg to boost your site with advanced blocks, sliders and eCommerce tools.
 
 * **[ZoloBlocks](https://wordpress.org/plugins/zoloblocks/)** 🆕☀️ - Mind-blowing dynamic block plugin for Gutenberg with powerful and advanced features offering greater web design experience.
 
@@ -251,11 +247,12 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.0.X [XXth October 2025] =
+= 4.0.2 [5th October 2025] =
 
 * Added: Ajax Load More feature added in elite grid, hazel grid and gratis grid widgets
 * Added: Ajax Load More feature added in maple grid widget
 * Fixed: Added spacing between date, time, and reading time in gratis widget
+* Fixed: Front page pagination issue fixed in all widgets
 
 = 4.0.1 [30th September 2025] =
 
