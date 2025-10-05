@@ -363,10 +363,19 @@ function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 		return;
 	}
 
+	// Get current page from multiple sources for reliability
+	$paged_from_query = isset( $wp_query->query_vars['paged'] ) ? $wp_query->query_vars['paged'] : 0;
+	$page_from_query = isset( $wp_query->query_vars['page'] ) ? $wp_query->query_vars['page'] : 0;
+	
 	if ( is_front_page() ) {
-		$paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;
+		// On front page, WordPress can use either 'page' or 'paged' depending on permalink structure
+		$paged = max( get_query_var( 'page' ), get_query_var( 'paged' ), $paged_from_query, $page_from_query );
+		$paged = $paged ? $paged : 1;
+		$page_var = 'page';
 	} else {
-		$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+		$paged = max( get_query_var( 'paged' ), $paged_from_query );
+		$paged = $paged ? $paged : 1;
+		$page_var = 'paged';
 	}
 	$max = intval( $wp_query->max_num_pages );
 
@@ -386,18 +395,31 @@ function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 		$links[] = $paged + 1;
 	}
 
-	printf( '<ul class="upk-pagination" data-widget-id="%s" >' . "\n", esc_attr($widget_id) );
+	printf( '<ul class="upk-pagination" data-widget-id="%s" data-debug-paged="%s" data-debug-max="%s" data-debug-is-front="%s">' . "\n", esc_attr($widget_id), esc_attr($paged), esc_attr($max), esc_attr(is_front_page() ? 'yes' : 'no') );
 
 	/** Previous Post Link */
-	if ( get_previous_posts_link() ) {
-		printf( '<li class="upk-pagination-previous">%s</li>' . "\n", get_previous_posts_link( '<span data-upk-pagination-previous><i class="upk-icon-arrow-left-5" aria-hidden="true"></i></span>' ) );
+	if ( $paged > 1 ) {
+		$prev_page = $paged - 1;
+		if ( is_front_page() && $prev_page == 1 ) {
+			$prev_link = home_url( '/' );
+		} else {
+			$prev_link = get_pagenum_link( $prev_page );
+		}
+		printf( '<li class="upk-pagination-previous"><a href="%s"><span data-upk-pagination-previous><i class="upk-icon-arrow-left-5" aria-hidden="true"></i></span></a></li>' . "\n", esc_url( $prev_link ) );
 	}
 
 	/** Link to first page, plus ellipses if necessary */
 	if ( ! in_array( 1, $links ) ) {
 		$class = 1 == $paged ? ' class="current"' : '';
+		
+		// For page 1, always use home URL on front page, otherwise use get_pagenum_link
+		if ( is_front_page() ) {
+			$page_link = home_url( '/' );
+		} else {
+			$page_link = get_pagenum_link( 1 );
+		}
 
-		printf( '<li%s><a href="%s">%s</a></li>' . "\n", wp_kses_post($class), esc_url( get_pagenum_link( 1 ) ), '1' );
+		printf( '<li%s><a href="%s">%s</a></li>' . "\n", wp_kses_post($class), esc_url( $page_link ), '1' );
 
 		if ( ! in_array( 2, $links ) ) {
 			echo '<li class="upk-pagination-dot-dot"><span>...</span></li>';
@@ -408,7 +430,15 @@ function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 	sort( $links );
 	foreach ( (array) $links as $link ) {
 		$class = $paged == $link ? ' class="upk-active"' : '';
-		printf( '<li%s><a href="%s">%s</a></li>' . "\n", wp_kses_post($class), esc_url( get_pagenum_link( $link ) ), wp_kses_post($link) );
+		
+		// Use appropriate page link for front page vs other pages
+		if ( is_front_page() && $link == 1 ) {
+			$page_link = home_url( '/' );
+		} else {
+			$page_link = get_pagenum_link( $link );
+		}
+		
+		printf( '<li%s><a href="%s">%s</a></li>' . "\n", wp_kses_post($class), esc_url( $page_link ), wp_kses_post($link) );
 	}
 
 	/** Link to last page, plus ellipses if necessary */
@@ -418,15 +448,17 @@ function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 		}
 
 		$class = $paged == $max ? ' class="upk-active"' : '';
-		printf( '<li%s><a href="%s">%s</a></li>' . "\n", wp_kses_post($class), esc_url( get_pagenum_link( $max ) ), wp_kses_post($max) );
+		$page_link = get_pagenum_link( $max );
+		
+		printf( '<li%s><a href="%s">%s</a></li>' . "\n", wp_kses_post($class), esc_url( $page_link ), wp_kses_post($max) );
 	}
 
 	/** Next Post Link */
-	$next_link = get_next_posts_link( '<span data-upk-pagination-next><i class="upk-icon-arrow-right-5" aria-hidden="true"></i></span>', $max );
-	if ( ! $next_link ) {
-		return;
+	if ( $paged < $max ) {
+		$next_page = $paged + 1;
+		$next_link = get_pagenum_link( $next_page );
+		printf( '<li class="upk-pagination-next"><a href="%s"><span data-upk-pagination-next><i class="upk-icon-arrow-right-5" aria-hidden="true"></i></span></a></li>' . "\n", esc_url( $next_link ) );
 	}
-	echo '<li class="upk-pagination-next">' . wp_kses_post( $next_link ) . "</li>\n";
 
 	echo '</ul>' . "\n";
 }

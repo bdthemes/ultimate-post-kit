@@ -255,6 +255,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 * Added: Ajax Load More feature added in elite grid, hazel grid and gratis grid widgets
 * Fixed: Added spacing between date, time, and reading time in gratis widget
+* Fixed: Front page pagination issue fixed in all widgets
 
 = 4.0.1 [30th September 2025] =
 
