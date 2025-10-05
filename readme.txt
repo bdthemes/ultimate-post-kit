@@ -247,10 +247,13 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.0.X [Xth October 2025] =
+
+* Fixed: Pagination issue fixed in Alice Carousel widget
+
 = 4.0.2 [5th October 2025] =
 
 * Added: Ajax Load More feature added in elite grid, hazel grid and gratis grid widgets
-* Added: Ajax Load More feature added in maple grid widget
 * Fixed: Added spacing between date, time, and reading time in gratis widget
 * Fixed: Front page pagination issue fixed in all widgets
 
