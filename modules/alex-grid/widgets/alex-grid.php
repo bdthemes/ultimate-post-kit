@@ -1684,47 +1684,50 @@ class Alex_Grid extends Group_Control_Query {
 				]
 			]
 		);
+
 		if ($settings['ajax_loadmore_enable'] == 'yes') {
+			$ajax_settings = [
+				'posts_source' 					=> isset($settings['posts_source']) ? $settings['posts_source'] : 'post',
+				'posts_per_page'                => isset($posts_load) ? $posts_load : 6,
+				'ajax_item_load'                => isset($settings['ajax_loadmore_items']) ? $settings['ajax_loadmore_items'] : 3,
+				'posts_selected_ids'            => isset($settings['posts_selected_ids']) ? $settings['posts_selected_ids'] : '',
+				'posts_include_by'              => isset($settings['posts_include_by']) ? $settings['posts_include_by'] : '',
+				'posts_include_author_ids'      => isset($settings['posts_include_author_ids']) ? $settings['posts_include_author_ids'] : '',
+				'posts_include_term_ids'        => isset($settings['posts_include_term_ids']) ? $settings['posts_include_term_ids'] : '',
+				'posts_exclude_by'              => isset($settings['posts_exclude_by']) ? $settings['posts_exclude_by'] : '',
+				'posts_exclude_ids'             => isset($settings['posts_exclude_ids']) ? $settings['posts_exclude_ids'] : '',
+				'posts_exclude_author_ids'      => isset($settings['posts_exclude_author_ids']) ? $settings['posts_exclude_author_ids'] : '',
+				'posts_exclude_term_ids'        => isset($settings['posts_exclude_term_ids']) ? $settings['posts_exclude_term_ids'] : '',
+				'posts_offset'                  => isset($settings['posts_offset']) ? $settings['posts_offset'] : '',
+				'posts_select_date'             => isset($settings['posts_select_date']) ? $settings['posts_select_date'] : '',
+				'posts_date_before'             => isset($settings['posts_date_before']) ? $settings['posts_date_before'] : '',
+				'posts_date_after'              => isset($settings['posts_date_after']) ? $settings['posts_date_after'] : '',
+				'posts_orderby'                 => isset($settings['posts_orderby']) ? $settings['posts_orderby'] : '',
+				'posts_order'                   => isset($settings['posts_order']) ? $settings['posts_order'] : '',
+				'posts_ignore_sticky_posts'     => isset($settings['posts_ignore_sticky_posts']) ? $settings['posts_ignore_sticky_posts'] : '',
+				'posts_only_with_featured_image'=> isset($settings['posts_only_with_featured_image']) ? $settings['posts_only_with_featured_image'] : '',
+				// Grid Settings
+				'show_title'                    => isset($settings['show_title']) ? $settings['show_title'] : 'yes',
+				'show_author'                   => isset($settings['show_author']) ? $settings['show_author'] : 'yes',
+				'show_date'                     => isset($settings['show_date']) ? $settings['show_date'] : 'yes',
+				'show_time'                     => isset($settings['show_time']) ? $settings['show_time'] : 'no',
+				'show_category'                 => isset($settings['show_category']) ? $settings['show_category'] : 'yes',
+				'show_readmore'                 => isset($settings['show_readmore']) ? $settings['show_readmore'] : 'yes',
+				'show_reading_time'             => isset($settings['show_reading_time']) ? $settings['show_reading_time'] : 'no',
+				'avg_reading_speed'             => isset($settings['avg_reading_speed']) ? $settings['avg_reading_speed'] : 200,
+				'upk_link_new_tab'              => isset($settings['upk_link_new_tab']) ? $settings['upk_link_new_tab'] : 'no',
+				'meta_separator'                => isset($settings['meta_separator']) ? $settings['meta_separator'] : '|',
+				'human_diff_time'               => isset($settings['human_diff_time']) ? $settings['human_diff_time'] : 'no',
+				'human_diff_time_short'         => isset($settings['human_diff_time_short']) ? $settings['human_diff_time_short'] : 'no',
+				'show_post_format'              => isset($settings['show_post_format']) ? $settings['show_post_format'] : 'no',
+				'global_link'                   => isset($settings['global_link']) ? $settings['global_link'] : 'no',
+			];
+			
 			$this->add_render_attribute(
 				[
 					'upk-alex-grid' => [
 						'data-settings' => [
-							wp_json_encode(array_filter([
-								'posts_source' => $settings['posts_source'],
-								'posts_per_page' => isset($posts_load) ? $posts_load : 6,
-								'ajax_item_load' => isset($settings['ajax_loadmore_items']) ? $settings['ajax_loadmore_items'] : 3,
-								'posts_selected_ids' => $settings['posts_selected_ids'],
-								'posts_include_by' => $settings['posts_include_by'],
-								'posts_include_author_ids' => $settings['posts_include_author_ids'],
-								'posts_include_term_ids' => $settings['posts_include_term_ids'],
-								'posts_exclude_by' => $settings['posts_exclude_by'],
-								'posts_exclude_ids' => $settings['posts_exclude_ids'],
-								'posts_exclude_author_ids' => $settings['posts_exclude_author_ids'],
-								'posts_exclude_term_ids' => $settings['posts_exclude_term_ids'],
-								'posts_offset' => $settings['posts_offset'],
-								'posts_select_date' => $settings['posts_select_date'],
-								'posts_date_before' => $settings['posts_date_before'],
-								'posts_date_after' => $settings['posts_date_after'],
-								'posts_orderby' => $settings['posts_orderby'],
-								'posts_order' => $settings['posts_order'],
-								'posts_ignore_sticky_posts' => $settings['posts_ignore_sticky_posts'],
-								'posts_only_with_featured_image' => $settings['posts_only_with_featured_image'],
-
-								// Grid Settings
-								'show_title' => $settings['show_title'] ? $settings['show_title'] : 'yes',
-								'show_author' => $settings['show_author'] ? $settings['show_author'] : 'yes',
-								'show_date' => $settings['show_date'] ? $settings['show_date'] : 'yes',
-								'show_time' => $settings['show_time'] ? $settings['show_time'] : 'no',
-								'show_category' => $settings['show_category'] ? $settings['show_category'] : 'yes',
-								'show_readmore' => $settings['show_readmore'] ? $settings['show_readmore'] : 'yes',
-								'show_reading_time' => $settings['show_reading_time'] ? $settings['show_reading_time'] : 'no',
-								'avg_reading_speed' => $settings['avg_reading_speed'] ? $settings['avg_reading_speed'] : 200,
-								'meta_separator' => $settings['meta_separator'] ? $settings['meta_separator'] : '|',
-								'human_diff_time' => $settings['human_diff_time'] ? $settings['human_diff_time'] : 'no',
-								'human_diff_time_short' => $settings['human_diff_time_short'] ? $settings['human_diff_time_short'] : 'no',
-								'show_post_format' => $settings['show_post_format'] ? $settings['show_post_format'] : 'no',
-
-							]))
+							wp_json_encode($ajax_settings)
 						]
 					]
 				]
