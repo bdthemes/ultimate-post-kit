@@ -247,8 +247,9 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.0.X [Xth October 2025] =
+= 4.0.X [XXth October 2025] =
 
+* Added: Ajax Load More feature added in ramble grid widget
 * Fixed: Pagination issue fixed in Alice Carousel widget
 
 = 4.0.2 [5th October 2025] =
