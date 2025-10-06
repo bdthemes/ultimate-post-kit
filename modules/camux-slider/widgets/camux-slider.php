@@ -1374,7 +1374,7 @@ class Camux_Slider extends Group_Control_Query {
 		$default = $this->getGroupControlQueryArgs();
 		if ($posts_per_page) {
 			$args['posts_per_page'] = $posts_per_page;
-			$args['paged']  = max(1, get_query_var('paged'), get_query_var('page'));
+			// $args['paged']  = max(1, get_query_var('paged'), get_query_var('page'));
 		}
 		$args         = array_merge($default, $args);
 		$this->_query = new WP_Query($args);
