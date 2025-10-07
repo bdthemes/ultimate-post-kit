@@ -32,26 +32,38 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 	}
 
 	public function callback_ajax_loadmore_posts() {
-		// Sanitize incoming data
+		
+		$settings = [];
+	
 		if ( isset( $_POST['settings'] ) && is_array( $_POST['settings'] ) ) {
-			$_POST['settings'] = array_map( 'sanitize_text_field', wp_unslash( $_POST['settings'] ) );
-		}
-		if ( isset( $_POST['per_page'] ) ) {
-			$_POST['per_page'] = absint( $_POST['per_page'] );
-		}
-		if ( isset( $_POST['offset'] ) ) {
-			$_POST['offset'] = absint( $_POST['offset'] );
+			$settings = map_deep( wp_unslash( $_POST['settings'] ), 'sanitize_text_field' );
 		}
 	
-		$settings  = isset( $_POST['settings'] ) ? $_POST['settings'] : [];
-		$post_type =  isset($settings['post_type']) ? sanitize_text_field($settings['post_type']) : 'post';
-		$ajaxposts = $this->query_args();
+		$settings = array_merge(
+            [
+                'posts_source'                   => 'post',
+                'posts_orderby'                  => 'date',
+                'posts_order'                    => 'DESC',
+                'posts_ignore_sticky_posts'      => 'no',
+                'posts_only_with_featured_image' => 'no',
+                'posts_select_date'              => '',
+                'posts_exclude_by'               => [],
+                'posts_include_by'               => [],
+                'posts_per_page'                 => isset( $_POST['per_page'] ) ? absint( $_POST['per_page'] ) : 0,
+                'posts_offset'                   => isset( $_POST['offset'] ) ? absint( $_POST['offset'] ) : 0,
+            ],
+            $settings
+        );
+
+		$ajaxposts = $this->query_args($settings);
 	
 		ob_start();
 		$found_posts = false;
 	
 		if ( $ajaxposts->have_posts() ) {
+
 			while ( $ajaxposts->have_posts() ) :
+
 				$ajaxposts->the_post();
 				$found_posts = true;
 	
@@ -63,9 +75,15 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 				$placeholder_image_src = \Elementor\Utils::get_placeholder_image_src();
 				$image_src             = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
 				$image_src             = $image_src ? $image_src[0] : $placeholder_image_src;
+
+				$onclick = '';
+
+				if (!empty($settings['global_link']) && $settings['global_link'] === 'yes') {
+					$onclick = ' onclick="window.open(\'' . $post_link . '\', \'_self\')"';
+				}
+
 				?>
-	
-				<div class="upk-item">
+				<div class="upk-item"<?php echo $onclick; ?>>
 					<div class="upk-item-box">
 						<div class="upk-img-wrap">
 							<img class="upk-img" src="<?php echo esc_url( $image_src ); ?>" alt="<?php echo esc_attr( $title ); ?>">
@@ -74,7 +92,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 						<?php if ( isset( $settings['show_category'] ) && 'yes' === $settings['show_category'] ) : ?>
 							<div class="upk-category">
 								<?php
-								echo upk_get_category( $post_type );
+								echo upk_get_category( $settings['post_source'] );
 								?>
 							</div>
 						<?php endif; ?>
@@ -82,7 +100,10 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 						<div class="upk-content">
 							<?php if ( ! isset( $settings['show_title'] ) || 'yes' === $settings['show_title'] ) : ?>
 								<h3 class="upk-title">
-									<a href="<?php echo $post_link; ?>" title="<?php echo esc_attr( $title ); ?>">
+									<a href="<?php echo $post_link; ?>" title="<?php echo esc_attr( $title ); ?>"
+									  class="title-animation-<?php echo esc_attr( $settings['title_style'] ); ?>"
+									  target="<?php echo esc_attr( $settings['upk_link_new_tab'] === 'yes' ? '_blank' : '_self' ); ?>"
+									>
 										<?php echo esc_html( $title ); ?>
 									</a>
 								</h3>
@@ -108,6 +129,13 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 										<?php $sep = isset( $settings['meta_separator'] ) ? $settings['meta_separator'] : '|'; ?>
 										<div data-separator="<?php echo esc_attr( $sep ); ?>">
 											<div class="upk-date"><?php echo esc_html( get_the_date() ); ?></div>
+
+											<?php if ($settings['show_time']) : ?>
+												<div class="upk-post-time">
+													<i class="upk-icon-clock" aria-hidden="true"></i>
+													<?php echo esc_html( get_the_time() ); ?>
+												</div>
+											<?php endif; ?>
 										</div>
 									<?php endif; ?>
 	
@@ -133,17 +161,11 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 	
 		$markup = ob_get_clean();
 	
-		if ($found_posts) {
-			wp_send_json( [
-			'success' => true,
-			'markup'  => $markup
-		] );
-		} else {
-			wp_send_json( [
-			'success' => false,
-			'markup'  => 'No more found'
-		] );
-		}
-		exit;
+		wp_send_json(
+            [
+                'success' => $found_posts,
+                'markup'  => $found_posts ? $markup : esc_html__( 'No more found', 'ultimate-post-kit' ),
+            ]
+        );
 	}	
 }
