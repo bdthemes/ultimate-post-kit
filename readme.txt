@@ -249,7 +249,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 = 4.0.X [XXth October 2025] =
 
-* Added: Ajax Load More feature added in ramble grid widget
+* Added: Ajax Load More feature added in ramble grid, amox grid widgets
 * Fixed: Pagination issue fixed in Alice Carousel widget
 * Fixed: Pagination issue fixed in carousel-type widgets
 * Fixed: Conditional logic issue fixed in alex grid and alice grid widgets
