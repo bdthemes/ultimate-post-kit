@@ -45,6 +45,9 @@
         let loading = false,
             nomorePosts = false,
             currentItemCount = settings.posts_per_page;
+        
+        let slideIndex = gridWrarpper.find('.upk-item').length + 1;
+        
         const loadMorePosts = function () {
             if (nomorePosts) return;
             // animation queue start
@@ -65,6 +68,7 @@
                 per_page: settings.ajax_item_load,
                 offset: currentItemCount,
                 animation: animation,
+                slide_index: slideIndex,
             };
 
             // ajax call
@@ -75,6 +79,7 @@
                 success: function (response) {
                     $(gridWrarpper).append(response.markup);
                     currentItemCount += settings.ajax_item_load;
+                    slideIndex += settings?.ajax_item_load;
                     loading = false;
                     if (loadmoreSettings.loadmore_btn === "yes") {
                         loadmoreButton.html("Load More");
@@ -152,6 +157,7 @@
             "upk-maple-grid",
             "upk-pixina-grid",
             "upk-ramble-grid",
+            "upk-wixer-grid",
         ];
         
         ajaxLoadMoreWidgets.forEach(widget => {
