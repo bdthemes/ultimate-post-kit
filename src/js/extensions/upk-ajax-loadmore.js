@@ -146,6 +146,7 @@
     jQuery(window).on('elementor/frontend/init', function () {
 
         const ajaxLoadMoreWidgets = [
+            "upk-amox-grid",
             "upk-kalon-grid",
             "upk-alex-grid",
             "upk-alice-grid",
