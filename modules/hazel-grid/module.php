@@ -77,69 +77,103 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 	
 				$image_src   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
 				$image_src   = $image_src ? $image_src[0] : $placeholder;
-				$meta_sep    = $settings['meta_separator'] ?? '|';
+				$meta_sep    = $settings['meta_separator'] ?? '-';
+
+				$onclick = '';
+				if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) {
+					$onclick = 'onclick="window.open(\'' . esc_url( $post_link ) . '\', \'_self\')"';
+				}
 
 				?>
-				<div class="upk-item">
+				<div <?php echo $onclick; ?> class="upk-item">
 					<div class="upk-item-box">
-								<img class="upk-img" src="<?php echo esc_url( $image_src ); ?>" alt="<?php echo esc_attr( $title ); ?>">
+						<img class="upk-img" src="<?php echo esc_url( $image_src ); ?>" alt="<?php echo esc_attr( $title ); ?>">
 
-                    <div class="upk-content">
-							<?php if ( ( $settings['show_category'] ?? '' ) === 'yes' ) : ?>
-                            <div class="upk-category">
+						<div class="upk-content">
+							<?php if ( $settings['show_category'] === 'yes' ) : ?>
+								<div class="upk-category">
 									<?php echo upk_get_category( $post_type ); ?>
 								</div>
 							<?php endif; ?>
 
 							<?php if ( ! isset( $settings['show_title'] ) || $settings['show_title'] === 'yes' ) : ?>
-                            <div class="upk-title-wrap">
-								<h3 class="upk-title">
-									<a href="<?php echo $post_link; ?>" title="<?php echo esc_attr( $title ); ?>">
-										<?php echo esc_html( $title ); ?>
-									</a>
-								</h3>
-                            </div>
+								<div class="upk-title-wrap">
+									<<?php echo esc_attr( $settings['title_tags'] ); ?> class="upk-title">
+										<a 
+											href="<?php echo esc_url( $post_link ); ?>" 
+											title="<?php echo esc_attr( $title ); ?>"
+											class="title-animation-<?php echo esc_attr( $settings['title_style'] ); ?>"
+											<?php echo $settings['upk_link_new_tab'] === 'yes' ? 'target="_blank"' : ''; ?>
+										>
+											<?php echo esc_html( $title ); ?>
+										</a>
+									</<?php echo esc_attr( $settings['title_tags'] ); ?>>
+								</div>
 							<?php endif; ?>
 
-                        <?php if ( ( $settings['show_author'] ?? '' ) === 'yes' || ( $settings['show_date'] ?? '' ) === 'yes' || ( $settings['show_reading_time'] ?? '' ) === 'yes' ) : ?>
-                            <div class="upk-meta">
-								<?php if ( ( $settings['show_author'] ?? '' ) === 'yes' ) : ?>
-                                    <div class="upk-blog-author">
-                                        <span class="by"><?php echo esc_html_x('by', 'Frontend', 'ultimate-post-kit'); ?></span>
-                                        <span class="upk-post-grid-author">
-                                            <a href="<?php echo $author_url; ?>"><?php echo $author_name; ?></a>
-                                        </span>
-									</div>
-								<?php endif; ?>
+							<?php if (
+								$settings['show_author'] === 'yes' ||
+								$settings['show_date'] === 'yes' ||
+								$settings['show_reading_time'] === 'yes'
+							) : ?>
+								<div class="upk-meta">
 
-								<?php if ( ( $settings['show_date'] ?? '' ) === 'yes' ) : ?>
-                                    <div data-separator="<?php echo esc_html( $meta_sep ); ?>">
-									<div class="upk-date">
-										<i class="upk-icon-calendar" aria-hidden="true"></i>
-                                            <?php
-                                            if ( ( $settings['human_diff_time'] ?? 'no' ) === 'yes' ) {
-                                                echo esc_html( ultimate_post_kit_post_time_diff( ( ( $settings['human_diff_time_short'] ?? 'no' ) === 'yes' ) ? 'short' : '' ) );
-                                            } else {
-                                                echo get_the_date();
-                                            }
-                                            ?>
-                                        </div>
-                                        <?php if ( ( $settings['show_time'] ?? 'no' ) === 'yes' ) : ?>
-                                            <div class="upk-post-time">
-                                                <i class="upk-icon-clock" aria-hidden="true"></i>
-                                                <?php echo esc_html( get_the_time() ); ?>
-                                            </div>
-                                        <?php endif; ?>
-									</div>
-								<?php endif; ?>
+									<?php if ( $settings['show_author'] === 'yes' ) : ?>
+										<div class="upk-blog-author">
+											<span class="by">
+												<?php echo esc_html_x( 'by', 'Frontend', 'ultimate-post-kit' ); ?>
+											</span>
+											<span class="upk-post-grid-author">
+												<a href="<?php echo esc_url( $author_url ); ?>">
+													<?php echo esc_html( $author_name ); ?>
+												</a>
+											</span>
+										</div>
+									<?php endif; ?>
 
-                                <?php if ( function_exists('_is_upk_pro_activated') && _is_upk_pro_activated() && function_exists('ultimate_post_kit_reading_time') && ( $settings['show_reading_time'] ?? '' ) === 'yes' ) : ?>
-                                    <div class="upk-reading-time" data-separator="<?php echo esc_html( $meta_sep ); ?>">
-										<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'] ?? 200 ) ); ?>
-									</div>
-								<?php endif; ?>
-							</div>
-                        <?php endif; ?>
+									<?php if ( $settings['show_date'] === 'yes' ) : ?>
+										<div data-separator="<?php echo esc_html( $meta_sep ); ?>">
+											<div class="upk-date">
+												<i class="upk-icon-calendar" aria-hidden="true"></i>
+												<?php
+												if ( $settings['human_diff_time'] === 'yes' ) {
+													echo esc_html(
+														ultimate_post_kit_post_time_diff(
+															( ( $settings['human_diff_time_short'] ?? 'no' ) === 'yes' ) ? 'short' : ''
+														)
+													);
+												} else {
+													echo esc_html( get_the_date() );
+												}
+												?>
+											</div>
+
+											<?php if ( $settings['show_time'] === 'yes' ) : ?>
+												<div class="upk-post-time">
+													<i class="upk-icon-clock" aria-hidden="true"></i>
+													<?php echo esc_html( get_the_time() ); ?>
+												</div>
+											<?php endif; ?>
+										</div>
+									<?php endif; ?>
+
+									<?php if (
+										function_exists( '_is_upk_pro_activated' ) &&
+										_is_upk_pro_activated() &&
+										function_exists( 'ultimate_post_kit_reading_time' ) &&
+										$settings['show_reading_time'] === 'yes'
+									) : ?>
+										<div class="upk-reading-time" data-separator="<?php echo esc_html( $meta_sep ); ?>">
+											<?php echo esc_html(
+												ultimate_post_kit_reading_time(
+													get_the_content(),
+													$settings['avg_reading_speed'] ?? 200
+												)
+											); ?>
+										</div>
+									<?php endif; ?>
+								</div>
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>

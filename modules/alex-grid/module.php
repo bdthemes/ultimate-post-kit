@@ -102,7 +102,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 				$post_format_icon = isset($format_icons[get_post_format()]) ? $format_icons[get_post_format()] : 'upk-icon-post';
 				
 				?>
-				<div class="upk-item"<?php echo $onclick; ?>>
+				<div <?php echo $onclick; ?> class="upk-item">
 					<div class="upk-image-wrap">
 						<img class="upk-img" src="<?php echo $image_src; ?>" alt="<?php echo esc_attr($title); ?>">
 		
@@ -162,13 +162,15 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 							<?php endif; ?>
 		
 							<?php if ($settings['show_title'] === 'yes') : ?>
-								<h3 class="upk-title">
+								<<?php echo esc_attr($settings['title_tags']); ?> class="upk-title">
 									<a class="title-animation-<?php echo esc_attr($settings['title_style']); ?>"
 									   href="<?php echo $post_link; ?>"
-									   title="<?php echo esc_attr($title); ?>">
+									   title="<?php echo esc_attr($title); ?>"
+									   <?php echo $settings['upk_link_new_tab'] === 'yes' ? 'target="_blank"' : ''; ?>
+									>
 									   <?php echo esc_html($title); ?>
 									</a>
-								</h3>
+								</<?php echo esc_attr($settings['title_tags']); ?>>
 							<?php endif; ?>
 						</div>
 		

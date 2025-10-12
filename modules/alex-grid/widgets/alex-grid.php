@@ -1708,6 +1708,7 @@ class Alex_Grid extends Group_Control_Query {
 				'posts_only_with_featured_image'=> isset($settings['posts_only_with_featured_image']) ? $settings['posts_only_with_featured_image'] : '',
 				// Grid Settings
 				'show_title'                    => isset($settings['show_title']) ? $settings['show_title'] : 'yes',
+				'title_tags'                    => isset($settings['title_tags']) ? $settings['title_tags'] : 'h3',
 				'show_author'                   => isset($settings['show_author']) ? $settings['show_author'] : 'yes',
 				'show_date'                     => isset($settings['show_date']) ? $settings['show_date'] : 'yes',
 				'show_time'                     => isset($settings['show_time']) ? $settings['show_time'] : 'no',
