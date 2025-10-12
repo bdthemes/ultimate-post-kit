@@ -405,7 +405,7 @@ function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 		} else {
 			$prev_link = get_pagenum_link( $prev_page );
 		}
-		printf( '<li class="upk-pagination-previous"><a href="%s"><span data-upk-pagination-previous><i class="upk-icon-arrow-left-5" aria-hidden="true"></i></span></a></li>' . "\n", esc_url( $prev_link ) );
+		printf( '<li class="upk-pagination-previous"><a href="%s" aria-label="' . esc_attr__( 'Previous Page', 'ultimate-post-kit' ) . '"><span data-upk-pagination-previous><i class="upk-icon-arrow-left-5" aria-hidden="true"></i></span></a></li>' . "\n", esc_url( $prev_link ) );
 	}
 
 	/** Link to first page, plus ellipses if necessary */
@@ -457,7 +457,7 @@ function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 	if ( $paged < $max ) {
 		$next_page = $paged + 1;
 		$next_link = get_pagenum_link( $next_page );
-		printf( '<li class="upk-pagination-next"><a href="%s"><span data-upk-pagination-next><i class="upk-icon-arrow-right-5" aria-hidden="true"></i></span></a></li>' . "\n", esc_url( $next_link ) );
+		printf( '<li class="upk-pagination-next"><a href="%s" aria-label="' . esc_attr__( 'Next Page', 'ultimate-post-kit' ) . '"><span data-upk-pagination-next><i class="upk-icon-arrow-right-5" aria-hidden="true"></i></span></a></li>' . "\n", esc_url( $next_link ) );
 	}
 
 	echo '</ul>' . "\n";
