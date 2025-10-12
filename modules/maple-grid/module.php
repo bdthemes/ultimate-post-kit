@@ -78,8 +78,14 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
             $meta_sep    = $settings['meta_separator'] ?? '-';
             $grid_style  = $settings['grid_style'] ?? '1';
+
+            $onclick = '';
+			if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) {
+					$onclick = 'onclick="window.open(\'' . esc_url( $post_link ) . '\', \'_self\')"';
+			}
+
             ?>
-            <div class="upk-item">
+            <div <?php echo $onclick; ?> class="upk-item">
                 <div class="upk-item-box">
                     <div class="upk-image-wrap">
                         <div class="upk-main-image">
@@ -97,7 +103,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
                                         <i class="upk-icon-link" aria-hidden="true"></i>
                                     <?php elseif ( has_post_format( 'image' ) ) : ?>
                                         <i class="upk-icon-image" aria-hidden="true"></i>
-									<?php elseif ( has_post_format( 'quote' ) ) : ?>
+                                    <?php elseif ( has_post_format( 'quote' ) ) : ?>
                                         <i class="upk-icon-quote" aria-hidden="true"></i>
                                     <?php elseif ( has_post_format( 'status' ) ) : ?>
                                         <i class="upk-icon-status" aria-hidden="true"></i>
@@ -125,14 +131,16 @@ class Module extends Ultimate_Post_Kit_Module_Base {
                         <div class="upk-content-inner">
                             <?php if ( ( $settings['show_author_avatar'] ?? 'yes' ) === 'yes' || ( $settings['show_author_name'] ?? 'yes' ) === 'yes' || ( $settings['show_date'] ?? 'yes' ) === 'yes' || ( $settings['show_reading_time'] ?? 'no' ) === 'yes' ) : ?>
                                 <div class="upk-meta">
-                                    <?php if ( $grid_style !== '3' && ( $settings['show_author_avatar'] == 'yes' or $settings['show_author_name'] == 'yes' ) ) : ?>
+                                    <?php if ( $grid_style !== '3' && ( $settings['show_author_avatar'] == 'yes' || $settings['show_author_name'] == 'yes' ) ) : ?>
                                         <div class="upk-author">
                                             <?php if ($settings['show_author_avatar'] == 'yes') : ?>
                                                 <?php echo wp_kses_post(get_avatar(get_the_author_meta('ID'), 36)); ?>
                                             <?php endif; ?>
 
                                             <?php if ($settings['show_author_name'] == 'yes') : ?>
-                                                <a class="author-name" href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>"><?php echo esc_html( get_the_author() ); ?></a>
+                                                <a class="author-name" href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
+                                                    <?php echo esc_html( get_the_author() ); ?>
+                                                </a>
                                             <?php endif; ?>
                                         </div>
                                     <?php endif; ?>
@@ -169,22 +177,31 @@ class Module extends Ultimate_Post_Kit_Module_Base {
                             <?php endif; ?>
 
                             <?php if ( ! isset( $settings['show_title'] ) || $settings['show_title'] === 'yes' ) : ?>
-                                <h3 class="upk-title">
-                                    <a href="<?php echo esc_url($post_link); ?>" title="<?php echo esc_attr( $title ); ?>" class="title-animation-<?php echo esc_attr( $settings['title_style'] ); ?>">
+                                <<?php echo esc_attr( $settings['title_tags'] ); ?> class="upk-title">
+                                    <a 
+                                        href="<?php echo esc_url($post_link); ?>"
+                                        title="<?php echo esc_attr( $title ); ?>" 
+                                        class="title-animation-<?php echo esc_attr( $settings['title_style'] ); ?>"
+                                        <?php echo $settings['upk_link_new_tab'] === 'yes' ? 'target="_blank"' : ''; ?>
+                                    >
                                         <?php echo esc_html( $title ); ?>
                                     </a>
-                                </h3>
+                                </<?php echo esc_attr( $settings['title_tags'] ); ?>>
                             <?php endif; ?>
 
                             <?php if ( ( $settings['show_excerpt'] ?? 'yes' ) === 'yes' && $grid_style !== '3' ) : ?>
                                 <div class="upk-text">
-                                    <?php if ( has_excerpt() ) { the_excerpt(); } else {
-                                        if ( function_exists( 'ultimate_post_kit_custom_excerpt' ) ) {
-                                            echo wp_kses_post( ultimate_post_kit_custom_excerpt( intval( $settings['excerpt_length'] ?? 20 ), false, '' ) );
+                                    <?php 
+                                        if ( has_excerpt() ) { 
+                                            the_excerpt(); 
                                         } else {
-                                            echo esc_html( wp_trim_words( wp_strip_all_tags( get_the_content() ), intval( $settings['excerpt_length'] ?? 20 ) ) );
-                                        }
-                                    } ?>
+                                            if ( function_exists( 'ultimate_post_kit_custom_excerpt' ) ) {
+                                                echo wp_kses_post( ultimate_post_kit_custom_excerpt( intval( $settings['excerpt_length'] ?? 20 ), false, '' ) );
+                                            } else {
+                                                echo esc_html( wp_trim_words( wp_strip_all_tags( get_the_content() ), intval( $settings['excerpt_length'] ?? 20 ) ) );
+                                            }
+                                        } 
+                                    ?>
                                 </div>
                             <?php endif; ?>
                         </div>

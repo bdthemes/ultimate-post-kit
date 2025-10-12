@@ -74,70 +74,86 @@ class Module extends Ultimate_Post_Kit_Module_Base {
                 $author_name = esc_html( get_the_author() );
                 $meta_sep    = $settings['meta_separator'] ?? '/';
 
+                $onclick = '';
+				if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) {
+					$onclick = 'onclick="window.open(\'' . esc_url( $post_link ) . '\', \'_self\')"';
+				}
+
                 ?>
-                <div class="upk-item">
+                <div <?php echo $onclick; ?> class="upk-item">
                     <div class="upk-image-wrap">
-						<?php $this->render_image(get_post_thumbnail_id(), 'large'); ?>
+                        <?php $this->render_image(get_post_thumbnail_id(), 'large'); ?>
 
                         <div class="upk-content">
                             <div class="upk-default-show">
                                 <div class="upk-date-cetagory-wrap">
                                     <div class="upk-date">
                                         <?php
-                                        if (  $settings['show_date'] === 'yes' && $settings['human_diff_time'] !== 'yes' ) {
-                                            echo esc_html( get_the_date() );
+                                        if ($settings['show_date'] === 'yes' && $settings['human_diff_time'] !== 'yes') {
+                                            echo esc_html(get_the_date());
                                         }
-										if ( $settings['human_diff_time'] === 'yes' ) {
-                                            echo esc_html( ultimate_post_kit_post_time_diff( $settings['human_diff_time_short'] !== 'yes' ? 'short' : '' ) );
+                                        if ($settings['human_diff_time'] === 'yes') {
+                                            echo esc_html(ultimate_post_kit_post_time_diff($settings['human_diff_time_short'] !== 'yes' ? 'short' : ''));
                                         }
                                         ?>
                                     </div>
-                                    <?php if ( $settings['show_time'] === 'yes' ) : ?>
+                                    <?php if ($settings['show_time'] === 'yes') : ?>
                                         <div class="upk-post-time">
                                             <i class="upk-icon-clock" aria-hidden="true"></i>
-                                            <?php echo esc_html( get_the_time() ); ?>
+                                            <?php echo esc_html(get_the_time()); ?>
                                         </div>
                                     <?php endif; ?>
 
-                                    <?php if ( $settings['show_category'] === 'yes' ) : ?>
+                                    <?php if ($settings['show_category'] === 'yes') : ?>
                                         <div class="upk-category">
-                                            <?php echo wp_kses_post( upk_get_category( $post_type ) ); ?>
+                                            <?php echo wp_kses_post(upk_get_category($post_type)); ?>
                                         </div>
                                     <?php endif; ?>
                                 </div>
 
-                                <?php if ( $settings['show_title'] === 'yes' ) : ?>
-                                    <h3 class="upk-title">
-                                        <a href="<?php echo esc_url( $post_link ); ?>" title="<?php echo esc_attr( $title ); ?>" class="title-animation-<?php echo esc_attr( $settings['title_style'] ?? 'underline' ); ?>">
-                                            <?php echo esc_html( $title ); ?>
+                                <?php if ($settings['show_title'] === 'yes') : ?>
+                                    <<?php echo esc_attr($settings['title_tags']); ?> class="upk-title">
+                                        <a 
+                                            href="<?php echo esc_url($post_link); ?>" 
+                                            title="<?php echo esc_attr($title); ?>" 
+                                            class="title-animation-<?php echo esc_attr($settings['title_style']); ?>"
+                                        >
+                                            <?php echo esc_html($title); ?>
                                         </a>
-                                    </h3>
+                                    </<?php echo esc_attr($settings['title_tags']); ?>>
                                 <?php endif; ?>
                             </div>
 
                             <div class="upk-default-hide">
-                                <?php if ( $settings['show_author_avatar'] === 'yes' || $settings['show_author_name'] === 'yes' || $settings['show_date'] === 'yes' || $settings['show_reading_time'] === 'yes' ) : ?>
+                                <?php if (
+                                    $settings['show_author_avatar'] === 'yes' || 
+                                    $settings['show_author_name'] === 'yes' || 
+                                    $settings['show_date'] === 'yes' || 
+                                    $settings['show_reading_time'] === 'yes'
+                                ) : ?>
                                     <div class="upk-meta">
-                                        <?php if ( $settings['show_author_avatar'] === 'yes' ) : ?>
+                                        <?php if ($settings['show_author_avatar'] === 'yes') : ?>
                                             <div class="upk-author-image">
-                                                <?php echo wp_kses_post( get_avatar( get_the_author_meta( 'ID' ), 48 ) ); ?>
+                                                <?php echo wp_kses_post(get_avatar(get_the_author_meta('ID'), 48)); ?>
                                             </div>
                                         <?php endif; ?>
 
                                         <div class="upk-author-name-date-wrap">
-                                            <?php if ( $settings['show_author_name'] === 'yes' ) : ?>
+                                            <?php if ($settings['show_author_name'] === 'yes') : ?>
                                                 <div class="upk-author-name">
-                                                    <a href="<?php echo esc_url( $author_url ); ?>"><?php echo esc_html( $author_name ); ?></a>
+                                                    <a href="<?php echo esc_url($author_url); ?>"><?php echo esc_html($author_name); ?></a>
                                                 </div>
                                             <?php endif; ?>
 
-                                            <?php if ( $settings['show_date'] === 'yes' || $settings['show_reading_time'] === 'yes' ) : ?>
-                                                <div class="upk-date-reading-time" data-separator="<?php echo esc_html( $meta_sep ); ?>">
-                                                    <?php if ( $settings['show_date'] === 'yes' ) : ?>
+                                            <?php if ($settings['show_date'] === 'yes' || $settings['show_reading_time'] === 'yes') : ?>
+                                                <div class="upk-date-reading-time" data-separator="<?php echo esc_html($meta_sep); ?>">
+                                                    <?php if ($settings['show_date'] === 'yes') : ?>
                                                         <div class="upk-date">
                                                             <?php
-                                                            if ( $settings['human_diff_time'] === 'yes' ) {
-                                                                echo esc_html( ultimate_post_kit_post_time_diff( ( ( $settings['human_diff_time_short'] ?? 'no' ) === 'yes' ) ? 'short' : '' ) );
+                                                            if ($settings['human_diff_time'] === 'yes') {
+                                                                echo esc_html(ultimate_post_kit_post_time_diff(
+                                                                    (($settings['human_diff_time_short'] ?? 'no') === 'yes') ? 'short' : ''
+                                                                ));
                                                             } else {
                                                                 echo get_the_date();
                                                             }
@@ -145,9 +161,9 @@ class Module extends Ultimate_Post_Kit_Module_Base {
                                                         </div>
                                                     <?php endif; ?>
 
-                                                    <?php if ( function_exists( '_is_upk_pro_activated' ) && _is_upk_pro_activated() && function_exists( 'ultimate_post_kit_reading_time' ) && ( $settings['show_reading_time'] ?? '' ) === 'yes' ) : ?>
-                                                        <div class="upk-reading-time" data-separator="<?php echo esc_html( $meta_sep ); ?>">
-                                                            <?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'] ?? 200 ) ); ?>
+                                                    <?php if (function_exists('_is_upk_pro_activated') && _is_upk_pro_activated() && function_exists('ultimate_post_kit_reading_time') && ($settings['show_reading_time'] ?? '') === 'yes') : ?>
+                                                        <div class="upk-reading-time" data-separator="<?php echo esc_html($meta_sep); ?>">
+                                                            <?php echo esc_html(ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed'] ?? 200)); ?>
                                                         </div>
                                                     <?php endif; ?>
                                                 </div>
@@ -156,15 +172,19 @@ class Module extends Ultimate_Post_Kit_Module_Base {
                                     </div>
                                 <?php endif; ?>
 
-                                <?php if ( $settings['show_excerpt'] === 'yes' ) : ?>
+                                <?php if ($settings['show_excerpt'] === 'yes') : ?>
                                     <div class="upk-text">
-                                        <?php if ( has_excerpt() ) { the_excerpt(); } else {
-                                            if ( function_exists( 'ultimate_post_kit_custom_excerpt' ) ) {
-                                                echo wp_kses_post( ultimate_post_kit_custom_excerpt( intval( $settings['excerpt_length'] ?? 20 ), false, '' ) );
+                                        <?php 
+                                        if (has_excerpt()) {
+                                            the_excerpt();
+                                        } else {
+                                            if (function_exists('ultimate_post_kit_custom_excerpt')) {
+                                                echo wp_kses_post(ultimate_post_kit_custom_excerpt(intval($settings['excerpt_length'] ?? 20), false, ''));
                                             } else {
-                                                echo esc_html( wp_trim_words( wp_strip_all_tags( get_the_content() ), intval( $settings['excerpt_length'] ?? 20 ) ) );
+                                                echo esc_html(wp_trim_words(wp_strip_all_tags(get_the_content()), intval($settings['excerpt_length'] ?? 20)));
                                             }
-                                        } ?>
+                                        }
+                                        ?>
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -172,22 +192,23 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
                         <div class="upk-btn-comments-wrap">
                             <div class="upk-btn-wrap upk-flex">
-                                <?php if ( $settings['show_readmore'] === 'yes' ) : ?>
-                                    <a href="<?php echo esc_url( $post_link ); ?>" class="upk-readmore" target="<?php echo esc_attr( $settings['upk_link_new_tab'] === 'yes' ? '_blank' : '_self' ); ?>">
+                                <?php if ($settings['show_readmore'] === 'yes') : ?>
+                                    <a href="<?php echo esc_url($post_link); ?>" class="upk-readmore" target="<?php echo esc_attr($settings['upk_link_new_tab'] === 'yes' ? '_blank' : '_self'); ?>">
                                         <span class="upk-flex upk-flex-middle">
-                                            <?php echo esc_html( $settings['readmore_text'] ?? __( 'Read More', 'ultimate-post-kit' ) ); ?>
-											<?php if ($settings['readmore_icon']['value']) : ?>
-											<span class="upk-readmore-btn-icon upk-flex-align-<?php echo esc_attr($settings['icon_align']); ?>">
-												<?php Icons_Manager::render_icon($settings['readmore_icon'], ['aria-hidden' => 'true', 'class' => 'fa-fw']); ?>
-											</span>
-										<?php endif; ?>
+                                            <?php echo esc_html($settings['readmore_text'] ?? __('Read More', 'ultimate-post-kit')); ?>
+                                            <?php if ($settings['readmore_icon']['value']) : ?>
+                                                <span class="upk-readmore-btn-icon upk-flex-align-<?php echo esc_attr($settings['icon_align']); ?>">
+                                                    <?php Icons_Manager::render_icon($settings['readmore_icon'], ['aria-hidden' => 'true', 'class' => 'fa-fw']); ?>
+                                                </span>
+                                            <?php endif; ?>
                                         </span>
                                     </a>
                                 <?php endif; ?>
                             </div>
-                            <?php if ( $settings['show_comments'] === 'yes' ) : ?>
+
+                            <?php if ($settings['show_comments'] === 'yes') : ?>
                                 <div class="upk-comments">
-                                    <?php echo absint( get_comments_number() ); ?> <?php echo esc_html_x( 'Comments', 'Frontend', 'ultimate-post-kit' ); ?>
+                                    <?php echo absint(get_comments_number()); ?> <?php echo esc_html_x('Comments', 'Frontend', 'ultimate-post-kit'); ?>
                                 </div>
                             <?php endif; ?>
                         </div>

@@ -74,63 +74,90 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 				$post_link   = get_permalink();
 				$image_src   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
 				$image_src   = $image_src ? $image_src[0] : $placeholder;
+
+				$onclick = '';
+				if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) {
+					$onclick = 'onclick="window.open(\'' . esc_url( $post_link ) . '\', \'_self\')"';
+				}
 				
 				?>
-				<div class="upk-item <?php echo ($settings['active_item'] == $ajaxposts->current_post + 1) ? 'active' : ''; ?>">
+				<div <?php echo $onclick; ?> class="upk-item">
 					<div class="upk-img-wrap">
-						<img class="upk-img" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_attr($title); ?>">
+						<img 
+							class="upk-img" 
+							src="<?php echo esc_url( $image_src ); ?>" 
+							alt="<?php echo esc_attr( $title ); ?>"
+						>
 					</div>
+
 					<div class="upk-content-wrap">
-						<?php if (( $settings['show_category'] ?? '' ) === 'yes') : ?>
+						<?php if ( $settings['show_category'] === 'yes' ) : ?>
 							<div class="upk-category">
-								<?php echo upk_get_category($post_type); ?>
+								<?php echo upk_get_category( $post_type ); ?>
 							</div>
 						<?php endif; ?>
 
-						<?php if (! isset( $settings['show_title'] ) || $settings['show_title'] === 'yes') : ?>
-							<h3 class="upk-title">
-								<a href="<?php echo esc_url($post_link); ?>" title="<?php echo esc_attr($title); ?>">
-									<?php echo esc_html($title); ?>
+						<?php if ( ! isset( $settings['show_title'] ) || $settings['show_title'] === 'yes' ) : ?>
+							<<?php echo esc_attr( $settings['title_tags'] ); ?> class="upk-title">
+								<a 
+									href="<?php echo esc_url( $post_link ); ?>" 
+									title="<?php echo esc_attr( $title ); ?>"
+									class="title-animation-<?php echo esc_attr( $settings['title_style'] ); ?>"
+									<?php echo ( $settings['upk_link_new_tab'] === 'yes' ) ? 'target="_blank"' : ''; ?>
+								>
+									<?php echo esc_html( $title ); ?>
 								</a>
-							</h3>
+							</<?php echo esc_attr( $settings['title_tags'] ); ?>>
 						<?php endif; ?>
 
-						<?php if (( $settings['show_meta'] ?? '' ) === 'yes') : ?>
+						<?php if ( $settings['show_meta'] === 'yes' ) : ?>			
 							<div class="upk-meta">
 								<div class="upk-author">
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+										class="bi bi-person-circle" viewBox="0 0 16 16">
 										<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-										<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+										<path fill-rule="evenodd"
+											d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
 									</svg>
-									<span><?php echo esc_html__('by', 'ultimate-post-kit') ?></span>
-									<a class="upk-author-name" href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
+									<span><?php echo esc_html__( 'by', 'ultimate-post-kit' ); ?></span>
+									<a class="upk-author-name" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>">
 										<span><?php echo esc_html( get_the_author() ); ?></span>
 									</a>
 								</div>
-								
-								<?php if ($settings['show_date'] or $settings['show_reading_time']) : ?>
+
+								<?php if ( $settings['show_date'] || $settings['show_reading_time'] ) : ?>
 									<div class="upk-date-reading-time upk-flex upk-flex-middle">
-										<?php if ($settings['show_date']) : ?>
+										<?php if ( $settings['show_date'] ) : ?>
 											<div class="upk-date">
-												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
-													<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+													class="bi bi-calendar" viewBox="0 0 16 16">
+													<path
+														d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
 												</svg>
-												<?php if ($settings['human_diff_time'] == 'yes') {
-													echo esc_html( ultimate_post_kit_post_time_diff( ( $settings['human_diff_time_short'] == 'yes' ) ? 'short' : '' ) );
+												<?php
+												if ( $settings['human_diff_time'] == 'yes' ) {
+													echo esc_html(
+														ultimate_post_kit_post_time_diff(
+															( $settings['human_diff_time_short'] == 'yes' ) ? 'short' : ''
+														)
+													);
 												} else {
-													echo get_the_date();
-												} ?>
+													echo esc_html( get_the_date() );
+												}
+												?>
 											</div>
-											<?php if ($settings['show_time']) : ?>
+
+											<?php if ( $settings['show_time'] ) : ?>
 												<div class="upk-post-time">
 													<i class="upk-icon-clock" aria-hidden="true"></i>
 													<?php echo esc_html( get_the_time() ); ?>
 												</div>
 											<?php endif; ?>
 										<?php endif; ?>
-										<?php if (function_exists('ultimate_post_kit_reading_time') && ( $settings['show_reading_time'] ?? '' ) === 'yes') : ?>
+
+										<?php if ( function_exists( 'ultimate_post_kit_reading_time' ) && $settings['show_reading_time'] === 'yes' ) : ?>
 											<div class="upk-reading-time">
-												<?php echo ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed'] ?? 200); ?>
+												<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'] ?? 200 ) ); ?>
 											</div>
 										<?php endif; ?>
 									</div>
@@ -140,12 +167,14 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
 						<div class="upk-gratis-line"></div>
 
-						<?php if (( $settings['show_readmore'] ?? '' ) === 'yes') : ?>
+						<?php if ( $settings['show_readmore']  === 'yes' ) : ?>
 							<div class="upk-link-button">
-								<a href="<?php echo esc_url($post_link); ?>">
-									<span><?php echo esc_html($settings['readmore_text'] ?? 'Explore'); ?></span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-										<path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+								<a href="<?php echo esc_url( $post_link ); ?>">
+									<span><?php echo esc_html( $settings['readmore_text'] ); ?></span>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+										class="bi bi-arrow-right" viewBox="0 0 16 16">
+										<path fill-rule="evenodd"
+											d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
 									</svg>
 								</a>
 							</div>
