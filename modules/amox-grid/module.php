@@ -3,6 +3,7 @@ namespace UltimatePostKit\Modules\AmoxGrid;
 use UltimatePostKit\Traits\Global_Widget_Functions;
 
 use UltimatePostKit\Base\Ultimate_Post_Kit_Module_Base;
+use UltimatePostKit\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -73,6 +74,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
                 $title       = get_the_title();
                 $post_link   = esc_url( get_permalink() );
                 $meta_sep    = $settings['meta_separator'] ?? '.';
+				$title_tag   = Utils::get_valid_html_tag($settings['title_tags']);
 
 				$onclick = '';
 				if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) {
@@ -93,7 +95,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
                         <?php endif; ?>
 
                         <?php if ( $settings['show_title'] === 'yes' ) : ?>
-							<<?php echo esc_attr( $settings['title_tags'] ); ?> class="upk-title">
+							<<?php echo esc_attr( $title_tag ); ?> class="upk-title">
 								<a 
 									href="<?php echo esc_url( $post_link ); ?>" 
 									title="<?php echo esc_attr( $title ); ?>" 
@@ -102,7 +104,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 								>
 									<?php echo esc_html( $title ); ?>
 								</a>
-							</<?php echo esc_attr( $settings['title_tags'] ); ?>>
+							</<?php echo esc_attr( $title_tag ); ?>>
 						<?php endif; ?>
 
                         <?php if ( 

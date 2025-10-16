@@ -3,6 +3,7 @@ namespace UltimatePostKit\Modules\AliceGrid;
 
 use UltimatePostKit\Base\Ultimate_Post_Kit_Module_Base;
 use UltimatePostKit\Traits\Global_Widget_Functions;
+use UltimatePostKit\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -71,6 +72,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 				$post_link   = esc_url( get_permalink() );
 				$author_url  = get_author_posts_url( get_the_author_meta( 'ID' ) );
 				$author_name = get_the_author();
+				$title_tag   = Utils::get_valid_html_tag($settings['title_tags']);
 	
 				$placeholder_image_src = \Elementor\Utils::get_placeholder_image_src();
 				$image_src             = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
@@ -99,7 +101,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 						<div class="upk-content">
 
 							<?php if ( ! isset( $settings['show_title'] ) || 'yes' === $settings['show_title'] ) : ?>
-								<<?php echo esc_attr( $settings['title_tags'] ); ?> class="upk-title">
+								<<?php echo esc_attr( $title_tag ); ?> class="upk-title">
 									<a
 										href="<?php echo esc_url( $post_link ); ?>"
 										title="<?php echo esc_attr( $title ); ?>"
@@ -108,7 +110,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 									>
 										<?php echo esc_html( $title ); ?>
 									</a>
-								</<?php echo esc_attr( $settings['title_tags'] ); ?>>
+								</<?php echo esc_attr( $title_tag ); ?>>
 							<?php endif; ?>
 
 							<?php if (

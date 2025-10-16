@@ -3,6 +3,7 @@ namespace UltimatePostKit\Modules\HazelGrid;
 
 use UltimatePostKit\Base\Ultimate_Post_Kit_Module_Base;
 use UltimatePostKit\Traits\Global_Widget_Functions;
+use UltimatePostKit\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -78,6 +79,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 				$image_src   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
 				$image_src   = $image_src ? $image_src[0] : $placeholder;
 				$meta_sep    = $settings['meta_separator'] ?? '-';
+				$title_tag   = Utils::get_valid_html_tag($settings['title_tags']);
 
 				$onclick = '';
 				if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) {
@@ -98,7 +100,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
 							<?php if ( ! isset( $settings['show_title'] ) || $settings['show_title'] === 'yes' ) : ?>
 								<div class="upk-title-wrap">
-									<<?php echo esc_attr( $settings['title_tags'] ); ?> class="upk-title">
+									<<?php echo esc_attr( $title_tag ); ?> class="upk-title">
 										<a 
 											href="<?php echo esc_url( $post_link ); ?>" 
 											title="<?php echo esc_attr( $title ); ?>"
@@ -107,7 +109,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 										>
 											<?php echo esc_html( $title ); ?>
 										</a>
-									</<?php echo esc_attr( $settings['title_tags'] ); ?>>
+									</<?php echo esc_attr( $title_tag ); ?>>
 								</div>
 							<?php endif; ?>
 

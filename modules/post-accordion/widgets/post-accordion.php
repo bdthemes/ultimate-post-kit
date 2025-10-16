@@ -1054,7 +1054,12 @@ class Post_Accordion extends Group_Control_Query {
 			return;
 		}
 
-		printf('<%1$s class="upk-title"><a  data-hover="%3$s" href="%2$s" title="%3$s" class="title-animation-%4$s">%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), esc_url( get_permalink() ), esc_html( get_the_title() ), esc_attr($settings['title_style']));
+		printf(
+			'<%1$s class="upk-title"><a data-hover="%3$s" href="%2$s" title="%3$s" class="title-animation-%4$s">%3$s</a></%1$s>', 
+			esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), 
+			esc_url( get_permalink() ), esc_html( get_the_title() ), 
+			esc_attr($settings['title_style'])
+		);
 	}
 	
 	public function render_date() {
