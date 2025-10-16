@@ -1,15 +1,15 @@
 === Ultimate Post Kit Addons for Elementor ===
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza
 Donate link: http://bdthemes.com/
-Tags: elementor, posts, post grid, post carousel, post archive
-Stable tag: 4.0.2
+Tags: elementor, posts, post grid, post carousel, post archive, elementor addons
+Stable tag: 4.0.3
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
-Tested up to: 6.8.2
+Tested up to: 6.8.3
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Elementor requires at least: 3.22
-Elementor tested up to: 3.32.3
+Elementor requires at least: 3.28
+Elementor tested up to: 3.32.4
 
 Build your blogs and news sites with a feature-rich Elementor addon, offering 100+ elements for engaging layouts.
 
@@ -247,13 +247,13 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.0.X [XXth October 2025] =
+= 4.0.3 [16th October 2025] =
 
 * Added: Ajax Load More feature added in ramble grid, amox grid widgets
-* Improved: Web accessibility enhanced for pagination Previous/Next links ( Thanks to Oktawia )
 * Fixed: Pagination issue fixed in Alice Carousel widget
 * Fixed: Pagination issue fixed in carousel-type widgets
 * Fixed: Conditional logic issue fixed in alex grid and alice grid widgets
+* Updated: Web accessibility enhanced for pagination Previous/Next links ( Thanks to Oktawia )
 
 = 4.0.2 [5th October 2025] =
 
@@ -516,6 +516,9 @@ Details [changelog here](https://feedback.bdthemes.com/announcements?category=ca
 
 - When we release a update version, then automatically you will get a notification on WordPress plugin manager, so you can update from there. Thereafter you want to update manually just knock us, we will send you update version via mail. You will get our ultimate post kit related all [knowledge base](https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/) from our [bdthemes](https://bdthemes.com/knowledge-base/) website.
 
+###  How can I report security bugs?
+
+-  You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/9e5fb868-7544-4586-b365-636dc6104737)
 
 == Screenshots ==
 
