@@ -3190,8 +3190,8 @@ class UltimatePostKit_Admin_Settings {
 									</button>
 									<input type="hidden" id="upk-white-label-icon" name="upk_white_label_icon" value="<?php echo esc_attr($icon_url); ?>">
 									<input type="hidden" id="upk-white-label-icon-id" name="upk_white_label_icon_id" value="<?php echo esc_attr($icon_id); ?>">
+								</div>
 							</div>
-						</div>
 
 							<p class="upk-input-help">
 								<?php esc_html_e('Recommended size: 20x20 pixels. The icon will be automatically resized to fit the WordPress admin menu. Supported formats: JPG, PNG, SVG.', 'ultimate-post-kit'); ?>
@@ -3202,7 +3202,7 @@ class UltimatePostKit_Admin_Settings {
 						<div class="upk-white-label-logo-section bdt-margin-medium-top">
 							<h3 class="upk-option-title"><?php esc_html_e('Plugin Logo', 'ultimate-post-kit'); ?></h3>
 							<p class="upk-option-description"><?php esc_html_e('Upload a custom logo to replace the Ultimate Post Kit logo in the admin header. Supports JPG, PNG, and SVG formats.', 'ultimate-post-kit'); ?></p>
-							<div class="upk-icon-upload-wrapper-inner">
+							<div class="upk-logo-upload-wrapper-inner">
 								<div class="upk-logo-upload-wrapper bdt-margin-small-top">
 									<?php 
 									$logo_url = get_option('upk_white_label_logo', '');
