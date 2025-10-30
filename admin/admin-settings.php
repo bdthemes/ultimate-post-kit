@@ -172,6 +172,8 @@ class UltimatePostKit_Admin_Settings {
 		$white_label_title = isset($_POST['upk_white_label_title']) ? sanitize_text_field($_POST['upk_white_label_title']) : '';
 		$white_label_icon = isset($_POST['upk_white_label_icon']) ? esc_url_raw($_POST['upk_white_label_icon']) : '';
 		$white_label_icon_id = isset($_POST['upk_white_label_icon_id']) ? absint($_POST['upk_white_label_icon_id']) : 0;
+		$white_label_logo = isset($_POST['upk_white_label_logo']) ? esc_url_raw($_POST['upk_white_label_logo']) : '';
+		$upk_white_label_logo_id = isset($_POST['upk_white_label_logo_id']) ? absint($_POST['upk_white_label_logo_id']) : 0;
 		
 		// Save settings
 		update_option('upk_white_label_enabled', $white_label_enabled);
@@ -180,6 +182,8 @@ class UltimatePostKit_Admin_Settings {
 		update_option('upk_white_label_title', $white_label_title);
 		update_option('upk_white_label_icon', $white_label_icon);
 		update_option('upk_white_label_icon_id', $white_label_icon_id);
+		update_option('upk_white_label_logo', $white_label_logo);
+		update_option('upk_white_label_logo_id', $upk_white_label_logo_id);
 
 		// Set license title status
 		if ($white_label_enabled) {
@@ -1369,7 +1373,19 @@ class UltimatePostKit_Admin_Settings {
 						</div>
 
 						<div class="upk-logo">
-							<img src="<?php echo BDTUPK_URL . 'assets/images/logo-with-text.svg'; ?>" alt="Ultimate Post Kit Logo">
+							<?php 
+							$white_label_enabled = get_option( 'upk_white_label_enabled', false );
+							$white_label_logo 	 = get_option( 'upk_white_label_logo', '' );
+							$white_label_title 	 = get_option( 'upk_white_label_title', '' );
+
+							if ($white_label_enabled && !empty($white_label_logo)) {
+
+								$alt_text = !empty($white_label_title) ? $white_label_title . ' Logo' : 'Custom Logo';
+								echo '<img src="' . esc_url($white_label_logo) . '" alt="' . esc_attr($alt_text) . '" style="max-height: 40px;">';
+							} else {
+								echo '<img src="' . BDTUPK_URL  . 'assets/images/logo-with-text.svg" alt="Ultimate Post Kit Logo">';
+							}
+							?>
 						</div>
 					</div>
 
@@ -2084,6 +2100,60 @@ class UltimatePostKit_Admin_Settings {
 					$('#upk-icon-preview-img').attr('src', '');
 				});
 
+				// WordPress Media Library Integration for Logo Upload
+				var logoUploader;
+
+				$('#upk-upload-logo').on('click', function(e) {
+					e.preventDefault();
+
+					// If the uploader object has already been created, reopen the dialog
+					if (logoUploader) {
+						logoUploader.open();
+						return;
+					}
+
+					// Create the media frame
+					logoUploader = wp.media.frames.file_frame = wp.media({
+						title: 'Select Logo',
+						button: {
+							text: 'Use This Logo'
+						},
+						library: {
+							type: ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml']
+						},
+						multiple: false
+					});
+
+					// When an image is selected, run a callback
+					logoUploader.on('select', function() {
+						var attachment = logoUploader.state().get('selection').first().toJSON();
+
+						// Set the hidden inputs
+						$('#upk-white-label-logo').val(attachment.url);
+						$('#upk-white-label-logo-id').val(attachment.id);
+
+						// Update preview
+						$('#upk-logo-preview-img').attr('src', attachment.url);
+						$('.upk-logo-preview-container').show();
+					});
+
+					// Open the uploader dialog
+					logoUploader.open();
+				});
+
+				// Remove logo functionality
+				$('#upk-remove-logo').on('click', function(e) {
+					e.preventDefault();
+
+					// Clear the hidden inputs
+					$('#upk-white-label-logo').val('');
+					$('#upk-white-label-logo-id').val('');
+
+					// Hide preview
+					$('.upk-logo-preview-container').hide();
+					$('#upk-logo-preview-img').attr('src', '');
+				});
+
 				//BDTUPK_HIDE Warning when checkbox is enabled
 				$('#upk-white-label-bdtupk-hide').on('change', function() {
 					if ($(this).is(':checked')) {
@@ -2179,6 +2249,8 @@ class UltimatePostKit_Admin_Settings {
 						upk_white_label_title: $('#upk-white-label-title').val(),
 						upk_white_label_icon: $('#upk-white-label-icon').val(),
 						upk_white_label_icon_id: $('#upk-white-label-icon-id').val(),
+						upk_white_label_logo: $('#upk-white-label-logo').val(),
+						upk_white_label_logo_id: $('#upk-white-label-logo-id').val(),
 						upk_white_label_hide_license: $('#upk-white-label-hide-license').is(':checked') ? 1 : 0,
 						upk_white_label_bdtupk_hide: $('#upk-white-label-bdtupk-hide').is(':checked') ? 1 : 0
 					};
@@ -2427,7 +2499,10 @@ class UltimatePostKit_Admin_Settings {
 				$('#upk-reset-custom-code').on('click', function(e) {
 					e.preventDefault();
 					
-					if (confirm('Are you sure you want to reset all custom code? This action cannot be undone.')) {
+					if (confirm('Are you sure you want to reset all custom code? This will clear all code.')) {
+						var $button = $(this);
+						var originalText = $button.html();
+
 						// Clear CodeMirror editors
 						function clearCodeMirrorEditor(elementId) {
 							if (codeMirrorEditors[elementId] && codeMirrorEditors[elementId].codemirror) {
@@ -2447,17 +2522,73 @@ class UltimatePostKit_Admin_Settings {
 						// Clear exclusions
 						$('#upk-excluded-pages').val([]).trigger('change');
 						
+						// Show clearing message
 						$('#upk-custom-code-message').html(
-							'<div class="bdt-alert bdt-alert-warning" bdt-alert>' +
-							'<a href="#" class="bdt-alert-close" onclick="$(this).parent().parent().hide(); return false;">&times;</a>' +
-							'<p>All custom code has been cleared. Don\'t forget to save changes!</p>' +
+							'<div class="bdt-alert bdt-alert-primary" bdt-alert>' +
+							'<p><span bdt-spinner="ratio: 0.6"></span> Clearing custom code...</p>' +
 							'</div>'
 						).show();
-						
-						// Auto-hide message after 3 seconds
-						setTimeout(function() {
-							$('#upk-custom-code-message').fadeOut();
-						}, 3000);
+
+						// Disable button during save
+						$button.prop('disabled', true).html('<span bdt-spinner="ratio: 0.6"></span> Resetting...');
+
+						// Prepare empty data for AJAX save
+						var formData = {
+							action: 'upk_save_custom_code',
+							nonce: upk_admin_ajax.nonce,
+							custom_css: '',
+							custom_js: '',
+							custom_css_2: '',
+							custom_js_2: '',
+							excluded_pages: []
+						};
+
+						// Send AJAX request to save empty values
+						$.ajax({
+							url: upk_admin_ajax.ajax_url,
+							type: 'POST',
+							data: formData,
+							timeout: 30000,
+							success: function(response) {
+								if (response.success) {
+									// Show success message
+									$('#upk-custom-code-message').html(
+										'<div class="bdt-alert bdt-alert-success" bdt-alert>' +
+										'<a href="#" class="bdt-alert-close" onclick="$(this).parent().parent().hide(); return false;">&times;</a>' +
+										'<p><span class="dashicons dashicons-yes"></span> All custom code has been reset successfully!</p>' +
+										'</div>'
+									).show();
+
+									// Auto-hide message after 5 seconds
+									setTimeout(function() {
+										$('#upk-custom-code-message').fadeOut();
+									}, 5000);
+								} else {
+									// Show error message
+									$('#upk-custom-code-message').html(
+										'<div class="bdt-alert bdt-alert-danger" bdt-alert>' +
+										'<a href="#" class="bdt-alert-close" onclick="$(this).parent().parent().hide(); return false;">&times;</a>' +
+										'<p><span class="dashicons dashicons-warning"></span> ' + (response.data.message || 'Failed to save reset. Please try again.') + '</p>' +
+										'</div>'
+									).show();
+								}
+
+								// Restore button
+								$button.prop('disabled', false).html(originalText);
+							},
+							error: function(xhr, status, error) {
+								// Show error message
+								$('#upk-custom-code-message').html(
+									'<div class="bdt-alert bdt-alert-danger" bdt-alert>' +
+									'<a href="#" class="bdt-alert-close" onclick="$(this).parent().parent().hide(); return false;">&times;</a>' +
+									'<p><span class="dashicons dashicons-warning"></span> Failed to save reset: ' + error + '</p>' +
+									'</div>'
+								).show();
+
+								// Restore button
+								$button.prop('disabled', false).html(originalText);
+							}
+						});
 					}
 				});				
 			});
@@ -3059,12 +3190,46 @@ class UltimatePostKit_Admin_Settings {
 									</button>
 									<input type="hidden" id="upk-white-label-icon" name="upk_white_label_icon" value="<?php echo esc_attr($icon_url); ?>">
 									<input type="hidden" id="upk-white-label-icon-id" name="upk_white_label_icon_id" value="<?php echo esc_attr($icon_id); ?>">
+								</div>
 							</div>
-						</div>
 
 							<p class="upk-input-help">
 								<?php esc_html_e('Recommended size: 20x20 pixels. The icon will be automatically resized to fit the WordPress admin menu. Supported formats: JPG, PNG, SVG.', 'ultimate-post-kit'); ?>
 							</p>
+						</div>
+
+						<!-- White Label Plugin Logo Field -->
+						<div class="upk-white-label-logo-section bdt-margin-medium-top">
+							<h3 class="upk-option-title"><?php esc_html_e('Plugin Logo', 'ultimate-post-kit'); ?></h3>
+							<p class="upk-option-description"><?php esc_html_e('Upload a custom logo to replace the Ultimate Post Kit logo in the admin header. Supports JPG, PNG, and SVG formats.', 'ultimate-post-kit'); ?></p>
+							<div class="upk-logo-upload-wrapper-inner">
+								<div class="upk-logo-upload-wrapper bdt-margin-small-top">
+									<?php 
+									$logo_url = get_option('upk_white_label_logo', '');
+									$logo_id = get_option('upk_white_label_logo_id', '');
+									?>
+									<div class="upk-logo-preview-container" style="<?php echo $logo_url ? '' : 'display: none;'; ?>">
+										<div class="upk-logo-preview">
+											<img id="upk-logo-preview-img" src="<?php echo esc_url($logo_url); ?>" alt="Logo Preview" style="max-width: 200px; max-height: 64px; border: 1px solid #ddd; border-radius: 4px; padding: 8px; background: #fff;">
+										</div>
+										<button type="button" id="upk-remove-logo" class="bdt-button bdt-btn-grey bdt-flex bdt-flex-middle bdt-margin-small-top" style="padding: 8px 12px; font-size: 12px;">
+											<span class="dashicons dashicons-trash"></span>
+										</button>
+									</div>
+									
+									<div class="upk-logo-upload-container">
+										<button type="button" id="upk-upload-logo" class="bdt-button bdt-btn-blue bdt-margin-small-top" <?php disabled(!$is_license_active || !$is_white_label_eligible); ?>>
+											<span class="dashicons dashicons-cloud-upload"></span>
+											<?php esc_html_e('Upload Logo', 'ultimate-post-kit'); ?>
+										</button>
+										<input type="hidden" id="upk-white-label-logo" name="upk_white_label_logo" value="<?php echo esc_attr($logo_url); ?>">
+										<input type="hidden" id="upk-white-label-logo-id" name="upk_white_label_logo_id" value="<?php echo esc_attr($logo_id); ?>">
+									</div>
+								</div>
+								<p class="upk-input-help">
+									<?php esc_html_e('Recommended size: 200x40 pixels. The logo will be displayed in the admin header. Supported formats: JPG, PNG, SVG.', 'ultimate-post-kit'); ?>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
