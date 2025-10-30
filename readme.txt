@@ -247,6 +247,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.0.X [XXth October 2025] =
+
+* Fixed: HTML tag validation issue fixed
+
 = 4.0.3 [16th October 2025] =
 
 * Added: Ajax Load More feature added in ramble grid, amox grid widgets

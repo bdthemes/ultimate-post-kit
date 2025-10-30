@@ -1721,6 +1721,7 @@ class Alex_Grid extends Group_Control_Query {
 				'human_diff_time'               => isset($settings['human_diff_time']) ? $settings['human_diff_time'] : 'no',
 				'human_diff_time_short'         => isset($settings['human_diff_time_short']) ? $settings['human_diff_time_short'] : 'no',
 				'show_post_format'              => isset($settings['show_post_format']) ? $settings['show_post_format'] : 'no',
+				'title_style'                   => isset($settings['title_style']) ? $settings['title_style'] : 'underline',
 				'global_link'                   => isset($settings['global_link']) ? $settings['global_link'] : 'no',
 			];
 			
