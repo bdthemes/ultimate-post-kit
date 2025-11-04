@@ -56,10 +56,12 @@
 
             // ajax data
             let action;
-            const match = ajaxGrid?.attr("class")?.match(/upk-([a-z0-9_-]+)-grid/);
+            const match = ajaxGrid?.attr("class")?.match(/upk-([a-z0-9_-]+)-(grid|list)/);
 
             if (match) {
-                action = `upk_${match[1]}_grid_loadmore_posts`;
+                const widgetName = match[1].replace(/-/g, '_');
+                const widgetType = match[2];
+                action = `upk_${widgetName}_${widgetType}_loadmore_posts`;
             }
 
             let dataSettings = {
@@ -158,6 +160,7 @@
             "upk-pixina-grid",
             "upk-ramble-grid",
             "upk-wixer-grid",
+            "upk-tiny-list",
         ];
         
         ajaxLoadMoreWidgets.forEach(widget => {
