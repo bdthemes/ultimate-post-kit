@@ -249,7 +249,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 = 4.0.5 [6th November 2025] =
 
-* Added: Ajax Load More feature added in tiny list and scott list widget
+* Added: Ajax Load More feature added in tiny list, scott list and harold widgets
 
 = 4.0.4 [30th October 2025] =
 
