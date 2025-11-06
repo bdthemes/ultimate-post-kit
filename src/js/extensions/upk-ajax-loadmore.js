@@ -161,6 +161,7 @@
             "upk-ramble-grid",
             "upk-wixer-grid",
             "upk-tiny-list",
+            "upk-scott-list",
         ];
         
         ajaxLoadMoreWidgets.forEach(widget => {
