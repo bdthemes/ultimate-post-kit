@@ -56,6 +56,14 @@ class Tiny_List extends Group_Control_Query {
 		}
 	}
 
+	public function get_script_depends() {
+		if ($this->upk_is_edit_mode()) {
+			return ['upk-all-scripts'];
+		} else {
+			return ['upk-ajax-loadmore'];
+		}
+	}
+
 	public function get_custom_help_url() {
 		return 'https://youtu.be/PZlXofIOy68';
 	}
@@ -86,12 +94,12 @@ class Tiny_List extends Group_Control_Query {
 				'tablet_default' => '1',
 				'mobile_default' => '1',
 				'options' => [
-					'1' => '1',
-					'2' => '2',
-					'3' => '3',
-					'4' => '4',
-					'5' => '5',
-					'6' => '6',
+					'1' => esc_html__('1', 'ultimate-post-kit'),
+					'2' => esc_html__('2', 'ultimate-post-kit'),
+					'3' => esc_html__('3', 'ultimate-post-kit'),
+					'4' => esc_html__('4', 'ultimate-post-kit'),
+					'5' => esc_html__('5', 'ultimate-post-kit'),
+					'6' => esc_html__('6', 'ultimate-post-kit'),
 				],
 				'selectors' => [
 					'{{WRAPPER}} .upk-tiny-list' => 'grid-template-columns: repeat({{SIZE}}, 1fr);',
@@ -102,7 +110,7 @@ class Tiny_List extends Group_Control_Query {
 		$this->add_responsive_control(
 			'row_gap',
 			[
-				'label' => esc_html__('Row Gap', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => esc_html__('Row Gap', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 10,
@@ -130,7 +138,7 @@ class Tiny_List extends Group_Control_Query {
 		$this->add_control(
 			'show_title',
 			[
-				'label'   => esc_html__('Show Title', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'   => esc_html__('Show Title', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'separator' => 'before'
@@ -212,6 +220,9 @@ class Tiny_List extends Group_Control_Query {
 			]
 		);
 
+		//Global Ajax Controls
+		$this->register_ajax_loadmore_controls();
+
 		$this->add_control(
 			'global_link',
 			[
@@ -219,6 +230,7 @@ class Tiny_List extends Group_Control_Query {
 				'type'         => Controls_Manager::SWITCHER,
 				'prefix_class' => 'upk-global-link-',
 				'description'  => __('Be aware! When Item Wrapper Link activated then title link and read more link will not work', 'ultimate-post-kit'),
+				'separator' => 'before'
 			]
 		);
 
@@ -228,7 +240,7 @@ class Tiny_List extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => __('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -621,7 +633,7 @@ class Tiny_List extends Group_Control_Query {
 			Group_Control_Text_Stroke::get_type(),
 			[
 				'name'     => 'title_text_stroke',
-				'label'    => __('Text Stroke', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'    => esc_html__('Text Stroke', 'ultimate-post-kit'),
 				'selector' => '{{WRAPPER}} .upk-tiny-list .upk-item .upk-title a',
 			]
 		);
@@ -629,7 +641,7 @@ class Tiny_List extends Group_Control_Query {
 		$this->add_control(
 			'title_hover_transition_duration',
 			[
-				'label' => esc_html__( 'Transition Duration', 'ultimate-post-kit' ) . BDTUPK_NC,
+				'label' => esc_html__( 'Transition Duration', 'ultimate-post-kit' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 's', 'ms', 'custom' ],
 				'default' => [
@@ -740,6 +752,9 @@ class Tiny_List extends Group_Control_Query {
 
 		//Global Pagination Controls
 		$this->register_pagination_controls();
+
+		//Global Ajax Loadmore Style Controls
+		$this->register_ajax_loadmore_style_controls();
 	}
 
 	/**
@@ -751,7 +766,7 @@ class Tiny_List extends Group_Control_Query {
 		$default = $this->getGroupControlQueryArgs();
 		if ($posts_per_page) {
 			$args['posts_per_page'] = $posts_per_page;
-			// $args['paged']  = max(1, get_query_var('paged'), get_query_var('page'));
+			$args['paged']  = max(1, get_query_var('paged'), get_query_var('page'));
 		}
 		$args         = array_merge($default, $args);
 		$this->_query = new WP_Query($args);
@@ -801,7 +816,67 @@ class Tiny_List extends Group_Control_Query {
 			return;
 		}
 
-		$this->add_render_attribute('list-wrap', 'class', 'upk-tiny-list');
+		$this->add_render_attribute('list-wrap', 'class', 'upk-tiny-list upk-ajax-grid-wrap');
+
+		$this->add_render_attribute(
+			[
+				'upk-tiny-list' => [
+					'class' => 'upk-tiny-list-container upk-ajax-grid',
+					'data-loadmore' => [
+						wp_json_encode(
+							array_filter([
+								'loadmore_enable'   => $settings['ajax_loadmore_enable'],
+								'loadmore_btn'      => $settings['ajax_loadmore_btn'],
+								'infinite_scroll'   => $settings['ajax_loadmore_infinite_scroll'],
+							])
+						),
+					],
+				],
+			]
+		);
+
+		if ($settings['ajax_loadmore_enable'] == 'yes') {
+			$ajax_settings = [
+				'posts_source'                  => isset($settings['posts_source']) ? $settings['posts_source'] : 'post',
+				'posts_per_page'                => isset($settings['item_limit']['size']) ? $settings['item_limit']['size'] : 4,
+				'ajax_item_load'                => isset($settings['ajax_loadmore_items']) ? $settings['ajax_loadmore_items'] : 3,
+				'posts_selected_ids'            => isset($settings['posts_selected_ids']) ? $settings['posts_selected_ids'] : '',
+				'posts_include_by'              => isset($settings['posts_include_by']) ? $settings['posts_include_by'] : [],
+				'posts_include_author_ids'      => isset($settings['posts_include_author_ids']) ? $settings['posts_include_author_ids'] : '',
+				'posts_include_term_ids'        => isset($settings['posts_include_term_ids']) ? $settings['posts_include_term_ids'] : '',
+				'posts_exclude_by'              => isset($settings['posts_exclude_by']) ? $settings['posts_exclude_by'] : [],
+				'posts_exclude_ids'             => isset($settings['posts_exclude_ids']) ? $settings['posts_exclude_ids'] : '',
+				'posts_exclude_author_ids'      => isset($settings['posts_exclude_author_ids']) ? $settings['posts_exclude_author_ids'] : '',
+				'posts_exclude_term_ids'        => isset($settings['posts_exclude_term_ids']) ? $settings['posts_exclude_term_ids'] : '',
+				'posts_offset'                  => isset($settings['posts_offset']) ? $settings['posts_offset'] : 0,
+				'posts_select_date'             => isset($settings['posts_select_date']) ? $settings['posts_select_date'] : '',
+				'posts_date_before'             => isset($settings['posts_date_before']) ? $settings['posts_date_before'] : '',
+				'posts_date_after'              => isset($settings['posts_date_after']) ? $settings['posts_date_after'] : '',
+				'posts_orderby'                 => isset($settings['posts_orderby']) ? $settings['posts_orderby'] : 'date',
+				'posts_order'                   => isset($settings['posts_order']) ? $settings['posts_order'] : 'DESC',
+				'posts_ignore_sticky_posts'     => isset($settings['posts_ignore_sticky_posts']) ? $settings['posts_ignore_sticky_posts'] : 'no',
+				'posts_only_with_featured_image'=> isset($settings['posts_only_with_featured_image']) ? $settings['posts_only_with_featured_image'] : 'no',
+				// List Settings
+				'show_title'                    => isset($settings['show_title']) ? $settings['show_title'] : 'yes',
+				'title_tags'                    => isset( $settings['title_tags'] ) ? $settings['title_tags'] : 'h3',
+				'title_style'                   => isset($settings['title_style']) ? $settings['title_style'] : '',
+				'show_image'                    => isset($settings['show_image']) ? $settings['show_image'] : 'no',
+				'primary_thumbnail_size'        => isset($settings['primary_thumbnail_size']) ? $settings['primary_thumbnail_size'] : 'thumbnail',
+				'show_counter_number'           => isset($settings['show_counter_number']) ? $settings['show_counter_number'] : 'no',
+				'show_item_icon'                => isset($settings['show_item_icon']) ? $settings['show_item_icon'] : [],
+				'global_link'                   => isset($settings['global_link']) ? $settings['global_link'] : 'no',
+			];
+		
+			$this->add_render_attribute(
+				[
+					'upk-tiny-list' => [
+						'data-settings' => [
+							wp_json_encode($ajax_settings)
+						],
+					],
+				]
+			);
+		}
 
 		if (isset($settings['upk_in_animation_show']) && ($settings['upk_in_animation_show'] == 'yes')) {
 			$this->add_render_attribute('list-wrap', 'class', 'upk-in-animation');
@@ -811,18 +886,22 @@ class Tiny_List extends Group_Control_Query {
 		}
 
 	?>
-		<div <?php $this->print_render_attribute_string('list-wrap'); ?>>
-			<?php while ($wp_query->have_posts()) :
-				$wp_query->the_post();
+		<div <?php $this->print_render_attribute_string('upk-tiny-list'); ?>>
+			<div <?php $this->print_render_attribute_string('list-wrap'); ?>>
+				<?php while ($wp_query->have_posts()) :
+					$wp_query->the_post();
 
-				$thumbnail_size = $settings['primary_thumbnail_size'];
+					$thumbnail_size = $settings['primary_thumbnail_size'];
 
-			?>
+				?>
 
-				<?php $this->render_post_grid_item(get_the_ID(), $thumbnail_size); ?>
+					<?php $this->render_post_grid_item(get_the_ID(), $thumbnail_size); ?>
 
-			<?php endwhile; ?>
+				<?php endwhile; ?>
+			</div>
 		</div>
+
+		<?php $this->render_ajax_loadmore(); ?>
 
 		<?php
 
