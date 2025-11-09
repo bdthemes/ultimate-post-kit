@@ -247,6 +247,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.0.X [XXth November 2025] =
+
+* Added: Ajax Load More feature added in fanel list widget
+
 = 4.0.5 [6th November 2025] =
 
 * Added: Ajax Load More feature added in tiny list and scott list widget
