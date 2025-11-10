@@ -163,6 +163,8 @@
             "upk-tiny-list",
             "upk-scott-list",
             "upk-buzz-list",
+            "upk-featured-list",
+            "upk-harold-list",
         ];
         
         ajaxLoadMoreWidgets.forEach(widget => {
