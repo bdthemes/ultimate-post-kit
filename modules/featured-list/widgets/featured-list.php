@@ -54,6 +54,14 @@ class Featured_List extends Group_Control_Query {
 		}
 	}
 
+	public function get_script_depends() {
+		if ($this->upk_is_edit_mode()) {
+			return ['upk-all-scripts'];
+		} else {
+			return ['upk-ajax-loadmore'];
+		}
+	}
+
 	public function get_custom_help_url() {
 		return 'https://youtu.be/Q-Pm-6Kkmr4';
 	}
@@ -187,13 +195,16 @@ class Featured_List extends Group_Control_Query {
 			]
 		);
 
+		//Global Ajax Controls
+		$this->register_ajax_loadmore_controls();
+
 		$this->add_control(
 			'global_link',
 			[
-				'label'        => __('Item Wrapper Link', 'ultimate-post-kit'),
+				'label'        => esc_html__('Item Wrapper Link', 'ultimate-post-kit'),
 				'type'         => Controls_Manager::SWITCHER,
 				'prefix_class' => 'upk-global-link-',
-				'description'  => __('Be aware! When Item Wrapper Link activated then title link and read more link will not work', 'ultimate-post-kit'),
+				'description'  => esc_html__('Be aware! When Item Wrapper Link activated then title link and read more link will not work', 'ultimate-post-kit'),
 			]
 		);
 
@@ -203,7 +214,7 @@ class Featured_List extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => esc_html__('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -415,7 +426,7 @@ class Featured_List extends Group_Control_Query {
 			Group_Control_Text_Shadow::get_type(),
 			[
 				'name'     => 'title_text_shadow',
-				'label'    => __('Text Shadow', 'ultimate-post-kit'),
+				'label'    => esc_html__('Text Shadow', 'ultimate-post-kit'),
 				'selector' => '{{WRAPPER}} .upk-featured-list .upk-item .upk-title a',
 			]
 		);
@@ -424,7 +435,7 @@ class Featured_List extends Group_Control_Query {
 			Group_Control_Text_Stroke::get_type(),
 			[
 				'name'     => 'title_text_stroke',
-				'label'    => __('Text Stroke', 'ultimate-post-kit') . BDTUPK_NC . BDTUPK_PC,
+				'label'    => esc_html__('Text Stroke', 'ultimate-post-kit') . BDTUPK_PC,
 				'selector' => '{{WRAPPER}} .upk-featured-list .upk-item .upk-title a',
 			]
 		);
@@ -466,7 +477,7 @@ class Featured_List extends Group_Control_Query {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'featured_title_typography',
-				'label'    => esc_html__('Typography', 'ultimate-post-kit') . BDTUPK_NC . BDTUPK_PC,
+				'label'    => esc_html__('Typography', 'ultimate-post-kit') . BDTUPK_PC,
 				'selector' => '{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-title',
 			]
 		);
@@ -475,7 +486,7 @@ class Featured_List extends Group_Control_Query {
 			Group_Control_Text_Shadow::get_type(),
 			[
 				'name'     => 'featured_title_text_shadow',
-				'label'    => __('Text Shadow', 'ultimate-post-kit') . BDTUPK_NC . BDTUPK_PC,
+				'label'    => esc_html__('Text Shadow', 'ultimate-post-kit') . BDTUPK_PC,
 				'selector' => '{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-title a',
 			]
 		);
@@ -484,7 +495,7 @@ class Featured_List extends Group_Control_Query {
 			Group_Control_Text_Stroke::get_type(),
 			[
 				'name'     => 'featured_title_text_stroke',
-				'label'    => __('Text Stroke', 'ultimate-post-kit') . BDTUPK_NC . BDTUPK_PC,
+				'label'    => esc_html__('Text Stroke', 'ultimate-post-kit') . BDTUPK_PC,
 				'selector' => '{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-title a',
 			]
 		);
@@ -980,7 +991,7 @@ class Featured_List extends Group_Control_Query {
 		$this->add_control(
 			'featured_counter_number_color',
 			[
-				'label'     => esc_html__('Color', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-featured-list .upk-item:nth-child(1) .upk-counter:before' => 'color: {{VALUE}};',
@@ -1018,6 +1029,9 @@ class Featured_List extends Group_Control_Query {
 
 		//Global Pagination Controls
 		$this->register_pagination_controls();
+
+		//Global Ajax Loadmore Style Controls
+		$this->register_ajax_loadmore_style_controls();
 	}
 
 	/**
@@ -1198,7 +1212,77 @@ class Featured_List extends Group_Control_Query {
 			return;
 		}
 
-		$this->add_render_attribute('list-wrap', 'class', 'upk-featured-list upk-featured-' . $settings['layout_style']);
+		$this->add_render_attribute(
+			[
+				'upk-featured-list' => [
+					'class' => 'upk-featured-list upk-featured-' . $settings['layout_style'] . ' upk-ajax-grid',
+					'data-loadmore' => [
+						wp_json_encode(
+							array_filter([
+								'loadmore_enable'   => $settings['ajax_loadmore_enable'],
+								'loadmore_btn'      => $settings['ajax_loadmore_btn'],
+								'infinite_scroll'   => $settings['ajax_loadmore_infinite_scroll'],
+							])
+						),
+					],
+				],
+			]
+		);
+
+		if ($settings['ajax_loadmore_enable'] == 'yes') {
+			$ajax_settings = [
+				'posts_source'                  => isset($settings['posts_source']) ? $settings['posts_source'] : 'post',
+				'posts_per_page'                => isset($settings['item_limit']['size']) ? $settings['item_limit']['size'] : 4,
+				'ajax_item_load'                => isset($settings['ajax_loadmore_items']) ? $settings['ajax_loadmore_items'] : 4,
+				'posts_selected_ids'            => isset($settings['posts_selected_ids']) ? $settings['posts_selected_ids'] : '',
+				'posts_include_by'              => isset($settings['posts_include_by']) ? $settings['posts_include_by'] : [],
+				'posts_include_author_ids'      => isset($settings['posts_include_author_ids']) ? $settings['posts_include_author_ids'] : '',
+				'posts_include_term_ids'        => isset($settings['posts_include_term_ids']) ? $settings['posts_include_term_ids'] : '',
+				'posts_exclude_by'              => isset($settings['posts_exclude_by']) ? $settings['posts_exclude_by'] : [],
+				'posts_exclude_ids'             => isset($settings['posts_exclude_ids']) ? $settings['posts_exclude_ids'] : '',
+				'posts_exclude_author_ids'      => isset($settings['posts_exclude_author_ids']) ? $settings['posts_exclude_author_ids'] : '',
+				'posts_exclude_term_ids'        => isset($settings['posts_exclude_term_ids']) ? $settings['posts_exclude_term_ids'] : '',
+				'posts_offset'                  => isset($settings['posts_offset']) ? $settings['posts_offset'] : 0,
+				'posts_select_date'             => isset($settings['posts_select_date']) ? $settings['posts_select_date'] : '',
+				'posts_date_before'             => isset($settings['posts_date_before']) ? $settings['posts_date_before'] : '',
+				'posts_date_after'              => isset($settings['posts_date_after']) ? $settings['posts_date_after'] : '',
+				'posts_orderby'                 => isset($settings['posts_orderby']) ? $settings['posts_orderby'] : 'date',
+				'posts_order'                   => isset($settings['posts_order']) ? $settings['posts_order'] : 'DESC',
+				'posts_ignore_sticky_posts'     => isset($settings['posts_ignore_sticky_posts']) ? $settings['posts_ignore_sticky_posts'] : 'no',
+				'posts_only_with_featured_image'=> isset($settings['posts_only_with_featured_image']) ? $settings['posts_only_with_featured_image'] : 'no',
+				// List Settings
+				'layout_style'                  => isset($settings['layout_style']) ? $settings['layout_style'] : 'style-1',
+				'show_title'                    => isset($settings['show_title']) ? $settings['show_title'] : 'yes',
+				'title_tags'                    => isset( $settings['title_tags'] ) ? $settings['title_tags'] : 'h3',
+				'title_style'                   => isset($settings['title_style']) ? $settings['title_style'] : '',
+				'show_category'                 => isset($settings['show_category']) ? $settings['show_category'] : 'yes',
+				'show_counter_number'           => isset($settings['show_counter_number']) ? $settings['show_counter_number'] : 'yes',
+				'show_author'                   => isset($settings['show_author']) ? $settings['show_author'] : 'no',
+				'show_comments'                 => isset($settings['show_comments']) ? $settings['show_comments'] : 'no',
+				'meta_separator'                => isset($settings['meta_separator']) ? $settings['meta_separator'] : '//',
+				'show_date'                     => isset($settings['show_date']) ? $settings['show_date'] : 'no',
+				'show_time'                     => isset($settings['show_time']) ? $settings['show_time'] : 'no',
+				'human_diff_time'               => isset($settings['human_diff_time']) ? $settings['human_diff_time'] : 'no',
+				'human_diff_time_short'         => isset($settings['human_diff_time_short']) ? $settings['human_diff_time_short'] : 'no',
+				'show_reading_time'             => isset($settings['show_reading_time']) ? $settings['show_reading_time'] : 'no',
+				'avg_reading_speed'             => isset($settings['avg_reading_speed']) ? $settings['avg_reading_speed'] : 200,
+				'primary_thumbnail_size'        => isset($settings['primary_thumbnail_size']) ? $settings['primary_thumbnail_size'] : 'medium',
+				'upk_link_new_tab'              => isset($settings['upk_link_new_tab']) ? $settings['upk_link_new_tab'] : 'no',
+				'global_link'                   => isset($settings['global_link']) ? $settings['global_link'] : 'no',
+			];
+		
+			$this->add_render_attribute(
+				[
+					'upk-featured-list' => [
+						'data-settings' => [
+							wp_json_encode($ajax_settings)
+						],
+					],
+				]
+			);
+		}
+
+		$this->add_render_attribute('list-wrap', 'class', 'upk-featured-list upk-featured-' . $settings['layout_style'] . ' upk-ajax-grid-wrap');
 
 		if (isset($settings['upk_in_animation_show']) && ($settings['upk_in_animation_show'] == 'yes')) {
 			$this->add_render_attribute('list-wrap', 'class', 'upk-in-animation');
@@ -1208,18 +1292,22 @@ class Featured_List extends Group_Control_Query {
 		}
 
 	?>
-		<div <?php $this->print_render_attribute_string('list-wrap'); ?>>
-			<?php while ($wp_query->have_posts()) :
-				$wp_query->the_post();
+		<div <?php $this->print_render_attribute_string('upk-featured-list'); ?>>
+			<div <?php $this->print_render_attribute_string('list-wrap'); ?>>
+				<?php while ($wp_query->have_posts()) :
+					$wp_query->the_post();
 
-				$thumbnail_size = $settings['primary_thumbnail_size'];
+					$thumbnail_size = $settings['primary_thumbnail_size'];
 
-			?>
+				?>
 
-				<?php $this->render_post_grid_item(get_the_ID(), $thumbnail_size); ?>
+					<?php $this->render_post_grid_item(get_the_ID(), $thumbnail_size); ?>
 
-			<?php endwhile; ?>
+				<?php endwhile; ?>
+			</div>
 		</div>
+
+		<?php $this->render_ajax_loadmore(); ?>
 
 		<?php
 
