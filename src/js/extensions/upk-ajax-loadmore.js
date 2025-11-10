@@ -166,6 +166,9 @@
             "upk-buzz-list",
             "upk-featured-list",
             "upk-harold-list",
+            'upk-candy-list',
+            "upk-classic-list",
+            "upk-welsh-list",
         ];
         
         ajaxLoadMoreWidgets.forEach(widget => {
