@@ -162,6 +162,7 @@
             "upk-wixer-grid",
             "upk-tiny-list",
             "upk-scott-list",
+            "upk-harold-list",
         ];
         
         ajaxLoadMoreWidgets.forEach(widget => {
