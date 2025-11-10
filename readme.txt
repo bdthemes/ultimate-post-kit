@@ -250,10 +250,13 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 = 4.0.X [XXth November 2025] =
 
 * Added: Ajax Load More feature added in fanel list widget
+* Added: Ajax Load More feature added in buzz list widget
 
 = 4.0.5 [6th November 2025] =
 
 * Added: Ajax Load More feature added in tiny list and scott list widget
+* Added: Ajax Load More feature added in featured-list widget
+* Added: Ajax Load More feature added in tiny list, scott list and harold widgets
 
 = 4.0.4 [30th October 2025] =
 
