@@ -19,6 +19,8 @@ Ultimate Post Kit for Elementor is an usefull addon for bloggers, marketers, and
 
 Built with clean, optimized code, it’s fully compatible with the latest WordPress standards and won’t slow down your site. Whether you’re a beginner or pro, you can design beautiful, traffic-ready blogs in minutes using Elementor’s drag-and-drop editor.
 
+### [🎉 Black Friday Offer: Upgrade to Pro and Save up to 87% on All Plugins! 🎊](https://bdthemes.com/deals/?utm_source=WordPress_org&utm_medium=bfcm_cta&utm_campaign=ultimate_post_kit)
+
 Ultimate Post Kit also supports RTL and multiple languages, making it ready for a global audience.
 
 ###USEFUL LINKS 👇###
