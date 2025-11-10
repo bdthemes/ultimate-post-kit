@@ -162,6 +162,7 @@
             "upk-wixer-grid",
             "upk-tiny-list",
             "upk-scott-list",
+            "upk-fanel-list",
             "upk-buzz-list",
             "upk-featured-list",
             "upk-harold-list",
