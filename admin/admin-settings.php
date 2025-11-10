@@ -854,7 +854,7 @@ class UltimatePostKit_Admin_Settings {
 		if (true !== _is_upk_pro_activated()) {
 			add_submenu_page(
 				self::PAGE_ID,
-				BDTPS_CORE_TITLE,
+				BDTUPK_TITLE,
 				esc_html__('Black Friday Limited Offer Up To 87%', 'ultimate-post-kit'),
 				'manage_options',
 				self::PAGE_ID . '_get_pro',
