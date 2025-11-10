@@ -724,7 +724,7 @@ class UltimatePostKit_Admin_Settings {
      // Redirect to Ultimate Post Kit Pro pricing page
     public function upk_redirect_to_get_pro() {
         if (isset($_GET['page']) && $_GET['page'] === self::PAGE_ID . '_get_pro') {
-            wp_redirect('https://postkit.pro/pricing/?utm_source=UPK&utm_medium=PluginPage&utm_campaign=30%OffOnUPK&coupon=FREETOPRO');
+            wp_redirect('https://bdthemes.com/deals/?utm_source=WordPress_org&utm_medium=bfcm_cta&utm_campaign=ultimate_post_kit');
             exit;
         }
     }
@@ -823,14 +823,14 @@ class UltimatePostKit_Admin_Settings {
 			[$this, 'plugin_page']
 		);
 		
-		add_submenu_page(
-			self::PAGE_ID,
-			BDTUPK_TITLE,
-			esc_html__('Get Up to 60%', 'ultimate-post-kit'),
-			'manage_options',
-			self::PAGE_ID . '#ultimate_post_kit_affiliate',
-			[$this, 'plugin_page']
-		);
+		// add_submenu_page(
+		// 	self::PAGE_ID,
+		// 	BDTUPK_TITLE,
+		// 	esc_html__('Get Up to 60%', 'ultimate-post-kit'),
+		// 	'manage_options',
+		// 	self::PAGE_ID . '#ultimate_post_kit_affiliate',
+		// 	[$this, 'plugin_page']
+		// );
 		
 		add_submenu_page(
 			self::PAGE_ID,
@@ -850,6 +850,17 @@ class UltimatePostKit_Admin_Settings {
                 'edit.php?post_type=upk-template-builder',
             );
         }
+
+		if (true !== _is_upk_pro_activated()) {
+			add_submenu_page(
+				self::PAGE_ID,
+				BDTPS_CORE_TITLE,
+				esc_html__('Black Friday Limited Offer Up To 87%', 'ultimate-post-kit'),
+				'manage_options',
+				self::PAGE_ID . '_get_pro',
+				[$this, 'display_page']
+			);
+		}
 
 	}
 
@@ -1467,9 +1478,9 @@ class UltimatePostKit_Admin_Settings {
 							<?php $this->ultimate_post_kit_others_plugin(); ?>
 						</div>
 
-						<div id="ultimate_post_kit_affiliate_page" class="upk-option-page group">
-							<?php $this->ultimate_post_kit_affiliate_content(); ?>
-						</div>
+						<!-- <div id="ultimate_post_kit_affiliate_page" class="upk-option-page group">
+							<?php //$this->ultimate_post_kit_affiliate_content(); ?>
+						</div> -->
 
 						<div id="ultimate_post_kit_rollback_version_page" class="upk-option-page group">
 							<?php $this->ultimate_post_kit_rollback_version_content(); ?>
@@ -4098,44 +4109,6 @@ class UltimatePostKit_Admin_Settings {
 				       __('Install', 'ultimate-post-kit') . '</a>';
 		}
 	}
-
-    /**
-	 * Display Affiliate Content
-	 *
-	 * @access public
-	 * @return void
-	 */
-
-	public function ultimate_post_kit_affiliate_content() {
-		?>
-		<div class="upk-dashboard-panel"
-			bdt-scrollspy="target: > div > div > .bdt-card; cls: bdt-animation-slide-bottom-small; delay: 300">
-			<div class="upk-dashboard-affiliate">
-				<div class="bdt-card bdt-card-body">
-					<h1 class="upk-feature-title">
-						<?php printf(esc_html__('Earn %s as an Affiliate', 'ultimate-post-kit'), '<strong class="upk-highlight-text">Up to 60% Commission</strong>'); ?>
-					</h1>
-					<p>
-						<?php esc_html_e('Join our affiliate program and earn up to 60% commission on every sale you refer. It\'s a great way to earn passive income while promoting high-quality WordPress plugins.', 'ultimate-post-kit'); ?>
-					</p>
-					<div class="upk-affiliate-features">
-						<h3 class="upk-affiliate-sub-title"><?php esc_html_e('Benefits of joining our affiliate program:', 'ultimate-post-kit'); ?></h3>
-						<ul>
-							<li><?php esc_html_e('Up to 60% commission on all sales', 'ultimate-post-kit'); ?></li>
-							<li><?php esc_html_e('Real-time tracking of referrals and sales', 'ultimate-post-kit'); ?></li>
-							<li><?php esc_html_e('Dedicated affiliate support', 'ultimate-post-kit'); ?></li>
-							<li><?php esc_html_e('Marketing materials provided', 'ultimate-post-kit'); ?></li>
-							<li><?php esc_html_e('Monthly payments via PayPal', 'ultimate-post-kit'); ?></li>
-						</ul>
-					</div>
-					<a href="https://bdthemes.com/affiliate/?utm_sourcce=upk_wp_dashboard&utm_medium=affiliate_payout&utm_campaign=affiliate_onboarding" target="_blank"
-						class="bdt-button bdt-welcome-button bdt-margin-small-top"><?php esc_html_e('Join Our Affiliate Program', 'ultimate-post-kit'); ?></a>
-				</div>
-			</div>
-		</div>
-		<?php
-	}
-
 
     /**
 	 * Extra Options Start Here

@@ -881,11 +881,11 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 					'title' => esc_html__('Other Plugins', 'ultimate-post-kit'),
 					'icon' => 'dashicons dashicons-admin-plugins',
 				],
-				[
-					'id' => 'ultimate_post_kit_affiliate',
-					'title' => esc_html__('Get Up to 60%', 'ultimate-post-kit'),
-					'icon' => 'dashicons dashicons-money-alt',
-				],
+				// [
+				// 	'id' => 'ultimate_post_kit_affiliate',
+				// 	'title' => esc_html__('Get Up to 60%', 'ultimate-post-kit'),
+				// 	'icon' => 'dashicons dashicons-money-alt',
+				// ],
 				[
 					'id' => 'ultimate_post_kit_rollback_version',
 					'title' => esc_html__('Rollback Version', 'ultimate-post-kit'),
