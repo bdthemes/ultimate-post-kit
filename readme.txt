@@ -1,8 +1,8 @@
 === Ultimate Post Kit Addons for Elementor ===
-Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza
+Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza, shmusuf, arafatakashakku
 Donate link: http://bdthemes.com/
-Tags: elementor, posts, post grid, post carousel, post archive, elementor addons
-Stable tag: 4.0.5
+Tags: elementor, posts, post grid, post carousel, elementor addons
+Stable tag: 4.0.7
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.8.3
@@ -247,16 +247,17 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.0.X [XXth November 2025] =
+= 4.0.7 [10th November 2025] =
 
-* Added: Ajax Load More feature added in fanel list widget
-* Added: Ajax Load More feature added in buzz list widget
+* Fixed: Error fixed
+
+= 4.0.6 [10th November 2025] =
+
+* Added: Ajax Load More feature added in fanel list, buzz list, featured list and harold list widgets
 
 = 4.0.5 [6th November 2025] =
 
 * Added: Ajax Load More feature added in tiny list and scott list widget
-* Added: Ajax Load More feature added in featured-list widget
-* Added: Ajax Load More feature added in tiny list, scott list and harold widgets
 
 = 4.0.4 [30th October 2025] =
 
