@@ -44,7 +44,7 @@ class Admin
 	}
 
 	public function admin_notice_styles(){
-		wp_enqueue_style('upk-admin-notice', BDTUPK_ADMIN_ASSETS_URL . 'css/upk-admin-notice.css', [], BDTUPK_VER);
+		wp_enqueue_style('upk-admin-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'css/upk-admin-biggopti.css', [], BDTUPK_VER);
 	}
 
 
@@ -190,13 +190,13 @@ class Admin
 		// $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-form');
-		wp_enqueue_script('upk-notice', BDTUPK_ADMIN_ASSETS_URL . 'js/upk-notice.min.js', ['jquery'], BDTUPK_VER,  true);
+		wp_enqueue_script('upk-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'js/upk-biggopti.min.js', ['jquery'], BDTUPK_VER,  true);
 
 		$script_config = [
 			'ajaxurl'	=> admin_url('admin-ajax.php'),
 			'nonce'		=> wp_create_nonce('ultimate-post-kit'),
 		];
-		wp_localize_script('upk-notice', 'UltimatePostKitNoticeConfig', $script_config);
+		wp_localize_script('upk-biggopti', 'UltimatePostKitBiggoptiConfig', $script_config);
 
 		if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_post_kit_options')) {
 			wp_enqueue_script('chart', BDTUPK_ADMIN_ASSETS_URL . 'js/chart.min.js', ['jquery'], '3.9.1', true);

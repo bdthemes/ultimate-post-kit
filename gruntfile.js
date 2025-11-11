@@ -91,7 +91,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: "src/scss/",
-                        src: ["admin-notice.scss"],
+                        src: ["admin-biggopti.scss"],
 
                         dest: "admin/assets/css/",
                         ext: ".css",

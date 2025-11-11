@@ -1,18 +1,26 @@
 /**
- * ultimate-post-kit license notice 
+ * ultimate-post-kit license biggopti 
  * todo: need to this move another file
  */
 
-.ultimate-post-kit-notice {
+.ultimate-post-kit-biggopti {
     padding: 0 !important;
     border: 0 !important;
     box-shadow: none !important;
+    position: relative;
+    margin-top: 8px;
+    margin-bottom: 8px;
 
-    .notice-dismiss {
-        padding: 15px;
+    .bdt-biggopti-dismiss {
+        position: absolute;
+        top: 2px;
+        right: 8px;
+        cursor: pointer;
+        background: transparent;
+        border: none;
     }
 
-    .bdt-license-notice-global {
+    .bdt-license-biggopti-global {
         border-left: 4px solid #60df54 !important;
         display: flex;
         align-items: flex-start;
@@ -21,13 +29,13 @@
         border-color: #e2e2e5;
         z-index: 99;
 
-        .bdt-license-notice-logo img {
+        .bdt-license-biggopti-logo img {
             width: 45px;
             height: auto;
             vertical-align: middle;
         }
 
-        .bdt-license-notice-content {
+        .bdt-license-biggopti-content {
             h3 {
                 margin: 0 0 10px;
                 font-size: 20px;
@@ -40,7 +48,7 @@
             }
         }
 
-        .bdt-license-notice-button-wrap {
+        .bdt-license-biggopti-button-wrap {
             margin-top: 14px;
             display: flex;
             align-items: center;
@@ -108,10 +116,10 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
 
 
 /**
- * admin store api notice style start
+ * admin store api biggopti style start
  */
 
-[id^="bdt-admin-notice-api-notice"] {
+[id^="bdt-admin-biggopti-api-biggopti"] {
 
     .bdt-plugin-logo-wrapper {
         img {
@@ -126,7 +134,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
         }
     }
 
-    // Notice wrapper entrance animation
+    // Biggopti wrapper entrance animation
     @keyframes wrapperSlideInTop {
         0% {
             opacity: 0;
@@ -150,7 +158,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
         }
     }
 
-    .bdt-notice-wrapper {
+    .bdt-biggopti-wrapper {
         align-items: center;
         // height: 80px;
         background-color: #000;
@@ -171,14 +179,14 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
         background-size: cover;
     }
 
-    .bdt-api-notice-content {
+    .bdt-api-biggopti-content {
         display: flex;
         align-items: center;
         width: 100%;
         min-height: 100px;
     }
 
-    .bdt-notice-content {
+    .bdt-biggopti-content {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -191,20 +199,20 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
         transform: translateZ(0);
     }
 
-    .bdt-notice-content-right,
-    .bdt-notice-content-inner {
+    .bdt-biggopti-content-right,
+    .bdt-biggopti-content-inner {
         display: flex;
         align-items: center;
         gap: 20px;
     }
 
-    .bdt-notice-title-description {
+    .bdt-biggopti-title-description {
         max-width: 450px;
     }
     
-    .bdt-notice-logo-wrapper {
+    .bdt-biggopti-logo-wrapper {
         // width: 10%;
-        animation: noticeLogoSlideIn 0.7s ease-out 0.35s both;
+        animation: biggoptiLogoSlideIn 0.7s ease-out 0.35s both;
         img {
             width: clamp(50px, 5vw, 100px);
             height: auto;
@@ -215,9 +223,9 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
         }
     }
     
-    .bdt-notice-title-description {
+    .bdt-biggopti-title-description {
         // width: 40%;
-        .bdt-notice-title {
+        .bdt-biggopti-title {
             color: #fff;
             margin: 0;
             font-size: clamp(12px, 1.5vw, 22px);
@@ -228,13 +236,13 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
         }
     }
 
-    .bdt-notice-html-content {
+    .bdt-biggopti-html-content {
         color: #ffffff;
         text-shadow: 2px 2px 2px #000000;
         animation: titleSlideIn 0.8s ease-out 0.4s both;
     }
 
-    .notice-dismiss:before {
+    .bdt-biggopti-dismiss:before {
         color: #ffffff91;
     }
 
@@ -250,7 +258,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
         }
     }
     
-    .bdt-notice-countdown {
+    .bdt-biggopti-countdown {
         height: 100%;
         animation: countdownSlideIn 0.8s ease-out 0.5s both;
         .countdown-timer {
@@ -309,8 +317,8 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
         }
     }
 
-    // Notice logo entrance animation
-    @keyframes noticeLogoSlideIn {
+    // Biggopti logo entrance animation
+    @keyframes biggoptiLogoSlideIn {
         0% {
             opacity: 0;
             transform: scale(0.3) translateY(-20px);
@@ -325,7 +333,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
         }
     }
     
-    .bdt-notice-btn {
+    .bdt-biggopti-btn {
         --nm-text-primary: #fff;
         --nm-accent: #5affdb;
         --nm-shadow-color: #fffdef;
@@ -345,7 +353,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
             }
         }
         /* Button Styles */
-        .nm-notice-btn {
+        .nm-biggopti-btn {
             color: var(--nm-text-primary);
             text-decoration: none;
             font-size: clamp(9px, 1.8vw, 22px);
@@ -361,50 +369,50 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
             transition: all var(--nm-anim-duration-fast) ease;
         }
         
-        .nm-notice-btn:hover {
+        .nm-biggopti-btn:hover {
             color: var(--nm-accent);
             border-color: var(--nm-accent);
         }
         
-        .nm-notice-btn:hover .zolo-star {
+        .nm-biggopti-btn:hover .zolo-star {
             opacity: 1;
             z-index: 2;
             filter: drop-shadow(0 0 10px var(--nm-shadow-color));
         }
         
-        .nm-notice-btn svg {
+        .nm-biggopti-btn svg {
             width: 16px;
             height: 16px;
             display: block;
         }
         
         /* Star Hover Positions */
-        .nm-notice-btn:hover .zolo-star-1 {
+        .nm-biggopti-btn:hover .zolo-star-1 {
             top: 21%;
             left: -18%;
         }
         
-        .nm-notice-btn:hover .zolo-star-2 {
+        .nm-biggopti-btn:hover .zolo-star-2 {
             top: -25%;
             left: 10%;
         }
         
-        .nm-notice-btn:hover .zolo-star-3 {
+        .nm-biggopti-btn:hover .zolo-star-3 {
             top: 69%;
             left: 25%;
         }
         
-        .nm-notice-btn:hover .zolo-star-4 {
+        .nm-biggopti-btn:hover .zolo-star-4 {
             top: -34%;
             left: 80%;
         }
         
-        .nm-notice-btn:hover .zolo-star-5 {
+        .nm-biggopti-btn:hover .zolo-star-5 {
             top: 25%;
             left: 115%;
         }
         
-        .nm-notice-btn:hover .zolo-star-6 {
+        .nm-biggopti-btn:hover .zolo-star-6 {
             top: 5%;
             left: 60%;
         }
@@ -431,12 +439,12 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
 }
 
 @media (min-width: 1460px) {
-    [id^="bdt-admin-notice-api-notice"] {
-        .bdt-notice-content-right,
-        .bdt-notice-content-inner {
+    [id^="bdt-admin-biggopti-api-biggopti"] {
+        .bdt-biggopti-content-right,
+        .bdt-biggopti-content-inner {
             gap: 30px;
         }
-        .bdt-notice-countdown {
+        .bdt-biggopti-countdown {
             .countdown-timer {
                 padding: 0 30px;
             }
@@ -445,5 +453,5 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
 }
 
 /**
- * admin store api notice style end
+ * admin store api biggopti style end
 */
