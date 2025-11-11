@@ -1,16 +1,24 @@
 /**
- * ultimate-post-kit license notice 
+ * ultimate-post-kit license biggopti 
  * todo: need to this move another file
  */
-.ultimate-post-kit-notice {
+.ultimate-post-kit-biggopti {
   padding: 0 !important;
   border: 0 !important;
   box-shadow: none !important;
+  position: relative;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
-.ultimate-post-kit-notice .notice-dismiss {
-  padding: 15px;
+.ultimate-post-kit-biggopti .bdt-biggopti-dismiss {
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
 }
-.ultimate-post-kit-notice .bdt-license-notice-global {
+.ultimate-post-kit-biggopti .bdt-license-biggopti-global {
   border-left: 4px solid #60df54 !important;
   display: flex;
   align-items: flex-start;
@@ -22,27 +30,27 @@
   * Start Ultimate Post Kit
   */
 }
-.ultimate-post-kit-notice .bdt-license-notice-global .bdt-license-notice-logo img {
+.ultimate-post-kit-biggopti .bdt-license-biggopti-global .bdt-license-biggopti-logo img {
   width: 45px;
   height: auto;
   vertical-align: middle;
 }
-.ultimate-post-kit-notice .bdt-license-notice-global .bdt-license-notice-content h3 {
+.ultimate-post-kit-biggopti .bdt-license-biggopti-global .bdt-license-biggopti-content h3 {
   margin: 0 0 10px;
   font-size: 20px;
 }
-.ultimate-post-kit-notice .bdt-license-notice-global .bdt-license-notice-content p {
+.ultimate-post-kit-biggopti .bdt-license-biggopti-global .bdt-license-biggopti-content p {
   margin: 0;
   color: #5f6169;
   max-width: 750px;
 }
-.ultimate-post-kit-notice .bdt-license-notice-global .bdt-license-notice-button-wrap {
+.ultimate-post-kit-biggopti .bdt-license-biggopti-global .bdt-license-biggopti-button-wrap {
   margin-top: 14px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.ultimate-post-kit-notice .bdt-license-notice-global .bdt-button {
+.ultimate-post-kit-biggopti .bdt-license-biggopti-global .bdt-button {
   padding: 12px 16px;
   border-radius: 3px;
   line-height: 1;
@@ -50,26 +58,26 @@
   font-weight: 500;
   text-decoration: none;
 }
-.ultimate-post-kit-notice .bdt-license-notice-global .bdt-button-allow {
+.ultimate-post-kit-biggopti .bdt-license-biggopti-global .bdt-button-allow {
   color: #fff;
 }
-.ultimate-post-kit-notice .bdt-license-notice-global .bdt-button-skip {
+.ultimate-post-kit-biggopti .bdt-license-biggopti-global .bdt-button-skip {
   border: 0;
   color: #08c972;
 }
-.ultimate-post-kit-notice .bdt-license-notice-global.ultimate_post_kit .bdt-button-allow {
+.ultimate-post-kit-biggopti .bdt-license-biggopti-global.ultimate_post_kit .bdt-button-allow {
   --primaryColor: #60df54;
   --secondaryColor: #08c972;
   background: linear-gradient(313deg, var(--primaryColor), var(--secondaryColor) 100%);
 }
-.ultimate-post-kit-notice .bdt-license-notice-global.ultimate_post_kit .bdt-button-allow:hover {
+.ultimate-post-kit-biggopti .bdt-license-biggopti-global.ultimate_post_kit .bdt-button-allow:hover {
   --primaryColor: #08c972;
   --secondaryColor: #60df54;
 }
-.ultimate-post-kit-notice .bdt-license-notice-global.ultimate_post_kit .bdt-button-skip {
+.ultimate-post-kit-biggopti .bdt-license-biggopti-global.ultimate_post_kit .bdt-button-skip {
   background-color: rgba(86, 220, 88, 0.15);
 }
-.ultimate-post-kit-notice .bdt-license-notice-global.ultimate_post_kit .bdt-button-skip:hover {
+.ultimate-post-kit-biggopti .bdt-license-biggopti-global.ultimate_post_kit .bdt-button-skip:hover {
   background-color: rgba(86, 220, 88, 0.2);
 }
 
@@ -91,16 +99,16 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
 }
 
 /**
- * admin store api notice style start
+ * admin store api biggopti style start
  */
-[id^=bdt-admin-notice-api-notice] .bdt-plugin-logo-wrapper img {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-plugin-logo-wrapper img {
   vertical-align: middle;
   width: clamp(25px, 3vw, 40px);
   height: auto;
   animation: logoSlideIn 0.6s ease-out 0.3s both;
   transition: transform 0.3s ease;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-plugin-logo-wrapper:hover img {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-plugin-logo-wrapper:hover img {
   transform: scale(1.1) rotate(5deg);
 }
 @keyframes wrapperSlideInTop {
@@ -121,7 +129,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
     transform: scale(1) rotate(0deg);
   }
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-wrapper {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-wrapper {
   align-items: center;
   background-color: #000;
   padding: 0 clamp(10px, 3vw, 50px) 0 clamp(10px, 2vw, 30px);
@@ -133,19 +141,19 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   overflow: hidden;
   margin: 0;
 }
-[id^=bdt-admin-notice-api-notice] .has-background-image {
+[id^=bdt-admin-biggopti-api-biggopti] .has-background-image {
   background-position: left;
   background-repeat: no-repeat;
   background-color: #000;
   background-size: cover;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-api-notice-content {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-api-biggopti-content {
   display: flex;
   align-items: center;
   width: 100%;
   min-height: 100px;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-content {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -157,27 +165,27 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   backface-visibility: hidden;
   transform: translateZ(0);
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-content-right,
-[id^=bdt-admin-notice-api-notice] .bdt-notice-content-inner {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-content-right,
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-content-inner {
   display: flex;
   align-items: center;
   gap: 20px;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-title-description {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-title-description {
   max-width: 450px;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-logo-wrapper {
-  animation: noticeLogoSlideIn 0.7s ease-out 0.35s both;
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-logo-wrapper {
+  animation: biggoptiLogoSlideIn 0.7s ease-out 0.35s both;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-logo-wrapper img {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-logo-wrapper img {
   width: clamp(50px, 5vw, 100px);
   height: auto;
   transition: transform 0.3s ease;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-logo-wrapper:hover img {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-logo-wrapper:hover img {
   transform: scale(1.05);
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-title-description .bdt-notice-title {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-title-description .bdt-biggopti-title {
   color: #fff;
   margin: 0;
   font-size: clamp(12px, 1.5vw, 22px);
@@ -186,12 +194,12 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   transform-origin: left center;
   text-shadow: 2px 2px 2px #000000;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-html-content {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-html-content {
   color: #ffffff;
   text-shadow: 2px 2px 2px #000000;
   animation: titleSlideIn 0.8s ease-out 0.4s both;
 }
-[id^=bdt-admin-notice-api-notice] .notice-dismiss:before {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-dismiss:before {
   color: rgba(255, 255, 255, 0.568627451);
 }
 @keyframes titleSlideIn {
@@ -204,11 +212,11 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
     transform: translateX(0);
   }
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-countdown {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-countdown {
   height: 100%;
   animation: countdownSlideIn 0.8s ease-out 0.5s both;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-countdown .countdown-timer {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-countdown .countdown-timer {
   display: flex;
   align-items: center;
   gap: clamp(5px, 1.5vw, 20px);
@@ -219,7 +227,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   padding: 0 15px;
   min-height: 100px;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-countdown .countdown-item {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-countdown .countdown-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -227,7 +235,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   min-width: 40px;
   flex-shrink: 0;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-countdown .number {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-countdown .number {
   color: #fff;
   font-size: clamp(14px, 2vw, 22px);
   font-weight: 600;
@@ -237,14 +245,14 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   text-align: center;
   font-family: "Courier New", monospace;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-countdown .label {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-countdown .label {
   color: #d2d5f4;
   text-transform: capitalize;
   font-size: clamp(10px, 1vw, 13px);
   font-weight: 500;
   white-space: nowrap;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-countdown .separator {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-countdown .separator {
   height: 30px;
   width: 1px;
   background: rgba(255, 255, 255, 0.251);
@@ -259,7 +267,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
     transform: translateY(0);
   }
 }
-@keyframes noticeLogoSlideIn {
+@keyframes biggoptiLogoSlideIn {
   0% {
     opacity: 0;
     transform: scale(0.3) translateY(-20px);
@@ -273,7 +281,7 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
     transform: scale(1) translateY(0);
   }
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-btn {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn {
   --nm-text-primary: #fff;
   --nm-accent: #5affdb;
   --nm-shadow-color: #fffdef;
@@ -284,16 +292,16 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   /* Button Styles */
   /* Star Hover Positions */
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-btn a {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn a {
   background: transparent;
   border: 0;
   padding: 0;
   margin: 0;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-btn a:hover {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn a:hover {
   background: transparent;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn .nm-biggopti-btn {
   color: var(--nm-text-primary);
   text-decoration: none;
   font-size: clamp(9px, 1.8vw, 22px);
@@ -308,41 +316,41 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   text-align: left;
   transition: all var(--nm-anim-duration-fast) ease;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn .nm-biggopti-btn:hover {
   color: var(--nm-accent);
   border-color: var(--nm-accent);
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star {
   opacity: 1;
   z-index: 2;
   filter: drop-shadow(0 0 10px var(--nm-shadow-color));
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn svg {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn .nm-biggopti-btn svg {
   width: 16px;
   height: 16px;
   display: block;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-1 {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star-1 {
   top: 21%;
   left: -18%;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-2 {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star-2 {
   top: -25%;
   left: 10%;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-3 {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star-3 {
   top: 69%;
   left: 25%;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-4 {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star-4 {
   top: -34%;
   left: 80%;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-5 {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star-5 {
   top: 25%;
   left: 115%;
 }
-[id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-6 {
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star-6 {
   top: 5%;
   left: 60%;
 }
@@ -356,20 +364,20 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
     transform: translateX(0);
   }
 }
-[id^=bdt-admin-notice-api-notice].animations-complete * {
+[id^=bdt-admin-biggopti-api-biggopti].animations-complete * {
   will-change: auto;
   animation: none;
 }
 
 @media (min-width: 1460px) {
-  [id^=bdt-admin-notice-api-notice] .bdt-notice-content-right,
-  [id^=bdt-admin-notice-api-notice] .bdt-notice-content-inner {
+  [id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-content-right,
+  [id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-content-inner {
     gap: 30px;
   }
-  [id^=bdt-admin-notice-api-notice] .bdt-notice-countdown .countdown-timer {
+  [id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-countdown .countdown-timer {
     padding: 0 30px;
   }
 }
 /**
- * admin store api notice style end
+ * admin store api biggopti style end
 */

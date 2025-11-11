@@ -329,7 +329,7 @@ class Ultimate_Post_Kit_Loader {
 	public function init(){
 		if ( ! defined( 'BDTUPK_CH' ) && is_admin() ) {
 			// Notice class
-			require_once BDTUPK_ADMIN_PATH . 'admin-notice.php';
+			require_once BDTUPK_ADMIN_PATH . 'admin-biggopti.php';
 			require_once BDTUPK_ADMIN_PATH . 'admin.php';
 
 			// Load admin class for admin related content process
