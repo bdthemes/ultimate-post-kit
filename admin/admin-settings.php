@@ -11,9 +11,6 @@ use Elementor\Tracker;
  * Ultimate Post Kit Admin Settings Class
  */
 
- // Include rollback version functionality
-require_once BDTUPK_ADMIN_PATH . 'class-rollback-version.php';
-
 class UltimatePostKit_Admin_Settings {
 
     public static $modules_list  = null;
@@ -37,7 +34,7 @@ class UltimatePostKit_Admin_Settings {
     /**
 	 * Rollback version instance
 	 * 
-	 * @var UltimatePostKit_Rollback_Version
+	 * @var Rollback_Version
 	 */
 	public $rollback_version;
 
@@ -48,28 +45,43 @@ class UltimatePostKit_Admin_Settings {
             add_action('admin_init', [$this, 'admin_init']);
             add_action('admin_menu', [$this, 'admin_menu'], 201);
         }
-
+		
 		// Handle white label access link
 		$this->handle_white_label_access();
-
+		
 		// Add custom CSS/JS functionality
 		$this->init_custom_code_functionality();
-
+		
 		// White label settings (admin only)
 		add_action( 'wp_ajax_upk_save_white_label', [ $this, 'save_white_label_ajax' ] );
 		add_action( 'wp_ajax_upk_revoke_white_label_token', [ $this, 'revoke_white_label_token_ajax' ] );
 		add_action( 'admin_head', [ $this, 'inject_white_label_icon_css' ] );
-
+		
 		// Plugin installation (admin only)
 		add_action('wp_ajax_upk_install_plugin', [$this, 'install_plugin_ajax']);
+		
+		
 
-        // Initialize rollback version functionality
-		$this->rollback_version = new UltimatePostKit\Admin\UltimatePostKit_Rollback_Version();
+		if (true == _is_upk_pro_activated()) {
+			// Initialize rollback version functionality
+			//add_action('admin_init', [$this, 'rollback_init']);
+		}
 
     }
 
-
 	/**
+	 * Initialize Rollback Functionality
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function rollback_init() {
+		$this->rollback_version = new \UltimatePostKitPro\Rollback_Version();
+	}
+	
+	
+	
+		/**
 	 * Initialize Custom Code Functionality
 	 * 
 	 * @access public
@@ -832,16 +844,16 @@ class UltimatePostKit_Admin_Settings {
 		// 	[$this, 'plugin_page']
 		// );
 		
-		add_submenu_page(
-			self::PAGE_ID,
-			BDTUPK_TITLE,
-			esc_html__('Rollback Version', 'ultimate-post-kit'),
-			'manage_options',
-			self::PAGE_ID . '#ultimate_post_kit_rollback_version',
-			[$this, 'plugin_page']
-		);
+		if (true == _is_upk_pro_activated()) {
+			add_submenu_page(
+				self::PAGE_ID,
+				BDTUPK_TITLE,
+				esc_html__('Rollback Version', 'ultimate-post-kit'),
+				'manage_options',
+				self::PAGE_ID . '#ultimate_post_kit_rollback_version',
+				[$this, 'plugin_page']
+			);
 
-        if (true == _is_upk_pro_activated()) {
             add_submenu_page(
                 self::PAGE_ID,
                 BDTUPK_TITLE,
@@ -1482,9 +1494,11 @@ class UltimatePostKit_Admin_Settings {
 							<?php //$this->ultimate_post_kit_affiliate_content(); ?>
 						</div> -->
 
-						<div id="ultimate_post_kit_rollback_version_page" class="upk-option-page group">
-							<?php $this->ultimate_post_kit_rollback_version_content(); ?>
-						</div>
+						<?php if (true == _is_upk_pro_activated()) : ?>
+							<div id="ultimate_post_kit_rollback_version_page" class="upk-option-page group">
+								<?php $this->upk_rollback_version_content(); ?>
+							</div>
+						<?php endif; ?>
 
                         <?php if (_is_upk_pro_activated() !== true) : ?>
                             <div id="ultimate_post_kit_get_pro" class="upk-option-page group">
@@ -4290,9 +4304,9 @@ class UltimatePostKit_Admin_Settings {
 	 * @access public
 	 * @return void
 	 */
-	public function ultimate_post_kit_rollback_version_content() {
+	public function upk_rollback_version_content() {
 		// Use the already initialized rollback version instance
-		$this->rollback_version->ultimate_post_kit_rollback_version_content();
+		$this->rollback_version->upk_rollback_version_content();
 	}
 
 	/**

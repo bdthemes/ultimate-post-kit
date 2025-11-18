@@ -886,12 +886,15 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 				// 	'title' => esc_html__('Get Up to 60%', 'ultimate-post-kit'),
 				// 	'icon' => 'dashicons dashicons-money-alt',
 				// ],
-				[
-					'id' => 'ultimate_post_kit_rollback_version',
-					'title' => esc_html__('Rollback Version', 'ultimate-post-kit'),
-					'icon' => 'dashicons dashicons-update',
-				],
 			];
+
+            if (true == _is_upk_pro_activated()) {
+                $content_only_sections[] = [
+                    'id' => 'ultimate_post_kit_rollback_version',
+                    'title' => esc_html__('Rollback Version', 'ultimate-post-kit'),
+                    'icon' => 'dashicons dashicons-update',
+                ];
+            }
 			
 			// Check if each content section exists in settings sections, if not add it
 			foreach ($content_only_sections as $content_section) {
