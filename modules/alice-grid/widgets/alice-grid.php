@@ -102,18 +102,18 @@ class Alice_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'columns',
 			[
-				'label' => __('Columns', 'ultimate-post-kit') . BDTUPK_PC,
+				'label' => esc_html__('Columns', 'ultimate-post-kit') . BDTUPK_PC,
 				'type' => Controls_Manager::SELECT,
 				'default'        => '3',
 				'tablet_default' => '2',
 				'mobile_default' => '1',
 				'options' => [
-					'1' => '1',
-					'2' => '2',
-					'3' => '3',
-					'4' => '4',
-					'5' => '5',
-					'6' => '6',
+					'1' => esc_html__('1', 'ultimate-post-kit'),
+					'2' => esc_html__('2', 'ultimate-post-kit'),
+					'3' => esc_html__('3', 'ultimate-post-kit'),
+					'4' => esc_html__('4', 'ultimate-post-kit'),
+					'5' => esc_html__('5', 'ultimate-post-kit'),
+					'6' => esc_html__('6', 'ultimate-post-kit'),
 				],
 				'selectors' => [
 					'{{WRAPPER}} .upk-alice-grid .upk-style-1' => $column_size,
@@ -248,7 +248,7 @@ class Alice_Grid extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit'),
+				'label' => esc_html__('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -336,7 +336,7 @@ class Alice_Grid extends Group_Control_Query {
 		$this->add_control(
 			'meta_separator',
 			[
-				'label'       => __('Separator', 'ultimate-post-kit'),
+				'label'       => esc_html__('Separator', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => '.',
 				'label_block' => false,
@@ -358,10 +358,10 @@ class Alice_Grid extends Group_Control_Query {
 		$this->add_control(
 			'global_link',
 			[
-				'label'        => __('Item Wrapper Link', 'ultimate-post-kit'),
+				'label'        => esc_html__('Item Wrapper Link', 'ultimate-post-kit'),
 				'type'         => Controls_Manager::SWITCHER,
 				'prefix_class' => 'upk-global-link-',
-				'description'  => __('Be aware! When Item Wrapper Link activated then title link and read more link will not work', 'ultimate-post-kit'),
+				'description'  => esc_html__('Be aware! When Item Wrapper Link activated then title link and read more link will not work', 'ultimate-post-kit'),
 			]
 		);
 
@@ -379,7 +379,7 @@ class Alice_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'content_padding',
 			[
-				'label' 	 => __('Content Padding', 'ultimate-post-kit'),
+				'label' 	 => esc_html__('Content Padding', 'ultimate-post-kit'),
 				'type' 		 => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
@@ -410,7 +410,7 @@ class Alice_Grid extends Group_Control_Query {
 		$this->add_control(
 			'overlay_blur_level',
 			[
-				'label'       => __('Blur Level', 'ultimate-post-kit'),
+				'label'       => esc_html__('Blur Level', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::SLIDER,
 				'range'       => [
 					'px' => [
@@ -465,7 +465,7 @@ class Alice_Grid extends Group_Control_Query {
 		$this->add_responsive_control(
 			'item_padding',
 			[
-				'label' 	 => __('Padding', 'ultimate-post-kit'),
+				'label' 	 => esc_html__('Padding', 'ultimate-post-kit'),
 				'type' 		 => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
@@ -494,7 +494,7 @@ class Alice_Grid extends Group_Control_Query {
 		$this->add_control(
 			'overlay_blur_level_hover',
 			[
-				'label'       => __('Blur Level', 'ultimate-post-kit'),
+				'label'       => esc_html__('Blur Level', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::SLIDER,
 				'range'       => [
 					'px' => [
@@ -644,7 +644,7 @@ class Alice_Grid extends Group_Control_Query {
 			Group_Control_Text_Shadow::get_type(),
 			[
 				'name' => 'title_text_shadow',
-				'label' => __('Text Shadow', 'ultimate-post-kit'),
+				'label' => esc_html__('Text Shadow', 'ultimate-post-kit'),
 				'selector' => '{{WRAPPER}} .upk-alice-grid .upk-title a',
 			]
 		);
@@ -955,11 +955,13 @@ class Alice_Grid extends Group_Control_Query {
 
 		<div class="upk-author">
 			<span><?php echo esc_html_x('by', 'Frontend', 'ultimate-post-kit') ?></span>
-			<a href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
+			<a 
+				href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>"
+				aria-label="<?php echo esc_attr( 'View all posts by ' . get_the_author() ); ?>"
+			>
 				<?php echo esc_html( get_the_author() ) ?>
 			</a>
 		</div>
-
 	<?php
 	}
 
