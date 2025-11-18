@@ -152,7 +152,7 @@ class Biggopties {
 		: ['both'];
 
 		// Determine if this is targeted at Pro users
-		$pro_targeted = in_array('pro', $client_targets, true);
+		$pro_targeted = in_array('pro_targeted', $client_targets, true);
 		
 		// Ensure client_targets is always an array
 		if (!is_array($client_targets)) {
