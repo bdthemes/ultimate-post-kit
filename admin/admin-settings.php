@@ -62,9 +62,9 @@ class UltimatePostKit_Admin_Settings {
 		
 		
 
-		if (true == _is_upk_pro_activated()) {
+		if (_is_upk_pro_activated()) {
 			// Initialize rollback version functionality
-			//add_action('admin_init', [$this, 'rollback_init']);
+			add_action('admin_init', [$this, 'rollback_init']);
 		}
 
     }
