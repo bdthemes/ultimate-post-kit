@@ -319,7 +319,13 @@ trait Global_Widget_Functions {
 			return;
 		}
 		apply_filters('upk/' . $widget_name . '/before/title', '');
-		printf('<%1$s class="upk-title"><a href="%2$s" title="%3$s" class="title-animation-%4$s" >%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), esc_attr( get_permalink() ), esc_html( get_the_title() ), esc_attr($settings['title_style']));
+		printf(
+			'<%1$s class="upk-title"><a href="%2$s" title="%3$s" class="title-animation-%4$s" aria-label="%3$s">%3$s</a></%1$s>', 
+			esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), 
+			esc_url( get_permalink() ), 
+			esc_html( get_the_title() ), 
+			esc_attr($settings['title_style']),
+		);
 		apply_filters('upk/' . $widget_name . '/after/title', '');
 	}
 

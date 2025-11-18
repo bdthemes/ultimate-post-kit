@@ -202,7 +202,11 @@ function upk_get_category( $post_type ) {
 		foreach ( $categories as $category ) {
 			// Ensure $category is an object, not an array
 			if ( is_object( $category ) && isset( $category->term_id, $category->name, $category->slug ) ) {
-				$link                         = '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . $category->name . '</a>';
+				$link = '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" 
+							aria-label="' . esc_attr( 'Category ' . $category->name ) . '">' 
+							. esc_html( $category->name ) . 
+						'</a>';
+						
 				$_categories[ $category->slug ] = $link;
 			}
 		}

@@ -89,18 +89,18 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'columns',
 			[
-				'label'          => __('Columns', 'ultimate-post-kit'),
+				'label'          => esc_html__('Columns', 'ultimate-post-kit'),
 				'type'           => Controls_Manager::SELECT,
 				'default'        => 3,
 				'tablet_default' => 2,
 				'mobile_default' => 1,
 				'options'        => [
-					1 => '1',
-					2 => '2',
-					3 => '3',
-					4 => '4',
-					5 => '5',
-					6 => '6',
+					1 => esc_html__('1', 'ultimate-post-kit'),
+					2 => esc_html__('2', 'ultimate-post-kit'),
+					3 => esc_html__('3', 'ultimate-post-kit'),
+					4 => esc_html__('4', 'ultimate-post-kit'),
+					5 => esc_html__('5', 'ultimate-post-kit'),
+					6 => esc_html__('6', 'ultimate-post-kit'),
 				],
 			]
 		);
@@ -108,7 +108,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'item_gap',
 			[
-				'label'   => __('Item Gap', 'ultimate-post-kit'),
+				'label'   => esc_html__('Item Gap', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 20,
@@ -180,7 +180,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => esc_html__('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -209,7 +209,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_content_additional',
 			[
-				'label' => esc_html__('Additional', 'ultimate-post-kit'),
+				'label' => esc_html__('Additional Options', 'ultimate-post-kit'),
 			]
 		);
 
@@ -230,7 +230,7 @@ class Alex_Carousel extends Group_Control_Query {
 			[
 				'label'     => esc_html__('Read More', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SWITCHER,
-				'default' => 'yes',
+				'default' 	=> 'yes',
 			]
 		);
 
@@ -251,7 +251,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_control(
 			'meta_separator',
 			[
-				'label'       => __('Separator', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'       => esc_html__('Separator', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => '|',
 				'label_block' => false,
@@ -261,8 +261,8 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_control(
 			'show_post_format',
 			[
-				'label'   => esc_html__('Post Format', 'ultimate-post-kit') . BDTUPK_NC,
-				'type'    => Controls_Manager::SWITCHER,
+				'label'   	=> esc_html__('Post Format', 'ultimate-post-kit'),
+				'type'    	=> Controls_Manager::SWITCHER,
 				'separator' => 'before'
 			]
 		);
@@ -270,11 +270,11 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_control(
 			'global_link',
 			[
-				'label'        => __('Item Wrapper Link', 'ultimate-post-kit'),
+				'label'        => esc_html__('Item Wrapper Link', 'ultimate-post-kit'),
 				'type'         => Controls_Manager::SWITCHER,
 				'prefix_class' => 'upk-global-link-',
-				'description'  => __('Be aware! When Item Wrapper Link activated then title link and read more link will not work', 'ultimate-post-kit'),
-				'separator' => 'before'
+				'description'  => esc_html__('Be aware! When Item Wrapper Link activated then title link and read more link will not work', 'ultimate-post-kit'),
+				'separator'    => 'before'
 			]
 		);
 
@@ -341,8 +341,8 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'item_shadow_padding',
 			[
-				'label'       => __('Match Padding', 'ultimate-post-kit'),
-				'description' => __('You have to add padding for matching overlaping normal/hover box shadow when you used Box Shadow option.', 'ultimate-post-kit'),
+				'label'       => esc_html__('Match Padding', 'ultimate-post-kit'),
+				'description' => esc_html__('You have to add padding for matching overlaping normal/hover box shadow when you used Box Shadow option.', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::SLIDER,
 				'range'       => [
 					'px' => [
@@ -385,7 +385,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_control(
 			'overlay_blur_level',
 			[
-				'label'       => __('Blur Level', 'ultimate-post-kit'),
+				'label'       => esc_html__('Blur Level', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::SLIDER,
 				'range'       => [
 					'px' => [
@@ -424,7 +424,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'content_width',
 			[
-				'label'       => __('Width(%)', 'ultimate-post-kit'),
+				'label'       => esc_html__('Width(%)', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::SLIDER,
 				'selectors'   => [
 					'{{WRAPPER}} .upk-alex-carousel .upk-content-wrap' => 'width: {{SIZE}}%;'
@@ -435,7 +435,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'content_height',
 			[
-				'label' => __('Height(px)', 'ultimate-post-kit'),
+				'label' => esc_html__('Height(px)', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -459,7 +459,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'content_inner_padding',
 			[
-				'label' 	 => __('Inner Padding', 'ultimate-post-kit'),
+				'label' 	 => esc_html__('Inner Padding', 'ultimate-post-kit'),
 				'type' 		 => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
@@ -484,7 +484,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_control(
 			'title_style',
 			[
-				'label'   => esc_html__('Style', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'   => esc_html__('Style', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SELECT,
 				'default' => '',
 				'options' => [
@@ -549,7 +549,7 @@ class Alex_Carousel extends Group_Control_Query {
 			Group_Control_Text_Shadow::get_type(),
 			[
 				'name'      => 'title_text_shadow',
-				'label'     => __('Text Shadow', 'ultimate-post-kit'),
+				'label'     => esc_html__('Text Shadow', 'ultimate-post-kit'),
 				'selector'  => '{{WRAPPER}} .upk-alex-carousel .upk-title',
 				'condition' => [
 					'title_advanced_style' => 'yes'
@@ -571,7 +571,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'title_border_radius',
 			[
-				'label'		 => __('Border Radius', 'ultimate-post-kit'),
+				'label'		 => esc_html__('Border Radius', 'ultimate-post-kit'),
 				'type' 		 => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
@@ -597,7 +597,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'title_text_padding',
 			[
-				'label' 	 => __('Padding', 'ultimate-post-kit'),
+				'label' 	 => esc_html__('Padding', 'ultimate-post-kit'),
 				'type' 		 => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
@@ -839,7 +839,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_style_readmore',
 			[
-				'label'     => __('Read More', 'ultimate-post-kit'),
+				'label'     => esc_html__('Read More', 'ultimate-post-kit'),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'show_readmore' => 'yes',
@@ -852,14 +852,14 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->start_controls_tab(
 			'tab_readmore_normal',
 			[
-				'label' => __('Normal', 'ultimate-post-kit'),
+				'label' => esc_html__('Normal', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'readmore_text_color',
 			[
-				'label'     => __('Color', 'ultimate-post-kit'),
+				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-alex-carousel .upk-readmore .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore .upk-readmore-icon span:after' => 'background: {{VALUE}};',
@@ -888,7 +888,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'readmore_radius',
 			[
-				'label'      => __('Border Radius', 'ultimate-post-kit'),
+				'label'      => esc_html__('Border Radius', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
@@ -900,7 +900,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'readmore_primary_padding',
 			[
-				'label'      => __('Padding', 'ultimate-post-kit'),
+				'label'      => esc_html__('Padding', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
@@ -923,14 +923,14 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->start_controls_tab(
 			'tab_readmore_hover',
 			[
-				'label' => __('Hover', 'ultimate-post-kit'),
+				'label' => esc_html__('Hover', 'ultimate-post-kit'),
 			]
 		);
 
 		$this->add_control(
 			'readmore_hover_text_color',
 			[
-				'label'     => __('Color', 'ultimate-post-kit'),
+				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore .upk-readmore-icon span:after' => 'background: {{VALUE}};',
@@ -949,7 +949,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_control(
 			'readmore_hover_border_color',
 			[
-				'label'     => __('Border Color', 'ultimate-post-kit'),
+				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore' => 'border-color: {{VALUE}};',
@@ -1004,7 +1004,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->start_controls_tab(
 			'tab_avatar_normal',
 			[
-				'label' => __('Avatar', 'ultimate-post-kit'),
+				'label' => esc_html__('Avatar', 'ultimate-post-kit'),
 				'condition' => [
 					'show_author' => 'yes',
 				],
@@ -1071,7 +1071,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->start_controls_tab(
 			'tab_author_name_normal',
 			[
-				'label' => __('Author Name', 'ultimate-post-kit'),
+				'label' => esc_html__('Author Name', 'ultimate-post-kit'),
 				'condition' => [
 					'show_author' => 'yes',
 				],
@@ -1122,7 +1122,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->start_controls_tab(
 			'tab_date_normal',
 			[
-				'label' => __('Date', 'ultimate-post-kit'),
+				'label' => esc_html__('Date', 'ultimate-post-kit'),
 				'conditions' => [
 					'relation' => 'or',
 					'terms'    => [
@@ -1166,7 +1166,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'meta_spacing',
 			[
-				'label'     => esc_html__('Space Between', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => esc_html__('Space Between', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -1213,8 +1213,8 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_style_post_format',
 			[
-				'label' => esc_html__('Post Format', 'ultimate-post-kit') . BDTUPK_NC,
-				'tab'   => Controls_Manager::TAB_STYLE,
+				'label' 	=> esc_html__('Post Format', 'ultimate-post-kit'),
+				'tab'   	=> Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'show_post_format' => 'yes'
 				]
@@ -1247,7 +1247,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_control(
 			'overlay_blur_level_post_format',
 			[
-				'label'     => __('Blur Level', 'ultimate-post-kit'),
+				'label'     => esc_html__('Blur Level', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -1311,7 +1311,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'post_format_padding',
 			[
-				'label'      => __('Padding', 'ultimate-post-kit'),
+				'label'      => esc_html__('Padding', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
@@ -1323,7 +1323,7 @@ class Alex_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'post_format_margin',
 			[
-				'label'      => __('Margin', 'ultimate-post-kit'),
+				'label'      => esc_html__('Margin', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
@@ -1378,7 +1378,11 @@ class Alex_Carousel extends Group_Control_Query {
 
 ?>
 		<div class="upk-button-wrap">
-			<a href="<?php echo esc_url(get_permalink()); ?>" class="upk-readmore">
+			<a 
+				href="<?php echo esc_url(get_permalink()); ?>" 
+				class="upk-readmore"
+				aria-label="<?php echo esc_attr__( 'Read More Button', 'ultimate-post-kit' ); ?>"
+			>
 				<span class="upk-readmore-icon"><span></span></span>
 			</a>
 		</div>
@@ -1398,7 +1402,10 @@ class Alex_Carousel extends Group_Control_Query {
 				<div>
 					<?php if ($settings['show_author']) : ?>
 						<div class="upk-author-name">
-							<a href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
+							<a 
+								href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>"
+								aria-label="<?php echo esc_attr( 'View all posts by ' . get_the_author() ); ?>"
+							>
 								<?php echo esc_html( get_the_author() ) ?>
 							</a>
 						</div>
