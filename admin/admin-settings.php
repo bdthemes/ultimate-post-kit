@@ -69,15 +69,12 @@ class UltimatePostKit_Admin_Settings {
 
     }
 
-	/**
-	 * Initialize Rollback Functionality
-	 * 
-	 * @access public
-	 * @return void
-	 */
 	public function rollback_init() {
-		$this->rollback_version = new \UltimatePostKitPro\Rollback_Version();
+		if ( class_exists('\UltimatePostKitPro\Rollback_Version') ) {
+			$this->rollback_version = new \UltimatePostKitPro\Rollback_Version();
+		}
 	}
+
 	
 	
 	
