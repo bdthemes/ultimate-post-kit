@@ -621,6 +621,7 @@ class Author extends Module_Base {
 			[
 				'label'      => _x('Custom Shape', 'Mask Image', 'ultimate-post-kit'),
 				'type'       => Controls_Manager::MEDIA,
+				'dynamic'    => ['active' => true],
 				'show_label' => false,
 				'selectors'  => [
 					'{{WRAPPER}} .upk-author-wrapper .upk-image a img' => '-webkit-mask-image: url({{URL}}); mask-image: url({{URL}});',

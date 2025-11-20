@@ -162,6 +162,7 @@ class Banner extends Group_Control_Query
 			[
 				'label'       => __('Image', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::MEDIA,
+				'dynamic'     => ['active' => true],
 				'default'     => [
 					'url' => Utils::get_placeholder_image_src(),
 				],
@@ -621,6 +622,7 @@ class Banner extends Group_Control_Query
 			[
 				'label'       => esc_html__( 'Read More Text', 'ultimate-post-kit' ),
 				'type'        => Controls_Manager::TEXT,
+				'dynamic'     => [ 'active' => true ],
 				'default'     => esc_html__( 'Read More', 'ultimate-post-kit' ),
 				'placeholder' => esc_html__( 'Read More', 'ultimate-post-kit' ),
 			]

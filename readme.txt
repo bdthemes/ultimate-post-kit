@@ -249,6 +249,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.0.X [XXth November 2025] =
+
+* Added: Dynamic tag support provided
+
 = 4.0.13 [20th November 2025] =
 
 * Fixed: Notice duplicate issue fixed
