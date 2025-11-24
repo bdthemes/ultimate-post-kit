@@ -249,6 +249,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.0.X [XXth November 2025] =
+
+* Fixed: Show/Hide author name issue fixed in skide slider widget
+
 = 4.0.13 [20th November 2025] =
 
 * Fixed: Notice duplicate issue fixed
