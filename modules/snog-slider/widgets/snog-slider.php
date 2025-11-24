@@ -254,8 +254,9 @@ class Snog_Slider extends Group_Control_Query {
 		$this->add_control(
 			'readmore_text',
 			[
-				'label'       => __( 'Readmore Text', 'ultimate-post-kit' ),
+				'label'       => __( 'Read More Text', 'ultimate-post-kit' ),
 				'type'        => Controls_Manager::TEXT,
+				'dynamic'     => [ 'active' => true ],
 				'default'     => esc_html__('Explore', 'ultimate-post-kit'),
 				'label_block' => false,
 				'condition' => [

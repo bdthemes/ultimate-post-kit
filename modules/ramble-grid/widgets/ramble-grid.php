@@ -269,6 +269,7 @@ class Ramble_Grid extends Group_Control_Query {
 			[
 				'label'       => esc_html__('Read More Text', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
+				'dynamic'     => [ 'active' => true ],
 				'default'     => esc_html__('Read More', 'ultimate-post-kit'),
 				'placeholder' => esc_html__('Read More', 'ultimate-post-kit'),
 				'condition'   => [

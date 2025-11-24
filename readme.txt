@@ -251,6 +251,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 = 4.0.X [XXth November 2025] =
 
+* Added: Dynamic tag support provided
 * Fixed: Show/Hide author name issue fixed in skide slider widget
 
 = 4.0.13 [20th November 2025] =

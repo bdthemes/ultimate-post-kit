@@ -104,6 +104,7 @@ class Social_Share extends Module_Base {
 			[
 				'label' => esc_html__( 'Custom Label', 'ultimate-post-kit' ),
 				'type' => Controls_Manager::TEXT,
+				'dynamic' => [ 'active' => true ],
 			]
 		);
 
@@ -413,6 +414,7 @@ class Social_Share extends Module_Base {
 			[
 				'label'         => esc_html__( 'URL', 'ultimate-post-kit' ),
 				'type'          => Controls_Manager::URL,
+				'dynamic'       => [ 'active' => true ],
 				'show_external' => false,
 				'placeholder'   => 'http://your-link.com',
 				'condition'     => [

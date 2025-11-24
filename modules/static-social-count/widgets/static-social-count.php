@@ -161,6 +161,7 @@ class Static_Social_Count extends Group_Control_Query {
 			[
 				'label'             => esc_html__('Link', 'ultimate-post-kit'),
 				'type'              => Controls_Manager::URL,
+				'dynamic'           => [ 'active' => true ],
 				'placeholder'       => esc_html__('https://facebook.com', 'ultimate-post-kit'),
 				'show_external'     => true,
 				'default'           => [
