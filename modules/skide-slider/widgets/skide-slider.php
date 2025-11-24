@@ -586,6 +586,9 @@ class Skide_Slider extends Group_Control_Query {
 				'name'     => 'meta_author_typography',
 				'label'    => esc_html__('Author Typography', 'ultimate-post-kit'),
 				'selector' => '{{WRAPPER}} .upk-skide-slider .upk-meta .upk-author-name a',
+				'condition' => [
+					'show_author' => 'yes',
+				],
 			]
 		);
 
@@ -1079,16 +1082,19 @@ class Skide_Slider extends Group_Control_Query {
 				<?php endif; ?>
 
 				<div class="upk-meta" data-swiper-parallax="-100">
+					<?php if ('yes' === $settings['show_author']) : ?>
 					<div class="upk-author-img">
 						<?php echo get_avatar(get_the_author_meta('ID'), 48); ?>
 					</div>
+					<?php endif; ?>
 					<div class="upk-meta-info">
+						<?php if ('yes' === $settings['show_author']) : ?>
 						<div class="upk-author-name">
 							<a href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
 								<?php echo esc_html( get_the_author() ); ?>
 							</a>
 						</div>
-
+						<?php endif; ?>
 						<?php if ($settings['show_comments'] or $settings['show_date'] or $settings['show_reading_time']) : ?>
 							<div class="upk-date-comments">
 								<?php $this->render_date(); ?>
