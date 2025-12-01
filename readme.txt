@@ -249,6 +249,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.0.X [XXth December 2025] =
+
+* Improved: Added aria-label attribute to links for better accessibility
+
 = 4.0.14 [26th November 2025] =
 
 * Added: Dynamic tag support provided
