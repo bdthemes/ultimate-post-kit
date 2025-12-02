@@ -2,10 +2,10 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza, shmusuf, arafatakashakku
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.0.14
+Stable tag: 4.0.15
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
-Tested up to: 6.8.3
+Tested up to: 6.9
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
@@ -249,9 +249,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.0.X [XXth December 2025] =
+= 4.0.15 [2nd December 2025] =
 
-* Improved: Added aria-label attribute to links for better accessibility
+* Updated: Made compatible with WordPress version 6.9
+* Updated: Added aria-label attribute to links for better accessibility
 
 = 4.0.14 [26th November 2025] =
 
