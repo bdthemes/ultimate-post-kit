@@ -34,6 +34,18 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
 	public function callback_ajax_loadmore_posts() {
 
+		// Security: Verify nonce
+		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'upk-site' ) ) {
+			wp_send_json_error( [ 'message' => esc_html__( 'Security verification failed', 'ultimate-post-kit' ) ], 403 );
+			wp_die();
+		}
+
+		// Security: Check user capability (allow read capability for public content)
+		if ( ! current_user_can( 'read' ) ) {
+			wp_send_json_error( [ 'message' => esc_html__( 'Insufficient permissions', 'ultimate-post-kit' ) ], 403 );
+			wp_die();
+		}
+
 		$settings = [];
 
 		if ( isset( $_POST['settings'] ) && is_array( $_POST['settings'] ) ) {
@@ -42,23 +54,46 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
 		$post_type = $settings['post_source'] ?? 'post';
 
+		// Security: Enforce query limits to prevent DoS
+		$per_page = isset( $_POST['per_page'] ) ? absint( $_POST['per_page'] ) : 6;
+		$per_page = min( $per_page, 50 ); // Maximum 50 posts per request
+		$offset = isset( $_POST['offset'] ) ? absint( $_POST['offset'] ) : 0;
+		$offset = min( $offset, 1000 ); // Maximum offset of 1000
+
+		 // Security: Whitelist allowed post types
+		$allowed_post_types = [ 'post', 'page' ];
+		$allowed_post_types = apply_filters( 'upk_alex_grid_allowed_post_types', $allowed_post_types );
+		$post_type = in_array( $post_type, $allowed_post_types, true ) ? $post_type : 'post';
+
+		 // Security: Whitelist orderby values
+		$allowed_orderby = [ 'date', 'title', 'modified', 'rand', 'comment_count', 'menu_order' ];
+		$posts_orderby = isset( $settings['posts_orderby'] ) && in_array( $settings['posts_orderby'], $allowed_orderby, true ) ? $settings['posts_orderby'] : 'date';
+
+		 // Security: Whitelist order values
+		$posts_order = isset( $settings['posts_order'] ) && in_array( strtoupper( $settings['posts_order'] ), [ 'ASC', 'DESC' ], true ) ? strtoupper( $settings['posts_order'] ) : 'DESC';
+
 		 $settings = array_merge(
 			[
-				'posts_source'                   => 'post',
-				'posts_orderby'                  => 'date',
-				'posts_order'                    => 'DESC',
+				'posts_source'                   => $post_type,
+				'posts_orderby'                  => $posts_orderby,
+				'posts_order'                    => $posts_order,
 				'posts_ignore_sticky_posts'      => 'no',
 				'posts_only_with_featured_image' => 'no',
 				'posts_select_date'              => '',
 				'posts_exclude_by'               => [],
 				'posts_include_by'               => [],
-				'posts_per_page'                 => isset( $_POST['per_page'] ) ? absint( $_POST['per_page'] ) : 0,
-				'posts_offset'                   => isset( $_POST['offset'] ) ? absint( $_POST['offset'] ) : 0,
+				'posts_per_page'                 => $per_page,
+				'posts_offset'                   => $offset,
 			],
 			$settings
 		);
 	
 		$ajaxposts = $this->query_args( $settings );
+		
+		// Security: Override post_status to ensure only published posts are shown
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			$ajaxposts->query_vars['post_status'] = 'publish';
+		}
 	
 		ob_start();
 		$found_posts = false;

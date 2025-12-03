@@ -249,6 +249,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.0.XX [XXnd December 2025] =
+
+* Fixed: Security vulnerability fixed in AJAX load more endpoints
+
 = 4.0.15 [2nd December 2025] =
 
 * Updated: Made compatible with WordPress version 6.9
