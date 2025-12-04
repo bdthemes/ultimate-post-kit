@@ -1,6 +1,6 @@
 {
 	"name": "ultimate-post-kit",
-	"version": "4.0.12",
+	"version": "4.0.16",
 	"main": "index.php",
 	"scripts": {
 		"build": "npm run && npm run clean && cross-env NODE_ENV=production grunt",
