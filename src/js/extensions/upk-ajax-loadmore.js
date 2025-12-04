@@ -71,6 +71,7 @@
                 offset: currentItemCount,
                 animation: animation,
                 slide_index: slideIndex,
+                nonce: window.UltimatePostKitConfig.nonce,
             };
 
             // ajax call
