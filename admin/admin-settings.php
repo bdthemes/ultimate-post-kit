@@ -1538,7 +1538,7 @@ class UltimatePostKit_Admin_Settings {
      * This code uses localstorage for displaying active tabs
      */
     function script() {
-    ?>
+    	?>
         <script>
             jQuery(document).ready(function() {
                 jQuery('.upk-no-result').removeClass('bdt-animation-shake');
@@ -2924,7 +2924,7 @@ class UltimatePostKit_Admin_Settings {
 			});
 			
         </script>
-    <?php
+    	<?php
     }
 
     /**
