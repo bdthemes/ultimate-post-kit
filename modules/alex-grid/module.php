@@ -40,12 +40,6 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 			wp_die();
 		}
 
-		// Security: Check user capability (allow read capability for public content)
-		if ( ! current_user_can( 'read' ) ) {
-			wp_send_json_error( [ 'message' => esc_html__( 'Insufficient permissions', 'ultimate-post-kit' ) ], 403 );
-			wp_die();
-		}
-
 		$settings = [];
 
 		if ( isset( $_POST['settings'] ) && is_array( $_POST['settings'] ) ) {
