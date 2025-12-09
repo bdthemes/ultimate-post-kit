@@ -1451,8 +1451,8 @@ class Camux_Slider extends Group_Control_Query {
 		$this->add_render_attribute('swiper', 'class', 'swiper-carousel swiper');
 
 	?>
-		<div <?php echo $this->get_render_attribute_string('camux-slider'); ?>>
-			<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
+		<div <?php $this->print_render_attribute_string('camux-slider'); ?>>
+			<div <?php $this->print_render_attribute_string('swiper'); ?>>
 				<div class="swiper-wrapper">
 				<?php
 			}
@@ -1485,7 +1485,7 @@ class Camux_Slider extends Group_Control_Query {
 				$this->add_render_attribute('slider-item', 'class', 'upk-item swiper-slide', true);
 
 	?>
-		<div <?php echo $this->get_render_attribute_string('slider-item'); ?>>
+		<div <?php $this->print_render_attribute_string('slider-item'); ?>>
 			<div class="upk-img-wrap">
 				<?php $this->render_image(get_post_thumbnail_id($post_id), $image_size); ?>
 			</div>
@@ -1541,7 +1541,7 @@ class Camux_Slider extends Group_Control_Query {
 				$this->add_render_attribute('thumb-item', 'class', 'upk-item swiper-slide', true);
 
 	?>
-		<div <?php echo $this->get_render_attribute_string('thumb-item'); ?>>
+		<div <?php $this->print_render_attribute_string('thumb-item'); ?>>
 			<div class="upk-img-wrap">
 				<?php $this->render_image(get_post_thumbnail_id($post_id), $image_size); ?>
 			</div>
@@ -1579,7 +1579,7 @@ class Camux_Slider extends Group_Control_Query {
 				$this->render_footer();
 
 			?>
-			<div thumbsSlider="" <?php echo $this->get_render_attribute_string('swiper-thumbs'); ?>>
+			<div thumbsSlider="" <?php $this->print_render_attribute_string('swiper-thumbs'); ?>>
 				<div class="swiper-wrapper">
 					<?php
 

@@ -1681,7 +1681,7 @@ class Pholox_Slider extends Group_Control_Query
 		$this->render_header();
 	?>
 		<div class="upk-main-slider">
-			<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
+			<div <?php $this->print_render_attribute_string('swiper'); ?>>
 				<div class="swiper-wrapper">
 					<?php
 					while ($wp_query->have_posts()) {
@@ -1701,7 +1701,7 @@ class Pholox_Slider extends Group_Control_Query
 		</div>
 
 		<div class="upk-thumbs-slider">
-			<div thumbsSlider="" <?php echo $this->get_render_attribute_string('swiper-thumbs'); ?>>
+			<div thumbsSlider="" <?php $this->print_render_attribute_string('swiper-thumbs'); ?>>
 				<div class="swiper-wrapper">
 					<?php
 					while ($wp_query->have_posts()) {

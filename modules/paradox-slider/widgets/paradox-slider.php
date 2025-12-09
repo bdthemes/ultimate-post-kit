@@ -2223,7 +2223,7 @@ class Paradox_Slider extends Group_Control_Query {
 		?>
 		<div <?php $this->print_render_attribute_string( 'paradox-slider' ); ?>>
 			<div class="upk-wrapper">
-				<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
+				<div <?php $this->print_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 		<?php
 	}

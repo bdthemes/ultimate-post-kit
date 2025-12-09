@@ -220,7 +220,7 @@ class Hazel_Carousel extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_content_additional',
 			[
-				'label' => esc_html__('Additional', 'ultimate-post-kit'),
+				'label' => esc_html__('Additional Options', 'ultimate-post-kit'),
 			]
 		);
 
@@ -958,7 +958,7 @@ class Hazel_Carousel extends Group_Control_Query {
 	?>
 		<div <?php $this->print_render_attribute_string('carousel'); ?>>
 			<div class="upk-post-grid upk-pg-text-position-<?php echo esc_html($settings['content_position']) ?> upk-content-style-<?php echo esc_html($settings['content_style']) ?>">
-				<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
+				<div <?php $this->print_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 					<?php
 				}
