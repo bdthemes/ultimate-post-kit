@@ -1441,7 +1441,7 @@ class Alex_Carousel extends Group_Control_Query {
 		?>
 		<div <?php $this->print_render_attribute_string('carousel'); ?>>
 			<div class="upk-alex-wrap upk-content-<?php echo esc_html($settings['content_position']) ?>">
-				<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
+				<div <?php $this->print_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 					<?php
 				}

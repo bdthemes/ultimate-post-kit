@@ -174,7 +174,7 @@ class Reading_Progress extends Module_Base {
 
 		$position = $settings['direction'] == 'horizontal' ? $settings['horizontal_position'] : $settings['vertical_position'];
 
-	    $this->add_render_attribute(
+		$this->add_render_attribute(
 			[
 				'reading-progress-settings' => [
 					'id'			=> $id,
@@ -195,7 +195,8 @@ class Reading_Progress extends Module_Base {
 			]
 		);
 
-	    echo '<div '.$this->get_render_attribute_string( 'reading-progress-settings' ).'></div>';
-
+		?>
+		<div <?php $this->print_render_attribute_string( 'reading-progress-settings' ); ?>></div>
+		<?php
 	}
 }

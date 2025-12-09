@@ -1155,7 +1155,7 @@ class Alter_Carousel extends Group_Control_Query
 ?>
 		<div <?php $this->print_render_attribute_string('carousel'); ?>>
 			<div class="upk-post-grid">
-				<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
+				<div <?php $this->print_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 					<?php
 				}

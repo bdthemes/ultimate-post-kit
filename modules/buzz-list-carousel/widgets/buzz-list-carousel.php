@@ -196,7 +196,7 @@ class Buzz_List_Carousel extends Group_Control_Query {
 		$this->add_responsive_control(
 			'content_vertical_align',
 			[
-				'label'   => esc_html__('Vertical Align', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'   => esc_html__('Vertical Align', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::CHOOSE,
 				'options' => [
 					'flex-start'  => [
@@ -225,7 +225,7 @@ class Buzz_List_Carousel extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_post_query_builder',
 			[
-				'label' => __('Query', 'ultimate-post-kit') . BDTUPK_NC,
+				'label' => __('Query', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -928,7 +928,7 @@ class Buzz_List_Carousel extends Group_Control_Query {
 	?>
 		<div <?php $this->print_render_attribute_string('carousel'); ?>>
 			<div class="upk-buzz-wrapper">
-				<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
+				<div <?php $this->print_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 					<?php
 				}

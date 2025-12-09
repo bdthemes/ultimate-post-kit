@@ -1414,8 +1414,8 @@ class Snog_Slider extends Group_Control_Query {
 		$this->add_render_attribute('swiper', 'class', 'upk-main-slider swiper');
 
 		?>
-		<div <?php echo $this->get_render_attribute_string( 'snog-slider' ); ?>>
-			<div <?php echo $this->get_render_attribute_string('swiper'); ?>>
+		<div <?php $this->print_render_attribute_string( 'snog-slider' ); ?>>
+			<div <?php $this->print_render_attribute_string('swiper'); ?>>
                 <div class="swiper-wrapper">
 		<?php
 	}
@@ -1449,7 +1449,7 @@ class Snog_Slider extends Group_Control_Query {
 			if (has_excerpt()) {
 				the_excerpt();
 			} else {
-				echo ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode);
+				echo wp_kses_post( ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode) );
 			}
 			?>
 		</div>
@@ -1462,7 +1462,7 @@ class Snog_Slider extends Group_Control_Query {
 		$this->add_render_attribute('slider-item', 'class', 'upk-item swiper-slide', true);
 
 		?>
-		<div <?php echo $this->get_render_attribute_string('slider-item'); ?>>
+		<div <?php $this->print_render_attribute_string('slider-item'); ?>>
 			<div class="upk-image-wrap">
 				<?php $this->render_image(get_post_thumbnail_id($post_id), $image_size); ?>
 			</div>
@@ -1476,7 +1476,7 @@ class Snog_Slider extends Group_Control_Query {
 		$this->add_render_attribute('slider-item', 'class', 'upk-item swiper-slide', true);
 
 		?>
-		<div <?php echo $this->get_render_attribute_string('slider-item'); ?>>
+		<div <?php $this->print_render_attribute_string('slider-item'); ?>>
 			<div class="upk-content-wrap">
 			   <div class="upk-inner-content">
 				<?php if ( $settings['show_category'] ) : ?>
@@ -1534,7 +1534,7 @@ class Snog_Slider extends Group_Control_Query {
 		$this->add_render_attribute('thumb-item', 'class', 'upk-item swiper-slide', true);
 
 		?>
-		<div <?php echo $this->get_render_attribute_string('thumb-item'); ?>>
+		<div <?php $this->print_render_attribute_string('thumb-item'); ?>>
 		    <div class="upk-image-wrap">
 				<?php $this->render_image(get_post_thumbnail_id($post_id), $image_size); ?>
 			</div>
@@ -1573,7 +1573,7 @@ class Snog_Slider extends Group_Control_Query {
 			$this->render_footer();
 
 			?>
-			<div thumbsSlider="" <?php echo $this->get_render_attribute_string('swiper-thumbs'); ?>>
+			<div thumbsSlider="" <?php $this->print_render_attribute_string('swiper-thumbs'); ?>>
 				<div class="swiper-wrapper">
 					<?php
 
@@ -1588,7 +1588,7 @@ class Snog_Slider extends Group_Control_Query {
 				</div>
 			</div>
 
-			<div <?php echo $this->get_render_attribute_string('swiper-content'); ?>>
+			<div <?php $this->print_render_attribute_string('swiper-content'); ?>>
 					<div class="swiper-wrapper">
 						<?php 
 						while ( $wp_query->have_posts() ) {
