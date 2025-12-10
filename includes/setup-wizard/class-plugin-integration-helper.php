@@ -31,7 +31,18 @@ class Plugin_Integration_Helper {
                     'active_installs' => '100,000+'
                 ]
             ],
-            'bdthemes-prime-slider-lite' => [
+            // 'bdthemes-prime-slider-lite' => [
+            //     'recommended' => true,
+            //     'fallback' => [
+            //         'name' => 'Prime Slider',
+            //         'description' => 'Create eye-catching sliders for your website quickly and easily with 55+ modern Elementor slider widgets.',
+            //         'logo' => 'https://ps.w.org/bdthemes-prime-slider-lite/assets/icon-256x256.gif',
+            //         'rating' => 4.7,
+            //         'num_ratings' => 500,
+            //         'active_installs' => '100,000+'
+            //     ]
+            // ],
+            'bdthemes-prime-slider-lite/bdthemes-prime-slider.php' => [
                 'recommended' => true,
                 'fallback' => [
                     'name' => 'Prime Slider',
@@ -85,6 +96,10 @@ class Plugin_Integration_Helper {
 
             // Ensure api_data is a valid array with required fields
             if ($api_data && self::validate_plugin_data($api_data)) {
+                // Determine the correct plugin slug format
+                // If slug already contains .php, use it as-is, otherwise append default format
+                $plugin_slug = (strpos($slug, '.php') !== false) ? $slug : $slug . '/' . $slug . '.php';
+                
                 // Use API data with fallbacks and proper null checking
                 $plugins[] = [
                     'logo' => $api_data['logo'] ?? ($config['fallback']['logo'] ?? ''),
@@ -92,7 +107,7 @@ class Plugin_Integration_Helper {
                     'rating_percentage' => $api_data['rating_percentage'] ?? 0,
                     'num_ratings' => $api_data['num_ratings'] ?? 0,
                     'name' => $api_data['name'] ?? ($config['fallback']['name'] ?? $slug),
-                    'slug' => $slug . '/' . $slug . '.php',
+                    'slug' => $plugin_slug,
                     'description' => $api_data['description'] ?? ($config['fallback']['description'] ?? ''),
                     'active_installs' => $api_data['active_installs'] ?? ($config['fallback']['active_installs'] ?? '0'),
                     'active_installs_count' => $api_data['active_installs_count'] ?? 0,
@@ -105,6 +120,10 @@ class Plugin_Integration_Helper {
                     'homepage' => $api_data['homepage'] ?? ''
                 ];
             } else {
+                // Determine the correct plugin slug format
+                // If slug already contains .php, use it as-is, otherwise append default format
+                $plugin_slug = (strpos($slug, '.php') !== false) ? $slug : $slug . '/' . $slug . '.php';
+                
                 // Use fallback data with proper null checking
                 $fallback = $config['fallback'] ?? [];
                 $plugins[] = [
@@ -113,7 +132,7 @@ class Plugin_Integration_Helper {
                     'rating_percentage' => 0,
                     'num_ratings' => $fallback['num_ratings'] ?? 0,
                     'name' => $fallback['name'] ?? $slug,
-                    'slug' => $slug . '/' . $slug . '.php',
+                    'slug' => $plugin_slug,
                     'description' => $fallback['description'] ?? '',
                     'active_installs' => $fallback['active_installs'] ?? '0',
                     'active_installs_count' => 0,

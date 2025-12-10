@@ -249,6 +249,11 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.0.XX [X December 2025] =
+
+* Fixed: Others plugin issue fixed in Setup Wizard & Admin Dashboard
+* Updated: Template path updated
+
 = 4.0.16 [4th December 2025] =
 
 * Fixed: Security vulnerability fixed in AJAX load more endpoints

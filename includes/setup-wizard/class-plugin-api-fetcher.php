@@ -26,22 +26,26 @@ class Plugin_Api_Fetcher {
     /**
      * Get plugin data from WordPress.org API with caching
      *
-     * @param string $plugin_slug Plugin slug (e.g., 'bdthemes-element-pack-lite')
+     * @param string $plugin_slug Plugin slug (e.g., 'ultimate-post-kit' or 'plugin-name/plugin-name.php')
      * @return array|false Plugin data or false on failure
      */
     public static function get_plugin_data($plugin_slug) {
+        // Extract the directory slug from full plugin path if needed
+        // For example: 'bdthemes-prime-slider-lite/bdthemes-prime-slider.php' -> 'bdthemes-prime-slider-lite'
+        $api_slug = (strpos($plugin_slug, '/') !== false) ? dirname($plugin_slug) : $plugin_slug;
+        
         // Check cache first
-        $cached_data = self::get_cached_data($plugin_slug);
+        $cached_data = self::get_cached_data($api_slug);
         if ($cached_data !== false) {
             return $cached_data;
         }
 
         // Fetch fresh data from API
-        $plugin_data = self::fetch_from_api($plugin_slug);
+        $plugin_data = self::fetch_from_api($api_slug);
         
         if ($plugin_data !== false) {
             // Cache the data
-            self::cache_data($plugin_slug, $plugin_data);
+            self::cache_data($api_slug, $plugin_data);
             return $plugin_data;
         }
 
