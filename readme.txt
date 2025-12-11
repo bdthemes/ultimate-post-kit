@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza, shmusuf, arafatakashakku
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.0.16
+Stable tag: 4.0.17
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.9
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.33.2
+Elementor tested up to: 3.33.4
 
 Build your blogs and news sites with a feature-rich Elementor addon, offering 100+ elements for engaging layouts.
 
@@ -249,10 +249,11 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.0.XX [X December 2025] =
+= 4.0.17 [11th December 2025] =
 
 * Fixed: Others plugin issue fixed in Setup Wizard & Admin Dashboard
 * Updated: Template path updated
+* Updated: Security improved
 
 = 4.0.16 [4th December 2025] =
 
