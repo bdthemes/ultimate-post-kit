@@ -3,4 +3,5 @@
 ultimate-post-kit.zip
 .idea
 *.zip
+!includes/setup-wizard/assets/templates/*.zip
 ultimate-post-kit
