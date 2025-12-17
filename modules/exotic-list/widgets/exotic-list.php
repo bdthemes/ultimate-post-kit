@@ -140,7 +140,7 @@
 			$this->start_controls_section(
 				'section_post_query_builder',
 				[
-					'label' => __( 'Query', 'ultimate-post-kit' ) . BDTUPK_NC,
+					'label' => __( 'Query', 'ultimate-post-kit' ),
 					'tab'   => Controls_Manager::TAB_CONTENT,
 				]
 			);
@@ -169,7 +169,7 @@
 			$this->start_controls_section(
 				'section_content_additional',
 				[
-					'label' => esc_html__( 'Additional', 'ultimate-post-kit' ),
+					'label' => esc_html__( 'Additional Options', 'ultimate-post-kit' ),
 				]
 			);
 			
@@ -210,6 +210,21 @@
 					'type'        => Controls_Manager::TEXT,
 					'default'     => '//',
 					'label_block' => false,
+					'conditions'  => [
+						'relation' => 'or',
+						'terms'    => [
+							[
+								'name'     => 'show_category',
+								'operator' => '===',
+								'value'    => 'yes',
+							],
+							[
+								'name'     => 'show_author',
+								'operator' => '===',
+								'value'    => 'yes',
+							],
+						],
+					],
 				]
 			);
 			
