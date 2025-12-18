@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza, shmusuf, arafatakashakku
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.0.17
+Stable tag: 4.0.18
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.9
@@ -249,7 +249,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.0.X [XXth December 2025] =
+= 4.0.18 [18th December 2025] =
 
 * Fixed: Corrected the conditional logic for displaying the separator between category, author, and reading time in the exotic widget
 
