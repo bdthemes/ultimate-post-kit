@@ -249,6 +249,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.0.X [XXth December 2025] =
+
+Fixed: Time short format issue fixed in gratis grid widget
+
 = 4.0.18 [18th December 2025] =
 
 * Fixed: Corrected the conditional logic for displaying the separator between category, author, and reading time in the exotic widget
