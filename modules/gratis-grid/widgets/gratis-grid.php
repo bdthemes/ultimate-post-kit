@@ -1390,6 +1390,7 @@ class Gratis_Grid extends Group_Control_Query {
 				'show_author'         			 => isset( $settings['show_author'] ) ? $settings['show_author'] : 'yes',
 				'show_date'           			 => isset( $settings['show_date'] ) ? $settings['show_date'] : 'yes',
 				'human_diff_time'     			 => isset( $settings['human_diff_time'] ) ? $settings['human_diff_time'] : 'no',
+				'human_diff_time_short'          => isset( $settings['human_diff_time_short'] ) ? $settings['human_diff_time_short'] : 'no',
 				'show_time'           			 => isset( $settings['show_time'] ) ? $settings['show_time'] : '',
 				'show_category'       			 => isset( $settings['show_category'] ) ? $settings['show_category'] : 'yes',
 				'show_readmore'       			 => isset( $settings['show_readmore'] ) ? $settings['show_readmore'] : 'yes',

@@ -2885,14 +2885,16 @@ $global-link-color: #1e87f0;
 	}
 	.ultimate-post-kit-custom-code-save-btn {
 		margin-right: 12px;
+		&:hover {
+			background: linear-gradient(to right, #58D34D, #00A85C);
+		}
 	}
 	.ultimate-post-kit-custom-code-reset-btn,
 	.ultimate-post-kit-white-label-save-btn {
-		background: #ffcdd9;
-    	color: #EF476F;
+		background: linear-gradient(to right, #fa6336, #ff3c3c);
+		color: #fff;
 		&:hover {
-			background: #EF476F;
-			color: #fff;
+			background: linear-gradient(to right, #ff3c3c, #fa6336);
 		}
 	}
 	.upk-code-message,
