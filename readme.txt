@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza, shmusuf, arafatakashakku
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.0.19
+Stable tag: 4.0.20
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.9
@@ -249,13 +249,13 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.0.X [XXth December 2025] =
+= 4.0.20 [1st January 2026] =
 
-Fixed: Human diff time issue fixed
+* Fixed: Human diff time issue fixed
 
 = 4.0.19 [24th December 2025] =
 
-Fixed: Time short format issue fixed in gratis grid widget
+* Fixed: Time short format issue fixed in gratis grid widget
 
 = 4.0.18 [18th December 2025] =
 
