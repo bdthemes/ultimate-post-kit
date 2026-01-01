@@ -496,11 +496,13 @@ function ultimate_post_kit_time_diff( $from, $to = '' ) {
 
 function ultimate_post_kit_post_time_diff( $format = '' ) {
 	$displayAgo = esc_html__( 'ago', 'ultimate-post-kit' );
+	$post_time    = get_the_time( 'U' );
+	$current_time = current_time( 'timestamp' );
 
 	if ( $format == 'short' ) {
-		$output = ultimate_post_kit_time_diff( strtotime( get_the_date() ), current_time( 'timestamp' ) );
+		$output = ultimate_post_kit_time_diff( $post_time, $current_time );
 	} else {
-		$output = human_time_diff( strtotime( get_the_date() ), current_time( 'timestamp' ) );
+		$output = human_time_diff( $post_time, $current_time );
 	}
 
 	$output = $output . ' ' . $displayAgo;

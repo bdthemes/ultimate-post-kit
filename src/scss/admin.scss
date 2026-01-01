@@ -2878,6 +2878,8 @@ $global-link-color: #1e87f0;
 	.ultimate-post-kit-custom-code-save-btn,
 	.ultimate-post-kit-custom-code-reset-btn {
 		padding: 3px 30px;
+		line-height: 40px;
+		font-size: 16px;
 		color: #fff;
 		background: linear-gradient(to right, #00A85C, #58D34D);
 		border: 0;
@@ -2885,6 +2887,7 @@ $global-link-color: #1e87f0;
 	}
 	.ultimate-post-kit-custom-code-save-btn {
 		margin-right: 12px;
+		
 		&:hover {
 			background: linear-gradient(to right, #58D34D, #00A85C);
 		}
@@ -2893,6 +2896,7 @@ $global-link-color: #1e87f0;
 	.ultimate-post-kit-white-label-save-btn {
 		background: linear-gradient(to right, #fa6336, #ff3c3c);
 		color: #fff;
+		
 		&:hover {
 			background: linear-gradient(to right, #ff3c3c, #fa6336);
 		}

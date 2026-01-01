@@ -249,6 +249,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.0.X [XXth December 2025] =
+
+Fixed: Human diff time issue fixed
+
 = 4.0.19 [24th December 2025] =
 
 Fixed: Time short format issue fixed in gratis grid widget
