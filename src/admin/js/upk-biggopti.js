@@ -13,7 +13,9 @@ jQuery(document).ready(function ($) {
                 id: $id,
                 meta: $meta,
                 time: $time,
-                _wpnonce: UltimatePostKitBiggoptiConfig.nonce
+                _wpnonce: UltimatePostKitBiggoptiConfig.nonce,
+                current_url: window.location.href
+
             }
         });
     });
