@@ -14,8 +14,6 @@ jQuery(document).ready(function ($) {
                 meta: $meta,
                 time: $time,
                 _wpnonce: UltimatePostKitBiggoptiConfig.nonce,
-                current_url: window.location.href
-
             }
         });
     });
@@ -112,7 +110,8 @@ jQuery(document).ready(function ($) {
                 dataType: 'json',
                 data: {
                     action: 'upk_fetch_api_biggopties',
-                    _wpnonce: UltimatePostKitBiggoptiConfig.nonce
+                    _wpnonce: UltimatePostKitBiggoptiConfig.nonce,
+                    current_url: window.location.href
                 }
             })
             .done(function (res) {
