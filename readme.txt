@@ -249,6 +249,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.0.XX [XXth January 2026] =
+
+* Fixed: Pagination issue fixed for builder ( Thanks to Kent )
+
 = 4.0.22 [12th January 2026] =
 
 * Updated: Security Improved
