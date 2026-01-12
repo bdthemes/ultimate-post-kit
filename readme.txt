@@ -251,7 +251,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 = 4.0.22 [12th January 2026] =
 
-* Updated: System improved
+* Updated: Security Improved
 
 = 4.0.21 [5th January 2026] =
 
