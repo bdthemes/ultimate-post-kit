@@ -381,6 +381,7 @@ function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 		$paged = $paged ? $paged : 1;
 		$page_var = 'paged';
 	}
+	
 	$max = intval( $wp_query->max_num_pages );
 
 	/** Add current page to the array */
@@ -399,7 +400,7 @@ function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 		$links[] = $paged + 1;
 	}
 
-	printf( '<ul class="upk-pagination" data-widget-id="%s" data-debug-paged="%s" data-debug-max="%s" data-debug-is-front="%s">' . "\n", esc_attr($widget_id), esc_attr($paged), esc_attr($max), esc_attr(is_front_page() ? 'yes' : 'no') );
+	printf( '<ul class="upk-pagination" data-widget-id="%s">' . "\n", esc_attr($widget_id) );
 
 	/** Previous Post Link */
 	if ( $paged > 1 ) {
@@ -508,6 +509,61 @@ function ultimate_post_kit_post_time_diff( $format = '' ) {
 	$output = $output . ' ' . $displayAgo;
 
 	return $output;
+}
+
+// Filter to override WordPress posts_per_page for Builder pages
+add_action('pre_get_posts', 'ultimate_post_kit_override_posts_per_page_for_builder');
+
+function ultimate_post_kit_override_posts_per_page_for_builder($query) {
+	// Only affect main query
+	if (!$query->is_main_query()) {
+		return;
+	}
+	
+	// Check if we have pagination in URL
+	$paged = max(1, get_query_var('paged'), get_query_var('page'));
+	
+	// Only apply override on paginated pages (page > 1)
+	if ($paged <= 1) {
+		return;
+	}
+	
+	// Check if this page might contain Ultimate Post Kit widgets
+	$has_upk_widget = false;
+	$post_id = get_queried_object_id();
+	
+	if ($post_id && function_exists('get_post_meta')) {
+		// Check for Elementor data that might contain UPK widgets
+		$elementor_data = get_post_meta($post_id, '_elementor_data', true);
+		
+		if (!empty($elementor_data)) {
+			// Check if Elementor data contains Ultimate Post Kit widgets
+			$has_upk_widget = strpos($elementor_data, 'ultimate-post-kit') !== false || 
+							 strpos($elementor_data, 'alex-grid') !== false ||
+							 strpos($elementor_data, 'upk-') !== false;
+		}
+		
+		// Also check post content for shortcodes or blocks
+		if (!$has_upk_widget) {
+			$post_content = get_post_field('post_content', $post_id);
+			$has_upk_widget = strpos($post_content, 'ultimate-post-kit') !== false ||
+							 strpos($post_content, 'alex-grid') !== false ||
+							 strpos($post_content, 'upk-') !== false;
+		}
+		
+		// For home page, check if it's set to display posts and might have widgets
+		if (!$has_upk_widget && is_home()) {
+			// Assume home page with pagination might have UPK widgets
+			// This is a fallback for cases where we can't detect the widget
+			$has_upk_widget = true;
+		}
+		
+		if ($has_upk_widget) {
+			// Set posts_per_page to -1 to show all posts and avoid pagination conflicts
+			$query->set('posts_per_page', -1);
+			$query->set('nopaging', true);
+		}
+	}
 }
 
 function ultimate_post_kit_iso_time( $time ) {
