@@ -528,41 +528,12 @@ function ultimate_post_kit_override_posts_per_page_for_builder($query) {
 		return;
 	}
 	
-	// Check if this page might contain Ultimate Post Kit widgets
-	$has_upk_widget = false;
 	$post_id = get_queried_object_id();
 	
 	if ($post_id && function_exists('get_post_meta')) {
-		// Check for Elementor data that might contain UPK widgets
-		$elementor_data = get_post_meta($post_id, '_elementor_data', true);
-		
-		if (!empty($elementor_data)) {
-			// Check if Elementor data contains Ultimate Post Kit widgets
-			$has_upk_widget = strpos($elementor_data, 'ultimate-post-kit') !== false || 
-							 strpos($elementor_data, 'alex-grid') !== false ||
-							 strpos($elementor_data, 'upk-') !== false;
-		}
-		
-		// Also check post content for shortcodes or blocks
-		if (!$has_upk_widget) {
-			$post_content = get_post_field('post_content', $post_id);
-			$has_upk_widget = strpos($post_content, 'ultimate-post-kit') !== false ||
-							 strpos($post_content, 'alex-grid') !== false ||
-							 strpos($post_content, 'upk-') !== false;
-		}
-		
-		// For home page, check if it's set to display posts and might have widgets
-		if (!$has_upk_widget && is_home()) {
-			// Assume home page with pagination might have UPK widgets
-			// This is a fallback for cases where we can't detect the widget
-			$has_upk_widget = true;
-		}
-		
-		if ($has_upk_widget) {
-			// Set posts_per_page to -1 to show all posts and avoid pagination conflicts
-			$query->set('posts_per_page', -1);
-			$query->set('nopaging', true);
-		}
+		// Set posts_per_page to -1 to show all posts and avoid pagination conflicts
+		$query->set('posts_per_page', -1);
+		$query->set('nopaging', true);
 	}
 }
 
