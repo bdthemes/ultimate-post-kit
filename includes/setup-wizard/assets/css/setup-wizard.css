@@ -423,7 +423,7 @@
 }
 
 .bdt-setup-wizard .free input:checked + .slider {
-  background-color: #06D6A0;
+  background-color: var(--upk-primary);
 }
 
 .bdt-setup-wizard input:checked + .slider:before {
