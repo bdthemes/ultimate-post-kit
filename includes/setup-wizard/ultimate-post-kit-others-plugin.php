@@ -123,12 +123,12 @@ class UltimatePostKit_Others_Plugin_Manager {
         }
         ?>
         
-        <div class="usk-dashboard-panel"
+        <div class="upk-dashboard-panel"
             bdt-scrollspy="target: > div > div > .bdt-card; cls: bdt-animation-slide-bottom-small; delay: 300">
-            <div class="usk-dashboard-others-plugin" id="usk-others-plugin-container">
+            <div class="upk-dashboard-others-plugin" id="upk-others-plugin-container">
                 
                 <!-- Loading state -->
-                <div class="usk-plugins-loading" id="usk-plugins-loading">
+                <div class="upk-plugins-loading" id="upk-plugins-loading">
                     <div class="bdt-flex bdt-flex-center bdt-flex-middle bdt-text-center" style="min-height: 200px;">
                         <div>
                             <div class="bdt-spinner bdt-spinner-primary"></div>
@@ -138,25 +138,25 @@ class UltimatePostKit_Others_Plugin_Manager {
                 </div>
                 
                 <!-- Error state (hidden by default) -->
-                <div class="usk-plugins-error" id="usk-plugins-error" style="display: none;">
+                <div class="upk-plugins-error" id="upk-plugins-error" style="display: none;">
                     <div class="bdt-alert bdt-alert-warning" bdt-alert>
                         <a class="bdt-alert-close" bdt-close></a>
                         <p><?php esc_html_e('Unable to load plugin data. Please try again later.', 'ultimate-post-kit'); ?></p>
-                        <button class="bdt-button bdt-button-small bdt-margin-small-top" id="usk-retry-load-plugins">
+                        <button class="bdt-button bdt-button-small bdt-margin-small-top" id="upk-retry-load-plugins">
                             <?php esc_html_e('Retry', 'ultimate-post-kit'); ?>
                         </button>
                     </div>
                 </div>
                 
                 <!-- Plugins container (populated by AJAX) -->
-                <div class="usk-plugins-list" id="usk-plugins-list" style="display: none;">
+                <div class="upk-plugins-list" id="upk-plugins-list" style="display: none;">
                     <!-- Plugin cards will be inserted here by JavaScript -->
                 </div>
             </div>
         </div>
         
         <style type="text/css">
-        .usk-loading-spinner {
+        .upk-loading-spinner {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -164,7 +164,7 @@ class UltimatePostKit_Others_Plugin_Manager {
             text-align: center;
         }
         
-        .usk-loading-dots {
+        .upk-loading-dots {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -172,19 +172,19 @@ class UltimatePostKit_Others_Plugin_Manager {
             margin-bottom: 15px;
         }
         
-        .usk-loading-dot {
+        .upk-loading-dot {
             width: 12px;
             height: 12px;
             background-color: #0073aa;
             border-radius: 50%;
-            animation: usk-wave 1.4s ease-in-out infinite both;
+            animation: upk-wave 1.4s ease-in-out infinite both;
         }
         
-        .usk-loading-dot:nth-child(1) { animation-delay: -0.32s; }
-        .usk-loading-dot:nth-child(2) { animation-delay: -0.16s; }
-        .usk-loading-dot:nth-child(3) { animation-delay: 0; }
+        .upk-loading-dot:nth-child(1) { animation-delay: -0.32s; }
+        .upk-loading-dot:nth-child(2) { animation-delay: -0.16s; }
+        .upk-loading-dot:nth-child(3) { animation-delay: 0; }
         
-        @keyframes usk-wave {
+        @keyframes upk-wave {
             0%, 80%, 100% {
                 transform: scale(0.8);
                 opacity: 0.5;
@@ -195,7 +195,7 @@ class UltimatePostKit_Others_Plugin_Manager {
             }
         }
         
-        #usk-plugins-list {
+        #upk-plugins-list {
             position: relative;
             min-height: 200px;
         }
@@ -203,10 +203,10 @@ class UltimatePostKit_Others_Plugin_Manager {
         
         <script type="text/javascript">
         jQuery(document).ready(function($) {
-            var $container = $('#usk-others-plugin-container');
-            var $loading = $('#usk-plugins-loading');
-            var $error = $('#usk-plugins-error');
-            var $list = $('#usk-plugins-list');
+            var $container = $('#upk-others-plugin-container');
+            var $loading = $('#upk-plugins-loading');
+            var $error = $('#upk-plugins-error');
+            var $list = $('#upk-plugins-list');
             
             // Function to load plugins via AJAX
             function loadPlugins() {
@@ -270,7 +270,7 @@ class UltimatePostKit_Others_Plugin_Manager {
                                         '<div class="default-plugin-icon" style="display:none;">📦</div>' +
                                     '</div>' +
                                     '<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">' +
-                                        '<h1 class="usk-feature-title">' + pluginName + '</h1>' +
+                                        '<h1 class="upk-feature-title">' + pluginName + '</h1>' +
                                     '</div>' +
                                 '</div>' +
                                 '<div class="bdt-others-plugin-content-text bdt-margin-top">';
@@ -347,7 +347,7 @@ class UltimatePostKit_Others_Plugin_Manager {
                                 '<?php esc_html_e("Activate", "ultimate-post-kit"); ?>' +
                                 '</a>';
                         } else {
-                            html += '<button class="bdt-button bdt-welcome-button usk-install-plugin" data-plugin-slug="' + pluginSlug + '" data-nonce="<?php echo wp_create_nonce('upk_install_plugin_nonce'); ?>">' +
+                            html += '<button class="bdt-button bdt-welcome-button upk-install-plugin" data-plugin-slug="' + pluginSlug + '" data-nonce="<?php echo wp_create_nonce('upk_install_plugin_nonce'); ?>">' +
                                 '<?php esc_html_e("Install", "ultimate-post-kit"); ?>' +
                                 '</button>';
                         }
@@ -365,7 +365,7 @@ class UltimatePostKit_Others_Plugin_Manager {
                 $list.html(html);
                 
                 // Handle plugin action buttons
-                $('.usk-install-plugin').on('click', function(e) {
+                $('.upk-install-plugin').on('click', function(e) {
                     e.preventDefault();
                     
                     var $button = $(this);
@@ -448,11 +448,11 @@ class UltimatePostKit_Others_Plugin_Manager {
             function showLoading() {
                 $list.html(
                     '<div class="bdt-text-center bdt-padding-large">' +
-                        '<div class="usk-loading-spinner">' +
-                            '<div class="usk-loading-dots">' +
-                                '<div class="usk-loading-dot"></div>' +
-                                '<div class="usk-loading-dot"></div>' +
-                                '<div class="usk-loading-dot"></div>' +
+                        '<div class="upk-loading-spinner">' +
+                            '<div class="upk-loading-dots">' +
+                                '<div class="upk-loading-dot"></div>' +
+                                '<div class="upk-loading-dot"></div>' +
+                                '<div class="upk-loading-dot"></div>' +
                             '</div>' +
                         '</div>' +
                         '<p class="bdt-margin-small-top bdt-text-muted"><?php esc_html_e("Loading plugin data...", "ultimate-post-kit"); ?></p>' +
@@ -468,7 +468,7 @@ class UltimatePostKit_Others_Plugin_Manager {
             }
             
             // Retry button handler
-            $('#usk-retry-load-plugins').on('click', function() {
+            $('#upk-retry-load-plugins').on('click', function() {
                 loadPlugins();
             });
             

@@ -117,30 +117,30 @@ if (!$has_cached_data) {
         <div id="plugin-install-progress" class="progress-bar"></div>
     </div>
 
-    <form method="POST" id="usk-install-plugins">
+    <form method="POST" id="upk-install-plugins">
         <!-- Loading state - shown during plugin installation -->
-        <div class="usk-loading-state" id="usk-install-loading" style="display: none; text-align: center; padding: 40px;">
-            <div class="usk-loading-dots">
-                <div class="usk-loading-dot"></div>
-                <div class="usk-loading-dot"></div>
-                <div class="usk-loading-dot"></div>
+        <div class="upk-loading-state" id="upk-install-loading" style="display: none; text-align: center; padding: 40px;">
+            <div class="upk-loading-dots">
+                <div class="upk-loading-dot"></div>
+                <div class="upk-loading-dot"></div>
+                <div class="upk-loading-dot"></div>
             </div>
-            <p style="margin-top: 20px;" id="usk-loading-message"><?php esc_html_e('Installing plugins...', 'ultimate-post-kit'); ?></p>
+            <p style="margin-top: 20px;" id="upk-loading-message"><?php esc_html_e('Installing plugins...', 'ultimate-post-kit'); ?></p>
         </div>
 
         <!-- Initial loading state - shown while fetching plugin data -->
         <?php if (!$has_cached_data): ?>
-        <div class="usk-loading-state" id="usk-initial-loading" style="text-align: center; padding: 40px;">
-            <div class="usk-loading-dots">
-                <div class="usk-loading-dot"></div>
-                <div class="usk-loading-dot"></div>
-                <div class="usk-loading-dot"></div>
+        <div class="upk-loading-state" id="upk-initial-loading" style="text-align: center; padding: 40px;">
+            <div class="upk-loading-dots">
+                <div class="upk-loading-dot"></div>
+                <div class="upk-loading-dot"></div>
+                <div class="upk-loading-dot"></div>
             </div>
             <p style="margin-top: 20px;"><?php esc_html_e('Loading plugin data...', 'ultimate-post-kit'); ?></p>
         </div>
         <?php endif; ?>
 
-        <div class="bdt-plugin-list" id="usk-integration-plugin-list">
+        <div class="bdt-plugin-list" id="upk-integration-plugin-list">
             <?php if ($has_cached_data): ?>
                 <?php
                 $predefined = \UltimatePostKit\SetupWizard\Plugin_Integration_Helper::get_predefined_plugins();
@@ -275,7 +275,7 @@ if (!$has_cached_data) {
         </div>
         
         <div class="wizard-navigation bdt-margin-top">
-            <button class="bdt-button bdt-button-primary d-none" type="submit" id="usk-install-plugins-btn">
+            <button class="bdt-button bdt-button-primary d-none" type="submit" id="upk-install-plugins-btn">
                 <?php esc_html_e('Install and Continue', 'ultimate-post-kit'); ?>
             </button>
             <div class="bdt-close-button bdt-margin-left bdt-wizard-next" data-step="finish"><?php esc_html_e('Skip', 'ultimate-post-kit'); ?></div>
@@ -291,34 +291,34 @@ if (!$has_cached_data) {
 </div>
 
 <style>
-.usk-loading-dots {
+.upk-loading-dots {
     display: flex;
     justify-content: center;
     gap: 8px;
     margin: 20px 0;
 }
 
-.usk-loading-dot {
+.upk-loading-dot {
     width: 12px;
     height: 12px;
     background-color: #0073aa;
     border-radius: 50%;
-    animation: usk-wave 1.4s ease-in-out infinite both;
+    animation: upk-wave 1.4s ease-in-out infinite both;
 }
 
-.usk-loading-dot:nth-child(1) {
+.upk-loading-dot:nth-child(1) {
     animation-delay: -0.32s;
 }
 
-.usk-loading-dot:nth-child(2) {
+.upk-loading-dot:nth-child(2) {
     animation-delay: -0.16s;
 }
 
-.usk-loading-dot:nth-child(3) {
+.upk-loading-dot:nth-child(3) {
     animation-delay: 0s;
 }
 
-@keyframes usk-wave {
+@keyframes upk-wave {
     0%, 80%, 100% {
         transform: scale(0.8);
         opacity: 0.5;
@@ -338,8 +338,8 @@ jQuery(document).ready(function($) {
     function loadIntegrationData() {
         if (integrationDataLoaded) return;
         
-        const $pluginList = $('#usk-integration-plugin-list');
-        const $initialLoading = $('#usk-initial-loading');
+        const $pluginList = $('#upk-integration-plugin-list');
+        const $initialLoading = $('#upk-initial-loading');
         
         // Don't add another loading state if initial loading is visible
         // Just keep the existing one
@@ -370,11 +370,11 @@ jQuery(document).ready(function($) {
     
     // Function to render plugin list
     function renderPluginList(plugins) {
-        const $pluginList = $('#usk-integration-plugin-list');
+        const $pluginList = $('#upk-integration-plugin-list');
         let html = '';
         
         if (plugins.length === 0) {
-            html = '<div class="usk-no-plugins" style="text-align: center; padding: 40px;"><p>No plugins found.</p></div>';
+            html = '<div class="upk-no-plugins" style="text-align: center; padding: 40px;"><p>No plugins found.</p></div>';
         } else {
             plugins.forEach(function(plugin) {
                 // Skip own plugin (Ultimate Post Kit) when printing only; data still includes it for other plugins
@@ -458,15 +458,15 @@ jQuery(document).ready(function($) {
     
     // Function to show error
     function showError(message) {
-        const $pluginList = $('#usk-integration-plugin-list');
-        const $initialLoading = $('#usk-initial-loading');
+        const $pluginList = $('#upk-integration-plugin-list');
+        const $initialLoading = $('#upk-initial-loading');
         
         // Hide initial loading
         $initialLoading.hide();
         
         // Show error in plugin list
         $pluginList.html(`
-            <div class="usk-error-state" style="text-align: center; padding: 40px;">
+            <div class="upk-error-state" style="text-align: center; padding: 40px;">
                 <p style="color: #d63638;">${message}</p>
                 <button type="button" class="bdt-button bdt-button-secondary" onclick="location.reload()">Retry</button>
             </div>
