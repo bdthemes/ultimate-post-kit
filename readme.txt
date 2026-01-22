@@ -252,6 +252,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 = 4.0.XX [XXth January 2026] =
 
 * Fixed: Pagination issue fixed for builder ( Thanks to Kent )
+* Fixed: Shwo/Hide image issue fixed in the oras timeline widget
 
 = 4.0.22 [12th January 2026] =
 
