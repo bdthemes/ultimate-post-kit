@@ -1072,9 +1072,11 @@ class Timeline extends Group_Control_Query {
 				<?php endif; ?>
 
 				<div class="upk-image-and-content-wrapper">
-					<div class="upk-image-wrapper">
-						<?php $this->render_image( get_post_thumbnail_id( $post_id ), $image_size ); ?>
-					</div>
+					<?php if( 'yes' === $settings['show_image'] ) : ?>
+						<div class="upk-image-wrapper">
+							<?php $this->render_image( get_post_thumbnail_id( $post_id ), $image_size ); ?>
+						</div>
+					<?php endif; ?>
 					<div class="upk-content-wrap">
 
 						<?php $this->render_category(); ?>
