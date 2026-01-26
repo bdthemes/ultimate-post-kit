@@ -169,7 +169,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		
 										<?php if (function_exists('_is_upk_pro_activated') && _is_upk_pro_activated() && $settings['show_reading_time'] === 'yes') : ?>
 											<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
-												<?php echo ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed']); ?>
+												<?php echo ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no'); ?>
 											</div>
 										<?php endif; ?>
 									</div>

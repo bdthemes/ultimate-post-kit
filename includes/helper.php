@@ -890,18 +890,50 @@ function get_user_role( $id ) {
 /**
  * @param string $content return posts content
  * @param int $avg_reading_speed average word reading speed per minute
+ * @param string $hide_seconds whether to hide seconds (yes/no)
+ * @param string $hide_minutes whether to hide minutes (yes/no)
  *
  * @return string return average reading time of  specifiic posts.
  */
 
 if ( _is_upk_pro_activated() ) {
-	function ultimate_post_kit_reading_time( $content, $avg_reading_speed ) {
+	function ultimate_post_kit_reading_time( $content, $avg_reading_speed, $hide_seconds = 'no', $hide_minutes = 'no' ) {
 		$total_word      = str_word_count( strip_tags( $content ) );
 		$reading_minute  = floor( $total_word / $avg_reading_speed );
 		$reading_seconds = floor( $total_word % $avg_reading_speed / ( $avg_reading_speed / 60 ) );
+		
+		$hide_seconds = ( $hide_seconds === 'yes' );
+		$hide_minutes = ( $hide_minutes === 'yes' );
+		
 		if ( $total_word >= $avg_reading_speed ) {
-			return $reading_minute . ' min ' . $reading_seconds . ' sec read';
+			$parts = array();
+			
+			if ( ! $hide_minutes && $reading_minute > 0 ) {
+				$parts[] = $reading_minute . ' min';
+			}
+			
+			if ( ! $hide_seconds && $reading_seconds > 0 ) {
+				$parts[] = $reading_seconds . ' sec';
+			}
+			
+			// If both are hidden or both are 0, show at least seconds if not hidden
+			if ( empty( $parts ) ) {
+				if ( ! $hide_seconds ) {
+					$parts[] = $reading_seconds . ' sec';
+				} elseif ( ! $hide_minutes ) {
+					$parts[] = $reading_minute . ' min';
+				}
+			}
+			
+			return ! empty( $parts ) ? implode( ' ', $parts ) . ' read' : '0 sec read';
 		} else {
+			// For content less than reading speed, show seconds unless hidden
+			if ( $hide_seconds ) {
+				if ( ! $hide_minutes ) {
+					return '0 min read';
+				}
+				return '0 sec read';
+			}
 			return $reading_seconds . ' sec read';
 		}
 	}
