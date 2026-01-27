@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.0.22
+Stable tag: 4.0.23
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.9
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.34.1
+Elementor tested up to: 3.34.2
 
 Build your blogs and news sites with a feature-rich Elementor addon, offering 100+ elements for engaging layouts.
 
@@ -249,12 +249,12 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.0.XX [XXth January 2026] =
+= 4.0.23 [27th January 2026] =
 
+* Added: Hide minute and second option for reading time in all widget ( Thanks to Iqbal Khan )
 * Fixed: Pagination issue fixed for builder ( Thanks to Kent )
 * Fixed: Shwo/Hide image issue fixed in the oras timeline widget
 * Fixed: Undefined variable and array_merge fatal error fixed in all widgets with query_posts method
-* Added: Hide minute and second option for reading time in all widget ( Thanks to Iqbal Khan )
 
 = 4.0.22 [12th January 2026] =
 
