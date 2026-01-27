@@ -1139,6 +1139,7 @@ class Alter_Carousel extends Group_Control_Query
 	{
 
 		$default = $this->getGroupControlQueryArgs();
+		$args = [];
 		if ($posts_per_page) {
 			$args['posts_per_page'] = $posts_per_page;
 			// $args['paged']  = max(1, get_query_var('paged'), get_query_var('page'));

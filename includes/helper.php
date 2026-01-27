@@ -905,10 +905,19 @@ if ( _is_upk_pro_activated() ) {
 		$hide_seconds = ( $hide_seconds === 'yes' );
 		$hide_minutes = ( $hide_minutes === 'yes' );
 		
+		// If hide_minutes is enabled, convert everything to seconds
+		if ( $hide_minutes ) {
+			$total_seconds = ( $reading_minute * 60 ) + $reading_seconds;
+			if ( $hide_seconds ) {
+				return '0 sec read';
+			}
+			return $total_seconds . ' sec read';
+		}
+		
 		if ( $total_word >= $avg_reading_speed ) {
 			$parts = array();
 			
-			if ( ! $hide_minutes && $reading_minute > 0 ) {
+			if ( $reading_minute > 0 ) {
 				$parts[] = $reading_minute . ' min';
 			}
 			
@@ -916,11 +925,11 @@ if ( _is_upk_pro_activated() ) {
 				$parts[] = $reading_seconds . ' sec';
 			}
 			
-			// If both are hidden or both are 0, show at least seconds if not hidden
+			// If no parts and seconds are not hidden, show at least seconds
 			if ( empty( $parts ) ) {
 				if ( ! $hide_seconds ) {
 					$parts[] = $reading_seconds . ' sec';
-				} elseif ( ! $hide_minutes ) {
+				} else {
 					$parts[] = $reading_minute . ' min';
 				}
 			}
@@ -929,10 +938,7 @@ if ( _is_upk_pro_activated() ) {
 		} else {
 			// For content less than reading speed, show seconds unless hidden
 			if ( $hide_seconds ) {
-				if ( ! $hide_minutes ) {
-					return '0 min read';
-				}
-				return '0 sec read';
+				return '0 min read';
 			}
 			return $reading_seconds . ' sec read';
 		}

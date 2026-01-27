@@ -254,6 +254,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 * Added: Hide minute and second option for reading time in all widget ( Thanks to Iqbal Khan )
 * Fixed: Pagination issue fixed for builder ( Thanks to Kent )
 * Fixed: Shwo/Hide image issue fixed in the oras timeline widget
+* Fixed: Undefined variable and array_merge fatal error fixed in all widgets with query_posts method
 
 = 4.0.22 [12th January 2026] =
 
