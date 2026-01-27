@@ -555,6 +555,28 @@ trait Global_Widget_Controls {
 			]
 		);
 
+		$this->add_control(
+			'hide_seconds',
+			[
+				'label'     => esc_html__('Hide Seconds', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::SWITCHER,
+				'condition' => [
+					'show_reading_time' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'hide_minutes',
+			[
+				'label'     => esc_html__('Hide Minutes', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::SWITCHER,
+				'condition' => [
+					'show_reading_time' => 'yes'
+				]
+			]
+		);
+
 		/**
 		 * Global upk_link_new_tab control
 		 */

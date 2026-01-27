@@ -253,6 +253,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 * Fixed: Pagination issue fixed for builder ( Thanks to Kent )
 * Fixed: Shwo/Hide image issue fixed in the oras timeline widget
+* Added: Hide minute and second option for reading time in all widget ( Thanks to Iqbal Khan )
 
 = 4.0.22 [12th January 2026] =
 
