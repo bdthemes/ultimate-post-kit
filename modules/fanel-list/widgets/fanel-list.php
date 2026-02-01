@@ -1313,6 +1313,8 @@ class Fanel_List extends Group_Control_Query {
 				'meta_separator'                => isset($settings['meta_separator']) ? $settings['meta_separator'] : '//',
 				'show_reading_time'             => isset($settings['show_reading_time']) ? $settings['show_reading_time'] : 'no',
 				'avg_reading_speed'             => isset($settings['avg_reading_speed']) ? $settings['avg_reading_speed'] : 200,
+				'hide_seconds'                  => isset($settings['hide_seconds']) ? $settings['hide_seconds'] : 'no',
+				'hide_minutes'                  => isset($settings['hide_minutes']) ? $settings['hide_minutes'] : 'no',
 				'primary_thumbnail_size'        => isset($settings['primary_thumbnail_size']) ? $settings['primary_thumbnail_size'] : 'medium',
 				'upk_link_new_tab'              => isset($settings['upk_link_new_tab']) ? $settings['upk_link_new_tab'] : 'no',
 				'global_link'                   => isset($settings['global_link']) ? $settings['global_link'] : 'no',

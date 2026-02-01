@@ -1398,6 +1398,8 @@ class Gratis_Grid extends Group_Control_Query {
 				'readmore_text'       			 => isset( $settings['readmore_text'] ) ? $settings['readmore_text'] : '',
 				'show_reading_time'   			 => isset( $settings['show_reading_time'] ) ? $settings['show_reading_time'] : 'no',
 				'avg_reading_speed'   			 => isset( $settings['avg_reading_speed'] ) ? $settings['avg_reading_speed'] : 200,
+				'hide_seconds'                   => isset( $settings['hide_seconds'] ) ? $settings['hide_seconds'] : 'no',
+				'hide_minutes'                   => isset( $settings['hide_minutes'] ) ? $settings['hide_minutes'] : 'no',
 				'meta_separator'      			 => isset( $settings['meta_separator'] ) ? $settings['meta_separator'] : '/',
 				'primary_thumbnail_size' 		 => isset( $settings['primary_thumbnail_size'] ) ? $settings['primary_thumbnail_size'] : 'full',
 				'title_style' 					 => isset( $settings['title_style'] ) ? $settings['title_style'] : 'underline',

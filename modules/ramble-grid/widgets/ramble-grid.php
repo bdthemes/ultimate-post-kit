@@ -1443,6 +1443,8 @@ class Ramble_Grid extends Group_Control_Query {
 				'show_reading_time'           => isset($settings['show_reading_time']) ? $settings['show_reading_time'] : 'no',
 				'upk_link_new_tab'            => isset($settings['upk_link_new_tab']) ? $settings['upk_link_new_tab'] : 'no',
 				'avg_reading_speed'           => isset($settings['avg_reading_speed']) ? $settings['avg_reading_speed'] : 200,
+				'hide_seconds'                => isset($settings['hide_seconds']) ? $settings['hide_seconds'] : 'no',
+				'hide_minutes'                => isset($settings['hide_minutes']) ? $settings['hide_minutes'] : 'no',
 				'meta_separator'              => isset($settings['meta_separator']) ? $settings['meta_separator'] : '|',
 				'human_diff_time'             => isset($settings['human_diff_time']) ? $settings['human_diff_time'] : 'no',
 				'human_diff_time_short'       => isset($settings['human_diff_time_short']) ? $settings['human_diff_time_short'] : 'no',
