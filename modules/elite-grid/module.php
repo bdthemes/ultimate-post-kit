@@ -144,7 +144,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 											<?php if (function_exists('ultimate_post_kit_reading_time') && $settings['show_reading_time'] === 'yes') : ?>
 												<?php $speed = (int)($settings['avg_reading_speed'] ?? 200); ?>
 												<div class="upk-reading-time" data-separator="<?php echo esc_attr($meta_sep); ?>">
-													<?php echo esc_html(ultimate_post_kit_reading_time(get_the_content(), $speed)); ?>
+													<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $speed, $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 												</div>
 											<?php endif; ?>
 										</div>
@@ -222,7 +222,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 										<?php if (function_exists('ultimate_post_kit_reading_time') && $settings['show_reading_time'] === 'yes') : ?>
 											<?php $speed = (int)($settings['avg_reading_speed'] ?? 200); ?>
 											<div class="upk-reading-time" data-separator="<?php echo esc_attr($meta_sep); ?>">
-												<?php echo esc_html(ultimate_post_kit_reading_time(get_the_content(), $speed)); ?>
+												<?php echo esc_html(ultimate_post_kit_reading_time(get_the_content(), $speed, $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 											</div>
 										<?php endif; ?>
 									</div>
