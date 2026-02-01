@@ -163,7 +163,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 										$speed = isset( $settings['avg_reading_speed'] ) ? (int) $settings['avg_reading_speed'] : 200;
 										?>
 										<div class="upk-reading-time" data-separator="<?php echo esc_attr( $settings['meta_separator'] ); ?>">
-											<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $speed ) ); ?>
+											<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $speed, $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 										</div>
 									<?php endif; ?>
 								</div>

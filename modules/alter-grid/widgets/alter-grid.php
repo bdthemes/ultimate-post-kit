@@ -1684,7 +1684,7 @@ class Alter_Grid extends Group_Control_Query {
 								<?php if (_is_upk_pro_activated()) :
 									if ('yes' === $settings['show_reading_time']) : ?>
 										<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
-											<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'] ) ); ?>
+											<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 										</div>
 									<?php endif; ?>
 								<?php endif; ?>
@@ -1773,6 +1773,8 @@ class Alter_Grid extends Group_Control_Query {
 				'readmore_icon_align'           => isset( $settings['readmore_icon_align'] ) ? $settings['readmore_icon_align'] : 'right',
 				'show_reading_time'             => isset( $settings['show_reading_time'] ) ? $settings['show_reading_time'] : 'no',
 				'avg_reading_speed'             => isset( $settings['avg_reading_speed'] ) ? $settings['avg_reading_speed'] : 200,
+				'hide_seconds'                  => isset( $settings['hide_seconds'] ) ? $settings['hide_seconds'] : 'no',
+				'hide_minutes'                  => isset( $settings['hide_minutes'] ) ? $settings['hide_minutes'] : 'no',
 				'meta_separator'                => isset( $settings['meta_separator'] ) ? $settings['meta_separator'] : '|',
 				'human_diff_time'               => isset( $settings['human_diff_time'] ) ? $settings['human_diff_time'] : 'no',
 				'human_diff_time_short'         => isset( $settings['human_diff_time_short'] ) ? $settings['human_diff_time_short'] : 'no',

@@ -879,7 +879,7 @@ class Buzz_List extends Group_Control_Query {
 							<?php if (_is_upk_pro_activated()) :
 								if ('yes' === $settings['show_reading_time']) : ?>
 									<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
-										<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'] ) ); ?>
+										<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 									</div>
 								<?php endif; ?>
 							<?php endif; ?>
@@ -961,6 +961,8 @@ class Buzz_List extends Group_Control_Query {
 				'human_diff_time_short'         => isset($settings['human_diff_time_short']) ? $settings['human_diff_time_short'] : 'no',
 				'show_reading_time'             => isset($settings['show_reading_time']) ? $settings['show_reading_time'] : 'no',
 				'avg_reading_speed'             => isset($settings['avg_reading_speed']) ? $settings['avg_reading_speed'] : 200,
+				'hide_seconds'                  => isset($settings['hide_seconds']) ? $settings['hide_seconds'] : 'no',
+				'hide_minutes'                  => isset($settings['hide_minutes']) ? $settings['hide_minutes'] : 'no',
 				'primary_thumbnail_size'        => isset($settings['primary_thumbnail_size']) ? $settings['primary_thumbnail_size'] : 'medium',
 				'upk_link_new_tab'              => isset($settings['upk_link_new_tab']) ? $settings['upk_link_new_tab'] : 'no',
 				'global_link'                   => isset($settings['global_link']) ? $settings['global_link'] : 'no',

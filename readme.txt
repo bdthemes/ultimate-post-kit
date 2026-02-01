@@ -249,6 +249,11 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.0.X [XXth January 2026] =
+
+* Fixed: Minute and Second display issues across all widgets
+* Fixed: Hide seconds & minutes issues for ajax load more
+
 = 4.0.23 [27th January 2026] =
 
 * Added: Hide minute and second option for reading time in all widget ( Thanks to Iqbal Khan )
