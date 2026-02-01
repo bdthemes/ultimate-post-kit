@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.0.23
+Stable tag: 4.1.0
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.9
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.34.2
+Elementor tested up to: 3.34.4
 
 Build your blogs and news sites with a feature-rich Elementor addon, offering 100+ elements for engaging layouts.
 
@@ -249,8 +249,9 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.0.X [XXth January 2026] =
+= 4.1.0 [1st February 2026] =
 
+* Added: WPML multi language support added
 * Fixed: Minute and Second display issues across all widgets
 * Fixed: Hide seconds & minutes issues for ajax load more
 
