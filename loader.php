@@ -4,6 +4,7 @@ namespace UltimatePostKit;
 
 use Elementor\Plugin;
 use UltimatePostKit\Admin;
+use UltimatePostKit\Includes\Ultimate_Post_Kit_WPML;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -116,6 +117,9 @@ class Ultimate_Post_Kit_Loader {
 		require_once BDTUPK_PATH . 'traits/global-widget-controls.php';
 		require_once BDTUPK_PATH . 'traits/global-swiper-functions.php';
 		require_once BDTUPK_INC_PATH . 'modules-manager.php';
+
+		// wpml compatibility class for wpml support
+		require_once BDTUPK_PATH . 'includes/class-elements-wpml-compatibility.php';
 
 		if ( $category_image == 'on' ) {
 			require BDTUPK_INC_PATH . 'ultimate-post-kit-category-image.php';
@@ -290,6 +294,11 @@ class Ultimate_Post_Kit_Loader {
 		wp_enqueue_style( 'upk-font' );
 	}
 
+	// Load WPML compatibility instance
+    public function wpml_compatiblity() {
+        return Ultimate_Post_Kit_WPML::get_instance();
+    }
+
 	/**
 	 * initialize the category
 	 * @return [type] [description]
@@ -348,6 +357,9 @@ class Ultimate_Post_Kit_Loader {
 
 		// Finally hooked up all things here
 		$this->setup_hooks();
+
+		// Load WPML compatibility instance
+		$this->wpml_compatiblity()->init();
 
 		add_action( 'init', [ $this, 'init' ] );
 	}
