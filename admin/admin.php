@@ -131,7 +131,7 @@ class Admin
         if ( true !== _is_upk_pro_activated() ) {
             $row_meta = [
                 'settings' => '<a href="'.admin_url( 'admin.php?page=ultimate_post_kit_options' ) .'" aria-label="' . esc_attr(__('Go to settings', 'ultimate-post-kit')) . '" >' . __('Settings', 'ultimate-post-kit') . '</b></a>',
-                'gopro' => '<a href="https://bdthemes.com/deals/?utm_source=WordPress_org&utm_medium=bfcm_cta&utm_campaign=ultimate_post_kit" aria-label="' . esc_attr(__('Go get the pro version', 'ultimate-post-kit')) . '" target="_blank" title="When you purchase through this link you will get 87% discount!" class="upk-go-pro">' . __('Black Friday Limited Offer Up To 87% Off!', 'ultimate-post-kit') . '</a>',
+                'gopro' => '<a href="https://postkit.pro/pricing/" aria-label="' . esc_attr(__('Go get the pro version', 'ultimate-post-kit')) . '" target="_blank" title="When you purchase through this link you will get up to 87% discount!" class="upk-go-pro">' . __('Get Pro', 'ultimate-post-kit') . '</a>',
             ];
         } else {
             $row_meta = [
