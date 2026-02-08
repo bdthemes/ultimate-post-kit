@@ -11,12 +11,16 @@ use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Css_Filter;
 
+use UltimatePostKit\Traits\Global_Widget_Controls;
+
 if (!defined('ABSPATH')) {
 	exit;
 } // Exit if accessed directly
 
 class Author extends Module_Base {
 	private $_query = null;
+
+	use Global_Widget_Controls;
 
 	public function get_name() {
 		return 'upk-author';
@@ -291,6 +295,15 @@ class Author extends Module_Base {
 			]
 		);
 
+		$this->add_control(
+			'show_pagination',
+			[
+				'label'   	=> esc_html__('Show Pagination', 'ultimate-post-kit') . BDTUPK_NC,
+				'type'    	=> Controls_Manager::SWITCHER,
+				'separator' => 'before',
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -340,6 +353,28 @@ class Author extends Module_Base {
 				'label'       => esc_html__('Exclude User by ID', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::TEXT,
 				'placeholder' => __('1,2', 'ultimate-post-kit'),
+			]
+		);
+
+		$this->add_control(
+			'min_published_posts',
+			[
+				'label'       => esc_html__( 'Minimum Author Posts', 'ultimate-post-kit' ) . BDTUPK_NC,
+				'type'        => Controls_Manager::SLIDER,
+				'range'       => [
+					'px' => [
+						'min'  => 0,
+						'max'  => 100,
+						'step' => 1,
+					],
+				],
+				'default'     => [
+					'size' => 0,
+				],
+				'description' => esc_html__(
+					'Only show authors who have at least this number of published posts. Set 0 to show all.',
+					'ultimate-post-kit'
+				),
 			]
 		);
 
@@ -1356,18 +1391,45 @@ class Author extends Module_Base {
 		$this->end_controls_tabs();
 
 		$this->end_controls_section();
+
+		//Global Pagination Style Controls
+		$this->register_pagination_controls();
 	}
 
 	public function render() {
 		$settings = $this->get_settings_for_display();
 
+		$min_published_posts = isset($settings['min_published_posts']['size']) ? absint($settings['min_published_posts']['size']) : 0;
+		$item_limit          = (int) $settings['item_limit']['size'];
+		$show_pagination     = !empty($settings['show_pagination']);
+
+		$number = ($min_published_posts > 0 || $show_pagination) ? -1 : $item_limit;
+
 		$users = get_users([
 			'orderby'  => $settings['orderby'],
 			'order'    => $settings['order'],
 			'role__in' => (!empty($settings['role'])) ? $settings['role'] : null,
-			'number'   => $settings['item_limit']['size'],
-			'exclude'  => explode(',', esc_attr($settings["exclude"])),
+			'number'   => $number,
+			'exclude'  => array_filter(array_map('absint', explode(',', esc_attr($settings['exclude'])))),
 		]);
+
+		if ($min_published_posts > 0) {
+			$users = array_filter($users, function ($user) use ($min_published_posts) {
+				return count_user_posts($user->ID) >= $min_published_posts;
+			});
+			$users = array_values($users);
+		}
+
+		$total_users = count($users);
+		$total_pages = $item_limit > 0 ? (int) ceil($total_users / $item_limit) : 1;
+		$paged       = max(1, (int) get_query_var('paged'), (int) get_query_var('page'));
+
+		if ($show_pagination) {
+			$offset = ($paged - 1) * $item_limit;
+			$users  = array_slice($users, $offset, $item_limit);
+		} else {
+			$users = array_slice($users, 0, $item_limit);
+		}
 
 		$social_links = $settings['social_links'];
 
@@ -1462,6 +1524,17 @@ class Author extends Module_Base {
 				<?php } ?>
 			</div>
 		</div>
+
+		<?php if ($show_pagination && $total_pages > 1) : ?>
+			<div class="ep-pagination">
+				<?php
+				$author_pagination_query = new \stdClass();
+				$author_pagination_query->max_num_pages = $total_pages;
+				$author_pagination_query->query_vars = ['paged' => $paged, 'page' => $paged];
+				ultimate_post_kit_post_pagination($author_pagination_query, $this->get_id());
+				?>
+			</div>
+		<?php endif; ?>
 <?php
 	}
 }
