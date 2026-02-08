@@ -733,7 +733,7 @@ class UltimatePostKit_Admin_Settings {
      // Redirect to Ultimate Post Kit Pro pricing page
     public function upk_redirect_to_get_pro() {
         if (isset($_GET['page']) && $_GET['page'] === self::PAGE_ID . '_get_pro') {
-            wp_redirect('https://bdthemes.com/deals/?utm_source=WordPress_org&utm_medium=bfcm_cta&utm_campaign=ultimate_post_kit');
+            wp_redirect('https://postkit.pro/pricing/');
             exit;
         }
     }
@@ -864,7 +864,7 @@ class UltimatePostKit_Admin_Settings {
 			add_submenu_page(
 				self::PAGE_ID,
 				BDTUPK_TITLE,
-				esc_html__('Black Friday Limited Offer Up To 87%', 'ultimate-post-kit'),
+				esc_html__('Get Pro', 'ultimate-post-kit'),
 				'manage_options',
 				self::PAGE_ID . '_get_pro',
 				[$this, 'display_page']
@@ -1113,7 +1113,7 @@ class UltimatePostKit_Admin_Settings {
                         </div>
                         <?php if (true !== _is_upk_pro_activated()) : ?>
                             <div class="upk-purchase-button">
-                                <a href="https://postkit.pro/#a851ca7" target="_blank">
+                                <a href="https://postkit.pro/pricing/" target="_blank">
                                     <?php echo esc_html_x('Purchase Now', 'Frontend', 'ultimate-post-kit'); ?>
                                 </a>
                             </div>
@@ -1348,7 +1348,7 @@ class UltimatePostKit_Admin_Settings {
 
                             <?php if (true !== _is_upk_pro_activated()) : ?>
                                 <div class="upk-purchase-button bdt-margin-medium-top">
-                                    <a href="https://postkit.pro/#a851ca7" target="_blank">
+                                    <a href="https://postkit.pro/pricing/" target="_blank">
                                         <?php echo esc_html_x('Purchase Now', 'Frontend', 'ultimate-post-kit'); ?>
                                     </a>
                                 </div>

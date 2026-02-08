@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.1.0
+Stable tag: 4.1.1
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.9
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.34.4
+Elementor tested up to: 3.35.3
 
 Build your blogs and news sites with a feature-rich Elementor addon, offering 100+ elements for engaging layouts.
 
@@ -18,8 +18,6 @@ Build your blogs and news sites with a feature-rich Elementor addon, offering 10
 Ultimate Post Kit for Elementor is an usefull addon for bloggers, marketers, and content creators who want stunning blog layouts without coding. Packed with unique widgets, sliders, and SEO-friendly designs, it helps you showcase posts in a fresh and modern way.
 
 Built with clean, optimized code, it’s fully compatible with the latest WordPress standards and won’t slow down your site. Whether you’re a beginner or pro, you can design beautiful, traffic-ready blogs in minutes using Elementor’s drag-and-drop editor.
-
-### [🎉 Black Friday Offer: Upgrade to Pro and Save up to 87% on All Plugins! 🎊](https://bdthemes.com/deals/?utm_source=WordPress_org&utm_medium=bfcm_cta&utm_campaign=ultimate_post_kit)
 
 Ultimate Post Kit also supports RTL and multiple languages, making it ready for a global audience.
 
@@ -249,7 +247,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.1.X [XXst February 2026] =
+= 4.1.1 [8th February 2026] =
 
 # Added: Minimum Author Posts control to filter authors by the minimum number of published posts in the author widget
 # Added: Pagination control added in the author widget
