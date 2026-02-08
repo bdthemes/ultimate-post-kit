@@ -249,6 +249,11 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.X [XXst February 2026] =
+
+# Added: Minimum Author Posts control to filter authors by the minimum number of published posts in the author widget
+# Added: Pagination control added in the author widget
+
 = 4.1.0 [1st February 2026] =
 
 * Added: WPML multi language support added
