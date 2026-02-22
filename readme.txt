@@ -247,6 +247,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.X [XXth February 2026] =
+
+* Fixed: Separator display issue in the gratis grid widget
+
 = 4.1.1 [8th February 2026] =
 
 * Added: Minimum Author Posts control to filter authors by the minimum number of published posts in the author widget
