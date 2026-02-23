@@ -100,6 +100,18 @@ module.exports = function (grunt) {
                             return dest + src.replace(/(.+)\.css$/, "upk-$1.css");
                         },
                     },
+                    {
+                        expand: true,
+                        cwd: "src/scss/",
+                        src: ["admin-api-biggopti.scss"],
+
+                        dest: "admin/assets/css/",
+                        ext: ".css",
+
+                        rename: function (dest, src) {
+                            return dest + src.replace(/(.+)\.css$/, "upk-$1.css");
+                        },
+                    },
                 ],
             },
         },
