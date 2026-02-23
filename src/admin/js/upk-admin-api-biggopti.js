@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
        Start Admin Store API BIGGOPTI
        =================================== */
     // Dismiss API BIGGOPTI
-    $(document).on('click', '.ultimate-post-kit-biggopti.is-dismissible .bdt-biggopti-dismiss', function (e) {
+    $(document).on('click', '.ultimate-post-kit-biggopti.is-dismissible .bdt-admin-api-biggopti-dismiss', function (e) {
         e.preventDefault();
         var $this = $(this).closest('.ultimate-post-kit-biggopti');
         var displayId = $this.data('display-id') || $this.attr('data-display-id') || '';
@@ -177,7 +177,7 @@ jQuery(document).ready(function ($) {
         var classes = 'ultimate-post-kit-biggopti biggopti biggopti-info' + (noDismiss ? '' : ' is-dismissible');
         var attrs = 'id="' + biggoptiId + '"';
         if (!noDismiss) attrs += ' data-display-id="' + esc(displayId) + '" data-dismissible-meta="transient" data-dismissible-time="' + endTs + '"';
-        var dismissBtn = noDismiss ? '' : '<button type="button" class="bdt-biggopti-dismiss dashicons dashicons-dismiss"><span class="screen-reader-text">Dismiss this biggopti.</span></button>';
+        var dismissBtn = noDismiss ? '' : '<button type="button" class="bdt-admin-api-biggopti-dismiss dashicons dashicons-dismiss"><span class="screen-reader-text">Dismiss this biggopti.</span></button>';
         return '<div class="' + classes + '" ' + attrs + '>' + inner + dismissBtn + '</div>';
     }
 

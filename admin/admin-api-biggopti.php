@@ -1,0 +1,550 @@
+<?php
+
+namespace UltimatePostKit;
+
+/**
+ * Biggopties class
+ */
+class Biggopties {
+
+	private static $biggopties = [];
+
+	private static $instance;
+
+	public static function get_instance() {
+		if (!isset(self::$instance)) {
+			self::$instance = new self;
+		}
+		return self::$instance;
+	}
+
+	public function __construct() {
+
+		// add_action('admin_notices', [$this, 'show_biggopties']);
+		add_action('wp_ajax_ultimate-post-kit-biggopties', [$this, 'dismiss']);
+
+		// AJAX endpoint to fetch API biggopties on demand (after page load)
+		add_action('wp_ajax_upk_fetch_api_biggopties', [$this, 'ajax_fetch_api_biggopties']);
+
+	}
+
+	/**
+	 * Get Remote Biggopties Data from API
+	 *
+	 * @return array|mixed
+	 */
+	private function get_api_biggopties_data() {
+		// API endpoint for biggopties - you can change this to your actual endpoint
+		$api_url = 'https://api.sigmative.io/prod/store/api/biggopti/api-data-records';
+
+		$response = wp_remote_get($api_url, [
+			'timeout' => 30,
+			'headers' => [
+				'Accept' => 'application/json',
+			],
+		]);
+
+		if (is_wp_error($response)) {
+			return [];
+		}
+
+		$response_body = wp_remote_retrieve_body($response);
+
+		$biggopties = json_decode($response_body);
+		
+		if( isset($biggopties) && isset($biggopties->{'ultimate-post-kit'}) ) {
+			$data = $biggopties->{'ultimate-post-kit'};
+			if (is_array($data)) {
+				return $data;
+			}
+		}
+
+		return [];
+	}
+
+	/**
+	 * Check if a biggopti should be shown based on its enabled status and date range.
+	 *
+	 * @param object $biggopti The biggopti data from the API.
+	 * @return bool True if the biggopti should be shown, false otherwise.
+	 */
+	private function should_show_biggopti($biggopti) {
+		// Development override - set to true to bypass date checks for testing
+		$development_mode = false; // Set to true to bypass date checks
+		
+		if ($development_mode) {
+			return true;
+		}
+		
+		// Check if the biggopti is enabled
+		if (!isset($biggopti->is_enabled) || !$biggopti->is_enabled) {
+			return false;
+		}
+
+		// Check plugin compatibility
+		if (!$this->is_biggopti_compatible_with_plugin($biggopti)) {
+			return false;
+		}
+
+		// Check if the biggopti has a start date and end date
+		if (!isset($biggopti->start_date) || !isset($biggopti->end_date)) {
+			return false;
+		}
+
+		// Get timezone from biggopti or default to UTC
+		$timezone = isset($biggopti->timezone) ? $biggopti->timezone : 'UTC';
+		
+		// Create DateTime objects with proper timezone (using global namespace)
+		$start_date = new \DateTime($biggopti->start_date, new \DateTimeZone($timezone));
+		$end_date = new \DateTime($biggopti->end_date, new \DateTimeZone($timezone));
+		$current_date = new \DateTime('now', new \DateTimeZone($timezone));
+
+		// Convert to timestamps for comparison
+		$start_timestamp = $start_date->getTimestamp();
+		$end_timestamp = $end_date->getTimestamp();
+		$current_timestamp = $current_date->getTimestamp();
+
+		// Check if the current date is within the start and end dates
+		if ($current_timestamp < $start_timestamp || $current_timestamp > $end_timestamp) {
+			return false;
+		}
+
+		// Check if biggopti should be visible after a certain time
+		if (isset($biggopti->visible_after) && $biggopti->visible_after > 0) {
+			$visible_after_timestamp = $start_timestamp + $biggopti->visible_after;
+			if ($current_timestamp < $visible_after_timestamp) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Check if a biggopti is compatible with the current plugin installation
+	 *
+	 * @param object $biggopti The biggopti data from the API.
+	 * @return bool True if the biggopti should be shown, false otherwise.
+	 */
+	private function is_biggopti_compatible_with_plugin($biggopti) {
+		// Get current plugin info
+		$current_plugin_slug = $this->get_current_plugin_slug();
+		$is_pro_active = function_exists('_is_upk_pro_activated') ? _is_upk_pro_activated() : false;
+		$is_lite_active = $current_plugin_slug === 'ultimate-post-kit';
+		$is_pro_plugin = $current_plugin_slug === 'ultimate-post-kit-pro';
+		
+		// Get client targets, default to ['both'] if not set or not an array
+		$client_targets = (isset($biggopti->client_targets) && is_array($biggopti->client_targets))
+		? $biggopti->client_targets
+		: ['both'];
+
+		// Determine if this is targeted at Pro users
+		$pro_targeted = in_array('pro_targeted', $client_targets, true);
+		
+		// Ensure client_targets is always an array
+		if (!is_array($client_targets)) {
+			$client_targets = [$client_targets];
+		}
+		
+		// Handle pro_targeted parameter (only for free version)
+		if ($pro_targeted && $is_lite_active) {
+			// If pro_targeted is true, only show if pro is NOT active
+			$should_show = !$is_pro_active;
+			return $should_show;
+		}
+		
+		// Check if any of the client targets match current plugin status
+		foreach ($client_targets as $target) {
+			$target = trim($target); // Clean up any whitespace
+			
+			switch ($target) {
+				case 'pro':
+					// Pro-only biggopties: show only if pro is active
+					if ($is_pro_active) {
+						return true;
+					}
+					break;
+					
+				case 'free':
+					if ($is_lite_active) {
+						return true;
+					}
+					break;
+			}
+		}
+		
+		return false;
+	}
+
+	/**
+	 * Get current plugin slug
+	 *
+	 * @return string
+	 */
+	private function get_current_plugin_slug() {
+		// Get plugin basename from current file
+		$plugin_file = plugin_basename(BDTUPK__FILE__);
+		
+		// Extract plugin slug from basename
+		$plugin_slug = dirname($plugin_file);
+		
+		return $plugin_slug;
+	}
+
+	/**
+	 * Render API biggopti HTML
+	 *
+	 * @param object $biggopti
+	 * @return string
+	 */
+	private function render_api_biggopti($biggopti) {
+		ob_start();
+		
+		// Add custom CSS if provided
+		if (isset($biggopti->custom_css) && !empty($biggopti->custom_css)) {
+			echo '<style>' . wp_kses_post($biggopti->custom_css) . '</style>';
+		}
+		
+		// Prepare background styles
+		$background_style = '';
+		$wrapper_classes = 'bdt-biggopti-wrapper';
+		
+		if (isset($biggopti->background_color) && !empty($biggopti->background_color)) {
+			$background_style .= 'background-color: ' . esc_attr($biggopti->background_color) . ';';
+		}
+		
+		if (isset($biggopti->image) && !empty($biggopti->image)) {
+			$background_style .= 'background-image: url(' . esc_url($biggopti->image) . ');';
+			$wrapper_classes .= ' has-background-image';
+		}
+		
+		?>
+		<div class="<?php echo esc_attr($wrapper_classes); ?>" <?php echo $background_style ? 'style="' . $background_style . '"' : ''; ?>>
+			
+			
+			<?php $title = (isset($biggopti->title) && !empty($biggopti->title)) ? $biggopti->title : ''; ?>
+
+			<div class="bdt-api-biggopti-content">
+				<div class="bdt-plugin-logo-wrapper">
+					<img height="auto" width="40" src="<?php echo esc_url(BDTUPK_ASSETS_URL); ?>images/logo.svg" alt="Ultimate Post Kit Logo">
+				</div>
+
+				<div class="bdt-biggopti-content">
+					<div class="bdt-biggopti-content-inner">
+						<?php if (isset($biggopti->logo) && !empty($biggopti->logo)) : ?>
+							<div class="bdt-biggopti-logo-wrapper">
+								<img width="100" src="<?php echo esc_url($biggopti->logo); ?>" alt="Logo">
+							</div>
+						<?php endif; ?>
+						<div class="bdt-biggopti-title-description">
+							<?php if (isset($title) && !empty($title)) : ?>
+								<h2 class="bdt-biggopti-title"><?php echo wp_kses_post($title); ?></h2>
+							<?php endif; ?>
+		
+							<?php if (isset($biggopti->content) && !empty($biggopti->content)) : ?>
+								<div class="bdt-biggopti-html-content">
+									<?php echo wp_kses_post($biggopti->content); ?>
+								</div>
+							<?php endif; ?>
+						</div>
+					</div>
+
+					<div class="bdt-biggopti-content-right">
+						<?php 
+						// Only show countdown if it's enabled, has an end date, and the end date is in the future
+						$show_countdown = isset($biggopti->show_countdown) && $biggopti->show_countdown && isset($biggopti->end_date);
+						if ($show_countdown) {
+							$end_timestamp = strtotime($biggopti->end_date);
+							$current_timestamp = current_time('timestamp');
+							$show_countdown = $end_timestamp > $current_timestamp;
+						}
+						?>
+						<?php if ($show_countdown) : ?>
+							<div class="bdt-biggopti-countdown" data-end-date="<?php echo esc_attr($biggopti->end_date); ?>" data-timezone="<?php echo esc_attr($biggopti->timezone ? $biggopti->timezone : 'UTC'); ?>">
+								<div class="countdown-timer">Loading...</div>
+							</div>
+						<?php endif; ?>
+		
+						<?php if (isset($biggopti->link) && !empty($biggopti->link)) : ?>
+							<div class="bdt-biggopti-btn">
+								<a href="<?php echo esc_url($biggopti->link); ?>" target="_blank">
+									<div class="nm-biggopti-btn">
+										<?php echo isset($biggopti->button_text) ? esc_html($biggopti->button_text) : 'Read More'; ?>
+										<span class="dashicons dashicons-arrow-right-alt"></span>
+									</div>
+								</a>
+							</div>
+						<?php endif; ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
+
+	public static function add_biggopti($args = []) {
+		if (is_array($args)) {
+			self::$biggopties[] = $args;
+		}
+	}
+
+	/**
+	 * AJAX: Build and return API biggopties HTML for dynamic injection
+	 */
+	public function ajax_fetch_api_biggopties() {
+		$nonce = isset($_POST['_wpnonce']) ? sanitize_text_field($_POST['_wpnonce']) : '';
+		if (!wp_verify_nonce($nonce, 'ultimate-post-kit')) {
+			wp_send_json_error([ 'message' => 'invalid_nonce' ]);
+		}
+
+		if (!current_user_can('manage_options')) {
+			wp_send_json_error([ 'message' => 'forbidden' ]);
+		}
+
+		// Don't show biggopties on plugin/theme install and upload pages
+		$current_url = isset($_POST['current_url']) ? sanitize_text_field($_POST['current_url']) : '';
+
+		if (!empty($current_url)) {
+			$excluded_patterns = [
+				'plugin-install.php',
+				'theme-install.php',
+				'action=upload-plugin',
+				'action=upload-theme'
+			];
+
+			foreach ($excluded_patterns as $pattern) {
+				if (strpos($current_url, $pattern) !== false) {
+					wp_send_json_success([ 'html' => '' ]);
+				}
+			}
+		}
+
+		$biggopties = $this->get_api_biggopties_data();
+		$grouped_biggopties = [];
+
+		if (is_array($biggopties)) {
+			foreach ($biggopties as $index => $biggopti) {
+				if ($this->should_show_biggopti($biggopti)) {
+					$display_id = isset($biggopti->display_id) ? $biggopti->display_id : 'default-' . $index;
+					if (!isset($grouped_biggopties[$display_id])) {
+						$grouped_biggopties[$display_id] = $biggopti;
+					}
+				}
+			}
+		}
+
+		// Build biggopties using the same pipeline as synchronous rendering
+		foreach ($grouped_biggopties as $display_id => $biggopti) {
+			$biggopti_id = isset($biggopti->id) ? $display_id : $biggopti->id;
+
+			self::add_biggopti([
+				'id' => 'api-biggopti-' . $biggopti_id,
+				'type' => isset($biggopti->type) ? $biggopti->type : 'info',
+				'category' => isset($biggopti->category) ? $biggopti->category : 'regular',
+				'dismissible' => true,
+				'html_message' => $this->render_api_biggopti($biggopti),
+				'dismissible-meta' => 'transient',
+				'dismissible-time' => isset($biggopti->end_date) ? max((new \DateTime($biggopti->end_date, new \DateTimeZone('UTC')))->getTimestamp() - time(), 0) : WEEK_IN_SECONDS,
+			]);
+		}
+
+		ob_start();
+		$this->show_biggopties();
+		$markup = ob_get_clean();
+
+		wp_send_json_success([ 'html' => $markup ]);
+	}
+
+	/**
+	 * Dismiss Biggopti.
+	 */
+	public function dismiss() {
+		$nonce = (isset($_POST['_wpnonce'])) ? sanitize_text_field($_POST['_wpnonce']) : '';
+		$id   = (isset($_POST['id'])) ? esc_attr($_POST['id']) : '';
+		$time = (isset($_POST['time'])) ? esc_attr($_POST['time']) : '';
+		$meta = (isset($_POST['meta'])) ? esc_attr($_POST['meta']) : '';
+
+		if ( ! wp_verify_nonce($nonce, 'ultimate-post-kit') ) {
+			wp_send_json_error();
+		}
+
+		if ( ! current_user_can('manage_options') ) {
+			wp_send_json_error();
+		}
+
+		/**
+		 * Valid inputs?
+		 */
+		if (!empty($id)) {
+			// Handle regular biggopties
+			if ('user' === $meta) {
+				update_user_meta(get_current_user_id(), $id, true);
+			} else {
+				set_transient($id, true, $time);
+
+				// Also store in options table for persistence
+				$dismissals_option = get_option('bdt_biggopti_dismissals', []);
+				$dismissals_option[$id] = [
+					'dismissed_at' => time(),
+					'expires_at' => time() + intval($time),
+				];
+				update_option('bdt_biggopti_dismissals', $dismissals_option, false);
+			}
+
+			wp_send_json_success();
+		}
+
+		wp_send_json_error();
+	}
+
+	/**
+	 * Biggopti Types
+	 */
+	public function show_biggopties() {
+
+		$defaults = [
+			'id'               => '',
+			'type'             => 'info',
+			'category'         => 'regular',
+			'show_if'          => true,
+			'title'            => '',
+			'message'          => '',
+			'class'            => 'ultimate-post-kit-biggopti',
+			'dismissible'      => false,
+			'dismissible-meta' => 'transient',
+			'dismissible-time' => WEEK_IN_SECONDS,
+			'data'             => '',
+			'action_link'      => '',
+		];
+
+		foreach (self::$biggopties as $key => $biggopti) {
+
+			$biggopti = wp_parse_args($biggopti, $defaults);
+
+			// Check if biggopti is for White Label
+			if (defined('BDTUPK_WL') && $biggopti['category'] === 'regular') {
+				continue;
+			}
+
+			$classes = ['biggopti'];
+
+			$classes[] = $biggopti['class'];
+			if (isset($biggopti['type'])) {
+				$classes[] = 'biggopti-' . $biggopti['type'];
+			}
+
+			// Is biggopti dismissible?
+			if (true === $biggopti['dismissible']) {
+				$classes[] = 'is-dismissible';
+
+				// Dismissable time.
+				$biggopti['data'] = ' dismissible-time=' . esc_attr($biggopti['dismissible-time']) . ' ';
+			}
+
+			// Biggopti ID.
+			$biggopti_id    = 'bdt-admin-biggopti-' . $biggopti['id'];
+			$biggopti['id'] = $biggopti_id;
+			if (!isset($biggopti['id'])) {
+				$biggopti_id    = 'bdt-admin-biggopti-' . $biggopti['id'];
+				$biggopti['id'] = $biggopti_id;
+			} else {
+				$biggopti_id = $biggopti['id'];
+			}
+
+			$biggopti['classes'] = implode(' ', $classes);
+
+			// User meta.
+			$biggopti['data'] .= ' dismissible-meta=' . esc_attr($biggopti['dismissible-meta']) . ' ';
+			if ('user' === $biggopti['dismissible-meta']) {
+				$expired = get_user_meta(get_current_user_id(), $biggopti_id, true);
+			} elseif ('transient' === $biggopti['dismissible-meta']) {
+				$expired = get_transient($biggopti_id);
+
+				// If transient not found, check options table for persistent dismissal
+				if (false === $expired || empty($expired)) {
+					$dismissals_option = get_option('bdt_biggopti_dismissals', []);
+					if (isset($dismissals_option[$biggopti_id])) {
+						$dismissal = $dismissals_option[$biggopti_id];
+						// Check if dismissal is still valid (not expired)
+						if (isset($dismissal['expires_at']) && time() < $dismissal['expires_at']) {
+							$expired = true;
+						} else {
+							// Clean up expired dismissal from options
+							unset($dismissals_option[$biggopti_id]);
+							update_option('bdt_biggopti_dismissals', $dismissals_option, false);
+						}
+					}
+				}
+			}
+
+			// Biggopties visible after transient expire.
+			if (isset($biggopti['show_if'])) {
+
+				if (true === $biggopti['show_if']) {
+
+					// Is transient expired?
+					if (false === $expired || empty($expired)) {
+						self::biggopti_layout($biggopti);
+					}
+				}
+			} else {
+
+				// No transient biggopties.
+				self::biggopti_layout($biggopti);
+			}
+		}
+	}
+
+	/**
+	 * New Biggopti Layout
+	 * @param  array $biggopti Biggopti biggopti_layout.
+	 * @return void
+	 * @since 6.11.3
+	 */
+
+	public static function biggopti_layout($biggopti = []) {
+
+		if( isset($biggopti['html_message']) && ! empty($biggopti['html_message']) ) {
+			self::new_biggopti_layout($biggopti);
+			return;
+		}
+
+	?>
+		<div id="<?php echo esc_attr($biggopti['id']); ?>" class="<?php echo esc_attr($biggopti['classes']); ?>" <?php echo esc_attr($biggopti['data']); ?>>
+			<div class="bdt-biggopti-wrapper">
+				<div class="bdt-biggopti-icon-wrapper">
+					<img height="25" width="25" src="<?php echo esc_url (BDTUPK_ASSETS_URL ); ?>images/logo.svg">
+				</div>
+
+				<div class="bdt-biggopti-content">
+					<?php if (isset($biggopti['title']) && !empty($biggopti['title'])) : ?>
+						<h2 class="bdt-biggopti-title"><?php echo wp_kses_post($biggopti['title']); ?></h2>
+					<?php endif; ?>
+
+					<p class="bdt-biggopti-text"><?php echo wp_kses_post($biggopti['message']); ?></p>
+
+					<?php if (isset($biggopti['action_link']) && !empty($biggopti['action_link'])) : ?>
+						<div class="bdt-biggopti-btn">
+							<a href="#">Renew Now</a>
+						</div>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+<?php
+	}
+
+	public static function new_biggopti_layout( $biggopti = [] ) {
+		?>
+		<div id="<?php echo esc_attr( $biggopti['id'] ); ?>" class="<?php echo esc_attr( $biggopti['classes'] ); ?>" <?php echo esc_attr( $biggopti['data'] ); ?>>	
+			<?php 
+				echo wp_kses_post( $biggopti['html_message'] );
+			?>
+		</div>
+		
+		<?php
+	}
+}
+
+Biggopties::get_instance();
