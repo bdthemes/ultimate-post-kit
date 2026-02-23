@@ -860,17 +860,6 @@ class UltimatePostKit_Admin_Settings {
             );
         }
 
-		if (true !== _is_upk_pro_activated()) {
-			add_submenu_page(
-				self::PAGE_ID,
-				BDTUPK_TITLE,
-				esc_html__('Get Pro', 'ultimate-post-kit'),
-				'manage_options',
-				self::PAGE_ID . '_get_pro',
-				[$this, 'display_page']
-			);
-		}
-
 	}
 
     /**
