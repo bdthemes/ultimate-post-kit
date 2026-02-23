@@ -1,0 +1,344 @@
+jQuery(document).ready(function ($) {
+
+    /* ===================================
+       Start Admin Store API BIGGOPTI
+       =================================== */
+    // Dismiss API BIGGOPTI
+    $(document).on('click', '.ultimate-post-kit-biggopti.is-dismissible .bdt-biggopti-dismiss', function (e) {
+        e.preventDefault();
+        var $this = $(this).closest('.ultimate-post-kit-biggopti');
+        var displayId = $this.data('display-id') || $this.attr('data-display-id') || '';
+        if (!displayId && $this.attr('id')) {
+            var id = $this.attr('id');
+            if (id.indexOf('bdt-admin-api-biggopti-') === 0) {
+                displayId = id.replace('bdt-admin-api-biggopti-', '');
+            }
+        }
+        var $time = $this.data('dismissible-time') || $this.attr('data-dismissible-time') || $this.attr('dismissible-time') || 604800;
+        var $meta = $this.data('dismissible-meta') || $this.attr('data-dismissible-meta') || $this.attr('dismissible-meta') || 'transient';
+        var cfg = window.UltimatePostKitBiggoptiConfig || {};
+        var ajaxUrl = cfg.ajaxurl || (typeof ajaxurl !== 'undefined' ? ajaxurl : '');
+        if (!ajaxUrl || !displayId || !cfg.nonce) return;
+        $.ajax({
+            url: ajaxUrl,
+            type: 'POST',
+            data: {
+                action: 'bdt_admin_api_biggopti_dismiss',
+                display_id: displayId,
+                id: $this.attr('id'),
+                meta: $meta,
+                time: $time,
+                _wpnonce: cfg.nonce,
+            }
+        }).done(function () {
+            $('.ultimate-post-kit-biggopti').filter(function () { return ($(this).data('display-id') || $(this).attr('data-display-id') || '') === displayId; }).fadeTo(100, 0, function () { $(this).slideUp(100, function () { $(this).remove(); }); });
+        }).fail(function () {
+            $('.ultimate-post-kit-biggopti').filter(function () { return ($(this).data('display-id') || $(this).attr('data-display-id') || '') === displayId; }).fadeTo(100, 0, function () { $(this).slideUp(100, function () { $(this).remove(); }); });
+        });
+    });
+    
+    /**
+     * Initialize countdown timers for API biggopties
+     * This function finds all countdown elements and starts the countdown timer
+     */
+    function initAPIBiggoptiCountdown() {
+        // Find all countdown elements on the page
+        jQuery('.bdt-biggopti-countdown').each(function() {
+            var $countdown = jQuery(this);
+            var $timer = $countdown.find('.countdown-timer');
+            var endDate = $countdown.data('end-date');
+            var timezone = $countdown.data('timezone');
+            
+            // Skip if no end date or timer element found
+            if (!endDate || !$timer.length) {
+                return;
+            }
+            
+            /**
+             * Update the countdown display
+             * Calculates time remaining and formats it for display
+             */
+            function updateCountdown() {
+                var endTime = new Date(endDate + ' ' + timezone).getTime();
+                var now = new Date().getTime();
+                var distance = endTime - now;
+                
+                // If countdown has expired, hide the countdown
+                if (distance < 0) {
+                    $countdown.hide();
+                    return;
+                }
+                
+                // Calculate time units
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                // Add leading zeros
+                days = days < 10 ? "0" + days : days;
+                hours = hours < 10 ? "0" + hours : hours; 
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                
+                // Build countdown text with wrapped numbers and labels
+                var countdownText = "";
+                if (days > 0) {
+                    countdownText += '<div class="countdown-item"><span class="number">' + days + '</span><span class="label">days</span></div><span class="separator"></span>';
+                }
+                // Always show hours (even if 00) for consistent layout
+                countdownText += '<div class="countdown-item"><span class="number">' + hours + '</span><span class="label">hrs</span></div><span class="separator"></span>';
+                
+                countdownText += '<div class="countdown-item"><span class="number">' + minutes + '</span><span class="label">min</span></div><span class="separator"></span>';
+                
+                countdownText += '<div class="countdown-item"><span class="number">' + seconds + '</span><span class="label">sec</span></div>';
+                
+                // Update the timer display
+                $timer.html(countdownText);
+            }
+            
+            // Initial update to show countdown immediately
+            updateCountdown();
+            
+            // Set up interval to update countdown every second
+            setInterval(updateCountdown, 1000);
+        });
+    }
+    
+    // Initialize countdown on page load
+    initAPIBiggoptiCountdown();
+    
+    // Re-initialize countdown when new biggopties are added (for dynamic content)
+    // This ensures countdown works even if biggopties are loaded after page load
+    jQuery(document).on('DOMNodeInserted', '.bdt-biggopti-countdown', function() {
+        initAPIBiggoptiCountdown();
+    });
+
+    // Fetch API biggopties directly (no PHP ajax_fetch_api_biggopties)
+    var BIGGOPTI_API_URL = (window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.apiUrl) || 'https://api.sigmative.io/prod/store/api/biggopti/api-data-records';
+    var BIGGOPTI_ASSETS_URL = (window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.assetsUrl) || '';
+
+    var skippedDueToProTargetedAndPro = false;
+
+    function isUpkPromoItemValid(item) {
+        if (!item || item.product !== 'ultimate-post-kit' || item.type !== 'adminDashboard') return false;
+        var targets = item.client_targets || [];
+        var isPro = (window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.isPro) || false;
+        if (targets.includes('pro_targeted') && isPro) {
+            skippedDueToProTargetedAndPro = true;
+            return false;
+        }
+        var showForFree = targets.includes('free');
+        var showForPro = targets.includes('pro') && isPro;
+        if (!showForFree && !showForPro) return false;
+        if (!item.is_enabled) return false;
+        if (!item.end_date) return false;
+        var tz = item.timezone || 'UTC';
+        var endStr = (item.end_date + '').replace(' ', 'T') + (tz === 'UTC' ? 'Z' : '');
+        var endDate = new Date(endStr);
+        if (isNaN(endDate.getTime())) return false;
+        return Date.now() <= endDate.getTime();
+    }
+
+    function renderBiggoptiHTML(item, idSuffix, opts) {
+        opts = opts || {};
+        var noDismiss = opts.noDismiss === true;
+        var esc = function(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
+        var bg = (item.background_color || '') + (item.image ? ' background-image:url(' + esc(item.image) + ')' : '');
+        var wrapperClass = 'bdt-biggopti-wrapper' + (item.image ? ' has-background-image' : '');
+        var title = esc(item.title || '');
+        var content = esc(item.content || '');
+        var logoUrl = item.logo || '';
+        var link = item.link || '';
+        var btnText = item.button_text || 'Read More';
+        var showCountdown = item.show_countdown && item.end_date;
+        var endDate = item.end_date || '';
+        var tz = item.timezone || 'UTC';
+        var displayId = item.display_id || item.id || 'default';
+        var biggoptiId = 'bdt-admin-api-biggopti-' + displayId + (idSuffix ? idSuffix : '');
+
+        var countdownHtml = showCountdown ? '<div class="bdt-biggopti-countdown" data-end-date="' + esc(endDate) + '" data-timezone="' + esc(tz) + '"><div class="countdown-timer">Loading...</div></div>' : '';
+        var btnHtml = link ? '<div class="bdt-biggopti-btn"><a href="' + esc(link) + '" target="_blank"><div class="nm-biggopti-btn">' + esc(btnText) + ' <span class="dashicons dashicons-arrow-right-alt"></span></div></a></div>' : '';
+        var logoHtml = logoUrl ? '<div class="bdt-biggopti-logo-wrapper"><img width="100" src="' + esc(logoUrl) + '" alt="Logo"></div>' : '';
+
+        var inner = '<div class="' + wrapperClass + '"' + (bg ? ' style="' + esc(bg) + '"' : '') + '>' +
+            '<div class="bdt-api-biggopti-content">' +
+            '<div class="bdt-plugin-logo-wrapper"><img height="auto" width="40" src="' + BIGGOPTI_ASSETS_URL + 'images/logo.svg" alt="Ultimate Post Kit Logo"></div>' +
+            '<div class="bdt-biggopti-content">' +
+            '<div class="bdt-biggopti-content-inner">' + logoHtml +
+            '<div class="bdt-biggopti-title-description">' +
+            (title ? '<h2 class="bdt-biggopti-title">' + title + '</h2>' : '') +
+            (content ? '<div class="bdt-biggopti-html-content">' + content + '</div>' : '') +
+            '</div></div>' +
+            '<div class="bdt-biggopti-content-right">' + countdownHtml + btnHtml + '</div>' +
+            '</div></div></div>';
+
+        var endTs = endDate ? Math.max((new Date(endDate.replace(' ', 'T') + (tz === 'UTC' ? 'Z' : ''))).getTime() - Date.now(), 0) : 604800;
+        var classes = 'ultimate-post-kit-biggopti biggopti biggopti-info' + (noDismiss ? '' : ' is-dismissible');
+        var attrs = 'id="' + biggoptiId + '"';
+        if (!noDismiss) attrs += ' data-display-id="' + esc(displayId) + '" data-dismissible-meta="transient" data-dismissible-time="' + endTs + '"';
+        var dismissBtn = noDismiss ? '' : '<button type="button" class="bdt-biggopti-dismiss dashicons dashicons-dismiss"><span class="screen-reader-text">Dismiss this biggopti.</span></button>';
+        return '<div class="' + classes + '" ' + attrs + '>' + inner + dismissBtn + '</div>';
+    }
+
+    function isExcludedUrl() {
+        var url = window.location.href || '';
+        var patterns = ['plugin-install.php', 'theme-install.php', 'action=upload-plugin', 'action=upload-theme'];
+        for (var i = 0; i < patterns.length; i++) {
+            if (url.indexOf(patterns[i]) !== -1) return true;
+        }
+        return false;
+    }
+
+    function injectBiggoptiesFromData(data) {
+            var list = data && data['ultimate-post-kit'];
+            if (!Array.isArray(list)) return;
+            var dismissed = (window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.dismissedDisplayIds) || [];
+            var valid = [];
+            var validForDashboard = [];
+            var seen = {};
+            for (var i = 0; i < list.length; i++) {
+                if (!isUpkPromoItemValid(list[i])) continue;
+                var did = list[i].display_id || list[i].id || 'default-' + i;
+                if (seen[did]) continue;
+                seen[did] = true;
+                validForDashboard.push(list[i]);
+                if (dismissed.indexOf(did) === -1) valid.push(list[i]);
+            }
+            if (valid.length === 0 && validForDashboard.length === 0) return;
+
+            var $target = $('#wpbody-content .wrap').first();
+            if (!$target.length) $target = $('.wrap').first();
+            if (!$target.length) $target = $('#wpbody-content');
+
+            var html = '';
+            for (var j = 0; j < valid.length; j++) {
+                var displayId = valid[j].display_id || valid[j].id || 'default-' + j;
+                var classPattern = 'bdt-admin-api-biggopti-' + displayId;
+                if ($('[id="' + classPattern + '"]').length) continue;
+                html += renderBiggoptiHTML(valid[j]);
+            }
+            if (!html && validForDashboard.length === 0) return;
+
+            if (html) {
+            var $markup = $(html);
+            if ($target.children('hr.wp-header-end').length) {
+                $target.children('hr.wp-header-end').first().after($markup);
+            } else if ($target.children('h1').length) {
+                $target.children('h1').first().after($markup);
+            } else {
+                $target.prepend($markup);
+            }
+            }
+
+            // Also inject into dashboard widget #bdt-dashboard-overview if present (no dismiss, no dismissed check)
+            var $dashboard = $('#bdt-dashboard-overview .inside');
+            if (!$dashboard.length) $dashboard = $('#bdt-dashboard-overview');
+            if ($dashboard.length && validForDashboard.length) {
+                var dashHtml = '';
+                for (var k = 0; k < validForDashboard.length; k++) {
+                    var did = validForDashboard[k].display_id || validForDashboard[k].id || 'default-' + k;
+                    if ($('#bdt-admin-api-biggopti-' + did + '-dashboard').length) continue;
+                    dashHtml += renderBiggoptiHTML(validForDashboard[k], '-dashboard', { noDismiss: true });
+                }
+                if (dashHtml) {
+                    $dashboard.prepend($(dashHtml));
+                }
+            }
+
+            // Dismiss button is in HTML; delegated handler handles click
+            initAPIBiggoptiCountdown();
+    }
+
+    /* ===================================
+       Submenu Promotion Menu (shares API data with biggopties)
+       =================================== */
+    var FALLBACK = { title: 'Go Pro', link: 'https://bdthemes.com/deals/?utm_source=WordPress_org&utm_medium=bfcm_cta&utm_campaign=ultimate_post_kit' };
+
+    function getFirstValidPromo(data) {
+        var list = data && data['ultimate-post-kit'];
+        if (!Array.isArray(list)) return null;
+        for (var i = 0; i < list.length; i++) {
+            if (isUpkPromoItemValid(list[i]) && list[i].link) {
+                var t = list[i].title || list[i].button_text || 'Go Pro';
+                return { title: t, link: list[i].link };
+            }
+        }
+        return null;
+    }
+
+    function injectPromotionMenu(promo) {
+        var adminSubmenu = document.querySelector('#toplevel_page_ultimate_post_kit_options .wp-submenu');
+        if (!adminSubmenu || adminSubmenu.querySelector('.ep-promo-menu-item')) return;
+        var p = promo || FALLBACK;
+        var href = (p.link || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+        var text = (p.title || 'Go Pro').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        var html = '<li class="ep-promo-menu-item"><a href="' + href + '" target="_blank" style="color: #60DF54; font-weight: 600;" rel="noopener noreferrer">' + text + '</a></li>';
+        adminSubmenu.insertAdjacentHTML('beforeend', html);
+    }
+
+    function processApiData(data) {
+        // test data - remove when done testing
+        data = {
+            "ultimate-post-kit": [
+                {
+                    "biggopti_class": "class-01k045vx960ab8zvx1zbyz2mqb",
+                    "id": "1_01k045vx960ab8zvx1zbyz2mqb_1768477647",
+                    "display_id": "class-01k045vx960ab8zvx1zbyz2mqb",
+                    "type": "adminDashboard",
+                    "title": "Give Your Website a Summer Makeover!",
+                    "content": "The crazy Summer Sale savings is live!  offering - up to 80% discounts",
+                    "custom_css": "",
+                    "background_color": "",
+                    "image": "https://api.sigmative.io/dev/store/files/biggopti/tems/46aa535f-d0f0-4a8b-b8a6-5d606d45dd23/summer_salenotification_banner.jpg",
+                    "logo": "https://api.sigmative.io/dev/store/files/biggopti/items/fadfe7fe-f91d-43cb-a482-9822d70bacc5/download.jpeg",
+                    "button_text": "Get the Deal",
+                    "link": "https://tinyurl.com/253nhve5",
+                    "show_countdown": true,
+                    "countdown_content": "",
+                    "looped_countdown": false,
+                    "looped_hour": 1,
+                    "visible_after": 0,
+                    "visible_expired": 3600,
+                    "start_date": "2025-08-05 15:56:00",
+                    "end_date": "2026-02-30 09:57:00",
+                    "product": "ultimate-post-kit",
+                    "client_targets": ["pro", "free"],
+                    "is_enabled": true,
+                    "timezone": "UTC"
+                }
+            ]
+        };
+
+        window.bdtPromoData = data;
+
+        if (!isExcludedUrl()) {
+            injectBiggoptiesFromData(data);
+        }
+
+        skippedDueToProTargetedAndPro = false;
+        var promo = getFirstValidPromo(data);
+        if (promo || !skippedDueToProTargetedAndPro) {
+            injectPromotionMenu(promo);
+        }
+    }
+
+    function fetchUpkPromoData() {
+        fetch(BIGGOPTI_API_URL).then(function(r) { return r.json(); }).then(processApiData).catch(function() {
+            injectPromotionMenu(FALLBACK);
+        });
+    }
+
+    $(window).on('load', function() {
+        setTimeout(function() {
+            fetchUpkPromoData();
+            setTimeout(fetchUpkPromoData, 500);
+        }, 400);
+    });
+
+    /* ===================================
+       END Admin Store API BIGGOPTI / Submenu Promotion
+       =================================== */
+
+
+});

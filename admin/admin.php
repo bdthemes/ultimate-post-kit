@@ -192,11 +192,29 @@ class Admin
 		wp_enqueue_script('jquery-form');
 		wp_enqueue_script('upk-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'js/upk-biggopti.min.js', ['jquery'], BDTUPK_VER,  true);
 
+		wp_enqueue_script('upk-admin-api-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'js/upk-admin-api-biggopti.min.js', ['jquery'], BDTUPK_VER,  true);
+
+		$dismissals = get_option('bdt_admin_api_biggopti_dismissals', []);
+		$dismissed_display_ids = [];
+		$prefix = 'bdt-admin-api-biggopti-';
+		foreach (array_keys($dismissals) as $key) {
+			if (strpos($key, $prefix) === 0) {
+				$dismissed_display_ids[] = substr($key, strlen($prefix));
+			} else {
+				$dismissed_display_ids[] = $key;
+			}
+		}
+
 		$script_config = [
-			'ajaxurl'	=> admin_url('admin-ajax.php'),
-			'nonce'		=> wp_create_nonce('ultimate-post-kit'),
+			'ajaxurl'            => admin_url('admin-ajax.php'),
+			'nonce'              => wp_create_nonce('ultimate-post-kit'),
+			'isPro'              => function_exists('_is_upk_pro_activated') && _is_upk_pro_activated(),
+			'apiUrl'             => apply_filters('upk_biggopti_api_url', 'https://api.sigmative.io/prod/store/api/biggopti/api-data-records'),
+			'assetsUrl'          => defined('BDTUPK_ASSETS_URL') ? BDTUPK_ASSETS_URL : '',
+			'dismissedDisplayIds' => $dismissed_display_ids,
 		];
 		wp_localize_script('upk-biggopti', 'UltimatePostKitBiggoptiConfig', $script_config);
+		wp_localize_script('upk-admin-api-biggopti', 'UltimatePostKitAdminApiBiggoptiConfig', $script_config);
 
 		if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_post_kit_options')) {
 			wp_enqueue_script('chart', BDTUPK_ADMIN_ASSETS_URL . 'js/chart.min.js', ['jquery'], '3.9.1', true);
