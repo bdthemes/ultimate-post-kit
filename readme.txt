@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.1.1
+Stable tag: 4.1.2
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.9
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.35.3
+Elementor tested up to: 3.35.5
 
 Build your blogs and news sites with a feature-rich Elementor addon, offering 100+ elements for engaging layouts.
 
@@ -247,7 +247,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.1.X [XXth February 2026] =
+= 4.1.2 [24th February 2026] =
 
 * Fixed: Separator display issue in the gratis grid widget
 
