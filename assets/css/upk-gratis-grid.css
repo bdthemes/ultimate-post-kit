@@ -96,6 +96,17 @@
 .upk-gratis-grid .upk-meta {
   gap: 10px;
 }
+.upk-gratis-grid .upk-meta .upk-date-reading > div {
+  position: relative;
+  display: inline-flex;
+}
+.upk-gratis-grid .upk-meta .upk-date-reading > div:before {
+  content: attr(data-separator);
+  margin: 0 5px;
+}
+.upk-gratis-grid .upk-meta .upk-date-reading > div:nth-child(1)::before {
+  display: none;
+}
 .upk-gratis-grid .upk-meta .upk-flex-middle {
   gap: 5px;
 }
