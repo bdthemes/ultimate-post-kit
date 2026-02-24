@@ -189,9 +189,9 @@ class Admin
 
 		wp_enqueue_script('upk-admin-api-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'js/upk-admin-api-biggopti.min.js', ['jquery'], BDTUPK_VER,  true);
 
-		$dismissals = get_option('bdt_admin_api_biggopti_dismissals', []);
+		$dismissals = get_option('bdt_biggopti_dismissals', []);
 		$dismissed_display_ids = [];
-		$prefix = 'bdt-admin-api-biggopti-';
+		$prefix = 'bdt-admin-biggopti-api-biggopti-';
 		foreach (array_keys($dismissals) as $key) {
 			if (strpos($key, $prefix) === 0) {
 				$dismissed_display_ids[] = substr($key, strlen($prefix));

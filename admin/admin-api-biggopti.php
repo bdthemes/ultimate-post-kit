@@ -56,9 +56,9 @@ class AdminApiBiggopties {
 				update_user_meta(get_current_user_id(), $user_key, true);
 			} else {
 				// Save to options table only - display_id based, no end-time expiration
-				$dismissals_option = get_option('bdt_admin_api_biggopti_dismissals', []);
+				$dismissals_option = get_option('bdt_biggopti_dismissals', []);
 				$dismissals_option[$display_id] = ['dismissed_at' => time()];
-				update_option('bdt_admin_api_biggopti_dismissals', $dismissals_option, false);
+				update_option('bdt_biggopti_dismissals', $dismissals_option, false);
 			}
 
 			wp_send_json_success();
