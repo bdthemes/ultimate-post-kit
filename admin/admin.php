@@ -204,7 +204,6 @@ class Admin
 			'ajaxurl'            => admin_url('admin-ajax.php'),
 			'nonce'              => wp_create_nonce('ultimate-post-kit'),
 			'isPro'              => function_exists('_is_upk_pro_activated') && _is_upk_pro_activated(),
-			'apiUrl'             => apply_filters('upk_biggopti_api_url', 'https://api.sigmative.io/prod/store/api/biggopti/api-data-records'),
 			'assetsUrl'          => defined('BDTUPK_ASSETS_URL') ? BDTUPK_ASSETS_URL : '',
 			'dismissedDisplayIds' => $dismissed_display_ids,
 		];

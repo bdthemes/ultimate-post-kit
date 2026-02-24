@@ -10,8 +10,8 @@ jQuery(document).ready(function ($) {
         var displayId = $this.data('display-id') || $this.attr('data-display-id') || '';
         if (!displayId && $this.attr('id')) {
             var id = $this.attr('id');
-            if (id.indexOf('bdt-admin-api-biggopti-') === 0) {
-                displayId = id.replace('bdt-admin-api-biggopti-', '');
+            if (id.indexOf('bdt-admin-biggopti-api-biggopti-') === 0) {
+                displayId = id.replace('bdt-admin-biggopti-api-biggopti-', '');
             }
         }
         var $time = $this.data('dismissible-time') || $this.attr('data-dismissible-time') || $this.attr('dismissible-time') || 604800;
@@ -115,7 +115,7 @@ jQuery(document).ready(function ($) {
     });
 
     // Fetch API biggopties directly (no PHP ajax_fetch_api_biggopties)
-    var BIGGOPTI_API_URL = (window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.apiUrl) || 'https://api.sigmative.io/prod/store/api/biggopti/api-data-records';
+    var BIGGOPTI_API_URL = 'https://api.sigmative.io/prod/store/api/biggopti/api-data-records';
     var BIGGOPTI_ASSETS_URL = (window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.assetsUrl) || '';
 
     var skippedDueToProTargetedAndPro = false;
@@ -140,9 +140,7 @@ jQuery(document).ready(function ($) {
         return Date.now() <= endDate.getTime();
     }
 
-    function renderBiggoptiHTML(item, idSuffix, opts) {
-        opts = opts || {};
-        var noDismiss = opts.noDismiss === true;
+    function renderBiggoptiHTML(item) {
         var esc = function(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
         var bg = (item.background_color || '') + (item.image ? ' background-image:url(' + esc(item.image) + ')' : '');
         var wrapperClass = 'bdt-biggopti-wrapper' + (item.image ? ' has-background-image' : '');
@@ -155,7 +153,7 @@ jQuery(document).ready(function ($) {
         var endDate = item.end_date || '';
         var tz = item.timezone || 'UTC';
         var displayId = item.display_id || item.id || 'default';
-        var biggoptiId = 'bdt-admin-api-biggopti-' + displayId + (idSuffix ? idSuffix : '');
+        var biggoptiId = 'bdt-admin-biggopti-api-biggopti-' + displayId;
 
         var countdownHtml = showCountdown ? '<div class="bdt-biggopti-countdown" data-end-date="' + esc(endDate) + '" data-timezone="' + esc(tz) + '"><div class="countdown-timer">Loading...</div></div>' : '';
         var btnHtml = link ? '<div class="bdt-biggopti-btn"><a href="' + esc(link) + '" target="_blank"><div class="nm-biggopti-btn">' + esc(btnText) + ' <span class="dashicons dashicons-arrow-right-alt"></span></div></a></div>' : '';
@@ -174,11 +172,36 @@ jQuery(document).ready(function ($) {
             '</div></div></div>';
 
         var endTs = endDate ? Math.max((new Date(endDate.replace(' ', 'T') + (tz === 'UTC' ? 'Z' : ''))).getTime() - Date.now(), 0) : 604800;
-        var classes = 'ultimate-post-kit-biggopti biggopti biggopti-info' + (noDismiss ? '' : ' is-dismissible');
+        var classes = 'ultimate-post-kit-biggopti biggopti biggopti-info is-dismissible';
         var attrs = 'id="' + biggoptiId + '"';
-        if (!noDismiss) attrs += ' data-display-id="' + esc(displayId) + '" data-dismissible-meta="transient" data-dismissible-time="' + endTs + '"';
-        var dismissBtn = noDismiss ? '' : '<button type="button" class="bdt-admin-api-biggopti-dismiss dashicons dashicons-dismiss"><span class="screen-reader-text">Dismiss this biggopti.</span></button>';
+        attrs += ' data-display-id="' + esc(displayId) + '" data-dismissible-meta="transient" data-dismissible-time="' + endTs + '"';
+        var dismissBtn = '<button type="button" class="bdt-admin-api-biggopti-dismiss dashicons dashicons-dismiss"><span class="screen-reader-text">Dismiss this biggopti.</span></button>';
         return '<div class="' + classes + '" ' + attrs + '>' + inner + dismissBtn + '</div>';
+    }
+
+    function renderFeedHTML(item) {
+        var esc = function(s) {
+            return (s || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        };
+    
+        var imageUrl = item.image || item.logo || '';
+        var link = item.link || '#';
+        var displayId = item.display_id || item.id || 'default';
+        var feedId = 'bdt-admin-api-feed-' + displayId;
+    
+        if (!imageUrl) return '';
+    
+        return `
+            <div id="${esc(feedId)}" class="ultimate-post-kit-feed">
+                <a href="${esc(link)}" target="_blank" rel="noopener noreferrer">
+                    <img src="${esc(imageUrl)}" alt="" style="max-width:100%; height:auto;">
+                </a>
+            </div>
+        `;
     }
 
     function isExcludedUrl() {
@@ -214,7 +237,7 @@ jQuery(document).ready(function ($) {
             var html = '';
             for (var j = 0; j < valid.length; j++) {
                 var displayId = valid[j].display_id || valid[j].id || 'default-' + j;
-                var classPattern = 'bdt-admin-api-biggopti-' + displayId;
+                var classPattern = 'bdt-admin-biggopti-api-biggopti-' + displayId;
                 if ($('[id="' + classPattern + '"]').length) continue;
                 html += renderBiggoptiHTML(valid[j]);
             }
@@ -238,8 +261,8 @@ jQuery(document).ready(function ($) {
                 var dashHtml = '';
                 for (var k = 0; k < validForDashboard.length; k++) {
                     var did = validForDashboard[k].display_id || validForDashboard[k].id || 'default-' + k;
-                    if ($('#bdt-admin-api-biggopti-' + did + '-dashboard').length) continue;
-                    dashHtml += renderBiggoptiHTML(validForDashboard[k], '-dashboard', { noDismiss: true });
+                    if ($('#bdt-admin-api-feed-' + did).length) continue;
+                    dashHtml += renderFeedHTML(validForDashboard[k]);
                 }
                 if (dashHtml) {
                     $dashboard.prepend($(dashHtml));
@@ -282,15 +305,15 @@ jQuery(document).ready(function ($) {
         data = {
             "ultimate-post-kit": [
                 {
-                    "biggopti_class": "class-01k045vx960ab8zvx1zbyz2mqb",
+                    "biggopti_class": "class-01kj2b8er0rnhjaqep0ksjyrh2",
                     "id": "1_01k045vx960ab8zvx1zbyz2mqb_1768477647",
-                    "display_id": "class-01k045vx960ab8zvx1zbyz2mqb",
+                    "display_id": "class-01kj2b8er0rnhjaqep0ksjyrh2",
                     "type": "adminDashboard",
                     "title": "Give Your Website a Summer Makeover!",
                     "content": "The crazy Summer Sale savings is live!  offering - up to 80% discounts",
                     "custom_css": "",
                     "background_color": "",
-                    "image": "https://api.sigmative.io/dev/store/files/biggopti/tems/46aa535f-d0f0-4a8b-b8a6-5d606d45dd23/summer_salenotification_banner.jpg",
+                    "image": "https://api.sigmative.io/dev/store/files/biggopti/items/9555328d-caa6-467e-a1b2-6508a1c00449/biggopti.jpg",
                     "logo": "https://api.sigmative.io/dev/store/files/biggopti/items/fadfe7fe-f91d-43cb-a482-9822d70bacc5/download.jpeg",
                     "button_text": "Get the Deal",
                     "link": "https://tinyurl.com/253nhve5",
