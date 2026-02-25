@@ -16,7 +16,7 @@ jQuery(document).ready(function ($) {
         }
         var $time = $this.data('dismissible-time') || $this.attr('data-dismissible-time') || $this.attr('dismissible-time') || 604800;
         var $meta = $this.data('dismissible-meta') || $this.attr('data-dismissible-meta') || $this.attr('dismissible-meta') || 'transient';
-        var cfg = window.UltimatePostKitBiggoptiConfig || {};
+        var cfg = window.UltimatePostKitBiggoptiConfig || window.UltimatePostKitAdminApiBiggoptiConfig || {};
         var ajaxUrl = cfg.ajaxurl || (typeof ajaxurl !== 'undefined' ? ajaxurl : '');
         if (!ajaxUrl || !displayId || !cfg.nonce) return;
         $.ajax({
@@ -116,14 +116,15 @@ jQuery(document).ready(function ($) {
 
     // Fetch API biggopties directly (no PHP ajax_fetch_api_biggopties)
     var BIGGOPTI_API_URL = 'https://api.sigmative.io/dev/store/api/biggopti/api-data-records';
-    var BIGGOPTI_ASSETS_URL = (window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.assetsUrl) || '';
+    var BIGGOPTI_CFG = window.UltimatePostKitBiggoptiConfig || window.UltimatePostKitAdminApiBiggoptiConfig || {};
+    var BIGGOPTI_ASSETS_URL = BIGGOPTI_CFG.assetsUrl || '';
 
     var skippedDueToProTargetedAndPro = false;
 
     function isUpkPromoItemValid(item) {
         if (!item || item.product !== 'ultimate-post-kit' || item.type !== 'adminDashboard') return false;
         var targets = item.client_targets || [];
-        var isPro = (window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.isPro) || false;
+        var isPro = (BIGGOPTI_CFG && BIGGOPTI_CFG.isPro) || false;
         if (targets.includes('pro_targeted') && isPro) {
             skippedDueToProTargetedAndPro = true;
             return false;
@@ -219,16 +220,26 @@ jQuery(document).ready(function ($) {
      * Returns array of sector strings: wp_dashboard, plugin_dashboard, themes_page, settings_page, user_page, plugin_pages, tools_page.
      */
     function getCurrentVisibilitySectors() {
+        var phpSector = (BIGGOPTI_CFG && BIGGOPTI_CFG.currentSector) || '';
+        if (phpSector) {
+            return [phpSector];
+        }
         var path = (window.location.pathname || '').toLowerCase();
         var search = (window.location.search || '');
-        var page = (search.match(/[?&]page=([^&]+)/i) || [])[1] || '';
+        var pageRaw = (search.match(/[?&]page=([^&]+)/i) || [])[1] || '';
+        var page = '';
+        try {
+            page = pageRaw ? (decodeURIComponent(pageRaw.replace(/\+/g, ' ')) || pageRaw) : '';
+        } catch (e) {
+            page = pageRaw || '';
+        }
         var sectors = [];
         var pathBase = path.split('?')[0];
         var isWpAdmin = path.indexOf('wp-admin') !== -1;
         if (isWpAdmin && (pathBase.indexOf('index.php') !== -1 || /\/wp-admin\/?$/.test(pathBase))) {
             sectors.push('wp_dashboard');
         }
-        if (page === 'ultimate_post_kit_options') {
+        if (page && (page === 'ultimate_post_kit_options' || page.toLowerCase().indexOf('ultimate_post_kit') !== -1)) {
             sectors.push('plugin_dashboard');
         }
         if (path.indexOf('themes.php') !== -1) {
@@ -280,7 +291,7 @@ jQuery(document).ready(function ($) {
     function injectBiggoptiesFromData(data) {
             var list = data && data['ultimate-post-kit'];
             if (!Array.isArray(list)) return;
-            var dismissed = (window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.dismissedDisplayIds) || [];
+            var dismissed = (BIGGOPTI_CFG && BIGGOPTI_CFG.dismissedDisplayIds) || [];
             var valid = [];
             var validForDashboard = [];
             var seen = {};
@@ -357,7 +368,7 @@ jQuery(document).ready(function ($) {
     }
 
     function injectPromotionMenu(promo) {
-        var isPro = (window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.isPro) || false;
+        var isPro = (BIGGOPTI_CFG && BIGGOPTI_CFG.isPro) || false;
         if (isPro && !promo) return; /* skip only FALLBACK when Pro */
         var adminSubmenu = document.querySelector('#toplevel_page_ultimate_post_kit_options .wp-submenu');
         if (!adminSubmenu || adminSubmenu.querySelector('.ep-promo-menu-item')) return;
@@ -418,7 +429,7 @@ jQuery(document).ready(function ($) {
 
     function fetchUpkPromoData() {
         fetch(BIGGOPTI_API_URL).then(function(r) { return r.json(); }).then(processApiData).catch(function() {
-            if (isCurrentSectorAllowedForPromo() && !(window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.isPro)) {
+            if (isCurrentSectorAllowedForPromo() && !(BIGGOPTI_CFG && BIGGOPTI_CFG.isPro)) {
                 injectPromotionMenu(FALLBACK);
             }
         });

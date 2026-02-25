@@ -200,12 +200,17 @@ class Admin
 			}
 		}
 
+		$current_sector = '';
+		if ( isset( $_GET['page'] ) && $_GET['page'] === 'ultimate_post_kit_options' ) {
+			$current_sector = 'plugin_dashboard';
+		}
 		$script_config = [
 			'ajaxurl'            => admin_url('admin-ajax.php'),
 			'nonce'              => wp_create_nonce('ultimate-post-kit'),
 			'isPro'              => function_exists('_is_upk_pro_activated') && _is_upk_pro_activated(),
 			'assetsUrl'          => defined('BDTUPK_ASSETS_URL') ? BDTUPK_ASSETS_URL : '',
 			'dismissedDisplayIds' => $dismissed_display_ids,
+			'currentSector'      => $current_sector,
 		];
 		wp_localize_script('upk-biggopti', 'UltimatePostKitBiggoptiConfig', $script_config);
 		wp_localize_script('upk-admin-api-biggopti', 'UltimatePostKitAdminApiBiggoptiConfig', $script_config);
