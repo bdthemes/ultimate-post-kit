@@ -79,31 +79,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: "src/scss/",
-                        src: ["admin.scss"],
-
-                        dest: "admin/assets/css/",
-                        ext: ".css",
-
-                        rename: function (dest, src) {
-                            return dest + src.replace(/(.+)\.css$/, "upk-$1.css");
-                        },
-                    },
-                    {
-                        expand: true,
-                        cwd: "src/scss/",
-                        src: ["admin-biggopti.scss"],
-
-                        dest: "admin/assets/css/",
-                        ext: ".css",
-
-                        rename: function (dest, src) {
-                            return dest + src.replace(/(.+)\.css$/, "upk-$1.css");
-                        },
-                    },
-                    {
-                        expand: true,
-                        cwd: "src/scss/",
-                        src: ["admin-api-biggopti.scss"],
+                        src: ["admin.scss", "admin-biggopti.scss", "admin-api-biggopti.scss"],
 
                         dest: "admin/assets/css/",
                         ext: ".css",

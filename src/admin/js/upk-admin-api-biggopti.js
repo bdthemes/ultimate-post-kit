@@ -1,7 +1,7 @@
 jQuery(document).ready(function ($) {
 
     /* ===================================
-       Start Admin Store API BIGGOPTI
+       Start Admin API BIGGOPTI
        =================================== */
     // Dismiss API BIGGOPTI
     $(document).on('click', '.ultimate-post-kit-biggopti.is-dismissible .bdt-admin-api-biggopti-dismiss', function (e) {
@@ -31,9 +31,9 @@ jQuery(document).ready(function ($) {
                 _wpnonce: cfg.nonce,
             }
         }).done(function () {
-            $('.ultimate-post-kit-biggopti').filter(function () { return ($(this).data('display-id') || $(this).attr('data-display-id') || '') === displayId; }).fadeTo(100, 0, function () { $(this).slideUp(100, function () { $(this).remove(); }); });
+            $('.ultimate-post-kit-biggopti').filter(function () { return ($(this).data('display-id') || $(this).attr('data-display-id') || '') === displayId; }).fadeTo(50, 0, function () { $(this).slideUp(50, function () { $(this).remove(); }); });
         }).fail(function () {
-            $('.ultimate-post-kit-biggopti').filter(function () { return ($(this).data('display-id') || $(this).attr('data-display-id') || '') === displayId; }).fadeTo(100, 0, function () { $(this).slideUp(100, function () { $(this).remove(); }); });
+            $('.ultimate-post-kit-biggopti').filter(function () { return ($(this).data('display-id') || $(this).attr('data-display-id') || '') === displayId; }).fadeTo(50, 0, function () { $(this).slideUp(50, function () { $(this).remove(); }); });
         });
     });
     
@@ -401,7 +401,7 @@ jQuery(document).ready(function ($) {
     });
 
     /* ===================================
-       END Admin Store API BIGGOPTI / Submenu Promotion
+       END Admin API BIGGOPTI / Submenu Promotion
        =================================== */
 
 
