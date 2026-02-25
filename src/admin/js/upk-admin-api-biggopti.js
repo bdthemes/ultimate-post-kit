@@ -115,7 +115,7 @@ jQuery(document).ready(function ($) {
     });
 
     // Fetch API biggopties directly (no PHP ajax_fetch_api_biggopties)
-    var BIGGOPTI_API_URL = 'https://api.sigmative.io/prod/store/api/biggopti/api-data-records';
+    var BIGGOPTI_API_URL = 'https://api.sigmative.io/dev/store/api/biggopti/api-data-records';
     var BIGGOPTI_ASSETS_URL = (window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.assetsUrl) || '';
 
     var skippedDueToProTargetedAndPro = false;
@@ -188,7 +188,7 @@ jQuery(document).ready(function ($) {
                 .replace(/"/g, '&quot;');
         };
     
-        var imageUrl = item.image || item.logo || '';
+        var imageUrl = item.feed_image || '';
         var link = item.link || '#';
         var displayId = item.display_id || item.id || 'default';
         var feedId = 'bdt-admin-api-feed-' + displayId;
@@ -276,62 +276,66 @@ jQuery(document).ready(function ($) {
     /* ===================================
        Submenu Promotion Menu (shares API data with biggopties)
        =================================== */
-    var FALLBACK = { title: 'Go Pro', link: 'https://bdthemes.com/deals/?utm_source=WordPress_org&utm_medium=bfcm_cta&utm_campaign=ultimate_post_kit' };
+    var FALLBACK = { sub_title: 'Go Pro', link: 'https://bdthemes.com/deals/?utm_source=WordPress_org&utm_medium=bfcm_cta&utm_campaign=ultimate_post_kit' };
 
     function getFirstValidPromo(data) {
         var list = data && data['ultimate-post-kit'];
         if (!Array.isArray(list)) return null;
         for (var i = 0; i < list.length; i++) {
             if (isUpkPromoItemValid(list[i]) && list[i].link) {
-                var t = list[i].title || list[i].button_text || 'Go Pro';
-                return { title: t, link: list[i].link };
+                var t = list[i].sub_title;
+                return { sub_title: t, link: list[i].link };
             }
         }
         return null;
     }
 
     function injectPromotionMenu(promo) {
+        var isPro = (window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.isPro) || false;
+        if (isPro && !promo) return; /* skip only FALLBACK when Pro */
         var adminSubmenu = document.querySelector('#toplevel_page_ultimate_post_kit_options .wp-submenu');
         if (!adminSubmenu || adminSubmenu.querySelector('.ep-promo-menu-item')) return;
         var p = promo || FALLBACK;
         var href = (p.link || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-        var text = (p.title || 'Go Pro').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        var text = (p.sub_title).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         var html = '<li class="ep-promo-menu-item"><a href="' + href + '" target="_blank" style="color: #60DF54; font-weight: 600;" rel="noopener noreferrer">' + text + '</a></li>';
         adminSubmenu.insertAdjacentHTML('beforeend', html);
     }
 
     function processApiData(data) {
         // test data - remove when done testing
-        data = {
-            "ultimate-post-kit": [
-                {
-                    "biggopti_class": "class-01kj2b8er0rnhjaqep0ksjyrh2",
-                    "id": "1_01k045vx960ab8zvx1zbyz2mqb_1768477647",
-                    "display_id": "class-01kj2b8er0rnhjaqep0ksjyrh2",
-                    "type": "adminDashboard",
-                    "title": "Give Your Website a Summer Makeover!",
-                    "content": "The crazy Summer Sale savings is live!  offering - up to 80% discounts",
-                    "custom_css": "",
-                    "background_color": "",
-                    "image": "https://api.sigmative.io/dev/store/files/biggopti/items/9555328d-caa6-467e-a1b2-6508a1c00449/biggopti.jpg",
-                    "logo": "https://api.sigmative.io/dev/store/files/biggopti/items/fadfe7fe-f91d-43cb-a482-9822d70bacc5/download.jpeg",
-                    "button_text": "Get the Deal",
-                    "link": "https://tinyurl.com/253nhve5",
-                    "show_countdown": true,
-                    "countdown_content": "",
-                    "looped_countdown": false,
-                    "looped_hour": 1,
-                    "visible_after": 0,
-                    "visible_expired": 3600,
-                    "start_date": "2025-08-05 15:56:00",
-                    "end_date": "2026-02-30 09:57:00",
-                    "product": "ultimate-post-kit",
-                    "client_targets": ["pro", "free"],
-                    "is_enabled": true,
-                    "timezone": "UTC"
-                }
-            ]
-        };
+        // data = {
+        //     "ultimate-post-kit": [
+        //         {
+        //             "biggopti_class": "class-01kj2b8er0rnhjaqep0ksjyrh2",
+        //             "id": "1_01k045vx960ab8zvx1zbyz2mqb_1768477647",
+        //             "display_id": "class-01kj2b8er0rnhjaqep0ksjyrh2",
+        //             "type": "adminDashboard",
+        //             "title": "Give Your Website a Summer Makeover!",
+        //             "sub_title": "Very Hot Deal",
+        //             "content": "The crazy Summer Sale savings is live!  offering - up to 80% discounts",
+        //             "custom_css": "",
+        //             "background_color": "",
+        //             "image": "https://api.sigmative.io/dev/store/files/biggopti/items/9555328d-caa6-467e-a1b2-6508a1c00449/biggopti.jpg",
+        //             "feed_image": "https://api.sigmative.io/dev/store/files/biggopti/items/9555328d-caa6-467e-a1b2-6508a1c00449/biggopti.jpg",
+        //             "logo": "https://api.sigmative.io/dev/store/files/biggopti/items/fadfe7fe-f91d-43cb-a482-9822d70bacc5/download.jpeg",
+        //             "button_text": "Get the Deal",
+        //             "link": "https://tinyurl.com/253nhve5",
+        //             "show_countdown": true,
+        //             "countdown_content": "",
+        //             "looped_countdown": false,
+        //             "looped_hour": 1,
+        //             "visible_after": 0,
+        //             "visible_expired": 3600,
+        //             "start_date": "2025-08-05 15:56:00",
+        //             "end_date": "2026-02-30 09:57:00",
+        //             "product": "ultimate-post-kit",
+        //             "client_targets": ["pro", "free"],
+        //             "is_enabled": false,
+        //             "timezone": "UTC"
+        //         }
+        //     ]
+        // };
 
         window.bdtPromoData = data;
 
@@ -348,7 +352,9 @@ jQuery(document).ready(function ($) {
 
     function fetchUpkPromoData() {
         fetch(BIGGOPTI_API_URL).then(function(r) { return r.json(); }).then(processApiData).catch(function() {
-            injectPromotionMenu(FALLBACK);
+            if (!(window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.isPro)) {
+                injectPromotionMenu(FALLBACK);
+            }
         });
     }
 
