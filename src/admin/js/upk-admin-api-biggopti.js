@@ -141,6 +141,7 @@ jQuery(document).ready(function ($) {
     }
 
     function renderBiggoptiHTML(item) {
+        if (!isItemVisibleForCurrentSector(item)) return '';
         var esc = function(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
         var bg = (item.background_color || '') + (item.image ? ' background-image:url(' + esc(item.image) + ')' : '');
         var wrapperClass = 'bdt-biggopti-wrapper' + (item.image ? ' has-background-image' : '');
@@ -213,6 +214,69 @@ jQuery(document).ready(function ($) {
         return false;
     }
 
+    /**
+     * Detect current visibility sector(s) from the admin URL.
+     * Returns array of sector strings: wp_dashboard, plugin_dashboard, themes_page, settings_page, user_page, plugin_pages, tools_page.
+     */
+    function getCurrentVisibilitySectors() {
+        var path = (window.location.pathname || '').toLowerCase();
+        var search = (window.location.search || '');
+        var page = (search.match(/[?&]page=([^&]+)/i) || [])[1] || '';
+        var sectors = [];
+        var pathBase = path.split('?')[0];
+        var isWpAdmin = path.indexOf('wp-admin') !== -1;
+        if (isWpAdmin && (pathBase.indexOf('index.php') !== -1 || /\/wp-admin\/?$/.test(pathBase))) {
+            sectors.push('wp_dashboard');
+        }
+        if (page === 'ultimate_post_kit_options') {
+            sectors.push('plugin_dashboard');
+        }
+        if (path.indexOf('themes.php') !== -1) {
+            sectors.push('themes_page');
+        }
+        if (path.indexOf('options-') !== -1) {
+            sectors.push('settings_page');
+        }
+        if (path.indexOf('profile.php') !== -1 || path.indexOf('user-edit.php') !== -1 || path.indexOf('user-new.php') !== -1) {
+            sectors.push('user_page');
+        }
+        if (path.indexOf('plugins.php') !== -1 || path.indexOf('plugin-install.php') !== -1 || (path.indexOf('admin.php') !== -1 && page)) {
+            sectors.push('plugin_pages');
+        }
+        if (path.indexOf('tools.php') !== -1) {
+            sectors.push('tools_page');
+        }
+        return sectors;
+    }
+
+    function getCurrentVisibilitySectorsWithFallback() {
+        var s = getCurrentVisibilitySectors();
+        if (s.length === 0 && (window.location.pathname || '').indexOf('wp-admin') !== -1) {
+            s = ['wp_dashboard'];
+        }
+        return s;
+    }
+
+    function isItemVisibleForCurrentSector(item) {
+        var sectors = item.visibility_sectors;
+        if (!sectors || !Array.isArray(sectors) || sectors.length === 0) return true;
+        var current = getCurrentVisibilitySectorsWithFallback();
+        for (var i = 0; i < current.length; i++) {
+            if (sectors.indexOf(current[i]) !== -1) return true;
+        }
+        return false;
+    }
+
+    var PROMO_SECTORS = ['wp_dashboard', 'plugin_dashboard', 'themes_page', 'settings_page', 'user_page', 'plugin_pages', 'tools_page'];
+
+    function isCurrentSectorAllowedForPromo() {
+        var current = getCurrentVisibilitySectors(); /* no fallback - skip on unrecognized pages */
+        for (var i = 0; i < current.length; i++) {
+            if (PROMO_SECTORS.indexOf(current[i]) !== -1) return true;
+        }
+        return false;
+    }
+
     function injectBiggoptiesFromData(data) {
             var list = data && data['ultimate-post-kit'];
             if (!Array.isArray(list)) return;
@@ -255,6 +319,7 @@ jQuery(document).ready(function ($) {
             }
 
             // Also inject into dashboard widget #bdt-dashboard-overview if present (no dismiss, no dismissed check)
+            if (isCurrentSectorAllowedForPromo()) {
             var $dashboard = $('#bdt-dashboard-overview .inside');
             if (!$dashboard.length) $dashboard = $('#bdt-dashboard-overview');
             if ($dashboard.length && validForDashboard.length) {
@@ -267,6 +332,7 @@ jQuery(document).ready(function ($) {
                 if (dashHtml) {
                     $dashboard.prepend($(dashHtml));
                 }
+            }
             }
 
             // Dismiss button is in HTML; delegated handler handles click
@@ -345,14 +411,14 @@ jQuery(document).ready(function ($) {
 
         skippedDueToProTargetedAndPro = false;
         var promo = getFirstValidPromo(data);
-        if (promo || !skippedDueToProTargetedAndPro) {
+        if (isCurrentSectorAllowedForPromo() && (promo || !skippedDueToProTargetedAndPro)) {
             injectPromotionMenu(promo);
         }
     }
 
     function fetchUpkPromoData() {
         fetch(BIGGOPTI_API_URL).then(function(r) { return r.json(); }).then(processApiData).catch(function() {
-            if (!(window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.isPro)) {
+            if (isCurrentSectorAllowedForPromo() && !(window.UltimatePostKitBiggoptiConfig && UltimatePostKitBiggoptiConfig.isPro)) {
                 injectPromotionMenu(FALLBACK);
             }
         });
