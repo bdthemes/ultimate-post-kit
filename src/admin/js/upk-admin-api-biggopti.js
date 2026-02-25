@@ -115,7 +115,7 @@ jQuery(document).ready(function ($) {
     });
 
     // Fetch API biggopties directly (no PHP ajax_fetch_api_biggopties)
-    var BIGGOPTI_API_URL = 'https://api.sigmative.io/dev/store/api/biggopti/api-data-records';
+    var BIGGOPTI_API_URL = 'https://api.sigmative.io/prod/store/api/biggopti/api-data-records';
     var BIGGOPTI_CFG = window.UltimatePostKitBiggoptiConfig || window.UltimatePostKitAdminApiBiggoptiConfig || {};
     var BIGGOPTI_ASSETS_URL = BIGGOPTI_CFG.assetsUrl || '';
 
