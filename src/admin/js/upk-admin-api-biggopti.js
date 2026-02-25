@@ -372,40 +372,6 @@ jQuery(document).ready(function ($) {
     }
 
     function processApiData(data) {
-        // test data - remove when done testing
-        // data = {
-        //     "ultimate-post-kit": [
-        //         {
-        //             "biggopti_class": "class-01kj2b8er0rnhjaqep0ksjyrh2",
-        //             "id": "1_01k045vx960ab8zvx1zbyz2mqb_1768477647",
-        //             "display_id": "class-01kj2b8er0rnhjaqep0ksjyrh2",
-        //             "type": "adminDashboard",
-        //             "title": "Give Your Website a Summer Makeover!",
-        //             "sub_title": "Very Hot Deal",
-        //             "content": "The crazy Summer Sale savings is live!  offering - up to 80% discounts",
-        //             "custom_css": "",
-        //             "background_color": "",
-        //             "image": "https://api.sigmative.io/dev/store/files/biggopti/items/9555328d-caa6-467e-a1b2-6508a1c00449/biggopti.jpg",
-        //             "feed_image": "https://api.sigmative.io/dev/store/files/biggopti/items/9555328d-caa6-467e-a1b2-6508a1c00449/biggopti.jpg",
-        //             "logo": "https://api.sigmative.io/dev/store/files/biggopti/items/fadfe7fe-f91d-43cb-a482-9822d70bacc5/download.jpeg",
-        //             "button_text": "Get the Deal",
-        //             "link": "https://tinyurl.com/253nhve5",
-        //             "show_countdown": true,
-        //             "countdown_content": "",
-        //             "looped_countdown": false,
-        //             "looped_hour": 1,
-        //             "visible_after": 0,
-        //             "visible_expired": 3600,
-        //             "start_date": "2025-08-05 15:56:00",
-        //             "end_date": "2026-02-30 09:57:00",
-        //             "product": "ultimate-post-kit",
-        //             "client_targets": ["pro", "free"],
-        //             "is_enabled": false,
-        //             "timezone": "UTC"
-        //         }
-        //     ]
-        // };
-
         window.bdtPromoData = data;
 
         if (!isExcludedUrl()) {
