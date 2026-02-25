@@ -260,18 +260,10 @@ jQuery(document).ready(function ($) {
         return sectors;
     }
 
-    function getCurrentVisibilitySectorsWithFallback() {
-        var s = getCurrentVisibilitySectors();
-        if (s.length === 0 && (window.location.pathname || '').indexOf('wp-admin') !== -1) {
-            s = ['wp_dashboard'];
-        }
-        return s;
-    }
-
     function isItemVisibleForCurrentSector(item) {
         var sectors = item.visibility_sectors;
         if (!sectors || !Array.isArray(sectors) || sectors.length === 0) return true;
-        var current = getCurrentVisibilitySectorsWithFallback();
+        var current = getCurrentVisibilitySectors(); /* no fallback: out-of-selector pages = don't show */
         for (var i = 0; i < current.length; i++) {
             if (sectors.indexOf(current[i]) !== -1) return true;
         }
@@ -281,11 +273,11 @@ jQuery(document).ready(function ($) {
     var PROMO_SECTORS = ['wp_dashboard', 'plugin_dashboard', 'themes_page', 'settings_page', 'user_page', 'plugin_pages', 'tools_page'];
 
     function isCurrentSectorAllowedForPromo() {
-        var current = getCurrentVisibilitySectors(); /* no fallback - skip on unrecognized pages */
+        var current = getCurrentVisibilitySectors();
         for (var i = 0; i < current.length; i++) {
             if (PROMO_SECTORS.indexOf(current[i]) !== -1) return true;
         }
-        return false;
+        return current.length === 0; /* unknown page = no restriction, show submenu everywhere */
     }
 
     function injectBiggoptiesFromData(data) {
