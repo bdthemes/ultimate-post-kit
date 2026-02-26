@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.1.2
+Stable tag: 4.1.3
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.9
@@ -246,6 +246,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 
 == Changelog ==
+
+= 4.1.3 [26th February 2026] =
+
+* Updated: System improved
 
 = 4.1.2 [24th February 2026] =
 
