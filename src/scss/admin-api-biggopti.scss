@@ -1,9 +1,4 @@
-/**
- * ultimate-post-kit license biggopti 
- * todo: need to this move another file
- */
-
- .ultimate-post-kit-biggopti {
+.ultimate-post-kit-biggopti {
     padding: 0 !important;
     border: 0 !important;
     box-shadow: none !important;
@@ -21,27 +16,6 @@
         border: none;
     }
 }
-
-#adminmenu #toplevel_page_ultimate_post_kit_options a[href="admin.php?page=ultimate_post_kit_options_get_pro"] {
-    font-weight: 600;
-    color: #60DF54;
-    &:hover {
-        color: #08C972;
-    }
-}
-
-a.upk-go-pro {
-    color: #08C972;
-    font-weight: bold;
-}
-a.upk-go-pro:hover, a.upk-go-pro:focus {
-    color: #60DF54;
-}
-
-
-/**
- * admin store api biggopti style start
- */
 
 [id^="bdt-admin-biggopti-api-biggopti-"] {
 
@@ -375,7 +349,3 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
         }
     }
 }
-
-/**
- * admin store api biggopti style end
-*/
