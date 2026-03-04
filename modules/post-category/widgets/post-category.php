@@ -263,12 +263,30 @@ class Post_Category extends Module_Base {
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'name',
 				'options' => [ 
-					'name'       => esc_html__( 'Name', 'ultimate-post-kit' ),
-					'post_date'  => esc_html__( 'Date', 'ultimate-post-kit' ),
-					'post_title' => esc_html__( 'Title', 'ultimate-post-kit' ),
-					'menu_order' => esc_html__( 'Menu Order', 'ultimate-post-kit' ),
-					'rand'       => esc_html__( 'Random', 'ultimate-post-kit' ),
+					'name'        => esc_html__( 'Name', 'ultimate-post-kit' ),
+					'term_id'     => esc_html__( 'ID', 'ultimate-post-kit' ),
+					'slug'        => esc_html__( 'Slug', 'ultimate-post-kit' ),
+					'count'       => esc_html__( 'Post Count', 'ultimate-post-kit' ),
+					'description' => esc_html__( 'Description', 'ultimate-post-kit' ),
+					'parent'      => esc_html__( 'Parent', 'ultimate-post-kit' ),
+					'term_order'  => esc_html__( 'Menu Order', 'ultimate-post-kit' ),
+					'rand'        => esc_html__( 'Random', 'ultimate-post-kit' ),
 				],
+			]
+		);
+
+		$this->add_control(
+			'minimum_post_count',
+			[ 
+				'label'       => esc_html__( 'Minimum Post Count', 'ultimate-post-kit' ) .BDTUPK_NC,
+				'type'        => Controls_Manager::NUMBER,
+				'default'     => 0,
+				'min'         => 0,
+				'placeholder' => '0',
+				'condition'   => [
+					'orderby' => 'count',
+				],
+				'description' => esc_html__( 'Hide categories that have fewer than this many posts. 0 = show all.', 'ultimate-post-kit' ),
 			]
 		);
 
@@ -806,16 +824,28 @@ class Post_Category extends Module_Base {
 	public function render() {
 		$settings       = $this->get_settings_for_display();
 		$image_settings = ultimate_post_kit_option( 'category_image', 'ultimate_post_kit_other_settings', 'off' );
+		$orderby        = $settings['orderby'];
 		$categories     = get_categories(
 			[ 
 				'taxonomy'   => $settings["taxonomy"],
-				'orderby'    => $settings["orderby"],
+				'orderby'    => $orderby === 'rand' ? 'name' : $orderby,
 				'order'      => $settings["order"],
 				'hide_empty' => 0,
 				'exclude'    => explode( ',', esc_attr( $settings["exclude"] ) ),
 				'parent'     => $settings["parent"],
 			]
 		);
+		if ( $orderby === 'rand' && ! empty( $categories ) ) {
+			shuffle( $categories );
+		}
+
+		$min_post_count = isset( $settings['minimum_post_count'] ) ? (int) $settings['minimum_post_count'] : 0;
+		if ( $min_post_count > 0 ) {
+			$categories = array_values( array_filter( $categories, function ( $cat ) use ( $min_post_count ) {
+				$count = isset( $cat->count ) ? (int) $cat->count : ( isset( $cat->category_count ) ? (int) $cat->category_count : 0 );
+				return $count >= $min_post_count;
+			} ) );
+		}
 
 		$this->add_render_attribute( 'category-container', 'class', 'upk-post-category' );
 		$this->add_render_attribute( 'category-container', 'class', 'upk-category-style-' . $settings['style'] );
