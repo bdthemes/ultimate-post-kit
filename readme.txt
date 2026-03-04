@@ -247,6 +247,11 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.X [XXth March 2026] =
+
+* Fixed: Order-by query issues in the category widget
+* Added: Maximum post count option added in the category widget
+
 = 4.1.3 [26th February 2026] =
 
 * Updated: System improved
