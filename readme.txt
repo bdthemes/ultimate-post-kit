@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.1.3
+Stable tag: 4.1.4
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.9
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.35.5
+Elementor tested up to: 3.35.6
 
 Build your blogs and news sites with a feature-rich Elementor addon, offering 100+ elements for engaging layouts.
 
@@ -210,22 +210,39 @@ Please use the suggest page to send us a message about the feature you think we 
 Needs assistance to use this plugin?
 Feel free to [Contact us](https://bdthemes.com/support/) 💌 or check our widget Tutorials to learn how to use them efficiently.
 
-== Check out our other Addons 👑 ==
+== Checkout our other Plugins 👑 ==
 
-Explore more free addons for Elementor and Gutenberg to boost your site with advanced blocks, sliders and eCommerce tools.
+Explore the best free addons for Elementor and Gutenberg to boost your site with advanced blocks, sliders and eCommerce tools.
 
-* **[ZoloBlocks](https://wordpress.org/plugins/zoloblocks/)** 🆕☀️ - Mind-blowing dynamic block plugin for Gutenberg with powerful and advanced features offering greater web design experience.
+* **[Element Pack](https://wordpress.org/plugins/bdthemes-element-pack-lite/)** - Build responsive websites from scratch with an all-rounder package of 300+ widgets and 2700+ ready-to-use assets for Elementor.
 
-* **[Element Pack](https://wordpress.org/plugins/bdthemes-element-pack-lite/)** - Element Pack Lite Build responsive website from scratch with an all-rounder package for Elementor
+* **[Prime Slider](https://wordpress.org/plugins/bdthemes-prime-slider-lite/)** - The revolutionary slider builder addon for Elementor with a next-gen superb interface and 50+ unique slider designs.
 
-* **[Prime Slider](https://wordpress.org/plugins/bdthemes-prime-slider-lite/)** - The revolutionary slider builder addon for Elementor with next-gen superb interface.
+* **[Ultimate Post Kit](https://wordpress.org/plugins/ultimate-post-kit/)** - Best blogging addon for building a quality blogging website with fine-tuned post layouts, carousels, sliders and lists.
 
-* **[Ultimate Store Kit](https://wordpress.org/plugins/ultimate-store-kit/)** - The only eCommmerce addon for answering all your online store design problems in one package.
+* **[Ultimate Store Kit](https://wordpress.org/plugins/ultimate-store-kit/)** - The only eCommerce addon for answering all your online store design problems in one package for WooCommerce and EDD.
 
-* **[Pixel Gallery](https://wordpress.org/plugins/pixel-gallery/)** - Pixel Gallery is the first Elementor based WordPress gallery addon that provides the easiest image gallery making experience.
+* **[Pixel Gallery](https://wordpress.org/plugins/pixel-gallery/)** - The first Elementor-based WordPress gallery addon offering 60+ flexible and customizable gallery builder widgets.
 
-* **[Live Copy Paste](https://wordpress.org/plugins/live-copy-paste/)** - Superfast cross-domain copy-paste mechanism for WordPress websites with true UI copy experience.
+* **[ZoloBlocks](https://wordpress.org/plugins/zoloblocks/)** - Mind-blowing dynamic block plugin for Gutenberg with powerful and advanced features offering a greater web design experience.
 
+* **[Augmented Reality Viewer](https://wordpress.org/plugins/ar-viewer/)** - Bring your products to life with immersive 3D and AR experiences directly inside your WordPress website.
+
+* **[Dark Reader](https://wordpress.org/plugins/dark-reader/)** - Instantly transform your website into a sleek, eye-friendly dark mode experience with smooth and elegant styling.
+
+* **[Instant Image Generator](https://wordpress.org/plugins/ai-image/)** - Generate AI-powered images or import visuals instantly from popular platforms like Unsplash, Openverse, Pixabay, Pexels and Giphy — all from one place.
+
+* **[Live Copy Paste](https://wordpress.org/plugins/live-copy-paste/)** - Seamlessly copy and paste sections, widgets and entire pages across domains with zero hassle.
+
+* **[One Accessibility](https://wordpress.org/plugins/website-accessibility/)** - Make your website inclusive and accessible to everyone with essential accessibility enhancements and compliance-ready tools.
+
+* **[QR Code Generator & Scanner](https://wordpress.org/plugins/zolo-qr-code/)** - Create and manage dynamic QR codes directly from your WordPress dashboard for smarter engagement and tracking.
+
+* **[Smart Admin Assistant](https://wordpress.org/plugins/smart-admin-assistant/)** - Enhance your WordPress dashboard with productivity-focused tools and smart site management features.
+
+* **[Spin Wheel](https://wordpress.org/plugins/spin-wheel/)** - Engage visitors with an interactive spinning wheel that offers discounts, coupons and promotional rewards.
+
+* **[Swift Checkout for WooCommerce](https://wordpress.org/plugins/swift-checkout/)** - Simplify the WooCommerce checkout process to improve user experience and boost conversion rates.
 
 Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor page builder-based products, informative blogs and documentation.
 
@@ -247,7 +264,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.1.X [XXth March 2026] =
+= 4.1.4 [5th March 2026] =
 
 * Fixed: Order-by query issues in the category widget
 * Added: Maximum post count option added in the category widget
