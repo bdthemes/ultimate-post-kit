@@ -25,6 +25,36 @@ abstract class Group_Control_Query extends Module_Base {
         );
 
         $this->add_control(
+            'posts_source_description',
+            [
+                'label'     => '',
+                'type'      => Controls_Manager::RAW_HTML,
+                'raw'       => __('This current query may not be display posts in the editor. Please save and refresh the page to see the posts.', 'ultimate-post-kit'),
+                'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
+                'condition' => [
+                    'posts_source' => 'current_query',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'posts_source_description_2',
+            [
+                'label'     => '',
+                'type'      => Controls_Manager::RAW_HTML,
+                'raw'       => sprintf(
+                    /* translators: 1: HTML link to options-reading.php */
+                    __('Posts per page is global for current query. Set <strong>"Blog pages show at most"</strong> from settings page of WordPress. Go to <a href="%s" target="_blank" rel="noopener">Settings &gt; Reading</a>.', 'ultimate-post-kit'),
+                    esc_url(admin_url('options-reading.php'))
+                ),
+                'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
+                'condition' => [
+                    'posts_source' => 'current_query',
+                ],
+            ]
+        );
+
+        $this->add_control(
             'posts_selected_ids',
             [
                 'label'       => __('Search & Select', 'ultimate-post-kit'),
