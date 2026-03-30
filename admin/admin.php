@@ -46,7 +46,8 @@ class Admin
 	public function admin_notice_styles(){
 		$direction_suffix = is_rtl() ? '.rtl' : '';
 		wp_enqueue_style('upk-admin-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'css/upk-admin-biggopti' . $direction_suffix . '.css', [], BDTUPK_VER);
-		wp_enqueue_style('upk-admin-api-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'css/upk-admin-api-biggopti' . $direction_suffix . '.css', [], BDTUPK_VER);
+		wp_enqueue_style('bdt-admin-api-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'css/upk-admin-api-biggopti' . $direction_suffix . '.css', [], BDTUPK_VER);
+		wp_enqueue_style('bdt-product-feed', BDTUPK_ADMIN_ASSETS_URL . 'css/upk-product-feed' . $direction_suffix . '.css', [], BDTUPK_VER);
 	}
 
 

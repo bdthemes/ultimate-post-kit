@@ -1,4 +1,4 @@
-.ultimate-post-kit-biggopti {
+[id^="bdt-admin-biggopti-api-biggopti-"] {
     padding: 0 !important;
     border: 0 !important;
     box-shadow: none !important;
@@ -15,9 +15,6 @@
         background: transparent;
         border: none;
     }
-}
-
-[id^="bdt-admin-biggopti-api-biggopti-"] {
 
     .bdt-plugin-logo-wrapper {
         img {
@@ -272,48 +269,11 @@
             border-color: var(--nm-accent);
         }
         
-        .nm-biggopti-btn:hover .zolo-star {
-            opacity: 1;
-            z-index: 2;
-            filter: drop-shadow(0 0 10px var(--nm-shadow-color));
-        }
-        
         .nm-biggopti-btn svg {
             width: 16px;
             height: 16px;
             display: block;
-        }
-        
-        /* Star Hover Positions */
-        .nm-biggopti-btn:hover .zolo-star-1 {
-            top: 21%;
-            left: -18%;
-        }
-        
-        .nm-biggopti-btn:hover .zolo-star-2 {
-            top: -25%;
-            left: 10%;
-        }
-        
-        .nm-biggopti-btn:hover .zolo-star-3 {
-            top: 69%;
-            left: 25%;
-        }
-        
-        .nm-biggopti-btn:hover .zolo-star-4 {
-            top: -34%;
-            left: 80%;
-        }
-        
-        .nm-biggopti-btn:hover .zolo-star-5 {
-            top: 25%;
-            left: 115%;
-        }
-        
-        .nm-biggopti-btn:hover .zolo-star-6 {
-            top: 5%;
-            left: 60%;
-        }
+        }  
     }
 
     // Button entrance animation
