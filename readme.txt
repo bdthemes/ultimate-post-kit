@@ -267,6 +267,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 = 4.1.XX [XXth March 2026] =
 
 * Fixed: Query controls Include/Exclude By Terms dropdown now hides taxonomy terms with no posts (only terms that have at least one post are shown)
+* Fixed: Default pagination conflict issue
 
 = 4.1.4 [5th March 2026] =
 

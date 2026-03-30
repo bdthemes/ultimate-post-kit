@@ -198,23 +198,6 @@ class Category_Carousel extends Module_Base {
 			]
 		);
 
-		// $this->add_control(
-		// 	'item_limit',
-		// 	[
-		// 		'label' => esc_html__('Item Limit', 'ultimate-post-kit'),
-		// 		'type'  => Controls_Manager::SLIDER,
-		// 		'range' => [
-		// 			'px' => [
-		// 				'min' => 1,
-		// 				'max' => 50,
-		// 			],
-		// 		],
-		// 		'default' => [
-		// 			'size' => 6,
-		// 		],
-		// 	]
-		// );
-
 		$this->add_control(
 			'taxonomy',
 			[
