@@ -347,6 +347,7 @@ trait Global_Widget_Functions {
 		if (!$this->get_settings('show_date')) {
 			return;
 		}
+		$meta_separator = isset( $settings['meta_separator'] ) ? $settings['meta_separator'] : '.';
 	?>
 		<div class="upk-date">
 			<?php if ($settings['human_diff_time'] == 'yes') {
@@ -357,7 +358,7 @@ trait Global_Widget_Functions {
 		</div>
 
 		<?php if ($settings['show_time']) : ?>
-			<div class="upk-post-time">
+			<div class="upk-post-time" data-separator="<?php echo esc_attr( $meta_separator ); ?>">
 				<i class="upk-icon-clock" aria-hidden="true"></i>
 				<?php echo esc_html( get_the_time() ); ?>
 			</div>
