@@ -243,6 +243,9 @@ class Post_Category extends Module_Base {
 				'default' => [ 
 					'size' => 6,
 				],
+				'condition' => [
+					'posts_source!' => 'current_query',
+				]
 			]
 		);
 

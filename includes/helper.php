@@ -511,32 +511,6 @@ function ultimate_post_kit_post_time_diff( $format = '' ) {
 	return $output;
 }
 
-// Filter to override WordPress posts_per_page for Builder pages
-add_action('pre_get_posts', 'ultimate_post_kit_override_posts_per_page_for_builder');
-
-function ultimate_post_kit_override_posts_per_page_for_builder($query) {
-	// Only affect main query
-	if (!$query->is_main_query()) {
-		return;
-	}
-	
-	// Check if we have pagination in URL
-	$paged = max(1, get_query_var('paged'), get_query_var('page'));
-	
-	// Only apply override on paginated pages (page > 1)
-	if ($paged <= 1) {
-		return;
-	}
-	
-	$post_id = get_queried_object_id();
-	
-	if ($post_id && function_exists('get_post_meta')) {
-		// Set posts_per_page to -1 to show all posts and avoid pagination conflicts
-		$query->set('posts_per_page', -1);
-		$query->set('nopaging', true);
-	}
-}
-
 function ultimate_post_kit_iso_time( $time ) {
 	$current_offset  = (float) get_option( 'gmt_offset' );
 	$timezone_string = get_option( 'timezone_string' );

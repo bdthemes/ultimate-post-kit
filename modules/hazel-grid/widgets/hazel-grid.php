@@ -296,7 +296,8 @@ class Hazel_Grid extends Group_Control_Query {
 					'size' => 6,
 				],
 				'condition' => [
-					'grid_style' => ['1', '2', '8', '10']
+					'grid_style' => ['1', '2', '8', '10'],
+					'posts_source!' => 'current_query'
 				]
 			]
 		);
@@ -317,7 +318,8 @@ class Hazel_Grid extends Group_Control_Query {
 					'size' => 5,
 				],
 				'condition' => [
-					'grid_style' => ['3', '4', '5', '6']
+					'grid_style' => ['3', '4', '5', '6'],
+					'posts_source!' => 'current_query'
 				]
 			]
 		);
@@ -338,7 +340,8 @@ class Hazel_Grid extends Group_Control_Query {
 					'size' => 7,
 				],
 				'condition' => [
-					'grid_style' => ['7']
+					'grid_style' => ['7'],
+					'posts_source!' => 'current_query'
 				]
 			]
 		);
@@ -359,7 +362,8 @@ class Hazel_Grid extends Group_Control_Query {
 					'size' => 4,
 				],
 				'condition' => [
-					'grid_style' => ['9']
+					'grid_style' => ['9'],
+					'posts_source!' => 'current_query'
 				]
 			]
 		);
@@ -960,19 +964,31 @@ class Hazel_Grid extends Group_Control_Query {
 	}
 
 	/**
-	 * Main query render for this widget
-	 * @param $posts_per_page number item query limit
+	 * Get post query builder arguments
 	 */
-	public function query_posts($posts_per_page) {
+	public function query_posts( $posts_per_page ) {
+		$settings         = $this->get_settings();
+		$posts_per_page   = isset( $posts_per_page ) ? (int) $posts_per_page : 0;
+		$args             = $this->getGroupControlQueryArgs();
+		$is_current_query = ( ! empty( $settings['posts_source'] ) && $settings['posts_source'] === 'current_query' );
 
-		$default = $this->getGroupControlQueryArgs();
-		$args = [];
-		if ($posts_per_page) {
-			$args['posts_per_page'] = $posts_per_page;
-			$args['paged']  = max(1, get_query_var('paged'), get_query_var('page'));
+		if ( $is_current_query ) {
+			unset( $args['offset'] );
+			unset( $args['no_found_rows'] );
+			$posts_per_page = 0;
 		}
-		$args         = array_merge($default, $args);
-		$this->_query = new WP_Query($args);
+
+		if ( $posts_per_page > 0 ) {
+			$args['posts_per_page'] = $posts_per_page;
+		} else {
+			$args['posts_per_page'] = (int) get_option( 'posts_per_page', 10 );
+		}
+
+		if ( $settings['show_pagination'] ) {
+			$args['paged'] = max( 1, (int) get_query_var( 'paged' ), (int) get_query_var( 'page' ) );
+		}
+
+		$this->_query = new \WP_Query( $args );
 	}
 
 	public function render_author() {

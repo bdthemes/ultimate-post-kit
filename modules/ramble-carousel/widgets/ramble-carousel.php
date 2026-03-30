@@ -185,6 +185,9 @@ class Ramble_Carousel extends Group_Control_Query {
 				'default' => [
 					'size' => 6,
 				],
+				'condition' => [
+					'posts_source!' => 'current_query',
+				]
 			]
 		);
 
@@ -1240,7 +1243,6 @@ class Ramble_Carousel extends Group_Control_Query {
 		$args = [];
 		if ($posts_per_page) {
 			$args['posts_per_page'] = $posts_per_page;
-			// $args['paged']  = max(1, get_query_var('paged'), get_query_var('page'));
 		}
 		$args         = array_merge($default, $args);
 		$this->_query = new WP_Query($args);

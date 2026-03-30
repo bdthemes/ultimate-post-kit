@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.1.4
+Stable tag: 4.1.5
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
-Tested up to: 6.9
+Tested up to: 6.9.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.35.6
+Elementor tested up to: 4.0.0
 
 Build your blogs and news sites with a feature-rich Elementor addon, offering 100+ elements for engaging layouts.
 
@@ -264,11 +264,13 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.1.XX [XXth March 2026] =
+= 4.1.5 [30th March 2026] =
 
+* Updated: Made compatible with Elementor version 4.0.0
 * Fixed: Query controls Include/Exclude By Terms dropdown now hides taxonomy terms with no posts (only terms that have at least one post are shown)
 * Fixed: Paradox Slider — meta separator now also displays after date (between date and time) when time is enabled
 * Fixed: Clock icon and text alignment issue in the paradox widget
+* Fixed: Default pagination conflict issue
 
 = 4.1.4 [5th March 2026] =
 
