@@ -51,6 +51,8 @@
   margin-right: 5px;
 }
 .upk-paradox-slider .upk-post-time {
+  display: inline-flex;
+  align-items: center;
   margin-right: 5px;
 }
 .upk-paradox-slider .upk-post-time i {
@@ -64,7 +66,6 @@
 }
 .upk-paradox-slider .upk-meta > div {
   position: relative;
-  display: inline-flex;
 }
 .upk-paradox-slider .upk-meta > div:before {
   content: attr(data-separator);

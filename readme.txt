@@ -268,6 +268,8 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 * Updated: Made compatible with Elementor version 4.0.0
 * Fixed: Query controls Include/Exclude By Terms dropdown now hides taxonomy terms with no posts (only terms that have at least one post are shown)
+* Fixed: Paradox Slider — meta separator now also displays after date (between date and time) when time is enabled
+* Fixed: Clock icon and text alignment issue in the paradox widget
 * Fixed: Default pagination conflict issue
 
 = 4.1.4 [5th March 2026] =
