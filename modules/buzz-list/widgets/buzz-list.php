@@ -50,7 +50,7 @@ class Buzz_List extends Group_Control_Query {
 		if ($this->upk_is_edit_mode()) {
 			return ['upk-all-styles'];
 		} else {
-			return ['upk-buzz-list'];
+			return ['upk-font', 'upk-buzz-list'];
 		}
 	}
 
