@@ -264,6 +264,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.X [XXth April 2026] =
+
+* Fixed: Buzz List widget pagination previous and next arrow icons not rendering on the frontend
+
 = 4.1.5 [30th March 2026] =
 
 * Updated: Made compatible with Elementor version 4.0.0
