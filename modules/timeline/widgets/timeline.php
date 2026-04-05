@@ -1028,8 +1028,16 @@ class Timeline extends Group_Control_Query {
 		?>
 
 		<div class="upk-comments">
-			<?php echo get_comments_number( $id ) ?>
-			<?php echo esc_html__( 'Comments', 'ultimate-post-kit' ) ?>
+			<?php
+			$comment_count = (int) get_comments_number( $id );
+			echo esc_html(
+				sprintf(
+					'%s %s',
+					number_format_i18n( $comment_count ),
+					_n( 'Comment', 'Comments', $comment_count, 'ultimate-post-kit' )
+				)
+			);
+			?>
 		</div>
 
 		<?php
