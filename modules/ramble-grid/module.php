@@ -210,7 +210,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
                             <?php if ($settings['show_comments'] === 'yes') : ?>
                                 <div class="upk-comments">
-                                    <?php echo absint(get_comments_number()); ?> <?php echo esc_html_x('Comments', 'Frontend', 'ultimate-post-kit'); ?>
+                                    <?php echo esc_html( $this->upk_get_formatted_comments_count( get_the_ID() ) ); ?>
                                 </div>
                             <?php endif; ?>
                         </div>
