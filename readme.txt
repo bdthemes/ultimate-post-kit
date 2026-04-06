@@ -267,6 +267,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 = 4.1.X [XXth April 2026] =
 
 * Fixed: Buzz List widget pagination previous and next arrow icons not rendering on the frontend
+* Fixed: Carbon Slider — resolved desynchronization between prev/next navigation, timeline thumbs, and active slide when using loop + fade mode
 
 = 4.1.5 [30th March 2026] =
 
