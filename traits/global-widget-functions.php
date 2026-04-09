@@ -388,6 +388,26 @@ trait Global_Widget_Functions {
 		<?php
 	}
 
+	/**
+	 * Localized comment count with label. Echo with esc_html().
+	 *
+	 * @param int $post_id Post ID, or 0 for current post in The Loop.
+	 * @return string
+	 */
+	protected function upk_get_formatted_comments_count( $post_id = 0 ) {
+		return Utils::get_formatted_comments_count( $post_id );
+	}
+
+	/**
+	 * Localized comment count number only. Echo with esc_html().
+	 *
+	 * @param int $post_id Post ID, or 0 for current post in The Loop.
+	 * @return string
+	 */
+	protected function upk_get_localized_comment_count( $post_id = 0 ) {
+		return Utils::get_localized_comment_count( $post_id );
+	}
+
 	function render_post_format() {
 		$settings = $this->get_settings_for_display();
 

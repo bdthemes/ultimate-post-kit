@@ -199,7 +199,7 @@ class Post_Accordion extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_content_additional',
 			[
-				'label' => esc_html__('Additional', 'ultimate-post-kit'),
+				'label' => esc_html__('Additional Options', 'ultimate-post-kit'),
 			]
 		);
 
@@ -1120,13 +1120,14 @@ class Post_Accordion extends Group_Control_Query {
 		if (!$this->get_settings('show_comments')) {
 			return;
 		}
-	?>
+
+		$comment_text = $this->upk_get_formatted_comments_count( $id );
+		?>
 
 		<div class="upk-accordion-comments">
 			<i class="upk-icon-bubbles" aria-hidden="true"></i>
-			<span <?php printf('data-hover="%s"', get_comments_number($id) . ' ' . esc_html__('Comments', 'ultimate-post-kit')); ?>>
-				<?php echo get_comments_number($id); ?>
-				<?php echo esc_html__('Comments', 'ultimate-post-kit'); ?>
+			<span <?php printf('data-hover="%s"', esc_attr($comment_text)); ?>>
+				<?php echo esc_html($comment_text); ?>
 			</span>
 		</div>
 

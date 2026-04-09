@@ -1269,11 +1269,10 @@ class Carbon_Slider extends Group_Control_Query {
 		if (!$this->get_settings('show_comments')) {
 			return;
 		}
-	?>
+		?>
 
 		<div class="upk-comments">
-			<?php echo get_comments_number($id) ?>
-			<?php echo esc_html_x('Comments', 'Frontend', 'ultimate-post-kit') ?>
+			<?php echo esc_html( $this->upk_get_formatted_comments_count( $id ) ); ?>
 		</div>
 
 	<?php

@@ -268,6 +268,8 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 * Fixed: Buzz List widget pagination previous and next arrow icons not rendering on the frontend
 * Fixed: Carbon Slider — resolved desynchronization between prev/next navigation, timeline thumbs, and active slide when using loop + fade mode
+* Fixed: Timeline widget — comment count uses correct singular/plural
+* Improved: Comment count output across widgets — i18n, plural forms, localized numbers and escaping
 
 = 4.1.5 [30th March 2026] =
 
