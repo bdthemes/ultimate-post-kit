@@ -251,7 +251,7 @@ class Amox_Carousel extends Group_Control_Query
 		$this->start_controls_section(
 			'section_content_additional',
 			[
-				'label' => esc_html__('Additional', 'ultimate-post-kit'),
+				'label' => esc_html__('Additional Options', 'ultimate-post-kit'),
 			]
 		);
 
@@ -848,11 +848,11 @@ class Amox_Carousel extends Group_Control_Query
 		if (!$this->get_settings('show_comments')) {
 			return;
 		}
-?>
+		?>
 
 		<div class="upk-comments upk-flex upk-flex-middle">
-			<i class="upk-icon-post-comments"></i>
-			<span><?php echo get_comments_number($id) ?></span>
+			<i class="upk-icon-post-comments" aria-hidden="true"></i>
+			<span><?php echo esc_html( $this->upk_get_localized_comment_count( $id ) ); ?></span>
 		</div>
 
 	<?php

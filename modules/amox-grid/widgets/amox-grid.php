@@ -1028,8 +1028,8 @@ class Amox_Grid extends Group_Control_Query
         ?>
 
 		<div class="upk-comments upk-flex upk-flex-middle">
-			<i class="upk-icon-post-comments"></i>
-			<span><?php echo get_comments_number($id) ?></span>
+			<i class="upk-icon-post-comments" aria-hidden="true"></i>
+			<span><?php echo esc_html( $this->upk_get_localized_comment_count( $id ) ); ?></span>
 		</div>
 
 	<?php
