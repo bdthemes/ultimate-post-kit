@@ -264,6 +264,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.X [XXth April 2026] =
+
+* Fixed: Navigation Horizontal Offset control issue fixed in the crystal slider widget
+
 = 4.1.6 [9th April 2026] =
 
 * Fixed: Buzz List widget pagination previous and next arrow icons not rendering on the frontend
