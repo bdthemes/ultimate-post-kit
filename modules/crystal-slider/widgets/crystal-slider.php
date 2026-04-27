@@ -1160,8 +1160,8 @@ class Crystal_Slider extends Group_Control_Query {
 					'unit' => '%',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-crystal-slider .upk-navigation-wrap .upk-navigation-next' => 'left: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .upk-crystal-slider .upk-navigation-wrap .upk-navigation-prev' => 'right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .upk-crystal-slider .upk-navigation-wrap .upk-navigation-next' => 'right: {{SIZE}}{{UNIT}}; left: auto;',
+					'{{WRAPPER}} .upk-crystal-slider .upk-navigation-wrap .upk-navigation-prev' => 'left: {{SIZE}}{{UNIT}}; right: auto;',
 				],
 			]
 		);
