@@ -264,6 +264,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.X [XXth April 2026] =
+
+* Fixed: Replaced hard-coded strings with proper translation support
+
 = 4.1.7 [27th April 2026] =
 
 * Fixed: Navigation Horizontal Offset control issue fixed in the crystal slider widget

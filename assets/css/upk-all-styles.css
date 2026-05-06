@@ -2891,7 +2891,7 @@
 }
 
 #elementor-panel #elementor-controls .upk-disabled-control .elementor-control-field:after {
-  content: "This is a pro control, available with Ultimate Post Kit Pro version.";
+  content: var(--upk-pro-control-tooltip);
   padding: 10px;
   display: none;
   position: absolute;
@@ -2956,17 +2956,17 @@
 }
 
 .upk-new-control:after {
-  content: "NEW";
+  content: var(--upk-badge-new);
   background-color: #55c10c;
 }
 
 .upk-pro-control:after {
-  content: "PRO";
+  content: var(--upk-badge-pro);
   background-color: #e62a3f;
 }
 
 .upk-updated-control:after {
-  content: "UPDATED";
+  content: var(--upk-badge-updated);
   background-color: #2d60ce;
   color: #fff;
   font-size: 7px;

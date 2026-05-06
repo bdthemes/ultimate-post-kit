@@ -291,6 +291,15 @@ class Ultimate_Post_Kit_Loader {
 		wp_register_style( 'upk-font', BDTUPK_URL . 'assets/css/upk-font' . $direction_suffix . '.css', [], BDTUPK_VER );
 
 		wp_enqueue_style( 'upk-editor' );
+		wp_add_inline_style(
+			'upk-editor',
+			'#elementor-panel{'
+				. '--upk-pro-control-tooltip:' . wp_json_encode( __( 'This is a pro control, available with Ultimate Post Kit Pro version.', 'ultimate-post-kit' ) ) . ';'
+				. '--upk-badge-new:' . wp_json_encode( __( 'NEW', 'ultimate-post-kit' ) ) . ';'
+				. '--upk-badge-pro:' . wp_json_encode( __( 'PRO', 'ultimate-post-kit' ) ) . ';'
+				. '--upk-badge-updated:' . wp_json_encode( __( 'UPDATED', 'ultimate-post-kit' ) ) . ';'
+			. '}'
+		);
 		wp_enqueue_style( 'upk-font' );
 	}
 
