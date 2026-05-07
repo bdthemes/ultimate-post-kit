@@ -147,8 +147,8 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 								<?php if ( $settings['show_comments'] === 'yes' ) : ?>
 									<div data-separator="<?php echo esc_html( $meta_sep ); ?>">
 										<div class="upk-comments upk-flex upk-flex-middle">
-											<i class="upk-icon-post-comments"></i>
-											<span><?php echo absint( get_comments_number() ); ?></span>
+											<i class="upk-icon-post-comments" aria-hidden="true"></i>
+											<span><?php echo esc_html( $this->upk_get_localized_comment_count( get_the_ID() ) ); ?></span>
 										</div>
 									</div>
 								<?php endif; ?>

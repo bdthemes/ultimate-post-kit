@@ -1403,11 +1403,11 @@ class Camux_Slider extends Group_Control_Query {
 		if (!$this->get_settings('show_comments')) {
 			return;
 		}
-	?>
+		?>
 
 		<div class="upk-comments">
-			<?php echo get_comments_number($id) ?>
-			<i class="upk-icon-bubble"></i>
+			<?php echo esc_html( $this->upk_get_localized_comment_count( $id ) ); ?>
+			<i class="upk-icon-bubble" aria-hidden="true"></i>
 		</div>
 
 	<?php

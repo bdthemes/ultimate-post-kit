@@ -393,7 +393,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 
 			$html .= '<div class="upk-option-links">';
 			if ($args['demo_url']) {
-				$html .= '<a href=' . $args['demo_url'] . ' target="_blank" class="upk-option-demo" title="' . esc_html__('View ' . $args['name'] . ' Widget Demo', 'bdthemes-element-pack') . '">' . esc_html__('Demo', 'bdthemes-element-pack') . '<i class="upk-icon-preview" aria-hidden="true"></i></a>';
+				$html .= '<a href=' . $args['demo_url'] . ' target="_blank" class="upk-option-demo" title="' . esc_html__('View ' . $args['name'] . ' Widget Demo', 'ultimate-post-kit') . '">' . esc_html__('Demo', 'ultimate-post-kit') . '<i class="upk-icon-preview" aria-hidden="true"></i></a>';
 			}
 			if ($args['video_url']) {
 				$html .= '<a href=' . $args['video_url'] . ' target="_blank" class="upk-option-video" title="View ' . $args['name'] . ' Video Tutorial">Video<i class="upk-icon-tutorial" aria-hidden="true"></i></a>';
@@ -415,14 +415,14 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 					}
 					if (!is_plugin_active($plugin_path)) {
 						$active_link = wp_nonce_url('plugins.php?action=activate&amp;plugin=' . $plugin_path . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin_path);
-						$html .= '<a href="' . $active_link . '" class="ultimate-post-kit-3pp-active" bdt-tooltip="' . esc_html__('Activate the plugin first then you can activate this widget.', 'bdthemes-element-pack') . '"><span class="dashicons dashicons-admin-plugins"></span></a>';
+						$html .= '<a href="' . $active_link . '" class="ultimate-post-kit-3pp-active" bdt-tooltip="' . esc_html__('Activate the plugin first then you can activate this widget.', 'ultimate-post-kit') . '"><span class="dashicons dashicons-admin-plugins"></span></a>';
 					}
 				} else {
 					if ($paid) {
-						$html .= '<a href="' . $paid . '" class="ultimate-post-kit-3pp-download" bdt-tooltip="' . esc_html__('Download and install plugin first then you can activate this widget.', 'bdthemes-element-pack') . '"><span class="dashicons dashicons-download"></span></a>';
+						$html .= '<a href="' . $paid . '" class="ultimate-post-kit-3pp-download" bdt-tooltip="' . esc_html__('Download and install plugin first then you can activate this widget.', 'ultimate-post-kit') . '"><span class="dashicons dashicons-download"></span></a>';
 					} else {
 						$install_link = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_name), 'install-plugin_' . $plugin_name);
-						$html .= '<a href="' . $install_link . '" class="ultimate-post-kit-3pp-install" bdt-tooltip="' . esc_html__('Install the plugin first then you can activate this widget.', 'bdthemes-element-pack') . '"><span class="dashicons dashicons-download"></span></a>';
+						$html .= '<a href="' . $install_link . '" class="ultimate-post-kit-3pp-install" bdt-tooltip="' . esc_html__('Install the plugin first then you can activate this widget.', 'ultimate-post-kit') . '"><span class="dashicons dashicons-download"></span></a>';
 					}
 				}
 				if ($this->_is_plugin_installed($plugin_name, $plugin_path) and is_plugin_active($plugin_path)) {

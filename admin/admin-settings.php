@@ -245,7 +245,11 @@ class UltimatePostKit_Admin_Settings {
 		$access_url = admin_url( 'admin.php?page=ultimate_post_kit_options&upk_wl=1&token=' . $access_token . '&white_label_tab=1#ultimate_post_kit_extra_options' );
 		
 		// Email subject
-		$subject = sprintf( '[%s] Ultimate Post Kit White Label Access Instructions', $site_name );
+		$subject = sprintf(
+			/* translators: %s: Site name. */
+			__( '[%s] Ultimate Post Kit White Label Access Instructions', 'ultimate-post-kit' ),
+			$site_name
+		);
 		
 		// Email message
 		$message = $this->get_white_label_email_template( $site_name, $site_url, $access_url, $license_key );
@@ -314,7 +318,7 @@ class UltimatePostKit_Admin_Settings {
 			'access_url' => $access_url,
 			'email_content' => $email_content,
 			'recipient_email' => $recipient_email,
-			'message' => 'Email functionality not available on localhost. Use the access URL below:'
+			'message' => __( 'Email functionality is not available on localhost. Use the access URL below:', 'ultimate-post-kit' ),
 		];
 		
 		// Save for admin notice display
@@ -340,7 +344,7 @@ class UltimatePostKit_Admin_Settings {
 		<html>
 		<head>
 			<meta charset="UTF-8">
-			<title>Ultimate Post Kit White Label Access</title>
+			<title><?php echo esc_html__( 'Ultimate Post Kit White Label Access', 'ultimate-post-kit' ); ?></title>
 			<style>
 				body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
 				.container { max-width: 600px; margin: 0 auto; padding: 20px; }
@@ -354,36 +358,54 @@ class UltimatePostKit_Admin_Settings {
 		<body>
 			<div class="container">
 				<div class="header">
-					<h1>🔒 Ultimate Post Kit White Label Access</h1>
+					<h1><?php echo esc_html__( '🔒 Ultimate Post Kit White Label Access', 'ultimate-post-kit' ); ?></h1>
 				</div>
 				<div class="content">
-					<h2>Important: Save This Email!</h2>
+					<h2><?php echo esc_html__( 'Important: Save This Email!', 'ultimate-post-kit' ); ?></h2>
 					
-					<p>Hello,</p>
+					<p><?php echo esc_html__( 'Hello,', 'ultimate-post-kit' ); ?></p>
 					
-					<p>You have successfully enabled <strong>BDTUPK_HIDE mode</strong> for Ultimate Post Kit Pro on <strong><?php echo esc_html( $site_name ); ?></strong>.</p>
+					<p>
+						<?php
+						printf(
+							wp_kses_post( __( 'You have successfully enabled <strong>%1$s</strong> for Ultimate Post Kit Pro on <strong>%2$s</strong>.', 'ultimate-post-kit' ) ),
+							esc_html__( 'BDTUPK_HIDE mode', 'ultimate-post-kit' ),
+							esc_html( $site_name )
+						);
+						?>
+					</p>
 					
 					<div class="warning">
-						<h3>⚠️ IMPORTANT</h3>
-						<p>The plugin interface is hidden from your WordPress admin. Use below link to modify white label settings.</p>
+						<h3><?php echo esc_html__( '⚠️ IMPORTANT', 'ultimate-post-kit' ); ?></h3>
+						<p><?php echo esc_html__( 'The plugin interface is hidden from your WordPress admin. Use the link below to modify white label settings.', 'ultimate-post-kit' ); ?></p>
 
 						<p style="text-align: center;">
-							<a href="<?php echo esc_url( $access_url ); ?>" class="access-link">Access White Label Settings</a>
+							<a href="<?php echo esc_url( $access_url ); ?>" class="access-link"><?php echo esc_html__( 'Access White Label Settings', 'ultimate-post-kit' ); ?></a>
 						</p>
 					</div>					
 					
-					<p><strong>Direct Link:</strong><br>
-					<a href="<?php echo esc_url( $access_url ); ?>"><?php echo esc_html( $access_url ); ?></a></p>
+					<p>
+						<strong><?php echo esc_html__( 'Direct Link:', 'ultimate-post-kit' ); ?></strong><br>
+						<a href="<?php echo esc_url( $access_url ); ?>"><?php echo esc_html( $access_url ); ?></a>
+					</p>
 					
 					
-					<h3>🔧 What You Can Do</h3>
-					<p>Using the access link above, you can:</p>
+					<h3><?php echo esc_html__( '🔧 What You Can Do', 'ultimate-post-kit' ); ?></h3>
+					<p><?php echo esc_html__( 'Using the access link above, you can:', 'ultimate-post-kit' ); ?></p>
 					<ul>
-						<li>Disable BDTUPK_HIDE mode</li>
-						<li>Modify white label settings</li>
+						<li><?php echo esc_html__( 'Disable BDTUPK_HIDE mode', 'ultimate-post-kit' ); ?></li>
+						<li><?php echo esc_html__( 'Modify white label settings', 'ultimate-post-kit' ); ?></li>
 					</ul>
 					
-					<p>Need help? <a href="https://bdthemes.com/support/" target="_blank">Contact support</a> with your license key.</p>
+					<p>
+						<?php
+						printf(
+							wp_kses_post( __( 'Need help? %1$sContact support%2$s with your license key.', 'ultimate-post-kit' ) ),
+							'<a href="' . esc_url( 'https://bdthemes.com/support/' ) . '" target="_blank" rel="noopener noreferrer">',
+							'</a>'
+						);
+						?>
+					</p>
 					
 				</div>
 			</div>
@@ -407,7 +429,7 @@ class UltimatePostKit_Admin_Settings {
 
 		// Check user capability
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( 'You do not have sufficient permissions to access this page.' );
+			wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'ultimate-post-kit' ) );
 		}
 
 		$upk_wl = sanitize_text_field( $_GET['upk_wl'] );
@@ -415,13 +437,13 @@ class UltimatePostKit_Admin_Settings {
 
 		// Check if upk_wl is set to 1
 		if ( $upk_wl !== '1' ) {
-			$this->show_access_error( 'Invalid access parameter. Please use the correct link from your email.' );
+			$this->show_access_error( esc_html__( 'Invalid access parameter. Please use the correct link from your email.', 'ultimate-post-kit' ) );
 			return;
 		}
 
 		// Validate the access token
 		if ( ! $this->validate_white_label_access_token( $access_token ) ) {
-			$this->show_access_error( 'Invalid or expired access token. Please use the correct access link from your email.' );
+			$this->show_access_error( esc_html__( 'Invalid or expired access token. Please use the correct access link from your email.', 'ultimate-post-kit' ) );
 			return;
 		}
 
@@ -432,7 +454,7 @@ class UltimatePostKit_Admin_Settings {
 		// Add success notice
 		add_action( 'admin_notices', function() {
 			echo '<div class="notice notice-success is-dismissible">';
-			echo '<p><strong>✅ White Label Access Granted!</strong> You can now modify white label settings.</p>';
+			echo '<p><strong>' . esc_html__( '✅ White Label Access Granted!', 'ultimate-post-kit' ) . '</strong> ' . esc_html__( 'You can now modify white label settings.', 'ultimate-post-kit' ) . '</p>';
 			echo '</div>';
 		} );
 	}
@@ -446,11 +468,11 @@ class UltimatePostKit_Admin_Settings {
 	 */
 	private function show_access_error( $message ) {
 		wp_die( 
-			'<h1>🔒 Ultimate Post Kit White Label Access</h1>' .
-			'<p><strong>Access Denied:</strong> ' . esc_html( $message ) . '</p>' .
-			'<p>If you need assistance, please contact support with your license information.</p>' .
-			'<p><a href="' . admin_url() . '" class="button button-primary">← Return to Dashboard</a></p>',
-			'Access Denied',
+			'<h1>' . esc_html__( '🔒 Ultimate Post Kit White Label Access', 'ultimate-post-kit' ) . '</h1>' .
+			'<p><strong>' . esc_html__( 'Access Denied:', 'ultimate-post-kit' ) . '</strong> ' . esc_html( $message ) . '</p>' .
+			'<p>' . esc_html__( 'If you need assistance, please contact support with your license information.', 'ultimate-post-kit' ) . '</p>' .
+			'<p><a href="' . esc_url( admin_url() ) . '" class="button button-primary">' . esc_html__( '← Return to Dashboard', 'ultimate-post-kit' ) . '</a></p>',
+			esc_html__( 'Access Denied', 'ultimate-post-kit' ),
 			[ 'response' => 403 ]
 		);
 	}
@@ -949,7 +971,7 @@ class UltimatePostKit_Admin_Settings {
 					<p class="upk-dashboard-welcome-desc">
 						<?php esc_html_e('Empower your web creation with powerful widgets, advanced extensions, ready templates and more.', 'ultimate-post-kit'); ?>
 					</p>
-					<a href="<?php echo admin_url('?upk_setup_wizard=show'); ?>"
+					<a href="<?php echo esc_url( admin_url( '?upk_setup_wizard=show' ) ); ?>"
 						class="bdt-button bdt-welcome-button bdt-margin-small-top"
 						target="_blank"><?php esc_html_e('Setup Ultimate Post Kit', 'ultimate-post-kit'); ?></a>
 
@@ -983,8 +1005,8 @@ class UltimatePostKit_Admin_Settings {
 
 				<div class="upk-dashboard-item upk-dashboard-template-quick-access bdt-card bdt-card-body">
 					<div class="upk-dashboard-template-section">
-						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/template.jpg'; ?>"
-							alt="Ultimate Post Kit Dashboard Template">
+						<img src="<?php echo esc_url( BDTUPK_ADMIN_URL . 'assets/images/template.jpg' ); ?>"
+							alt="<?php echo esc_attr__( 'Ultimate Post Kit Dashboard Template', 'ultimate-post-kit' ); ?>">
 						<h1 class="upk-feature-title ">
 							<?php esc_html_e('Faster Web Creation with Sleek and Ready-to-Use Templates!', 'ultimate-post-kit'); ?>
 						</h1>
@@ -996,8 +1018,8 @@ class UltimatePostKit_Admin_Settings {
 					</div>
 
 					<div class="upk-dashboard-quick-access bdt-margin-medium-top">
-						<img src="<?php echo BDTUPK_ADMIN_URL . 'assets/images/support.jpg'; ?>"
-							alt="Ultimate Post Kit Dashboard Template">
+						<img src="<?php echo esc_url( BDTUPK_ADMIN_URL . 'assets/images/support.jpg' ); ?>"
+							alt="<?php echo esc_attr__( 'Ultimate Post Kit Dashboard Template', 'ultimate-post-kit' ); ?>">
 						<h1 class="upk-feature-title">
 							<?php esc_html_e('Getting Started with Quick Access', 'ultimate-post-kit'); ?>
 						</h1>
@@ -1389,10 +1411,16 @@ class UltimatePostKit_Admin_Settings {
 
 							if ($white_label_enabled && !empty($white_label_logo)) {
 
-								$alt_text = !empty($white_label_title) ? $white_label_title . ' Logo' : 'Custom Logo';
-								echo '<img src="' . esc_url($white_label_logo) . '" alt="' . esc_attr($alt_text) . '" style="max-height: 40px;">';
+								$alt_text = ! empty( $white_label_title )
+									? sprintf(
+										/* translators: %s: White label plugin name/title. */
+										__( '%s Logo', 'ultimate-post-kit' ),
+										$white_label_title
+									)
+									: __( 'Custom Logo', 'ultimate-post-kit' );
+								echo '<img src="' . esc_url( $white_label_logo ) . '" alt="' . esc_attr( $alt_text ) . '" style="max-height: 40px;">';
 							} else {
-								echo '<img src="' . BDTUPK_URL  . 'assets/images/logo-with-text.svg" alt="Ultimate Post Kit Logo">';
+								echo '<img src="' . esc_url( BDTUPK_URL . 'assets/images/logo-with-text.svg' ) . '" alt="' . esc_attr__( 'Ultimate Post Kit Logo', 'ultimate-post-kit' ) . '">';
 							}
 							?>
 						</div>
@@ -3186,7 +3214,7 @@ class UltimatePostKit_Admin_Settings {
 								?>
 								<div class="upk-icon-preview-container" style="<?php echo $icon_url ? '' : 'display: none;'; ?>">
 									<div class="upk-icon-preview">
-										<img id="upk-icon-preview-img" src="<?php echo esc_url($icon_url); ?>" alt="Icon Preview" style="max-width: 64px; max-height: 64px; border: 1px solid #ddd; border-radius: 4px; padding: 8px; background: #fff;">
+										<img id="upk-icon-preview-img" src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr__( 'Icon Preview', 'ultimate-post-kit' ); ?>" style="max-width: 64px; max-height: 64px; border: 1px solid #ddd; border-radius: 4px; padding: 8px; background: #fff;">
 									</div>
 									<button type="button" id="upk-remove-icon" class="bdt-button bdt-btn-grey bdt-flex bdt-flex-middle bdt-margin-small-top" style="padding: 8px 12px; font-size: 12px;">
 										<span class="dashicons dashicons-trash"></span>
@@ -3221,7 +3249,7 @@ class UltimatePostKit_Admin_Settings {
 									?>
 									<div class="upk-logo-preview-container" style="<?php echo $logo_url ? '' : 'display: none;'; ?>">
 										<div class="upk-logo-preview">
-											<img id="upk-logo-preview-img" src="<?php echo esc_url($logo_url); ?>" alt="Logo Preview" style="max-width: 200px; max-height: 64px; border: 1px solid #ddd; border-radius: 4px; padding: 8px; background: #fff;">
+											<img id="upk-logo-preview-img" src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr__( 'Logo Preview', 'ultimate-post-kit' ); ?>" style="max-width: 200px; max-height: 64px; border: 1px solid #ddd; border-radius: 4px; padding: 8px; background: #fff;">
 										</div>
 										<button type="button" id="upk-remove-logo" class="bdt-button bdt-btn-grey bdt-flex bdt-flex-middle bdt-margin-small-top" style="padding: 8px 12px; font-size: 12px;">
 											<span class="dashicons dashicons-trash"></span>
@@ -3430,8 +3458,8 @@ class UltimatePostKit_Admin_Settings {
 
 								<div class="upk-canvas-wrap">
 									<canvas id="bdt-db-total-status" style="height: 100px; width: 100px;"
-										data-label="Total Widgets Status - (<?php echo esc_html($used_widgets + $un_used_widgets); ?>)"
-										data-labels="<?php echo esc_attr('Used, Unused'); ?>"
+										data-label="<?php echo esc_attr( sprintf( __( 'Total Widgets Status - (%s)', 'ultimate-post-kit' ), $used_widgets + $un_used_widgets ) ); ?>"
+										data-labels="<?php echo esc_attr( sprintf( '%1$s, %2$s', __( 'Used', 'ultimate-post-kit' ), __( 'Unused', 'ultimate-post-kit' ) ) ); ?>"
 										data-value="<?php echo esc_attr($used_widgets) . ',' . esc_attr($un_used_widgets); ?>"
 										data-bg="#FFD166, #fff4d9" data-bg-hover="#0673e1, #e71522"></canvas>
 								</div>
@@ -3468,8 +3496,8 @@ class UltimatePostKit_Admin_Settings {
 
 								<div class="upk-canvas-wrap">
 									<canvas id="bdt-db-only-widget-status" style="height: 100px; width: 100px;"
-										data-label="Core Widgets Status - (<?php echo esc_html($used_only_widgets + $unused_only_widgets); ?>)"
-										data-labels="<?php echo esc_attr('Used, Unused'); ?>"
+										data-label="<?php echo esc_attr( sprintf( __( 'Core Widgets Status - (%s)', 'ultimate-post-kit' ), $used_only_widgets + $unused_only_widgets ) ); ?>"
+										data-labels="<?php echo esc_attr( sprintf( '%1$s, %2$s', __( 'Used', 'ultimate-post-kit' ), __( 'Unused', 'ultimate-post-kit' ) ) ); ?>"
 										data-value="<?php echo esc_attr($used_only_widgets) . ',' . esc_attr($unused_only_widgets); ?>"
 										data-bg="#EF476F, #ffcdd9" data-bg-hover="#0673e1, #e71522"></canvas>
 								</div>
@@ -3498,8 +3526,8 @@ class UltimatePostKit_Admin_Settings {
 
 								<div class="upk-canvas-wrap">
 									<canvas id="bdt-total-widgets-status" style="height: 100px; width: 100px;"
-										data-label="Total Active Widgets Status"
-										data-labels="<?php echo esc_attr('Core, Extensions'); ?>"
+										data-label="<?php echo esc_attr__( 'Total Active Widgets Status', 'ultimate-post-kit' ); ?>"
+										data-labels="<?php echo esc_attr( sprintf( '%1$s, %2$s', __( 'Core', 'ultimate-post-kit' ), __( 'Extensions', 'ultimate-post-kit' ) ) ); ?>"
 										data-value="0,0,0"
 										data-bg="#0680d6, #B0EBFF" data-bg-hover="#0673e1, #B0EBFF">
 									</canvas>
@@ -3575,10 +3603,10 @@ class UltimatePostKit_Admin_Settings {
 					<?php
 					if ($max_execution_time < '90') {
 						echo wp_kses_post($no_icon);
-						echo '<span class="label2" title="Min: 90 Recommended" bdt-tooltip>Currently: ' . esc_html($max_execution_time) . '</span>';
+						echo '<span class="label2" title="' . esc_attr__( 'Min: 90 Recommended', 'ultimate-post-kit' ) . '" bdt-tooltip>' . esc_html__( 'Currently:', 'ultimate-post-kit' ) . ' ' . esc_html( $max_execution_time ) . '</span>';
 					} else {
 						echo wp_kses_post($yes_icon);
-						echo '<span class="label2">Currently: ' . esc_html($max_execution_time) . '</span>';
+						echo '<span class="label2">' . esc_html__( 'Currently:', 'ultimate-post-kit' ) . ' ' . esc_html( $max_execution_time ) . '</span>';
 					}
 					?>
 				</div>
@@ -3590,10 +3618,10 @@ class UltimatePostKit_Admin_Settings {
 					<?php
 					if (intval($memory_limit) < '512') {
 						echo wp_kses_post($no_icon);
-						echo '<span class="label2" title="Min: 512M Recommended" bdt-tooltip>Currently: ' . esc_html($memory_limit) . '</span>';
+						echo '<span class="label2" title="' . esc_attr__( 'Min: 512M Recommended', 'ultimate-post-kit' ) . '" bdt-tooltip>' . esc_html__( 'Currently:', 'ultimate-post-kit' ) . ' ' . esc_html( $memory_limit ) . '</span>';
 					} else {
 						echo wp_kses_post($yes_icon);
-						echo '<span class="label2">Currently: ' . esc_html($memory_limit) . '</span>';
+						echo '<span class="label2">' . esc_html__( 'Currently:', 'ultimate-post-kit' ) . ' ' . esc_html( $memory_limit ) . '</span>';
 					}
 					?>
 				</div>
@@ -3606,10 +3634,10 @@ class UltimatePostKit_Admin_Settings {
 					<?php
 					if (intval($post_limit) < '32') {
 						echo wp_kses_post($no_icon);
-						echo '<span class="label2" title="Min: 32M Recommended" bdt-tooltip>Currently: ' . wp_kses_post($post_limit) . '</span>';
+						echo '<span class="label2" title="' . esc_attr__( 'Min: 32M Recommended', 'ultimate-post-kit' ) . '" bdt-tooltip>' . esc_html__( 'Currently:', 'ultimate-post-kit' ) . ' ' . esc_html( $post_limit ) . '</span>';
 					} else {
 						echo wp_kses_post($yes_icon);
-						echo '<span class="label2">Currently: ' . wp_kses_post($post_limit) . '</span>';
+						echo '<span class="label2">' . esc_html__( 'Currently:', 'ultimate-post-kit' ) . ' ' . esc_html( $post_limit ) . '</span>';
 					}
 					?>
 				</div>

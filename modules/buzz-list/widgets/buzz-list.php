@@ -50,7 +50,7 @@ class Buzz_List extends Group_Control_Query {
 		if ($this->upk_is_edit_mode()) {
 			return ['upk-all-styles'];
 		} else {
-			return ['upk-buzz-list'];
+			return ['upk-font', 'upk-buzz-list'];
 		}
 	}
 
@@ -850,11 +850,10 @@ class Buzz_List extends Group_Control_Query {
 		if (!$this->get_settings('show_comments')) {
 			return;
 		}
-	?>
+		?>
 
 		<div class="upk-comments">
-			<?php echo get_comments_number($id) ?>
-			<?php echo esc_html_x('Comments', 'Frontend', 'ultimate-post-kit') ?>
+			<?php echo esc_html( $this->upk_get_formatted_comments_count( $id ) ); ?>
 		</div>
 
 	<?php

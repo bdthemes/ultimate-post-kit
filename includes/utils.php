@@ -154,4 +154,33 @@ class Utils {
 		return $timezone_string;
 	}
 
+	/**
+	 * Build a localized comment count string for front-end display.
+	 *
+	 * Single translatable pattern so locales can reorder words (e.g. "Comments: %s").
+	 * Always escape with esc_html() (or esc_attr() for attributes) when outputting.
+	 *
+	 * @param int $post_id Post ID. Use 0 for the current post in The Loop.
+	 * @return string Unescaped translated string.
+	 */
+	public static function get_formatted_comments_count( $post_id = 0 ) {
+		$comment_count = (int) get_comments_number( $post_id );
+
+		return sprintf(
+			/* translators: %s: number of comments */
+			_n( '%s comment', '%s comments', $comment_count, 'ultimate-post-kit' ),
+			number_format_i18n( $comment_count )
+		);
+	}
+
+	/**
+	 * Localized numeric comment count only (no word label). For icon-only meta.
+	 *
+	 * @param int $post_id Post ID. Use 0 for the current post in The Loop.
+	 * @return string
+	 */
+	public static function get_localized_comment_count( $post_id = 0 ) {
+		return number_format_i18n( (int) get_comments_number( $post_id ) );
+	}
+
 }

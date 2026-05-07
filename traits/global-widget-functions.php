@@ -347,6 +347,7 @@ trait Global_Widget_Functions {
 		if (!$this->get_settings('show_date')) {
 			return;
 		}
+		$meta_separator = isset( $settings['meta_separator'] ) ? $settings['meta_separator'] : '.';
 	?>
 		<div class="upk-date">
 			<?php if ($settings['human_diff_time'] == 'yes') {
@@ -357,7 +358,7 @@ trait Global_Widget_Functions {
 		</div>
 
 		<?php if ($settings['show_time']) : ?>
-			<div class="upk-post-time">
+			<div class="upk-post-time" data-separator="<?php echo esc_attr( $meta_separator ); ?>">
 				<i class="upk-icon-clock" aria-hidden="true"></i>
 				<?php echo esc_html( get_the_time() ); ?>
 			</div>
@@ -385,6 +386,26 @@ trait Global_Widget_Functions {
 			?>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Localized comment count with label. Echo with esc_html().
+	 *
+	 * @param int $post_id Post ID, or 0 for current post in The Loop.
+	 * @return string
+	 */
+	protected function upk_get_formatted_comments_count( $post_id = 0 ) {
+		return Utils::get_formatted_comments_count( $post_id );
+	}
+
+	/**
+	 * Localized comment count number only. Echo with esc_html().
+	 *
+	 * @param int $post_id Post ID, or 0 for current post in The Loop.
+	 * @return string
+	 */
+	protected function upk_get_localized_comment_count( $post_id = 0 ) {
+		return Utils::get_localized_comment_count( $post_id );
 	}
 
 	function render_post_format() {

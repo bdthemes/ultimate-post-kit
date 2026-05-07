@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.1.4
+Stable tag: 4.1.8
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
-Tested up to: 6.9
+Tested up to: 6.9.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.35.6
+Elementor tested up to: 4.0.6
 
 Build your blogs and news sites with a feature-rich Elementor addon, offering 100+ elements for engaging layouts.
 
@@ -264,9 +264,27 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.1.XX [XXth March 2026] =
+= 4.1.8 [6th May 2026] =
 
+* Fixed: Replaced hard-coded strings with proper translation support
+
+= 4.1.7 [27th April 2026] =
+
+* Fixed: Navigation Horizontal Offset control issue fixed in the crystal slider widget
+
+= 4.1.6 [9th April 2026] =
+
+* Fixed: Buzz List widget pagination previous and next arrow icons not rendering on the frontend
+* Fixed: Carbon Slider — resolved desynchronization between prev/next navigation, timeline thumbs, and active slide when using loop + fade mode
+* Fixed: Timeline widget — comment count uses correct singular/plural
+* Improved: Comment count output across widgets — i18n, plural forms, localized numbers and escaping
+
+= 4.1.5 [30th March 2026] =
+
+* Updated: Made compatible with Elementor version 4.0.0
 * Fixed: Query controls Include/Exclude By Terms dropdown now hides taxonomy terms with no posts (only terms that have at least one post are shown)
+* Fixed: Paradox Slider — meta separator now also displays after date (between date and time) when time is enabled
+* Fixed: Clock icon and text alignment issue in the paradox widget
 * Fixed: Default pagination conflict issue
 
 = 4.1.4 [5th March 2026] =
