@@ -1,4 +1,7 @@
-.ultimate-post-kit-biggopti {
+/**
+ * admin api biggopti style start
+ */
+[id^=bdt-admin-biggopti-api-biggopti-] {
   padding: 0 !important;
   border: 0 !important;
   box-shadow: none !important;
@@ -7,7 +10,7 @@
   margin-bottom: 8px;
   background-color: #fff;
 }
-.ultimate-post-kit-biggopti .bdt-admin-api-biggopti-dismiss {
+[id^=bdt-admin-biggopti-api-biggopti-] .bdt-admin-api-biggopti-dismiss {
   position: absolute;
   top: 2px;
   left: 8px;
@@ -15,7 +18,6 @@
   background: transparent;
   border: none;
 }
-
 [id^=bdt-admin-biggopti-api-biggopti-] .bdt-plugin-logo-wrapper img {
   vertical-align: middle;
   width: clamp(25px, 3vw, 40px);
@@ -57,10 +59,9 @@
   margin: 0;
 }
 [id^=bdt-admin-biggopti-api-biggopti-] .has-background-image {
-  background-position: right;
-  background-repeat: no-repeat;
-  background-color: #000;
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 [id^=bdt-admin-biggopti-api-biggopti-] .bdt-api-biggopti-content {
   display: flex;
@@ -86,9 +87,6 @@
   align-items: center;
   gap: 20px;
 }
-[id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-title-description {
-  max-width: 450px;
-}
 [id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-logo-wrapper {
   animation: biggoptiLogoSlideIn 0.7s ease-out 0.35s both;
 }
@@ -108,11 +106,13 @@
   animation: titleSlideIn 0.8s ease-out 0.4s both;
   transform-origin: right center;
   text-shadow: -2px 2px 2px #000000;
+  line-height: 1.2;
 }
 [id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-html-content {
   color: #ffffff;
   text-shadow: -2px 2px 2px #000000;
   animation: titleSlideIn 0.8s ease-out 0.4s both;
+  line-height: 1.2;
 }
 [id^=bdt-admin-biggopti-api-biggopti-] .bdt-admin-api-biggopti-dismiss:before {
   color: rgba(255, 255, 255, 0.568627451);
@@ -171,6 +171,14 @@
   height: 30px;
   width: 1px;
   background: rgba(255, 255, 255, 0.251);
+}
+[id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-countdown .countdown-content {
+  font-size: clamp(14px, 2vw, 22px);
+  font-weight: 700;
+  color: #5affdb;
+  text-shadow: -2px 2px 2px #000000;
+  animation: titleSlideIn 0.8s ease-out 0.4s both;
+  transform-origin: right center;
 }
 @keyframes countdownSlideIn {
   0% {
@@ -287,9 +295,12 @@
 @media (min-width: 1460px) {
   [id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-content-right,
   [id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-content-inner {
-    gap: 30px;
+    gap: 80px;
   }
   [id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-countdown .countdown-timer {
     padding: 0 30px;
   }
 }
+/**
+ * admin api biggopti style end
+*/
