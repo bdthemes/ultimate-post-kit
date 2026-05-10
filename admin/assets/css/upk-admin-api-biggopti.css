@@ -266,46 +266,10 @@
   border-color: var(--nm-accent);
 }
 
-[id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star {
-  opacity: 1;
-  z-index: 2;
-  filter: drop-shadow(0 0 10px var(--nm-shadow-color));
-}
-
 [id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-btn .nm-biggopti-btn svg {
   width: 16px;
   height: 16px;
   display: block;
-}
-
-[id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star-1 {
-  top: 21%;
-  left: -18%;
-}
-
-[id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star-2 {
-  top: -25%;
-  left: 10%;
-}
-
-[id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star-3 {
-  top: 69%;
-  left: 25%;
-}
-
-[id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star-4 {
-  top: -34%;
-  left: 80%;
-}
-
-[id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star-5 {
-  top: 25%;
-  left: 115%;
-}
-
-[id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star-6 {
-  top: 5%;
-  left: 60%;
 }
 
 @keyframes buttonSlideIn {
