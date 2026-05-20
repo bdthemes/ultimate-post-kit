@@ -264,6 +264,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.XX [XXth May 2026] =
+
+* Fixed: Undefined array key "posts_per_page" PHP warning in query controls on PHP 8.1+
+
 = 4.1.9 [12th May 2026] =
 
 * Updated: System improved
