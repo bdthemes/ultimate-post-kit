@@ -728,17 +728,21 @@ abstract class Group_Control_Query extends Module_Base {
         $query->set('order', $settings['posts_order']);
         $query->set('orderby', $settings['posts_orderby']);
 
+        $posts_per_page = isset($query->query_vars['posts_per_page'])
+            ? (int) $query->query_vars['posts_per_page']
+            : (int) get_option('posts_per_page', 10);
+
         if (isset($query->query_vars['offset_to_fix'])) {
 
             if ($query->is_paged) {
-                $page_offset = $query->query_vars['offset_to_fix'] + (($query->query_vars['paged'] - 1) * $query->query_vars['posts_per_page']);
+                $page_offset = $query->query_vars['offset_to_fix'] + (($query->query_vars['paged'] - 1) * $posts_per_page);
                 $query->set('offset', $page_offset);
             } else {
                 $query->set('offset', $query->query_vars['offset_to_fix']);
             }
         } else {
             if ($query->is_paged) {
-                $page_offset = (int) $settings['posts_offset'] + (($query->query_vars['paged'] - 1) * $query->query_vars['posts_per_page']);
+                $page_offset = (int) $settings['posts_offset'] + (($query->query_vars['paged'] - 1) * $posts_per_page);
                 $query->set('offset', $page_offset);
             } else {
                 $query->set('offset', $settings['posts_offset']);
