@@ -1,15 +1,15 @@
 === Ultimate Post Kit Addons for Elementor ===
-Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza, shmusuf, arafatakashakku, shaikatazim, shamim496
+Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, syedfarhanreza, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.1.9
+Stable tag: 4.1.10
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 6.9.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 4.0.7
+Elementor tested up to: 4.0.9
 
 Build your blogs and news sites with a feature-rich Elementor addon, offering 100+ elements for engaging layouts.
 
@@ -264,9 +264,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.1.XX [XXth May 2026] =
+= 4.1.10 [21th May 2026] =
 
 * Fixed: Undefined array key "posts_per_page" PHP warning in query controls on PHP 8.1+
+* Updated: Made compatible with WordPress version 7.0
 
 = 4.1.9 [12th May 2026] =
 
