@@ -1054,6 +1054,7 @@ class UltimatePostKit_Admin_Settings {
 					<a href="https://feedback.bdthemes.com/b/6vr2250l/feature-requests/idea/new"
 						class="bdt-button bdt-dashboard-sec-btn bdt-margin-small-top"
 						target="_blank"><?php esc_html_e('Request Your Features', 'ultimate-post-kit'); ?></a>
+					<?php do_action( 'upk_after_dashboard_request_feature' ); ?>
 				</div>
 
 				<a href="https://www.youtube.com/watch?v=zNeoRz94cPw&list=PLP0S85GEw7DNBnZCb4RtJzlf38GCJ7z1b" target="_blank"

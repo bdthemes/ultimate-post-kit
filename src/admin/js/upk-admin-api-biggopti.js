@@ -154,6 +154,7 @@ jQuery(document).ready(function ($) {
 
     function isUltimatePostKitPromoItemValid(item) {
         if (!item || item.type !== 'adminDashboard') return false;
+        if ((BIGGOPTI_CFG.promoSuppression || {}).hideAuthorOffers) return false;
         if (!isRecordForUltimatePostKit(item)) return false;
         var targets = item.client_targets || [];
         var isPro = (BIGGOPTI_CFG && BIGGOPTI_CFG.isPro) || false;

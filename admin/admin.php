@@ -15,6 +15,7 @@ if (current_user_can('manage_options')) {
 
 // element pack admin settings here
 require_once BDTUPK_ADMIN_PATH . 'admin-settings.php';
+require_once BDTUPK_ADMIN_PATH . 'promo-offer-settings.php';
 
 /**
  * Admin class
@@ -204,6 +205,15 @@ class Admin
 		if ( isset( $_GET['page'] ) && $_GET['page'] === 'ultimate_post_kit_options' ) {
 			$current_sector = 'plugin_dashboard';
 		}
+
+		$promo_suppression = [ 'hideAuthorOffers' => false ];
+		if ( class_exists( 'Bdt_Admin_Api_Biggopti_Helper', false ) ) {
+			$promo_suppression = \Bdt_Admin_Api_Biggopti_Helper::get_promo_suppression_config();
+		} else {
+			$author_setting = get_option( 'bdt_hide_promotional_offers', [] );
+			$promo_suppression['hideAuthorOffers'] = is_array( $author_setting ) && ! empty( $author_setting['duration'] );
+		}
+
 		$script_config = [
 			'ajaxurl'            => admin_url('admin-ajax.php'),
 			'nonce'              => wp_create_nonce('ultimate-post-kit'),
@@ -211,6 +221,7 @@ class Admin
 			'assetsUrl'          => defined('BDTUPK_ASSETS_URL') ? BDTUPK_ASSETS_URL : '',
 			'dismissedDisplayIds' => $dismissed_display_ids,
 			'currentSector'      => $current_sector,
+			'promoSuppression'   => $promo_suppression,
 		];
 		wp_localize_script('upk-biggopti', 'UltimatePostKitBiggoptiConfig', $script_config);
 		wp_localize_script('upk-admin-api-biggopti', 'UltimatePostKitAdminApiBiggoptiConfig', $script_config);
