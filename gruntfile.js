@@ -65,7 +65,6 @@ module.exports = function (grunt) {
                             "*",
                             "!admin.scss",
                             "!product-feed.scss",
-                            "!admin-api-biggopti.scss",
                             "!admin-biggopti.scss",
                             "!elementor.scss",
                             "!overrides.scss",
@@ -82,7 +81,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: "src/scss/",
-                        src: ["admin.scss", "admin-biggopti.scss", "admin-api-biggopti.scss", "product-feed.scss"],
+                        src: ["admin.scss", "admin-biggopti.scss", "product-feed.scss"],
 
                         dest: "admin/assets/css/",
                         ext: ".css",
@@ -133,6 +132,9 @@ module.exports = function (grunt) {
                     mangle: true,
                 },
                 files: [
+                    {
+                        'admin/admin-api-biggopti/script.js': ['admin/admin-api-biggopti/src/script.js'],
+                    },
                     {
                         expand: true,
                         cwd: "src/admin/js/",
@@ -214,6 +216,13 @@ module.exports = function (grunt) {
             scripts: {
                 files: ["src/js/*.js", "src/js/**/*.js", "package.json"],
                 tasks: ["terser", "concat"],
+                options: {
+                    spawn: false,
+                },
+            },
+            apiBiggopti: {
+                files: ["admin/admin-api-biggopti/src/**/*.js"],
+                tasks: ["terser"],
                 options: {
                     spawn: false,
                 },

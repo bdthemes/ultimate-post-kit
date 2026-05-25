@@ -1,0 +1,35 @@
+[
+	{
+		"biggopti_class": "class-01kqs96c3j88a3hge5ve1krhgk",
+		"id": "01kqs96c3j88a3hge5ve1krhgk_1778048489",
+		"display_id": "20260504_CheckoutOurNewlyLaunchedProduct",
+		"type": "adminDashboard",
+		"title": "Fix Accessibility Issues Without the Headache.",
+		"sub_title": null,
+		"content": "Automate compliance. Elevate UX. Build an inclusive site—no code needed.",
+		"custom_css": "",
+		"background_color": "",
+		"image": "https://api.sigmative.io/prod/store/files/biggopti/items/d557c0f0-0fba-4fec-be6b-f15ced330b44/notification.jpg",
+		"feed_image": "",
+		"logo": "",
+		"button_text": "Grab the deal",
+		"link": "https://oneaccessibility.com/",
+		"show_countdown": false,
+		"countdown_content": "Up to 60% OFF",
+		"looped_countdown": false,
+		"looped_hour": 1,
+		"visible_after": 1000,
+		"visible_expired": 3600,
+		"start_date": "2026-04-03 18:00:00",
+		"end_date": "2026-06-05 18:00:00",
+		"white_list": [
+			"prime-slider-free"
+		],
+		"black_list": [
+			//"prime-slider-free"
+		],
+		"visibility_sectors": [],
+		"is_enabled": true,
+		"timezone": "UTC"
+	}
+]

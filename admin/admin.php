@@ -15,6 +15,7 @@ if (current_user_can('manage_options')) {
 
 // element pack admin settings here
 require_once BDTUPK_ADMIN_PATH . 'admin-settings.php';
+require_once BDTUPK_ADMIN_PATH . 'promo-offer-settings.php';
 
 /**
  * Admin class
@@ -46,7 +47,6 @@ class Admin
 	public function admin_notice_styles(){
 		$direction_suffix = is_rtl() ? '.rtl' : '';
 		wp_enqueue_style('upk-admin-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'css/upk-admin-biggopti' . $direction_suffix . '.css', [], BDTUPK_VER);
-		wp_enqueue_style('bdt-admin-api-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'css/upk-admin-api-biggopti' . $direction_suffix . '.css', [], BDTUPK_VER);
 	}
 
 
@@ -181,39 +181,15 @@ class Admin
 
 	public function enqueue_admin_script()
 	{
-		
-		// $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-form');
 		wp_enqueue_script('upk-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'js/upk-biggopti.min.js', ['jquery'], BDTUPK_VER,  true);
 
-		wp_enqueue_script('upk-admin-api-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'js/upk-admin-api-biggopti.min.js', ['jquery'], BDTUPK_VER,  true);
-
-		$dismissals = get_option('bdt_biggopti_dismissals', []);
-		$dismissed_display_ids = [];
-		$prefix = 'bdt-admin-biggopti-api-biggopti-';
-		foreach (array_keys($dismissals) as $key) {
-			if (strpos($key, $prefix) === 0) {
-				$dismissed_display_ids[] = substr($key, strlen($prefix));
-			} else {
-				$dismissed_display_ids[] = $key;
-			}
-		}
-
-		$current_sector = '';
-		if ( isset( $_GET['page'] ) && $_GET['page'] === 'ultimate_post_kit_options' ) {
-			$current_sector = 'plugin_dashboard';
-		}
 		$script_config = [
-			'ajaxurl'            => admin_url('admin-ajax.php'),
-			'nonce'              => wp_create_nonce('ultimate-post-kit'),
-			'isPro'              => function_exists('_is_upk_pro_activated') && _is_upk_pro_activated(),
-			'assetsUrl'          => defined('BDTUPK_ASSETS_URL') ? BDTUPK_ASSETS_URL : '',
-			'dismissedDisplayIds' => $dismissed_display_ids,
-			'currentSector'      => $current_sector,
+			'ajaxurl' => admin_url('admin-ajax.php'),
+			'nonce'   => wp_create_nonce('ultimate-post-kit'),
 		];
 		wp_localize_script('upk-biggopti', 'UltimatePostKitBiggoptiConfig', $script_config);
-		wp_localize_script('upk-admin-api-biggopti', 'UltimatePostKitAdminApiBiggoptiConfig', $script_config);
 
 		if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_post_kit_options')) {
 			wp_enqueue_script('chart', BDTUPK_ADMIN_ASSETS_URL . 'js/chart.min.js', ['jquery'], '3.9.1', true);

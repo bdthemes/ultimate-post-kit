@@ -1082,6 +1082,83 @@
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .upk-dashboard-template-quick-title {
   font-size: 24px;
 }
+.ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card.upk-dashboard-request-feature .upk-dashboard-promo-prefs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(123, 123, 123, 0.12);
+}
+.ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card.upk-dashboard-request-feature .upk-dashboard-promo-prefs-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #a7aaad;
+}
+.ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card.upk-dashboard-request-feature .upk-dashboard-promo-prefs-checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card.upk-dashboard-request-feature .upk-dashboard-promo-prefs-checkbox:focus-visible + .upk-dashboard-promo-prefs-checkmark {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(167, 170, 173, 0.6);
+}
+.ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card.upk-dashboard-request-feature .upk-dashboard-promo-prefs-checkbox:checked + .upk-dashboard-promo-prefs-checkmark::after {
+  opacity: 1;
+}
+.ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card.upk-dashboard-request-feature .upk-dashboard-promo-prefs-checkmark {
+  position: relative;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #c3c4c7;
+  border-radius: 3px;
+  background: #fff;
+  box-sizing: border-box;
+}
+.ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card.upk-dashboard-request-feature .upk-dashboard-promo-prefs-checkmark::after {
+  content: '';
+  position: absolute;
+  right: 4px;
+  left: auto;
+  top: 1px;
+  width: 4px;
+  height: 7px;
+  border: solid #a7aaad;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+.ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card.upk-dashboard-request-feature .upk-dashboard-promo-prefs-text {
+  color: #a7aaad;
+  font-size: 11px;
+  line-height: 1.3;
+  user-select: none;
+}
+.ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card.upk-dashboard-request-feature .upk-dashboard-promo-prefs-status {
+  font-size: 10px;
+  font-weight: 400;
+  color: #a7aaad;
+  min-height: 14px;
+}
+.ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card.upk-dashboard-request-feature .upk-dashboard-promo-prefs-status.is-success,
+.ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card.upk-dashboard-request-feature .upk-dashboard-promo-prefs-status.is-error {
+  color: #a7aaad;
+}
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card.bdt-card-green {
   background: rgba(173, 200, 101, 0.03);
   box-shadow: 0 0 0 1px rgba(173, 200, 101, 0.3);
