@@ -546,7 +546,7 @@ class Harold_List extends Group_Control_Query {
 				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-harold-list .upk-item .upk-item-box .upk-content .upk-meta .upk-author a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-harold-list .upk-item .upk-item-box .upk-content .upk-meta .upk-author a:hover *' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -590,7 +590,7 @@ class Harold_List extends Group_Control_Query {
 			[
 				'name'     => 'meta_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-harold-list .upk-item .upk-item-box .upk-content .upk-meta',
+				'selector' => '{{WRAPPER}} .upk-harold-list .upk-item .upk-item-box .upk-content .upk-meta, {{WRAPPER}} .upk-harold-list .upk-item .upk-item-box .upk-content .upk-meta *',
 			]
 		);
 

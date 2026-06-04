@@ -709,7 +709,7 @@ class Hazel_Carousel extends Group_Control_Query {
 			[
 				'name'     => 'author_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-hazel-carousel .upk-meta',
+				'selector' => '{{WRAPPER}} .upk-hazel-carousel .upk-meta, {{WRAPPER}} .upk-hazel-carousel .upk-meta *',
 			]
 		);
 
@@ -913,7 +913,7 @@ class Hazel_Carousel extends Group_Control_Query {
 
 	?>
 		<div class="upk-blog-author">
-			<span class="by"><?php echo esc_html__('by', 'ultimate-post-kit') ?></span>
+			<span class="by"><?php echo esc_html__('By', 'ultimate-post-kit') ?></span>
 			<span class="upk-author">
 				<a href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
 					<?php echo esc_html( get_the_author() ) ?>

@@ -1116,7 +1116,9 @@ class Timeline extends Group_Control_Query {
 
 						<div class="upk-meta">
 							<?php $this->render_author(); ?>
+							<?php if( 'yes' === $settings['show_comments'] && 'yes' === $settings['show_author'] ) : ?>
 							<span class="upk-separator"><?php echo esc_html( $settings['meta_separator'] ); ?></span>
+							<?php endif; ?>
 							<?php $this->render_comments( $post_id ); ?>
 						</div>
 					</div>
