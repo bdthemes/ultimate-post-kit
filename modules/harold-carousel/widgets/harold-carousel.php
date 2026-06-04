@@ -172,7 +172,7 @@ class Harold_Carousel extends Group_Control_Query {
 		$this->start_controls_section(
 			'section_content_additional',
 			[
-				'label' => esc_html__('Additional', 'ultimate-post-kit'),
+				'label' => esc_html__('Additional Options', 'ultimate-post-kit'),
 			]
 		);
 
@@ -568,7 +568,7 @@ class Harold_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Hover Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-harold-carousel .upk-meta .upk-author a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .upk-harold-carousel .upk-meta .upk-author a:hover *' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -612,7 +612,7 @@ class Harold_Carousel extends Group_Control_Query {
 			[
 				'name'     => 'meta_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-harold-carousel .upk-meta',
+				'selector' => '{{WRAPPER}} .upk-harold-carousel .upk-meta, {{WRAPPER}} .upk-harold-carousel .upk-meta *',
 			]
 		);
 

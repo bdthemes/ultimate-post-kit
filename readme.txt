@@ -264,6 +264,12 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.X [XXth June 2026] =
+
+* Fixed: Typography issue for meta information in the hazel grid, hazel carousel, harold list, and harold carousel widgets
+* Fixed: Meta hover color issues in the harold list and harold carousel widgets
+* Fixed: Separator display issue fixed for the oras timeline widget
+
 = 4.1.10 [21th May 2026] =
 
 * Fixed: Undefined array key "posts_per_page" PHP warning in query controls on PHP 8.1+
