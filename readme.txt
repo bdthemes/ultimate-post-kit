@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, syedfarhanreza, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.1.10
+Stable tag: 4.1.11
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
-Tested up to: 6.9.4
+Tested up to: 7.0
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Elementor requires at least: 3.28
-Elementor tested up to: 4.0.9
+Elementor requires at least: 4.0.0
+Elementor tested up to: 4.1.1
 
 Build your blogs and news sites with a feature-rich Elementor addon, offering 100+ elements for engaging layouts.
 
@@ -264,7 +264,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.1.X [XXth June 2026] =
+= 4.1.11 [7th June 2026] =
 
 * Fixed: Typography issue for meta information in the hazel grid, hazel carousel, harold list, and harold carousel widgets
 * Fixed: Meta hover color issues in the harold list and harold carousel widgets
