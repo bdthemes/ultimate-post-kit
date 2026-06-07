@@ -903,7 +903,7 @@ class Buzz_List_Carousel extends Group_Control_Query {
 		<div class="upk-author-wrap">
 			<span class="upk-by"><?php echo esc_html_x('by', 'Frontend', 'ultimate-post-kit'); ?></span>
 			<a class="upk-author-name" href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
-				<?php echo esc_html( esc_html( get_the_author() ) ); ?>
+				<?php echo esc_html( get_the_author() ); ?>
 			</a>
 		</div>
 	<?php
