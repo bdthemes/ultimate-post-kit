@@ -264,12 +264,15 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.1X [Xth June 2026] =
+
+* Fixed: Double HTML escaping on author name in the buzz list carousel widget ( Thanks to itapress )
+
 = 4.1.11 [7th June 2026] =
 
 * Fixed: Typography issue for meta information in the hazel grid, hazel carousel, harold list, and harold carousel widgets
 * Fixed: Meta hover color issues in the harold list and harold carousel widgets
 * Fixed: Separator display issue fixed for the oras timeline widget
-* Fixed: Double HTML escaping on author name in the buzz list carousel widget ( Thanks to itapress )
 
 = 4.1.10 [21th May 2026] =
 
