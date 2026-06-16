@@ -264,6 +264,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.X [XXth June 2026] =
+
+* Fixed: Read more hover style controls in the alex grid and alex carousel widgets
+
 = 4.1.12 [7th June 2026] =
 
 * Fixed: Double HTML escaping on author name in the buzz list carousel widget ( Thanks to itapress )

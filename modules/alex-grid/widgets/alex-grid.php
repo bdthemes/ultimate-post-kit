@@ -1034,7 +1034,7 @@ class Alex_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-alex-grid .upk-readmore .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-grid .upk-item:hover .upk-readmore .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-grid .upk-item:hover .upk-readmore .upk-readmore-icon span:after' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .upk-alex-grid .upk-readmore .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-grid .upk-readmore .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-grid .upk-readmore .upk-readmore-icon span:after' => 'background: {{VALUE}};',
 				],
 			]
 		);
@@ -1121,7 +1121,7 @@ class Alex_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-alex-grid .upk-item:hover .upk-readmore .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-grid .upk-item:hover .upk-readmore .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-grid .upk-item:hover .upk-readmore .upk-readmore-icon span:after' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .upk-alex-grid .upk-readmore:hover .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-grid .upk-readmore:hover .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-grid .upk-readmore:hover .upk-readmore-icon span:after' => 'background: {{VALUE}};',
 				],
 			]
 		);

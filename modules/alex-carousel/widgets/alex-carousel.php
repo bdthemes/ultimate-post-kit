@@ -865,7 +865,7 @@ class Alex_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-alex-carousel .upk-readmore .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore .upk-readmore-icon span:after' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .upk-alex-carousel .upk-readmore .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-carousel .upk-readmore .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-carousel .upk-readmore .upk-readmore-icon span:after' => 'background: {{VALUE}};',
 				],
 			]
 		);
@@ -936,7 +936,7 @@ class Alex_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore .upk-readmore-icon span:after' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .upk-alex-carousel .upk-readmore:hover .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-carousel .upk-readmore:hover .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-carousel .upk-readmore:hover .upk-readmore-icon span:after' => 'background: {{VALUE}};',
 				],
 			]
 		);
@@ -945,7 +945,7 @@ class Alex_Carousel extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'      => 'readmore_hover_background',
-				'selector'  => '{{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore',
+				'selector'  => '{{WRAPPER}} .upk-alex-carousel .upk-readmore:hover',
 			]
 		);
 
@@ -955,7 +955,7 @@ class Alex_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-alex-carousel .upk-readmore:hover' => 'border-color: {{VALUE}};',
 				],
 				'condition' => [
 					'readmore_border_border!' => ''
@@ -967,7 +967,7 @@ class Alex_Carousel extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'readmore_hover_shadow',
-				'selector' => '{{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore',
+				'selector' => '{{WRAPPER}} .upk-alex-carousel .upk-readmore:hover',
 			]
 		);
 
