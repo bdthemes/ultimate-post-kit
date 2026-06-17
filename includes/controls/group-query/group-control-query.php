@@ -551,13 +551,19 @@ abstract class Group_Control_Query extends Module_Base {
         }
 
         if ($this->get_settings_for_display('query_id')) {
+            $args['upk_widget_query'] = true;
             add_action('pre_get_posts', [$this, 'pre_get_posts_query_filter']);
         }
 
         // fixing custom offset
         ## https://codex.wordpress.org/Making_Custom_Queries_using_Offset_and_Pagination
-        add_action('pre_get_posts', [$this, 'fix_query'], 1);
-        add_filter('found_posts', [$this, 'prefix_adjust_offset_pagination'], 1, 2);
+        // Only register the fixers when this widget actually uses an offset, and
+        // scope them to this widget's own query so they never affect other
+        // queries (e.g. another post widget rendered later on the same page).
+        if (!empty($args['offset_to_fix'])) {
+            add_action('pre_get_posts', [$this, 'fix_query'], 1);
+            add_filter('found_posts', [$this, 'prefix_adjust_offset_pagination'], 1, 2);
+        }
 
         return $args;
     }
@@ -721,52 +727,62 @@ abstract class Group_Control_Query extends Module_Base {
      * @param WP_Query $query fix the offset
      */
 
-    function fix_query(&$query) {
+    function fix_query( &$query ) {
 
-        $settings = $this->get_settings_for_display();
+        // Only touch this widget's own query. The flag travels with the query
+        // args, so unrelated queries (other widgets, the main loop, etc.) are
+        // left untouched even if this callback is still attached.
+        if ( ! isset( $query->query_vars['offset_to_fix'] ) ) {
+            return;
+        }
 
-        $query->set('order', $settings['posts_order']);
-        $query->set('orderby', $settings['posts_orderby']);
+        // Self-remove so this only applies to a single query and never leaks
+        // into subsequent queries on the same request.
+        remove_action( 'pre_get_posts', [ $this, 'fix_query' ], 1 );
 
-        $posts_per_page = isset($query->query_vars['posts_per_page'])
+        $offset = (int) $query->query_vars['offset_to_fix'];
+
+        $posts_per_page = isset( $query->query_vars['posts_per_page'] )
             ? (int) $query->query_vars['posts_per_page']
-            : (int) get_option('posts_per_page', 10);
+            : (int) get_option( 'posts_per_page', 10 );
 
-        if (isset($query->query_vars['offset_to_fix'])) {
-
-            if ($query->is_paged) {
-                $page_offset = $query->query_vars['offset_to_fix'] + (($query->query_vars['paged'] - 1) * $posts_per_page);
-                $query->set('offset', $page_offset);
-            } else {
-                $query->set('offset', $query->query_vars['offset_to_fix']);
-            }
+        if ( $query->is_paged ) {
+            $page_offset = $offset + ( ( $query->query_vars['paged'] - 1 ) * $posts_per_page );
+            $query->set( 'offset', $page_offset );
         } else {
-            if ($query->is_paged) {
-                $page_offset = (int) $settings['posts_offset'] + (($query->query_vars['paged'] - 1) * $posts_per_page);
-                $query->set('offset', $page_offset);
-            } else {
-                $query->set('offset', $settings['posts_offset']);
-            }
+            $query->set( 'offset', $offset );
         }
     }
 
-    public function prefix_adjust_offset_pagination($found_posts, $query) {
+    public function prefix_adjust_offset_pagination( $found_posts, $query ) {
 
-        if (isset($query->query_vars['offset_to_fix'])) {
-            $offset_to_fix = intval($query->query_vars['offset_to_fix']);
+        if ( ! isset( $query->query_vars['offset_to_fix'] ) ) {
+            return $found_posts;
+        }
 
-            if ($offset_to_fix) {
-                $found_posts -= $offset_to_fix;
-            }
+        remove_filter( 'found_posts', [ $this, 'prefix_adjust_offset_pagination' ], 1 );
+
+        $offset_to_fix = intval( $query->query_vars['offset_to_fix'] );
+
+        if ( $offset_to_fix ) {
+            $found_posts -= $offset_to_fix;
         }
 
         return $found_posts;
     }
 
-    public function pre_get_posts_query_filter($wp_query) {
-        if ($this) {
-            $query_id = $this->get_settings_for_display('query_id');
-            do_action("ultimate_post_kit_pro/query/{$query_id}", $wp_query, $this);
+    public function pre_get_posts_query_filter( $wp_query ) {
+
+        if ( empty( $wp_query->get( 'upk_widget_query' ) ) ) {
+            return;
+        }
+
+        remove_action( 'pre_get_posts', [ $this, 'pre_get_posts_query_filter' ] );
+
+        $query_id = $this->get_settings_for_display( 'query_id' );
+
+        if ( $query_id ) {
+            do_action( "ultimate_post_kit_pro/query/{$query_id}", $wp_query, $this );
         }
     }
 }
