@@ -264,6 +264,36 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+<<<<<<< Updated upstream
+=======
+= 4.1.XX [XXth June 2026] =
+
+* Fixed: Query offset leaking into other post widgets rendered later on the same page ( Thanks to James Brecher )
+
+= 4.1.13 [17th June 2026] =
+
+* Fixed: Read more hover style controls in the alex grid and alex carousel widgets
+
+= 4.1.12 [7th June 2026] =
+
+* Fixed: Double HTML escaping on author name in the buzz list carousel widget ( Thanks to itapress )
+
+= 4.1.11 [7th June 2026] =
+
+* Fixed: Typography issue for meta information in the hazel grid, hazel carousel, harold list, and harold carousel widgets
+* Fixed: Meta hover color issues in the harold list and harold carousel widgets
+* Fixed: Separator display issue fixed for the oras timeline widget
+
+= 4.1.10 [21th May 2026] =
+
+* Fixed: Undefined array key "posts_per_page" PHP warning in query controls on PHP 8.1+
+* Updated: Made compatible with WordPress version 7.0
+
+= 4.1.9 [12th May 2026] =
+
+* Updated: System improved
+
+>>>>>>> Stashed changes
 = 4.1.8 [6th May 2026] =
 
 * Fixed: Replaced hard-coded strings with proper translation support
