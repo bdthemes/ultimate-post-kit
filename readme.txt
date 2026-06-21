@@ -264,6 +264,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.XX [XXth June 2026] =
+
+* Fixed: Query offset leaking into other post widgets rendered later on the same page ( Thanks to James Brecher )
+
 = 4.1.13 [17th June 2026] =
 
 * Fixed: Read more hover style controls in the alex grid and alex carousel widgets
