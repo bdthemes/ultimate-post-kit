@@ -264,6 +264,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.XX [XXth June 2026] =
+
+* Fixed: Category text wrap issue fixed in Alter Grid widget ( Thanks to James Clarke )
+
 = 4.1.14 [21st June 2026] =
 
 * Fixed: Query offset leaking into other post widgets rendered later on the same page ( Thanks to James Brecher )
