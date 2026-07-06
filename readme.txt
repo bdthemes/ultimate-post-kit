@@ -264,6 +264,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.XX [XXth July 2026] =
+
+* Fixed: CLS issue fixed in Alex Grid widget ( Thanks to Mit freundlichen Grüssen )
+
 = 4.1.15 [23rd June 2026] =
 
 * Fixed: Category text wrap issue fixed in Alter Grid widget ( Thanks to James Clarke )

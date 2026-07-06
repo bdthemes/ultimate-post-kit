@@ -192,6 +192,10 @@ class Alex_Grid extends Group_Control_Query {
 						'max' => 800,
 					],
 				],
+				'default'   => [
+					'size' => 420,
+					'unit' => 'px',
+				],
 				'selectors' => [
 					'{{WRAPPER}} .upk-alex-grid .upk-style-1 .upk-item:nth-child(5n+1), {{WRAPPER}} .upk-alex-grid .upk-style-1 .upk-item:nth-child(5n+2), {{WRAPPER}} .upk-alex-grid .upk-style-3 .upk-item:nth-child(5n+2)' => 'height: {{SIZE}}{{UNIT}};',
 				],
@@ -211,6 +215,10 @@ class Alex_Grid extends Group_Control_Query {
 						'min' => 200,
 						'max' => 800,
 					],
+				],
+				'default'   => [
+					'size' => 280,
+					'unit' => 'px',
 				],
 				'selectors' => [
 					'{{WRAPPER}} .upk-alex-grid .upk-style-1 .upk-item:nth-child(5n+3), {{WRAPPER}} .upk-alex-grid .upk-style-1 .upk-item:nth-child(5n+4), {{WRAPPER}} .upk-alex-grid .upk-style-1 .upk-item:nth-child(5n+5), {{WRAPPER}} .upk-alex-grid .upk-style-3 .upk-item:nth-child(5n+1), {{WRAPPER}} .upk-alex-grid .upk-style-3 .upk-item:nth-child(5n+3), {{WRAPPER}} .upk-alex-grid .upk-style-3 .upk-item:nth-child(5n+4), {{WRAPPER}} .upk-alex-grid .upk-style-3 .upk-item:nth-child(5n+5)' => 'height: {{SIZE}}{{UNIT}};',
