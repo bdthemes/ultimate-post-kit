@@ -264,6 +264,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.X [XXth July 2026] =
+
+* Fixed: Pagination hover color not applying to previous/next arrow icons
+
 = 4.1.16 [6th July 2026] =
 
 * Fixed: CLS issue fixed in Alex Grid widget ( Thanks to Mit freundlichen Grüssen )
