@@ -467,6 +467,12 @@
 .ep-pagination .upk-pagination li:hover a, .ep-pagination .upk-pagination li.upk-active a {
   color: #ef233c;
 }
+.ep-pagination .upk-pagination li:hover a span,
+.ep-pagination .upk-pagination li:hover a i,
+.ep-pagination .upk-pagination li.upk-active a span,
+.ep-pagination .upk-pagination li.upk-active a i {
+  color: inherit;
+}
 .ep-pagination .upk-pagination li a {
   font-size: 16px;
   font-weight: 600;

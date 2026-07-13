@@ -285,6 +285,11 @@
       &.upk-active {
         a {
           color: #ef233c;
+
+          span,
+          i {
+            color: inherit;
+          }
         }
       }
 
