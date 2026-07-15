@@ -862,7 +862,7 @@ class Social_Share extends Module_Base {
 							<div class="upk-social-share-text upk-inline">
 								<?php if ( 'icon-text' === $settings['view'] || 'text' === $settings['view'] ) : ?>
 									<span class="upk-social-share-title">
-										<?php echo $button['text'] ? esc_html($button['text']) : Module::get_social_media( $social_name )['title']; ?>
+										<?php echo $button['text'] ? esc_html($button['text']) : esc_html( Module::get_social_media( $social_name )['title'] ); ?>
 									</span>
 								<?php endif; ?>
 								<?php if ( $has_counter ) : ?>

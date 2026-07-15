@@ -264,6 +264,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.X [XXth July 2026] =
+
+* Fixed: Output escaping issues in multiple widgets
+
 = 4.1.17 [15th July 2026] =
 
 * Fixed: Pagination hover color not applying to previous/next arrow icons

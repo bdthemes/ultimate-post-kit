@@ -881,7 +881,7 @@ class Alice_Carousel extends Group_Control_Query {
 
 	?>
 		<div <?php $this->print_render_attribute_string('carousel'); ?>>
-			<div class="upk-content-<?php echo esc_html($settings['content_position']) ?>">
+			<div class="upk-content-<?php echo esc_attr($settings['content_position']) ?>">
 				<div <?php $this->print_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 					<?php
@@ -908,12 +908,12 @@ class Alice_Carousel extends Group_Control_Query {
 									<?php if ($settings['show_author'] or $settings['show_date'] or $settings['show_reading_time']) : ?>
 									<div class="upk-meta">
 										<?php $this->render_author(); ?>
-										<div data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+										<div data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 										<?php $this->render_date(); ?>
 										</div>
 										<?php if (_is_upk_pro_activated()) :
 											if ('yes' === $settings['show_reading_time']) : ?>
-												<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+												<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 													<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 												</div>
 											<?php endif; ?>

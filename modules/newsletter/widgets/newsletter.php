@@ -1067,12 +1067,12 @@ class Newsletter extends Module_Base {
 
 				<?php if ($settings['show_fname'] == 'yes') : ?>
 					<div <?php $this->print_render_attribute_string('input-wrapper'); ?>>
-						<input type="text" name="fname" placeholder="<?php echo esc_html($settings['fname_field_placeholder']); ?>" class="upk-input" />
+						<input type="text" name="fname" placeholder="<?php echo esc_attr($settings['fname_field_placeholder']); ?>" class="upk-input" />
 					</div>
 				<?php endif; ?>
 
 				<div <?php $this->print_render_attribute_string('input-wrapper'); ?>>
-					<input type="email" name="email" placeholder="<?php echo esc_html($settings['email_field_placeholder']); ?>" required class="upk-input" />
+					<input type="email" name="email" placeholder="<?php echo esc_attr($settings['email_field_placeholder']); ?>" required class="upk-input" />
 					<input type="hidden" name="action" value="ultimate_post_kit_mailchimp_subscribe" />
 					<!-- we need action parameter to receive ajax request in WordPress -->
 				</div>

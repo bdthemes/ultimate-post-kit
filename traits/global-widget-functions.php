@@ -281,7 +281,7 @@ trait Global_Widget_Functions {
 		$image_src             = wp_get_attachment_image_src($image_id, $size);
 
 		if (!$image_src) {
-			printf('<img class="upk-img" src="%1$s" alt="%2$s">', esc_url($placeholder_image_src), esc_html(get_the_title()));
+			printf('<img class="upk-img" src="%1$s" alt="%2$s">', esc_url($placeholder_image_src), esc_attr(get_the_title()));
 		} else {
 			print(wp_get_attachment_image(
 				$image_id,
@@ -289,7 +289,7 @@ trait Global_Widget_Functions {
 				false,
 				[
 					'class' => 'upk-img',
-					'alt'   => esc_html(get_the_title())
+					'alt'   => esc_attr(get_the_title())
 				]
 			));
 		}
@@ -309,7 +309,7 @@ trait Global_Widget_Functions {
 			$image_src = $image_src[0];
 		}
 ?>
-		<img class="upk-img" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+		<img class="upk-img" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
 	<?php
 	}
 
@@ -319,12 +319,14 @@ trait Global_Widget_Functions {
 			return;
 		}
 		apply_filters('upk/' . $widget_name . '/before/title', '');
+		$title = get_the_title();
 		printf(
-			'<%1$s class="upk-title"><a href="%2$s" title="%3$s" class="title-animation-%4$s" aria-label="%3$s">%3$s</a></%1$s>', 
-			esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), 
-			esc_url( get_permalink() ), 
-			esc_html( get_the_title() ), 
+			'<%1$s class="upk-title"><a href="%2$s" title="%5$s" class="title-animation-%4$s" aria-label="%5$s">%3$s</a></%1$s>',
+			esc_attr(Utils::get_valid_html_tag($settings['title_tags'])),
+			esc_url( get_permalink() ),
+			esc_html( $title ),
 			esc_attr($settings['title_style']),
+			esc_attr( $title )
 		);
 		apply_filters('upk/' . $widget_name . '/after/title', '');
 	}

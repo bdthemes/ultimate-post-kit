@@ -896,7 +896,7 @@ class Category_Carousel extends Module_Base {
 		}
 
 ?>
-		<img class="upk-category-carousel-img" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+		<img class="upk-category-carousel-img" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
 	<?php
 	}
 

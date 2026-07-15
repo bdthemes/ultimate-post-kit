@@ -1435,7 +1435,7 @@ class Author extends Module_Base {
 
 ?>
 		<div class="upk-author">
-			<div class="upk-author-wrapper upk-<?php echo esc_html($settings['layout_style']) ?>">
+			<div class="upk-author-wrapper upk-<?php echo esc_attr($settings['layout_style']) ?>">
 				<?php
 				foreach ($users as $author) {
 
@@ -1454,21 +1454,21 @@ class Author extends Module_Base {
 						<div class="upk-content">
 							<?php if ($settings['show_author_name']) : ?>
 								<div class="upk-name">
-									<a href="<?php echo get_bloginfo('url') . "/?author=" . esc_attr($author->ID); ?>">
-										<?php echo get_the_author_meta('display_name', $author->ID); ?>
+									<a href="<?php echo esc_url(get_author_posts_url($author->ID)); ?>">
+										<?php echo esc_html(get_the_author_meta('display_name', $author->ID)); ?>
 									</a>
 								</div>
 							<?php endif; ?>
 
 							<?php if ($settings['show_author_role']) : ?>
 								<div class="upk-role">
-									<?php echo ucwords(get_user_role($author->ID)); ?>
+									<?php echo esc_html(ucwords(get_user_role($author->ID))); ?>
 								</div>
 							<?php endif; ?>
 
 							<?php if ($settings['show_author_description'] and get_the_author_meta('description', $author->ID)) : ?>
 								<div class="upk-description">
-									<?php echo get_the_author_meta('description', $author->ID); ?>
+									<?php echo wp_kses_post(get_the_author_meta('description', $author->ID)); ?>
 								</div>
 							<?php endif; ?>
 
@@ -1492,7 +1492,7 @@ class Author extends Module_Base {
 
 											?>
 
-											<a href="<?php echo esc_url($final_url); ?>" title="<?php echo esc_html($alt_title); ?>">
+											<a href="<?php echo esc_url($final_url); ?>" title="<?php echo esc_attr($alt_title); ?>">
 												<i class="upk-icon-<?php echo esc_attr($link); ?>" aria-hidden="true"></i>
 											</a>
 										<?php endif; ?>

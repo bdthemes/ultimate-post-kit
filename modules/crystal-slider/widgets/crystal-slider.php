@@ -1553,7 +1553,8 @@ class Crystal_Slider extends Group_Control_Query {
 			return;
 		}
 
-		printf('<%1$s class="upk-title"><a href="%2$s" title="%3$s">%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), esc_url( get_permalink() ), esc_html( get_the_title() ));
+		$title = get_the_title();
+		printf('<%1$s class="upk-title"><a href="%2$s" title="%4$s">%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), esc_url( get_permalink() ), esc_html( $title ), esc_attr( $title ));
 	}
 
 	public function render_category() {
@@ -1672,10 +1673,10 @@ class Crystal_Slider extends Group_Control_Query {
 				<?php if ($settings['show_navigation']) : ?>
 					<div class="upk-navigation-wrap">
 						<div class="upk-navigation-prev">
-							<i class="upk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
+							<i class="upk-icon-arrow-left-<?php echo esc_attr($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
 						</div>
 						<div class="upk-navigation-next">
-							<i class="upk-icon-arrow-right-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
+							<i class="upk-icon-arrow-right-<?php echo esc_attr($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
 						</div>
 					</div>
 				<?php endif; ?>
@@ -1716,13 +1717,13 @@ class Crystal_Slider extends Group_Control_Query {
 								<?php $this->render_author(); ?>
 							<?php endif; ?>
 							<?php if ($settings['show_date']) : ?>
-							<div data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+							<div data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 								<?php $this->render_date(); ?>
 							</div>
 							<?php endif; ?>
 							<?php if (_is_upk_pro_activated()) :
 							if ('yes' === $settings['show_reading_time']) : ?>
-								<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+								<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 									<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 								</div>
 							<?php endif; ?>
