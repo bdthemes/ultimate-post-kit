@@ -2,10 +2,10 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, syedfarhanreza, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.1.16
+Stable tag: 4.1.17
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
-Tested up to: 7.0
+Tested up to: 7.0.1
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 4.0.0
@@ -264,7 +264,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.1.X [XXth July 2026] =
+= 4.1.17 [15th July 2026] =
 
 * Fixed: Pagination hover color not applying to previous/next arrow icons
 
