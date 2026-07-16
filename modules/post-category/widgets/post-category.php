@@ -891,7 +891,7 @@ class Post_Category extends Module_Base {
 
 					if ( ! empty( $category_image_id ) ) {
 						$category_url   = wp_get_attachment_image_url( $category_image_id, $settings['cat_image_size_size'] );
-						$category_image = '<div class="upk-category-image"><img src="' . $category_url . '" alt=""></div>';
+						$category_image = '<div class="upk-category-image"><img src="' . esc_url( $category_url ) . '" alt="' . esc_attr( $cat->cat_name ) . '"></div>';
 					} else {
 						$category_image = '';
 					}
@@ -922,7 +922,7 @@ class Post_Category extends Module_Base {
 
 							<?php if ( ! empty( $cat->category_description ) and $settings['show_text'] == 'yes' ) : ?>
 								<span class="upk-category-text">
-									<?php echo wp_trim_words( $cat->category_description, $settings['text_length'] ); ?>
+									<?php echo esc_html( wp_trim_words( $cat->category_description, $settings['text_length'] ) ); ?>
 								</span>
 							<?php endif; ?>
 

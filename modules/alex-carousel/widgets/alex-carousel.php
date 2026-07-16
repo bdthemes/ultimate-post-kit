@@ -1416,14 +1416,14 @@ class Alex_Carousel extends Group_Control_Query {
 
 					<div class="upk-flex upk-flex-middle upk-date-reading-wrap">
 						<?php if ('yes' === $settings['show_date']) : ?>
-							<div data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+							<div data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 								<?php $this->render_date(); ?>
 							</div>
 						<?php endif; ?>
 
 						<?php if (_is_upk_pro_activated()) :
 							if ('yes' === $settings['show_reading_time']) : ?>
-								<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+								<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 									<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 								</div>
 							<?php endif; ?>
@@ -1443,7 +1443,7 @@ class Alex_Carousel extends Group_Control_Query {
 
 		?>
 		<div <?php $this->print_render_attribute_string('carousel'); ?>>
-			<div class="upk-alex-wrap upk-content-<?php echo esc_html($settings['content_position']) ?>">
+			<div class="upk-alex-wrap upk-content-<?php echo esc_attr($settings['content_position']) ?>">
 				<div <?php $this->print_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 					<?php
@@ -1453,8 +1453,12 @@ class Alex_Carousel extends Group_Control_Query {
 					$settings = $this->get_settings_for_display();
 
 					if ('yes' == $settings['global_link']) {
-
-						$this->add_render_attribute('grid-item', 'onclick', "window.open('" . esc_url(get_permalink()) . "', '_self')", true);
+						$this->add_render_attribute(
+							'grid-item',
+							'onclick',
+							sprintf( "window.open('%s', '_self')", esc_js( esc_url( get_permalink() ) ) ),
+							true
+						);
 					}
 
 					$this->add_render_attribute('grid-item', 'class', 'upk-item swiper-slide', true);

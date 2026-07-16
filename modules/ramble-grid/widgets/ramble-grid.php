@@ -1282,14 +1282,14 @@ class Ramble_Grid extends Group_Control_Query {
 					<?php if ($settings['show_date'] or $settings['show_reading_time']) : ?>
 						<div class="upk-date-reading-time upk-flex upk-flex-middle">
 							<?php if ($settings['show_date'] == 'yes') : ?>
-								<div data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+								<div data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 								<?php $this->render_date();  ?>
 								</div>
 							<?php endif; ?>
 
 							<?php if (_is_upk_pro_activated()) :
 								if ('yes' === $settings['show_reading_time']) : ?>
-									<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+									<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 										<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 									</div>
 								<?php endif; ?>
@@ -1330,12 +1330,12 @@ class Ramble_Grid extends Group_Control_Query {
 		$animation = ($this->get_settings('readmore_hover_animation')) ? ' elementor-animation-' . $this->get_settings('readmore_hover_animation') : '';
 
 	?>
-		<a href="<?php echo esc_url(get_permalink()); ?>" class="upk-readmore <?php echo esc_html($animation); ?>">
+		<a href="<?php echo esc_url(get_permalink()); ?>" class="upk-readmore <?php echo esc_attr($animation); ?>">
 			<span class="upk-flex upk-flex-middle">
 				<?php echo esc_html($this->get_settings('readmore_text')); ?>
 
 				<?php if ($settings['readmore_icon']['value']) : ?>
-					<span class="upk-readmore-btn-icon upk-flex-align-<?php echo esc_html($this->get_settings('icon_align')); ?>">
+					<span class="upk-readmore-btn-icon upk-flex-align-<?php echo esc_attr($this->get_settings('icon_align')); ?>">
 
 						<?php Icons_Manager::render_icon($settings['readmore_icon'], ['aria-hidden' => 'true', 'class' => 'fa-fw']); ?>
 

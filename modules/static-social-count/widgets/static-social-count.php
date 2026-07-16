@@ -816,7 +816,7 @@ class Static_Social_Count extends Group_Control_Query {
 			?>
 				<a <?php $this->print_render_attribute_string($link_key); ?>>
 					<div class="upk-icon">
-						<span title="<?php echo esc_html($social_link['social_site_name']); ?>">
+						<span title="<?php echo esc_attr($social_link['social_site_name']); ?>">
 							<?php Icons_Manager::render_icon($social_link['social_site_icon'], ['aria-hidden' => 'true']); ?>
 						</span>
 					</div>

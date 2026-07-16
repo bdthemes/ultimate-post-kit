@@ -1086,7 +1086,7 @@ class Elite_Carousel extends Group_Control_Query {
 		}
 
 ?>
-		<img class="upk-blog-image" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+		<img class="upk-blog-image" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
 	<?php
 	}
 
@@ -1163,7 +1163,7 @@ class Elite_Carousel extends Group_Control_Query {
 												
 												<?php if (_is_upk_pro_activated()) :
 													if ('yes' === $settings['show_reading_time']) : ?>
-														<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+														<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 															<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 														</div>
 													<?php endif; ?>
