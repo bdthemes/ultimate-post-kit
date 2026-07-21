@@ -267,6 +267,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 = 4.1.X [XXth July 2026] =
 
 * Fixed: Output escaping issues in multiple widgets
+* Fixed: Pause on Hover control now only displays when Autoplay is enabled in slider, carousel, and news ticker widgets
 
 = 4.1.17 [15th July 2026] =
 

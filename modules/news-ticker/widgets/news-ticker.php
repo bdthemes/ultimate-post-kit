@@ -291,9 +291,12 @@ class News_Ticker extends Group_Control_Query {
 		$this->add_control(
 			'pause_on_hover',
 			[
-				'label'   => esc_html__( 'Pause on Hover', 'ultimate-post-kit' ),
-				'type'    => Controls_Manager::SWITCHER,
-				'default' => 'yes',
+				'label'     => esc_html__( 'Pause on Hover', 'ultimate-post-kit' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'default'   => 'yes',
+				'condition' => [
+					'autoplay' => 'yes',
+				],
 			]
 		);
 

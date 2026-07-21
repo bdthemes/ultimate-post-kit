@@ -243,8 +243,11 @@ class Noxe_Slider extends Group_Control_Query {
 		$this->add_control(
 			'pauseonhover',
 			[
-				'label' => esc_html__('Pause on Hover', 'ultimate-post-kit'),
-				'type'  => Controls_Manager::SWITCHER,
+				'label'     => esc_html__('Pause on Hover', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::SWITCHER,
+				'condition' => [
+					'autoplay' => 'yes',
+				],
 			]
 		);
 

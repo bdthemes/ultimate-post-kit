@@ -1044,8 +1044,11 @@ trait Global_Widget_Controls {
 		$this->add_control(
 			'pauseonhover',
 			[
-				'label' => esc_html__('Pause on Hover', 'ultimate-post-kit'),
-				'type'  => Controls_Manager::SWITCHER,
+				'label'     => esc_html__('Pause on Hover', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::SWITCHER,
+				'condition' => [
+					'autoplay' => 'yes',
+				],
 			]
 		);
 
