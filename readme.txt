@@ -268,6 +268,9 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 * Fixed: Output escaping issues in multiple widgets
 * Fixed: Pause on Hover control now only displays when Autoplay is enabled in slider, carousel, and news ticker widgets
+* Fixed: Resolved conditional logic mismatch in the timeline and snog slider widgets
+* Fixed: Title visibility issue in the recent comments widget
+* Fixed: Taxonomy dropdown now displays the correct term count in widget query controls
 
 = 4.1.17 [15th July 2026] =
 

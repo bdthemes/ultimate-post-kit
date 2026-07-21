@@ -383,7 +383,8 @@ class Recent_Comments extends Group_Control_Query {
 				'placeholder' => __( 'Enter your text', 'ultimate-post-kit' ),
 				'label_block' => false,
 				'condition' => [
-					'show_author' => 'yes'
+					'show_author' => 'yes',
+					'show_title'  => 'yes',
 				]
 			]
 		);
@@ -506,6 +507,10 @@ class Recent_Comments extends Group_Control_Query {
 						],
 						[
 							'name'  => 'show_date',
+							'value' => 'yes'
+						],
+						[
+							'name'  => 'show_title',
 							'value' => 'yes'
 						]
 					]
@@ -835,47 +840,59 @@ class Recent_Comments extends Group_Control_Query {
 				<?php
 				foreach ($comments as $comment) {
 					$title      = get_the_title($comment->comment_post_ID);
-					$comment_id = $comment->comment_ID;
-					$content    = wp_trim_words($comment->comment_content, $settings['excerpt_limit']);
-					$avatar     = get_avatar($comment->comment_author_email, $size = $settings['avatar_size']);
+					$comment_id = absint( $comment->comment_ID );
+					$content    = wp_trim_words($comment->comment_content, absint( $settings['excerpt_limit'] ));
+					$avatar     = get_avatar($comment->comment_author_email, absint( $settings['avatar_size'] ));
 					$author     = $comment->comment_author;
 					$date 		= get_comment_date('F j, Y \a\t g:i a', $comment_id);
+					$author_key  = 'upk-author-' . $comment_id;
+					$show_author = ( 'yes' === $settings['show_author'] );
+					$show_title  = ( 'yes' === $settings['show_title'] );
+					$show_date   = ( 'yes' === $settings['show_date'] );
+					$show_link   = $show_author || $show_title;
 
-					$this->add_render_attribute(
-						'upk-author',
-						[
-							'class'  => 'upk-author-name',
-							'href'   => esc_url(get_permalink($comment->comment_post_ID)) . '#comment-' . $comment_id,
-							'target' => '_blank'
-						],
-						null,
-						true
-					);
+					if ( $show_link ) {
+						$this->add_render_attribute(
+							$author_key,
+							[
+								'class'  => 'upk-author-name',
+								'href'   => esc_url( get_permalink( $comment->comment_post_ID ) . '#comment-' . $comment_id ),
+								'target' => '_blank'
+							],
+							null,
+							true
+						);
+					}
 
 				?>
 					<div class="upk-item">
 
-						<?php if ($settings['show_author'] or $settings['show_date']) : ?>
+						<?php if ( $show_author || $show_date || $show_title ) : ?>
 							<div class="upk-meta upk-flex-inline upk-flex-middle">
 
-								<?php if ($settings['show_author']) : ?>
+								<?php if ( $show_author ) : ?>
 									<div class="upk-avatar">
 										<?php $this->get_html_output($avatar); ?>
 									</div>
 								<?php endif; ?>
 
 								<div class="upk-author-info">
-									<?php if ($settings['show_author']) : ?>
-										<a <?php $this->print_render_attribute_string('upk-author'); ?>>
-											<?php echo esc_html($author); ?>
-											<?php if ($settings['show_title']) : ?>
-												<?php echo esc_html($settings['author_middle_text']); ?>
-												<?php echo esc_html($title) ?>
+									<?php if ( $show_link ) : ?>
+										<a <?php $this->print_render_attribute_string( $author_key ); ?>>
+											<?php if ( $show_author ) : ?>
+												<?php echo esc_html( $author ); ?>
+											<?php endif; ?>
+
+											<?php if ( $show_title ) : ?>
+												<?php if ( $show_author ) : ?>
+													<?php echo esc_html( $settings['author_middle_text'] ); ?>
+												<?php endif; ?>
+												<?php echo esc_html( $title ); ?>
 											<?php endif; ?>
 										</a>
 									<?php endif; ?>
 
-									<?php if ($settings['show_date']) : ?>
+									<?php if ( $show_date ) : ?>
 										<div class="upk-date"><?php echo esc_html($date); ?></div>
 									<?php endif; ?>
 								</div>
