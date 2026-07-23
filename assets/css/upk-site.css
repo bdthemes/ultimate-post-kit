@@ -468,8 +468,7 @@
   color: #ef233c;
 }
 .ep-pagination .upk-pagination li:hover a span,
-.ep-pagination .upk-pagination li:hover a i,
-.ep-pagination .upk-pagination li.upk-active a span,
+.ep-pagination .upk-pagination li:hover a i, .ep-pagination .upk-pagination li.upk-active a span,
 .ep-pagination .upk-pagination li.upk-active a i {
   color: inherit;
 }
