@@ -271,6 +271,8 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 * Fixed: Resolved conditional logic mismatch in the timeline and snog slider widgets
 * Fixed: Title visibility issue in the recent comments widget
 * Fixed: Taxonomy dropdown now displays the correct term count in widget query controls
+* Fixed: The broken category design issue in the post accordion widget
+* Updated: Pholox Slider style controls reorganized into separate sections with correct conditional visibility for title, category, meta, and thumbs options
 
 = 4.1.17 [15th July 2026] =
 

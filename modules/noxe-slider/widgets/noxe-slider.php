@@ -402,7 +402,7 @@ class Noxe_Slider extends Group_Control_Query {
 			Group_Control_Text_Stroke::get_type(),
 			[
 				'name'      => 'title_text_stroke',
-				'label'     => __('Text Stroke', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => __('Text Stroke', 'ultimate-post-kit'),
 				'selector'  => '{{WRAPPER}} .upk-noxe-slider .upk-title',
 			]
 		);

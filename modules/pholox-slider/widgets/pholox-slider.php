@@ -221,7 +221,7 @@ class Pholox_Slider extends Group_Control_Query
 				'label'   => esc_html__('Thumbs Category', 'ultimate-post-kit'),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
-				'separator' => 'before',
+				// 'separator' => 'before',
 			]
 		);
 
@@ -242,7 +242,7 @@ class Pholox_Slider extends Group_Control_Query
 				'default'   => 'h3',
 				'options'   => ultimate_post_kit_title_tags(),
 				'condition' => [
-					'show_title' => 'yes'
+					'thumb_show_title' => 'yes'
 				]
 			]
 		);
@@ -359,19 +359,10 @@ class Pholox_Slider extends Group_Control_Query
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-			'style_content_section',
+			'section_style_image',
 			[
-				'label' => esc_html__('Slider', 'ultimate-post-kit'),
+				'label' => esc_html__('Image', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'main_slider_image_heading',
-			[
-				'label'     => esc_html__('Image', 'ultimate-post-kit'),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
 			]
 		);
 
@@ -395,15 +386,13 @@ class Pholox_Slider extends Group_Control_Query
 			]
 		);
 
+		$this->end_controls_section();
 
-		$this->start_controls_tabs(
-			'style_slider_tabs'
-		);
-
-		$this->start_controls_tab(
-			'style_main_slider_items_tab',
+		$this->start_controls_section(
+			'section_style_content',
 			[
-				'label' => esc_html__('Items', 'ultimate-post-kit'),
+				'label' => esc_html__('Content', 'ultimate-post-kit'),
+				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
@@ -455,12 +444,13 @@ class Pholox_Slider extends Group_Control_Query
 			]
 		);
 
-		$this->end_controls_tab();
+		$this->end_controls_section();
 
-		$this->start_controls_tab(
-			'style_main_slider_play_button_tab',
+		$this->start_controls_section(
+			'section_style_play_button',
 			[
 				'label' => esc_html__('Play Button', 'ultimate-post-kit'),
+				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
@@ -567,12 +557,16 @@ class Pholox_Slider extends Group_Control_Query
 			]
 		);
 
-		$this->end_controls_tab();
+		$this->end_controls_section();
 
-		$this->start_controls_tab(
-			'style_main_slider_title_tab',
+		$this->start_controls_section(
+			'section_style_title',
 			[
-				'label' => esc_html__('Title', 'ultimate-post-kit'),
+				'label'     => esc_html__('Title', 'ultimate-post-kit'),
+				'tab'       => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'show_title' => 'yes',
+				],
 			]
 		);
 
@@ -650,12 +644,16 @@ class Pholox_Slider extends Group_Control_Query
 			]
 		);
 
-		$this->end_controls_tab();
+		$this->end_controls_section();
 
-		$this->start_controls_tab(
-			'style_main_slider_category_tab',
+		$this->start_controls_section(
+			'section_style_category',
 			[
-				'label' => esc_html__('Category', 'ultimate-post-kit'),
+				'label'     => esc_html__('Category', 'ultimate-post-kit'),
+				'tab'       => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'show_category' => 'yes',
+				],
 			]
 		);
 
@@ -806,17 +804,32 @@ class Pholox_Slider extends Group_Control_Query
 		);
 
 
-		$this->end_controls_tab();
+		$this->end_controls_section();
 
-		// main slider meta tab
-
-		$this->start_controls_tab(
-			'style_main_slider_meta_tab',
+		$this->start_controls_section(
+			'section_style_meta',
 			[
-				'label' => esc_html__('Meta', 'ultimate-post-kit'),
+				'label'      => esc_html__('Meta', 'ultimate-post-kit'),
+				'tab'        => Controls_Manager::TAB_STYLE,
+				'conditions' => [
+					'relation' => 'or',
+					'terms'    => [
+						[
+							'name'  => 'show_author',
+							'value' => 'yes',
+						],
+						[
+							'name'  => 'show_date',
+							'value' => 'yes',
+						],
+						[
+							'name'  => 'show_reading_time',
+							'value' => 'yes',
+						],
+					],
+				],
 			]
 		);
-
 
 		$this->add_control(
 			'meta_color',
@@ -866,32 +879,13 @@ class Pholox_Slider extends Group_Control_Query
 			]
 		);
 
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
-
 		$this->end_controls_section();
 
-		// start thumbnail style
-
 		$this->start_controls_section(
-			'style_playlist',
+			'section_style_thumbs_item',
 			[
-				'label' => esc_html__('Thumbs', 'ultimate-post-kit'),
+				'label' => esc_html__('Thumbs Item', 'ultimate-post-kit'),
 				'tab'   => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->start_controls_tabs(
-			'style_thumbs_slider_tabs'
-		);
-
-		// thumbs slider item
-
-		$this->start_controls_tab(
-			'tab_thumbs_slider_item',
-			[
-				'label' => __('Item', 'ultimate-post-kit'),
 			]
 		);
 
@@ -986,12 +980,13 @@ class Pholox_Slider extends Group_Control_Query
 			]
 		);
 
-		$this->end_controls_tab();
+		$this->end_controls_section();
 
-		$this->start_controls_tab(
-			'style_thumbs_slide_image_tab',
+		$this->start_controls_section(
+			'section_style_thumbs_image',
 			[
-				'label' => esc_html__('Image', 'ultimate-post-kit'),
+				'label' => esc_html__('Thumbs Image', 'ultimate-post-kit'),
+				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
@@ -1037,14 +1032,13 @@ class Pholox_Slider extends Group_Control_Query
 			]
 		);
 
-		$this->end_controls_tab();
+		$this->end_controls_section();
 
-		// thumbs slider play button tab
-
-		$this->start_controls_tab(
-			'style_thumbs_slider_play-button_tab',
+		$this->start_controls_section(
+			'section_style_thumbs_play_button',
 			[
-				'label' => esc_html__('Play Button', 'ultimate-post-kit'),
+				'label' => esc_html__('Thumbs Play Button', 'ultimate-post-kit'),
+				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
@@ -1167,14 +1161,16 @@ class Pholox_Slider extends Group_Control_Query
 		);
 
 
-		$this->end_controls_tab();
+		$this->end_controls_section();
 
-		// thumbs slider title tab
-
-		$this->start_controls_tab(
-			'style_thumbs_slider_title_tab',
+		$this->start_controls_section(
+			'section_style_thumbs_title',
 			[
-				'label' => esc_html__('Title', 'ultimate-post-kit'),
+				'label'     => esc_html__('Thumbs Title', 'ultimate-post-kit'),
+				'tab'       => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'thumb_show_title' => 'yes',
+				],
 			]
 		);
 
@@ -1219,14 +1215,16 @@ class Pholox_Slider extends Group_Control_Query
 			]
 		);
 
-		$this->end_controls_tab();
+		$this->end_controls_section();
 
-		// thumbs slider thumbs tab
-
-		$this->start_controls_tab(
-			'style_thumbs_slider_category_tab',
+		$this->start_controls_section(
+			'section_style_thumbs_category',
 			[
-				'label' => esc_html__('Category', 'ultimate-post-kit'),
+				'label'     => esc_html__('Thumbs Category', 'ultimate-post-kit'),
+				'tab'       => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'thumb_show_category' => 'yes',
+				],
 			]
 		);
 
@@ -1412,19 +1410,13 @@ class Pholox_Slider extends Group_Control_Query
 				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'condition' => [
-					'category_border_border!' => '',
+					'playlist_category_border_border!' => '',
 				],
 				'selectors' => [
 					'{{WRAPPER}} .upk-pholox-slider .upk-thumbs-slider .upk-category a:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
-		// category control thumbs end
-
-
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
 
 		$this->end_controls_section();
 	}
