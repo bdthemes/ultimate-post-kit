@@ -244,7 +244,7 @@ class Snog_Slider extends Group_Control_Query {
 		$this->add_control(
 			'show_readmore',
 			[
-				'label' => esc_html__('Show Read more', 'ultimate-post-kit'),
+				'label' => esc_html__('Show Read More', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'separator' => 'before'
@@ -919,6 +919,9 @@ class Snog_Slider extends Group_Control_Query {
 			[
 				'label'     => esc_html__('Read More', 'ultimate-post-kit'),
 				'tab'       => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'show_readmore' => 'yes'
+				],
 			]
 		);
 

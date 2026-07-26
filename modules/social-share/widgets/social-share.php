@@ -843,9 +843,9 @@ class Social_Share extends Module_Base {
 						'social-attrs' => [
 							'class' => [
 								'upk-ss-btn',
-								'upk-ss-' . $social_name
+								'upk-ss-' . sanitize_html_class( $social_name ),
 							],
-							'data-social' => $social_name,
+							'data-social' => esc_attr( $social_name ),
 						]
 					], '', '', true
 				);
@@ -855,7 +855,7 @@ class Social_Share extends Module_Base {
 					<div <?php $this->print_render_attribute_string( 'social-attrs' ); ?>>
 						<?php if ( 'icon' === $settings['view'] || 'icon-text' === $settings['view'] ) : ?>
 							<span class="upk-ss-icon">
-								<i class="<?php echo self::get_social_media_class( $social_name ); ?>"></i>
+								<i class="<?php echo esc_attr( self::get_social_media_class( $social_name ) ); ?>"></i>
 							</span>
 						<?php endif; ?>
 						<?php if ( $show_text || $has_counter ) : ?>
