@@ -827,10 +827,13 @@ class Post_Category extends Module_Base {
 	public function render() {
 		$settings       = $this->get_settings_for_display();
 		$image_settings = ultimate_post_kit_option( 'category_image', 'ultimate_post_kit_other_settings', 'off' );
+		$taxonomy       = ! empty( $settings['taxonomy'] ) ? $settings['taxonomy'] : 'category';
+		$taxonomy_object = get_taxonomy( $taxonomy );
+		$taxonomy_label  = $taxonomy_object ? $taxonomy_object->labels->name : ucwords( str_replace( [ '-', '_' ], ' ', $taxonomy ) );
 		$orderby        = $settings['orderby'];
 		$categories     = get_categories(
 			[ 
-				'taxonomy'   => $settings["taxonomy"],
+				'taxonomy'   => $taxonomy,
 				'orderby'    => $orderby === 'rand' ? 'name' : $orderby,
 				'order'      => $settings["order"],
 				'hide_empty' => 0,
@@ -868,7 +871,8 @@ class Post_Category extends Module_Base {
 				$total_category = count( $categories );
 
 				// re-creating array for the multiple colors
-				$jCount = count( $multiple_bg );
+				$multiple_bg_create = [];
+				$jCount             = count( $multiple_bg );
 				$j      = 0;
 				for ( $i = 0; $i < $total_category; $i++ ) {
 					if ( $j == $jCount ) {
@@ -956,7 +960,11 @@ class Post_Category extends Module_Base {
 			<?php
 		else :
 
-			echo '<div class="upk-alert">' . esc_html__( 'Category Not Found!', 'ultimate-post-kit' ) . '</div>';
+			echo '<div class="upk-alert">' . esc_html( sprintf(
+				/* translators: %s: taxonomy label */
+				__( '%s Categories Not Found!', 'ultimate-post-kit' ),
+				$taxonomy_label
+			) ) . '</div>';
 
 		endif;
 	}

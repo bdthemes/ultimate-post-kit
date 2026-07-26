@@ -166,8 +166,23 @@ function ultimate_post_kit_get_taxonomies() {
 	$taxonomies = get_taxonomies( $args, $tax_output );
 	if ( $taxonomies ) {
 		foreach ( $taxonomies as $taxonomy ) {
-			$post_type_obj           = get_post_type_object( $taxonomy->object_type[0] );
-			$output[ $taxonomy->name ] = ( $taxonomy->label ? $taxonomy->label : '' ) . ' (' . isset( $post_type_obj->label ) . ')';
+			$taxonomy_label = $taxonomy->label ? $taxonomy->label : $taxonomy->name;
+			$term_count     = wp_count_terms(
+				[
+					'taxonomy'   => $taxonomy->name,
+					'hide_empty' => false,
+				]
+			);
+
+			if ( is_wp_error( $term_count ) ) {
+				$term_count = 0;
+			}
+
+			$output[ $taxonomy->name ] = sprintf(
+				'%s (%d)',
+				$taxonomy_label,
+				(int) $term_count
+			);
 		}
 	}
 
