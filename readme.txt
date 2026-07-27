@@ -266,6 +266,8 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 = 4.1.18 [26th July 2026] =
 
+* Fixed: Show Author control not working in the optick slider widget
+* Fixed: Show Time control not working in the optick slider widget
 * Fixed: Output escaping issues in multiple widgets
 * Fixed: Pause on Hover control now only displays when Autoplay is enabled in slider, carousel, and news ticker widgets
 * Fixed: Resolved conditional logic mismatch in the timeline and snog slider widgets
