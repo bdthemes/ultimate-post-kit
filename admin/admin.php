@@ -53,9 +53,8 @@ class Admin
 	function install_and_activate()
 	{
 
-		// I don't know of any other redirect function, so this'll have to do.
-		wp_redirect(admin_url('admin.php?page=ultimate_post_kit_options'));
-		// You could use a header(sprintf('Location: %s', admin_url(...)); here instead too.
+		wp_safe_redirect(admin_url('admin.php?page=ultimate_post_kit_options'));
+		exit;
 	}
 
 	/**

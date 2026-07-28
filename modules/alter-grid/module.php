@@ -83,13 +83,8 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 				$image_src   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
 				$image_src   = $image_src ? $image_src[0] : $placeholder;
 
-				$onclick = '';
-				if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) {
-					$onclick = 'onclick="window.open(\'' . esc_url( $post_link ) . '\', \'_self\')"';
-				}
-
 				?>
-				<div <?php echo $onclick; ?> class="upk-item">
+				<div <?php if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) { printf( 'onclick="window.open(\'%s\', \'_self\')"', esc_url( $post_link ) ); } ?> class="upk-item">
 					<div class="upk-item-box">
 						<div class="upk-img-wrap">
 							<div class="upk-main-img">
@@ -99,14 +94,14 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 									alt="<?php echo esc_attr( $title ); ?>"
 								>
 								<?php if ( $settings['readmore_type'] === 'on_image' ) : ?>
-									<a href="<?php echo $post_link; ?>" class="upk-readmore-on-image">
+									<a href="<?php echo esc_url( $post_link ); ?>" class="upk-readmore-on-image">
 										<span class="upk-readmore-icon"><span></span></span>
 									</a>
 								<?php endif; ?>
 
 								<?php if ( $settings['show_post_format'] === 'yes' ) : ?>
 									<div class="upk-post-format">
-										<a href="<?php echo $post_link; ?>">
+										<a href="<?php echo esc_url( $post_link ); ?>">
 											<?php
 											if ( has_post_format( 'aside' ) ) :
 												echo '<i class="upk-icon-aside" aria-hidden="true"></i>';
@@ -140,14 +135,14 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 							<div>
 								<?php if ( $settings['show_category'] === 'yes' ) : ?>
 									<div class="upk-category">
-										<?php echo upk_get_category( $post_type ); ?>
+										<?php echo wp_kses_post( upk_get_category( $post_type ) ); ?>
 									</div>
 								<?php endif; ?>
 
 								<?php if ( ! isset( $settings['show_title'] ) || $settings['show_title'] === 'yes' ) : ?>
 									<<?php echo esc_attr( $title_tag ); ?> class="upk-title">
 										<a 
-											href="<?php echo $post_link; ?>" 
+											href="<?php echo esc_url( $post_link ); ?>" 
 											title="<?php echo esc_attr( $title ); ?>"
 											class="title-animation-<?php echo esc_attr( $settings['title_style'] ); ?>"
 											<?php echo $settings['upk_link_new_tab'] === 'yes' ? 'target="_blank"' : ''; ?>
@@ -172,7 +167,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 										</div>
 
 										<?php if ( $settings['readmore_type'] === 'classic' ) : ?>
-											<a href="<?php echo $post_link; ?>" class="upk-readmore upk-display-inline-block">
+											<a href="<?php echo esc_url( $post_link ); ?>" class="upk-readmore upk-display-inline-block">
 												<?php echo esc_html( $readmore_text ); ?>
 												<?php if ( $settings['readmore_icon']['value'] ) : ?>
 													<span class="upk-button-icon-align-<?php echo esc_attr( $settings['readmore_icon_align'] ); ?>">
@@ -193,8 +188,8 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
 										<?php if ( $settings['show_author'] === 'yes' ) : ?>
 											<div class="upk-blog-author" data-separator="<?php echo esc_attr( $meta_sep ); ?>">
-												<a class="author-name" href="<?php echo $author_url; ?>">
-													<?php echo $author_name; ?>
+												<a class="author-name" href="<?php echo esc_url( $author_url ); ?>">
+													<?php echo esc_html( $author_name ); ?>
 												</a>
 											</div>
 										<?php endif; ?>

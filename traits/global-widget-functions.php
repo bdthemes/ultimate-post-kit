@@ -339,7 +339,7 @@ trait Global_Widget_Functions {
 		}
 	?>
 		<div class="upk-category">
-			<?php echo upk_get_category($this->get_settings('posts_source')); ?>
+			<?php echo wp_kses_post( upk_get_category($this->get_settings('posts_source')) ); ?>
 		</div>
 	<?php
 	}
@@ -383,7 +383,7 @@ trait Global_Widget_Functions {
 			if (has_excerpt()) {
 				the_excerpt();
 			} else {
-				echo ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode, $ellipsis);
+				echo wp_kses_post( ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode, $ellipsis) );
 			}
 			?>
 		</div>

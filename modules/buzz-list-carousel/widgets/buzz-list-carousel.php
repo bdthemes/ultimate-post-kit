@@ -950,7 +950,7 @@ class Buzz_List_Carousel extends Group_Control_Query {
 								<?php $this->render_image(get_post_thumbnail_id($post_id), $image_size); ?>
 							</div>
 							<div class="upk-content">
-								<div class="upk-count"><?php printf("%2d", $slide_index); ?></div>
+								<div class="upk-count"><?php printf("%2d", esc_attr($slide_index)); ?></div>
 								<div class="upk-inner">
 									<?php $this->render_category(); ?>
 									<?php $this->render_title(substr($this->get_name(), 4)); ?>

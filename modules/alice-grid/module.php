@@ -78,14 +78,8 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 				$image_src             = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
 				$image_src             = $image_src ? $image_src[0] : $placeholder_image_src;
 
-				$onclick = '';
-
-				if (!empty($settings['global_link']) && $settings['global_link'] === 'yes') {
-					$onclick = ' onclick="window.open(\'' . $post_link . '\', \'_self\')"';
-				}
-
 				?>
-				<div <?php echo $onclick; ?> class="upk-item">
+				<div <?php if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) { printf( 'onclick="window.open(\'%s\', \'_self\')"', esc_url( $post_link ) ); } ?> class="upk-item">
 					<div class="upk-item-box">
 
 						<div class="upk-img-wrap">
@@ -94,7 +88,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
 						<?php if ( isset( $settings['show_category'] ) && 'yes' === $settings['show_category'] ) : ?>
 							<div class="upk-category">
-								<?php echo upk_get_category( $settings['post_source'] ); ?>
+								<?php echo wp_kses_post( upk_get_category( $settings['post_source'] ) ); ?>
 							</div>
 						<?php endif; ?>
 

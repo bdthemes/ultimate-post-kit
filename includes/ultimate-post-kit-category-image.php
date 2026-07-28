@@ -1,4 +1,9 @@
 <?php
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
 if (!class_exists('Ultimate_Post_Kit_Category_Image')) {
     class Ultimate_Post_Kit_Category_Image {
         public function __construct() {

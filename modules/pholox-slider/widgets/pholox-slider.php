@@ -1458,7 +1458,7 @@ class Pholox_Slider extends Group_Control_Query
 		}
 	?>
 		<div class="upk-category">
-			<?php echo upk_get_category($this->get_settings('posts_source')); ?>
+			<?php echo wp_kses_post( upk_get_category($this->get_settings('posts_source')) ); ?>
 		</div>
 	<?php
 	}

@@ -31,18 +31,23 @@ if (!function_exists('format_last_updated_usk')) {
             return __('Just now', 'ultimate-post-kit');
         } elseif ($diff < 3600) {
             $minutes = floor($diff / 60);
+            /* translators: %d: number of minutes */
             return sprintf(_n('%d minute ago', '%d minutes ago', $minutes, 'ultimate-post-kit'), $minutes);
         } elseif ($diff < 86400) {
             $hours = floor($diff / 3600);
+            /* translators: %d: number of hours */
             return sprintf(_n('%d hour ago', '%d hours ago', $hours, 'ultimate-post-kit'), $hours);
         } elseif ($diff < 2592000) { // 30 days
             $days = floor($diff / 86400);
+            /* translators: %d: number of days */
             return sprintf(_n('%d day ago', '%d days ago', $days, 'ultimate-post-kit'), $days);
         } elseif ($diff < 31536000) { // 1 year
             $months = floor($diff / 2592000);
+            /* translators: %d: number of months */
             return sprintf(_n('%d month ago', '%d months ago', $months, 'ultimate-post-kit'), $months);
         } else {
             $years = floor($diff / 31536000);
+            /* translators: %d: number of years */
             return sprintf(_n('%d year ago', '%d years ago', $years, 'ultimate-post-kit'), $years);
         }
     }
@@ -350,7 +355,7 @@ jQuery(document).ready(function($) {
             type: 'POST',
             data: {
                 action: 'upk_get_plugins',
-                nonce: '<?php echo wp_create_nonce('upk_get_plugins_nonce'); ?>'
+                nonce: '<?php echo esc_attr( wp_create_nonce('upk_get_plugins_nonce') ); ?>'
             },
             success: function(response) {
                 if (response.success && response.data.plugins) {

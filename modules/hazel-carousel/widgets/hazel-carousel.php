@@ -316,7 +316,7 @@ class Hazel_Carousel extends Group_Control_Query {
 				'label'       => esc_html__('Glassmorphism', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::SWITCHER,
 				// translators: %1s: Opening anchor tag with link to MDN backdrop-filter documentation, %2s: Closing anchor tag
-				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
+				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1$s look here %2$s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
 				'default'     => 'yes',
 				'condition'   => [
 					'content_style' => '2',
@@ -946,7 +946,7 @@ class Hazel_Carousel extends Group_Control_Query {
 	?>
 		<div class="upk-blog-badge">
 			<span>
-				<?php echo upk_get_category($this->get_settings('posts_source')); ?>
+				<?php echo wp_kses_post( upk_get_category($this->get_settings('posts_source')) ); ?>
 			</span>
 		</div>
 	<?php
