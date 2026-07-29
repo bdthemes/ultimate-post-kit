@@ -1075,7 +1075,7 @@ class UltimatePostKit_Admin_Settings {
 					<p><?php esc_html_e('An invaluable resource for mastering WordPress, Elementor, and Web Creation', 'ultimate-post-kit'); ?>
 					</p>
 				</a>
-				<a href="https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/" target="_blank"
+				<a href="https://bdthemes.com/knowledge-base/ultimate-post-kit/" target="_blank"
 					class="upk-dashboard-item upk-dashboard-footer-item upk-dashboard-documentation bdt-card bdt-card-body bdt-card-small">
 					<span class="upk-dashboard-footer-item-icon">
 						<i class="dashicons dashicons-admin-tools"></i>

@@ -106,6 +106,13 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 				$author_name = esc_html(get_the_author());
 				$title_tag   = Utils::get_valid_html_tag($settings['title_tags'] );
 		
+				$meta_separator = isset( $settings['meta_separator'] ) ? $settings['meta_separator'] : '|';
+
+				$onclick = '';
+				if (!empty($settings['global_link']) && $settings['global_link'] === 'yes') {
+					$onclick = ' onclick="window.open(\'' . $post_link . '\', \'_self\')"';
+				}
+		
 				$date = '';
 				if (!empty($settings['human_diff_time']) && $settings['human_diff_time'] === 'yes') {
 					$date = ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] === 'yes') ? 'short' : '');
@@ -151,20 +158,18 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 									<?php endif; ?>
 		
 									<div class="upk-flex upk-flex-middle upk-date-reading-wrap">
-										<?php if ($settings['show_date'] === 'yes') : ?>
-											<div data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
-												<div class="upk-date"><?php echo esc_html( $date ); ?></div>
-												<?php if ($settings['show_time'] === 'yes') : ?>
-													<div class="upk-post-time">
-														<i class="upk-icon-clock" aria-hidden="true"></i><?php echo esc_html(get_the_time()); ?>
-													</div>
-												<?php endif; ?>
-											</div>
+										<?php if ( $settings['show_date'] === 'yes' ) : ?>
+											<div class="upk-date"><?php echo $date; ?></div>
+											<?php if ( $settings['show_time'] === 'yes' ) : ?>
+												<div class="upk-post-time" data-separator="<?php echo esc_attr( $meta_separator ); ?>">
+													<i class="upk-icon-clock" aria-hidden="true"></i><?php echo esc_html( get_the_time() ); ?>
+												</div>
+											<?php endif; ?>
 										<?php endif; ?>
-		
-										<?php if (function_exists('_is_upk_pro_activated') && _is_upk_pro_activated() && $settings['show_reading_time'] === 'yes') : ?>
-											<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
-												<?php echo esc_html( ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no') ); ?>
+
+										<?php if ( function_exists( '_is_upk_pro_activated' ) && _is_upk_pro_activated() && $settings['show_reading_time'] === 'yes' ) : ?>
+											<div class="upk-reading-time" data-separator="<?php echo esc_attr( $meta_separator ); ?>">
+												<?php echo ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ); ?>
 											</div>
 										<?php endif; ?>
 									</div>

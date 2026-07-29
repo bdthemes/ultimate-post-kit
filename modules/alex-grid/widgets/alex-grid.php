@@ -1624,9 +1624,7 @@ class Alex_Grid extends Group_Control_Query {
 
 					<div class="upk-flex upk-flex-middle upk-date-reading-wrap">
 						<?php if ('yes' === $settings['show_date']) : ?>
-							<div data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
-								<?php $this->render_date(); ?>
-							</div>
+							<?php $this->render_date(); ?>
 						<?php endif; ?>
 
 						<?php if (_is_upk_pro_activated()) :
