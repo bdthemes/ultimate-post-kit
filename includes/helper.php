@@ -869,10 +869,20 @@ function ultimate_post_kit_custom_excerpt( $limit = 25, $strip_shortcode = false
 }
 
 function get_user_role( $id ) {
-
 	$user = new WP_User( $id );
+	$role = array_shift( $user->roles );
 
-	return array_shift( $user->roles );
+	if ( empty( $role ) ) {
+		return '';
+	}
+
+	$wp_roles = wp_roles();
+
+	if ( ! isset( $wp_roles->roles[ $role ]['name'] ) ) {
+		return '';
+	}
+
+	return translate_user_role( $wp_roles->roles[ $role ]['name'] );
 }
 
 

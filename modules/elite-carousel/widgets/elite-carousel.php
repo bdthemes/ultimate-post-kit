@@ -1146,7 +1146,7 @@ class Elite_Carousel extends Group_Control_Query {
 												<span class="author-depertment">
 													<?php
 													$aid = get_the_author_meta('ID');
-													echo get_user_role($aid);
+													echo esc_html( get_user_role( $aid ) );
 													?>
 												</span>
 											</div>

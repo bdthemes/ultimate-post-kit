@@ -264,6 +264,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.1.X [XXth July 2026] =
+
+* Fixed: Author role label translation issue in author, elite grid, elite carousel, post accordion and paradox slider widgets
+
 = 4.1.18 [26th July 2026] =
 
 * Fixed: Output escaping issues in multiple widgets

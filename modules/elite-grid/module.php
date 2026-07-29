@@ -108,7 +108,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 										<span class="author-depertment">
 											<?php
 											$aid = get_the_author_meta('ID');
-											echo ucwords(get_user_role($aid));
+											echo esc_html( get_user_role( $aid ) );
 											?>
 										</span>
 									</div>
