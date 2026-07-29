@@ -124,19 +124,25 @@ if (!class_exists('BdThemes_Duplicator')) :
                 /**
                  * duplicate all post meta just in two SQL queries
                  */
-                $bdt_post_meta_infos = $wpdb->get_results("SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id=$bdt_post_id");
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- one-off admin duplicate action, caching not applicable.
+                $bdt_post_meta_infos = $wpdb->get_results($wpdb->prepare("SELECT meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id = %d", $post_id));
 
                 if (is_array($bdt_post_meta_infos)) {
-                    $bdt_sql_query     = "INSERT INTO {$wpdb->postmeta} ( post_id, meta_key, meta_value ) VALUES ";
                     $bdt_sql_query_sel = [];
+                    $bdt_sql_values    = [];
 
                     foreach ($bdt_post_meta_infos as $bdt_meta_info) {
-                        $bdt_meta_value      = wp_slash($bdt_meta_info->meta_value);
-                        $bdt_sql_query_sel[] = "( $bdt_new_post_id, '{$bdt_meta_info->meta_key}', '{$bdt_meta_value}' )";
+                        $bdt_sql_query_sel[] = '( %d, %s, %s )';
+                        $bdt_sql_values[]    = $bdt_new_post_id;
+                        $bdt_sql_values[]    = $bdt_meta_info->meta_key;
+                        $bdt_sql_values[]    = wp_slash($bdt_meta_info->meta_value);
                     }
 
-                    $bdt_sql_query .= implode(', ', $bdt_sql_query_sel) . ';';
-                    $wpdb->query($bdt_sql_query);
+                    if (!empty($bdt_sql_query_sel)) {
+                        $bdt_sql_query = "INSERT INTO {$wpdb->postmeta} ( post_id, meta_key, meta_value ) VALUES " . implode(', ', $bdt_sql_query_sel);
+                        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Query is built only from static "%d, %s, %s" placeholders and the trusted {$wpdb->postmeta} table name; all values are bound via $wpdb->prepare().
+                        $wpdb->query($wpdb->prepare($bdt_sql_query, $bdt_sql_values));
+                    }
 
                     /**
                      * fix template type issues
@@ -162,12 +168,13 @@ if (!class_exists('BdThemes_Duplicator')) :
                 $current_post_type = get_post_type($post_id);
 
                 if (is_array($bdt_names) && in_array($current_post_type, $bdt_names)) {
-                    wp_redirect(admin_url('edit.php?post_type=' . $current_post_type));
+                    wp_safe_redirect(admin_url('edit.php?post_type=' . $current_post_type));
+                    exit;
                 }
 
                 exit;
             } else {
-                wp_die('Failed. Not Found Post: ' . $post_id);
+                wp_die(esc_html('Failed. Not Found Post: ' . $post_id));
             }
         }
 

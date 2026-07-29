@@ -76,13 +76,8 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
 				$title_tag   = Utils::get_valid_html_tag($settings['title_tags']);
 
-				$onclick = '';
-				if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) {
-					$onclick = 'onclick="window.open(\'' . esc_url( $post_link ) . '\', \'_self\')"';
-				}
-
 				?>
-				<div <?php echo $onclick; ?> class="upk-item">
+				<div <?php if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) { printf( 'onclick="window.open(\'%s\', \'_self\')"', esc_url( $post_link ) ); } ?> class="upk-item">
 					<div class="upk-item-box">
 						<?php if ( $settings['show_image'] === 'yes' ) : ?>
 							<div class="upk-image-wrap">
@@ -93,7 +88,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 							<div>
 								<?php if ( $settings['show_category'] === 'yes' ) : ?>
 									<div class="upk-category">
-										<?php echo upk_get_category($settings['posts_source'] ?? 'post'); ?>
+										<?php echo wp_kses_post( upk_get_category($settings['posts_source'] ?? 'post') ); ?>
 									</div>
 								<?php endif; ?>
 

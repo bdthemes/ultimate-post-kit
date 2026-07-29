@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
+
 if ( ! defined( 'BDTUPK_TITLE' ) ) {
     $white_label_title = get_option( 'upk_white_label_title' );
 	define( 'BDTUPK_TITLE', $white_label_title );
