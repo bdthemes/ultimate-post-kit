@@ -287,7 +287,7 @@ class Alice_Carousel extends Group_Control_Query {
 				'type' 		 => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-alice-carousel .upk-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-alice-carousel .upk-item-box .upk-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -350,7 +350,7 @@ class Alice_Carousel extends Group_Control_Query {
 			Group_Control_Border::get_type(),
 			[
 				'name'        => 'item_border',
-				'selector'    => '{{WRAPPER}} .upk-alice-carousel .upk-item',
+				'selector'    => '{{WRAPPER}} .upk-alice-carousel .upk-item-box',
 			]
 		);
 
@@ -373,7 +373,7 @@ class Alice_Carousel extends Group_Control_Query {
 				'type' 		 => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-alice-carousel .upk-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-alice-carousel .upk-item-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -382,7 +382,7 @@ class Alice_Carousel extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' 	   => 'item_box_shadow',
-				'selector' => '{{WRAPPER}} .upk-alice-carousel .upk-item',
+				'selector' => '{{WRAPPER}} .upk-alice-carousel .upk-item-box',
 			]
 		);
 
@@ -439,7 +439,7 @@ class Alice_Carousel extends Group_Control_Query {
 					'item_border_border!' => '',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-alice-carousel .upk-item:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-alice-carousel .upk-item-box:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -448,7 +448,7 @@ class Alice_Carousel extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' 	   => 'item_hover_box_shadow',
-				'selector' => '{{WRAPPER}} .upk-alice-carousel .upk-item:hover',
+				'selector' => '{{WRAPPER}} .upk-alice-carousel .upk-item-box:hover',
 			]
 		);
 
