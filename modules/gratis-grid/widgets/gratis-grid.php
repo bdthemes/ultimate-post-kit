@@ -1221,7 +1221,7 @@ class Gratis_Grid extends Group_Control_Query {
 		}
 	?>
 		<div class="upk-category">
-			<?php echo upk_get_category($this->get_settings('posts_source')); ?>
+			<?php echo wp_kses_post( upk_get_category($this->get_settings('posts_source')) ); ?>
 		</div>
 	<?php
 	}
@@ -1274,7 +1274,10 @@ class Gratis_Grid extends Group_Control_Query {
 			<a 
 				class="upk-author-name" 
 				href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>" 
-				aria-label="<?php echo esc_attr( sprintf( __( 'View all posts by %s', 'ultimate-post-kit' ), get_the_author() ) ); ?>"
+				aria-label="<?php
+					/* translators: %s: author name */
+					echo esc_attr( sprintf( __( 'View all posts by %s', 'ultimate-post-kit' ), get_the_author() ) );
+				?>"
 			>
 				<span><?php echo esc_html( get_the_author() ); ?></span>
 			</a>

@@ -2,6 +2,10 @@
 
 namespace UltimatePostKit;
 
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
 /**
  * Biggopties class
  */
@@ -210,16 +214,16 @@ class Biggopties {
 		$wrapper_classes = 'bdt-biggopti-wrapper';
 		
 		if (isset($biggopti->background_color) && !empty($biggopti->background_color)) {
-			$background_style .= 'background-color: ' . esc_attr($biggopti->background_color) . ';';
+			$background_style .= 'background-color: ' . $biggopti->background_color . ';';
 		}
-		
+
 		if (isset($biggopti->image) && !empty($biggopti->image)) {
-			$background_style .= 'background-image: url(' . esc_url($biggopti->image) . ');';
+			$background_style .= 'background-image: url(' . esc_url_raw($biggopti->image) . ');';
 			$wrapper_classes .= ' has-background-image';
 		}
-		
+
 		?>
-		<div class="<?php echo esc_attr($wrapper_classes); ?>" <?php echo $background_style ? 'style="' . $background_style . '"' : ''; ?>>
+		<div class="<?php echo esc_attr($wrapper_classes); ?>" <?php echo $background_style ? 'style="' . esc_attr($background_style) . '"' : ''; ?>>
 			
 			
 			<?php $title = (isset($biggopti->title) && !empty($biggopti->title)) ? $biggopti->title : ''; ?>

@@ -135,9 +135,9 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 				$post_format_icon = isset($format_icons[get_post_format()]) ? $format_icons[get_post_format()] : 'upk-icon-post';
 				
 				?>
-				<div <?php echo $onclick; ?> class="upk-item">
+				<div <?php if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) { printf( 'onclick="window.open(\'%s\', \'_self\')"', esc_url( $post_link ) ); } ?> class="upk-item">
 					<div class="upk-image-wrap">
-						<img class="upk-img" src="<?php echo $image_src; ?>" alt="<?php echo esc_attr($title); ?>">
+						<img class="upk-img" src="<?php echo esc_url( $image_src ); ?>" alt="<?php echo esc_attr($title); ?>">
 		
 						<?php if (
 							$settings['show_author'] === 'yes' ||
@@ -153,7 +153,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 								<div>
 									<?php if ($settings['show_author'] === 'yes') : ?>
 										<div class="upk-author-name">
-											<a href="<?php echo $author_url; ?>"><?php echo $author_name; ?></a>
+											<a href="<?php echo esc_url( $author_url ); ?>"><?php echo esc_html( $author_name ); ?></a>
 										</div>
 									<?php endif; ?>
 		
@@ -179,7 +179,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		
 						<?php if ($settings['show_post_format'] === 'yes') : ?>
 							<div class="upk-post-format">
-								<a href="<?php echo $post_link; ?>">
+								<a href="<?php echo esc_url( $post_link ); ?>">
 									<i class="<?php echo esc_attr($post_format_icon); ?>" aria-hidden="true"></i>
 								</a>
 							</div>
@@ -189,13 +189,13 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 					<div class="upk-content-wrap">
 						<div class="upk-content">
 							<?php if ($settings['show_category'] === 'yes') : ?>
-								<div class="upk-category"><?php echo $category; ?></div>
+								<div class="upk-category"><?php echo wp_kses_post( $category ); ?></div>
 							<?php endif; ?>
 		
 							<?php if ($settings['show_title'] === 'yes') : ?>
 								<<?php echo esc_attr( $title_tag ); ?> class="upk-title">
 									<a class="title-animation-<?php echo esc_attr($settings['title_style']); ?>"
-									   href="<?php echo $post_link; ?>"
+									   href="<?php echo esc_url( $post_link ); ?>"
 									   title="<?php echo esc_attr($title); ?>"
 									   <?php echo $settings['upk_link_new_tab'] === 'yes' ? 'target="_blank"' : ''; ?>
 									>
@@ -207,7 +207,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		
 						<?php if ($settings['show_readmore'] === 'yes') : ?>
 							<div class="upk-button-wrap">
-								<a href="<?php echo $post_link; ?>"
+								<a href="<?php echo esc_url( $post_link ); ?>"
 								   class="upk-readmore"
 								   target="<?php echo ($settings['upk_link_new_tab'] === 'yes') ? '_blank' : '_self'; ?>">
 									<span class="upk-readmore-icon"><span></span></span>

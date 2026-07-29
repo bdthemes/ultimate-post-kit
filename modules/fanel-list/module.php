@@ -76,18 +76,13 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
 				$title_tag   = Utils::get_valid_html_tag($settings['title_tags']);
 
-				$onclick = '';
-				if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) {
-					$onclick = 'onclick="window.open(\'' . esc_url( $post_link ) . '\', \'_self\')"';
-				}
-
 				$list_box_class = 'upk-content';
 				if ( $settings['show_readmore'] === 'yes' ) {
 					$list_box_class = 'upk-content upk-readmore--yes';
 				}
 
 				?>
-				<div <?php echo $onclick; ?> class="upk-item">
+				<div <?php if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) { printf( 'onclick="window.open(\'%s\', \'_self\')"', esc_url( $post_link ) ); } ?> class="upk-item">
 					<div class="upk-item-box">
 						<div class="upk-image-wrap">
 							<a href="<?php echo esc_url( $post_link ); ?>">
@@ -135,7 +130,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 									if ( has_excerpt() ) {
 										the_excerpt();
 									} else {
-										echo wp_trim_words( get_the_content(), $settings['excerpt_length'] ?? 15 );
+										echo esc_html( wp_trim_words( get_the_content(), $settings['excerpt_length'] ?? 15 ) );
 									}
 									?>
 								</div>

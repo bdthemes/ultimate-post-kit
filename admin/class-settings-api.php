@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
 if (!class_exists('UltimatePostKit_Settings_API')) :
 
     class UltimatePostKit_Settings_API {
@@ -167,7 +171,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                     $data_type .= ' bdt-tooltip="'.esc_html__('Pro widget only works with Pro version.', 'ultimate-post-kit').'"';
                 }
 
-                echo "<div class='upk-option-item {$class} {$widget_used_status}' {$data_type}>";
+                echo wp_kses("<div class='upk-option-item {$class} {$widget_used_status}' {$data_type}>", $this->get_allowed_field_html());
 
                 call_user_func($field['callback'], $field['args']);
 
@@ -193,7 +197,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                 if (isset($section['desc']) && !empty($section['desc'])) {
                     $section['desc'] = '<div class="inside">' . $section['desc'] . '</div>';
                     $callback = function () use ($section) {
-                        echo str_replace('"', '\"', $section['desc']);
+                        echo wp_kses_post($section['desc']);
                     };
                 } else if (isset($section['callback'])) {
                     $callback = $section['callback'];
@@ -264,6 +268,68 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
         }
 
         /**
+         * Allowed HTML for settings-field output. Covers every form control this
+         * class renders so field markup survives wp_kses() intact.
+         *
+         * @return array
+         */
+        public function get_allowed_field_html() {
+            $attr = array(
+                'class'              => array(),
+                'id'                 => array(),
+                'name'               => array(),
+                'value'              => array(),
+                'type'               => array(),
+                'checked'            => array(),
+                'selected'           => array(),
+                'multiple'           => array(),
+                'disabled'           => array(),
+                'readonly'           => array(),
+                'placeholder'        => array(),
+                'min'                => array(),
+                'max'                => array(),
+                'step'               => array(),
+                'rows'               => array(),
+                'cols'               => array(),
+                'for'                => array(),
+                'scope'              => array(),
+                'style'              => array(),
+                'title'              => array(),
+                'target'             => array(),
+                'href'               => array(),
+                'src'                => array(),
+                'rel'                => array(),
+                'aria-hidden'        => array(),
+                'bdt-tooltip'        => array(),
+                'bdt-grid'           => array(),
+                'data-default-color' => array(),
+                'data-type'          => array(),
+                'data-widget-type'   => array(),
+                'data-content-type'  => array(),
+                'data-widget-name'   => array(),
+            );
+
+            return array(
+                'div'      => $attr,
+                'span'     => $attr,
+                'label'    => $attr,
+                'input'    => $attr,
+                'select'   => $attr,
+                'option'   => $attr,
+                'textarea' => $attr,
+                'fieldset' => $attr,
+                'a'        => $attr,
+                'i'        => $attr,
+                'p'        => $attr,
+                'h3'       => $attr,
+                'hr'       => $attr,
+                'br'       => array(),
+                'strong'   => array(),
+                'em'       => array(),
+            );
+        }
+
+        /**
          * Displays a text field for a settings field
          *
          * @param array   $args settings field args
@@ -292,7 +358,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 
             $html .= '</div>';
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -321,7 +387,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html        = sprintf('<input type="%1$s" class="%2$s-number" id="%3$s[%4$s]" name="%3$s[%4$s]" value="%5$s"%6$s%7$s%8$s%9$s/>', $type, $size, $args['section'], $args['id'], $value, $placeholder, $min, $max, $step);
             $html       .= $this->get_field_description($args);
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -393,7 +459,9 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 
 			$html .= '<div class="upk-option-links">';
 			if ($args['demo_url']) {
-				$html .= '<a href=' . $args['demo_url'] . ' target="_blank" class="upk-option-demo" title="' . esc_html__('View ' . $args['name'] . ' Widget Demo', 'ultimate-post-kit') . '">' . esc_html__('Demo', 'ultimate-post-kit') . '<i class="upk-icon-preview" aria-hidden="true"></i></a>';
+				/* translators: %s: widget name */
+				$demo_title = sprintf(esc_html__('View %s Widget Demo', 'ultimate-post-kit'), $args['name']);
+				$html .= '<a href=' . $args['demo_url'] . ' target="_blank" class="upk-option-demo" title="' . $demo_title . '">' . esc_html__('Demo', 'ultimate-post-kit') . '<i class="upk-icon-preview" aria-hidden="true"></i></a>';
 			}
 			if ($args['video_url']) {
 				$html .= '<a href=' . $args['video_url'] . ' target="_blank" class="upk-option-video" title="View ' . $args['name'] . ' Video Tutorial">Video<i class="upk-icon-tutorial" aria-hidden="true"></i></a>';
@@ -509,7 +577,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html .= $this->get_field_description($args);
             $html .= '</fieldset>';
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -531,7 +599,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html .= $this->get_field_description($args);
             $html .= '</fieldset>';
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -552,7 +620,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html .= sprintf('</select>');
             $html .= $this->get_field_description($args);
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -574,7 +642,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html .= sprintf('<textarea rows="5" cols="55" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]" %4$s >%5$s</textarea>', $size, $args['section'], $args['id'], $placeholder, $value);
             $html .= $this->get_field_description($args);
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -584,7 +652,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
          * @return string
          */
         function callback_html($args) {
-            echo $args['desc'];
+            echo wp_kses($args['desc'], $this->get_allowed_field_html());
         }
 
         /**
@@ -603,7 +671,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html  .= '<input type="button" class="button wpsa-browse" value="' . $label . '" />';
             $html  .= $this->get_field_description($args);
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -619,7 +687,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html  = sprintf('<input type="password" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value);
             $html  .= $this->get_field_description($args);
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -635,7 +703,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html  = sprintf('<input type="text" class="%1$s-text wp-color-picker-field" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s" data-default-color="%5$s" />', $size, $args['section'], $args['id'], $value, $args['std']);
             $html  .= $this->get_field_description($args);
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -649,7 +717,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html .= $this->get_field_description($args);
             $html .= '<hr class="setting_separator">';
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         function callback_start_group($args) {
@@ -668,7 +736,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 
             $html .= '<div class="bdt-grid" bdt-grid>';
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         function callback_end_group($args) {
@@ -676,7 +744,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html  = '</div>';
             $html  .= '</div>';
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -690,7 +758,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html .= $this->get_field_description($args);
 
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
 
@@ -707,8 +775,9 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                 'id'       => $args['section'] . '[' . $args['id'] . ']',
                 'echo'     => 0
             );
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- 'echo' => 0 makes wp_dropdown_pages() return (not print) the markup, which is escaped via wp_kses() below.
             $html = wp_dropdown_pages($dropdown_args);
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**

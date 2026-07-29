@@ -81,20 +81,15 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 				$meta_sep    = $settings['meta_separator'] ?? '-';
 				$title_tag   = Utils::get_valid_html_tag($settings['title_tags']);
 
-				$onclick = '';
-				if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) {
-					$onclick = 'onclick="window.open(\'' . esc_url( $post_link ) . '\', \'_self\')"';
-				}
-
 				?>
-				<div <?php echo $onclick; ?> class="upk-item">
+				<div <?php if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) { printf( 'onclick="window.open(\'%s\', \'_self\')"', esc_url( $post_link ) ); } ?> class="upk-item">
 					<div class="upk-item-box">
 						<img class="upk-img" src="<?php echo esc_url( $image_src ); ?>" alt="<?php echo esc_attr( $title ); ?>">
 
 						<div class="upk-content">
 							<?php if ( $settings['show_category'] === 'yes' ) : ?>
 								<div class="upk-category">
-									<?php echo upk_get_category( $post_type ); ?>
+									<?php echo wp_kses_post( upk_get_category( $post_type ) ); ?>
 								</div>
 							<?php endif; ?>
 
