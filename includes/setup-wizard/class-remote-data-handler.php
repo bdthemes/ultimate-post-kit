@@ -151,7 +151,7 @@ class Remote_Data_Handler {
     public static function ajax_get_plugins() {
         // Verify nonce for security
         if (!check_ajax_referer('upk_get_plugins_nonce', 'nonce', false)) {
-            wp_die(__('Security check failed.', 'ultimate-post-kit'));
+            wp_die(esc_html__('Security check failed.', 'ultimate-post-kit'));
         }
 
         // Get cached data
@@ -313,18 +313,23 @@ class Remote_Data_Handler {
             return __('Just now', 'ultimate-post-kit');
         } elseif ($diff < 3600) {
             $minutes = floor($diff / 60);
+            /* translators: %d: number of minutes */
             return sprintf(_n('%d minute ago', '%d minutes ago', $minutes, 'ultimate-post-kit'), $minutes);
         } elseif ($diff < 86400) {
             $hours = floor($diff / 3600);
+            /* translators: %d: number of hours */
             return sprintf(_n('%d hour ago', '%d hours ago', $hours, 'ultimate-post-kit'), $hours);
         } elseif ($diff < 2592000) { // 30 days
             $days = floor($diff / 86400);
+            /* translators: %d: number of days */
             return sprintf(_n('%d day ago', '%d days ago', $days, 'ultimate-post-kit'), $days);
         } elseif ($diff < 31536000) { // 1 year
             $months = floor($diff / 2592000);
+            /* translators: %d: number of months */
             return sprintf(_n('%d month ago', '%d months ago', $months, 'ultimate-post-kit'), $months);
         } else {
             $years = floor($diff / 31536000);
+            /* translators: %d: number of years */
             return sprintf(_n('%d year ago', '%d years ago', $years, 'ultimate-post-kit'), $years);
         }
     }
@@ -485,7 +490,7 @@ class Remote_Data_Handler {
         }
         
         // Get file extension
-        $path_info = pathinfo(parse_url($url, PHP_URL_PATH));
+        $path_info = pathinfo(wp_parse_url($url, PHP_URL_PATH));
         $extension = strtolower($path_info['extension'] ?? '');
         
         return in_array($extension, $valid_extensions);

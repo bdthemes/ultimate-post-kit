@@ -287,7 +287,7 @@ class Alice_Carousel extends Group_Control_Query {
 				'type' 		 => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-alice-carousel .upk-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-alice-carousel .upk-item-box .upk-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -307,7 +307,7 @@ class Alice_Carousel extends Group_Control_Query {
 				'label'       => esc_html__('Glassmorphism', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::SWITCHER,
 				// translators: %1s: Opening anchor tag with link to MDN backdrop-filter documentation, %2s: Closing anchor tag
-				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
+				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1$s look here %2$s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
 			]
 		);
 
@@ -350,7 +350,7 @@ class Alice_Carousel extends Group_Control_Query {
 			Group_Control_Border::get_type(),
 			[
 				'name'        => 'item_border',
-				'selector'    => '{{WRAPPER}} .upk-alice-carousel .upk-item',
+				'selector'    => '{{WRAPPER}} .upk-alice-carousel .upk-item-box',
 			]
 		);
 
@@ -373,7 +373,7 @@ class Alice_Carousel extends Group_Control_Query {
 				'type' 		 => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .upk-alice-carousel .upk-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .upk-alice-carousel .upk-item-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -382,7 +382,7 @@ class Alice_Carousel extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' 	   => 'item_box_shadow',
-				'selector' => '{{WRAPPER}} .upk-alice-carousel .upk-item',
+				'selector' => '{{WRAPPER}} .upk-alice-carousel .upk-item-box',
 			]
 		);
 
@@ -439,7 +439,7 @@ class Alice_Carousel extends Group_Control_Query {
 					'item_border_border!' => '',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .upk-alice-carousel .upk-item:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-alice-carousel .upk-item-box:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -448,7 +448,7 @@ class Alice_Carousel extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' 	   => 'item_hover_box_shadow',
-				'selector' => '{{WRAPPER}} .upk-alice-carousel .upk-item:hover',
+				'selector' => '{{WRAPPER}} .upk-alice-carousel .upk-item-box:hover',
 			]
 		);
 

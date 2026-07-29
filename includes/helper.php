@@ -3,6 +3,10 @@
 use UltimatePostKit\Ultimate_Post_Kit_Loader;
 use Elementor\Plugin;
 
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
 /**
  * You can easily add white label branding for for extended license or multi site license.
  * Don't try for regular license otherwise your license will be invalid.
@@ -897,7 +901,7 @@ function get_user_role( $id ) {
 
 if ( _is_upk_pro_activated() ) {
 	function ultimate_post_kit_reading_time( $content, $avg_reading_speed, $hide_seconds = 'no', $hide_minutes = 'no' ) {
-		$total_word      = str_word_count( strip_tags( $content ) );
+		$total_word      = str_word_count( wp_strip_all_tags( $content ) );
 		$reading_minute  = floor( $total_word / $avg_reading_speed );
 		$reading_seconds = floor( $total_word % $avg_reading_speed / ( $avg_reading_speed / 60 ) );
 		
@@ -980,6 +984,7 @@ if ( ! function_exists( 'upk_inject_header_custom_code' ) ) {
 		if ( ! empty( $custom_css ) ) {
 			echo "\n<!-- Ultimate Post Kit Custom Header CSS -->\n";
 			echo '<style type="text/css">' . "\n";
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom CSS authored by an administrator (manage_options) in plugin settings; output verbatim by design.
 			echo $custom_css . "\n";
 			echo '</style>' . "\n";
 		}
@@ -987,6 +992,7 @@ if ( ! function_exists( 'upk_inject_header_custom_code' ) ) {
 		if ( ! empty( $custom_js ) ) {
 			echo "\n<!-- Ultimate Post Kit Custom Header JS -->\n";
 			echo '<script type="text/javascript">' . "\n";
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom JS authored by an administrator (manage_options) in plugin settings; output verbatim by design.
 			echo $custom_js . "\n";
 			echo '</script>' . "\n";
 		}
@@ -1008,6 +1014,7 @@ if ( ! function_exists( 'upk_inject_footer_custom_code' ) ) {
 		if ( ! empty( $custom_css_2 ) ) {
 			echo "\n<!-- Ultimate Post Kit Custom Footer CSS -->\n";
 			echo '<style type="text/css">' . "\n";
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom CSS authored by an administrator (manage_options) in plugin settings; output verbatim by design.
 			echo $custom_css_2 . "\n";
 			echo '</style>' . "\n";
 		}
@@ -1015,6 +1022,7 @@ if ( ! function_exists( 'upk_inject_footer_custom_code' ) ) {
 		if ( ! empty( $custom_js_2 ) ) {
 			echo "\n<!-- Ultimate Post Kit Custom Footer JS -->\n";
 			echo '<script type="text/javascript">' . "\n";
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom JS authored by an administrator (manage_options) in plugin settings; output verbatim by design.
 			echo $custom_js_2 . "\n";
 			echo '</script>' . "\n";
 		}

@@ -81,13 +81,8 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 				$image_src   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
 				$image_src   = $image_src ? $image_src[0] : $placeholder;
 
-				$onclick = '';
-				if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) {
-					$onclick = 'onclick="window.open(\'' . esc_url( $post_link ) . '\', \'_self\')"';
-				}
-
 				?>
-				<div <?php echo $onclick; ?> class="upk-item">
+				<div <?php if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) { printf( 'onclick="window.open(\'%s\', \'_self\')"', esc_url( $post_link ) ); } ?> class="upk-item">
 					<div class="upk-item-box">
 						<div class="upk-image-wrap">
 							<div class="upk-main-image">
@@ -101,8 +96,8 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 									</div>
 									<div class="upk-author-info-warp">
 										<span class="author-name">
-											<a class="name" href="<?php echo $author_url; ?>">
-												<?php echo $author_name; ?>
+											<a class="name" href="<?php echo esc_url( $author_url ); ?>">
+												<?php echo esc_html( $author_name ); ?>
 											</a>
 										</span>
 										<span class="author-depertment">
@@ -151,7 +146,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 									<?php endif; ?>
 
 									<?php if ($settings['show_category'] === 'yes') : ?>
-										<div class="upk-category"><?php echo upk_get_category($post_type); ?></div>
+										<div class="upk-category"><?php echo wp_kses_post( upk_get_category($post_type) ); ?></div>
 									<?php endif; ?>
 								</div>
 							<?php endif; ?>
@@ -162,7 +157,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 								<?php if (!isset($settings['show_title']) || $settings['show_title'] === 'yes') : ?>
 									<<?php echo esc_attr( $title_tag ); ?> class="upk-title">
 										<a 
-											href="<?php echo $post_link; ?>" 
+											href="<?php echo esc_url( $post_link ); ?>" 
 											title="<?php echo esc_attr($title); ?>"
 											class="title-animation-<?php echo esc_attr($settings['title_style']); ?>"
 											<?php echo $settings['upk_link_new_tab'] === 'yes' ? 'target="_blank"' : ''; ?>
@@ -194,7 +189,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 								) : ?>
 									<div class="upk-meta-list upk-flex upk-flex-middle">
 										<?php if ($settings['show_category'] === 'yes') : ?>
-											<div class="upk-category"><?php echo upk_get_category($post_type); ?></div>
+											<div class="upk-category"><?php echo wp_kses_post( upk_get_category($post_type) ); ?></div>
 										<?php endif; ?>
 
 										<?php if ($settings['show_date'] === 'yes') : ?>

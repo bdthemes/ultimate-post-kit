@@ -935,7 +935,7 @@ class Skide_Slider extends Group_Control_Query {
 			if (has_excerpt()) {
 				the_excerpt();
 			} else {
-				echo ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode);
+				echo wp_kses_post( ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode) );
 			}
 			?>
 		</div>
@@ -950,7 +950,7 @@ class Skide_Slider extends Group_Control_Query {
 		}
 	?>
 		<div class="upk-category" data-swiper-parallax="-300">
-			<?php echo get_the_category_list(' '); ?>
+			<?php echo wp_kses_post( get_the_category_list(' ') ); ?>
 		</div>
 	<?php
 	}

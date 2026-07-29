@@ -75,14 +75,21 @@
 
     .upk-post-time {
       margin-left: 5px;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
 
       i {
+        display: inline-flex;
+        align-items: center;
         margin-right: 2px;
+        line-height: 1;
       }
     }
     .upk-date-reading-wrap > div {
 			position: relative;
 			display: inline-flex;
+			align-items: center;
 			&:before {
 				content: attr(data-separator);
 				margin: 0 5px;

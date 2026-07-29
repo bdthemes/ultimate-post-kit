@@ -6,6 +6,10 @@ use UltimatePostKit\Admin\ModuleService;
 use Elementor\Modules\Usage\Module;
 use Elementor\Tracker;
 
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
 
 /**
  * Ultimate Post Kit Admin Settings Class
@@ -368,6 +372,7 @@ class UltimatePostKit_Admin_Settings {
 					<p>
 						<?php
 						printf(
+							/* translators: 1: White label mode name, 2: Site name */
 							wp_kses_post( __( 'You have successfully enabled <strong>%1$s</strong> for Ultimate Post Kit Pro on <strong>%2$s</strong>.', 'ultimate-post-kit' ) ),
 							esc_html__( 'BDTUPK_HIDE mode', 'ultimate-post-kit' ),
 							esc_html( $site_name )
@@ -400,6 +405,7 @@ class UltimatePostKit_Admin_Settings {
 					<p>
 						<?php
 						printf(
+							/* translators: 1: opening anchor tag, 2: closing anchor tag */
 							wp_kses_post( __( 'Need help? %1$sContact support%2$s with your license key.', 'ultimate-post-kit' ) ),
 							'<a href="' . esc_url( 'https://bdthemes.com/support/' ) . '" target="_blank" rel="noopener noreferrer">',
 							'</a>'
@@ -755,6 +761,7 @@ class UltimatePostKit_Admin_Settings {
      // Redirect to Ultimate Post Kit Pro pricing page
     public function upk_redirect_to_get_pro() {
         if (isset($_GET['page']) && $_GET['page'] === self::PAGE_ID . '_get_pro') {
+            // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect -- Intentional redirect to a fixed, hardcoded external URL; wp_safe_redirect would block off-site hosts.
             wp_redirect('https://postkit.pro/pricing/');
             exit;
         }
@@ -768,6 +775,7 @@ class UltimatePostKit_Admin_Settings {
      */
     public function bdt_redirect_to_renew_link() {
         if (isset($_GET['page']) && $_GET['page'] === self::PAGE_ID . '_license_renew') {
+            // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect -- Intentional redirect to a fixed, hardcoded external URL; wp_safe_redirect would block off-site hosts.
             wp_redirect('https://account.bdthemes.com/');
             exit;
         }
@@ -977,7 +985,9 @@ class UltimatePostKit_Admin_Settings {
 
 					<div class="upk-dashboard-compare-section">
 						<h4 class="upk-feature-sub-title">
-							<?php printf(esc_html__('Unlock %sPremium Features%s', 'ultimate-post-kit'), '<strong class="upk-highlight-text">', '</strong>'); ?>
+							<?php
+							/* translators: 1: opening strong tag, 2: closing strong tag */
+							printf(esc_html__('Unlock %1$sPremium Features%2$s', 'ultimate-post-kit'), '<strong class="upk-highlight-text">', '</strong>'); ?>
 						</h4>
 						<h1 class="upk-feature-title upk-dashboard-compare-title">
 							<?php esc_html_e('Create Your Sleek Website with Ultimate Post Kit Pro!', 'ultimate-post-kit'); ?>
@@ -1065,7 +1075,7 @@ class UltimatePostKit_Admin_Settings {
 					<p><?php esc_html_e('An invaluable resource for mastering WordPress, Elementor, and Web Creation', 'ultimate-post-kit'); ?>
 					</p>
 				</a>
-				<a href="https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/" target="_blank"
+				<a href="https://bdthemes.com/knowledge-base/ultimate-post-kit/" target="_blank"
 					class="upk-dashboard-item upk-dashboard-footer-item upk-dashboard-documentation bdt-card bdt-card-body bdt-card-small">
 					<span class="upk-dashboard-footer-item-icon">
 						<i class="dashicons dashicons-admin-tools"></i>
@@ -1923,8 +1933,8 @@ class UltimatePostKit_Admin_Settings {
 				//Check if upk_admin_ajax is available
 				if (typeof upk_admin_ajax === 'undefined') {
 					window.upk_admin_ajax = {
-						ajax_url: '<?php echo admin_url('admin-ajax.php'); ?>',
-						white_label_nonce: '<?php echo wp_create_nonce('upk_white_label_nonce'); ?>'
+						ajax_url: '<?php echo esc_url(admin_url('admin-ajax.php')); ?>',
+						white_label_nonce: '<?php echo esc_attr(wp_create_nonce('upk_white_label_nonce')); ?>'
 					};
 				}				
 				
@@ -2337,7 +2347,7 @@ class UltimatePostKit_Admin_Settings {
 								setTimeout(function() {
 									if (response.data.bdtupk_hide) {
 										// Redirect to admin dashboard if BDTUPK_HIDE is enabled
-										window.location.href = '<?php echo admin_url('index.php'); ?>';
+										window.location.href = '<?php echo esc_url(admin_url('index.php')); ?>';
 									} else {
 										// Reload current page if BDTUPK_HIDE is not enabled
 										window.location.reload();
@@ -2790,7 +2800,7 @@ class UltimatePostKit_Admin_Settings {
 				
 				// Perform AJAX request
 				jQuery.ajax({
-					url: '<?php echo admin_url('admin-ajax.php'); ?>',
+					url: '<?php echo esc_url(admin_url('admin-ajax.php')); ?>',
 					type: 'POST',
 					data: {
 						action: 'upk_install_plugin',
@@ -3458,7 +3468,9 @@ class UltimatePostKit_Admin_Settings {
 
 								<div class="upk-canvas-wrap">
 									<canvas id="bdt-db-total-status" style="height: 100px; width: 100px;"
-										data-label="<?php echo esc_attr( sprintf( __( 'Total Widgets Status - (%s)', 'ultimate-post-kit' ), $used_widgets + $un_used_widgets ) ); ?>"
+										data-label="<?php
+											/* translators: %s: Total number of widgets */
+											echo esc_attr( sprintf( __( 'Total Widgets Status - (%s)', 'ultimate-post-kit' ), $used_widgets + $un_used_widgets ) ); ?>"
 										data-labels="<?php echo esc_attr( sprintf( '%1$s, %2$s', __( 'Used', 'ultimate-post-kit' ), __( 'Unused', 'ultimate-post-kit' ) ) ); ?>"
 										data-value="<?php echo esc_attr($used_widgets) . ',' . esc_attr($un_used_widgets); ?>"
 										data-bg="#FFD166, #fff4d9" data-bg-hover="#0673e1, #e71522"></canvas>
@@ -3496,7 +3508,9 @@ class UltimatePostKit_Admin_Settings {
 
 								<div class="upk-canvas-wrap">
 									<canvas id="bdt-db-only-widget-status" style="height: 100px; width: 100px;"
-										data-label="<?php echo esc_attr( sprintf( __( 'Core Widgets Status - (%s)', 'ultimate-post-kit' ), $used_only_widgets + $unused_only_widgets ) ); ?>"
+										data-label="<?php
+											/* translators: %s: Total number of core widgets */
+											echo esc_attr( sprintf( __( 'Core Widgets Status - (%s)', 'ultimate-post-kit' ), $used_only_widgets + $unused_only_widgets ) ); ?>"
 										data-labels="<?php echo esc_attr( sprintf( '%1$s, %2$s', __( 'Used', 'ultimate-post-kit' ), __( 'Unused', 'ultimate-post-kit' ) ) ); ?>"
 										data-value="<?php echo esc_attr($used_only_widgets) . ',' . esc_attr($unused_only_widgets); ?>"
 										data-bg="#EF476F, #ffcdd9" data-bg-hover="#0673e1, #e71522"></canvas>
@@ -3546,6 +3560,7 @@ class UltimatePostKit_Admin_Settings {
 				<div class="bdt-text-default">
 				<?php
 					printf(
+						/* translators: 1: opening bold tag, 2: closing bold tag */
 						esc_html__('To view widgets analytics, Elementor %1$sUsage Data Sharing%2$s feature by Elementor needs to be activated. Please activate the feature to get widget analytics instantly ', 'ultimate-post-kit'),
 						'<b>', '</b>'
 					);
@@ -3648,7 +3663,7 @@ class UltimatePostKit_Admin_Settings {
 					<span class="label1"><?php esc_html_e('Uploads folder writable:', 'ultimate-post-kit'); ?></span>
 
 					<?php
-					if (!is_writable($upload_path)) {
+					if (!wp_is_writable($upload_path)) {
 						echo wp_kses_post($no_icon);
 					} else {
 						echo wp_kses_post($yes_icon);
@@ -3710,8 +3725,8 @@ class UltimatePostKit_Admin_Settings {
 		<div class="bdt-admin-alert">
 			<strong><?php esc_html_e('Note:', 'ultimate-post-kit'); ?></strong>
 			<?php
-			/* translators: %s: Plugin name 'Ultimate Post Kit' */
 			printf(
+				/* translators: %s: Plugin name 'Ultimate Post Kit' */
 				esc_html__('If you have multiple addons like %s so you may need to allocate additional memory for other addons as well.', 'ultimate-post-kit'),
 				'<b>Ultimate Post Kit</b>'
 			);
@@ -4011,7 +4026,7 @@ class UltimatePostKit_Admin_Settings {
 						echo '<optgroup label="' . esc_attr__('Pages', 'ultimate-post-kit') . '">';
 						foreach ($pages as $page) {
 							$selected = in_array($page->ID, $excluded_pages) ? 'selected' : '';
-							echo '<option value="' . esc_attr($page->ID) . '" ' . $selected . '>' . esc_html($page->post_title) . '</option>';
+							echo '<option value="' . esc_attr($page->ID) . '" ' . esc_attr($selected) . '>' . esc_html($page->post_title) . '</option>';
 						}
 						echo '</optgroup>';
 					}
@@ -4021,8 +4036,8 @@ class UltimatePostKit_Admin_Settings {
 						echo '<optgroup label="' . esc_attr__('Recent Posts', 'ultimate-post-kit') . '">';
 						foreach ($posts as $post) {
 							$selected = in_array($post->ID, $excluded_pages) ? 'selected' : '';
-							$post_date = date('M j, Y', strtotime($post->post_date));
-							echo '<option value="' . esc_attr($post->ID) . '" ' . $selected . '>' . esc_html($post->post_title) . ' (' . $post_date . ')</option>';
+							$post_date = gmdate('M j, Y', strtotime($post->post_date));
+							echo '<option value="' . esc_attr($post->ID) . '" ' . esc_attr($selected) . '>' . esc_html($post->post_title) . ' (' . esc_html($post_date) . ')</option>';
 						}
 						echo '</optgroup>';
 					}

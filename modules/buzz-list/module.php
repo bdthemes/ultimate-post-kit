@@ -76,13 +76,8 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
 				$title_tag   = Utils::get_valid_html_tag($settings['title_tags']);
 
-				$onclick = '';
-				if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) {
-					$onclick = 'onclick="window.open(\'' . esc_url( $post_link ) . '\', \'_self\')"';
-				}
-
 				?>
-				<div <?php echo $onclick; ?> class="upk-item upk-flex upk-flex-middle">
+				<div <?php if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) { printf( 'onclick="window.open(\'%s\', \'_self\')"', esc_url( $post_link ) ); } ?> class="upk-item upk-flex upk-flex-middle">
 					<div class="upk-img-wrap">
 						<a href="<?php echo esc_url( $post_link ); ?>">
 							<img src="<?php echo esc_url( $image_src ); ?>" alt="<?php echo esc_attr( $title ); ?>">

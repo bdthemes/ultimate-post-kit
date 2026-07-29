@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, syedfarhanreza, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.1.18
+Stable tag: 4.2.0
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 7.0.2
@@ -264,9 +264,10 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.1.X [XXth July 2026] =
+= 4.2.0 [XX July 2026] =
 
 * Fixed: Author role label translation issue in author, elite grid, elite carousel, post accordion and paradox slider widgets
+* Updated: Security improved
 
 = 4.1.18 [26th July 2026] =
 

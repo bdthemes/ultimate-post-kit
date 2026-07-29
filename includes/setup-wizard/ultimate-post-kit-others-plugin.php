@@ -71,18 +71,23 @@ class UltimatePostKit_Others_Plugin_Manager {
                     return __('Just now', 'ultimate-post-kit');
                 } elseif ($diff < 3600) {
                     $minutes = floor($diff / 60);
+                    /* translators: %d: number of minutes */
                     return sprintf(_n('%d minute ago', '%d minutes ago', $minutes, 'ultimate-post-kit'), $minutes);
                 } elseif ($diff < 86400) {
                     $hours = floor($diff / 3600);
+                    /* translators: %d: number of hours */
                     return sprintf(_n('%d hour ago', '%d hours ago', $hours, 'ultimate-post-kit'), $hours);
                 } elseif ($diff < 2592000) { // 30 days
                     $days = floor($diff / 86400);
+                    /* translators: %d: number of days */
                     return sprintf(_n('%d day ago', '%d days ago', $days, 'ultimate-post-kit'), $days);
                 } elseif ($diff < 31536000) { // 1 year
                     $months = floor($diff / 2592000);
+                    /* translators: %d: number of months */
                     return sprintf(_n('%d month ago', '%d months ago', $months, 'ultimate-post-kit'), $months);
                 } else {
                     $years = floor($diff / 31536000);
+                    /* translators: %d: number of years */
                     return sprintf(_n('%d year ago', '%d years ago', $years, 'ultimate-post-kit'), $years);
                 }
             }
@@ -219,7 +224,7 @@ class UltimatePostKit_Others_Plugin_Manager {
                     type: 'POST',
                     data: {
                         action: 'upk_get_plugins',
-                        nonce: '<?php echo wp_create_nonce("upk_get_plugins_nonce"); ?>'
+                        nonce: '<?php echo esc_attr( wp_create_nonce("upk_get_plugins_nonce") ); ?>'
                     },
                     success: function(response) {
                         if (response.success && response.data) {
@@ -342,12 +347,12 @@ class UltimatePostKit_Others_Plugin_Manager {
                                 '<?php esc_html_e("Active", "ultimate-post-kit"); ?>' +
                                 '</span>';
                         } else if (plugin.status === 'installed') {
-                            var activateUrl = '<?php echo admin_url("plugins.php?action=activate&plugin="); ?>' + plugin.plugin_file + '&_wpnonce=' + plugin.activate_nonce;
+                            var activateUrl = '<?php echo esc_url( admin_url("plugins.php?action=activate&plugin=") ); ?>' + plugin.plugin_file + '&_wpnonce=' + plugin.activate_nonce;
                             html += '<a class="bdt-button bdt-welcome-button" href="' + activateUrl + '">' +
                                 '<?php esc_html_e("Activate", "ultimate-post-kit"); ?>' +
                                 '</a>';
                         } else {
-                            html += '<button class="bdt-button bdt-welcome-button upk-install-plugin" data-plugin-slug="' + pluginSlug + '" data-nonce="<?php echo wp_create_nonce('upk_install_plugin_nonce'); ?>">' +
+                            html += '<button class="bdt-button bdt-welcome-button upk-install-plugin" data-plugin-slug="' + pluginSlug + '" data-nonce="<?php echo esc_attr( wp_create_nonce('upk_install_plugin_nonce') ); ?>">' +
                                 '<?php esc_html_e("Install", "ultimate-post-kit"); ?>' +
                                 '</button>';
                         }
@@ -380,7 +385,7 @@ class UltimatePostKit_Others_Plugin_Manager {
                     
                     // Perform AJAX request
                     $.ajax({
-                        url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                        url: '<?php echo esc_url( admin_url('admin-ajax.php') ); ?>',
                         type: 'POST',
                         data: {
                             action: 'upk_install_plugin',
@@ -485,7 +490,7 @@ class UltimatePostKit_Others_Plugin_Manager {
     public function ajax_get_plugins() {
         // Verify nonce
         if (!check_ajax_referer('upk_get_plugins_nonce', 'nonce', false)) {
-            wp_die(__('Security check failed.', 'ultimate-post-kit'));
+            wp_die(esc_html__('Security check failed.', 'ultimate-post-kit'));
         }
 
         // Get cached data

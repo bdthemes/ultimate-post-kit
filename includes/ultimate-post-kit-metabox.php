@@ -1,4 +1,9 @@
 <?php
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
 if (!class_exists('Ultimate_Post_Kit_Metabox')) {
     class Ultimate_Post_Kit_Metabox {
         public $enabled_video_features;
@@ -51,7 +56,7 @@ if (!class_exists('Ultimate_Post_Kit_Metabox')) {
 
 
 
-            echo $this->get_control_output($display_content);
+            $this->get_control_output($display_content); // Method escapes and echoes internally via wp_kses().
         }
         public function get_control_output($output) {
             $tags = [

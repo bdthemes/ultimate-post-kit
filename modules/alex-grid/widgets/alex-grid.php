@@ -478,7 +478,7 @@ class Alex_Grid extends Group_Control_Query {
 				'label'       => esc_html__('Glassmorphism', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::SWITCHER,
 				// translators: %1s: Opening anchor tag with link to MDN backdrop-filter documentation, %2s: Closing anchor tag
-				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
+				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1$s look here %2$s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
 				'default'     => 'yes',
 			]
 		);
@@ -1433,7 +1433,7 @@ class Alex_Grid extends Group_Control_Query {
 				'label'       => esc_html__('Glassmorphism', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::SWITCHER,
 				// translators: %1s: Opening anchor tag with link to MDN backdrop-filter documentation, %2s: Closing anchor tag
-				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
+				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1$s look here %2$s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
 				'default'     => 'yes',
 				'separator' => 'before'
 			]
@@ -1624,9 +1624,7 @@ class Alex_Grid extends Group_Control_Query {
 
 					<div class="upk-flex upk-flex-middle upk-date-reading-wrap">
 						<?php if ('yes' === $settings['show_date']) : ?>
-							<div data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
-								<?php $this->render_date(); ?>
-							</div>
+							<?php $this->render_date(); ?>
 						<?php endif; ?>
 
 						<?php if (_is_upk_pro_activated()) :
