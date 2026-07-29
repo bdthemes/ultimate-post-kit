@@ -266,6 +266,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 = 4.2.0 [XX July 2026] =
 
+* Fixed: Author role label translation issue in author, elite grid, elite carousel, post accordion and paradox slider widgets
 * Updated: Security improved
 
 = 4.1.18 [26th July 2026] =

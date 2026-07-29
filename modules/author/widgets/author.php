@@ -1462,7 +1462,7 @@ class Author extends Module_Base {
 
 							<?php if ($settings['show_author_role']) : ?>
 								<div class="upk-role">
-									<?php echo esc_html(ucwords(get_user_role($author->ID))); ?>
+									<?php echo esc_html( get_user_role( $author->ID ) ); ?>
 								</div>
 							<?php endif; ?>
 
