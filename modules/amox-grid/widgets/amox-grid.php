@@ -887,7 +887,7 @@ class Amox_Grid extends Group_Control_Query
                 'label' => esc_html__('Arrow Size', 'ultimate-post-kit'),
                 'type' => Controls_Manager::SLIDER,
                 'selectors' => [
-                    '{{WRAPPER}} ul.upk-pagination li a svg' => 'height: {{SIZE}}px; width: auto;',
+                    '{{WRAPPER}} ul.upk-pagination li a i' => 'font-size: {{SIZE}}px;',
                 ],
             ]
         );
