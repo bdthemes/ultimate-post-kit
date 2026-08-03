@@ -379,6 +379,50 @@ function strToHex( $string, $steps = -10 ) {
 	return strToUpper( $output );
 }
 
+/**
+ * Get the current paged number for a custom WP_Query instance.
+ *
+ * @param \WP_Query $wp_query Query object.
+ * @return int Current page number.
+ */
+function ultimate_post_kit_get_query_paged( $wp_query ) {
+	if ( ! $wp_query instanceof \WP_Query ) {
+		return 1;
+	}
+
+	$paged_from_query = isset( $wp_query->query_vars['paged'] ) ? (int) $wp_query->query_vars['paged'] : 0;
+	$page_from_query  = isset( $wp_query->query_vars['page'] ) ? (int) $wp_query->query_vars['page'] : 0;
+
+	if ( is_front_page() ) {
+		$paged = max( get_query_var( 'page' ), get_query_var( 'paged' ), $paged_from_query, $page_from_query );
+	} else {
+		$paged = max( get_query_var( 'paged' ), $paged_from_query );
+	}
+
+	return max( 1, (int) $paged );
+}
+
+/**
+ * Get item counter offset for paginated query loops.
+ *
+ * @param \WP_Query $wp_query Query object.
+ * @return int Zero-based offset for the first item on the current page.
+ */
+function ultimate_post_kit_get_query_counter_offset( $wp_query ) {
+	if ( ! $wp_query instanceof \WP_Query ) {
+		return 0;
+	}
+
+	$paged          = ultimate_post_kit_get_query_paged( $wp_query );
+	$posts_per_page = (int) $wp_query->get( 'posts_per_page' );
+
+	if ( 1 >= $paged || 0 >= $posts_per_page ) {
+		return 0;
+	}
+
+	return ( $paged - 1 ) * $posts_per_page;
+}
+
 function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 
 	/** Stop execution if there's only 1 page */
@@ -386,22 +430,8 @@ function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 		return;
 	}
 
-	// Get current page from multiple sources for reliability
-	$paged_from_query = isset( $wp_query->query_vars['paged'] ) ? $wp_query->query_vars['paged'] : 0;
-	$page_from_query = isset( $wp_query->query_vars['page'] ) ? $wp_query->query_vars['page'] : 0;
-	
-	if ( is_front_page() ) {
-		// On front page, WordPress can use either 'page' or 'paged' depending on permalink structure
-		$paged = max( get_query_var( 'page' ), get_query_var( 'paged' ), $paged_from_query, $page_from_query );
-		$paged = $paged ? $paged : 1;
-		$page_var = 'page';
-	} else {
-		$paged = max( get_query_var( 'paged' ), $paged_from_query );
-		$paged = $paged ? $paged : 1;
-		$page_var = 'paged';
-	}
-	
-	$max = intval( $wp_query->max_num_pages );
+	$paged = ultimate_post_kit_get_query_paged( $wp_query );
+	$max   = (int) $wp_query->max_num_pages;
 
 	/** Add current page to the array */
 	if ( $paged >= 1 ) {

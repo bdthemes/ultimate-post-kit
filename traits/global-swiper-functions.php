@@ -27,6 +27,8 @@ trait Global_Swiper_Functions {
 			$this->add_render_attribute( 'carousel', 'class', 'upk-arrows-dots-align-' . $settings['both_position'] );
 		} elseif ( 'arrows-fraction' == $settings['navigation'] ) {
 			$this->add_render_attribute( 'carousel', 'class', 'upk-arrows-dots-align-' . $settings['arrows_fraction_position'] );
+		} elseif ( 'progressbar' == $settings['navigation'] ) {
+			$this->add_render_attribute( 'carousel', 'class', 'upk-progress-align-' . $settings['progress_position'] );
 		}
 		
 		if ( 'arrows-fraction' == $settings['navigation'] ) {
