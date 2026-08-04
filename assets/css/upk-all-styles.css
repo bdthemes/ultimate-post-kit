@@ -2816,8 +2816,17 @@
   width: 100% !important;
 }
 
-.upk-navigation-type-progress .swiper-pagination-progress {
-  transform: translateY(15px);
+[class*=upk-progress-align-top] .swiper-pagination-progressbar {
+  top: 0;
+  bottom: auto;
+}
+
+[class*=upk-progress-align-bottom] .swiper-pagination-progressbar {
+  bottom: 0;
+  top: auto;
+}
+
+.upk-navigation-type-progressbar .swiper-pagination-progressbar {
   height: 5px;
   width: 100%;
 }
@@ -4238,8 +4247,17 @@
   width: 100% !important;
 }
 
-.upk-navigation-type-progress .swiper-pagination-progress {
-  transform: translateY(15px);
+[class*=upk-progress-align-top] .swiper-pagination-progressbar {
+  top: 0;
+  bottom: auto;
+}
+
+[class*=upk-progress-align-bottom] .swiper-pagination-progressbar {
+  bottom: 0;
+  top: auto;
+}
+
+.upk-navigation-type-progressbar .swiper-pagination-progressbar {
   height: 5px;
   width: 100%;
 }
@@ -4448,6 +4466,14 @@
 [class*=elementor-widget-upk-] .swiper-pagination-progressbar {
   background: rgba(0, 0, 0, 0.25);
   position: absolute;
+}
+[class*=elementor-widget-upk-] .swiper-pagination-progressbar.upk-position-top {
+  top: 0;
+  bottom: auto;
+}
+[class*=elementor-widget-upk-] .swiper-pagination-progressbar.upk-position-bottom {
+  bottom: 0;
+  top: auto;
 }
 [class*=elementor-widget-upk-] .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
   background: #007aff;
@@ -12352,6 +12378,13 @@
 .upk-layout-style--inline .upk-social-share {
   display: flex;
   flex-wrap: wrap;
+  gap: 0;
+}
+.upk-layout-style--inline .upk-social-share .upk-social-share-item {
+  display: flex;
+}
+.upk-layout-style--inline .upk-social-share .upk-ss-btn {
+  margin: 0;
 }
 
 .upk-layout-style--grid .upk-social-share {

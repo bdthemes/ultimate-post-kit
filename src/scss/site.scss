@@ -156,6 +156,16 @@
   .swiper-pagination-progressbar {
     background: rgba(0, 0, 0, 0.25);
     position: absolute;
+
+    &.upk-position-top {
+      top: 0;
+      bottom: auto;
+    }
+
+    &.upk-position-bottom {
+      bottom: 0;
+      top: auto;
+    }
   }
   
   .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {

@@ -1,6 +1,13 @@
 .upk-layout-style--inline .upk-social-share {
   display: flex;
   flex-wrap: wrap;
+  gap: 0;
+}
+.upk-layout-style--inline .upk-social-share .upk-social-share-item {
+  display: flex;
+}
+.upk-layout-style--inline .upk-social-share .upk-ss-btn {
+  margin: 0;
 }
 
 .upk-layout-style--grid .upk-social-share {

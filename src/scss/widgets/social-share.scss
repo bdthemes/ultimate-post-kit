@@ -2,6 +2,15 @@
 	.upk-social-share {
 		display: flex;
     	flex-wrap: wrap;
+		gap: 0;
+
+		.upk-social-share-item {
+			display: flex;
+		}
+
+		.upk-ss-btn {
+			margin: 0;
+		}
 	}
 }
 .upk-layout-style--grid {
