@@ -1,5 +1,5 @@
 === Ultimate Post Kit Addons for Elementor ===
-Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, syedfarhanreza, shmusuf, arafatakashakku, shaikatazim, shamim496
+Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
 Stable tag: 4.2.0
@@ -9,7 +9,7 @@ Tested up to: 7.0.2
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 4.0.0
-Elementor tested up to: 4.2.0
+Elementor tested up to: 4.2.1
 
 Build your blogs and news sites with a feature-rich Elementor addon, offering 100+ elements for engaging layouts.
 
@@ -22,7 +22,7 @@ Built with clean, optimized code, it’s fully compatible with the latest WordPr
 Ultimate Post Kit also supports RTL and multiple languages, making it ready for a global audience.
 
 ###USEFUL LINKS 👇###
-**[Live Demo](https://postkit.pro/demo/)** | **[Documentation](https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/)** | **[Video Tutorial](https://www.youtube.com/watch?v=nmMajegrTiM&list=PLP0S85GEw7DNBnZCb4RtJzlf38GCJ7z1b)** | **[Upgrade Pro](https://postkit.pro/pricing/)** | **[Need Support?](https://bdthemes.com/support/)**
+**[Live Demo](https://postkit.pro/demo/)** | **[Documentation](https://bdthemes.com/knowledge-base/ultimate-post-kit/)** | **[Video Tutorial](https://www.youtube.com/watch?v=nmMajegrTiM&list=PLP0S85GEw7DNBnZCb4RtJzlf38GCJ7z1b)** | **[Upgrade Pro](https://postkit.pro/pricing/)** | **[Need Support?](https://bdthemes.com/support/)**
 
 https://www.youtube.com/watch?v=er0uGv1yjig
 
@@ -264,7 +264,7 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
-= 4.2.0 [XX July 2026] =
+= 4.2.0 [4th August 2026] =
 
 * Fixed: Author role label translation issue in author, elite grid, elite carousel, post accordion and paradox slider widgets
 * Fixed: Clock icon alignment issue with time text in the amox carousel widget
