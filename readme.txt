@@ -264,6 +264,12 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 == Changelog ==
 
+= 4.2.1 [8th August 2026] =
+
+* Fixed: Security issue where data returned by the promotions API could be injected as script into the WordPress admin area
+* Fixed: Promotion links and images are now restricted to http(s) and mailto addresses
+* Updated: Security improved
+
 = 4.2.0 [4th August 2026] =
 
 * Fixed: Author role label translation issue in author, elite grid, elite carousel, post accordion and paradox slider widgets
