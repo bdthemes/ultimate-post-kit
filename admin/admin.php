@@ -46,7 +46,6 @@ class Admin
 	public function admin_notice_styles(){
 		$direction_suffix = is_rtl() ? '.rtl' : '';
 		wp_enqueue_style('upk-admin-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'css/upk-admin-biggopti' . $direction_suffix . '.css', [], BDTUPK_VER);
-		wp_enqueue_style('bdt-admin-api-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'css/upk-admin-api-biggopti' . $direction_suffix . '.css', [], BDTUPK_VER);
 	}
 
 
@@ -186,8 +185,6 @@ class Admin
 		wp_enqueue_script('jquery-form');
 		wp_enqueue_script('upk-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'js/upk-biggopti.min.js', ['jquery'], BDTUPK_VER,  true);
 
-		wp_enqueue_script('upk-admin-api-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'js/upk-admin-api-biggopti.min.js', ['jquery'], BDTUPK_VER,  true);
-
 		$dismissals = get_option('bdt_biggopti_dismissals', []);
 		$dismissed_display_ids = [];
 		$prefix = 'bdt-admin-biggopti-api-biggopti-';
@@ -212,7 +209,6 @@ class Admin
 			'currentSector'      => $current_sector,
 		];
 		wp_localize_script('upk-biggopti', 'UltimatePostKitBiggoptiConfig', $script_config);
-		wp_localize_script('upk-admin-api-biggopti', 'UltimatePostKitAdminApiBiggoptiConfig', $script_config);
 
 		if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_post_kit_options')) {
 			wp_enqueue_script('chart', BDTUPK_ADMIN_ASSETS_URL . 'js/chart.min.js', ['jquery'], '3.9.1', true);
