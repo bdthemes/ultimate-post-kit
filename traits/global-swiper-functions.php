@@ -134,7 +134,7 @@ trait Global_Swiper_Functions {
 			</div>
 		
 		<?php elseif ( 'progressbar' == $settings['navigation'] ) : ?>
-			<div class="swiper-pagination upk-position-z-index upk-position-<?php echo esc_html($settings['progress_position']); ?>"></div>
+			<div class="swiper-pagination upk-position-z-index upk-position-<?php echo esc_html( $settings['progress_position'] ?? 'bottom' ); ?>"></div>
 		<?php endif;
 	}
 	
