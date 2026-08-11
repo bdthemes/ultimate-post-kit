@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .upk-slider .swiper-pagination,
 .upk-dots-container .swiper-pagination,
 .upk-arrows-dots-container .swiper-pagination {
@@ -359,6 +360,7 @@
 
 [class*=elementor-widget-upk-] {
   /* Swiper */
+  /* Elementor forces sibling progressbars to top: 0 — reset per UPK position. */
 }
 [class*=elementor-widget-upk-] .swiper .elementor-lightbox-content-source {
   display: none;
@@ -389,6 +391,12 @@
   height: 100%;
   transform: scale(0);
   transform-origin: left top;
+}
+[class*=elementor-widget-upk-] .upk-position-bottom.swiper-pagination-progressbar {
+  top: auto;
+}
+[class*=elementor-widget-upk-] .upk-position-top.swiper-pagination-progressbar {
+  bottom: auto;
 }
 
 .upk-alert {
@@ -1449,3 +1457,5 @@
     display: none !important;
   }
 }
+
+/*# sourceMappingURL=upk-site.css.map */

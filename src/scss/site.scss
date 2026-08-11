@@ -179,6 +179,15 @@
     transform-origin: left top;
   }
 
+  /* Elementor forces sibling progressbars to top: 0 — reset per UPK position. */
+  .upk-position-bottom.swiper-pagination-progressbar {
+    top: auto;
+  }
+
+  .upk-position-top.swiper-pagination-progressbar {
+    bottom: auto;
+  }
+
 }
 
 //Alert Css
