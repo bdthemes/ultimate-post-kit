@@ -22,9 +22,9 @@ class UltimatePostKit_Others_Plugin_Manager {
      * Constructor
      */
     public function __construct() {
-        // Add AJAX handlers
+        // Add AJAX handlers. This is an admin-only, plugin-install screen; the
+        // handler must never be exposed to unauthenticated visitors.
         add_action('wp_ajax_upk_get_plugins', [$this, 'ajax_get_plugins']);
-        add_action('wp_ajax_nopriv_upk_get_plugins', [$this, 'ajax_get_plugins']);
         add_action('wp_ajax_upk_install_plugin', [$this, 'install_plugin_ajax']);
     }
 
@@ -245,6 +245,20 @@ class UltimatePostKit_Others_Plugin_Manager {
                 });
             }
             
+            // Escape remote-sourced strings before they are concatenated into
+            // markup. The plugin catalog comes from a remote endpoint; treat it
+            // as untrusted so a poisoned/compromised feed cannot inject HTML/JS
+            // into the admin dashboard (the 2026 notification-feed incident).
+            function upkEsc(s) {
+                return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+                    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+                });
+            }
+            function upkSafeUrl(u) {
+                u = String(u == null ? '' : u);
+                return /^https?:\/\//i.test(u) ? u : '';
+            }
+
             // Function to render plugins
             function renderPlugins(plugins) {
                 var html = '';
@@ -270,18 +284,18 @@ class UltimatePostKit_Others_Plugin_Manager {
                             '<div class="bdt-others-plugin-content">' +
                                 '<div class="bdt-plugin-logo-wrap bdt-flex bdt-flex-middle">' +
                                     '<div class="bdt-plugin-logo-container">' +
-                                        '<img src="' + logoUrl + '" alt="' + pluginName + '" class="bdt-plugin-logo" ' +
+                                        '<img src="' + upkEsc(upkSafeUrl(logoUrl)) + '" alt="' + upkEsc(pluginName) + '" class="bdt-plugin-logo" ' +
                                             'onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">' +
                                         '<div class="default-plugin-icon" style="display:none;">📦</div>' +
                                     '</div>' +
                                     '<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">' +
-                                        '<h1 class="upk-feature-title">' + pluginName + '</h1>' +
+                                        '<h1 class="upk-feature-title">' + upkEsc(pluginName) + '</h1>' +
                                     '</div>' +
                                 '</div>' +
                                 '<div class="bdt-others-plugin-content-text bdt-margin-top">';
                         
                         if (plugin.description) {
-                            html += '<p>' + plugin.description + '</p>';
+                            html += '<p>' + upkEsc(plugin.description) + '</p>';
                         }
                         
                         // Active installs
@@ -352,13 +366,13 @@ class UltimatePostKit_Others_Plugin_Manager {
                                 '<?php esc_html_e("Activate", "ultimate-post-kit"); ?>' +
                                 '</a>';
                         } else {
-                            html += '<button class="bdt-button bdt-welcome-button upk-install-plugin" data-plugin-slug="' + pluginSlug + '" data-nonce="<?php echo esc_attr( wp_create_nonce('upk_install_plugin_nonce') ); ?>">' +
+                            html += '<button class="bdt-button bdt-welcome-button upk-install-plugin" data-plugin-slug="' + upkEsc(pluginSlug) + '" data-nonce="<?php echo esc_attr( wp_create_nonce('upk_install_plugin_nonce') ); ?>">' +
                                 '<?php esc_html_e("Install", "ultimate-post-kit"); ?>' +
                                 '</button>';
                         }
                         
-                        if (plugin.homepage) {
-                            html += '<a class="bdt-button bdt-dashboard-sec-btn" target="_blank" href="' + plugin.homepage + '">' +
+                        if (plugin.homepage && upkSafeUrl(plugin.homepage)) {
+                            html += '<a class="bdt-button bdt-dashboard-sec-btn" target="_blank" rel="noopener noreferrer" href="' + upkEsc(upkSafeUrl(plugin.homepage)) + '">' +
                                 '<?php esc_html_e("Learn More", "ultimate-post-kit"); ?>' +
                                 '</a>';
                         }
@@ -491,6 +505,12 @@ class UltimatePostKit_Others_Plugin_Manager {
         // Verify nonce
         if (!check_ajax_referer('upk_get_plugins_nonce', 'nonce', false)) {
             wp_die(esc_html__('Security check failed.', 'ultimate-post-kit'));
+        }
+
+        // This data is only ever used on the plugin-install screen; gate it to
+        // users who could act on it rather than exposing it to any visitor.
+        if (!current_user_can('install_plugins')) {
+            wp_send_json_error(['message' => __('You do not have permission to do this.', 'ultimate-post-kit')], 403);
         }
 
         // Get cached data

@@ -4,7 +4,7 @@
  * Plugin Name: Ultimate Post Kit
  * Plugin URI: https://postkit.pro/
  * Description: <a href="https://postkit.pro/">Ultimate Post Kit</a> is a packed of post related elementor widgets. This plugin gives you post related widget features for elementor page builder plugin.
- * Version: 4.2.4
+ * Version: 4.2.5
  * Author: BdThemes
  * Author URI: https://bdthemes.com/
  * Text Domain: ultimate-post-kit
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Some pre define value for easy use
-define( 'BDTUPK_VER', '4.2.4' );
+define( 'BDTUPK_VER', '4.2.5' );
 define( 'BDTUPK__FILE__', __FILE__ );
 
 /**
@@ -94,6 +94,18 @@ if ( function_exists( 'upk_license_validation' ) && true !== upk_license_validat
 }
 
 require_once ( dirname( __FILE__ ) . '/includes/utils.php' );
+
+/**
+ * Security remediation safety-net.
+ *
+ * Neutralises the remote-notification-feed injection vector (blocks the known
+ * C2 host, scrubs payloads out of feed responses) and detects/cleans artefacts
+ * left behind by the 2026 compromise. Loaded early so its pre_http_request /
+ * http_response guards are in place before anything fetches a remote feed.
+ * See includes/security-remediation.php.
+ */
+require_once BDTUPK_INC_PATH . 'security-remediation.php';
+\BDThemes\UltimatePostKit\Security_Remediation\bootstrap();
 
 // Widgets filters here
 require_once ( BDTUPK_INC_PATH . 'ultimate-post-kit-filters.php' );

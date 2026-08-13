@@ -29,16 +29,25 @@ trait Global_Widget_Functions {
 		return $tax_terms_map;
 	}
 	function query_args() {
-		extract($_POST['settings']);
+		if ( isset( $_POST['settings'] ) && is_array( $_POST['settings'] ) ) {
+			extract( $_POST['settings'] );
+		}
+
+		// This handler is reachable unauthenticated (wp_ajax_nopriv_*). Clamp the
+		// page size to a sane positive maximum so a request cannot ask for -1
+		// ("all posts") or a huge value and turn load-more into a DoS amplifier.
+		$per_page = isset( $_POST['per_page'] ) ? absint( $_POST['per_page'] ) : 0;
+		$per_page = max( 1, min( 100, $per_page ) );
+		$offset   = isset( $_POST['offset'] ) ? absint( $_POST['offset'] ) : 0;
 
 		// setmeta args
 		$args = [
-			'posts_per_page' => $_POST['per_page'],
+			'posts_per_page' => $per_page,
 			'post_status' => 'publish',
 			'suppress_filters' => false,
 			'orderby' => $posts_orderby,
 			'order' => $posts_order,
-			'offset' => $_POST['offset'],
+			'offset' => $offset,
 		];
 		/**
 		 * set feature image
