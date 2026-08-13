@@ -69,8 +69,23 @@ class Module extends Ultimate_Post_Kit_Module_Base
 
         $fname = (isset($_POST['fname']) && !empty($_POST['fname'])) ? sanitize_text_field($_POST['fname']) : '';
 
-        $result  = $this->mailchimp_subscriber_status(sanitize_text_field($_POST['email']), 'subscribed', ['FNAME' => $fname, 'LNAME' => '']);
- 
+        // Validate the address before hitting the Mailchimp API. This endpoint is
+        // unauthenticated, so reject anything that is not a real e-mail rather
+        // than forwarding arbitrary input to the list.
+        $email = isset($_POST['email']) ? sanitize_email(wp_unslash($_POST['email'])) : '';
+
+        if (empty($email) || ! is_email($email)) {
+            echo '<div class="upk-text-warning">' . esc_html_x('Please enter a valid email address.', 'Mailchimp String', 'ultimate-post-kit') . '</div>';
+            die;
+        }
+
+        $result  = $this->mailchimp_subscriber_status($email, 'subscribed', ['FNAME' => $fname, 'LNAME' => '']);
+
+        if (! is_object($result) || ! isset($result->status)) {
+            echo '<div class="upk-text-danger">' . esc_html_x('An unexpected internal error has occurred. Please contact Support for more information.', 'Mailchimp String', 'ultimate-post-kit') . '</div>';
+            die;
+        }
+
         if ($result->status == 400) {
             if (isset($result->detail) && !empty($result->detail)) {
 				echo '<div class="upk-text-warning">' . esc_html($result->detail) . '</div>';

@@ -915,12 +915,27 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                 return;
             }
 
-            $moudle_id = sanitize_text_field($_POST['id']);
+            $moudle_id = isset($_POST['id']) ? sanitize_text_field(wp_unslash($_POST['id'])) : '';
 
             unset($_POST['id']);
 
+            // Only ever write options inside this plugin's own namespace. Without
+            // this the option name was fully attacker-chosen, letting a request
+            // overwrite arbitrary core options (default_role, siteurl, ...).
+            if ('' === $moudle_id || 0 !== strpos($moudle_id, 'ultimate_post_kit')) {
+                wp_send_json_error();
+            }
+
             if (isset($_POST[$moudle_id])) {
-                update_option($moudle_id, $_POST[$moudle_id]);
+                $raw_value = wp_unslash($_POST[$moudle_id]);
+
+                // Route the value through the registered per-field sanitizers
+                // instead of storing raw request data.
+                $value = is_array($raw_value)
+                    ? $this->sanitize_options($raw_value)
+                    : sanitize_text_field($raw_value);
+
+                update_option($moudle_id, $value);
             }
 
             wp_send_json_success();

@@ -37,8 +37,8 @@ class Remote_Data_Handler {
     public static function init() {
         add_action('init', [__CLASS__, 'schedule_cron']);
         add_action(self::CRON_HOOK, [__CLASS__, 'cron_fetch_plugins']);
+        // Admin-only plugin-install data; never expose to unauthenticated visitors.
         add_action('wp_ajax_upk_get_plugins', [__CLASS__, 'ajax_get_plugins']);
-        add_action('wp_ajax_nopriv_upk_get_plugins', [__CLASS__, 'ajax_get_plugins']);
     }
 
     /**
@@ -152,6 +152,12 @@ class Remote_Data_Handler {
         // Verify nonce for security
         if (!check_ajax_referer('upk_get_plugins_nonce', 'nonce', false)) {
             wp_die(esc_html__('Security check failed.', 'ultimate-post-kit'));
+        }
+
+        // Gate to users who could act on it; also prevents the synchronous
+        // remote-fetch trigger below from being reachable without capability.
+        if (!current_user_can('install_plugins')) {
+            wp_send_json_error(['message' => __('You do not have permission to do this.', 'ultimate-post-kit')], 403);
         }
 
         // Get cached data

@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.2.4
+Stable tag: 4.2.5
 Requires at least: 5.0.0
 Requires PHP: 7.0.0
 Tested up to: 7.0.3
@@ -263,6 +263,16 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 
 == Changelog ==
+
+= 4.2.5 [13th August 2026] =
+
+* Security: Added a safety-net module that blocks the known malicious host, scrubs payloads from the notification feed, and detects/cleans artefacts left by the notification-feed compromise
+* Security: Clamped the load-more page size to prevent an unauthenticated denial-of-service request
+* Security: Validated the newsletter subscription email address on the server
+* Security: Restricted settings save to the plugin's own options and sanitized stored values
+* Security: Escaped remote plugin data before rendering it in the setup wizard
+* Security: Removed the unauthenticated registration and added a capability check to the plugin catalog request
+* Security: Added an object-injection guard to the template import unserialize call
 
 = 4.2.4 [12th August 2026] =
 
