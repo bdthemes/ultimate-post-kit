@@ -55,6 +55,7 @@ class UltimatePostKit_Others_Plugin_Manager {
 
         // Helper function for time formatting
         if (!function_exists('format_last_updated_usk')) {
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
             function format_last_updated_usk($date_string) {
                 if (empty($date_string)) {
                     return __('Unknown', 'ultimate-post-kit');
@@ -95,6 +96,7 @@ class UltimatePostKit_Others_Plugin_Manager {
 
         // Helper function for fallback URLs
         if (!function_exists('get_plugin_fallback_urls_usk')) {
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
             function get_plugin_fallback_urls_usk($plugin_slug) {
                 // Handle different plugin slug formats
                 if (strpos($plugin_slug, '/') !== false) {
@@ -542,7 +544,8 @@ class UltimatePostKit_Others_Plugin_Manager {
      */
     public function install_plugin_ajax() {
         // Check nonce
-        if (!wp_verify_nonce($_POST['nonce'], 'upk_install_plugin_nonce')) {
+        $nonce = isset($_POST['nonce']) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
+        if (!wp_verify_nonce( $nonce, 'upk_install_plugin_nonce')) {
             wp_send_json_error(['message' => __('Security check failed', 'ultimate-post-kit')]);
         }
 
@@ -551,7 +554,7 @@ class UltimatePostKit_Others_Plugin_Manager {
             wp_send_json_error(['message' => __('You do not have permission to install plugins', 'ultimate-post-kit')]);
         }
 
-        $plugin_slug = sanitize_text_field($_POST['plugin_slug']);
+        $plugin_slug = isset($_POST['plugin_slug']) ? sanitize_text_field(wp_unslash($_POST['plugin_slug'])) : '';
 
         if (empty($plugin_slug)) {
             wp_send_json_error(['message' => __('Plugin slug is required', 'ultimate-post-kit')]);

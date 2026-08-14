@@ -9,6 +9,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- template partial included within a method; variables are method-scoped, not global.
+
 // Include the required classes
 require_once __DIR__ . '/../class-plugin-integration-helper.php';
 require_once __DIR__ . '/../class-remote-data-handler.php';
@@ -436,9 +438,9 @@ jQuery(document).ready(function($) {
             return `<img src="${plugin.logo}" alt="${plugin.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="default-plugin-icon" style="display:none;">📦</div>`;
         } else {
-            const slug = plugin.slug.includes('/') ? plugin.slug.split('/')[0] : plugin.slug;
-            return `<img src="https://ps.w.org/${slug}/assets/icon-256x256.png" alt="${plugin.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="default-plugin-icon" style="display:none;">📦</div>`;
+            // No icon supplied by the data source — show the local placeholder
+            // rather than offloading an image request to a remote host.
+            return `<div class="default-plugin-icon" style="display:flex;">📦</div>`;
         }
     }
     

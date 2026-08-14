@@ -39,7 +39,7 @@ class UltimatePostKit_Dynamic_Select_Input_Module {
 	 * get Ajax Data
 	 */
 	public function getSelectInputData() {
-		$nonce = isset($_POST['security']) ? sanitize_text_field($_POST['security']) : '';
+		$nonce = isset($_POST['security']) ? sanitize_text_field(wp_unslash($_POST['security'])) : '';
 
 		try {
 			if (!wp_verify_nonce($nonce, 'upk_dynamic_select')) {
@@ -50,7 +50,7 @@ class UltimatePostKit_Dynamic_Select_Input_Module {
 				throw new \Exception('Unauthorized request');
 			}
 
-			$query = isset($_POST['query']) ? sanitize_text_field($_POST['query']) : '';
+			$query = isset($_POST['query']) ? sanitize_text_field(wp_unslash($_POST['query'])) : '';
 
 			if ($query == 'terms') {
 				$data = $this->getTerms();
@@ -73,7 +73,8 @@ class UltimatePostKit_Dynamic_Select_Input_Module {
 	 * @return string
 	 */
 	protected function getPostType() {
-		return isset($_POST['post_type']) ? sanitize_text_field($_POST['post_type']) : '';
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in getSelectInputData() before this helper runs.
+		return isset($_POST['post_type']) ? sanitize_text_field(wp_unslash($_POST['post_type'])) : '';
 	}
 
 	/**
@@ -87,14 +88,16 @@ class UltimatePostKit_Dynamic_Select_Input_Module {
 	 * @return string
 	 */
 	protected function getSearchQuery() {
-		return isset($_POST['search_text']) ? sanitize_text_field($_POST['search_text']) : '';
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in getSelectInputData() before this helper runs.
+		return isset($_POST['search_text']) ? sanitize_text_field(wp_unslash($_POST['search_text'])) : '';
 	}
 
 	/**
 	 * @return array|mixed
 	 */
 	protected function getselecedIds() {
-		return isset($_POST['ids']) ? sanitize_text_field($_POST['ids']) : [];
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in getSelectInputData() before this helper runs.
+		return isset($_POST['ids']) ? sanitize_text_field(wp_unslash($_POST['ids'])) : [];
 	}
 
 

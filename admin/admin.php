@@ -27,6 +27,7 @@ class Admin
 	{
 
 		// Embed the Script on our Plugin's Option Page Only
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check of the current admin page slug for asset routing, no form data processed.
 		if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_post_kit_options')) {
 			add_action('admin_enqueue_scripts', [$this, 'enqueue_styles']);
 		}
@@ -74,7 +75,7 @@ class Admin
 		wp_enqueue_style('bdt-uikit', BDTUPK_ADMIN_ASSETS_URL . 'css/bdt-uikit' . $direction_suffix . '.css', [], '3.17.0');
 		wp_enqueue_style('upk-font', BDTUPK_ASSETS_URL . 'css/upk-font' . $direction_suffix . '.css', [], BDTUPK_VER);
 
-		wp_enqueue_script('bdt-uikit', BDTUPK_ADMIN_ASSETS_URL . 'js/bdt-uikit.min.js', ['jquery'], '3.17.0');
+		wp_enqueue_script('bdt-uikit', BDTUPK_ADMIN_ASSETS_URL . 'js/bdt-uikit.min.js', ['jquery'], '3.17.0', true);
 	}
 
 	/**
@@ -197,6 +198,7 @@ class Admin
 		}
 
 		$current_sector = '';
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check of the current admin page slug for display routing, no form data processed.
 		if ( isset( $_GET['page'] ) && $_GET['page'] === 'ultimate_post_kit_options' ) {
 			$current_sector = 'plugin_dashboard';
 		}
@@ -210,6 +212,7 @@ class Admin
 		];
 		wp_localize_script('upk-biggopti', 'UltimatePostKitBiggoptiConfig', $script_config);
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check of the current admin page slug for asset routing, no form data processed.
 		if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_post_kit_options')) {
 			wp_enqueue_script('chart', BDTUPK_ADMIN_ASSETS_URL . 'js/chart.min.js', ['jquery'], '3.9.1', true);
 			wp_enqueue_script('upk-admin', BDTUPK_ADMIN_ASSETS_URL  . 'js/upk-admin.min.js', ['jquery', 'chart'], BDTUPK_VER, true);

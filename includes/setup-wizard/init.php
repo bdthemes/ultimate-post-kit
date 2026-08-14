@@ -54,13 +54,13 @@ class Setup_Wizard {
 		add_action( 'admin_init', array( $this, 'maybe_display_setup_wizard' ) );
 		add_action( 'admin_init', array( $this, 'check_manual_wizard_request' ) );
 
-		if ( function_exists( 'add_filter' ) ) {
-			add_filter( 'auto_update_translation', '__return_false' );
-		}
+		// NOTE: WordPress manages plugin/translation updates. Do not add filters
+		// that interfere with the built-in update pipeline (wp.org Guideline).
 	}
 
 	// Check for manual wizard requests
 	public function check_manual_wizard_request() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check of a GET flag to decide whether to render the setup wizard screen, no form data processed.
 		$is_setup_wizard_request = isset($_GET['upk_setup_wizard']) && $_GET['upk_setup_wizard'] === 'show';
 		
 		if ( $is_setup_wizard_request ) {
@@ -218,7 +218,7 @@ class Setup_Wizard {
 		$direction_suffix = is_rtl() ? '.rtl' : '';
 
 		wp_enqueue_style('bdt-uikit', BDTUPK_ADMIN_ASSETS_URL . 'css/bdt-uikit' . $direction_suffix . '.css', [], '3.17.0');
-		wp_enqueue_script('bdt-uikit', BDTUPK_ADMIN_ASSETS_URL . 'js/bdt-uikit.min.js', ['jquery'], '3.17.0');
+		wp_enqueue_script('bdt-uikit', BDTUPK_ADMIN_ASSETS_URL . 'js/bdt-uikit.min.js', ['jquery'], '3.17.0', true);
 
 		wp_register_script( 'upk-setup-wizard', plugins_url( 'assets/js/setup-wizard.js', __FILE__ ), array( 'jquery' ), '1.0.0', true );
 		wp_register_style( 'upk-setup-wizard', plugins_url( 'assets/css/setup-wizard.css', __FILE__ ), array(), '1.0.0' );
@@ -251,7 +251,7 @@ class Setup_Wizard {
 	public function install_plugins() {
 		check_ajax_referer( 'setup_wizard_nonce', 'nonce' );
 
-		$plugin_slugs = isset( $_POST['plugins'] ) ? $_POST['plugins'] : array();
+		$plugin_slugs = isset( $_POST['plugins'] ) ? map_deep( wp_unslash( $_POST['plugins'] ), 'sanitize_text_field' ) : array();
 
 		if ( empty( $plugin_slugs ) || ! is_array( $plugin_slugs ) ) {
 			wp_send_json_error( array( 'message' => 'Invalid plugins array' ) );
@@ -313,7 +313,7 @@ class Setup_Wizard {
             }
 
             // active the plugin
-            if ( is_plugin_inactive($plugin_slug) ) {
+            if ( is_plugin_inactive($plugin_slug) && current_user_can( 'activate_plugins' ) ) {
                 $activation_result = activate_plugin( $plugin_slug );
                 if ( is_wp_error( $activation_result ) ) {
                     $results[] = array(
@@ -458,7 +458,7 @@ add_action('wp_ajax_import_elementor_template', function () {
         $template_id = $templateData[0]['template_id'];
         $metaData = get_post_meta($template_id);
 
-        $page_title = isset($_POST['title']) ? sanitize_text_field($_POST['title']) : esc_html__("No Title", 'ultimate-post-kit');
+        $page_title = isset($_POST['title']) ? sanitize_text_field(wp_unslash($_POST['title'])) : esc_html__("No Title", 'ultimate-post-kit');
 
         // Validate Elementor Data
         if (!isset($metaData['_elementor_data'][0])) {
@@ -621,11 +621,13 @@ add_action('wp_ajax_import_upk_elementor_bundle_runner_template', function () {
     }
 
     try {
+        // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged, WordPress.PHP.IniSet.max_execution_time_Disallowed -- raise the limit only for this admin-triggered template import, which can exceed the default.
         @ini_set('max_execution_time', 60 * 5);
 
         $import_export_module = $app->get_component('import-export');
         $import = $import_export_module->import_kit_by_runner($sessionId, $runner);
 
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- hooking into Elementor's own action, not a plugin-defined hook.
         do_action('elementor/import-export/import-kit/runner/after-run', $import);
         wp_send_json_success($import);
     } catch (\Throwable $throwable) {

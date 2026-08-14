@@ -5,11 +5,13 @@
 .browserslistrc
 .eslintignore
 .eslintrc.js
-src
+.eslintrc
+.idea
+.DS_Store
+.gitattributes
+.git
 package.json
 package-lock.json
-.gitattributes
 gruntfile.js
 node_modules
-.git
-*zip
+*.zip

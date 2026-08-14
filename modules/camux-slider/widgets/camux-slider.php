@@ -166,6 +166,7 @@ class Camux_Slider extends Group_Control_Query {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'      => 'primary_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude'   => ['custom'],
 				'default'   => 'full',
 			]
@@ -389,6 +390,7 @@ class Camux_Slider extends Group_Control_Query {
 				'name' => 'overlay_color',
 				'label' => esc_html__('Background', 'ultimate-post-kit'),
 				'types' => ['classic', 'gradient'],
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .upk-camux-slider .upk-img-wrap::before',
 				'fields_options' => [

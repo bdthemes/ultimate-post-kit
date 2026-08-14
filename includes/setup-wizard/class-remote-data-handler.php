@@ -59,15 +59,18 @@ class Remote_Data_Handler {
         }
 
         // Check if this is an AJAX request for our plugins
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only routing check of the AJAX action name, no form data processed.
         if (wp_doing_ajax() && isset($_REQUEST['action'])) {
-            $action = sanitize_text_field($_REQUEST['action']);
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only routing check of the AJAX action name, no form data processed.
+            $action = sanitize_text_field(wp_unslash($_REQUEST['action']));
             if (in_array($action, ['upk_get_plugins'])) {
                 return true;
             }
         }
 
-        $page = isset($_GET['page']) ? sanitize_text_field($_GET['page']) : '';
-        return $page === 'element_pack_options';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check of the current admin page slug, no form data processed.
+        $page = isset($_GET['page']) ? sanitize_text_field(wp_unslash($_GET['page'])) : '';
+        return $page === 'ultimate_post_kit_options';
     }
 
     /**

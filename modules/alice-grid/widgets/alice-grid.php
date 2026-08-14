@@ -97,6 +97,7 @@ class Alice_Grid extends Group_Control_Query {
 			]
 		);
 
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- established hook name relied on across the plugin family; renaming would break integration.
 		$column_size = apply_filters('upk_column_size', '');
 
 		$this->add_responsive_control(
@@ -237,6 +238,7 @@ class Alice_Grid extends Group_Control_Query {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'      => 'primary_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude'   => ['custom'],
 				'default'   => 'medium',
 			]

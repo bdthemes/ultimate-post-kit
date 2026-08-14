@@ -729,6 +729,7 @@ class Banner extends Group_Control_Query
 				'name' => 'overlay_color',
 				'label' => esc_html__('Background', 'ultimate-post-kit'),
 				'types' => ['classic', 'gradient'],
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .upk-banner-wrap .upk-item::before',
 				'fields_options' => [

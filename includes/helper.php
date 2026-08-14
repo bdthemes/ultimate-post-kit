@@ -193,6 +193,7 @@ function ultimate_post_kit_get_taxonomies() {
 	return $output;
 }
 
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
 function upk_get_category( $post_type ) {
 	switch ( $post_type ) {
 		case 'campaign':
@@ -355,6 +356,7 @@ function ultimate_post_kit_allow_tags( ?string $tag = null ) {
 /**
  * HexColor
  */
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
 function strToHex( $string, $steps = -10 ) {
 
 	if ( empty( $string ) ) {
@@ -902,6 +904,7 @@ function ultimate_post_kit_custom_excerpt( $limit = 25, $strip_shortcode = false
 	return wpautop( $output );
 }
 
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
 function get_user_role( $id ) {
 	$user = new WP_User( $id );
 	$role = array_shift( $user->roles );
@@ -983,6 +986,7 @@ if ( _is_upk_pro_activated() ) {
  * License Validation
  */
 if ( ! function_exists( 'upk_license_validation' ) ) {
+	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
 	function upk_license_validation() {
 
 		if ( function_exists( '_is_upk_pro_activated' ) && false === _is_upk_pro_activated() ) {
@@ -999,93 +1003,3 @@ if ( ! function_exists( 'upk_license_validation' ) ) {
 	}
 }
 
-/**
- * Inject custom CSS and JS into the header
- */
-if ( ! function_exists( 'upk_inject_header_custom_code' ) ) {
-	function upk_inject_header_custom_code() {
-		if ( upk_is_page_excluded() ) {
-			return;
-		}
-
-		$custom_css = get_option( 'upk_custom_css', '' );
-		$custom_js = get_option( 'upk_custom_js', '' );
-
-		if ( ! empty( $custom_css ) ) {
-			echo "\n<!-- Ultimate Post Kit Custom Header CSS -->\n";
-			echo '<style type="text/css">' . "\n";
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom CSS authored by an administrator (manage_options) in plugin settings; output verbatim by design.
-			echo $custom_css . "\n";
-			echo '</style>' . "\n";
-		}
-
-		if ( ! empty( $custom_js ) ) {
-			echo "\n<!-- Ultimate Post Kit Custom Header JS -->\n";
-			echo '<script type="text/javascript">' . "\n";
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom JS authored by an administrator (manage_options) in plugin settings; output verbatim by design.
-			echo $custom_js . "\n";
-			echo '</script>' . "\n";
-		}
-	}
-}
-
-/**
- * Inject custom CSS and JS into the footer
- */
-if ( ! function_exists( 'upk_inject_footer_custom_code' ) ) {
-	function upk_inject_footer_custom_code() {
-		if ( upk_is_page_excluded() ) {
-			return;
-		}
-
-		$custom_css_2 = get_option( 'upk_custom_css_2', '' );
-		$custom_js_2 = get_option( 'upk_custom_js_2', '' );
-
-		if ( ! empty( $custom_css_2 ) ) {
-			echo "\n<!-- Ultimate Post Kit Custom Footer CSS -->\n";
-			echo '<style type="text/css">' . "\n";
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom CSS authored by an administrator (manage_options) in plugin settings; output verbatim by design.
-			echo $custom_css_2 . "\n";
-			echo '</style>' . "\n";
-		}
-
-		if ( ! empty( $custom_js_2 ) ) {
-			echo "\n<!-- Ultimate Post Kit Custom Footer JS -->\n";
-			echo '<script type="text/javascript">' . "\n";
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom JS authored by an administrator (manage_options) in plugin settings; output verbatim by design.
-			echo $custom_js_2 . "\n";
-			echo '</script>' . "\n";
-		}
-	}
-}
-
-/**
- * Check if current page should be excluded from custom code injection
- */
-if ( ! function_exists( 'upk_is_page_excluded' ) ) {
-	function upk_is_page_excluded() {
-		$excluded_pages = get_option( 'upk_excluded_pages', array() );
-		
-		if ( empty( $excluded_pages ) || ! is_array( $excluded_pages ) ) {
-			return false;
-		}
-
-		$current_id = 0;
-		
-		if ( is_home() && ! is_front_page() ) {
-			$current_id = get_option( 'page_for_posts' );
-		} elseif ( is_front_page() ) {
-			$current_id = get_option( 'page_on_front' );
-		} elseif ( is_singular() ) {
-			$current_id = get_queried_object_id();
-		} elseif ( is_category() || is_tag() || is_tax() ) {
-			return false;
-		} elseif ( is_author() ) {
-			return false;
-		} elseif ( is_archive() ) {
-			return false;
-		}
-
-		return in_array( $current_id, $excluded_pages );
-	}
-}

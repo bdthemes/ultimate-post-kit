@@ -162,6 +162,7 @@ class Gratis_Grid extends Group_Control_Query {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'    => 'primary_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['custom'],
 				'default' => 'medium',
 			]
@@ -355,6 +356,7 @@ class Gratis_Grid extends Group_Control_Query {
 				'name' => 'overlay_color',
 				'label' => esc_html__('Background', 'ultimate-post-kit'),
 				'types' => ['classic', 'gradient'],
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .upk-gratis-grid .upk-img-wrap::before',
 				'fields_options' => [
@@ -445,6 +447,7 @@ class Gratis_Grid extends Group_Control_Query {
 				'name' => 'overlay_hover_color',
 				'label' => esc_html__('Background', 'ultimate-post-kit'),
 				'types' => ['classic', 'gradient'],
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .upk-gratis-grid .upk-img-wrap::after',
 				'fields_options' => [
@@ -507,6 +510,7 @@ class Gratis_Grid extends Group_Control_Query {
 				'name' => 'overlay_active_color',
 				'label' => esc_html__('Background', 'ultimate-post-kit'),
 				'types' => ['classic', 'gradient'],
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .upk-gratis-grid .upk-item.active .upk-img-wrap::after',
 			]
@@ -1449,6 +1453,7 @@ class Gratis_Grid extends Group_Control_Query {
 					$i++;
 					$active_item = '';
 					if (_is_upk_pro_activated()) {
+						// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- established hook name relied on across the plugin family; renaming would break integration.
 						$active_item = apply_filters('gratis_grid_active_item', $this, $i);
 					}
 

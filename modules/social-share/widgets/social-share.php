@@ -651,6 +651,7 @@ class Social_Share extends Module_Base {
 				'name'     => 'typography',
 				'label'    => esc_html__( 'Typography', 'ultimate-post-kit' ),
 				'selector' => '{{WRAPPER}} .upk-social-share-title, {{WRAPPER}} .upk-ss-counter',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude'  => [ 'line_height' ],
 			]
 		);

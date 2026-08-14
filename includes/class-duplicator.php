@@ -35,7 +35,7 @@ if (!class_exists('BdThemes_Duplicator')) :
             /**
              * Nonce verification
              */
-            if (!isset($_GET['duplicate_nonce']) || !wp_verify_nonce($_GET['duplicate_nonce'], basename(__FILE__))) {
+            if (!isset($_GET['duplicate_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['duplicate_nonce'])), basename(__FILE__))) {
                 return;
             }
 

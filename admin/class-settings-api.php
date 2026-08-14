@@ -248,7 +248,14 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 
             // creates our settings in the options table
             foreach ($this->settings_sections as $section) {
-                register_setting($section['id'], $section['id'], array($this, 'sanitize_options'));
+                register_setting(
+                    $section['id'],
+                    $section['id'],
+                    array(
+                        'type'              => 'array',
+                        'sanitize_callback' => array($this, 'sanitize_options'),
+                    )
+                );
             }
         }
 
@@ -794,14 +801,32 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             foreach ($options as $option_slug => $option_value) {
                 $sanitize_callback = $this->get_sanitize_callback($option_slug);
 
-                // If callback is set, call it
+                // If a field-specific callback is set, use it.
                 if ($sanitize_callback) {
                     $options[$option_slug] = call_user_func($sanitize_callback, $option_value);
                     continue;
                 }
+
+                // Otherwise never store the value raw — apply a safe default so no
+                // submitted field escapes sanitization (wp.org register_setting rule).
+                $options[$option_slug] = $this->sanitize_default($option_value);
             }
 
             return $options;
+        }
+
+        /**
+         * Default sanitizer for settings values without a field-specific callback.
+         *
+         * @param mixed $value Raw value.
+         * @return mixed
+         */
+        private function sanitize_default($value) {
+            if (is_array($value)) {
+                return array_map(array($this, 'sanitize_default'), $value);
+            }
+
+            return is_scalar($value) ? sanitize_text_field((string) $value) : '';
         }
 
         /**
@@ -872,6 +897,16 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 				$html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="%2$s"><i class="%4$s"></i>%3$s</a></li>', $tab['id'], $count++, $tab['title'], $icon);
 			}
 
+			// Extension tabs registered by add-ons (e.g. Ultimate Post Kit Pro). The
+			// core plugin only provides the extension point; it ships no tabs of its own.
+			foreach ($this->get_extra_dashboard_tabs() as $tab) {
+				if (empty($tab['id']) || empty($tab['title'])) {
+					continue;
+				}
+				$icon = isset($tab['icon']) ? $tab['icon'] : 'dashicons dashicons-screenoptions';
+				$html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="%2$s"><i class="%4$s"></i>%3$s</a></li>', $tab['id'], $count++, esc_html($tab['title']), esc_attr($icon));
+			}
+
 			// License section
 			$license_wl_status = UltimatePostKit_Admin_Settings::license_wl_status();
 
@@ -905,6 +940,20 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 			));
 		}
 
+		/**
+		 * Extra dashboard tabs contributed by add-on plugins.
+		 *
+		 * Neutral extension point: the core plugin renders whatever tabs an add-on
+		 * registers here and ships none of its own. Each item is an array
+		 * [ 'id' => string, 'title' => string, 'icon' => string, 'callback' =>
+		 * callable ] where the callback echoes the tab body.
+		 *
+		 * @return array
+		 */
+		public function get_extra_dashboard_tabs() {
+			return (array) apply_filters( 'ultimate_post_kit_dashboard_extra_tabs', array() );
+		}
+
         function ultimate_post_kit_settings_save() {
 
             if (!check_ajax_referer('ultimate-post-kit-settings-save-nonce')) {
@@ -927,6 +976,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             }
 
             if (isset($_POST[$moudle_id])) {
+                // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized below via sanitize_options()/sanitize_default().
                 $raw_value = wp_unslash($_POST[$moudle_id]);
 
                 // Route the value through the registered per-field sanitizers
@@ -950,11 +1000,6 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 			
 			// Add manually created content sections that don't have settings forms
 			$content_only_sections = [
-				[
-					'id' => 'ultimate_post_kit_extra_options',
-					'title' => esc_html__('Extra Options', 'ultimate-post-kit'),
-					'icon' => 'dashicons dashicons-smiley',
-				],
 				[
 					'id' => 'ultimate_post_kit_analytics_system_req',
 					'title' => esc_html__('System Status', 'ultimate-post-kit'),
