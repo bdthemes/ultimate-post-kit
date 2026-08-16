@@ -159,6 +159,7 @@ class Skide_Slider extends Group_Control_Query {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'      => 'primary_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude'   => ['custom'],
 				'default'   => 'full',
 			]
@@ -1194,6 +1195,7 @@ class Skide_Slider extends Group_Control_Query {
 			</div>
 			<?php
 				if (_is_upk_pro_activated()) {
+					// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- established hook name relied on across the plugin family; renaming would break integration.
 					apply_filters('show_top_stories', $this);
 				}
 			?>

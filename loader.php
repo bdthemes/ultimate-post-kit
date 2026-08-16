@@ -89,6 +89,7 @@ class Ultimate_Post_Kit_Loader {
 		if ( is_null( self::$_instance ) ) {
 			self::$_instance = new self();
 		}
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- established hook name relied on across the plugin family; renaming would break integration.
 		do_action( 'bdthemes_ultimate_post_kit/init' );
 		return self::$_instance;
 	}

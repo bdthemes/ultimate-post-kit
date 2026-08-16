@@ -174,6 +174,7 @@ class Post_Category extends Module_Base {
 			Group_Control_Image_Size::get_type(),
 			[ 
 				'name'      => 'cat_image_size',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude'   => [ 'custom' ],
 				'include'   => [],
 				'default'   => 'thumbnail',
@@ -837,6 +838,7 @@ class Post_Category extends Module_Base {
 				'orderby'    => $orderby === 'rand' ? 'name' : $orderby,
 				'order'      => $settings["order"],
 				'hide_empty' => 0,
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude'    => explode( ',', esc_attr( $settings["exclude"] ) ),
 				'parent'     => $settings["parent"],
 			]

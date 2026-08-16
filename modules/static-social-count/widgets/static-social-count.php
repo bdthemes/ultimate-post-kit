@@ -280,6 +280,7 @@ class Static_Social_Count extends Group_Control_Query {
 				'name'      => 'social_single_item_bg',
 				'label'     => esc_html__('Background', 'ultimate-post-kit'),
 				'types'     => ['classic', 'gradient'],
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['image'],
 				'selector'  => '{{WRAPPER}} .upk-static-social-count {{CURRENT_ITEM}}.upk-item',
 			]
@@ -481,6 +482,7 @@ class Static_Social_Count extends Group_Control_Query {
 				'name'      => 'social_static_background',
 				'label'     => esc_html__('Background', 'ultimate-post-kit'),
 				'types'     => ['classic', 'gradient'],
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['image'],
 				'selector'  => '{{WRAPPER}} .upk-static-social-count .upk-item',
 			]
@@ -537,6 +539,7 @@ class Static_Social_Count extends Group_Control_Query {
 				'name'      => 'static_social_hover_bg',
 				'label'     => esc_html__('Background', 'ultimate-post-kit'),
 				'types'     => ['classic', 'gradient'],
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['image'],
 				'selector'  => '{{WRAPPER}} .upk-static-social-count .upk-item:hover',
 			]

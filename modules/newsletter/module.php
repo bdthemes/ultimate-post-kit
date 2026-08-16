@@ -67,11 +67,13 @@ class Module extends Ultimate_Post_Kit_Module_Base
     public function mailchimp_subscribe()
     {
 
-        $fname = (isset($_POST['fname']) && !empty($_POST['fname'])) ? sanitize_text_field($_POST['fname']) : '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended -- unauthenticated public newsletter subscribe form; input is sanitized and the e-mail validated before use, no nonce is expected from anonymous visitors.
+        $fname = (isset($_POST['fname']) && !empty($_POST['fname'])) ? sanitize_text_field(wp_unslash($_POST['fname'])) : '';
 
         // Validate the address before hitting the Mailchimp API. This endpoint is
         // unauthenticated, so reject anything that is not a real e-mail rather
         // than forwarding arbitrary input to the list.
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended -- unauthenticated public newsletter subscribe form; input is sanitized and the e-mail validated before use, no nonce is expected from anonymous visitors.
         $email = isset($_POST['email']) ? sanitize_email(wp_unslash($_POST['email'])) : '';
 
         if (empty($email) || ! is_email($email)) {

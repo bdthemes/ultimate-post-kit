@@ -96,6 +96,7 @@ final class Manager
     public function load_module_instance($module)
     {
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check of the current admin page slug for module-loading routing, no form data processed.
         if(isset($_GET['page']) && 'ultimate_post_kit_options' ==  $_GET['page']){
             return;
         }

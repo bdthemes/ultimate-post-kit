@@ -9,6 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- template partial included within a method; variables are method-scoped, not global.
+
 $templates_path = BDTUPK_INC_PATH . 'setup-wizard/assets/data.json';
 $templates      = json_decode( file_get_contents( $templates_path ), true );
 

@@ -9,6 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- template partial included within a method; variables are method-scoped, not global.
+
 
 $widget_map     = \UltimatePostKit\Includes\Setup_Wizard::get_widget_map();
 $active_modules = get_option( 'ultimate_post_kit_active_modules', array() );

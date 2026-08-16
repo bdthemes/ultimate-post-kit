@@ -98,6 +98,7 @@ class Alter_Grid extends Group_Control_Query {
 			]
 		);
 
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- established hook name relied on across the plugin family; renaming would break integration.
 		$column_size = apply_filters('upk_column_size', '');
 
 		$this->add_responsive_control(
@@ -212,6 +213,7 @@ class Alter_Grid extends Group_Control_Query {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'    => 'primary_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['custom'],
 				'default' => 'medium',
 			]
@@ -649,6 +651,7 @@ class Alter_Grid extends Group_Control_Query {
 			[
 				'name'     => 'itam_content_background',
 				'selector' => '{{WRAPPER}}.upk-content-on-image-yes .upk-alter-grid .upk-content',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude'  => ['image'],
 				'condition' => [
 					'content_on_image' => 'yes'
@@ -713,6 +716,7 @@ class Alter_Grid extends Group_Control_Query {
 			[
 				'name'     => 'itam_content_hover_background',
 				'selector' => '{{WRAPPER}}.upk-content-on-image-yes .upk-alter-grid .upk-item:hover .upk-content',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude'  => ['image'],
 				'condition' => [
 					'content_on_image' => 'yes'

@@ -1410,6 +1410,7 @@ class Author extends Module_Base {
 			'order'    => $settings['order'],
 			'role__in' => (!empty($settings['role'])) ? $settings['role'] : null,
 			'number'   => $number,
+			// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 			'exclude'  => array_filter(array_map('absint', explode(',', esc_attr($settings['exclude'])))),
 		]);
 

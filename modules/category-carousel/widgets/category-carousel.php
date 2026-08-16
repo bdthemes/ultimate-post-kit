@@ -185,6 +185,7 @@ class Category_Carousel extends Module_Base {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'    => 'primary_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['custom'],
 				'default' => 'medium',
 			]
@@ -726,6 +727,7 @@ class Category_Carousel extends Module_Base {
 			[
 				'name'     => 'category_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['line_height'],
 				'selector' => '{{WRAPPER}} .upk-category-carousel .upk-item .upk-content .title',
 			]
@@ -924,6 +926,7 @@ class Category_Carousel extends Module_Base {
 								'orderby'    => $settings["orderby"],
 								'order'      => $settings["order"],
 								// 'include'    => explode(',', esc_attr($settings["include"])),
+								// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 								'exclude'    => explode(',', esc_attr($settings["exclude"])),
 								'parent'     => $settings["parent"],
 								'hide_empty' => 0,

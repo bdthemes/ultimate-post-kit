@@ -33,9 +33,15 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 	}
 
 	public function callback_ajax_loadmore_posts() {
+		// Verify the front-end nonce (sent by UltimatePostKitConfig.nonce) before
+		// processing this public load-more request.
+		if ( ! check_ajax_referer( 'upk-site', 'nonce', false ) ) {
+			wp_send_json_error( array( 'message' => esc_html__( 'Security check failed.', 'ultimate-post-kit' ) ), 403 );
+		}
+
 
 		// Security: Verify nonce
-		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'upk-site' ) ) {
+		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'upk-site' ) ) {
 			wp_send_json_error( [ 'message' => esc_html__( 'Security verification failed', 'ultimate-post-kit' ) ], 403 );
 			wp_die();
 		}
@@ -56,6 +62,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
 		 // Security: Whitelist allowed post types
 		$allowed_post_types = [ 'post', 'page' ];
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- established hook name relied on across the plugin family; renaming would break integration.
 		$allowed_post_types = apply_filters( 'upk_alex_grid_allowed_post_types', $allowed_post_types );
 		$post_type = in_array( $post_type, $allowed_post_types, true ) ? $post_type : 'post';
 
@@ -159,7 +166,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		
 									<div class="upk-flex upk-flex-middle upk-date-reading-wrap">
 										<?php if ( $settings['show_date'] === 'yes' ) : ?>
-											<div class="upk-date"><?php echo $date; ?></div>
+											<div class="upk-date"><?php echo esc_html( $date ); ?></div>
 											<?php if ( $settings['show_time'] === 'yes' ) : ?>
 												<div class="upk-post-time" data-separator="<?php echo esc_attr( $meta_separator ); ?>">
 													<i class="upk-icon-clock" aria-hidden="true"></i><?php echo esc_html( get_the_time() ); ?>
@@ -169,7 +176,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
 										<?php if ( function_exists( '_is_upk_pro_activated' ) && _is_upk_pro_activated() && $settings['show_reading_time'] === 'yes' ) : ?>
 											<div class="upk-reading-time" data-separator="<?php echo esc_attr( $meta_separator ); ?>">
-												<?php echo ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ); ?>
+												<?php echo wp_kses_post( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 											</div>
 										<?php endif; ?>
 									</div>

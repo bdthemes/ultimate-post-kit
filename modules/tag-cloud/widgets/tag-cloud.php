@@ -627,6 +627,7 @@ class Tag_Cloud extends Module_Base {
 			'orderby'    => $settings["orderby"],
 			'order'      => $settings["order"],
 			'hide_empty' => 0,
+			// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 			'exclude'    => explode(',', esc_attr($settings["exclude"])),
 			'parent'     => $settings["parent"],
 		]);

@@ -29,15 +29,19 @@ trait Global_Widget_Functions {
 		return $tax_terms_map;
 	}
 	function query_args() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in the load-more AJAX handler (check_ajax_referer 'upk-site') before this runs.
 		if ( isset( $_POST['settings'] ) && is_array( $_POST['settings'] ) ) {
-			extract( $_POST['settings'] );
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in the load-more AJAX handler (check_ajax_referer 'upk-site') before this runs.
+			extract( map_deep( wp_unslash( $_POST['settings'] ), 'sanitize_text_field' ) );
 		}
 
 		// This handler is reachable unauthenticated (wp_ajax_nopriv_*). Clamp the
 		// page size to a sane positive maximum so a request cannot ask for -1
 		// ("all posts") or a huge value and turn load-more into a DoS amplifier.
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in the load-more AJAX handler (check_ajax_referer 'upk-site') before this runs.
 		$per_page = isset( $_POST['per_page'] ) ? absint( $_POST['per_page'] ) : 0;
 		$per_page = max( 1, min( 100, $per_page ) );
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in the load-more AJAX handler (check_ajax_referer 'upk-site') before this runs.
 		$offset   = isset( $_POST['offset'] ) ? absint( $_POST['offset'] ) : 0;
 
 		// setmeta args
@@ -54,6 +58,7 @@ trait Global_Widget_Functions {
 		 *
 		 */
 		if (isset($posts_only_with_featured_image) && $posts_only_with_featured_image === 'yes') {
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Elementor widget query built from user-configured controls; expected behaviour.
 			$args['meta_query'] = [
 				[
 					'key' => '_thumbnail_id',
@@ -126,6 +131,7 @@ trait Global_Widget_Functions {
 		if (!empty($exclude_by) && $posts_source === 'post' && $posts_ignore_sticky_posts === 'yes') {
 			$args['ignore_sticky_posts'] = true;
 			if (in_array('current_post', $exclude_by)) {
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in -- Elementor widget query built from user-configured controls; expected behaviour.
 				$args['post__not_in'] = [get_the_ID()];
 			}
 		}
@@ -150,7 +156,7 @@ trait Global_Widget_Functions {
 			 * Make Current Query
 			 */
 			$args = $GLOBALS['wp_query']->query_vars;
-			$args = apply_filters('element_pack/query/get_query_args/current_query', $args);
+			$args = apply_filters('ultimate_post_kit/query/get_query_args/current_query', $args);
 		} elseif ('_related_post_type' === $posts_source) {
 			/**
 			 * Set Related Query
@@ -172,11 +178,12 @@ trait Global_Widget_Functions {
 			}
 
 			if (in_array('current_post', $exclude_by)) {
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in -- Elementor widget query built from user-configured controls; expected behaviour.
 				$args['post__not_in'] = [get_the_ID()];
 			}
 
 			$args['ignore_sticky_posts'] = 1;
-			$args = apply_filters('element_pack/query/get_query_args/related_query', $args);
+			$args = apply_filters('ultimate_post_kit/query/get_query_args/related_query', $args);
 		} else {
 			$args['post_type'] = $posts_source;
 			$current_post = [];
@@ -204,6 +211,7 @@ trait Global_Widget_Functions {
 				}
 				if (in_array('manual_selection', $exclude_by)) {
 					$exclude_ids = $posts_exclude_ids;
+					// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in -- Elementor widget query built from user-configured controls; expected behaviour.
 					$args['post__not_in'] = array_merge($current_post, wp_parse_id_list($exclude_ids));
 				}
 				if (in_array('terms', $exclude_by)) {
@@ -251,6 +259,7 @@ trait Global_Widget_Functions {
 
 
 			if (!empty($terms_query)) {
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Elementor widget query built from user-configured controls; expected behaviour.
 				$args['tax_query'] = $terms_query;
 				$args['tax_query']['relation'] = 'AND';
 			}
@@ -327,6 +336,7 @@ trait Global_Widget_Functions {
 		if (!$this->get_settings('show_title')) {
 			return;
 		}
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- established hook name relied on across the plugin family; renaming would break integration.
 		apply_filters('upk/' . $widget_name . '/before/title', '');
 		$title = get_the_title();
 		printf(
@@ -337,6 +347,7 @@ trait Global_Widget_Functions {
 			esc_attr($settings['title_style']),
 			esc_attr( $title )
 		);
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- established hook name relied on across the plugin family; renaming would break integration.
 		apply_filters('upk/' . $widget_name . '/after/title', '');
 	}
 

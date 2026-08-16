@@ -12,6 +12,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 // Settings Filters
 if (!function_exists('upk_is_dashboard_enabled')) {
+    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
     function upk_is_dashboard_enabled() {
         return apply_filters('ultimatepostkit/settings/dashboard', true);
     }
