@@ -3,7 +3,7 @@ Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
 Stable tag: 4.5.0
-Requires at least: 5.0
+Requires at least: 6.8
 Requires PHP: 7.0
 Tested up to: 7.0
 License: GPL3

@@ -911,7 +911,14 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 			$license_wl_status = UltimatePostKit_Admin_Settings::license_wl_status();
 
 			if (!defined('BDTUPK_LO') || false == $license_wl_status) {
-				$html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="%2$s"><i class="dashicons dashicons-admin-network"></i>%3$s</a></li>', 'ultimate_post_kit_license_settings', $count, esc_html__('License', 'ultimate-post-kit'));
+				// On the free version this tab shows the "Get Pro" page, not a license form,
+				// so label it accordingly.
+				$is_pro_activated = function_exists('_is_upk_pro_activated') ? _is_upk_pro_activated() : false;
+				$license_tab_title = (true === $is_pro_activated)
+					? esc_html__('License', 'ultimate-post-kit')
+					: esc_html__('Get Pro', 'ultimate-post-kit');
+
+				$html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="%2$s"><i class="dashicons dashicons-admin-network"></i>%3$s</a></li>', 'ultimate_post_kit_license_settings', $count, $license_tab_title);
 			}
 
 			$html .= '</ul>';
@@ -1082,9 +1089,9 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 												<div>
 													<ul
 														class="bdt-subnav bdt-subnav-pill upk-widget-filter bdt-widget-type-content bdt-flex-inline">
-														<li class="upk-widget-all bdt-active" bdt-filter-control="*"><a
+														<li class="upk-widget-all" bdt-filter-control="*"><a
 																href="#"><?php esc_html_e('All', 'ultimate-post-kit'); ?></a></li>
-														<li class="upk-widget-free"
+														<li class="upk-widget-free bdt-active"
 															bdt-filter-control="filter: [data-widget-type='free']; group: data-content-type">
 															<a href="#"><?php esc_html_e('Free', 'ultimate-post-kit'); ?></a>
 														</li>

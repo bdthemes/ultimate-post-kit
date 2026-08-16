@@ -1089,21 +1089,40 @@ class UltimatePostKit_Admin_Settings {
                 jQuery('.upk-no-result').removeClass('bdt-animation-shake');
             });
 
+            // Selector of the filter controls that are currently active (Free is active by default).
+            function activeFilterSelector($parent) {
+                return $parent.find('.upk-widget-filter li.bdt-active')
+                    .map(function() {
+                        var control = jQuery(this).attr('bdt-filter-control') || '';
+                        var matched = control.match(/filter:\s*([^;]+)/);
+                        return matched ? jQuery.trim(matched[1]) : null;
+                    })
+                    .get()
+                    .join('');
+            }
+
             function filterSearch(e) {
                 var parentID = '#' + jQuery(e).data('id');
-                var search = jQuery(parentID).find('.bdt-search-input').val().toLowerCase();
+                var $parent = jQuery(parentID);
+                var search = $parent.find('.bdt-search-input').val().toLowerCase();
 
-                jQuery(".upk-options .upk-option-item").filter(function() {
-                    jQuery(this).toggle(jQuery(this).attr('data-widget-name').toLowerCase().indexOf(search) > -1)
+                // Search runs on top of the active filter and only inside its own tab, so clearing
+                // the search never falls back to showing every widget.
+                var filterSelector = activeFilterSelector($parent);
+
+                $parent.find('.upk-options .upk-option-item').each(function() {
+                    var name = (jQuery(this).attr('data-widget-name') || '').toLowerCase();
+                    var matchesSearch = name.indexOf(search) > -1;
+                    var matchesFilter = !filterSelector || jQuery(this).is(filterSelector);
+
+                    jQuery(this).toggle(matchesSearch && matchesFilter);
                 });
 
                 if (!search) {
-                    jQuery(parentID).find('.bdt-search-input').attr('bdt-filter-control', "");
-                    jQuery(parentID).find('.upk-widget-all').trigger('click');
+                    $parent.find('.bdt-search-input').attr('bdt-filter-control', "");
                 } else {
-                    jQuery(parentID).find('.bdt-search-input').attr('bdt-filter-control', "filter: [data-widget-name*='" + search + "']");
-                    jQuery(parentID).find('.bdt-search-input').removeClass('bdt-active'); // Thanks to Bar-Rabbas
-                    jQuery(parentID).find('.bdt-search-input').trigger('click');
+                    $parent.find('.bdt-search-input').attr('bdt-filter-control', "filter: [data-widget-name*='" + search + "']");
+                    $parent.find('.bdt-search-input').removeClass('bdt-active'); // Thanks to Bar-Rabbas
                 }
             }
 
