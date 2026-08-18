@@ -489,7 +489,7 @@ class ModuleService {
                     'widget_type'  => 'pro',
                     'content_type' => 'grid new',
                     'demo_url'     => 'https://postkit.pro/demo/post-card/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/VKtQCjnEJvE',
                 ],
                 [
                     'name'         => 'post-grid',
@@ -499,7 +499,7 @@ class ModuleService {
                     'widget_type'  => 'pro',
                     'content_type' => 'grid new',
                     'demo_url'     => 'https://postkit.pro/demo/post-grid/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/z3gWwPIsCkg',
                 ],
                 [
                     'name'         => 'post-block',
@@ -509,7 +509,7 @@ class ModuleService {
                     'widget_type'  => 'pro',
                     'content_type' => 'grid new',
                     'demo_url'     => 'https://postkit.pro/demo/post-block/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/_KPAns0zjAo',
                 ],
                 [
                     'name'         => 'post-block-modern',
@@ -519,7 +519,7 @@ class ModuleService {
                     'widget_type'  => 'pro',
                     'content_type' => 'grid new',
                     'demo_url'     => 'https://postkit.pro/demo/post-block-modern/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/bFEyizMaPmw',
                 ],
                 [
                     'name'         => 'post-list',
@@ -529,7 +529,7 @@ class ModuleService {
                     'widget_type'  => 'pro',
                     'content_type' => 'list new',
                     'demo_url'     => 'https://postkit.pro/demo/post-list/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/5aQTAsLRF0o',
                 ],
                 [
                     'name'         => 'post-grid-tab',
@@ -539,7 +539,7 @@ class ModuleService {
                     'widget_type'  => 'pro',
                     'content_type' => 'tabs new',
                     'demo_url'     => 'https://postkit.pro/demo/post-grid-tab/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/kFEL4AGnIv4',
                 ],
                 [
                     'name'         => 'post-slider',
@@ -549,7 +549,7 @@ class ModuleService {
                     'widget_type'  => 'pro',
                     'content_type' => 'slider new',
                     'demo_url'     => 'https://postkit.pro/demo/post-slider/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/oPYzWVLPF7A',
                 ],
                 [
                     'name'         => 'post-gallery',
@@ -559,7 +559,7 @@ class ModuleService {
                     'widget_type'  => 'pro',
                     'content_type' => 'grid new',
                     'demo_url'     => 'https://postkit.pro/demo/post-gallery/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/iScykjTKlNA',
                 ],
                 [
                     'name'         => 'post-carousel',
@@ -569,7 +569,7 @@ class ModuleService {
                     'widget_type'  => 'pro',
                     'content_type' => 'carousel new',
                     'demo_url'     => 'https://postkit.pro/demo/post-carousel/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/biF3GtBf0qc',
                 ],
                 [
                     'name'         => 'post-timeline',
@@ -579,7 +579,7 @@ class ModuleService {
                     'widget_type'  => 'pro',
                     'content_type' => 'timeline new',
                     'demo_url'     => 'https://postkit.pro/demo/post-timeline/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/lp4Zqn6niXU',
                 ],
                 [
                     'name'         => 'single-post',
@@ -589,7 +589,7 @@ class ModuleService {
                     'widget_type'  => 'pro',
                     'content_type' => 'others new',
                     'demo_url'     => 'https://postkit.pro/demo/single-post/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/32g-F4_Avp4',
                 ],
                 [
                     'name'         => 'maple-grid',
