@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.5.0
+Stable tag: 4.5.1
 Requires at least: 6.8
 Requires PHP: 7.0
 Tested up to: 7.0
@@ -332,7 +332,7 @@ Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor p
 
 == Changelog ==
 
-= 4.5.X [XXth August 2026] =
+= 4.5.1 [18th August 2026] =
 
 * Fixed: Plugin names and descriptions on the Other Plugins tab displayed raw HTML entity codes instead of dashes and ampersands
 * Fixed: Duplicate install requests were sent when the Other Plugins list reloaded
