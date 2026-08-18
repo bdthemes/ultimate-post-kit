@@ -332,6 +332,15 @@ Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor p
 
 == Changelog ==
 
+= 4.5.X [XXth August 2026] =
+
+* Fixed: Plugin names and descriptions on the Other Plugins tab displayed raw HTML entity codes instead of dashes and ampersands
+* Fixed: Duplicate install requests were sent when the Other Plugins list reloaded
+* Fixed: Failed requests on the Other Plugins tab now report the actual error instead of a generic loading failure
+* Fixed: A malformed rating from the plugin catalog could render the wrong number of stars on the Other Plugins tab
+* Security: Escaped the remaining remote plugin values before rendering them on the Other Plugins tab
+* Improved: Activate links on the Other Plugins tab now encode the plugin path and nonce
+
 = 4.5.0 [14th August 2026] =
 
 * Compliance: Corrected "Requires at least" / "Tested up to" to major WordPress versions
