@@ -340,6 +340,7 @@ Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor p
 * Fixed: A malformed rating from the plugin catalog could render the wrong number of stars on the Other Plugins tab
 * Security: Escaped the remaining remote plugin values before rendering them on the Other Plugins tab
 * Improved: Activate links on the Other Plugins tab now encode the plugin path and nonce
+* Removed: Deprecated BdThemes product-feed remote endpoint (returned an empty response) and its unused fetch code
 
 = 4.5.0 [14th August 2026] =
 
