@@ -104,6 +104,7 @@ class Alex_Grid extends Group_Control_Query {
 		// 	$column_size = '';
 		// }
 
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- established hook name relied on across the plugin family; renaming would break integration.
 		$column_size = apply_filters('upk_column_size', '');
 
 		$this->add_responsive_control(
@@ -192,6 +193,10 @@ class Alex_Grid extends Group_Control_Query {
 						'max' => 800,
 					],
 				],
+				'default'   => [
+					'size' => 420,
+					'unit' => 'px',
+				],
 				'selectors' => [
 					'{{WRAPPER}} .upk-alex-grid .upk-style-1 .upk-item:nth-child(5n+1), {{WRAPPER}} .upk-alex-grid .upk-style-1 .upk-item:nth-child(5n+2), {{WRAPPER}} .upk-alex-grid .upk-style-3 .upk-item:nth-child(5n+2)' => 'height: {{SIZE}}{{UNIT}};',
 				],
@@ -211,6 +216,10 @@ class Alex_Grid extends Group_Control_Query {
 						'min' => 200,
 						'max' => 800,
 					],
+				],
+				'default'   => [
+					'size' => 280,
+					'unit' => 'px',
 				],
 				'selectors' => [
 					'{{WRAPPER}} .upk-alex-grid .upk-style-1 .upk-item:nth-child(5n+3), {{WRAPPER}} .upk-alex-grid .upk-style-1 .upk-item:nth-child(5n+4), {{WRAPPER}} .upk-alex-grid .upk-style-1 .upk-item:nth-child(5n+5), {{WRAPPER}} .upk-alex-grid .upk-style-3 .upk-item:nth-child(5n+1), {{WRAPPER}} .upk-alex-grid .upk-style-3 .upk-item:nth-child(5n+3), {{WRAPPER}} .upk-alex-grid .upk-style-3 .upk-item:nth-child(5n+4), {{WRAPPER}} .upk-alex-grid .upk-style-3 .upk-item:nth-child(5n+5)' => 'height: {{SIZE}}{{UNIT}};',
@@ -245,6 +254,7 @@ class Alex_Grid extends Group_Control_Query {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'    => 'primary_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['custom'],
 				'default' => 'medium',
 			]
@@ -470,7 +480,7 @@ class Alex_Grid extends Group_Control_Query {
 				'label'       => esc_html__('Glassmorphism', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::SWITCHER,
 				// translators: %1s: Opening anchor tag with link to MDN backdrop-filter documentation, %2s: Closing anchor tag
-				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
+				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1$s look here %2$s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
 				'default'     => 'yes',
 			]
 		);
@@ -1034,7 +1044,7 @@ class Alex_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-alex-grid .upk-readmore .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-grid .upk-item:hover .upk-readmore .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-grid .upk-item:hover .upk-readmore .upk-readmore-icon span:after' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .upk-alex-grid .upk-readmore .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-grid .upk-readmore .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-grid .upk-readmore .upk-readmore-icon span:after' => 'background: {{VALUE}};',
 				],
 			]
 		);
@@ -1121,7 +1131,7 @@ class Alex_Grid extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-alex-grid .upk-item:hover .upk-readmore .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-grid .upk-item:hover .upk-readmore .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-grid .upk-item:hover .upk-readmore .upk-readmore-icon span:after' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .upk-alex-grid .upk-readmore:hover .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-grid .upk-readmore:hover .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-grid .upk-readmore:hover .upk-readmore-icon span:after' => 'background: {{VALUE}};',
 				],
 			]
 		);
@@ -1425,7 +1435,7 @@ class Alex_Grid extends Group_Control_Query {
 				'label'       => esc_html__('Glassmorphism', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::SWITCHER,
 				// translators: %1s: Opening anchor tag with link to MDN backdrop-filter documentation, %2s: Closing anchor tag
-				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
+				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1$s look here %2$s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
 				'default'     => 'yes',
 				'separator' => 'before'
 			]
@@ -1461,6 +1471,7 @@ class Alex_Grid extends Group_Control_Query {
 				'name' => 'post_format_background',
 				'label' => esc_html__('Background', 'ultimate-post-kit'),
 				'types' => ['classic', 'gradient'],
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .upk-alex-grid .upk-post-format a',
 				'fields_options' => [
@@ -1616,14 +1627,12 @@ class Alex_Grid extends Group_Control_Query {
 
 					<div class="upk-flex upk-flex-middle upk-date-reading-wrap">
 						<?php if ('yes' === $settings['show_date']) : ?>
-							<div data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
-								<?php $this->render_date(); ?>
-							</div>
+							<?php $this->render_date(); ?>
 						<?php endif; ?>
 
 						<?php if (_is_upk_pro_activated()) :
 							if ('yes' === $settings['show_reading_time']) : ?>
-								<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+								<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 									<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 								</div>
 							<?php endif; ?>

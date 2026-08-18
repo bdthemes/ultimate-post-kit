@@ -1,4 +1,9 @@
 <?php
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
 if (!class_exists('Ultimate_Post_Kit_Category_Image')) {
     class Ultimate_Post_Kit_Category_Image {
         public function __construct() {
@@ -24,8 +29,14 @@ if (!class_exists('Ultimate_Post_Kit_Category_Image')) {
         <?php
         }
         public function save_category_image($term_id) {
+            if (!current_user_can('manage_categories')) {
+                return;
+            }
+            if (!isset($_POST['_wpnonce_add-tag']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_wpnonce_add-tag'])), 'add-tag')) {
+                return;
+            }
             if (isset($_POST['upk-category-image-id']) && '' !== $_POST['upk-category-image-id']) {
-                $image = sanitize_key($_POST['upk-category-image-id']);
+                $image = sanitize_key(wp_unslash($_POST['upk-category-image-id']));
                 add_term_meta($term_id, 'upk-category-image-id', $image, true);
             }
         }
@@ -52,8 +63,14 @@ if (!class_exists('Ultimate_Post_Kit_Category_Image')) {
         }
 
         public function updated_category_image($term_id) {
+            if (!current_user_can('manage_categories')) {
+                return;
+            }
+            if (!isset($_POST['_wpnonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_wpnonce'])), 'update-tag_' . $term_id)) {
+                return;
+            }
             if (isset($_POST['upk-category-image-id']) && '' !== $_POST['upk-category-image-id']) {
-                $image = sanitize_key($_POST['upk-category-image-id']);
+                $image = sanitize_key(wp_unslash($_POST['upk-category-image-id']));
                 update_term_meta($term_id, 'upk-category-image-id', $image);
             } else {
                 update_term_meta($term_id, 'upk-category-image-id', '');

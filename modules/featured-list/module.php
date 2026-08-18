@@ -32,6 +32,12 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 	}
 
 	public function callback_ajax_loadmore_posts() {
+		// Verify the front-end nonce (sent by UltimatePostKitConfig.nonce) before
+		// processing this public load-more request.
+		if ( ! check_ajax_referer( 'upk-site', 'nonce', false ) ) {
+			wp_send_json_error( array( 'message' => esc_html__( 'Security check failed.', 'ultimate-post-kit' ) ), 403 );
+		}
+
 
 		$settings = [];
 
@@ -76,13 +82,8 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
 				$title_tag   = Utils::get_valid_html_tag($settings['title_tags']);
 
-				$onclick = '';
-				if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) {
-					$onclick = 'onclick="window.open(\'' . esc_url( $post_link ) . '\', \'_self\')"';
-				}
-
 				?>
-				<div <?php echo $onclick; ?> class="upk-item">
+				<div <?php if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) { printf( 'onclick="window.open(\'%s\', \'_self\')"', esc_url( $post_link ) ); } ?> class="upk-item">
 					<div class="upk-item-box">
 
 						<div class="upk-image-wrap">
@@ -124,7 +125,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 										if ( $categories ) {
 											foreach ( $categories as $category ) {
 												$bg_color = strToHex($category->name);
-												echo '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '"><span style="background-color:' . $bg_color . '"></span>' . esc_html( $category->name ) . '</a>';
+												echo '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '"><span style="background-color:' . esc_attr( $bg_color ) . '"></span>' . esc_html( $category->name ) . '</a>';
 											}
 										}
 										?>

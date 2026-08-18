@@ -2,6 +2,10 @@
 
 namespace UltimatePostKit;
 
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
 /**
  * Biggopties class
  */
@@ -35,7 +39,7 @@ class Biggopties {
 	 */
 	private function get_api_biggopties_data() {
 		// API endpoint for biggopties - you can change this to your actual endpoint
-		$api_url = 'https://api.sigmative.io/prod/store/api/biggopti/api-data-records';
+		$api_url = '';
 
 		$response = wp_remote_get($api_url, [
 			'timeout' => 30,
@@ -200,26 +204,21 @@ class Biggopties {
 	private function render_api_biggopti($biggopti) {
 		ob_start();
 		
-		// Add custom CSS if provided
-		if (isset($biggopti->custom_css) && !empty($biggopti->custom_css)) {
-			echo '<style>' . wp_kses_post($biggopti->custom_css) . '</style>';
-		}
-		
 		// Prepare background styles
 		$background_style = '';
 		$wrapper_classes = 'bdt-biggopti-wrapper';
 		
 		if (isset($biggopti->background_color) && !empty($biggopti->background_color)) {
-			$background_style .= 'background-color: ' . esc_attr($biggopti->background_color) . ';';
+			$background_style .= 'background-color: ' . $biggopti->background_color . ';';
 		}
-		
+
 		if (isset($biggopti->image) && !empty($biggopti->image)) {
-			$background_style .= 'background-image: url(' . esc_url($biggopti->image) . ');';
+			$background_style .= 'background-image: url(' . esc_url_raw($biggopti->image) . ');';
 			$wrapper_classes .= ' has-background-image';
 		}
-		
+
 		?>
-		<div class="<?php echo esc_attr($wrapper_classes); ?>" <?php echo $background_style ? 'style="' . $background_style . '"' : ''; ?>>
+		<div class="<?php echo esc_attr($wrapper_classes); ?>" <?php echo $background_style ? 'style="' . esc_attr($background_style) . '"' : ''; ?>>
 			
 			
 			<?php $title = (isset($biggopti->title) && !empty($biggopti->title)) ? $biggopti->title : ''; ?>
@@ -293,7 +292,7 @@ class Biggopties {
 	 * AJAX: Build and return API biggopties HTML for dynamic injection
 	 */
 	public function ajax_fetch_api_biggopties() {
-		$nonce = isset($_POST['_wpnonce']) ? sanitize_text_field($_POST['_wpnonce']) : '';
+		$nonce = isset($_POST['_wpnonce']) ? sanitize_text_field(wp_unslash($_POST['_wpnonce'])) : '';
 		if (!wp_verify_nonce($nonce, 'ultimate-post-kit')) {
 			wp_send_json_error([ 'message' => 'invalid_nonce' ]);
 		}
@@ -303,7 +302,7 @@ class Biggopties {
 		}
 
 		// Don't show biggopties on plugin/theme install and upload pages
-		$current_url = isset($_POST['current_url']) ? sanitize_text_field($_POST['current_url']) : '';
+		$current_url = isset($_POST['current_url']) ? sanitize_text_field(wp_unslash($_POST['current_url'])) : '';
 
 		if (!empty($current_url)) {
 			$excluded_patterns = [
@@ -360,10 +359,10 @@ class Biggopties {
 	 * Dismiss Biggopti.
 	 */
 	public function dismiss() {
-		$nonce = (isset($_POST['_wpnonce'])) ? sanitize_text_field($_POST['_wpnonce']) : '';
-		$id   = (isset($_POST['id'])) ? esc_attr($_POST['id']) : '';
-		$time = (isset($_POST['time'])) ? esc_attr($_POST['time']) : '';
-		$meta = (isset($_POST['meta'])) ? esc_attr($_POST['meta']) : '';
+		$nonce = (isset($_POST['_wpnonce'])) ? sanitize_text_field(wp_unslash($_POST['_wpnonce'])) : '';
+		$id   = isset($_POST['id']) ? sanitize_text_field(wp_unslash($_POST['id'])) : '';
+		$time = isset($_POST['time']) ? absint(wp_unslash($_POST['time'])) : 0;
+		$meta = isset($_POST['meta']) ? sanitize_text_field(wp_unslash($_POST['meta'])) : '';
 
 		if ( ! wp_verify_nonce($nonce, 'ultimate-post-kit') ) {
 			wp_send_json_error();

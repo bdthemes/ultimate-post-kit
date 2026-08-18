@@ -157,6 +157,7 @@ class Amox_Grid extends Group_Control_Query
             Group_Control_Image_Size::get_type(),
             [
                 'name' => 'primary_thumbnail',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
                 'exclude' => ['custom'],
                 'default' => 'medium',
             ]
@@ -887,7 +888,7 @@ class Amox_Grid extends Group_Control_Query
                 'label' => esc_html__('Arrow Size', 'ultimate-post-kit'),
                 'type' => Controls_Manager::SLIDER,
                 'selectors' => [
-                    '{{WRAPPER}} ul.upk-pagination li a svg' => 'height: {{SIZE}}px; width: auto;',
+                    '{{WRAPPER}} ul.upk-pagination li a i' => 'font-size: {{SIZE}}px;',
                 ],
             ]
         );
@@ -1060,12 +1061,12 @@ class Amox_Grid extends Group_Control_Query
 					<?php $this->render_date();?>
 					<?php if (_is_upk_pro_activated()):
             if ('yes' === $settings['show_reading_time']): ?>
-                    <div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+                    <div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
                         <?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) );?>
                     </div>
                     <?php endif;?>
 					<?php endif;?>
-					<div data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+					<div data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 						<?php $this->render_comments($post_id);?>
 					</div>
 				</div>

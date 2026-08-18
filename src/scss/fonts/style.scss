@@ -3,10 +3,10 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?gor8op') format('woff2'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?gor8op') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?gor8op') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?gor8op##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?x4ar4u') format('woff2'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?x4ar4u') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?x4ar4u') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?x4ar4u##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,6 +27,61 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.upk-icon-post-block-modern {
+  &:before {
+    content: $upk-icon-post-block-modern; 
+  }
+}
+.upk-icon-post-block {
+  &:before {
+    content: $upk-icon-post-block; 
+  }
+}
+.upk-icon-post-card {
+  &:before {
+    content: $upk-icon-post-card; 
+  }
+}
+.upk-icon-post-carousel {
+  &:before {
+    content: $upk-icon-post-carousel; 
+  }
+}
+.upk-icon-post-gallery {
+  &:before {
+    content: $upk-icon-post-gallery; 
+  }
+}
+.upk-icon-post-grid-tab {
+  &:before {
+    content: $upk-icon-post-grid-tab; 
+  }
+}
+.upk-icon-post-grid {
+  &:before {
+    content: $upk-icon-post-grid; 
+  }
+}
+.upk-icon-post-list {
+  &:before {
+    content: $upk-icon-post-list; 
+  }
+}
+.upk-icon-post-slider {
+  &:before {
+    content: $upk-icon-post-slider; 
+  }
+}
+.upk-icon-post-timeline {
+  &:before {
+    content: $upk-icon-post-timeline; 
+  }
+}
+.upk-icon-single-post {
+  &:before {
+    content: $upk-icon-single-post; 
+  }
+}
 .upk-icon-dynamic-carousel {
   &:before {
     content: $upk-icon-dynamic-carousel; 

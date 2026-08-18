@@ -185,6 +185,7 @@ class Category_Carousel extends Module_Base {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'    => 'primary_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['custom'],
 				'default' => 'medium',
 			]
@@ -375,7 +376,7 @@ class Category_Carousel extends Module_Base {
 				'label'       => esc_html__('Glassmorphism', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::SWITCHER,
 				// translators: %1s: Opening anchor tag with link to MDN backdrop-filter documentation, %2s: Closing anchor tag
-				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
+				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1$s look here %2$s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
 				'default'     => 'yes',
 				'condition' => [
 					'skin_layout' => [
@@ -726,6 +727,7 @@ class Category_Carousel extends Module_Base {
 			[
 				'name'     => 'category_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['line_height'],
 				'selector' => '{{WRAPPER}} .upk-category-carousel .upk-item .upk-content .title',
 			]
@@ -896,7 +898,7 @@ class Category_Carousel extends Module_Base {
 		}
 
 ?>
-		<img class="upk-category-carousel-img" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+		<img class="upk-category-carousel-img" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
 	<?php
 	}
 
@@ -924,6 +926,7 @@ class Category_Carousel extends Module_Base {
 								'orderby'    => $settings["orderby"],
 								'order'      => $settings["order"],
 								// 'include'    => explode(',', esc_attr($settings["include"])),
+								// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 								'exclude'    => explode(',', esc_attr($settings["exclude"])),
 								'parent'     => $settings["parent"],
 								'hide_empty' => 0,

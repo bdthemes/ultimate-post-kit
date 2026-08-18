@@ -291,9 +291,12 @@ class News_Ticker extends Group_Control_Query {
 		$this->add_control(
 			'pause_on_hover',
 			[
-				'label'   => esc_html__( 'Pause on Hover', 'ultimate-post-kit' ),
-				'type'    => Controls_Manager::SWITCHER,
-				'default' => 'yes',
+				'label'     => esc_html__( 'Pause on Hover', 'ultimate-post-kit' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'default'   => 'yes',
+				'condition' => [
+					'autoplay' => 'yes',
+				],
 			]
 		);
 
@@ -616,7 +619,7 @@ class News_Ticker extends Group_Control_Query {
 		
 		?>
 
-		<span class="upk-news-ticker-date bdt-margin-small-right" title="<?php esc_html_e( 'Published on:', 'ultimate-post-kit' ); ?> <?php echo get_the_date(); ?>">
+		<span class="upk-news-ticker-date bdt-margin-small-right" title="<?php esc_attr_e( 'Published on:', 'ultimate-post-kit' ); ?> <?php echo esc_attr( get_the_date() ); ?>">
 			<?php if ('yes' == $settings['date_reverse']) : ?>
 				<span class="upk-news-ticker-date-day"><?php echo wp_kses_post( $news_day ); ?></span>
 				<span class="upk-news-ticker-date-sep">/</span>
@@ -642,7 +645,7 @@ class News_Ticker extends Group_Control_Query {
 		
 		?>
 
-		<span class="upk-news-ticker-time bdt-margin-small-right" title="<?php esc_html_e( 'Published on:', 'ultimate-post-kit' ); ?> <?php echo get_the_date(); ?> <?php echo esc_attr( get_the_time() ); ?>">
+		<span class="upk-news-ticker-time bdt-margin-small-right" title="<?php esc_attr_e( 'Published on:', 'ultimate-post-kit' ); ?> <?php echo esc_attr( get_the_date() ); ?> <?php echo esc_attr( get_the_time() ); ?>">
 			<span class="bdt-text-uppercase"><?php echo wp_kses_post( $news_hour ); ?></span>
 			<span>:</span>
 		</span>

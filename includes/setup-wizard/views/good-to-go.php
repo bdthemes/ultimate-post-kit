@@ -9,6 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- template partial included within a method; variables are method-scoped, not global.
+
 $templates_path = BDTUPK_INC_PATH . 'setup-wizard/assets/data.json';
 $templates      = json_decode( file_get_contents( $templates_path ), true );
 
@@ -37,7 +39,7 @@ $templates      = json_decode( file_get_contents( $templates_path ), true );
                 }
                 $extension = strtolower($extension);
             ?>
-                <div class="choose-template <?php echo $extension ?> <?php echo $extension =='zip' ? 'bdt-upk-import-temp-zip':'bdt-upk-import-temp-json' ?>" data-import-url="<?php echo esc_url( $importUrl ); ?>">
+                <div class="choose-template <?php echo esc_attr( $extension ) ?> <?php echo $extension =='zip' ? 'bdt-upk-import-temp-zip':'bdt-upk-import-temp-json' ?>" data-import-url="<?php echo esc_url( $importUrl ); ?>">
                     <div class="template-image">
                         <img src="<?php echo esc_url( $thumbnailUrl ); ?>" alt="<?php echo esc_attr( $template['title'] ); ?>">
                         <div class="template-actions">
@@ -59,7 +61,7 @@ $templates      = json_decode( file_get_contents( $templates_path ), true );
         <h3><?php esc_html_e( 'Helpful Resources', 'ultimate-post-kit' ); ?></h3>
         
         <div class="bdt-resources-grid">
-            <a href="https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/" target="_blank" class="bdt-resource-item">
+            <a href="https://bdthemes.com/knowledge-base/ultimate-post-kit/" target="_blank" class="bdt-resource-item">
                 <div class="resource-icon">
                     <i class="dashicons dashicons-book"></i>
                 </div>

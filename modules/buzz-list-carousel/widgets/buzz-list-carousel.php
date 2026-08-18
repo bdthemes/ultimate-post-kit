@@ -114,6 +114,7 @@ class Buzz_List_Carousel extends Group_Control_Query {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'    => 'primary_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['custom'],
 				'default' => 'medium',
 			]
@@ -903,7 +904,7 @@ class Buzz_List_Carousel extends Group_Control_Query {
 		<div class="upk-author-wrap">
 			<span class="upk-by"><?php echo esc_html_x('by', 'Frontend', 'ultimate-post-kit'); ?></span>
 			<a class="upk-author-name" href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
-				<?php echo esc_html( esc_html( get_the_author() ) ); ?>
+				<?php echo esc_html( get_the_author() ); ?>
 			</a>
 		</div>
 	<?php
@@ -950,7 +951,7 @@ class Buzz_List_Carousel extends Group_Control_Query {
 								<?php $this->render_image(get_post_thumbnail_id($post_id), $image_size); ?>
 							</div>
 							<div class="upk-content">
-								<div class="upk-count"><?php printf("%2d", $slide_index); ?></div>
+								<div class="upk-count"><?php printf("%2d", esc_attr($slide_index)); ?></div>
 								<div class="upk-inner">
 									<?php $this->render_category(); ?>
 									<?php $this->render_title(substr($this->get_name(), 4)); ?>
@@ -961,21 +962,21 @@ class Buzz_List_Carousel extends Group_Control_Query {
 											<?php endif; ?>
 
 											<?php if ($settings['show_date']) : ?>
-											<div data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+											<div data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 												<?php $this->render_date(); ?>
 											</div>
 											<?php endif; ?>
 
 											<?php if (_is_upk_pro_activated()) :
 												if ('yes' === $settings['show_reading_time']) : ?>
-													<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+													<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 													<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 													</div>
 												<?php endif; ?>
 											<?php endif; ?>
 
 											<?php if ($settings['show_comments']) : ?>
-												<div data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+												<div data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 													<?php $this->render_comments($post_id); ?>
 												</div>
 											<?php endif; ?>

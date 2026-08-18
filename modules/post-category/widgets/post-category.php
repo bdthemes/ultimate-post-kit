@@ -174,6 +174,7 @@ class Post_Category extends Module_Base {
 			Group_Control_Image_Size::get_type(),
 			[ 
 				'name'      => 'cat_image_size',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude'   => [ 'custom' ],
 				'include'   => [],
 				'default'   => 'thumbnail',
@@ -827,13 +828,17 @@ class Post_Category extends Module_Base {
 	public function render() {
 		$settings       = $this->get_settings_for_display();
 		$image_settings = ultimate_post_kit_option( 'category_image', 'ultimate_post_kit_other_settings', 'off' );
+		$taxonomy       = ! empty( $settings['taxonomy'] ) ? $settings['taxonomy'] : 'category';
+		$taxonomy_object = get_taxonomy( $taxonomy );
+		$taxonomy_label  = $taxonomy_object ? $taxonomy_object->labels->name : ucwords( str_replace( [ '-', '_' ], ' ', $taxonomy ) );
 		$orderby        = $settings['orderby'];
 		$categories     = get_categories(
 			[ 
-				'taxonomy'   => $settings["taxonomy"],
+				'taxonomy'   => $taxonomy,
 				'orderby'    => $orderby === 'rand' ? 'name' : $orderby,
 				'order'      => $settings["order"],
 				'hide_empty' => 0,
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude'    => explode( ',', esc_attr( $settings["exclude"] ) ),
 				'parent'     => $settings["parent"],
 			]
@@ -868,7 +873,8 @@ class Post_Category extends Module_Base {
 				$total_category = count( $categories );
 
 				// re-creating array for the multiple colors
-				$jCount = count( $multiple_bg );
+				$multiple_bg_create = [];
+				$jCount             = count( $multiple_bg );
 				$j      = 0;
 				for ( $i = 0; $i < $total_category; $i++ ) {
 					if ( $j == $jCount ) {
@@ -891,7 +897,7 @@ class Post_Category extends Module_Base {
 
 					if ( ! empty( $category_image_id ) ) {
 						$category_url   = wp_get_attachment_image_url( $category_image_id, $settings['cat_image_size_size'] );
-						$category_image = '<div class="upk-category-image"><img src="' . $category_url . '" alt=""></div>';
+						$category_image = '<div class="upk-category-image"><img src="' . esc_url( $category_url ) . '" alt="' . esc_attr( $cat->cat_name ) . '"></div>';
 					} else {
 						$category_image = '';
 					}
@@ -922,7 +928,7 @@ class Post_Category extends Module_Base {
 
 							<?php if ( ! empty( $cat->category_description ) and $settings['show_text'] == 'yes' ) : ?>
 								<span class="upk-category-text">
-									<?php echo wp_trim_words( $cat->category_description, $settings['text_length'] ); ?>
+									<?php echo esc_html( wp_trim_words( $cat->category_description, $settings['text_length'] ) ); ?>
 								</span>
 							<?php endif; ?>
 
@@ -956,7 +962,11 @@ class Post_Category extends Module_Base {
 			<?php
 		else :
 
-			echo '<div class="upk-alert">' . esc_html__( 'Category Not Found!', 'ultimate-post-kit' ) . '</div>';
+			echo '<div class="upk-alert">' . esc_html( sprintf(
+				/* translators: %s: taxonomy label */
+				__( '%s Categories Not Found!', 'ultimate-post-kit' ),
+				$taxonomy_label
+			) ) . '</div>';
 
 		endif;
 	}

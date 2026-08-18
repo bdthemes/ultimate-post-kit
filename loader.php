@@ -89,6 +89,7 @@ class Ultimate_Post_Kit_Loader {
 		if ( is_null( self::$_instance ) ) {
 			self::$_instance = new self();
 		}
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- established hook name relied on across the plugin family; renaming would break integration.
 		do_action( 'bdthemes_ultimate_post_kit/init' );
 		return self::$_instance;
 	}
@@ -184,11 +185,11 @@ class Ultimate_Post_Kit_Loader {
 
 		wp_register_script( 'goodshare', BDTUPK_ASSETS_URL . 'vendor/js/goodshare.min.js', [ 'jquery' ], '4.1.2', true );
 		wp_register_script( 'scrolline', BDTUPK_ASSETS_URL . 'vendor/js/jquery.scrolline.min.js', [ 'jquery' ], '4.1.2', true );
-		wp_register_script( 'news-ticker-js', BDTUPK_ASSETS_URL . 'vendor/js/newsticker.min.js', [ 'jquery' ], '', true );
+		wp_register_script( 'news-ticker-js', BDTUPK_ASSETS_URL . 'vendor/js/newsticker.min.js', [ 'jquery' ], BDTUPK_VER, true );
 		wp_register_script( 'fslightbox', BDTUPK_ASSETS_URL . 'vendor/js/fslightbox.min.js', [], '3.4.1', true );
-		wp_register_script( 'upk-animations', BDTUPK_ASSETS_URL . 'js/extensions/upk-animations.min.js', [ 'jquery' ], '', true );
+		wp_register_script( 'upk-animations', BDTUPK_ASSETS_URL . 'js/extensions/upk-animations.min.js', [ 'jquery' ], BDTUPK_VER, true );
 
-		wp_register_script( 'upk-ajax-loadmore', BDTUPK_ASSETS_URL . 'js/extensions/upk-ajax-loadmore.min.js', [ 'jquery' ], '', true );
+		wp_register_script( 'upk-ajax-loadmore', BDTUPK_ASSETS_URL . 'js/extensions/upk-ajax-loadmore.min.js', [ 'jquery' ], BDTUPK_VER, true );
 
 		wp_register_script( 'upk-all-scripts', BDTUPK_ASSETS_URL . 'js/upk-all-scripts.min.js', [ 
 			'jquery',
@@ -348,7 +349,6 @@ class Ultimate_Post_Kit_Loader {
 		if ( ! defined( 'BDTUPK_CH' ) && is_admin() ) {
 			// Notice class
 			require_once BDTUPK_ADMIN_PATH . 'admin-biggopti.php';
-			require_once BDTUPK_ADMIN_PATH . 'admin-api-biggopti.php';
 			require_once BDTUPK_ADMIN_PATH . 'admin.php';
 
 			// Load admin class for admin related content process

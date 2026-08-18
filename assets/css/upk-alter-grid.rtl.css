@@ -74,6 +74,7 @@
   background-clip: padding-box;
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
+  white-space: nowrap;
 }
 .upk-alter-grid .upk-category a:hover {
   color: #EF233C;

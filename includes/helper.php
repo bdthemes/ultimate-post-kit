@@ -3,6 +3,10 @@
 use UltimatePostKit\Ultimate_Post_Kit_Loader;
 use Elementor\Plugin;
 
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
 /**
  * You can easily add white label branding for for extended license or multi site license.
  * Don't try for regular license otherwise your license will be invalid.
@@ -166,14 +170,30 @@ function ultimate_post_kit_get_taxonomies() {
 	$taxonomies = get_taxonomies( $args, $tax_output );
 	if ( $taxonomies ) {
 		foreach ( $taxonomies as $taxonomy ) {
-			$post_type_obj           = get_post_type_object( $taxonomy->object_type[0] );
-			$output[ $taxonomy->name ] = ( $taxonomy->label ? $taxonomy->label : '' ) . ' (' . isset( $post_type_obj->label ) . ')';
+			$taxonomy_label = $taxonomy->label ? $taxonomy->label : $taxonomy->name;
+			$term_count     = wp_count_terms(
+				[
+					'taxonomy'   => $taxonomy->name,
+					'hide_empty' => false,
+				]
+			);
+
+			if ( is_wp_error( $term_count ) ) {
+				$term_count = 0;
+			}
+
+			$output[ $taxonomy->name ] = sprintf(
+				'%s (%d)',
+				$taxonomy_label,
+				(int) $term_count
+			);
 		}
 	}
 
 	return $output;
 }
 
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
 function upk_get_category( $post_type ) {
 	switch ( $post_type ) {
 		case 'campaign':
@@ -336,6 +356,7 @@ function ultimate_post_kit_allow_tags( ?string $tag = null ) {
 /**
  * HexColor
  */
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
 function strToHex( $string, $steps = -10 ) {
 
 	if ( empty( $string ) ) {
@@ -360,6 +381,50 @@ function strToHex( $string, $steps = -10 ) {
 	return strToUpper( $output );
 }
 
+/**
+ * Get the current paged number for a custom WP_Query instance.
+ *
+ * @param \WP_Query $wp_query Query object.
+ * @return int Current page number.
+ */
+function ultimate_post_kit_get_query_paged( $wp_query ) {
+	if ( ! $wp_query instanceof \WP_Query ) {
+		return 1;
+	}
+
+	$paged_from_query = isset( $wp_query->query_vars['paged'] ) ? (int) $wp_query->query_vars['paged'] : 0;
+	$page_from_query  = isset( $wp_query->query_vars['page'] ) ? (int) $wp_query->query_vars['page'] : 0;
+
+	if ( is_front_page() ) {
+		$paged = max( get_query_var( 'page' ), get_query_var( 'paged' ), $paged_from_query, $page_from_query );
+	} else {
+		$paged = max( get_query_var( 'paged' ), $paged_from_query );
+	}
+
+	return max( 1, (int) $paged );
+}
+
+/**
+ * Get item counter offset for paginated query loops.
+ *
+ * @param \WP_Query $wp_query Query object.
+ * @return int Zero-based offset for the first item on the current page.
+ */
+function ultimate_post_kit_get_query_counter_offset( $wp_query ) {
+	if ( ! $wp_query instanceof \WP_Query ) {
+		return 0;
+	}
+
+	$paged          = ultimate_post_kit_get_query_paged( $wp_query );
+	$posts_per_page = (int) $wp_query->get( 'posts_per_page' );
+
+	if ( 1 >= $paged || 0 >= $posts_per_page ) {
+		return 0;
+	}
+
+	return ( $paged - 1 ) * $posts_per_page;
+}
+
 function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 
 	/** Stop execution if there's only 1 page */
@@ -367,22 +432,8 @@ function ultimate_post_kit_post_pagination( $wp_query, $widget_id = '' ) {
 		return;
 	}
 
-	// Get current page from multiple sources for reliability
-	$paged_from_query = isset( $wp_query->query_vars['paged'] ) ? $wp_query->query_vars['paged'] : 0;
-	$page_from_query = isset( $wp_query->query_vars['page'] ) ? $wp_query->query_vars['page'] : 0;
-	
-	if ( is_front_page() ) {
-		// On front page, WordPress can use either 'page' or 'paged' depending on permalink structure
-		$paged = max( get_query_var( 'page' ), get_query_var( 'paged' ), $paged_from_query, $page_from_query );
-		$paged = $paged ? $paged : 1;
-		$page_var = 'page';
-	} else {
-		$paged = max( get_query_var( 'paged' ), $paged_from_query );
-		$paged = $paged ? $paged : 1;
-		$page_var = 'paged';
-	}
-	
-	$max = intval( $wp_query->max_num_pages );
+	$paged = ultimate_post_kit_get_query_paged( $wp_query );
+	$max   = (int) $wp_query->max_num_pages;
 
 	/** Add current page to the array */
 	if ( $paged >= 1 ) {
@@ -853,11 +904,22 @@ function ultimate_post_kit_custom_excerpt( $limit = 25, $strip_shortcode = false
 	return wpautop( $output );
 }
 
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
 function get_user_role( $id ) {
-
 	$user = new WP_User( $id );
+	$role = array_shift( $user->roles );
 
-	return array_shift( $user->roles );
+	if ( empty( $role ) ) {
+		return '';
+	}
+
+	$wp_roles = wp_roles();
+
+	if ( ! isset( $wp_roles->roles[ $role ]['name'] ) ) {
+		return '';
+	}
+
+	return translate_user_role( $wp_roles->roles[ $role ]['name'] );
 }
 
 
@@ -872,7 +934,7 @@ function get_user_role( $id ) {
 
 if ( _is_upk_pro_activated() ) {
 	function ultimate_post_kit_reading_time( $content, $avg_reading_speed, $hide_seconds = 'no', $hide_minutes = 'no' ) {
-		$total_word      = str_word_count( strip_tags( $content ) );
+		$total_word      = str_word_count( wp_strip_all_tags( $content ) );
 		$reading_minute  = floor( $total_word / $avg_reading_speed );
 		$reading_seconds = floor( $total_word % $avg_reading_speed / ( $avg_reading_speed / 60 ) );
 		
@@ -924,6 +986,7 @@ if ( _is_upk_pro_activated() ) {
  * License Validation
  */
 if ( ! function_exists( 'upk_license_validation' ) ) {
+	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
 	function upk_license_validation() {
 
 		if ( function_exists( '_is_upk_pro_activated' ) && false === _is_upk_pro_activated() ) {
@@ -940,89 +1003,3 @@ if ( ! function_exists( 'upk_license_validation' ) ) {
 	}
 }
 
-/**
- * Inject custom CSS and JS into the header
- */
-if ( ! function_exists( 'upk_inject_header_custom_code' ) ) {
-	function upk_inject_header_custom_code() {
-		if ( upk_is_page_excluded() ) {
-			return;
-		}
-
-		$custom_css = get_option( 'upk_custom_css', '' );
-		$custom_js = get_option( 'upk_custom_js', '' );
-
-		if ( ! empty( $custom_css ) ) {
-			echo "\n<!-- Ultimate Post Kit Custom Header CSS -->\n";
-			echo '<style type="text/css">' . "\n";
-			echo $custom_css . "\n";
-			echo '</style>' . "\n";
-		}
-
-		if ( ! empty( $custom_js ) ) {
-			echo "\n<!-- Ultimate Post Kit Custom Header JS -->\n";
-			echo '<script type="text/javascript">' . "\n";
-			echo $custom_js . "\n";
-			echo '</script>' . "\n";
-		}
-	}
-}
-
-/**
- * Inject custom CSS and JS into the footer
- */
-if ( ! function_exists( 'upk_inject_footer_custom_code' ) ) {
-	function upk_inject_footer_custom_code() {
-		if ( upk_is_page_excluded() ) {
-			return;
-		}
-
-		$custom_css_2 = get_option( 'upk_custom_css_2', '' );
-		$custom_js_2 = get_option( 'upk_custom_js_2', '' );
-
-		if ( ! empty( $custom_css_2 ) ) {
-			echo "\n<!-- Ultimate Post Kit Custom Footer CSS -->\n";
-			echo '<style type="text/css">' . "\n";
-			echo $custom_css_2 . "\n";
-			echo '</style>' . "\n";
-		}
-
-		if ( ! empty( $custom_js_2 ) ) {
-			echo "\n<!-- Ultimate Post Kit Custom Footer JS -->\n";
-			echo '<script type="text/javascript">' . "\n";
-			echo $custom_js_2 . "\n";
-			echo '</script>' . "\n";
-		}
-	}
-}
-
-/**
- * Check if current page should be excluded from custom code injection
- */
-if ( ! function_exists( 'upk_is_page_excluded' ) ) {
-	function upk_is_page_excluded() {
-		$excluded_pages = get_option( 'upk_excluded_pages', array() );
-		
-		if ( empty( $excluded_pages ) || ! is_array( $excluded_pages ) ) {
-			return false;
-		}
-
-		$current_id = 0;
-		
-		if ( is_home() && ! is_front_page() ) {
-			$current_id = get_option( 'page_for_posts' );
-		} elseif ( is_front_page() ) {
-			$current_id = get_option( 'page_on_front' );
-		} elseif ( is_singular() ) {
-			$current_id = get_queried_object_id();
-		} elseif ( is_category() || is_tag() || is_tax() ) {
-			return false;
-		} elseif ( is_author() ) {
-			return false;
-		} elseif ( is_archive() ) {
-			return false;
-		}
-
-		return in_array( $current_id, $excluded_pages );
-	}
-}

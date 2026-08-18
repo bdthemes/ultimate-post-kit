@@ -159,6 +159,7 @@ class Skide_Slider extends Group_Control_Query {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'      => 'primary_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude'   => ['custom'],
 				'default'   => 'full',
 			]
@@ -321,8 +322,11 @@ class Skide_Slider extends Group_Control_Query {
 		$this->add_control(
 			'pauseonhover',
 			[
-				'label' => esc_html__('Pause on Hover', 'ultimate-post-kit'),
-				'type'  => Controls_Manager::SWITCHER,
+				'label' 	=> esc_html__('Pause on Hover', 'ultimate-post-kit'),
+				'type'  	=> Controls_Manager::SWITCHER,
+				'condition' => [
+					'autoplay' => 'yes',
+				],
 			]
 		);
 
@@ -916,7 +920,8 @@ class Skide_Slider extends Group_Control_Query {
 			return;
 		}
 
-		printf('<%1$s class="upk-title"><a href="%2$s" title="%3$s">%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), esc_url( get_permalink() ), esc_html( get_the_title() ));
+		$title = get_the_title();
+		printf('<%1$s class="upk-title"><a href="%2$s" title="%4$s">%3$s</a></%1$s>', esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), esc_url( get_permalink() ), esc_html( $title ), esc_attr( $title ));
 	}
 
 	public function render_excerpt($excerpt_length) {
@@ -931,7 +936,7 @@ class Skide_Slider extends Group_Control_Query {
 			if (has_excerpt()) {
 				the_excerpt();
 			} else {
-				echo ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode);
+				echo wp_kses_post( ultimate_post_kit_custom_excerpt($excerpt_length, $strip_shortcode) );
 			}
 			?>
 		</div>
@@ -946,7 +951,7 @@ class Skide_Slider extends Group_Control_Query {
 		}
 	?>
 		<div class="upk-category" data-swiper-parallax="-300">
-			<?php echo get_the_category_list(' '); ?>
+			<?php echo wp_kses_post( get_the_category_list(' ') ); ?>
 		</div>
 	<?php
 	}
@@ -1101,14 +1106,14 @@ class Skide_Slider extends Group_Control_Query {
 								<?php $this->render_date(); ?>
 
 								<?php if ($settings['show_comments']) : ?>
-									<div data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+									<div data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 										<?php $this->render_comments($post_id); ?>
 									</div>
 								<?php endif; ?>
 
 								<?php if (_is_upk_pro_activated()) :
 									if ('yes' === $settings['show_reading_time']) : ?>
-										<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+										<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 											<?php echo esc_html( ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no') ); ?>
 										</div>
 									<?php endif; ?>
@@ -1190,6 +1195,7 @@ class Skide_Slider extends Group_Control_Query {
 			</div>
 			<?php
 				if (_is_upk_pro_activated()) {
+					// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- established hook name relied on across the plugin family; renaming would break integration.
 					apply_filters('show_top_stories', $this);
 				}
 			?>

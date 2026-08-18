@@ -1,15 +1,15 @@
-=== Ultimate Post Kit Addons for Elementor ===
-Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik, tauhidalam, syedfarhanreza, shmusuf, arafatakashakku, shaikatazim, shamim496
+=== Ultimate Post Kit ===
+Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.1.8
-Requires at least: 5.0.0
-Requires PHP: 7.0.0
-Tested up to: 6.9.4
+Stable tag: 4.5.0
+Requires at least: 6.8
+Requires PHP: 7.0
+Tested up to: 7.0
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Elementor requires at least: 3.28
-Elementor tested up to: 4.0.6
+Elementor requires at least: 4.0.0
+Elementor tested up to: 4.2.2
 
 Build your blogs and news sites with a feature-rich Elementor addon, offering 100+ elements for engaging layouts.
 
@@ -22,14 +22,99 @@ Built with clean, optimized code, it’s fully compatible with the latest WordPr
 Ultimate Post Kit also supports RTL and multiple languages, making it ready for a global audience.
 
 ###USEFUL LINKS 👇###
-**[Live Demo](https://postkit.pro/demo/)** | **[Documentation](https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/)** | **[Video Tutorial](https://www.youtube.com/watch?v=nmMajegrTiM&list=PLP0S85GEw7DNBnZCb4RtJzlf38GCJ7z1b)** | **[Upgrade Pro](https://postkit.pro/pricing/)** | **[Need Support?](https://bdthemes.com/support/)**
+**[Live Demo](https://postkit.pro/demo/)** | **[Documentation](https://bdthemes.com/knowledge-base/ultimate-post-kit/)** | **[Video Tutorial](https://www.youtube.com/watch?v=nmMajegrTiM&list=PLP0S85GEw7DNBnZCb4RtJzlf38GCJ7z1b)** | **[Upgrade Pro](https://postkit.pro/pricing/)** | **[Need Support?](https://bdthemes.com/support/)**
 
 https://www.youtube.com/watch?v=er0uGv1yjig
 
 **Introducing Ultimate Post Kit Elementor Addon**
 
+== Installation ==
 
-== Free Widgets for Elementor 🔥 ==
+This section describes how to install the plugin and get it working.
+
+e.g.
+
+1. Upload `ultimate-post-kit` folder to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Start using it by going to the Elementor editor.
+
+You can also watch this video for more details:
+
+https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
+
+= External services =
+
+This plugin connects to the following external services. Data is only sent under the stated conditions.
+
+1. **BdThemes Product Feed** (`https://dashboard.bdthemes.io`) — shows BdThemes news/updates in the plugin's WordPress dashboard widget. The product category is requested when an administrator opens the dashboard; no personal data is sent. Provided by BdThemes — [Terms](https://bdthemes.com/terms-conditions/), [Privacy](https://bdthemes.com/privacy-policy/).
+
+2. **Mailchimp API** (`https://<dc>.api.mailchimp.com`) — used only by the Newsletter widget to subscribe a visitor to the site owner's configured Mailchimp list. The subscriber's email address (and optional name) is sent to Mailchimp when the visitor submits the newsletter form. The Mailchimp API key/list are configured by the site owner. Provided by Mailchimp — [Terms](https://mailchimp.com/legal/terms/), [Privacy](https://www.intuit.com/privacy/statement/).
+
+3. **Social share count APIs** — the Share Buttons / social-counter widgets, when the count option is enabled, request public share counts from the relevant network for the current page URL: Facebook (`graph.facebook.com`), Pinterest (`api.pinterest.com`), Buffer (`api.bufferapp.com`), Tumblr (`api.tumblr.com`), WhatsApp (`api.whatsapp.com`), and Mail.ru (`appsmail.ru`). Only the page URL is sent, when such a widget is rendered. Each service is governed by its own terms/privacy policy (e.g. [Facebook](https://www.facebook.com/policies), [Pinterest](https://policy.pinterest.com/en/privacy-policy), [Buffer](https://buffer.com/legal/privacy), [Tumblr](https://www.tumblr.com/policy/en/privacy), [WhatsApp](https://www.whatsapp.com/legal/privacy-policy), [Mail.ru](https://help.mail.ru/legal/terms/)).
+
+4. **Vimeo oEmbed** (`https://vimeo.com/api/oembed.json`) — used by video widgets to fetch the dimensions/thumbnail of a Vimeo video the site owner embedded. The public Vimeo URL is sent to Vimeo when such content is rendered. Provided by Vimeo — [Terms](https://vimeo.com/terms), [Privacy](https://vimeo.com/privacy).
+
+= Source Code and Build Process =
+
+This plugin is not obfuscated. The complete, human-readable source for every minified/compiled asset is bundled in the `src/` directory (`src/js/`, `src/controls/`, and the LESS/CSS sources). The compiled files in `assets/` are generated with [Grunt](https://gruntjs.com/):
+
+1. Install dependencies: `npm install`
+2. Run the build: `npm run build` (or `npx grunt`)
+
+The build configuration is in `gruntfile.js` and `package.json` (both included). Bundled third-party libraries (bdtUIkit, Swiper, Chart.js, etc.) keep their upstream license/version header comments.
+
+== Frequently Asked Questions ==
+
+### Does your plugin support all WordPress themes?
+
+- Yes, the Ultimate Post kit is compatible and supports all WordPress themes including popular free and premium Elementor themes.
+
+
+### What do I need to use the plugin?
+
+- Just install Ultimate Post Kit along with Elementor page builder; that’s all. Our plugin will provide you with all essential widgets to help you create your blogging site in minutes.
+
+### Do you provide tutorials on the plugin?
+
+- Of course, we provide detailed documentation and video to support our users with thorough guidelines for our plugins and widgets.
+
+### Does your plugin offer responsive blog post layouts?
+
+- Every widget by the Ultimate Post Kit plugin offers greater flexibility and responsiveness to adapt to any size of the screen regardless of PC, tablet or smartphone.
+
+### How to show featured posts on my website?
+
+- Drag and drop post widgets among the 65 selective widgets from Ultimate Post Kit to instantly fetch your WordPress post data and display them with our post layouts.
+
+### Does your plugin clash with other 3rd party plugins?
+
+- Absolutely not. The Ultimate Post Kit plugin is developed using industry-standard green codes, so it doesn’t clash with other 3rd party plugins or themes.
+
+### Can I show related posts using the Ultimate Post Kit?
+
+- You can display related posts, featured posts or custom-related posts using our plugin. It’s possible to achieve this with all post-type grids, carousels, lists and layouts.
+
+### Can I manually display my post?
+
+- For manual post-selection, our plugin provides a selective query system to display or remove specific post categories, individual posts or posts by authors.
+
+### Can I stack multiple widgets on a single page?
+
+- There is no problem with stacking multiple widgets on a single page. In fact, it is possible to design the whole blogging site by utilizing 65+ widgets from our plugin.
+
+### How do I get a solution for any issue?
+
+- Just contact us and we will follow up within 24 hours with our expert technical team.
+
+### How should I get updates and support
+
+- When we release a update version, then automatically you will get a notification on WordPress plugin manager, so you can update from there. Thereafter you want to update manually just knock us, we will send you update version via mail. You will get our ultimate post kit related all [knowledge base](https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/) from our [bdthemes](https://bdthemes.com/knowledge-base/) website.
+
+###  How can I report security bugs?
+
+-  You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/9e5fb868-7544-4586-b365-636dc6104737)
+
+= Free Widgets for Elementor 🔥 =
 
 = Grid 🧊 =
 
@@ -96,18 +181,18 @@ https://www.youtube.com/watch?v=er0uGv1yjig
 * [Social Count - Static](https://postkit.pro/demo/static-social-count/) - Display static social media follower counts attractively, boosting your brand's credibility.  
 * [Tag Cloud](https://postkit.pro/demo/tag-cloud/) - Stylish tag cloud for showcasing popular tags in your content, encouraging user exploration and engagement.  
 
-== Free Extensions 🔥 ==
+= Free Extensions 🔥 =
 
 * [Animations](https://postkit.pro/demo/alter-grid/) - Add modern animations for an interactive user experience without extra cost.  
 
-== Free Features 🔥 ==
+= Free Features 🔥 =
 
 * [Live Copy or Paste](https://www.elementpack.pro/knowledge-base/how-to-use-live-copy-option/) - Copy and paste designs effortlessly across websites for consistent branding.  
 * [Duplicator](https://www.elementpack.pro/knowledge-base/how-to-use-element-pack-duplicator/) - Duplicate widgets and sections for faster editing and layout replication.  
 
 More widgets and extensions are coming soon...
 
-== Elementor Pro Widgets 🔥 ==
+= Elementor Pro Widgets 🔥 =
 
 = Grid 🧊 =
 
@@ -178,39 +263,38 @@ More widgets and extensions are coming soon...
 * [Remote Pagination](https://postkit.pro/demo/remote-pagination/) - Display the number of posts left in the query with remote pagination for enhanced user interaction.
 * [Remote Thumbs](https://postkit.pro/demo/remote-thumbs/) - Link a thumb gallery to any slider to make it more interactive and visually appealing.
 
-== Pro Extensions 🔥 ==
+= Pro Extensions 🔥 =
 
 * [MultiColor Item](https://postkit.pro/demo/multicolor-item/) - Add multicolor elements for vibrant and attention-grabbing designs.  
 
-== Template Builder 🧊 ==
+= Template Builder 🧊 =
 
 * [Post Title](https://postkit.pro/archive/) - Customize and display post titles with advanced styling options, enhancing visibility.  
 * [Post Content](https://postkit.pro/archive/) - Flexible content block for displaying post details dynamically with full customization options.  
 * [Post Info](https://postkit.pro/archive/) - Highlight meta details like author, date and categories attractively to improve content engagement.  
 * [Post Featured Image](https://postkit.pro/archive/) - Display featured images with modern effects and responsive design, making them stand out visually.  
 
-== Template Shortcode 🌅 ==
+= Template Shortcode 🌅 =
 
 Now you can create shortcodes for templates created with the Ultimate Post Kit widgets with the Template Builder menu and display the template as it is inside any page builder. Works on Gutenberg, Divi, Oxygen, Beaver Builder etc.
 
 
 **[PURCHASE ULTIMATE POST KIT PRO FROM OUR WEBSITE]( https://postkit.pro/pricing/ )**
 
-
-== Common Issues and Solutions: 🐣 ==
+= Common Issues and Solutions: 🐣 =
 
 1. **Elementor editor fails to load**
 Ans. This is due to your server's PHP settings. You can increase the PHP memory limit from the wp-config.php file or php.ini file
 [View Documentation](https://bdthemes.com/fix-elementor-stuck-on-loading-screen-instantly/)
 
-== Need Help? ==
+= Need Help? =
 
 Is there any feature that you want to get in this plugin?
 Please use the suggest page to send us a message about the feature you think we should add to our products.
 Needs assistance to use this plugin?
 Feel free to [Contact us](https://bdthemes.com/support/) 💌 or check our widget Tutorials to learn how to use them efficiently.
 
-== Checkout our other Plugins 👑 ==
+= Checkout our other Plugins 👑 =
 
 Explore the best free addons for Elementor and Gutenberg to boost your site with advanced blocks, sliders and eCommerce tools.
 
@@ -246,27 +330,84 @@ Explore the best free addons for Elementor and Gutenberg to boost your site with
 
 Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor page builder-based products, informative blogs and documentation.
 
-
-== Installation ==
-
-This section describes how to install the plugin and get it working.
-
-e.g.
-
-1. Upload `ultimate-post-kit` folder to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Start using it by going to the Elementor editor.
-
-You can also watch this video for more details:
-
-https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
-
-
 == Changelog ==
 
-<<<<<<< Updated upstream
-=======
-= 4.1.XX [XXth June 2026] =
+= 4.5.X [XXth August 2026] =
+
+* Fixed: Plugin names and descriptions on the Other Plugins tab displayed raw HTML entity codes instead of dashes and ampersands
+* Fixed: Duplicate install requests were sent when the Other Plugins list reloaded
+* Fixed: Failed requests on the Other Plugins tab now report the actual error instead of a generic loading failure
+* Fixed: A malformed rating from the plugin catalog could render the wrong number of stars on the Other Plugins tab
+* Security: Escaped the remaining remote plugin values before rendering them on the Other Plugins tab
+* Improved: Activate links on the Other Plugins tab now encode the plugin path and nonce
+
+= 4.5.0 [14th August 2026] =
+
+* Compliance: Corrected "Requires at least" / "Tested up to" to major WordPress versions
+* Compliance: Documented external services (Mailchimp, social share counters, Vimeo, BdThemes feed) and the source/build process in the readme
+* Compliance: Removed the White Label and Custom CSS/JS features from the free plugin
+* Compliance: Removed the translation auto-update filter and unnecessary compressed/hidden files
+* Security: Added nonce verification to the public load-more AJAX handlers; hardened settings save, register_setting sanitization, request-input unslashing, and the feedback option writes
+* Improved: Dashboard now exposes a neutral extension point so add-ons can register their own tabs
+
+= 4.2.5 [13th August 2026] =
+
+* Security: Added a safety-net module that blocks the known malicious host, scrubs payloads from the notification feed, and detects/cleans artefacts left by the notification-feed compromise
+* Security: Clamped the load-more page size to prevent an unauthenticated denial-of-service request
+* Security: Validated the newsletter subscription email address on the server
+* Security: Restricted settings save to the plugin's own options and sanitized stored values
+* Security: Escaped remote plugin data before rendering it in the setup wizard
+* Security: Removed the unauthenticated registration and added a capability check to the plugin catalog request
+* Security: Added an object-injection guard to the template import unserialize call
+
+= 4.2.4 [12th August 2026] =
+
+* Updated: System improved
+
+= 4.2.3 [11th August 2026] =
+
+* Added: Post widgets icon added
+
+= 4.2.2 [10th August 2026] =
+
+* Updated: Admin API Biggopti removed
+
+= 4.2.1 [8th August 2026] =
+
+* Fixed: Security issue where data returned by the promotions API could be injected as script into the WordPress admin area
+* Fixed: Promotion links and images are now restricted to http(s) and mailto addresses
+* Updated: Security improved
+
+= 4.2.0 [4th August 2026] =
+
+* Fixed: Author role label translation issue in author, elite grid, elite carousel, post accordion and paradox slider widgets
+* Fixed: Clock icon alignment issue with time text in the amox carousel widget
+* Fixed: Pagination arrow size control not working in the amox arid widget
+* Updated: Security improved
+
+= 4.1.18 [26th July 2026] =
+
+* Fixed: Output escaping issues in multiple widgets
+* Fixed: Pause on Hover control now only displays when Autoplay is enabled in slider, carousel, and news ticker widgets
+* Fixed: Resolved conditional logic mismatch in the timeline and snog slider widgets
+* Fixed: Title visibility issue in the recent comments widget
+* Fixed: Taxonomy dropdown now displays the correct term count in widget query controls
+* Fixed: The broken category design issue in the post accordion widget
+* Updated: Pholox Slider style controls reorganized into separate sections with correct conditional visibility for title, category, meta, and thumbs options
+
+= 4.1.17 [15th July 2026] =
+
+* Fixed: Pagination hover color not applying to previous/next arrow icons
+
+= 4.1.16 [6th July 2026] =
+
+* Fixed: CLS issue fixed in Alex Grid widget ( Thanks to Mit freundlichen Grüssen )
+
+= 4.1.15 [23rd June 2026] =
+
+* Fixed: Category text wrap issue fixed in Alter Grid widget ( Thanks to James Clarke )
+
+= 4.1.14 [21st June 2026] =
 
 * Fixed: Query offset leaking into other post widgets rendered later on the same page ( Thanks to James Brecher )
 
@@ -293,7 +434,6 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 * Updated: System improved
 
->>>>>>> Stashed changes
 = 4.1.8 [6th May 2026] =
 
 * Fixed: Replaced hard-coded strings with proper translation support
@@ -646,62 +786,9 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 Details [changelog here](https://feedback.bdthemes.com/announcements?category=category_nld48ndl)
 
-
 == Upgrade Notice ==
 
 - Click on update plugin and install the new update version of your plugin, simple.
-
-
-== Frequently Asked Questions ==
-
-### Does your plugin support all WordPress themes?
-
-- Yes, the Ultimate Post kit is compatible and supports all WordPress themes including popular free and premium Elementor themes.
-
-
-### What do I need to use the plugin?
-
-- Just install Ultimate Post Kit along with Elementor page builder; that’s all. Our plugin will provide you with all essential widgets to help you create your blogging site in minutes.
-
-### Do you provide tutorials on the plugin?
-
-- Of course, we provide detailed documentation and video to support our users with thorough guidelines for our plugins and widgets.
-
-### Does your plugin offer responsive blog post layouts?
-
-- Every widget by the Ultimate Post Kit plugin offers greater flexibility and responsiveness to adapt to any size of the screen regardless of PC, tablet or smartphone.
-
-### How to show featured posts on my website?
-
-- Drag and drop post widgets among the 65 selective widgets from Ultimate Post Kit to instantly fetch your WordPress post data and display them with our post layouts.
-
-### Does your plugin clash with other 3rd party plugins?
-
-- Absolutely not. The Ultimate Post Kit plugin is developed using industry-standard green codes, so it doesn’t clash with other 3rd party plugins or themes.
-
-### Can I show related posts using the Ultimate Post Kit?
-
-- You can display related posts, featured posts or custom-related posts using our plugin. It’s possible to achieve this with all post-type grids, carousels, lists and layouts.
-
-### Can I manually display my post?
-
-- For manual post-selection, our plugin provides a selective query system to display or remove specific post categories, individual posts or posts by authors.
-
-### Can I stack multiple widgets on a single page?
-
-- There is no problem with stacking multiple widgets on a single page. In fact, it is possible to design the whole blogging site by utilizing 65+ widgets from our plugin.
-
-### How do I get a solution for any issue?
-
-- Just contact us and we will follow up within 24 hours with our expert technical team.
-
-### How should I get updates and support
-
-- When we release a update version, then automatically you will get a notification on WordPress plugin manager, so you can update from there. Thereafter you want to update manually just knock us, we will send you update version via mail. You will get our ultimate post kit related all [knowledge base](https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/) from our [bdthemes](https://bdthemes.com/knowledge-base/) website.
-
-###  How can I report security bugs?
-
--  You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/9e5fb868-7544-4586-b365-636dc6104737)
 
 == Screenshots ==
 
@@ -720,3 +807,4 @@ Details [changelog here](https://feedback.bdthemes.com/announcements?category=ca
 13. Hansel Slider Example
 14. Why you chooseultimate post kit
 15. Our Others plugins
+

@@ -9,6 +9,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- template partial included within a method; variables are method-scoped, not global.
+
 // Include the required classes
 require_once __DIR__ . '/../class-plugin-integration-helper.php';
 require_once __DIR__ . '/../class-remote-data-handler.php';
@@ -31,18 +33,23 @@ if (!function_exists('format_last_updated_usk')) {
             return __('Just now', 'ultimate-post-kit');
         } elseif ($diff < 3600) {
             $minutes = floor($diff / 60);
+            /* translators: %d: number of minutes */
             return sprintf(_n('%d minute ago', '%d minutes ago', $minutes, 'ultimate-post-kit'), $minutes);
         } elseif ($diff < 86400) {
             $hours = floor($diff / 3600);
+            /* translators: %d: number of hours */
             return sprintf(_n('%d hour ago', '%d hours ago', $hours, 'ultimate-post-kit'), $hours);
         } elseif ($diff < 2592000) { // 30 days
             $days = floor($diff / 86400);
+            /* translators: %d: number of days */
             return sprintf(_n('%d day ago', '%d days ago', $days, 'ultimate-post-kit'), $days);
         } elseif ($diff < 31536000) { // 1 year
             $months = floor($diff / 2592000);
+            /* translators: %d: number of months */
             return sprintf(_n('%d month ago', '%d months ago', $months, 'ultimate-post-kit'), $months);
         } else {
             $years = floor($diff / 31536000);
+            /* translators: %d: number of years */
             return sprintf(_n('%d year ago', '%d years ago', $years, 'ultimate-post-kit'), $years);
         }
     }
@@ -350,7 +357,7 @@ jQuery(document).ready(function($) {
             type: 'POST',
             data: {
                 action: 'upk_get_plugins',
-                nonce: '<?php echo wp_create_nonce('upk_get_plugins_nonce'); ?>'
+                nonce: '<?php echo esc_attr( wp_create_nonce('upk_get_plugins_nonce') ); ?>'
             },
             success: function(response) {
                 if (response.success && response.data.plugins) {
@@ -431,9 +438,9 @@ jQuery(document).ready(function($) {
             return `<img src="${plugin.logo}" alt="${plugin.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="default-plugin-icon" style="display:none;">📦</div>`;
         } else {
-            const slug = plugin.slug.includes('/') ? plugin.slug.split('/')[0] : plugin.slug;
-            return `<img src="https://ps.w.org/${slug}/assets/icon-256x256.png" alt="${plugin.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="default-plugin-icon" style="display:none;">📦</div>`;
+            // No icon supplied by the data source — show the local placeholder
+            // rather than offloading an image request to a remote host.
+            return `<div class="default-plugin-icon" style="display:flex;">📦</div>`;
         }
     }
     

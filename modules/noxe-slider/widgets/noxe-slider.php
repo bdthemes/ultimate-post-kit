@@ -110,6 +110,7 @@ class Noxe_Slider extends Group_Control_Query {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'      => 'primary_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude'   => ['custom'],
 				'default'   => 'full',
 			]
@@ -243,8 +244,11 @@ class Noxe_Slider extends Group_Control_Query {
 		$this->add_control(
 			'pauseonhover',
 			[
-				'label' => esc_html__('Pause on Hover', 'ultimate-post-kit'),
-				'type'  => Controls_Manager::SWITCHER,
+				'label'     => esc_html__('Pause on Hover', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::SWITCHER,
+				'condition' => [
+					'autoplay' => 'yes',
+				],
 			]
 		);
 
@@ -399,7 +403,7 @@ class Noxe_Slider extends Group_Control_Query {
 			Group_Control_Text_Stroke::get_type(),
 			[
 				'name'      => 'title_text_stroke',
-				'label'     => __('Text Stroke', 'ultimate-post-kit') . BDTUPK_NC,
+				'label'     => __('Text Stroke', 'ultimate-post-kit'),
 				'selector'  => '{{WRAPPER}} .upk-noxe-slider .upk-title',
 			]
 		);
@@ -859,7 +863,7 @@ class Noxe_Slider extends Group_Control_Query {
 		}
 	?>
 		<div class="upk-noxe-category" data-swiper-parallax-opacity="0.5">
-			<?php echo upk_get_category($this->get_settings('posts_source')); ?>
+			<?php echo wp_kses_post( upk_get_category($this->get_settings('posts_source')) ); ?>
 		</div>
 	<?php
 	}
@@ -1015,14 +1019,14 @@ class Noxe_Slider extends Group_Control_Query {
 								<?php $this->render_author(); ?>
 
 								<?php if ($settings['show_comments'] == 'yes') : ?>
-									<div data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+									<div data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 									<?php $this->render_comments($post_id); ?>
 									</div>
 								<?php endif; ?>
 
 								<?php if (_is_upk_pro_activated()) :
 									if ('yes' === $settings['show_reading_time']) : ?>
-										<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+										<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 											<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 										</div>
 									<?php endif; ?>

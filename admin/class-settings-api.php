@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
 if (!class_exists('UltimatePostKit_Settings_API')) :
 
     class UltimatePostKit_Settings_API {
@@ -167,7 +171,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                     $data_type .= ' bdt-tooltip="'.esc_html__('Pro widget only works with Pro version.', 'ultimate-post-kit').'"';
                 }
 
-                echo "<div class='upk-option-item {$class} {$widget_used_status}' {$data_type}>";
+                echo wp_kses("<div class='upk-option-item {$class} {$widget_used_status}' {$data_type}>", $this->get_allowed_field_html());
 
                 call_user_func($field['callback'], $field['args']);
 
@@ -193,7 +197,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                 if (isset($section['desc']) && !empty($section['desc'])) {
                     $section['desc'] = '<div class="inside">' . $section['desc'] . '</div>';
                     $callback = function () use ($section) {
-                        echo str_replace('"', '\"', $section['desc']);
+                        echo wp_kses_post($section['desc']);
                     };
                 } else if (isset($section['callback'])) {
                     $callback = $section['callback'];
@@ -244,7 +248,14 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 
             // creates our settings in the options table
             foreach ($this->settings_sections as $section) {
-                register_setting($section['id'], $section['id'], array($this, 'sanitize_options'));
+                register_setting(
+                    $section['id'],
+                    $section['id'],
+                    array(
+                        'type'              => 'array',
+                        'sanitize_callback' => array($this, 'sanitize_options'),
+                    )
+                );
             }
         }
 
@@ -261,6 +272,68 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             }
 
             return $desc;
+        }
+
+        /**
+         * Allowed HTML for settings-field output. Covers every form control this
+         * class renders so field markup survives wp_kses() intact.
+         *
+         * @return array
+         */
+        public function get_allowed_field_html() {
+            $attr = array(
+                'class'              => array(),
+                'id'                 => array(),
+                'name'               => array(),
+                'value'              => array(),
+                'type'               => array(),
+                'checked'            => array(),
+                'selected'           => array(),
+                'multiple'           => array(),
+                'disabled'           => array(),
+                'readonly'           => array(),
+                'placeholder'        => array(),
+                'min'                => array(),
+                'max'                => array(),
+                'step'               => array(),
+                'rows'               => array(),
+                'cols'               => array(),
+                'for'                => array(),
+                'scope'              => array(),
+                'style'              => array(),
+                'title'              => array(),
+                'target'             => array(),
+                'href'               => array(),
+                'src'                => array(),
+                'rel'                => array(),
+                'aria-hidden'        => array(),
+                'bdt-tooltip'        => array(),
+                'bdt-grid'           => array(),
+                'data-default-color' => array(),
+                'data-type'          => array(),
+                'data-widget-type'   => array(),
+                'data-content-type'  => array(),
+                'data-widget-name'   => array(),
+            );
+
+            return array(
+                'div'      => $attr,
+                'span'     => $attr,
+                'label'    => $attr,
+                'input'    => $attr,
+                'select'   => $attr,
+                'option'   => $attr,
+                'textarea' => $attr,
+                'fieldset' => $attr,
+                'a'        => $attr,
+                'i'        => $attr,
+                'p'        => $attr,
+                'h3'       => $attr,
+                'hr'       => $attr,
+                'br'       => array(),
+                'strong'   => array(),
+                'em'       => array(),
+            );
         }
 
         /**
@@ -292,7 +365,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 
             $html .= '</div>';
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -321,7 +394,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html        = sprintf('<input type="%1$s" class="%2$s-number" id="%3$s[%4$s]" name="%3$s[%4$s]" value="%5$s"%6$s%7$s%8$s%9$s/>', $type, $size, $args['section'], $args['id'], $value, $placeholder, $min, $max, $step);
             $html       .= $this->get_field_description($args);
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -393,7 +466,9 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 
 			$html .= '<div class="upk-option-links">';
 			if ($args['demo_url']) {
-				$html .= '<a href=' . $args['demo_url'] . ' target="_blank" class="upk-option-demo" title="' . esc_html__('View ' . $args['name'] . ' Widget Demo', 'ultimate-post-kit') . '">' . esc_html__('Demo', 'ultimate-post-kit') . '<i class="upk-icon-preview" aria-hidden="true"></i></a>';
+				/* translators: %s: widget name */
+				$demo_title = sprintf(esc_html__('View %s Widget Demo', 'ultimate-post-kit'), $args['name']);
+				$html .= '<a href=' . $args['demo_url'] . ' target="_blank" class="upk-option-demo" title="' . $demo_title . '">' . esc_html__('Demo', 'ultimate-post-kit') . '<i class="upk-icon-preview" aria-hidden="true"></i></a>';
 			}
 			if ($args['video_url']) {
 				$html .= '<a href=' . $args['video_url'] . ' target="_blank" class="upk-option-video" title="View ' . $args['name'] . ' Video Tutorial">Video<i class="upk-icon-tutorial" aria-hidden="true"></i></a>';
@@ -509,7 +584,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html .= $this->get_field_description($args);
             $html .= '</fieldset>';
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -531,7 +606,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html .= $this->get_field_description($args);
             $html .= '</fieldset>';
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -552,7 +627,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html .= sprintf('</select>');
             $html .= $this->get_field_description($args);
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -574,7 +649,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html .= sprintf('<textarea rows="5" cols="55" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]" %4$s >%5$s</textarea>', $size, $args['section'], $args['id'], $placeholder, $value);
             $html .= $this->get_field_description($args);
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -584,7 +659,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
          * @return string
          */
         function callback_html($args) {
-            echo $args['desc'];
+            echo wp_kses($args['desc'], $this->get_allowed_field_html());
         }
 
         /**
@@ -603,7 +678,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html  .= '<input type="button" class="button wpsa-browse" value="' . $label . '" />';
             $html  .= $this->get_field_description($args);
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -619,7 +694,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html  = sprintf('<input type="password" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value);
             $html  .= $this->get_field_description($args);
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -635,7 +710,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html  = sprintf('<input type="text" class="%1$s-text wp-color-picker-field" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s" data-default-color="%5$s" />', $size, $args['section'], $args['id'], $value, $args['std']);
             $html  .= $this->get_field_description($args);
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -649,7 +724,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html .= $this->get_field_description($args);
             $html .= '<hr class="setting_separator">';
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         function callback_start_group($args) {
@@ -668,7 +743,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 
             $html .= '<div class="bdt-grid" bdt-grid>';
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         function callback_end_group($args) {
@@ -676,7 +751,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html  = '</div>';
             $html  .= '</div>';
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -690,7 +765,7 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             $html .= $this->get_field_description($args);
 
 
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
 
@@ -707,8 +782,9 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                 'id'       => $args['section'] . '[' . $args['id'] . ']',
                 'echo'     => 0
             );
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- 'echo' => 0 makes wp_dropdown_pages() return (not print) the markup, which is escaped via wp_kses() below.
             $html = wp_dropdown_pages($dropdown_args);
-            echo $html;
+            echo wp_kses($html, $this->get_allowed_field_html());
         }
 
         /**
@@ -725,14 +801,32 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
             foreach ($options as $option_slug => $option_value) {
                 $sanitize_callback = $this->get_sanitize_callback($option_slug);
 
-                // If callback is set, call it
+                // If a field-specific callback is set, use it.
                 if ($sanitize_callback) {
                     $options[$option_slug] = call_user_func($sanitize_callback, $option_value);
                     continue;
                 }
+
+                // Otherwise never store the value raw — apply a safe default so no
+                // submitted field escapes sanitization (wp.org register_setting rule).
+                $options[$option_slug] = $this->sanitize_default($option_value);
             }
 
             return $options;
+        }
+
+        /**
+         * Default sanitizer for settings values without a field-specific callback.
+         *
+         * @param mixed $value Raw value.
+         * @return mixed
+         */
+        private function sanitize_default($value) {
+            if (is_array($value)) {
+                return array_map(array($this, 'sanitize_default'), $value);
+            }
+
+            return is_scalar($value) ? sanitize_text_field((string) $value) : '';
         }
 
         /**
@@ -803,11 +897,28 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 				$html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="%2$s"><i class="%4$s"></i>%3$s</a></li>', $tab['id'], $count++, $tab['title'], $icon);
 			}
 
+			// Extension tabs registered by add-ons (e.g. Ultimate Post Kit Pro). The
+			// core plugin only provides the extension point; it ships no tabs of its own.
+			foreach ($this->get_extra_dashboard_tabs() as $tab) {
+				if (empty($tab['id']) || empty($tab['title'])) {
+					continue;
+				}
+				$icon = isset($tab['icon']) ? $tab['icon'] : 'dashicons dashicons-screenoptions';
+				$html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="%2$s"><i class="%4$s"></i>%3$s</a></li>', $tab['id'], $count++, esc_html($tab['title']), esc_attr($icon));
+			}
+
 			// License section
 			$license_wl_status = UltimatePostKit_Admin_Settings::license_wl_status();
 
 			if (!defined('BDTUPK_LO') || false == $license_wl_status) {
-				$html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="%2$s"><i class="dashicons dashicons-admin-network"></i>%3$s</a></li>', 'ultimate_post_kit_license_settings', $count, esc_html__('License', 'ultimate-post-kit'));
+				// On the free version this tab shows the "Get Pro" page, not a license form,
+				// so label it accordingly.
+				$is_pro_activated = function_exists('_is_upk_pro_activated') ? _is_upk_pro_activated() : false;
+				$license_tab_title = (true === $is_pro_activated)
+					? esc_html__('License', 'ultimate-post-kit')
+					: esc_html__('Get Pro', 'ultimate-post-kit');
+
+				$html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="%2$s"><i class="dashicons dashicons-admin-network"></i>%3$s</a></li>', 'ultimate_post_kit_license_settings', $count, $license_tab_title);
 			}
 
 			$html .= '</ul>';
@@ -836,6 +947,20 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 			));
 		}
 
+		/**
+		 * Extra dashboard tabs contributed by add-on plugins.
+		 *
+		 * Neutral extension point: the core plugin renders whatever tabs an add-on
+		 * registers here and ships none of its own. Each item is an array
+		 * [ 'id' => string, 'title' => string, 'icon' => string, 'callback' =>
+		 * callable ] where the callback echoes the tab body.
+		 *
+		 * @return array
+		 */
+		public function get_extra_dashboard_tabs() {
+			return (array) apply_filters( 'ultimate_post_kit_dashboard_extra_tabs', array() );
+		}
+
         function ultimate_post_kit_settings_save() {
 
             if (!check_ajax_referer('ultimate-post-kit-settings-save-nonce')) {
@@ -846,12 +971,28 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
                 return;
             }
 
-            $moudle_id = sanitize_text_field($_POST['id']);
+            $moudle_id = isset($_POST['id']) ? sanitize_text_field(wp_unslash($_POST['id'])) : '';
 
             unset($_POST['id']);
 
+            // Only ever write options inside this plugin's own namespace. Without
+            // this the option name was fully attacker-chosen, letting a request
+            // overwrite arbitrary core options (default_role, siteurl, ...).
+            if ('' === $moudle_id || 0 !== strpos($moudle_id, 'ultimate_post_kit')) {
+                wp_send_json_error();
+            }
+
             if (isset($_POST[$moudle_id])) {
-                update_option($moudle_id, $_POST[$moudle_id]);
+                // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized below via sanitize_options()/sanitize_default().
+                $raw_value = wp_unslash($_POST[$moudle_id]);
+
+                // Route the value through the registered per-field sanitizers
+                // instead of storing raw request data.
+                $value = is_array($raw_value)
+                    ? $this->sanitize_options($raw_value)
+                    : sanitize_text_field($raw_value);
+
+                update_option($moudle_id, $value);
             }
 
             wp_send_json_success();
@@ -866,11 +1007,6 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 			
 			// Add manually created content sections that don't have settings forms
 			$content_only_sections = [
-				[
-					'id' => 'ultimate_post_kit_extra_options',
-					'title' => esc_html__('Extra Options', 'ultimate-post-kit'),
-					'icon' => 'dashicons dashicons-smiley',
-				],
 				[
 					'id' => 'ultimate_post_kit_analytics_system_req',
 					'title' => esc_html__('System Status', 'ultimate-post-kit'),
@@ -953,9 +1089,9 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 												<div>
 													<ul
 														class="bdt-subnav bdt-subnav-pill upk-widget-filter bdt-widget-type-content bdt-flex-inline">
-														<li class="upk-widget-all bdt-active" bdt-filter-control="*"><a
+														<li class="upk-widget-all" bdt-filter-control="*"><a
 																href="#"><?php esc_html_e('All', 'ultimate-post-kit'); ?></a></li>
-														<li class="upk-widget-free"
+														<li class="upk-widget-free bdt-active"
 															bdt-filter-control="filter: [data-widget-type='free']; group: data-content-type">
 															<a href="#"><?php esc_html_e('Free', 'ultimate-post-kit'); ?></a>
 														</li>

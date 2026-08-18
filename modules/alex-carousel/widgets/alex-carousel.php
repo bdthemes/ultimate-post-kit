@@ -149,6 +149,7 @@ class Alex_Carousel extends Group_Control_Query {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'      => 'primary_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude'   => ['custom'],
 				'default'   => 'medium',
 			]
@@ -380,7 +381,7 @@ class Alex_Carousel extends Group_Control_Query {
 				'label'       => esc_html__('Glass Morphism', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::SWITCHER,
 				// translators: %1s: Opening anchor tag with link to MDN backdrop-filter documentation, %2s: Closing anchor tag
-				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
+				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1$s look here %2$s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
 				'default'     => 'yes',
 			]
 		);
@@ -865,7 +866,7 @@ class Alex_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-alex-carousel .upk-readmore .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore .upk-readmore-icon span:after' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .upk-alex-carousel .upk-readmore .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-carousel .upk-readmore .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-carousel .upk-readmore .upk-readmore-icon span:after' => 'background: {{VALUE}};',
 				],
 			]
 		);
@@ -936,7 +937,7 @@ class Alex_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore .upk-readmore-icon span:after' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .upk-alex-carousel .upk-readmore:hover .upk-readmore-icon:before, {{WRAPPER}} .upk-alex-carousel .upk-readmore:hover .upk-readmore-icon span:before, {{WRAPPER}} .upk-alex-carousel .upk-readmore:hover .upk-readmore-icon span:after' => 'background: {{VALUE}};',
 				],
 			]
 		);
@@ -945,7 +946,7 @@ class Alex_Carousel extends Group_Control_Query {
 			Group_Control_Background::get_type(),
 			[
 				'name'      => 'readmore_hover_background',
-				'selector'  => '{{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore',
+				'selector'  => '{{WRAPPER}} .upk-alex-carousel .upk-readmore:hover',
 			]
 		);
 
@@ -955,7 +956,7 @@ class Alex_Carousel extends Group_Control_Query {
 				'label'     => esc_html__('Border Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .upk-alex-carousel .upk-readmore:hover' => 'border-color: {{VALUE}};',
 				],
 				'condition' => [
 					'readmore_border_border!' => ''
@@ -967,7 +968,7 @@ class Alex_Carousel extends Group_Control_Query {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'readmore_hover_shadow',
-				'selector' => '{{WRAPPER}} .upk-alex-carousel .upk-item:hover .upk-readmore',
+				'selector' => '{{WRAPPER}} .upk-alex-carousel .upk-readmore:hover',
 			]
 		);
 
@@ -1241,7 +1242,7 @@ class Alex_Carousel extends Group_Control_Query {
 				'label'       => esc_html__('Glassmorphism', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::SWITCHER,
 				// translators: %1s: Opening anchor tag with link to MDN backdrop-filter documentation, %2s: Closing anchor tag
-				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
+				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1$s look here %2$s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
 				'default'     => 'yes',
 				'separator' => 'before'
 			]
@@ -1277,6 +1278,7 @@ class Alex_Carousel extends Group_Control_Query {
 				'name' => 'post_format_background',
 				'label' => esc_html__('Background', 'ultimate-post-kit'),
 				'types' => ['classic', 'gradient'],
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .upk-alex-carousel .upk-post-format a',
 				'fields_options' => [
@@ -1416,14 +1418,14 @@ class Alex_Carousel extends Group_Control_Query {
 
 					<div class="upk-flex upk-flex-middle upk-date-reading-wrap">
 						<?php if ('yes' === $settings['show_date']) : ?>
-							<div data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+							<div data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 								<?php $this->render_date(); ?>
 							</div>
 						<?php endif; ?>
 
 						<?php if (_is_upk_pro_activated()) :
 							if ('yes' === $settings['show_reading_time']) : ?>
-								<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+								<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 									<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 								</div>
 							<?php endif; ?>
@@ -1443,7 +1445,7 @@ class Alex_Carousel extends Group_Control_Query {
 
 		?>
 		<div <?php $this->print_render_attribute_string('carousel'); ?>>
-			<div class="upk-alex-wrap upk-content-<?php echo esc_html($settings['content_position']) ?>">
+			<div class="upk-alex-wrap upk-content-<?php echo esc_attr($settings['content_position']) ?>">
 				<div <?php $this->print_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 					<?php
@@ -1453,8 +1455,12 @@ class Alex_Carousel extends Group_Control_Query {
 					$settings = $this->get_settings_for_display();
 
 					if ('yes' == $settings['global_link']) {
-
-						$this->add_render_attribute('grid-item', 'onclick', "window.open('" . esc_url(get_permalink()) . "', '_self')", true);
+						$this->add_render_attribute(
+							'grid-item',
+							'onclick',
+							sprintf( "window.open('%s', '_self')", esc_js( esc_url( get_permalink() ) ) ),
+							true
+						);
 					}
 
 					$this->add_render_attribute('grid-item', 'class', 'upk-item swiper-slide', true);

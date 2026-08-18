@@ -180,6 +180,7 @@ class Hazel_Carousel extends Group_Control_Query {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'    => 'primary_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['custom'],
 				'default' => 'medium',
 			]
@@ -316,7 +317,7 @@ class Hazel_Carousel extends Group_Control_Query {
 				'label'       => esc_html__('Glassmorphism', 'ultimate-post-kit'),
 				'type'        => Controls_Manager::SWITCHER,
 				// translators: %1s: Opening anchor tag with link to MDN backdrop-filter documentation, %2s: Closing anchor tag
-				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
+				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1$s look here %2$s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
 				'default'     => 'yes',
 				'condition'   => [
 					'content_style' => '2',
@@ -709,7 +710,7 @@ class Hazel_Carousel extends Group_Control_Query {
 			[
 				'name'     => 'author_typography',
 				'label'    => esc_html__('Typography', 'ultimate-post-kit'),
-				'selector' => '{{WRAPPER}} .upk-hazel-carousel .upk-meta',
+				'selector' => '{{WRAPPER}} .upk-hazel-carousel .upk-meta, {{WRAPPER}} .upk-hazel-carousel .upk-meta *',
 			]
 		);
 
@@ -901,7 +902,7 @@ class Hazel_Carousel extends Group_Control_Query {
 		}
 
 ?>
-		<img class="upk-blog-image" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+		<img class="upk-blog-image" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
 	<?php
 	}
 
@@ -913,7 +914,7 @@ class Hazel_Carousel extends Group_Control_Query {
 
 	?>
 		<div class="upk-blog-author">
-			<span class="by"><?php echo esc_html__('by', 'ultimate-post-kit') ?></span>
+			<span class="by"><?php echo esc_html__('By', 'ultimate-post-kit') ?></span>
 			<span class="upk-author">
 				<a href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>">
 					<?php echo esc_html( get_the_author() ) ?>
@@ -946,7 +947,7 @@ class Hazel_Carousel extends Group_Control_Query {
 	?>
 		<div class="upk-blog-badge">
 			<span>
-				<?php echo upk_get_category($this->get_settings('posts_source')); ?>
+				<?php echo wp_kses_post( upk_get_category($this->get_settings('posts_source')) ); ?>
 			</span>
 		</div>
 	<?php
@@ -960,7 +961,7 @@ class Hazel_Carousel extends Group_Control_Query {
 
 	?>
 		<div <?php $this->print_render_attribute_string('carousel'); ?>>
-			<div class="upk-post-grid upk-pg-text-position-<?php echo esc_html($settings['content_position']) ?> upk-content-style-<?php echo esc_html($settings['content_style']) ?>">
+			<div class="upk-post-grid upk-pg-text-position-<?php echo esc_attr($settings['content_position']) ?> upk-content-style-<?php echo esc_attr($settings['content_style']) ?>">
 				<div <?php $this->print_render_attribute_string('swiper'); ?>>
 					<div class="swiper-wrapper">
 					<?php
@@ -995,7 +996,7 @@ class Hazel_Carousel extends Group_Control_Query {
 											<?php $this->render_author(); ?>
 
 											<?php if ($settings['show_date']) : ?>
-												<div data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+												<div data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 													<div class="upk-date">
 														<i class="upk-icon-calendar" aria-hidden="true"></i><?php $this->render_date(); ?>
 													</div>
@@ -1011,7 +1012,7 @@ class Hazel_Carousel extends Group_Control_Query {
 
 											<?php if (_is_upk_pro_activated()) :
 												if ('yes' === $settings['show_reading_time']) : ?>
-													<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+													<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 														<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 													</div>
 												<?php endif; ?>

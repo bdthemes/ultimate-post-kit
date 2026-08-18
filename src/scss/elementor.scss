@@ -156,11 +156,24 @@
 	}
 }
 
-.upk-navigation-type-progress {
-	.swiper-pagination-progress {
-		transform: translateY(15px);
-	    height: 5px;
-	    width: 100%;
+[class*='upk-progress-align-top'] {
+	.swiper-pagination-progressbar {
+		top: 0;
+		bottom: auto;
+	}
+}
+
+[class*='upk-progress-align-bottom'] {
+	.swiper-pagination-progressbar {
+		bottom: 0;
+		top: auto;
+	}
+}
+
+.upk-navigation-type-progressbar {
+	.swiper-pagination-progressbar {
+		height: 5px;
+		width: 100%;
 	}
 }
 

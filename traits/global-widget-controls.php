@@ -398,7 +398,7 @@ trait Global_Widget_Controls {
 				'label'     => esc_html__('Color', 'ultimate-post-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} ul.upk-pagination li a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} ul.upk-pagination li a:hover, {{WRAPPER}} ul.upk-pagination li a:hover span, {{WRAPPER}} ul.upk-pagination li a:hover i' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1044,8 +1044,11 @@ trait Global_Widget_Controls {
 		$this->add_control(
 			'pauseonhover',
 			[
-				'label' => esc_html__('Pause on Hover', 'ultimate-post-kit'),
-				'type'  => Controls_Manager::SWITCHER,
+				'label'     => esc_html__('Pause on Hover', 'ultimate-post-kit'),
+				'type'      => Controls_Manager::SWITCHER,
+				'condition' => [
+					'autoplay' => 'yes',
+				],
 			]
 		);
 

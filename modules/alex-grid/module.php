@@ -33,9 +33,15 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 	}
 
 	public function callback_ajax_loadmore_posts() {
+		// Verify the front-end nonce (sent by UltimatePostKitConfig.nonce) before
+		// processing this public load-more request.
+		if ( ! check_ajax_referer( 'upk-site', 'nonce', false ) ) {
+			wp_send_json_error( array( 'message' => esc_html__( 'Security check failed.', 'ultimate-post-kit' ) ), 403 );
+		}
+
 
 		// Security: Verify nonce
-		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'upk-site' ) ) {
+		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'upk-site' ) ) {
 			wp_send_json_error( [ 'message' => esc_html__( 'Security verification failed', 'ultimate-post-kit' ) ], 403 );
 			wp_die();
 		}
@@ -56,6 +62,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
 		 // Security: Whitelist allowed post types
 		$allowed_post_types = [ 'post', 'page' ];
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- established hook name relied on across the plugin family; renaming would break integration.
 		$allowed_post_types = apply_filters( 'upk_alex_grid_allowed_post_types', $allowed_post_types );
 		$post_type = in_array( $post_type, $allowed_post_types, true ) ? $post_type : 'post';
 
@@ -106,6 +113,8 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 				$author_name = esc_html(get_the_author());
 				$title_tag   = Utils::get_valid_html_tag($settings['title_tags'] );
 		
+				$meta_separator = isset( $settings['meta_separator'] ) ? $settings['meta_separator'] : '|';
+
 				$onclick = '';
 				if (!empty($settings['global_link']) && $settings['global_link'] === 'yes') {
 					$onclick = ' onclick="window.open(\'' . $post_link . '\', \'_self\')"';
@@ -133,9 +142,9 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 				$post_format_icon = isset($format_icons[get_post_format()]) ? $format_icons[get_post_format()] : 'upk-icon-post';
 				
 				?>
-				<div <?php echo $onclick; ?> class="upk-item">
+				<div <?php if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) { printf( 'onclick="window.open(\'%s\', \'_self\')"', esc_url( $post_link ) ); } ?> class="upk-item">
 					<div class="upk-image-wrap">
-						<img class="upk-img" src="<?php echo $image_src; ?>" alt="<?php echo esc_attr($title); ?>">
+						<img class="upk-img" src="<?php echo esc_url( $image_src ); ?>" alt="<?php echo esc_attr($title); ?>">
 		
 						<?php if (
 							$settings['show_author'] === 'yes' ||
@@ -151,25 +160,23 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 								<div>
 									<?php if ($settings['show_author'] === 'yes') : ?>
 										<div class="upk-author-name">
-											<a href="<?php echo $author_url; ?>"><?php echo $author_name; ?></a>
+											<a href="<?php echo esc_url( $author_url ); ?>"><?php echo esc_html( $author_name ); ?></a>
 										</div>
 									<?php endif; ?>
 		
 									<div class="upk-flex upk-flex-middle upk-date-reading-wrap">
-										<?php if ($settings['show_date'] === 'yes') : ?>
-											<div data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
-												<div class="upk-date"><?php echo $date; ?></div>
-												<?php if ($settings['show_time'] === 'yes') : ?>
-													<div class="upk-post-time">
-														<i class="upk-icon-clock" aria-hidden="true"></i><?php echo esc_html(get_the_time()); ?>
-													</div>
-												<?php endif; ?>
-											</div>
+										<?php if ( $settings['show_date'] === 'yes' ) : ?>
+											<div class="upk-date"><?php echo esc_html( $date ); ?></div>
+											<?php if ( $settings['show_time'] === 'yes' ) : ?>
+												<div class="upk-post-time" data-separator="<?php echo esc_attr( $meta_separator ); ?>">
+													<i class="upk-icon-clock" aria-hidden="true"></i><?php echo esc_html( get_the_time() ); ?>
+												</div>
+											<?php endif; ?>
 										<?php endif; ?>
-		
-										<?php if (function_exists('_is_upk_pro_activated') && _is_upk_pro_activated() && $settings['show_reading_time'] === 'yes') : ?>
-											<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
-												<?php echo ultimate_post_kit_reading_time(get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no'); ?>
+
+										<?php if ( function_exists( '_is_upk_pro_activated' ) && _is_upk_pro_activated() && $settings['show_reading_time'] === 'yes' ) : ?>
+											<div class="upk-reading-time" data-separator="<?php echo esc_attr( $meta_separator ); ?>">
+												<?php echo wp_kses_post( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 											</div>
 										<?php endif; ?>
 									</div>
@@ -179,7 +186,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		
 						<?php if ($settings['show_post_format'] === 'yes') : ?>
 							<div class="upk-post-format">
-								<a href="<?php echo $post_link; ?>">
+								<a href="<?php echo esc_url( $post_link ); ?>">
 									<i class="<?php echo esc_attr($post_format_icon); ?>" aria-hidden="true"></i>
 								</a>
 							</div>
@@ -189,13 +196,13 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 					<div class="upk-content-wrap">
 						<div class="upk-content">
 							<?php if ($settings['show_category'] === 'yes') : ?>
-								<div class="upk-category"><?php echo $category; ?></div>
+								<div class="upk-category"><?php echo wp_kses_post( $category ); ?></div>
 							<?php endif; ?>
 		
 							<?php if ($settings['show_title'] === 'yes') : ?>
 								<<?php echo esc_attr( $title_tag ); ?> class="upk-title">
 									<a class="title-animation-<?php echo esc_attr($settings['title_style']); ?>"
-									   href="<?php echo $post_link; ?>"
+									   href="<?php echo esc_url( $post_link ); ?>"
 									   title="<?php echo esc_attr($title); ?>"
 									   <?php echo $settings['upk_link_new_tab'] === 'yes' ? 'target="_blank"' : ''; ?>
 									>
@@ -207,7 +214,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		
 						<?php if ($settings['show_readmore'] === 'yes') : ?>
 							<div class="upk-button-wrap">
-								<a href="<?php echo $post_link; ?>"
+								<a href="<?php echo esc_url( $post_link ); ?>"
 								   class="upk-readmore"
 								   target="<?php echo ($settings['upk_link_new_tab'] === 'yes') ? '_blank' : '_self'; ?>">
 									<span class="upk-readmore-icon"><span></span></span>

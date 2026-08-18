@@ -96,13 +96,20 @@
 }
 .upk-amox-carousel .upk-meta .upk-post-time {
   margin-left: 5px;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
 }
 .upk-amox-carousel .upk-meta .upk-post-time i {
+  display: inline-flex;
+  align-items: center;
   margin-right: 2px;
+  line-height: 1;
 }
 .upk-amox-carousel .upk-meta > div {
   position: relative;
   display: inline-flex;
+  align-items: center;
 }
 .upk-amox-carousel .upk-meta > div:before {
   content: attr(data-separator);

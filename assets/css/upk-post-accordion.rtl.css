@@ -47,7 +47,7 @@
   width: 100%;
 }
 .upk-accordion-wrapper .upk-category {
-  display: inline-block;
+  display: flex;
   margin-bottom: 10px;
 }
 .upk-accordion-wrapper .upk-category a,

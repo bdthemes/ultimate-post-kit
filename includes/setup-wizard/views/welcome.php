@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="bdt-wizard-step bdt-text-center active" data-step="welcome">
     <div class="bdt-welcome-header">
         <div class="bdt-logo-container">
-            <img src="<?php echo BDTUPK_ASSETS_URL . 'images/logo.svg'; ?>" alt="Ultimate Post Kit Logo" class="bdt-logo">
+            <img src="<?php echo esc_url( BDTUPK_ASSETS_URL . 'images/logo.svg' ); ?>" alt="Ultimate Post Kit Logo" class="bdt-logo">
         </div>
         <h2><?php esc_html_e( 'Welcome to Ultimate Post Kit', 'ultimate-post-kit' ); ?></h2>
         <p><?php esc_html_e( 'Thank you for choosing Ultimate Post Kit, a leading addon that provides a total web design solution for you. This quick setup wizard will help you configure the basic settings and get you started.', 'ultimate-post-kit' ); ?></p>

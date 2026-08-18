@@ -151,7 +151,8 @@ class Timeline extends Group_Control_Query {
 				'label'     => esc_html__( 'Human Different Time', 'ultimate-post-kit' ),
 				'type'      => Controls_Manager::SWITCHER,
 				'condition' => [ 
-					'show_inline_date' => 'yes'
+					'show_inline_date' => 'yes',
+					'show_date' => ''
 				]
 			]
 		);
@@ -176,7 +177,8 @@ class Timeline extends Group_Control_Query {
 				'type'      => Controls_Manager::SWITCHER,
 				'condition' => [ 
 					'human_diff_time'  => '',
-					'show_inline_date' => 'yes'
+					'show_inline_date' => 'yes',
+					'show_date' => ''
 				]
 			]
 		);
@@ -213,6 +215,7 @@ class Timeline extends Group_Control_Query {
 			Group_Control_Image_Size::get_type(),
 			[ 
 				'name'    => 'primary_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => [ 'custom' ],
 				'default' => 'medium',
 			]
@@ -1044,7 +1047,7 @@ class Timeline extends Group_Control_Query {
 		if ( $settings['human_diff_time'] == 'yes' ) {
 			echo esc_html( ultimate_post_kit_post_time_diff( ( $settings['human_diff_time_short'] == 'yes' ) ? 'short' : '' ) );
 		} else {
-			echo get_the_date();
+			echo esc_html( get_the_date() );
 		}
 	}
 
@@ -1073,15 +1076,15 @@ class Timeline extends Group_Control_Query {
 							$day_month_format = isset( $settings['day_month_format'] ) && ! empty( $settings['day_month_format'] ) ? $settings['day_month_format'] : 'm/d';
 							$year_format      = isset( $settings['year_format'] ) && ! empty( $settings['year_format'] ) ? $settings['year_format'] : 'Y';
 							?>
-							<span class="upk-month"><?php echo get_the_date( $day_month_format ); ?></span>
-							<span class="upk-year"><?php echo get_the_date( $year_format ); ?></span>
+							<span class="upk-month"><?php echo esc_html( get_the_date( $day_month_format ) ); ?></span>
+							<span class="upk-year"><?php echo esc_html( get_the_date( $year_format ) ); ?></span>
 						</div>
 					</div>
 				<?php else : ?>
 					<div class="upk-date-wrapper">
 						<div class="upk-date-inner">
-							<span class="upk-month"><?php echo get_the_date( 'm/d' ); ?></span>
-							<span class="upk-year"><?php echo get_the_date( 'Y' ); ?></span>
+							<span class="upk-month"><?php echo esc_html( get_the_date( 'm/d' ) ); ?></span>
+							<span class="upk-year"><?php echo esc_html( get_the_date( 'Y' ) ); ?></span>
 						</div>
 					</div>
 				<?php endif; ?>
@@ -1116,7 +1119,9 @@ class Timeline extends Group_Control_Query {
 
 						<div class="upk-meta">
 							<?php $this->render_author(); ?>
+							<?php if( 'yes' === $settings['show_comments'] && 'yes' === $settings['show_author'] ) : ?>
 							<span class="upk-separator"><?php echo esc_html( $settings['meta_separator'] ); ?></span>
+							<?php endif; ?>
 							<?php $this->render_comments( $post_id ); ?>
 						</div>
 					</div>

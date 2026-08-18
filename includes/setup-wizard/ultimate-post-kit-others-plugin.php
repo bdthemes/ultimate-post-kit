@@ -22,9 +22,9 @@ class UltimatePostKit_Others_Plugin_Manager {
      * Constructor
      */
     public function __construct() {
-        // Add AJAX handlers
+        // Add AJAX handlers. This is an admin-only, plugin-install screen; the
+        // handler must never be exposed to unauthenticated visitors.
         add_action('wp_ajax_upk_get_plugins', [$this, 'ajax_get_plugins']);
-        add_action('wp_ajax_nopriv_upk_get_plugins', [$this, 'ajax_get_plugins']);
         add_action('wp_ajax_upk_install_plugin', [$this, 'install_plugin_ajax']);
     }
 
@@ -55,6 +55,7 @@ class UltimatePostKit_Others_Plugin_Manager {
 
         // Helper function for time formatting
         if (!function_exists('format_last_updated_usk')) {
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
             function format_last_updated_usk($date_string) {
                 if (empty($date_string)) {
                     return __('Unknown', 'ultimate-post-kit');
@@ -71,18 +72,23 @@ class UltimatePostKit_Others_Plugin_Manager {
                     return __('Just now', 'ultimate-post-kit');
                 } elseif ($diff < 3600) {
                     $minutes = floor($diff / 60);
+                    /* translators: %d: number of minutes */
                     return sprintf(_n('%d minute ago', '%d minutes ago', $minutes, 'ultimate-post-kit'), $minutes);
                 } elseif ($diff < 86400) {
                     $hours = floor($diff / 3600);
+                    /* translators: %d: number of hours */
                     return sprintf(_n('%d hour ago', '%d hours ago', $hours, 'ultimate-post-kit'), $hours);
                 } elseif ($diff < 2592000) { // 30 days
                     $days = floor($diff / 86400);
+                    /* translators: %d: number of days */
                     return sprintf(_n('%d day ago', '%d days ago', $days, 'ultimate-post-kit'), $days);
                 } elseif ($diff < 31536000) { // 1 year
                     $months = floor($diff / 2592000);
+                    /* translators: %d: number of months */
                     return sprintf(_n('%d month ago', '%d months ago', $months, 'ultimate-post-kit'), $months);
                 } else {
                     $years = floor($diff / 31536000);
+                    /* translators: %d: number of years */
                     return sprintf(_n('%d year ago', '%d years ago', $years, 'ultimate-post-kit'), $years);
                 }
             }
@@ -90,6 +96,7 @@ class UltimatePostKit_Others_Plugin_Manager {
 
         // Helper function for fallback URLs
         if (!function_exists('get_plugin_fallback_urls_usk')) {
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
             function get_plugin_fallback_urls_usk($plugin_slug) {
                 // Handle different plugin slug formats
                 if (strpos($plugin_slug, '/') !== false) {
@@ -219,7 +226,7 @@ class UltimatePostKit_Others_Plugin_Manager {
                     type: 'POST',
                     data: {
                         action: 'upk_get_plugins',
-                        nonce: '<?php echo wp_create_nonce("upk_get_plugins_nonce"); ?>'
+                        nonce: '<?php echo esc_attr( wp_create_nonce("upk_get_plugins_nonce") ); ?>'
                     },
                     success: function(response) {
                         if (response.success && response.data) {
@@ -240,12 +247,26 @@ class UltimatePostKit_Others_Plugin_Manager {
                 });
             }
             
+            // Escape remote-sourced strings before they are concatenated into
+            // markup. The plugin catalog comes from a remote endpoint; treat it
+            // as untrusted so a poisoned/compromised feed cannot inject HTML/JS
+            // into the admin dashboard (the 2026 notification-feed incident).
+            function upkEsc(s) {
+                return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+                    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+                });
+            }
+            function upkSafeUrl(u) {
+                u = String(u == null ? '' : u);
+                return /^https?:\/\//i.test(u) ? u : '';
+            }
+
             // Function to render plugins
             function renderPlugins(plugins) {
                 var html = '';
                 
                 if (plugins.length === 0) {
-                    html = '<div class="bdt-text-center bdt-padding-large"><p><?php esc_html_e('No plugins available.', 'ultimate-post-kit'); ?></p></div>';
+                    html = '<div class="bdt-text-center bdt-padding-large"><p><?php echo esc_js(__('No plugins available.', 'ultimate-post-kit')); ?></p></div>';
                 } else {
                     plugins.forEach(function(plugin) {
                         // Skip own plugin (Ultimate Post Kit) when printing only; data still includes it for other plugins
@@ -258,34 +279,35 @@ class UltimatePostKit_Others_Plugin_Manager {
                         // Generate fallback logo URL if needed
                         if (!logoUrl) {
                             var actualSlug = pluginSlug.replace('.php', '').split('/')[0];
-                            logoUrl = 'https://ps.w.org/' + actualSlug + '/assets/icon-256x256.png';
+                            logoUrl = 'https://ps.w.org/' + encodeURIComponent(actualSlug) + '/assets/icon-256x256.png';
                         }
                         
                         html += '<div class="bdt-card bdt-card-body bdt-flex bdt-flex-middle bdt-flex-between">' +
                             '<div class="bdt-others-plugin-content">' +
                                 '<div class="bdt-plugin-logo-wrap bdt-flex bdt-flex-middle">' +
                                     '<div class="bdt-plugin-logo-container">' +
-                                        '<img src="' + logoUrl + '" alt="' + pluginName + '" class="bdt-plugin-logo" ' +
+                                        '<img src="' + upkEsc(upkSafeUrl(logoUrl)) + '" alt="' + upkEsc(pluginName) + '" class="bdt-plugin-logo" ' +
                                             'onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">' +
                                         '<div class="default-plugin-icon" style="display:none;">📦</div>' +
                                     '</div>' +
                                     '<div class="bdt-others-plugin-user-wrap bdt-flex bdt-flex-middle">' +
-                                        '<h1 class="upk-feature-title">' + pluginName + '</h1>' +
+                                        '<h1 class="upk-feature-title">' + upkEsc(pluginName) + '</h1>' +
                                     '</div>' +
                                 '</div>' +
                                 '<div class="bdt-others-plugin-content-text bdt-margin-top">';
                         
                         if (plugin.description) {
-                            html += '<p>' + plugin.description + '</p>';
+                            html += '<p>' + upkEsc(plugin.description) + '</p>';
                         }
                         
                         // Active installs
+                        var installsCount = Number(plugin.active_installs_count) || 0;
                         html += '<span class="active-installs bdt-margin-small-top">' +
-                            '<?php esc_html_e("Active Installs: ", "ultimate-post-kit"); ?> ';
-                        if (plugin.active_installs_count > 0) {
-                            html += '<span class="installs-count">' + plugin.active_installs_count.toLocaleString() + '+</span>';
+                            '<?php echo esc_js(__('Active Installs: ', 'ultimate-post-kit')); ?> ';
+                        if (installsCount > 0) {
+                            html += '<span class="installs-count">' + upkEsc(installsCount.toLocaleString()) + '+</span>';
                         } else {
-                            html += '<span class="installs-count">Fewer than 10</span>';
+                            html += '<span class="installs-count"><?php echo esc_js(__('Fewer than 10', 'ultimate-post-kit')); ?></span>';
                         }
                         html += '</span>';
                         
@@ -293,27 +315,30 @@ class UltimatePostKit_Others_Plugin_Manager {
                         html += '<div class="bdt-others-plugin-rating bdt-margin-small-top bdt-flex bdt-flex-middle">' +
                             '<span class="bdt-others-plugin-rating-stars">';
                         
-                        var rating = parseFloat(plugin.rating) || 0;
+                        // Clamp to 0-5 so malformed data cannot emit a runaway number of stars.
+                        var rating = Math.min(5, Math.max(0, parseFloat(plugin.rating) || 0));
                         var fullStars = Math.floor(rating);
                         var hasHalfStar = (rating - fullStars) >= 0.5;
                         var emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-                        
-                        for (var i = 0; i < fullStars; i++) {
+                        var i;
+
+                        for (i = 0; i < fullStars; i++) {
                             html += '<i class="dashicons dashicons-star-filled"></i>';
                         }
                         if (hasHalfStar) {
                             html += '<i class="dashicons dashicons-star-half"></i>';
                         }
-                        for (var i = 0; i < emptyStars; i++) {
+                        for (i = 0; i < emptyStars; i++) {
                             html += '<i class="dashicons dashicons-star-empty"></i>';
                         }
                         
                         html += '</span>' +
                             '<span class="bdt-others-plugin-rating-text bdt-margin-small-left">' +
-                                rating + ' <?php esc_html_e("out of 5 stars.", "ultimate-post-kit"); ?>';
+                                rating + ' <?php echo esc_js(__('out of 5 stars.', 'ultimate-post-kit')); ?>';
                         
-                        if (plugin.num_ratings > 0) {
-                            html += '<span class="rating-count">(' + plugin.num_ratings.toLocaleString() + ' <?php esc_html_e("ratings", "ultimate-post-kit"); ?>)</span>';
+                        var numRatings = Number(plugin.num_ratings) || 0;
+                        if (numRatings > 0) {
+                            html += '<span class="rating-count">(' + upkEsc(numRatings.toLocaleString()) + ' <?php echo esc_js(__('ratings', 'ultimate-post-kit')); ?>)</span>';
                         }
                         
                         html += '</span></div>';
@@ -321,14 +346,14 @@ class UltimatePostKit_Others_Plugin_Manager {
                         // Downloads
                         if (plugin.downloaded_formatted) {
                             html += '<div class="bdt-others-plugin-downloads bdt-margin-small-top">' +
-                                '<span><?php esc_html_e("Downloads: ", "ultimate-post-kit"); ?>' + plugin.downloaded_formatted + '</span>' +
+                                '<span><?php echo esc_js(__('Downloads: ', 'ultimate-post-kit')); ?>' + upkEsc(plugin.downloaded_formatted) + '</span>' +
                                 '</div>';
                         }
                         
                         // Last updated
                         if (plugin.last_updated_formatted) {
                             html += '<div class="bdt-others-plugin-updated bdt-margin-small-top">' +
-                                '<span><?php esc_html_e("Last Updated: ", "ultimate-post-kit"); ?>' + plugin.last_updated_formatted + '</span>' +
+                                '<span><?php echo esc_js(__('Last Updated: ', 'ultimate-post-kit')); ?>' + upkEsc(plugin.last_updated_formatted) + '</span>' +
                                 '</div>';
                         }
                         
@@ -339,22 +364,26 @@ class UltimatePostKit_Others_Plugin_Manager {
                         if (plugin.status === 'active') {
                             html += '<span class="bdt-button bdt-button-success bdt-disabled">' +
                                 '<span class="dashicons dashicons-yes"></span> ' +
-                                '<?php esc_html_e("Active", "ultimate-post-kit"); ?>' +
+                                '<?php echo esc_js(__('Active', 'ultimate-post-kit')); ?>' +
                                 '</span>';
                         } else if (plugin.status === 'installed') {
-                            var activateUrl = '<?php echo admin_url("plugins.php?action=activate&plugin="); ?>' + plugin.plugin_file + '&_wpnonce=' + plugin.activate_nonce;
-                            html += '<a class="bdt-button bdt-welcome-button" href="' + activateUrl + '">' +
-                                '<?php esc_html_e("Activate", "ultimate-post-kit"); ?>' +
+                            // URL-encode the query values: plugin_file contains slashes and
+                            // both parts land inside an href attribute.
+                            var activateUrl = <?php echo wp_json_encode( esc_url_raw( admin_url( 'plugins.php?action=activate&plugin=' ) ) ); ?> +
+                                encodeURIComponent(plugin.plugin_file || '') +
+                                '&_wpnonce=' + encodeURIComponent(plugin.activate_nonce || '');
+                            html += '<a class="bdt-button bdt-welcome-button" href="' + upkEsc(activateUrl) + '">' +
+                                '<?php echo esc_js(__('Activate', 'ultimate-post-kit')); ?>' +
                                 '</a>';
                         } else {
-                            html += '<button class="bdt-button bdt-welcome-button upk-install-plugin" data-plugin-slug="' + pluginSlug + '" data-nonce="<?php echo wp_create_nonce('upk_install_plugin_nonce'); ?>">' +
-                                '<?php esc_html_e("Install", "ultimate-post-kit"); ?>' +
+                            html += '<button type="button" class="bdt-button bdt-welcome-button upk-install-plugin" data-plugin-slug="' + upkEsc(pluginSlug) + '" data-nonce="<?php echo esc_attr( wp_create_nonce('upk_install_plugin_nonce') ); ?>">' +
+                                '<?php echo esc_js(__('Install', 'ultimate-post-kit')); ?>' +
                                 '</button>';
                         }
                         
-                        if (plugin.homepage) {
-                            html += '<a class="bdt-button bdt-dashboard-sec-btn" target="_blank" href="' + plugin.homepage + '">' +
-                                '<?php esc_html_e("Learn More", "ultimate-post-kit"); ?>' +
+                        if (plugin.homepage && upkSafeUrl(plugin.homepage)) {
+                            html += '<a class="bdt-button bdt-dashboard-sec-btn" target="_blank" rel="noopener noreferrer" href="' + upkEsc(upkSafeUrl(plugin.homepage)) + '">' +
+                                '<?php echo esc_js(__('Learn More', 'ultimate-post-kit')); ?>' +
                                 '</a>';
                         }
                         
@@ -364,8 +393,11 @@ class UltimatePostKit_Others_Plugin_Manager {
                 
                 $list.html(html);
                 
-                // Handle plugin action buttons
-                $('.upk-install-plugin').on('click', function(e) {
+                // Handle plugin action buttons. Delegated from the list and
+                // namespaced+unbound first: renderPlugins() runs again on every
+                // retry, and a plain global bind stacked one handler per render,
+                // firing duplicate install requests for a single click.
+                $list.off('click.upkInstall').on('click.upkInstall', '.upk-install-plugin', function(e) {
                     e.preventDefault();
                     
                     var $button = $(this);
@@ -380,7 +412,7 @@ class UltimatePostKit_Others_Plugin_Manager {
                     
                     // Perform AJAX request
                     $.ajax({
-                        url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                        url: '<?php echo esc_url( admin_url('admin-ajax.php') ); ?>',
                         type: 'POST',
                         data: {
                             action: 'upk_install_plugin',
@@ -455,7 +487,7 @@ class UltimatePostKit_Others_Plugin_Manager {
                                 '<div class="upk-loading-dot"></div>' +
                             '</div>' +
                         '</div>' +
-                        '<p class="bdt-margin-small-top bdt-text-muted"><?php esc_html_e("Loading plugin data...", "ultimate-post-kit"); ?></p>' +
+                        '<p class="bdt-margin-small-top bdt-text-muted"><?php echo esc_js(__('Loading plugin data...', 'ultimate-post-kit')); ?></p>' +
                     '</div>'
                 );
                 $list.show();
@@ -483,9 +515,16 @@ class UltimatePostKit_Others_Plugin_Manager {
      * AJAX handler for getting plugins data
      */
     public function ajax_get_plugins() {
-        // Verify nonce
+        // Verify nonce. Respond with JSON -- the caller parses the response as
+        // JSON, so wp_die() here would surface as a generic "unable to load".
         if (!check_ajax_referer('upk_get_plugins_nonce', 'nonce', false)) {
-            wp_die(__('Security check failed.', 'ultimate-post-kit'));
+            wp_send_json_error(['message' => __('Security check failed.', 'ultimate-post-kit')], 403);
+        }
+
+        // This data is only ever used on the plugin-install screen; gate it to
+        // users who could act on it rather than exposing it to any visitor.
+        if (!current_user_can('install_plugins')) {
+            wp_send_json_error(['message' => __('You do not have permission to do this.', 'ultimate-post-kit')], 403);
         }
 
         // Get cached data
@@ -517,7 +556,8 @@ class UltimatePostKit_Others_Plugin_Manager {
      */
     public function install_plugin_ajax() {
         // Check nonce
-        if (!wp_verify_nonce($_POST['nonce'], 'upk_install_plugin_nonce')) {
+        $nonce = isset($_POST['nonce']) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
+        if (!wp_verify_nonce( $nonce, 'upk_install_plugin_nonce')) {
             wp_send_json_error(['message' => __('Security check failed', 'ultimate-post-kit')]);
         }
 
@@ -526,7 +566,7 @@ class UltimatePostKit_Others_Plugin_Manager {
             wp_send_json_error(['message' => __('You do not have permission to install plugins', 'ultimate-post-kit')]);
         }
 
-        $plugin_slug = sanitize_text_field($_POST['plugin_slug']);
+        $plugin_slug = isset($_POST['plugin_slug']) ? sanitize_text_field(wp_unslash($_POST['plugin_slug'])) : '';
 
         if (empty($plugin_slug)) {
             wp_send_json_error(['message' => __('Plugin slug is required', 'ultimate-post-kit')]);

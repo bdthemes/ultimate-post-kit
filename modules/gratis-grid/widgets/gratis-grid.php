@@ -162,6 +162,7 @@ class Gratis_Grid extends Group_Control_Query {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'    => 'primary_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['custom'],
 				'default' => 'medium',
 			]
@@ -355,6 +356,7 @@ class Gratis_Grid extends Group_Control_Query {
 				'name' => 'overlay_color',
 				'label' => esc_html__('Background', 'ultimate-post-kit'),
 				'types' => ['classic', 'gradient'],
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .upk-gratis-grid .upk-img-wrap::before',
 				'fields_options' => [
@@ -445,6 +447,7 @@ class Gratis_Grid extends Group_Control_Query {
 				'name' => 'overlay_hover_color',
 				'label' => esc_html__('Background', 'ultimate-post-kit'),
 				'types' => ['classic', 'gradient'],
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .upk-gratis-grid .upk-img-wrap::after',
 				'fields_options' => [
@@ -507,6 +510,7 @@ class Gratis_Grid extends Group_Control_Query {
 				'name' => 'overlay_active_color',
 				'label' => esc_html__('Background', 'ultimate-post-kit'),
 				'types' => ['classic', 'gradient'],
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .upk-gratis-grid .upk-item.active .upk-img-wrap::after',
 			]
@@ -1208,7 +1212,7 @@ class Gratis_Grid extends Group_Control_Query {
 
 ?>
 
-		<img class="upk-img" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+		<img class="upk-img" src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
 
 	<?php
 	}
@@ -1221,7 +1225,7 @@ class Gratis_Grid extends Group_Control_Query {
 		}
 	?>
 		<div class="upk-category">
-			<?php echo upk_get_category($this->get_settings('posts_source')); ?>
+			<?php echo wp_kses_post( upk_get_category($this->get_settings('posts_source')) ); ?>
 		</div>
 	<?php
 	}
@@ -1274,7 +1278,10 @@ class Gratis_Grid extends Group_Control_Query {
 			<a 
 				class="upk-author-name" 
 				href="<?php echo esc_url( get_author_posts_url(get_the_author_meta('ID')) ); ?>" 
-				aria-label="<?php echo esc_attr( sprintf( __( 'View all posts by %s', 'ultimate-post-kit' ), get_the_author() ) ); ?>"
+				aria-label="<?php
+					/* translators: %s: author name */
+					echo esc_attr( sprintf( __( 'View all posts by %s', 'ultimate-post-kit' ), get_the_author() ) );
+				?>"
 			>
 				<span><?php echo esc_html( get_the_author() ); ?></span>
 			</a>
@@ -1311,7 +1318,7 @@ class Gratis_Grid extends Group_Control_Query {
 							<div class="upk-date-reading upk-flex upk-flex-middle">
 								<?php $this->render_date(); ?>
 								<?php if ('yes' === $settings['show_reading_time']) : ?>
-									<div class="upk-reading-time" data-separator="<?php echo esc_html($settings['meta_separator']); ?>">
+									<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 										<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 									</div>
 								<?php endif; ?>
@@ -1446,6 +1453,7 @@ class Gratis_Grid extends Group_Control_Query {
 					$i++;
 					$active_item = '';
 					if (_is_upk_pro_activated()) {
+						// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- established hook name relied on across the plugin family; renaming would break integration.
 						$active_item = apply_filters('gratis_grid_active_item', $this, $i);
 					}
 

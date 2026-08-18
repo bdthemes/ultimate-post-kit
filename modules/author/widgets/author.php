@@ -444,7 +444,7 @@ class Author extends Module_Base {
 				'label' => esc_html__('Glassmorphism', 'ultimate-post-kit'),
 				'type'  => Controls_Manager::SWITCHER,
 				// translators: %1s: Opening anchor tag with link to MDN backdrop-filter documentation, %2s: Closing anchor tag
-				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
+				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1$s look here %2$s', 'ultimate-post-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
 
 			]
 		);
@@ -1410,6 +1410,7 @@ class Author extends Module_Base {
 			'order'    => $settings['order'],
 			'role__in' => (!empty($settings['role'])) ? $settings['role'] : null,
 			'number'   => $number,
+			// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 			'exclude'  => array_filter(array_map('absint', explode(',', esc_attr($settings['exclude'])))),
 		]);
 
@@ -1435,7 +1436,7 @@ class Author extends Module_Base {
 
 ?>
 		<div class="upk-author">
-			<div class="upk-author-wrapper upk-<?php echo esc_html($settings['layout_style']) ?>">
+			<div class="upk-author-wrapper upk-<?php echo esc_attr($settings['layout_style']) ?>">
 				<?php
 				foreach ($users as $author) {
 
@@ -1454,21 +1455,21 @@ class Author extends Module_Base {
 						<div class="upk-content">
 							<?php if ($settings['show_author_name']) : ?>
 								<div class="upk-name">
-									<a href="<?php echo get_bloginfo('url') . "/?author=" . esc_attr($author->ID); ?>">
-										<?php echo get_the_author_meta('display_name', $author->ID); ?>
+									<a href="<?php echo esc_url(get_author_posts_url($author->ID)); ?>">
+										<?php echo esc_html(get_the_author_meta('display_name', $author->ID)); ?>
 									</a>
 								</div>
 							<?php endif; ?>
 
 							<?php if ($settings['show_author_role']) : ?>
 								<div class="upk-role">
-									<?php echo ucwords(get_user_role($author->ID)); ?>
+									<?php echo esc_html( get_user_role( $author->ID ) ); ?>
 								</div>
 							<?php endif; ?>
 
 							<?php if ($settings['show_author_description'] and get_the_author_meta('description', $author->ID)) : ?>
 								<div class="upk-description">
-									<?php echo get_the_author_meta('description', $author->ID); ?>
+									<?php echo wp_kses_post(get_the_author_meta('description', $author->ID)); ?>
 								</div>
 							<?php endif; ?>
 
@@ -1492,7 +1493,7 @@ class Author extends Module_Base {
 
 											?>
 
-											<a href="<?php echo esc_url($final_url); ?>" title="<?php echo esc_html($alt_title); ?>">
+											<a href="<?php echo esc_url($final_url); ?>" title="<?php echo esc_attr($alt_title); ?>">
 												<i class="upk-icon-<?php echo esc_attr($link); ?>" aria-hidden="true"></i>
 											</a>
 										<?php endif; ?>

@@ -389,6 +389,7 @@ abstract class Group_Control_Query extends Module_Base {
          */
 
         if ($this->get_settings_for_display('posts_only_with_featured_image') === 'yes') {
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Elementor widget query built from user-configured controls; expected behaviour.
             $args['meta_key'] = '_thumbnail_id';
         }
 
@@ -470,6 +471,7 @@ abstract class Group_Control_Query extends Module_Base {
             $args['ignore_sticky_posts'] = true;
 
             if (in_array('current_post', $exclude_by)) {
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in -- Elementor widget query built from user-configured controls; expected behaviour.
                 $args['post__not_in'] = [get_the_ID()];
             }
         }
@@ -502,6 +504,7 @@ abstract class Group_Control_Query extends Module_Base {
 
             $exclude_by = $this->getGroupControlQueryParamBy('exclude');
             if (in_array('current_post', $exclude_by)) {
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in -- Elementor widget query built from user-configured controls; expected behaviour.
                 $args['post__not_in'] = [get_the_ID()];
             }
 
@@ -536,6 +539,7 @@ abstract class Group_Control_Query extends Module_Base {
 
             if (in_array('manual_selection', $exclude_by)) {
                 $exclude_ids          = $settings['posts_exclude_ids'];
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in -- Elementor widget query built from user-configured controls; expected behaviour.
                 $args['post__not_in'] = array_merge($current_post, wp_parse_id_list($exclude_ids));
             }
 
@@ -640,6 +644,7 @@ abstract class Group_Control_Query extends Module_Base {
         }
 
         if (!empty($terms_query)) {
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Elementor widget query built from user-configured controls; expected behaviour.
             $args['tax_query']             = $terms_query;
             $args['tax_query']['relation'] = 'AND';
         }
@@ -663,6 +668,7 @@ abstract class Group_Control_Query extends Module_Base {
      */
     private function getGroupControlQueryParamBy($by = 'exclude') {
         $mapBy = [
+            // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
             'exclude' => 'posts_exclude_by',
             'include' => 'posts_include_by',
         ];
@@ -740,23 +746,6 @@ abstract class Group_Control_Query extends Module_Base {
         // into subsequent queries on the same request.
         remove_action( 'pre_get_posts', [ $this, 'fix_query' ], 1 );
 
-<<<<<<< Updated upstream
-        if (isset($query->query_vars['offset_to_fix'])) {
-
-            if ($query->is_paged) {
-                $page_offset = $query->query_vars['offset_to_fix'] + (($query->query_vars['paged'] - 1) * $query->query_vars['posts_per_page']);
-                $query->set('offset', $page_offset);
-            } else {
-                $query->set('offset', $query->query_vars['offset_to_fix']);
-            }
-        } else {
-            if ($query->is_paged) {
-                $page_offset = (int) $settings['posts_offset'] + (($query->query_vars['paged'] - 1) * $query->query_vars['posts_per_page']);
-                $query->set('offset', $page_offset);
-            } else {
-                $query->set('offset', $settings['posts_offset']);
-            }
-=======
         $offset = (int) $query->query_vars['offset_to_fix'];
 
         $posts_per_page = isset( $query->query_vars['posts_per_page'] )
@@ -768,7 +757,6 @@ abstract class Group_Control_Query extends Module_Base {
             $query->set( 'offset', $page_offset );
         } else {
             $query->set( 'offset', $offset );
->>>>>>> Stashed changes
         }
     }
 

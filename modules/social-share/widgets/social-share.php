@@ -651,6 +651,7 @@ class Social_Share extends Module_Base {
 				'name'     => 'typography',
 				'label'    => esc_html__( 'Typography', 'ultimate-post-kit' ),
 				'selector' => '{{WRAPPER}} .upk-social-share-title, {{WRAPPER}} .upk-ss-counter',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 				'exclude'  => [ 'line_height' ],
 			]
 		);
@@ -843,9 +844,9 @@ class Social_Share extends Module_Base {
 						'social-attrs' => [
 							'class' => [
 								'upk-ss-btn',
-								'upk-ss-' . $social_name
+								'upk-ss-' . sanitize_html_class( $social_name ),
 							],
-							'data-social' => $social_name,
+							'data-social' => esc_attr( $social_name ),
 						]
 					], '', '', true
 				);
@@ -855,14 +856,14 @@ class Social_Share extends Module_Base {
 					<div <?php $this->print_render_attribute_string( 'social-attrs' ); ?>>
 						<?php if ( 'icon' === $settings['view'] || 'icon-text' === $settings['view'] ) : ?>
 							<span class="upk-ss-icon">
-								<i class="<?php echo self::get_social_media_class( $social_name ); ?>"></i>
+								<i class="<?php echo esc_attr( self::get_social_media_class( $social_name ) ); ?>"></i>
 							</span>
 						<?php endif; ?>
 						<?php if ( $show_text || $has_counter ) : ?>
 							<div class="upk-social-share-text upk-inline">
 								<?php if ( 'icon-text' === $settings['view'] || 'text' === $settings['view'] ) : ?>
 									<span class="upk-social-share-title">
-										<?php echo $button['text'] ? esc_html($button['text']) : Module::get_social_media( $social_name )['title']; ?>
+										<?php echo $button['text'] ? esc_html($button['text']) : esc_html( Module::get_social_media( $social_name )['title'] ); ?>
 									</span>
 								<?php endif; ?>
 								<?php if ( $has_counter ) : ?>
