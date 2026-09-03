@@ -17,7 +17,7 @@ if (!class_exists('BdThemes_Duplicator')) :
     class BdThemes_Duplicator {
 
         public function __construct() {
-            add_action('admin_action_bdt_duplicate_as_draft', [$this, 'bdt_duplicate_as_draft']);
+            add_action('admin_action_ultimate_post_kit_duplicate_as_draft', [$this, 'bdt_duplicate_as_draft']);
             add_filter('post_row_actions', [$this, 'bdt_duplicate_post_link'], 10, 2);
             add_filter('page_row_actions', [$this, 'bdt_duplicate_post_link'], 10, 2);
         }
@@ -28,38 +28,59 @@ if (!class_exists('BdThemes_Duplicator')) :
                 wp_die('You don\'t have permission to duplicate it; please go back!');
             }
 
-            if (!(isset($_GET['post']) || isset($_POST['post']) || (isset($_REQUEST['action']) && 'bdt_duplicate_as_draft' == $_REQUEST['action']))) {
+            if (!(isset($_GET['post']) || isset($_POST['post']) || (isset($_REQUEST['action']) && 'ultimate_post_kit_duplicate_as_draft' == $_REQUEST['action']))) {
                 wp_die('No post to duplicate has been supplied!');
             }
 
             /**
-             * Nonce verification
+             * get the original post id
+             *
+             * This has to be read before the nonce check because the nonce action is bound
+             * to the post being duplicated (see bdt_duplicate_post_link()). The value is
+             * cast to an integer and used only to build that action string; nothing is read
+             * or written with it until the nonce and capability checks below have passed.
              */
-            if (!isset($_GET['duplicate_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['duplicate_nonce'])), basename(__FILE__))) {
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing -- only used to construct the nonce action, which is verified on the next statement.
+            $post_id = isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post'] ?? 0);
+
+            /**
+             * Nonce verification.
+             *
+             * The nonce is bound to the post being duplicated, so one nonce cannot be
+             * replayed against every other post (and post type) on the site.
+             */
+            if (!isset($_GET['duplicate_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['duplicate_nonce'])), 'upk_duplicate_post_' . $post_id)) {
                 return;
             }
 
-            /**
-             * get the original post id
-             */
-            $post_id = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']));
             /**
              * and all the original post data then
              */
             $post = get_post($post_id);
 
-            /**
-             * if you don't want current user to be the new post author,
-             */
-            $current_user_id    = get_current_user_id();
+            if (!$post) {
+                wp_die(esc_html('Failed. Not Found Post: ' . $post_id));
+            }
 
-            if (current_user_can('manage_options') || current_user_can('edit_others_posts')) {
-                $this->duplicate_edit_post($post_id);
-            } else if (current_user_can('edit_posts') && $post->post_author == $current_user_id) {
-                $this->duplicate_edit_post($post_id);
-            } else {
+            /**
+             * Authorise against THIS post, not against a generic role capability.
+             *
+             * edit_others_posts is only the capability for the built-in 'post' type; it
+             * grants nothing over a post type registered with its own capability set. Use
+             * the meta capability so WordPress maps it through the target post type, and
+             * check create_posts separately because duplicating creates a new object.
+             */
+            if (!current_user_can('edit_post', $post_id)) {
                 wp_die('You don\'t have permission to duplicate it; please go back!');
             }
+
+            $post_type_object = get_post_type_object($post->post_type);
+
+            if (!$post_type_object || !current_user_can($post_type_object->cap->create_posts)) {
+                wp_die('You don\'t have permission to duplicate it; please go back!');
+            }
+
+            $this->duplicate_edit_post($post_id);
         }
 
         /**
@@ -181,13 +202,13 @@ if (!class_exists('BdThemes_Duplicator')) :
 
         public function bdt_duplicate_post_link($actions, $post) {
 
-            if (current_user_can('manage_options') || current_user_can('edit_others_posts')) {
+            if (current_user_can('edit_post', $post->ID)) {
                 if ($post->post_type == 'post') {
-                    $actions['duplicate'] = '<a href="' . wp_nonce_url('admin.php?action=bdt_duplicate_as_draft&post=' . $post->ID, basename(__FILE__), 'duplicate_nonce') . '" title="Duplicate this post" rel="permalink">' . esc_html_x("Duplicate Post", "Admin String", "ultimate-post-kit") . '</a>';
+                    $actions['duplicate'] = '<a href="' . wp_nonce_url('admin.php?action=ultimate_post_kit_duplicate_as_draft&post=' . $post->ID, 'upk_duplicate_post_' . $post->ID, 'duplicate_nonce') . '" title="Duplicate this post" rel="permalink">' . esc_html_x("Duplicate Post", "Admin String", "ultimate-post-kit") . '</a>';
                 } elseif ($post->post_type == 'page') {
-                    $actions['duplicate'] = '<a href="' . wp_nonce_url('admin.php?action=bdt_duplicate_as_draft&post=' . $post->ID, basename(__FILE__), 'duplicate_nonce') . '" title="Duplicate this page" rel="permalink">' . esc_html_x("Duplicate Page", "Admin String", "ultimate-post-kit") . '</a>';
+                    $actions['duplicate'] = '<a href="' . wp_nonce_url('admin.php?action=ultimate_post_kit_duplicate_as_draft&post=' . $post->ID, 'upk_duplicate_post_' . $post->ID, 'duplicate_nonce') . '" title="Duplicate this page" rel="permalink">' . esc_html_x("Duplicate Page", "Admin String", "ultimate-post-kit") . '</a>';
                 } elseif ($post->post_type == 'elementor_library') {
-                    $actions['duplicate'] = '<a href="' . wp_nonce_url('admin.php?action=bdt_duplicate_as_draft&post=' . $post->ID, basename(__FILE__), 'duplicate_nonce') . '" title="Duplicate this template" rel="permalink">' . esc_html_x("Duplicate Template", "Admin String", "ultimate-post-kit") . '</a>';
+                    $actions['duplicate'] = '<a href="' . wp_nonce_url('admin.php?action=ultimate_post_kit_duplicate_as_draft&post=' . $post->ID, 'upk_duplicate_post_' . $post->ID, 'duplicate_nonce') . '" title="Duplicate this template" rel="permalink">' . esc_html_x("Duplicate Template", "Admin String", "ultimate-post-kit") . '</a>';
                 }
             }
             return $actions;

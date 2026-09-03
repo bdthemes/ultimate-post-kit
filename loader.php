@@ -129,10 +129,14 @@ class Ultimate_Post_Kit_Loader {
 		require BDTUPK_INC_PATH . 'ultimate-post-kit-metabox.php';
 		// }
 
-		if ( ! class_exists( 'BdThemes_Duplicator' ) ) {
-			if ( $duplicator == 'on' ) {
-				require BDTUPK_PATH . 'includes/class-duplicator.php';
-			}
+		// The class is namespaced, so the old unqualified class_exists() check never
+		// matched and the file could be loaded alongside a sibling plugin's duplicator.
+		// Also skip our copy entirely when Live Copy Paste is providing the same feature,
+		// since both provide the same duplicate-post admin action.
+		if ( $duplicator == 'on'
+			&& ! class_exists( '\\UltimatePostKit\\Includes\\BdThemes_Duplicator' )
+			&& ! class_exists( '\\ElementPack\\Includes\\BdThemes_Duplicator' ) ) {
+			require BDTUPK_PATH . 'includes/class-duplicator.php';
 		}
 
 		if ( ! class_exists( 'BdThemes_Live_Copy' ) ) {
@@ -183,10 +187,10 @@ class Ultimate_Post_Kit_Loader {
 
 		// $suffix = '.min';
 
-		wp_register_script( 'goodshare', BDTUPK_ASSETS_URL . 'vendor/js/goodshare.min.js', [ 'jquery' ], '4.1.2', true );
-		wp_register_script( 'scrolline', BDTUPK_ASSETS_URL . 'vendor/js/jquery.scrolline.min.js', [ 'jquery' ], '4.1.2', true );
+		wp_register_script( 'goodshare', BDTUPK_ASSETS_URL . 'vendor/js/goodshare.min.js', [ 'jquery' ], '6.3.0', true );
+		wp_register_script( 'scrolline', BDTUPK_ASSETS_URL . 'vendor/js/jquery.scrolline.min.js', [ 'jquery' ], BDTUPK_VER, true );
 		wp_register_script( 'news-ticker-js', BDTUPK_ASSETS_URL . 'vendor/js/newsticker.min.js', [ 'jquery' ], BDTUPK_VER, true );
-		wp_register_script( 'fslightbox', BDTUPK_ASSETS_URL . 'vendor/js/fslightbox.min.js', [], '3.4.1', true );
+		wp_register_script( 'fslightbox', BDTUPK_ASSETS_URL . 'vendor/js/fslightbox.min.js', [], '3.8.0', true );
 		wp_register_script( 'upk-animations', BDTUPK_ASSETS_URL . 'js/extensions/upk-animations.min.js', [ 'jquery' ], BDTUPK_VER, true );
 
 		wp_register_script( 'upk-ajax-loadmore', BDTUPK_ASSETS_URL . 'js/extensions/upk-ajax-loadmore.min.js', [ 'jquery' ], BDTUPK_VER, true );

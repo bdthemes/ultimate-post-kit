@@ -1187,6 +1187,15 @@ class ModuleService {
                     'widget_type' => 'free',
                 ],
 
+                [
+                    'name'    => 'news_feed',
+                    'label'   => esc_html__('BdThemes News & Updates', 'ultimate-post-kit'),
+                    'tooltip' => __('Opt in to show BdThemes news and updates as a widget on your WordPress dashboard. This is off by default; turning it on lets the plugin request the public news feed from bdthemes.com when you open the dashboard. No personal or site data is sent.', 'ultimate-post-kit'),
+                    'type'    => 'checkbox',
+                    'default' => "off",
+                    'widget_type' => 'free',
+                ],
+
             ]
         ];
 

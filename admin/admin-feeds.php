@@ -190,5 +190,12 @@ $settings = array(
 	],
 );
 
-new Admin_Feeds( $settings );
+/**
+ * The dashboard news widget contacts an external BdThemes server, so it is strictly
+ * opt-in: it stays disabled until the site administrator enables "BdThemes News &
+ * Updates" under Ultimate Post Kit > Other Settings. No request is made otherwise.
+ */
+if ( 'on' === \ultimate_post_kit_option( 'news_feed', 'ultimate_post_kit_other_settings', 'off' ) ) {
+	new Admin_Feeds( $settings );
+}
 

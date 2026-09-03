@@ -182,9 +182,9 @@ class Module extends Ultimate_Post_Kit_Module_Base {
                                             the_excerpt();
                                         } else {
                                             if (function_exists('ultimate_post_kit_custom_excerpt')) {
-                                                echo wp_kses_post(ultimate_post_kit_custom_excerpt(intval($settings['excerpt_length'] ?? 20), false, ''));
+                                                echo wp_kses_post(ultimate_post_kit_custom_excerpt(ultimate_post_kit_clamp_excerpt_length($settings['excerpt_length'] ?? 20, 20), false, ''));
                                             } else {
-                                                echo esc_html(wp_trim_words(wp_strip_all_tags(get_the_content()), intval($settings['excerpt_length'] ?? 20)));
+                                                echo esc_html(wp_trim_words(wp_strip_all_tags(get_the_content()), ultimate_post_kit_clamp_excerpt_length($settings['excerpt_length'] ?? 20, 20)));
                                             }
                                         }
                                         ?>
@@ -199,9 +199,10 @@ class Module extends Ultimate_Post_Kit_Module_Base {
                                     <a href="<?php echo esc_url($post_link); ?>" class="upk-readmore" target="<?php echo esc_attr($settings['upk_link_new_tab'] === 'yes' ? '_blank' : '_self'); ?>">
                                         <span class="upk-flex upk-flex-middle">
                                             <?php echo esc_html($settings['readmore_text'] ?? __('Read More', 'ultimate-post-kit')); ?>
-                                            <?php if ($settings['readmore_icon']['value']) : ?>
+                                            <?php $upk_readmore_icon = ultimate_post_kit_sanitize_request_icon($settings['readmore_icon'] ?? null); ?>
+                                            <?php if ($upk_readmore_icon) : ?>
                                                 <span class="upk-readmore-btn-icon upk-flex-align-<?php echo esc_attr($settings['icon_align']); ?>">
-                                                    <?php Icons_Manager::render_icon($settings['readmore_icon'], ['aria-hidden' => 'true', 'class' => 'fa-fw']); ?>
+                                                    <?php Icons_Manager::render_icon($upk_readmore_icon, ['aria-hidden' => 'true', 'class' => 'fa-fw']); ?>
                                                 </span>
                                             <?php endif; ?>
                                         </span>

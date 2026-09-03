@@ -180,7 +180,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 											echo esc_html(
 												wp_trim_words(
 													get_the_excerpt(),
-													absint($settings['excerpt_length'] ?? 20)
+													ultimate_post_kit_clamp_excerpt_length($settings['excerpt_length'] ?? 20, 20)
 												)
 											);
 											?>

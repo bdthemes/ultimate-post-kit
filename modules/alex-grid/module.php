@@ -52,49 +52,28 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 			$settings = map_deep( wp_unslash( $_POST['settings'] ), 'sanitize_text_field' );
 		}
 
-		$post_type = $settings['post_source'] ?? 'post';
-
-		// Security: Enforce query limits to prevent DoS
-		$per_page = isset( $_POST['per_page'] ) ? absint( $_POST['per_page'] ) : 6;
-		$per_page = min( $per_page, 50 ); // Maximum 50 posts per request
-		$offset = isset( $_POST['offset'] ) ? absint( $_POST['offset'] ) : 0;
-		$offset = min( $offset, 1000 ); // Maximum offset of 1000
-
-		 // Security: Whitelist allowed post types
-		$allowed_post_types = [ 'post', 'page' ];
-		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- established hook name relied on across the plugin family; renaming would break integration.
-		$allowed_post_types = apply_filters( 'upk_alex_grid_allowed_post_types', $allowed_post_types );
-		$post_type = in_array( $post_type, $allowed_post_types, true ) ? $post_type : 'post';
-
-		 // Security: Whitelist orderby values
-		$allowed_orderby = [ 'date', 'title', 'modified', 'rand', 'comment_count', 'menu_order' ];
-		$posts_orderby = isset( $settings['posts_orderby'] ) && in_array( $settings['posts_orderby'], $allowed_orderby, true ) ? $settings['posts_orderby'] : 'date';
-
-		 // Security: Whitelist order values
-		$posts_order = isset( $settings['posts_order'] ) && in_array( strtoupper( $settings['posts_order'] ), [ 'ASC', 'DESC' ], true ) ? strtoupper( $settings['posts_order'] ) : 'DESC';
-
-		 $settings = array_merge(
+		// NOTE: the request-derived values below are NOT the ones the query is built from.
+		// query_args() is declared without parameters and re-reads $_POST['settings']
+		// itself, so anything merged into $settings here is discarded. The query is
+		// constrained inside query_args(): post_status is pinned to 'publish', per_page
+		// is clamped to 1..100, and post_type is restricted to publicly visible post
+		// types by ultimate_post_kit_sanitize_public_post_type(). The defaults are kept
+		// only so the render loop below has the keys it expects.
+		$settings = array_merge(
 			[
-				'posts_source'                   => $post_type,
-				'posts_orderby'                  => $posts_orderby,
-				'posts_order'                    => $posts_order,
+				'posts_source'                   => 'post',
+				'posts_orderby'                  => 'date',
+				'posts_order'                    => 'DESC',
 				'posts_ignore_sticky_posts'      => 'no',
 				'posts_only_with_featured_image' => 'no',
 				'posts_select_date'              => '',
 				'posts_exclude_by'               => [],
 				'posts_include_by'               => [],
-				'posts_per_page'                 => $per_page,
-				'posts_offset'                   => $offset,
 			],
 			$settings
 		);
-	
+
 		$ajaxposts = $this->query_args( $settings );
-		
-		// Security: Override post_status to ensure only published posts are shown
-		if ( ! current_user_can( 'edit_posts' ) ) {
-			$ajaxposts->query_vars['post_status'] = 'publish';
-		}
 	
 		ob_start();
 		$found_posts = false;
@@ -115,11 +94,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 		
 				$meta_separator = isset( $settings['meta_separator'] ) ? $settings['meta_separator'] : '|';
 
-				$onclick = '';
-				if (!empty($settings['global_link']) && $settings['global_link'] === 'yes') {
-					$onclick = ' onclick="window.open(\'' . $post_link . '\', \'_self\')"';
-				}
-		
+
 				$date = '';
 				if (!empty($settings['human_diff_time']) && $settings['human_diff_time'] === 'yes') {
 					$date = ultimate_post_kit_post_time_diff(($settings['human_diff_time_short'] === 'yes') ? 'short' : '');

@@ -4,7 +4,7 @@
  * Plugin Name: Ultimate Post Kit
  * Plugin URI: https://postkit.pro/
  * Description: <a href="https://postkit.pro/">Ultimate Post Kit</a> is a packed of post related elementor widgets. This plugin gives you post related widget features for elementor page builder plugin.
- * Version: 4.5.1
+ * Version: 4.5.2
  * Author: BdThemes
  * Author URI: https://bdthemes.com/
  * Text Domain: ultimate-post-kit
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Some pre define value for easy use
-define( 'BDTUPK_VER', '4.5.1' );
+define( 'BDTUPK_VER', '4.5.2' );
 define( 'BDTUPK__FILE__', __FILE__ );
 
 /**
@@ -154,13 +154,12 @@ if ( ! function_exists( '_is_elementor_installed' ) ) {
  * Review Automation Integration
  */
 
-if ( ! function_exists( 'rc_upk_core_plugin' ) ) {
-	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
-	function rc_upk_core_plugin() {
+if ( ! function_exists( 'ultimate_post_kit_reviews_bootstrap' ) ) {
+	function ultimate_post_kit_reviews_bootstrap() {
 
 		require_once BDTUPK_INC_PATH . 'feedback-hub/start.php';
 
-		rc_dynamic_init( array(
+		ultimate_post_kit_reviews_init( array(
 			'sdk_version'  => '1.0.0',
 			'plugin_name'  => 'Ultimate Post Kit',
 			'plugin_icon'  => BDTUPK_ASSETS_URL . 'images/logo.svg',
@@ -174,5 +173,5 @@ if ( ! function_exists( 'rc_upk_core_plugin' ) ) {
 		) );
 
 	}
-	add_action( 'admin_init', 'rc_upk_core_plugin' );
+	add_action( 'admin_init', 'ultimate_post_kit_reviews_bootstrap' );
 }

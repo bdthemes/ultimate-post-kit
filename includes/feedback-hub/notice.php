@@ -4,8 +4,8 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-if (!class_exists('RC_Reviews_Collector')) {
-	class RC_Reviews_Collector {
+if (!class_exists('Ultimate_Post_Kit_Reviews_Collector')) {
+	class Ultimate_Post_Kit_Reviews_Collector {
 
 		public $version = '1.0.0';
 
@@ -42,8 +42,8 @@ if (!class_exists('RC_Reviews_Collector')) {
 			$this->review_url = isset($params['review_url']) ? $params['review_url'] : false;
 
 			// add_action( 'admin_enqueue_scripts', array( $this, 'rc_enqueue_scripts' ) );
-			add_action('wp_ajax_rc_sdk_insights', array($this, 'rc_sdk_insights'));
-			add_action('wp_ajax_rc_sdk_dismiss_notice', array($this, 'rc_sdk_dismiss_notice'));
+			add_action('wp_ajax_ultimate_post_kit_reviews_insights', array($this, 'rc_sdk_insights'));
+			add_action('wp_ajax_ultimate_post_kit_reviews_dismiss_notice', array($this, 'rc_sdk_dismiss_notice'));
 
 			$security_key        = md5($params['plugin_name']);
 			$this->rc_name       = 'rc_' . str_replace('-', '_', sanitize_title($params['plugin_name']) . '_' . $security_key);
@@ -316,12 +316,6 @@ if (!class_exists('RC_Reviews_Collector')) {
 /**
  * Main Insights Function
  */
-if (!function_exists('rc_sdk_automate')) {
-	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
-	function rc_sdk_automate($params) {
-		if (class_exists('RC_Reviews_Collector')) {
-			// RC_Reviews_Collector::get_instance( $params );
-			new RC_Reviews_Collector($params);
-		}
-	}
+function ultimate_post_kit_reviews_automate($params) {
+	new Ultimate_Post_Kit_Reviews_Collector($params);
 }

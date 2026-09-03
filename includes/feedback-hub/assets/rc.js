@@ -11,7 +11,7 @@
             url: ajaxurl,
             type: 'POST',
             data: {
-                action: 'rc_sdk_insights',
+                action: 'ultimate_post_kit_reviews_insights',
                 button_val: this.value,
                 nonce: nonce,
                 rc_name: rc_name,
@@ -43,7 +43,7 @@
             url: ajaxurl,
             type: 'POST',
             data: {
-                action: 'rc_sdk_dismiss_notice',
+                action: 'ultimate_post_kit_reviews_dismiss_notice',
                 nonce: nonce,
                 rc_name: rc_name,
             },

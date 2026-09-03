@@ -199,9 +199,9 @@ class Module extends Ultimate_Post_Kit_Module_Base {
                                             the_excerpt(); 
                                         } else {
                                             if ( function_exists( 'ultimate_post_kit_custom_excerpt' ) ) {
-                                                echo wp_kses_post( ultimate_post_kit_custom_excerpt( intval( $settings['excerpt_length'] ?? 20 ), false, '' ) );
+                                                echo wp_kses_post( ultimate_post_kit_custom_excerpt( ultimate_post_kit_clamp_excerpt_length( $settings['excerpt_length'] ?? 20, 20 ), false, '' ) );
                                             } else {
-                                                echo esc_html( wp_trim_words( wp_strip_all_tags( get_the_content() ), intval( $settings['excerpt_length'] ?? 20 ) ) );
+                                                echo esc_html( wp_trim_words( wp_strip_all_tags( get_the_content() ), ultimate_post_kit_clamp_excerpt_length( $settings['excerpt_length'] ?? 20, 20 ) ) );
                                             }
                                         } 
                                     ?>

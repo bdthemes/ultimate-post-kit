@@ -7,9 +7,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists( 'rc_dynamic_init' ) ) {
-	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- established function name relied on across the plugin family / feedback SDK; renaming would break integration.
-	function rc_dynamic_init( $params ) {
+if ( ! function_exists( 'ultimate_post_kit_reviews_init' ) ) {
+	function ultimate_post_kit_reviews_init( $params ) {
+
+		// is_admin() is also true on admin-ajax.php, which fires admin_init before any
+		// authentication, so without this the SDK's constructor (and its option writes)
+		// would run for anonymous callers. Logged-in requests must still reach it during
+		// AJAX, because the constructor is what registers this SDK's own ajax handlers.
+		if ( ! is_user_logged_in() ) {
+			return;
+		}
 
 		if ( is_admin() ) :
 
@@ -27,9 +34,7 @@ if ( ! function_exists( 'rc_dynamic_init' ) ) {
 			 * Include SDK
 			 */
 			require_once dirname( __FILE__ ) . '/notice.php';
-			if ( function_exists( 'rc_sdk_automate' ) ) {
-				rc_sdk_automate( $params );
-			}
+			ultimate_post_kit_reviews_automate( $params );
 
 		endif;
 	}
