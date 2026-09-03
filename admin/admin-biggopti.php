@@ -383,12 +383,12 @@ class Biggopties {
 				set_transient($id, true, $time);
 
 				// Also store in options table for persistence
-				$dismissals_option = get_option('bdt_biggopti_dismissals', []);
+				$dismissals_option = get_option('bdtupk_biggopti_dismissals', []);
 				$dismissals_option[$id] = [
 					'dismissed_at' => time(),
 					'expires_at' => time() + intval($time),
 				];
-				update_option('bdt_biggopti_dismissals', $dismissals_option, false);
+				update_option('bdtupk_biggopti_dismissals', $dismissals_option, false);
 			}
 
 			wp_send_json_success();
@@ -462,7 +462,7 @@ class Biggopties {
 
 				// If transient not found, check options table for persistent dismissal
 				if (false === $expired || empty($expired)) {
-					$dismissals_option = get_option('bdt_biggopti_dismissals', []);
+					$dismissals_option = get_option('bdtupk_biggopti_dismissals', []);
 					if (isset($dismissals_option[$biggopti_id])) {
 						$dismissal = $dismissals_option[$biggopti_id];
 						// Check if dismissal is still valid (not expired)
@@ -471,7 +471,7 @@ class Biggopties {
 						} else {
 							// Clean up expired dismissal from options
 							unset($dismissals_option[$biggopti_id]);
-							update_option('bdt_biggopti_dismissals', $dismissals_option, false);
+							update_option('bdtupk_biggopti_dismissals', $dismissals_option, false);
 						}
 					}
 				}

@@ -165,7 +165,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 											echo esc_html(
 												wp_trim_words(
 													get_the_excerpt(),
-													absint( $settings['excerpt_length'] ?? 20 ),
+													ultimate_post_kit_clamp_excerpt_length( $settings['excerpt_length'] ?? 20, 20 ),
 													'...'
 												)
 											);
@@ -175,9 +175,10 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 										<?php if ( $settings['readmore_type'] === 'classic' ) : ?>
 											<a href="<?php echo esc_url( $post_link ); ?>" class="upk-readmore upk-display-inline-block">
 												<?php echo esc_html( $readmore_text ); ?>
-												<?php if ( $settings['readmore_icon']['value'] ) : ?>
+												<?php $upk_readmore_icon = ultimate_post_kit_sanitize_request_icon( $settings['readmore_icon'] ?? null ); ?>
+												<?php if ( $upk_readmore_icon ) : ?>
 													<span class="upk-button-icon-align-<?php echo esc_attr( $settings['readmore_icon_align'] ); ?>">
-														<?php Icons_Manager::render_icon( $settings['readmore_icon'], [ 'aria-hidden' => 'true', 'class' => 'fa-fw' ] ); ?>
+														<?php Icons_Manager::render_icon( $upk_readmore_icon, [ 'aria-hidden' => 'true', 'class' => 'fa-fw' ] ); ?>
 													</span>
 												<?php endif; ?>
 											</a>

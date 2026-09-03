@@ -2,10 +2,10 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.5.1
+Stable tag: 4.5.2
 Requires at least: 6.8
 Requires PHP: 7.0
-Tested up to: 7.0
+Tested up to: 7.1
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 4.0.0
@@ -46,11 +46,11 @@ https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
 
 This plugin connects to the following external services. Data is only sent under the stated conditions.
 
-1. **BdThemes Product Feed** (`https://dashboard.bdthemes.io`) — shows BdThemes news/updates in the plugin's WordPress dashboard widget. The product category is requested when an administrator opens the dashboard; no personal data is sent. Provided by BdThemes — [Terms](https://bdthemes.com/terms-conditions/), [Privacy](https://bdthemes.com/privacy-policy/).
+1. **BdThemes news feed** (`https://bdthemes.com/feed`) — optional dashboard widget showing BdThemes news/updates. It is **disabled by default** and only runs after an administrator opts in by enabling "BdThemes News & Updates" in Ultimate Post Kit > Other Settings. Until then the plugin makes no request to this service. When enabled, the plugin requests the public RSS feed while an administrator views the WordPress dashboard; no personal or site data is sent. Provided by BdThemes — [Terms](https://bdthemes.com/terms-conditions/), [Privacy](https://bdthemes.com/privacy-policy/).
 
 2. **Mailchimp API** (`https://<dc>.api.mailchimp.com`) — used only by the Newsletter widget to subscribe a visitor to the site owner's configured Mailchimp list. The subscriber's email address (and optional name) is sent to Mailchimp when the visitor submits the newsletter form. The Mailchimp API key/list are configured by the site owner. Provided by Mailchimp — [Terms](https://mailchimp.com/legal/terms/), [Privacy](https://www.intuit.com/privacy/statement/).
 
-3. **Social share count APIs** — the Share Buttons / social-counter widgets, when the count option is enabled, request public share counts from the relevant network for the current page URL: Facebook (`graph.facebook.com`), Pinterest (`api.pinterest.com`), Buffer (`api.bufferapp.com`), Tumblr (`api.tumblr.com`), WhatsApp (`api.whatsapp.com`), and Mail.ru (`appsmail.ru`). Only the page URL is sent, when such a widget is rendered. Each service is governed by its own terms/privacy policy (e.g. [Facebook](https://www.facebook.com/policies), [Pinterest](https://policy.pinterest.com/en/privacy-policy), [Buffer](https://buffer.com/legal/privacy), [Tumblr](https://www.tumblr.com/policy/en/privacy), [WhatsApp](https://www.whatsapp.com/legal/privacy-policy), [Mail.ru](https://help.mail.ru/legal/terms/)).
+3. **Social share count APIs** — the Share Buttons / social-counter widgets, when the count option is enabled, request public share counts from the relevant network for the current page URL: Facebook (`graph.facebook.com`), Pinterest (`api.pinterest.com`), Buffer (`api.bufferapp.com`), Tumblr (`api.tumblr.com`), WhatsApp (`api.whatsapp.com`), and Mail.ru (`appsmail.ru`). Only the page URL is sent, when such a widget is rendered. Each service is governed by its own terms/privacy policy (e.g. [Facebook](https://www.facebook.com/policies), [Pinterest](https://policy.pinterest.com/en/privacy-policy), [Buffer](https://buffer.com/privacy), [Tumblr](https://www.tumblr.com/policy/en/privacy), [WhatsApp](https://www.whatsapp.com/legal/privacy-policy), [Mail.ru](https://help.mail.ru/legal/terms/)).
 
 4. **Vimeo oEmbed** (`https://vimeo.com/api/oembed.json`) — used by video widgets to fetch the dimensions/thumbnail of a Vimeo video the site owner embedded. The public Vimeo URL is sent to Vimeo when such content is rendered. Provided by Vimeo — [Terms](https://vimeo.com/terms), [Privacy](https://vimeo.com/privacy).
 
@@ -331,6 +331,28 @@ Explore the best free addons for Elementor and Gutenberg to boost your site with
 Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor page builder-based products, informative blogs and documentation.
 
 == Changelog ==
+
+= 4.5.2 [3rd September 2026] =
+
+* Updated: The BdThemes news dashboard widget is now opt-in and disabled by default, so no request is made to an external server unless an administrator enables it under Other Settings
+* Fixed: The Newsletter widget now resolves the admin-ajax endpoint with admin_url() instead of a hardcoded /wp-admin/ path, so it works on installs with a custom admin location
+* Fixed: The setup wizard now requires the activate_plugins capability on its own before activating a plugin, and reports a clear error when the user lacks it
+* Fixed: Broken Buffer privacy policy link in the external services list
+* Updated: Renamed the setup wizard, template import and review notice AJAX actions, nonce and review SDK class/functions to use distinct Ultimate Post Kit prefixes to prevent collisions with other plugins
+* Security: The load more endpoints no longer accept an arbitrary post type from the request, so they can only return content from post types the site already shows to visitors
+* Security: The load more endpoints now cap the excerpt length, so a request can no longer pull back a whole post instead of a summary
+* Security: Icons supplied in a load more request can no longer reference an uploaded SVG by attachment id
+* Security: The author dropdown in widget settings now only lists users the current user is allowed to see, and no longer searches by email address
+* Security: The post dropdown in widget settings is now limited to public post types and a bounded number of results
+* Security: Duplicating a post now checks permission for that specific post and post type, and its link is tied to the post being duplicated
+* Security: The setup wizard, its scripts and its first run setup no longer load for users without permission to manage the site
+* Fixed: The newsletter widget no longer triggers a fatal error when Mailchimp is unreachable or not configured yet
+* Updated: Importing a template no longer turns off Elementor's unfiltered file upload protection
+* Updated: Template and kit downloads now verify the TLS certificate of the server they are fetched from
+* Updated: Plugin icons on the setup wizard and Other Plugins screens are no longer loaded from hardcoded remote URLs; icons come from the WordPress.org API response, with a local placeholder when none is available
+* Updated: The duplicate post action and the promo dismissal option now use names specific to this plugin, so they cannot clash with other plugins from the same author
+* Updated: Bundled Chart.js updated from 3.9.1 to 4.5.1 and fslightbox from 3.4.1 to 3.8.0
+* Fixed: Several bundled scripts were registered with the wrong version number, which could serve stale cached copies to visitors after an update
 
 = 4.5.1 [18th August 2026] =
 

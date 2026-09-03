@@ -136,7 +136,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 									if ( has_excerpt() ) {
 										the_excerpt();
 									} else {
-										echo esc_html( wp_trim_words( get_the_content(), $settings['excerpt_length'] ?? 15 ) );
+										echo esc_html( wp_trim_words( get_the_content(), ultimate_post_kit_clamp_excerpt_length( $settings['excerpt_length'] ?? 15, 15 ) ) );
 									}
 									?>
 								</div>

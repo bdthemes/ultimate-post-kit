@@ -1003,3 +1003,107 @@ if ( ! function_exists( 'upk_license_validation' ) ) {
 	}
 }
 
+
+/**
+ * Restrict a request-supplied post type to the ones this site already exposes to
+ * anonymous visitors.
+ *
+ * The load-more handlers are registered on wp_ajax_nopriv_* and rebuild their WP_Query
+ * from $_POST, so the post type they query is attacker-controlled. Post types that are
+ * public but flagged exclude_from_search (Elementor's elementor_library, for example)
+ * are deliberately hidden from anonymous visitors elsewhere, so they must not be
+ * reachable here either.
+ *
+ * @param string|array $post_type Requested post type(s).
+ * @param string       $fallback  Post type to fall back to when nothing is allowed.
+ * @return string|array Sanitized post type(s).
+ */
+if ( ! function_exists( 'ultimate_post_kit_sanitize_public_post_type' ) ) {
+	function ultimate_post_kit_sanitize_public_post_type( $post_type, $fallback = 'post' ) {
+
+		$allowed = get_post_types(
+			[
+				'public'              => true,
+				'exclude_from_search' => false,
+			]
+		);
+
+		if ( is_array( $post_type ) ) {
+			$requested = array_filter( $post_type, 'is_scalar' );
+			$requested = array_values( array_intersect( array_map( 'strval', $requested ), $allowed ) );
+
+			return empty( $requested ) ? $fallback : $requested;
+		}
+
+		if ( ! is_scalar( $post_type ) ) {
+			return $fallback;
+		}
+
+		$post_type = (string) $post_type;
+
+		return isset( $allowed[ $post_type ] ) ? $post_type : $fallback;
+	}
+}
+
+/**
+ * Clamp a request-supplied excerpt word count.
+ *
+ * excerpt_length arrives from $_POST on the unauthenticated load-more handlers and is
+ * passed straight to wp_trim_words(), so an unbounded value returns effectively the
+ * whole post_content instead of a teaser.
+ *
+ * @param mixed $length  Requested word count.
+ * @param int   $default Value to use when the request supplies nothing usable.
+ * @return int Clamped word count.
+ */
+if ( ! function_exists( 'ultimate_post_kit_clamp_excerpt_length' ) ) {
+	function ultimate_post_kit_clamp_excerpt_length( $length, $default = 20 ) {
+
+		$length = is_scalar( $length ) ? (int) $length : 0;
+
+		if ( $length < 1 ) {
+			$length = (int) $default;
+		}
+
+		return max( 1, min( 200, $length ) );
+	}
+}
+
+/**
+ * Make a request-supplied Elementor icon array safe to render.
+ *
+ * The load-more handlers run on wp_ajax_nopriv_* and rebuild their settings from $_POST.
+ * map_deep() preserves nested arrays, so an icon array reaches
+ * Elementor\Icons_Manager::render_icon() exactly as the caller shaped it. The 'svg'
+ * library branch resolves to Svg::get_inline_svg( $value['id'] ), which reads an
+ * attachment by id with no capability or post-status check, so an icon coming from a
+ * request must never be allowed to select it.
+ *
+ * @param mixed $icon Icon array as supplied by the request.
+ * @return array|false Safe icon array, or false when nothing renderable remains.
+ */
+if ( ! function_exists( 'ultimate_post_kit_sanitize_request_icon' ) ) {
+	function ultimate_post_kit_sanitize_request_icon( $icon ) {
+
+		if ( ! is_array( $icon ) || empty( $icon['library'] ) || ! is_scalar( $icon['library'] ) ) {
+			return false;
+		}
+
+		$library = (string) $icon['library'];
+
+		// Uploaded-SVG icons are addressed by attachment id; never resolve one from a request.
+		if ( 'svg' === $library ) {
+			return false;
+		}
+
+		// Font icons are rendered as a CSS class, so the value must stay a scalar.
+		if ( ! isset( $icon['value'] ) || ! is_scalar( $icon['value'] ) ) {
+			return false;
+		}
+
+		return [
+			'library' => $library,
+			'value'   => (string) $icon['value'],
+		];
+	}
+}

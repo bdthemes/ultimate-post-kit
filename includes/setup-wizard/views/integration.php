@@ -56,36 +56,6 @@ if (!function_exists('format_last_updated_usk')) {
 }
 
 // Helper function for fallback URLs
-if (!function_exists('get_plugin_fallback_urls_usk')) {
-    function get_plugin_fallback_urls_usk($plugin_slug) {
-        // Handle different plugin slug formats
-        if (strpos($plugin_slug, '/') !== false) {
-            // If it's a file path like 'plugin-name/plugin-name.php', extract directory
-            $plugin_slug_clean = dirname($plugin_slug);
-        } else {
-            // If it's just the plugin directory name, use it directly
-            $plugin_slug_clean = $plugin_slug;
-        }
-        
-        // Custom icon URLs for specific plugins that might not be on WordPress.org
-        $custom_icons = [
-            'ar-viewer' => [
-                'https://ps.w.org/ar-viewer/assets/icon-256x256.gif',
-                'https://ps.w.org/ar-viewer/assets/icon-128x128.gif',
-            ],
-        ];
-        
-        // Return custom icons if available, otherwise use default WordPress.org URLs
-        if (isset($custom_icons[$plugin_slug_clean])) {
-            return $custom_icons[$plugin_slug_clean];
-        }
-        
-        return [
-            "https://ps.w.org/{$plugin_slug_clean}/assets/icon-256x256.png",  // Large PNG
-            "https://ps.w.org/{$plugin_slug_clean}/assets/icon-128x128.png",  // Medium PNG
-        ];
-    }
-}
 
 // Define plugin slugs
 $plugin_slugs = array(
@@ -185,11 +155,8 @@ if (!$has_cached_data) {
                                     echo '<div class="default-plugin-icon" style="display:none;">📦</div>';
                                 } else {
                                     // Generate fallback URLs for WordPress.org
-                                    $actual_slug = (strpos($plugin_slug, '/') !== false) ? dirname($plugin_slug) : $plugin_slug;
-                                    $fallback_urls = get_plugin_fallback_urls_usk($actual_slug);
-                                    
-                                    echo '<img src="' . esc_url($fallback_urls[0]) . '" alt="' . esc_attr($plugin_name) . '" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">';
-                                    echo '<div class="default-plugin-icon" style="display:none;">📦</div>';
+                                    // No icon in the API response, show the local placeholder.
+                                    echo '<div class="default-plugin-icon" style="display:flex;">📦</div>';
                                 }
                                 ?>
                             </span>
@@ -207,7 +174,7 @@ if (!$has_cached_data) {
                              if (!$is_active) : ?>
                                  <label class="switch">
                                      <input type="checkbox" class="plugin-slider-checkbox" <?php echo $plugin_recommended ? 'checked' : ''; ?>
-                                            name="plugins[]<?php echo isset($plugin['slug']) ? wp_kses_post($plugin['slug']) : ''; ?>">
+                                            name="plugins[]<?php echo isset($plugin['slug']) ? esc_attr($plugin['slug']) : ''; ?>">
                                      <span class="slider round"></span>
                                  </label>
                              <?php
@@ -217,7 +184,7 @@ if (!$has_cached_data) {
                         </span>
                         <div class="bdt-flex bdt-flex-middle">
                                 <span class="bdt-plugin-name">
-                                    <?php echo wp_kses_post($plugin['name']); ?>
+                                    <?php echo esc_html($plugin['name']); ?>
                                 </span>
                             </div>
                             
@@ -232,7 +199,7 @@ if (!$has_cached_data) {
                         </span>
 
                         <?php if (isset($plugin['downloaded_formatted']) && !empty($plugin['downloaded_formatted'])): ?>
-                        <span class="downloads"><?php esc_html_e('Downloads: ', 'ultimate-post-kit'); echo wp_kses_post($plugin['downloaded_formatted']); ?></span>
+                        <span class="downloads"><?php esc_html_e('Downloads: ', 'ultimate-post-kit'); echo esc_html($plugin['downloaded_formatted']); ?></span>
                         <?php endif; ?>
                         
                         <div class="rating-section">
@@ -390,7 +357,7 @@ jQuery(document).ready(function($) {
                 const isRecommended = plugin.recommended && !isActive;
                 
                 html += `
-                    <label class="plugin-item" data-slug="${plugin.slug}">
+                    <label class="plugin-item" data-slug="${upkEsc(plugin.slug)}">
                         <span class="bdt-flex bdt-flex-middle bdt-flex-between bdt-margin-small-bottom">
                             <span class="bdt-plugin-logo">
                                 ${generatePluginLogo(plugin)}
@@ -400,30 +367,30 @@ jQuery(document).ready(function($) {
                                 ${isActive ? '<span class="active-badge">ACTIVE</span>' : ''}
                                 ${!isActive ? `
                                     <label class="switch">
-                                        <input type="checkbox" class="plugin-slider-checkbox" ${plugin.recommended ? 'checked' : ''} name="plugins[]${plugin.slug}">
+                                        <input type="checkbox" class="plugin-slider-checkbox" ${plugin.recommended ? 'checked' : ''} name="plugins[]${upkEsc(plugin.slug)}">
                                         <span class="slider round"></span>
                                     </label>
                                 ` : ''}
                             </div>
                         </span>
                         <div class="bdt-flex bdt-flex-middle">
-                            <span class="bdt-plugin-name">${plugin.name}</span>
+                            <span class="bdt-plugin-name">${upkEsc(plugin.name)}</span>
                         </div>
                         <span class="active-installs">
                             Active Installs: 
                             <span class="installs-count">${plugin.active_installs_count > 0 ? plugin.active_installs_count.toLocaleString() + '+' : 'Fewer than 10'}</span>
                         </span>
-                        ${plugin.downloaded_formatted ? `<span class="downloads">Downloads: ${plugin.downloaded_formatted}</span>` : ''}
+                        ${plugin.downloaded_formatted ? `<span class="downloads">Downloads: ${upkEsc(plugin.downloaded_formatted)}</span>` : ''}
                         <div class="rating-section">
-                            <div class="wporg-ratings" title="${plugin.rating} out of 5 stars" style="color:var(--wp--preset--color--pomegrade-1, #e26f56);">
+                            <div class="wporg-ratings" title="${upkEsc(plugin.rating)} out of 5 stars" style="color:var(--wp--preset--color--pomegrade-1, #e26f56);">
                                 ${generateStarRating(plugin.rating)}
                             </div>
                             <span class="rating-text">
-                                ${plugin.rating} out of 5 stars.
+                                ${upkEsc(plugin.rating)} out of 5 stars.
                                 ${plugin.num_ratings > 0 ? `<span class="rating-count">(${plugin.num_ratings.toLocaleString()} ratings)</span>` : ''}
                             </span>
                         </div>
-                        ${plugin.last_updated_formatted ? `<span class="last-updated">Last Updated: ${plugin.last_updated_formatted}</span>` : ''}
+                        ${plugin.last_updated_formatted ? `<span class="last-updated">Last Updated: ${upkEsc(plugin.last_updated_formatted)}</span>` : ''}
                     </label>
                 `;
             });
@@ -432,10 +399,26 @@ jQuery(document).ready(function($) {
         $pluginList.html(html);
     }
     
+    // Escape remote-sourced strings before they are concatenated into markup. The plugin
+    // catalog comes from a remote endpoint; treat it as untrusted so a poisoned or
+    // compromised feed cannot inject HTML/JS into the admin dashboard. Note that
+    // Remote_Data_Handler::decode_api_text() html_entity_decode()s these fields, so they
+    // arrive here already un-escaped.
+    function upkEsc(s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+    }
+
+    function upkSafeUrl(u) {
+        u = String(u == null ? '' : u);
+        return /^https?:\/\//i.test(u) ? u : '';
+    }
+
     // Helper function to generate plugin logo
     function generatePluginLogo(plugin) {
         if (plugin.logo && plugin.logo.match(/^https?:\/\//)) {
-            return `<img src="${plugin.logo}" alt="${plugin.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            return `<img src="${upkEsc(upkSafeUrl(plugin.logo))}" alt="${upkEsc(plugin.name)}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="default-plugin-icon" style="display:none;">📦</div>`;
         } else {
             // No icon supplied by the data source — show the local placeholder
@@ -474,7 +457,7 @@ jQuery(document).ready(function($) {
         // Show error in plugin list
         $pluginList.html(`
             <div class="upk-error-state" style="text-align: center; padding: 40px;">
-                <p style="color: #d63638;">${message}</p>
+                <p style="color: #d63638;">${upkEsc(message)}</p>
                 <button type="button" class="bdt-button bdt-button-secondary" onclick="location.reload()">Retry</button>
             </div>
         `);

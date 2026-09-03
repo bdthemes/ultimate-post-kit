@@ -1218,11 +1218,11 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 
 							wp_nonce_field('ultimate-post-kit-settings-save-nonce');
 
-							do_action('wsa_form_top_' . $form['id'], $form);
+							do_action('ultimate_post_kit_form_top_' . $form['id'], $form);
 
 							$this->do_settings_sections($form['id']);
 
-							do_action('wsa_form_bottom_' . $form['id'], $form);
+							do_action('ultimate_post_kit_form_bottom_' . $form['id'], $form);
 
 							?>
 

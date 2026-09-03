@@ -186,7 +186,7 @@ class Admin
 		wp_enqueue_script('jquery-form');
 		wp_enqueue_script('upk-biggopti', BDTUPK_ADMIN_ASSETS_URL . 'js/upk-biggopti.min.js', ['jquery'], BDTUPK_VER,  true);
 
-		$dismissals = get_option('bdt_biggopti_dismissals', []);
+		$dismissals = get_option('bdtupk_biggopti_dismissals', []);
 		$dismissed_display_ids = [];
 		$prefix = 'bdt-admin-biggopti-api-biggopti-';
 		foreach (array_keys($dismissals) as $key) {
@@ -214,7 +214,7 @@ class Admin
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check of the current admin page slug for asset routing, no form data processed.
 		if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_post_kit_options')) {
-			wp_enqueue_script('chart', BDTUPK_ADMIN_ASSETS_URL . 'js/chart.min.js', ['jquery'], '3.9.1', true);
+			wp_enqueue_script('chart', BDTUPK_ADMIN_ASSETS_URL . 'js/chart.min.js', ['jquery'], '4.5.1', true);
 			wp_enqueue_script('upk-admin', BDTUPK_ADMIN_ASSETS_URL  . 'js/upk-admin.min.js', ['jquery', 'chart'], BDTUPK_VER, true);
 		}else{
 			wp_enqueue_script('upk-admin', BDTUPK_ADMIN_ASSETS_URL  . 'js/upk-admin.min.js', ['jquery'], BDTUPK_VER, true);

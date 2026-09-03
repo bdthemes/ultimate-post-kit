@@ -185,7 +185,11 @@ trait Global_Widget_Functions {
 			$args['ignore_sticky_posts'] = 1;
 			$args = apply_filters('ultimate_post_kit/query/get_query_args/related_query', $args);
 		} else {
-			$args['post_type'] = $posts_source;
+			// This runs on wp_ajax_nopriv_* and $posts_source comes straight from $_POST,
+			// so restrict it to post types this site already exposes to anonymous visitors.
+			// Without this a request can enumerate published entries of post types that are
+			// deliberately hidden from anonymous access (e.g. Elementor's elementor_library).
+			$args['post_type'] = ultimate_post_kit_sanitize_public_post_type( $posts_source );
 			$current_post = [];
 
 			/**

@@ -48,7 +48,7 @@ class Setup_Wizard {
 
 	// Initialize hooks
 	private function init_hooks() {
-		add_action( 'wp_ajax_setup_wizard_install_plugins', array( $this, 'install_plugins' ) );
+		add_action( 'wp_ajax_ultimate_post_kit_setup_wizard_install_plugins', array( $this, 'install_plugins' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'admin_init', array( $this, 'activate_default_widgets' ) );
 		add_action( 'admin_init', array( $this, 'maybe_display_setup_wizard' ) );
@@ -60,6 +60,13 @@ class Setup_Wizard {
 
 	// Check for manual wizard requests
 	public function check_manual_wizard_request() {
+		// This runs on admin_init, which also fires on admin-ajax.php before any
+		// authentication, and on every admin screen for every logged-in role. The setup
+		// wizard is an administrator-only flow, so gate it explicitly.
+		if ( wp_doing_ajax() || ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check of a GET flag to decide whether to render the setup wizard screen, no form data processed.
 		$is_setup_wizard_request = isset($_GET['upk_setup_wizard']) && $_GET['upk_setup_wizard'] === 'show';
 		
@@ -151,6 +158,13 @@ class Setup_Wizard {
 
 	// Check if this is first activation and display setup wizard if needed
 	public function maybe_display_setup_wizard() {
+		// This runs on admin_init, which also fires on admin-ajax.php before any
+		// authentication, and on every admin screen for every logged-in role. The setup
+		// wizard is an administrator-only flow, so gate it explicitly.
+		if ( wp_doing_ajax() || ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
 		// Only check for first activation here
 		if ( get_option( 'bdtupk_setup_wizard_completed' ) === false ) {
 			// Set the flag so it doesn't run again
@@ -215,6 +229,14 @@ class Setup_Wizard {
 	// Enqueue necessary scripts
 	public function enqueue_scripts() {
 
+		// Loaded on admin_enqueue_scripts for every admin screen and every role. The
+		// wizard's assets and its nonce have no business outside an administrator's
+		// wizard/settings screen.
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+
 		$direction_suffix = is_rtl() ? '.rtl' : '';
 
 		wp_enqueue_style('bdt-uikit', BDTUPK_ADMIN_ASSETS_URL . 'css/bdt-uikit' . $direction_suffix . '.css', [], '3.17.0');
@@ -231,7 +253,7 @@ class Setup_Wizard {
 			'BDT_SetupWizard',
 			array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
-				'nonce'    => wp_create_nonce( 'setup_wizard_nonce' ),
+				'nonce'    => wp_create_nonce( 'ultimate_post_kit_setup_wizard_nonce' ),
 				'is_fullscreen' => true
 			)
 		);
@@ -249,7 +271,7 @@ class Setup_Wizard {
 
 	// Install plugins
 	public function install_plugins() {
-		check_ajax_referer( 'setup_wizard_nonce', 'nonce' );
+		check_ajax_referer( 'ultimate_post_kit_setup_wizard_nonce', 'nonce' );
 
 		$plugin_slugs = isset( $_POST['plugins'] ) ? map_deep( wp_unslash( $_POST['plugins'] ), 'sanitize_text_field' ) : array();
 
@@ -312,12 +334,23 @@ class Setup_Wizard {
                 }
             }
 
+            // Activating a plugin is a separate capability from installing one, so it is
+            // checked on its own rather than being implied by 'install_plugins' above.
+            if ( ! current_user_can( 'activate_plugins' ) ) {
+                $results[] = array(
+                    'slug'    => $plugin_slug,
+                    'success' => false,
+                    'message' => esc_html__( 'You do not have permission to activate plugins on this site.', 'ultimate-post-kit' ),
+                );
+                continue;
+            }
+
             // active the plugin
-            if ( is_plugin_inactive($plugin_slug) && current_user_can( 'activate_plugins' ) ) {
+            if ( is_plugin_inactive( $plugin_slug ) ) {
                 $activation_result = activate_plugin( $plugin_slug );
                 if ( is_wp_error( $activation_result ) ) {
                     $results[] = array(
-                        'slug'    => $slug,
+                        'slug'    => $plugin_slug,
                         'success' => false,
                         'message' => $activation_result->get_error_message(),
                     );
@@ -359,6 +392,13 @@ class Setup_Wizard {
      * Activate default widgets in setup wizard
      */
     public function activate_default_widgets() {
+
+        // Also reached anonymously via admin-ajax.php, which fires admin_init before
+        // authentication. Enabling widget modules is an administrator action.
+        if ( wp_doing_ajax() || ! current_user_can( 'manage_options' ) ) {
+            return;
+        }
+
         // List of widgets to activate by default
         $default_active_widgets = array(
             'alex-grid',
@@ -408,8 +448,8 @@ Setup_Wizard::get_instance();
 
 use Elementor\TemplateLibrary\Source_Local;
 
-add_action('wp_ajax_import_elementor_template', function () {
-		check_ajax_referer( 'setup_wizard_nonce', 'nonce' );
+add_action('wp_ajax_ultimate_post_kit_import_elementor_template', function () {
+		check_ajax_referer( 'ultimate_post_kit_setup_wizard_nonce', 'nonce' );
 
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( array( 'message' => esc_html__( 'Unauthorized', 'ultimate-post-kit' ) ) );
@@ -419,8 +459,7 @@ add_action('wp_ajax_import_elementor_template', function () {
 		$json_url = isset( $_POST['import_url'] ) ? esc_url_raw( wp_unslash( $_POST['import_url'] ) ) : '';
 
         $response = wp_safe_remote_get($json_url, array(
-            'timeout'   => 60,
-            'sslverify' => false
+            'timeout' => 60,
         ));
 
         if (is_wp_error($response)) {
@@ -505,8 +544,8 @@ add_action('wp_ajax_import_elementor_template', function () {
 );
 
 
-add_action('wp_ajax_import_upk_elementor_bundle_template', function () {
-    check_ajax_referer('setup_wizard_nonce', 'nonce');
+add_action('wp_ajax_ultimate_post_kit_import_elementor_bundle_template', function () {
+    check_ajax_referer('ultimate_post_kit_setup_wizard_nonce', 'nonce');
 
 	if ( ! current_user_can( 'manage_options' ) ) {
         wp_send_json_error( array( 'message' => esc_html__( 'Unauthorized', 'ultimate-post-kit' ) ) );
@@ -520,8 +559,7 @@ add_action('wp_ajax_import_upk_elementor_bundle_template', function () {
     }
 
     $remote_zip_request = wp_safe_remote_get($file_url, array(
-        'timeout'   => 60,
-        'sslverify' => false,
+        'timeout' => 60,
     ));
 
     if (is_wp_error($remote_zip_request)) {
@@ -592,7 +630,12 @@ add_action('wp_ajax_import_upk_elementor_bundle_template', function () {
 
         $import = $import_export_module->import_kit($tmp_folder_id, $settings, true);
 
-        Plugin::$instance->uploads_manager->enable_unfiltered_files_upload();
+        // Deliberately NOT calling
+        // Plugin::$instance->uploads_manager->enable_unfiltered_files_upload() here.
+        // That permanently sets Elementor's `elementor_unfiltered_files_upload` option,
+        // which Elementor itself surfaces behind an explicit security warning and an
+        // opt-in confirmation. Importing a template must not silently relax another
+        // plugin's upload filtering for the whole site.
 
         wp_send_json_success($import);
     } catch (\Throwable $e) {
@@ -600,8 +643,8 @@ add_action('wp_ajax_import_upk_elementor_bundle_template', function () {
     }
 });
 
-add_action('wp_ajax_import_upk_elementor_bundle_runner_template', function () {
-    check_ajax_referer('setup_wizard_nonce', 'nonce');
+add_action('wp_ajax_ultimate_post_kit_import_elementor_bundle_runner_template', function () {
+    check_ajax_referer('ultimate_post_kit_setup_wizard_nonce', 'nonce');
 
 	if ( ! current_user_can( 'manage_options' ) ) {
         wp_send_json_error( array( 'message' => esc_html__( 'Unauthorized', 'ultimate-post-kit' ) ) );
