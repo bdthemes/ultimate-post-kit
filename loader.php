@@ -135,11 +135,12 @@ class Ultimate_Post_Kit_Loader {
 		// since both provide the same duplicate-post admin action.
 		if ( $duplicator == 'on'
 			&& ! class_exists( '\\UltimatePostKit\\Includes\\BdThemes_Duplicator' )
-			&& ! class_exists( '\\ElementPack\\Includes\\BdThemes_Duplicator' ) ) {
+			&& ! class_exists( '\\ElementPack\\Includes\\BdThemes_Duplicator' )
+			&& ! class_exists( '\\BdThemes_Duplicator' ) ) {
 			require BDTUPK_PATH . 'includes/class-duplicator.php';
 		}
 
-		if ( ! class_exists( 'BdThemes_Live_Copy' ) ) {
+		if ( ! class_exists( '\\UltimatePostKit\\Includes\\LiveCopy\\BdThemes_Live_Copy' ) ) {
 			if ( ( $live_copy == 'on' ) && ( ! is_plugin_active( 'live-copy-paste/live-copy-paste.php' ) ) ) {
 				require_once BDTUPK_PATH . 'includes/live-copy/class-live-copy.php';
 			}

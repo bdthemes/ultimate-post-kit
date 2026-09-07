@@ -4,7 +4,7 @@
  * Plugin Name: Ultimate Post Kit
  * Plugin URI: https://postkit.pro/
  * Description: <a href="https://postkit.pro/">Ultimate Post Kit</a> is a packed of post related elementor widgets. This plugin gives you post related widget features for elementor page builder plugin.
- * Version: 4.5.2
+ * Version: 4.5.3
  * Author: BdThemes
  * Author URI: https://bdthemes.com/
  * Text Domain: ultimate-post-kit
@@ -19,7 +19,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Some pre define value for easy use
-define( 'BDTUPK_VER', '4.5.2' );
+define( 'BDTUPK_VER', '4.5.3' );
+
+/**
+ * Minimum Pro version this Free/Core release is API compatible with.
+ *
+ * Required on Core/Base file changes. The Pro add-on extends base classes and
+ * calls helpers that live here, so whenever those signatures change a matching
+ * Pro must be released and this constant bumped to it. An older Pro is only
+ * warned about, never blocked, so the Free plugin stays fully functional on
+ * its own.
+ */
+define( 'BDTUPK_PRO_REQUIRED_VERSION', '4.5.2' );
+
 define( 'BDTUPK__FILE__', __FILE__ );
 
 /**
@@ -66,6 +78,20 @@ if ( ! function_exists( '_is_upk_pro_activated' ) ) {
 	}
 }
 
+if ( ! function_exists( '_is_upk_pro_version_sufficient' ) ) {
+
+	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- matches the established _is_upk_* helper naming used across the plugin family.
+	function _is_upk_pro_version_sufficient() {
+
+		// Pro is not loaded, so there is nothing to be incompatible with.
+		if ( ! defined( 'BDTUPK_PRO_VER' ) ) {
+			return true;
+		}
+
+		return version_compare( BDTUPK_PRO_VER, BDTUPK_PRO_REQUIRED_VERSION, '>=' );
+	}
+}
+
 // Helper function here
 require_once ( dirname( __FILE__ ) . '/includes/helper.php' );
 
@@ -95,6 +121,11 @@ function ultimate_post_kit_load_plugin() {
 		return;
 	}
 
+	// An outdated Pro is warned about but never blocked; Free must keep working.
+	if ( ! _is_upk_pro_version_sufficient() ) {
+		add_action( 'admin_notices', 'ultimate_post_kit_pro_version_not_sufficient' );
+	}
+
 	require_once( dirname( __FILE__ ) . '/includes/setup-wizard/init.php' );
 
 	// Element pack widget and assets loader
@@ -103,6 +134,25 @@ function ultimate_post_kit_load_plugin() {
 
 add_action( 'plugins_loaded', 'ultimate_post_kit_load_plugin' );
 
+
+/**
+ * Warn when the installed Pro add-on is older than this Free/Core release
+ * expects. Pro is still loaded, so nothing breaks silently on the front end.
+ */
+function ultimate_post_kit_pro_version_not_sufficient() {
+	if ( ! current_user_can( 'update_plugins' ) ) {
+		return;
+	}
+
+	$admin_message = '<p>' . sprintf(
+		/* translators: 1: installed Ultimate Post Kit Pro version, 2: minimum required Ultimate Post Kit Pro version */
+		esc_html__( 'Ops! Ultimate Post Kit Pro %1$s is older than this version of the Free/Core plugin supports. Please update Ultimate Post Kit Pro to at least version %2$s.', 'ultimate-post-kit' ),
+		esc_html( BDTUPK_PRO_VER ),
+		esc_html( BDTUPK_PRO_REQUIRED_VERSION )
+	) . '</p>';
+
+	echo '<div class="error">' . wp_kses_post( $admin_message ) . '</div>';
+}
 
 /**
  * Check Elementor installed and activated correctly

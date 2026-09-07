@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shmusuf, arafatakashakku, shaikatazim, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.5.2
+Stable tag: 4.5.3
 Requires at least: 6.8
 Requires PHP: 7.0
 Tested up to: 7.1
@@ -331,6 +331,13 @@ Explore the best free addons for Elementor and Gutenberg to boost your site with
 Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor page builder-based products, informative blogs and documentation.
 
 == Changelog ==
+
+= 4.5.3 [7th September 2026] =
+
+* Fixed: Fatal error on every page of the site when another BdThemes plugin that provides the same duplicate post feature, such as Live Copy Paste, was active alongside this plugin
+* Updated: The duplicate post feature is now skipped when an active plugin already provides it, so the Duplicate link is no longer listed twice on the posts and pages screens
+* Updated: Added a minimum Ultimate Post Kit Pro version requirement, which shows an admin notice when an older Pro add-on is installed
+* Fixed: The Live Copy feature could be skipped by mistake because of an internal check that never matched the feature it was guarding
 
 = 4.5.2 [3rd September 2026] =
 
