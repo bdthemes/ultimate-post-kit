@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
  * Duplicator Class
  */
 
-if (!class_exists('BdThemes_Duplicator')) :
+if (!class_exists(__NAMESPACE__ . '\\BdThemes_Duplicator')) :
     class BdThemes_Duplicator {
 
         public function __construct() {
@@ -216,5 +216,14 @@ if (!class_exists('BdThemes_Duplicator')) :
     }
 endif;
 
-
+/**
+ * Instantiate the namespaced class.
+ *
+ * The guard above and this statement must resolve to the same class. An
+ * unqualified class_exists() string is always resolved against the global
+ * namespace, so a sibling plugin declaring a global \BdThemes_Duplicator
+ * (Live Copy Paste does) used to satisfy the old guard and skip the
+ * declaration, while this line still asked for
+ * UltimatePostKit\Includes\BdThemes_Duplicator -- a fatal error.
+ */
 new BdThemes_Duplicator();
