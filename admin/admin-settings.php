@@ -1712,8 +1712,20 @@ class UltimatePostKit_Admin_Settings {
 
                 <div class="bdt-width-expand@s bdt-text-right">
                     <p class="">
-                        Ultimate Post Kit Pro plugin made with love by <a target="_blank" href="https://bdthemes.com">BdThemes</a> Team.
-                        <br>All rights reserved by <a target="_blank" href="https://bdthemes.com">BdThemes.com</a>.
+                        <?php
+                        printf(
+                            /* translators: %s: link to the BdThemes website. */
+                            esc_html__('Ultimate Post Kit Pro plugin made with love by %s Team.', 'ultimate-post-kit'),
+                            '<a target="_blank" href="' . esc_url('https://bdthemes.com') . '">BdThemes</a>'
+                        );
+                        ?>
+                        <br><?php
+                        printf(
+                            /* translators: %s: link to the BdThemes website. */
+                            esc_html__('All rights reserved by %s.', 'ultimate-post-kit'),
+                            '<a target="_blank" href="' . esc_url('https://bdthemes.com') . '">BdThemes.com</a>'
+                        );
+                        ?>
                     </p>
                 </div>
             </div>

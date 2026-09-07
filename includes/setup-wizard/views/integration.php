@@ -342,13 +342,38 @@ jQuery(document).ready(function($) {
         });
     }
     
+    // Translatable strings used by the dynamically rendered plugin list.
+    const upkI18n = <?php echo wp_json_encode( array(
+        'noPlugins'      => __( 'No plugins found.', 'ultimate-post-kit' ),
+        'recommended'    => __( 'Recommended', 'ultimate-post-kit' ),
+        'active'         => __( 'ACTIVE', 'ultimate-post-kit' ),
+        /* translators: %s: number of active installs, or the "Fewer than 10" phrase. */
+        'activeInstalls' => __( 'Active Installs: %s', 'ultimate-post-kit' ),
+        'fewerThanTen'   => __( 'Fewer than 10', 'ultimate-post-kit' ),
+        /* translators: %s: formatted download count. */
+        'downloads'      => __( 'Downloads: %s', 'ultimate-post-kit' ),
+        /* translators: %s: plugin rating, e.g. 4.5. */
+        'ratingTitle'    => __( '%s out of 5 stars', 'ultimate-post-kit' ),
+        /* translators: %s: plugin rating, e.g. 4.5. */
+        'ratingText'     => __( '%s out of 5 stars.', 'ultimate-post-kit' ),
+        /* translators: %s: number of ratings. */
+        'ratingCount'    => __( '(%s ratings)', 'ultimate-post-kit' ),
+        /* translators: %s: how long ago the plugin was updated. */
+        'lastUpdated'    => __( 'Last Updated: %s', 'ultimate-post-kit' ),
+    ), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT ); ?>;
+
+    // Minimal printf-style substitution so translators keep control of word order.
+    function upkFormat(template, value) {
+        return String(template).replace('%s', value);
+    }
+
     // Function to render plugin list
     function renderPluginList(plugins) {
         const $pluginList = $('#upk-integration-plugin-list');
         let html = '';
         
         if (plugins.length === 0) {
-            html = '<div class="upk-no-plugins" style="text-align: center; padding: 40px;"><p>No plugins found.</p></div>';
+            html = `<div class="upk-no-plugins" style="text-align: center; padding: 40px;"><p>${upkEsc(upkI18n.noPlugins)}</p></div>`;
         } else {
             plugins.forEach(function(plugin) {
                 // Skip own plugin (Ultimate Post Kit) when printing only; data still includes it for other plugins
@@ -363,8 +388,8 @@ jQuery(document).ready(function($) {
                                 ${generatePluginLogo(plugin)}
                             </span>
                             <div class="bdt-plugin-badge-switch-wrap">
-                                ${isRecommended ? '<span class="recommended-badge">Recommended</span>' : ''}
-                                ${isActive ? '<span class="active-badge">ACTIVE</span>' : ''}
+                                ${isRecommended ? `<span class="recommended-badge">${upkEsc(upkI18n.recommended)}</span>` : ''}
+                                ${isActive ? `<span class="active-badge">${upkEsc(upkI18n.active)}</span>` : ''}
                                 ${!isActive ? `
                                     <label class="switch">
                                         <input type="checkbox" class="plugin-slider-checkbox" ${plugin.recommended ? 'checked' : ''} name="plugins[]${upkEsc(plugin.slug)}">
@@ -377,20 +402,19 @@ jQuery(document).ready(function($) {
                             <span class="bdt-plugin-name">${upkEsc(plugin.name)}</span>
                         </div>
                         <span class="active-installs">
-                            Active Installs: 
-                            <span class="installs-count">${plugin.active_installs_count > 0 ? plugin.active_installs_count.toLocaleString() + '+' : 'Fewer than 10'}</span>
+                            ${upkFormat(upkEsc(upkI18n.activeInstalls), `<span class="installs-count">${plugin.active_installs_count > 0 ? upkEsc(plugin.active_installs_count.toLocaleString() + '+') : upkEsc(upkI18n.fewerThanTen)}</span>`)}
                         </span>
-                        ${plugin.downloaded_formatted ? `<span class="downloads">Downloads: ${upkEsc(plugin.downloaded_formatted)}</span>` : ''}
+                        ${plugin.downloaded_formatted ? `<span class="downloads">${upkFormat(upkEsc(upkI18n.downloads), upkEsc(plugin.downloaded_formatted))}</span>` : ''}
                         <div class="rating-section">
-                            <div class="wporg-ratings" title="${upkEsc(plugin.rating)} out of 5 stars" style="color:var(--wp--preset--color--pomegrade-1, #e26f56);">
+                            <div class="wporg-ratings" title="${upkEsc(upkFormat(upkI18n.ratingTitle, plugin.rating))}" style="color:var(--wp--preset--color--pomegrade-1, #e26f56);">
                                 ${generateStarRating(plugin.rating)}
                             </div>
                             <span class="rating-text">
-                                ${upkEsc(plugin.rating)} out of 5 stars.
-                                ${plugin.num_ratings > 0 ? `<span class="rating-count">(${plugin.num_ratings.toLocaleString()} ratings)</span>` : ''}
+                                ${upkEsc(upkFormat(upkI18n.ratingText, plugin.rating))}
+                                ${plugin.num_ratings > 0 ? `<span class="rating-count">${upkEsc(upkFormat(upkI18n.ratingCount, plugin.num_ratings.toLocaleString()))}</span>` : ''}
                             </span>
                         </div>
-                        ${plugin.last_updated_formatted ? `<span class="last-updated">Last Updated: ${upkEsc(plugin.last_updated_formatted)}</span>` : ''}
+                        ${plugin.last_updated_formatted ? `<span class="last-updated">${upkFormat(upkEsc(upkI18n.lastUpdated), upkEsc(plugin.last_updated_formatted))}</span>` : ''}
                     </label>
                 `;
             });

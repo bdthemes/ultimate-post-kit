@@ -338,6 +338,8 @@ Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor p
 * Updated: The duplicate post feature is now skipped when an active plugin already provides it, so the Duplicate link is no longer listed twice on the posts and pages screens
 * Updated: Added a minimum Ultimate Post Kit Pro version requirement, which shows an admin notice when an older Pro add-on is installed
 * Fixed: The Live Copy feature could be skipped by mistake because of an internal check that never matched the feature it was guarding
+* Fixed: The plugin list on the setup wizard Integration step had hardcoded English labels, such as the Recommended and Active badges, the active install, download, rating and last updated lines and the empty list message, so they can now be translated
+* Fixed: The settings page footer credit text was hardcoded in English and can now be translated
 
 = 4.5.2 [3rd September 2026] =
 
