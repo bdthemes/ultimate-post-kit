@@ -87,7 +87,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 				$post_link   = esc_url(get_permalink());
 				$image_src   = wp_get_attachment_image_url(get_post_thumbnail_id(), 'large');
 				$image_src   = $image_src ? esc_url($image_src) : esc_url(\Elementor\Utils::get_placeholder_image_src());
-				$category    = wp_kses_post(upk_get_category($post_type));
+				$category    = wp_kses_post(upk_get_category($settings['posts_source'] ?? 'post'));
 				$author_url  = esc_url(get_author_posts_url(get_the_author_meta('ID')));
 				$author_name = esc_html(get_the_author());
 				$title_tag   = Utils::get_valid_html_tag($settings['title_tags'] );
