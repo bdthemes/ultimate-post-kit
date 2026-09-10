@@ -250,7 +250,7 @@ class Setup_Wizard {
 
 		wp_localize_script(
 			'upk-setup-wizard',
-			'BDT_SetupWizard',
+			'UPK_SetupWizard',
 			array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'nonce'    => wp_create_nonce( 'ultimate_post_kit_setup_wizard_nonce' ),

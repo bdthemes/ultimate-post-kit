@@ -1,338 +1,317 @@
-=== Ultimate Post Kit ===
+=== Ultimate Post Kit – Elementor Post Grid, Post Carousel, Post Slider & Blog Layout Widgets ===
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shmusuf, arafatakashakku, shaikatazim, shamim496
-Donate link: http://bdthemes.com/
-Tags: elementor, posts, post grid, post carousel, elementor addons
-Stable tag: 4.5.3
+Donate link: https://bdthemes.com/
+Tags: elementor addons, post grid, post carousel, post slider, blog layout
 Requires at least: 6.8
-Requires PHP: 7.0
 Tested up to: 7.1
+Stable tag: 4.5.4
+Requires PHP: 7.0
 License: GPL3
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 4.0.0
-Elementor tested up to: 4.2.2
+Elementor tested up to: 4.2.4
 
-Build your blogs and news sites with a feature-rich Elementor addon, offering 100+ elements for engaging layouts.
+Build WordPress blog, magazine, news, archive and single-post layouts with Elementor post grid, carousel, slider and list widgets.
 
 == Description ==
 
-Ultimate Post Kit for Elementor is an usefull addon for bloggers, marketers, and content creators who want stunning blog layouts without coding. Packed with unique widgets, sliders, and SEO-friendly designs, it helps you showcase posts in a fresh and modern way.
+Ultimate Post Kit is a WordPress post layout plugin and Elementor blog addon for bloggers, publishers, marketers and content creators. Use this blog post addon to display WordPress posts in grids, lists, carousels, sliders, timelines, tabs, accordions, categories and supporting blog sections without writing custom code.
 
-Built with clean, optimized code, it’s fully compatible with the latest WordPress standards and won’t slow down your site. Whether you’re a beginner or pro, you can design beautiful, traffic-ready blogs in minutes using Elementor’s drag-and-drop editor.
+As an Elementor blog post plugin and Elementor post layout plugin, Ultimate Post Kit provides multiple ways to organize post content. Choose an Elementor blog post widget for one section or combine several Elementor post widgets into a complete blog layout.
 
-Ultimate Post Kit also supports RTL and multiple languages, making it ready for a global audience.
+Available query controls let you select posts, categories or authors. Ultimate Post Kit also supports RTL and multiple languages. Free and Pro availability is identified in the widget sections below.
 
-###USEFUL LINKS 👇###
-**[Live Demo](https://postkit.pro/demo/)** | **[Documentation](https://bdthemes.com/knowledge-base/ultimate-post-kit/)** | **[Video Tutorial](https://www.youtube.com/watch?v=nmMajegrTiM&list=PLP0S85GEw7DNBnZCb4RtJzlf38GCJ7z1b)** | **[Upgrade Pro](https://postkit.pro/pricing/)** | **[Need Support?](https://bdthemes.com/support/)**
+= Elementor Post Widgets and Blog Layout Features =
+
+* **Elementor post grid widgets:** Arrange posts in rows and columns with dedicated grid layouts.
+* **Elementor post list widgets:** Create compact or detailed vertical post lists.
+* **Elementor post carousel widgets:** Display posts in horizontally scrollable layouts.
+* **Elementor post slider widgets:** Present posts with the navigation, animation or autoplay controls available in each slider.
+* **Dynamic post layouts:** Use the Pro Dynamic Content, Dynamic Grid, Dynamic Carousel, Dynamic Tabs and Dynamic Accordion widgets for their supported content sources.
+* **Template Builder elements:** Combine Post Title, Post Content, Post Info and Post Featured Image elements.
+* **Remote slider controls:** Position arrows, fractions, pagination or thumbnail navigation separately from supported sliders.
+* **Blog layout templates:** Review ready templates for food, magazine, news, gaming and archive-page use cases.
+
+= Blog Post Carousel, Blog Post Slider, Picture Carousel and Carousel Slider =
+
+Ultimate Post Kit includes blog post carousel and blog post slider layouts for presenting WordPress posts in Elementor. For a picture carousel based on featured images, choose an image-focused post carousel such as Hazel Carousel or Amox Carousel. For a carousel slider built from queried content, review Dynamic Carousel and its available controls.
+
+= Blog Layout Plugin, Blog Layout Addon, Widget and Template Options =
+
+Ultimate Post Kit can be used as a blog layout plugin or blog layout addon for Elementor. Configure one blog layout widget independently or combine post grids, post lists, post carousels, post sliders, categories, author information, recent comments, news tickers and template elements into a larger blog layout template.
+
+For an Elementor archive template, archive page layout or Elementor single post template, combine the Template Builder's Post Title, Post Content, Post Info and Post Featured Image elements. Review the [Archive Page demo](https://postkit.pro/archive/) for an example.
+
+= Useful Links 👇 =
+
+**[Live Demo](https://postkit.pro/demo/)** | **[Documentation](https://bdthemes.com/knowledge-base/ultimate-post-kit/)** | **[Video Tutorials](https://www.youtube.com/watch?v=nmMajegrTiM&list=PLP0S85GEw7DNBnZCb4RtJzlf38GCJ7z1b)** | **[Upgrade to Pro](https://postkit.pro/pricing/)** | **[Support](https://bdthemes.com/support/)**
 
 https://www.youtube.com/watch?v=er0uGv1yjig
 
-**Introducing Ultimate Post Kit Elementor Addon**
+**Introducing Ultimate Post Kit for Elementor**
+
+== Core Post Widgets for Elementor ==
+
+= Post Grid, Post List, Post Carousel and Post Slider =
+
+* [Post Grid](https://postkit.pro/demo/post-grid/) - A Pro post grid widget listed in the current Ultimate Post Kit catalogue.
+* [Post List](https://postkit.pro/post-list/) - A Free Elementor post list widget for displaying posts in a vertical list layout.
+* **Post Carousel** - A Free post carousel widget for horizontally scrollable post layouts.
+* [Post Slider](https://postkit.pro/post-slider/) - A Pro post slider widget for slider-based post presentations.
+
+= Additional Core Post Layouts =
+
+* [Post Grid Tab](https://postkit.pro/demo/post-grid-tab/) - A Pro widget that combines a post grid with tab-based navigation.
+* **Post Block** - A Free block-style post layout.
+* **Post Block Modern** - A Free alternative block-style post layout.
+* **Post Card** - A Pro card-style post layout.
+* **Post Timeline** - A Pro timeline-style post layout.
+* [Post Gallery](https://postkit.pro/demo/post-gallery/) - A Pro gallery-style post layout.
+
+== Free Widgets for Elementor ==
+
+= Elementor Post Grid Layouts =
+
+* [Alex Grid](https://postkit.pro/demo/alex-grid/) - A modern post grid with a glass-style presentation.
+* [Alice Grid](https://postkit.pro/demo/alice-grid/) - A compact post grid layout.
+* [Alter Grid](https://postkit.pro/demo/alter-grid/) - A detailed grid for blog, magazine, news or gaming content.
+* [Amox Grid](https://postkit.pro/demo/amox-grid/) - A post grid with configurable hover effects.
+* [Elite Grid](https://postkit.pro/demo/elite-grid/) - A grid layout that emphasizes author and post information.
+* [Gratis Grid](https://postkit.pro/demo/gratis-grid/) - A minimal post grid presentation.
+* [Hazel Grid](https://postkit.pro/demo/hazel-grid/) - An image-focused post grid.
+* [Maple Grid](https://postkit.pro/demo/maple-grid/) - A grid that can display tags, categories and post types.
+* [Ramble Grid](https://postkit.pro/demo/ramble-grid/) - A grid that reveals additional post details on hover.
+
+= Elementor Post List Widgets =
+
+* [Buzz List](https://postkit.pro/demo/buzz-list/) - A list layout with numbered entries and cover-image behavior.
+* [Exotic List](https://postkit.pro/demo/exotic-list/) - A post list with image triggers and prominent titles.
+* [Fanel List](https://postkit.pro/demo/fanel-list/) - A compact layout for displaying post information.
+* [Featured List](https://postkit.pro/demo/featured-list/) - A list layout for presenting featured posts.
+* [Harold List](https://postkit.pro/demo/harold-list/) - A structured post-navigation list.
+* [Scott List](https://postkit.pro/demo/scott-list/) - A numbered post list with basic post details.
+* [Tiny List](https://postkit.pro/demo/tiny-list/) - A small post-navigation layout.
+
+= Elementor Post Carousel Widgets =
+
+* [Alex Carousel](https://postkit.pro/demo/alex-carousel/) - An image-centered post carousel.
+* [Alice Carousel](https://postkit.pro/demo/alice-carousel/) - A carousel that displays post titles and metadata.
+* [Alter Carousel](https://postkit.pro/demo/alter-carousel/) - A configurable post carousel layout.
+* [Amox Carousel](https://postkit.pro/demo/amox-carousel/) - A multi-slide post carousel.
+* [Buzz List Carousel](https://postkit.pro/demo/buzz-list-carousel/) - A carousel that combines list-based navigation with post previews.
+* [Category Carousel](https://postkit.pro/demo/category-carousel/) - A carousel for displaying selected post categories.
+* [Elite Carousel](https://postkit.pro/demo/elite-carousel/) - A post carousel with author and post information.
+* [Harold List Carousel](https://postkit.pro/demo/harold-list-carousel/) - A list-based carousel with slider navigation.
+* [Hazel Carousel](https://postkit.pro/demo/hazel-carousel/) - An image-focused post carousel and picture carousel option.
+* [Maple Carousel](https://postkit.pro/demo/maple-carousel/) - A carousel layout with post summaries.
+* [Ramble Carousel](https://postkit.pro/demo/ramble-carousel/) - A horizontally scrolling post carousel.
+
+= Elementor Post Slider Widgets =
+
+* [Camux Slider](https://postkit.pro/demo/camux-slider/) - A full-width image or video slider presentation.
+* [Carbon Slider](https://postkit.pro/demo/carbon-slider/) - A slider that places captions over visual content.
+* [Crystal Slider](https://postkit.pro/demo/crystal-slider/) - A post slider with transition and animation controls.
+* [Noxe Slider](https://postkit.pro/demo/noxe-slider/) - A parallax-style post slider.
+* [Paradox Slider](https://postkit.pro/demo/paradox-slider/) - A post slider with layered content.
+* [Pholox Slider](https://postkit.pro/demo/pholox-slider/) - A video-capable slider with autoplay and manual navigation.
+* [Skide Slider](https://postkit.pro/demo/skide-slider/) - A visual post slider with prominent typography.
+* [Snog Slider](https://postkit.pro/demo/snog-slider/) - A creative post slider layout.
+
+= Elementor Post Timeline Widget =
+
+* [Oras Timeline](https://postkit.pro/demo/timeline/) - A timeline widget for arranging posts or events chronologically.
+
+= Supporting Elementor Blog Widgets =
+
+* [Author](https://postkit.pro/demo/author/) - Display profile images, biographies and author details.
+* [Banner](https://postkit.pro/demo/banner/) - Display an image-and-text banner.
+* [News Ticker](https://postkit.pro/demo/news-ticker/) - Display recent updates in a compact scrolling format.
+* [Newsletter](https://postkit.pro/demo/newsletter/) - Display a configurable subscription form.
+* [Post Accordion](https://postkit.pro/demo/post-accordion/) - Organize post summaries in expandable sections.
+* [Post Category](https://postkit.pro/demo/post-category/) - Display category-based blog navigation.
+* [Reading Progress Bar](https://postkit.pro/demo/reading-progress/) - Indicate progress through the current page.
+* [Recent Comments](https://postkit.pro/demo/recent-comments/) - Display recent WordPress comments.
+* [Social Share](https://postkit.pro/demo/social-share/) - Display social-sharing buttons for post content.
+* [Social Count - Static](https://postkit.pro/demo/static-social-count/) - Display manually configured social counts.
+* [Tag Cloud](https://postkit.pro/demo/tag-cloud/) - Display WordPress post tags.
+
+== Free Extensions ==
+
+* [Animations](https://postkit.pro/demo/alter-grid/) - Add the animation options available to supported widgets.
+
+== Free Features ==
+
+* [Live Copy or Paste](https://www.elementpack.pro/knowledge-base/how-to-use-live-copy-option/) - Copy and paste supported designs using the documented workflow.
+* [Duplicator](https://www.elementpack.pro/knowledge-base/how-to-use-element-pack-duplicator/) - Duplicate supported content using the documented workflow.
+
+== Elementor Pro Widgets ==
+
+= Elementor Post Grid Layouts =
+
+* [Kalon Grid](https://postkit.pro/demo/kalon-grid/) - A flexible post grid layout.
+* [Pixina Grid](https://postkit.pro/demo/pixina-grid/) - An image-led post grid.
+* [Wixer Grid](https://postkit.pro/demo/wixer-grid/) - A post grid with animation and hover options.
+
+= Elementor Post List Widgets =
+
+* [Classic List](https://postkit.pro/demo/classic-list/) - A traditional post list presentation.
+* [Candy List](https://postkit.pro/demo/candy-list/) - A post list with colored visual accents.
+* [Welsh List](https://postkit.pro/demo/welsh-list/) - A text-and-icon list layout.
+
+= Post Gallery =
+
+* [Featured Gallery](https://postkit.pro/demo/featured-gallery/) - A gallery layout for featured post content.
+
+= Elementor Post Carousel Widgets =
+
+* [Eldora Carousel](https://postkit.pro/demo/eldora-carousel/) - A post carousel with layered content transitions.
+* [Gratis Carousel](https://postkit.pro/demo/gratis-carousel/) - A minimal carousel layout.
+* [Kalon Carousel](https://postkit.pro/demo/kalon-carousel/) - A post carousel with hover options.
+* [Pixina Carousel](https://postkit.pro/demo/pixina-carousel/) - An image-led post carousel.
+* [Wixer Carousel](https://postkit.pro/demo/wixer-carousel/) - A post carousel with animation options.
+
+= Elementor Post Slider Widgets =
+
+* [Atlas Slider](https://postkit.pro/demo/atlas-slider/) - A post slider with content transitions.
+* [Berlin Slider](https://postkit.pro/demo/berlin-slider/) - A full-screen visual slider layout.
+* [Foxico Slider](https://postkit.pro/demo/foxico-slider/) - A slider that emphasizes content hierarchy and imagery.
+* [Hansel Slider](https://postkit.pro/demo/hansel-slider/) - A post slider with animation and hover behavior.
+* [Iconic Slider](https://postkit.pro/demo/iconic-slider/) - A slider with icon and overlay-text options.
+* [Optick Slider](https://postkit.pro/demo/optick-slider/) - A slider with autoplay controls.
+* [Sline Slider](https://postkit.pro/demo/sline-slider/) - A video-gallery slider with a typography-focused layout.
+
+= Elementor Post Tabs =
+
+* [Forbes Tabs](https://postkit.pro/demo/forbes-tabs/) - Organize post content in a tabbed layout.
+* [Holux Tabs](https://postkit.pro/demo/holux-tabs/) - An alternative tabbed post layout.
+
+= Elementor Post Timeline Widgets =
+
+* [Grove Timeline](https://postkit.pro/demo/grove-timeline/) - Display content in a timeline.
+* [Snap Timeline](https://postkit.pro/demo/snap-timeline/) - Display posts in a timeline with transition options.
+* [Soft Timeline](https://postkit.pro/demo/soft-timeline/) - Display posts in a timeline with animation options.
+* [Checkerboard](https://postkit.pro/demo/checkerboard/) - Combine timeline and grid presentation patterns.
+
+= Additional Pro Widgets =
+
+* [Post Calendar](https://postkit.pro/demo/post-calendar/) - Organize posts in a calendar layout.
+* [Reading Progress Circle](https://postkit.pro/demo/reading-progress-circle/) - Display reading progress as a circular indicator.
+* [Social Link](https://postkit.pro/demo/social-link/) - Display social-profile links.
+* [Stone Hover](https://postkit.pro/demo/stone-hover/) - Apply a framed hover presentation to supported content.
+* [Instagram Gallery](https://postkit.pro/demo/instagram-gallery/) - Display supported Instagram content in a gallery.
+
+= Dynamic Post Grid, Carousel, Tabs and Content =
+
+* [Dynamic Content](https://postkit.pro/demo/dynamic-content/) - Display supported posts, pages or custom-query content.
+* [Dynamic Grid](https://postkit.pro/demo/dynamic-grid/) - Display supported posts, products or custom content in a grid.
+* [Dynamic Carousel](https://postkit.pro/demo/dynamic-carousel/) - Display supported posts, images or custom content in a carousel slider.
+* [Dynamic Tabs](https://postkit.pro/demo/dynamic-tabs/) - Organize supported queried content in tabs.
+* [Dynamic Accordion](https://postkit.pro/demo/dynamic-accordion/) - Organize supported content in expandable panels.
+
+= Remote Carousel and Slider Controls =
+
+* [Remote Arrows](https://postkit.pro/demo/remote-arrows/) - Place previous and next controls separately from a supported slider.
+* [Remote Fraction](https://postkit.pro/demo/remote-fraction/) - Add separate fraction-based slider navigation.
+* [Remote Pagination](https://postkit.pro/demo/remote-pagination/) - Add separate pagination to a supported layout.
+* [Remote Thumbs](https://postkit.pro/demo/remote-thumbs/) - Connect thumbnail navigation to a supported slider.
+
+== Pro Extensions ==
+
+* [MultiColor Item](https://postkit.pro/demo/multicolor-item/) - Apply multiple configured colors to supported items.
+
+== Ready Blog Layout Templates ==
+
+Ultimate Post Kit's official website presents ready blog layout template examples for food blogs, magazines, news sites, gaming sites and archives. These examples show how several post grid, post list, post carousel, post slider and supporting widgets can be combined on one page.
+
+= Food Blog Layout Templates =
+
+* [SnackNest](https://postkit.pro/demo-pages/snacknest/) - A food-blog landing page example.
+* [TastyTales](https://postkit.pro/demo-pages/tastytales/) - An additional food-blog layout example.
+
+= Magazine and News Blog Layout Templates =
+
+* [TrendDesk](https://postkit.pro/demo-pages/trenddesk/) - A news-focused blog layout template.
+* [FreshMag](https://postkit.pro/demo-pages/freshmag/) - A magazine and news layout example.
+* [FlipPage](https://postkit.pro/demo-pages/flippage/) - A news-portal layout example.
+* [Today News](https://postkit.pro/demo-pages/today-news/) - A multi-section news layout example.
+
+= Gaming Blog Layout Templates =
+
+* [NextLevel](https://postkit.pro/demo-pages/nextlevel/) - A gaming website layout example.
+* [Gamegeek](https://postkit.pro/demo-pages/game-geek/) - A gaming-community layout example.
+* [Blaze](https://postkit.pro/demo-pages/blaze/) - An additional gaming-page layout example.
+
+= Archive Page Layout =
+
+* [Archive Page](https://postkit.pro/archive/) - An archive page layout that demonstrates a chronological post presentation.
+
+== Blog Layout Template Builder ==
+
+The Template Builder supplies four Pro post elements that can be combined in blog layout templates, archive displays and single-post presentations:
+
+* [Post Title](https://postkit.pro/archive/) - Display a post title and configure its available style controls.
+* [Post Content](https://postkit.pro/archive/) - Display post content within a template layout.
+* [Post Info](https://postkit.pro/archive/) - Display information such as the author, date and categories.
+* [Post Featured Image](https://postkit.pro/archive/) - Display the post's featured image with the available style controls.
+
+== Blog Layout Template Shortcode ==
+
+Create a shortcode for a template made with Ultimate Post Kit widgets from the Template Builder menu. The shortcode can be used in Gutenberg, Divi, Oxygen, Beaver Builder and other environments that render WordPress shortcodes.
+
+== How to Choose an Elementor Post Layout ==
+
+* Choose an **Elementor post grid** when several posts should appear together in rows or columns.
+* Choose an **Elementor post list** for compact vertical navigation.
+* Choose an **Elementor post carousel** for horizontally scrollable posts.
+* Choose an **Elementor post slider** when one slide should receive more visual emphasis at a time.
+* Choose a **picture carousel** such as Hazel Carousel when featured images are central to the layout.
+* Choose the **Template Builder** when composing an archive page layout or single-post presentation.
+
+Review the linked demos to confirm each layout, its controls and its current Free or Pro availability.
+
+**[Purchase Ultimate Post Kit Pro](https://postkit.pro/pricing/)**
+
+== Common Issues and Solutions ==
+
+= Elementor Editor Fails to Load =
+
+An Elementor loading issue can involve the site's PHP memory configuration or a plugin or theme conflict. Review the [Elementor loading troubleshooting guide](https://bdthemes.com/fix-elementor-stuck-on-loading-screen-instantly/) before changing the site's configuration.
+
+== Need Help? ==
+
+For product assistance, use [Ultimate Post Kit support](https://bdthemes.com/support/) and include the affected widget, WordPress version, Elementor version and steps required to reproduce the issue.
+
+Have an idea for a post grid, post carousel, post slider, blog layout widget or another feature? Submit it through the [BdThemes feature-request page](https://feedback.bdthemes.com/b/6vr2250l/feature-requests/idea/new).
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+1. Upload the `ultimate-post-kit` folder to the `/wp-content/plugins/` directory or install the plugin through the WordPress Plugins screen.
+2. Activate Ultimate Post Kit from the Plugins screen.
+3. Open the Elementor editor and add an Ultimate Post Kit widget.
 
-e.g.
+https://youtu.be/zNeoRz94cPw
 
-1. Upload `ultimate-post-kit` folder to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Start using it by going to the Elementor editor.
+= External Services =
 
-You can also watch this video for more details:
+Ultimate Post Kit connects to the following external services only under the stated conditions:
 
-https://youtu.be/zNeoRz94cPw?si=fOqZWKvcSEHSSKSp
-
-= External services =
-
-This plugin connects to the following external services. Data is only sent under the stated conditions.
-
-1. **BdThemes news feed** (`https://bdthemes.com/feed`) — optional dashboard widget showing BdThemes news/updates. It is **disabled by default** and only runs after an administrator opts in by enabling "BdThemes News & Updates" in Ultimate Post Kit > Other Settings. Until then the plugin makes no request to this service. When enabled, the plugin requests the public RSS feed while an administrator views the WordPress dashboard; no personal or site data is sent. Provided by BdThemes — [Terms](https://bdthemes.com/terms-conditions/), [Privacy](https://bdthemes.com/privacy-policy/).
-
-2. **Mailchimp API** (`https://<dc>.api.mailchimp.com`) — used only by the Newsletter widget to subscribe a visitor to the site owner's configured Mailchimp list. The subscriber's email address (and optional name) is sent to Mailchimp when the visitor submits the newsletter form. The Mailchimp API key/list are configured by the site owner. Provided by Mailchimp — [Terms](https://mailchimp.com/legal/terms/), [Privacy](https://www.intuit.com/privacy/statement/).
-
-3. **Social share count APIs** — the Share Buttons / social-counter widgets, when the count option is enabled, request public share counts from the relevant network for the current page URL: Facebook (`graph.facebook.com`), Pinterest (`api.pinterest.com`), Buffer (`api.bufferapp.com`), Tumblr (`api.tumblr.com`), WhatsApp (`api.whatsapp.com`), and Mail.ru (`appsmail.ru`). Only the page URL is sent, when such a widget is rendered. Each service is governed by its own terms/privacy policy (e.g. [Facebook](https://www.facebook.com/policies), [Pinterest](https://policy.pinterest.com/en/privacy-policy), [Buffer](https://buffer.com/privacy), [Tumblr](https://www.tumblr.com/policy/en/privacy), [WhatsApp](https://www.whatsapp.com/legal/privacy-policy), [Mail.ru](https://help.mail.ru/legal/terms/)).
-
-4. **Vimeo oEmbed** (`https://vimeo.com/api/oembed.json`) — used by video widgets to fetch the dimensions/thumbnail of a Vimeo video the site owner embedded. The public Vimeo URL is sent to Vimeo when such content is rendered. Provided by Vimeo — [Terms](https://vimeo.com/terms), [Privacy](https://vimeo.com/privacy).
+1. **BdThemes news feed** (`https://bdthemes.com/feed`) - This optional dashboard widget is disabled by default. After an administrator enables “BdThemes News & Updates” in Ultimate Post Kit > Other Settings, it requests the public RSS feed while an administrator views the WordPress dashboard. No personal or site data is sent. Service provider: [BdThemes Terms](https://bdthemes.com/terms-conditions/) and [Privacy Policy](https://bdthemes.com/privacy-policy/).
+2. **Mailchimp API** - The Newsletter widget uses the site owner's configured Mailchimp account and list. A subscriber's email address and optional name are sent to Mailchimp when the visitor submits the form. Service provider: [Mailchimp Terms](https://mailchimp.com/legal/terms/) and [Intuit Privacy Statement](https://www.intuit.com/privacy/statement/).
+3. **Social share-count APIs** - When a supported share-count option is enabled, the widget requests public share counts from the relevant network for the current page URL. The page URL is sent to the selected service when the widget is rendered. Services can include Facebook, Pinterest, Buffer, Tumblr, WhatsApp and Mail.ru.
+4. **Vimeo oEmbed** (`https://vimeo.com/api/oembed.json`) - Video widgets use this service to retrieve the dimensions or thumbnail of a Vimeo video supplied by the site owner. The public Vimeo URL is sent to Vimeo when that content is rendered. Service provider: [Vimeo Terms](https://vimeo.com/legal/) and [Privacy Policy](https://vimeo.com/legal/privacy).
 
 = Source Code and Build Process =
 
-This plugin is not obfuscated. The complete, human-readable source for every minified/compiled asset is bundled in the `src/` directory (`src/js/`, `src/controls/`, and the LESS/CSS sources). The compiled files in `assets/` are generated with [Grunt](https://gruntjs.com/):
+The plugin is not obfuscated. Human-readable source for minified or compiled assets is bundled in the `src` directory, including JavaScript, controls and LESS/CSS sources. Compiled files in `assets` are generated with Grunt.
 
-1. Install dependencies: `npm install`
-2. Run the build: `npm run build` (or `npx grunt`)
+1. Install dependencies with `npm install`.
+2. Run `npm run build` or `npx grunt`.
 
-The build configuration is in `gruntfile.js` and `package.json` (both included). Bundled third-party libraries (bdtUIkit, Swiper, Chart.js, etc.) keep their upstream license/version header comments.
-
-== Frequently Asked Questions ==
-
-### Does your plugin support all WordPress themes?
-
-- Yes, the Ultimate Post kit is compatible and supports all WordPress themes including popular free and premium Elementor themes.
-
-
-### What do I need to use the plugin?
-
-- Just install Ultimate Post Kit along with Elementor page builder; that’s all. Our plugin will provide you with all essential widgets to help you create your blogging site in minutes.
-
-### Do you provide tutorials on the plugin?
-
-- Of course, we provide detailed documentation and video to support our users with thorough guidelines for our plugins and widgets.
-
-### Does your plugin offer responsive blog post layouts?
-
-- Every widget by the Ultimate Post Kit plugin offers greater flexibility and responsiveness to adapt to any size of the screen regardless of PC, tablet or smartphone.
-
-### How to show featured posts on my website?
-
-- Drag and drop post widgets among the 65 selective widgets from Ultimate Post Kit to instantly fetch your WordPress post data and display them with our post layouts.
-
-### Does your plugin clash with other 3rd party plugins?
-
-- Absolutely not. The Ultimate Post Kit plugin is developed using industry-standard green codes, so it doesn’t clash with other 3rd party plugins or themes.
-
-### Can I show related posts using the Ultimate Post Kit?
-
-- You can display related posts, featured posts or custom-related posts using our plugin. It’s possible to achieve this with all post-type grids, carousels, lists and layouts.
-
-### Can I manually display my post?
-
-- For manual post-selection, our plugin provides a selective query system to display or remove specific post categories, individual posts or posts by authors.
-
-### Can I stack multiple widgets on a single page?
-
-- There is no problem with stacking multiple widgets on a single page. In fact, it is possible to design the whole blogging site by utilizing 65+ widgets from our plugin.
-
-### How do I get a solution for any issue?
-
-- Just contact us and we will follow up within 24 hours with our expert technical team.
-
-### How should I get updates and support
-
-- When we release a update version, then automatically you will get a notification on WordPress plugin manager, so you can update from there. Thereafter you want to update manually just knock us, we will send you update version via mail. You will get our ultimate post kit related all [knowledge base](https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/) from our [bdthemes](https://bdthemes.com/knowledge-base/) website.
-
-###  How can I report security bugs?
-
--  You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/9e5fb868-7544-4586-b365-636dc6104737)
-
-= Free Widgets for Elementor 🔥 =
-
-= Grid 🧊 =
-
-* [Alex Grid](https://postkit.pro/demo/alex-grid/) - Modern grid with a stunning glassmorphism effect, offering sleek blog post designs. Perfect for visually appealing websites.  
-* [Alice Grid](https://postkit.pro/demo/alice-grid/) - Minimalist and compact grid, crafted for mobile-friendly blog layouts. Ideal for enhancing readability on smaller screens.  
-* [Alter Grid](https://postkit.pro/demo/alter-grid/) - Classic and detailed grid layout, ideal for news portals, gaming sites and lifestyle blogs.  
-* [Amox Grid](https://postkit.pro/demo/amox-grid/) - Stylish grid featuring customizable hover effects with sleek transitions, perfect for creative and professional blogs.  
-* [Elite Grid](https://postkit.pro/demo/elite-grid/) - High-end grid emphasizing authorship with premium graphics and detailed post information. Best for showcasing contributor highlights.  
-* [Gratis Grid](https://postkit.pro/demo/gratis-grid/) - Clean and minimalistic grid, designed for smooth and seamless blog presentations. Great for simple yet elegant styles.  
-* [Hazel Grid](https://postkit.pro/demo/hazel-grid/) - Simple and visually-driven grid focusing on high-quality images for blogs. Reduces unnecessary clutter to highlight content.  
-* [Maple Grid](https://postkit.pro/demo/maple-grid/) - Comprehensive grid displaying tags, categories and post types. Versatile for news, lifestyle or event blogs.  
-* [Ramble Grid](https://postkit.pro/demo/ramble-grid/) - Interactive grid revealing hidden details upon hover, providing a unique browsing experience for users.
-
-= List 🔢 =
-
-* [Buzz List](https://postkit.pro/demo/buzz-list/) - Dynamic list with bold counters and hidden cover images for featured blogs. Ideal for creating engaging blog sections.  
-* [Exotic List](https://postkit.pro/demo/exotic-list/) - Vibrant blog list with hover-sensitive image triggers and bold titles for maximum user interaction.  
-* [Fanel List](https://postkit.pro/demo/fanel-list/) - Informative post list layout showcasing detailed post information in a compact and attractive style.  
-* [Featured List](https://postkit.pro/demo/featured-list/) - User-friendly list designed to highlight featured posts on homepage blog sections. Highly customizable for better visibility.  
-* [Harold List](https://postkit.pro/demo/harold-list/) - Efficient and navigable list, perfect for guiding readers to related content in a structured format.  
-* [Scott List](https://postkit.pro/demo/scott-list/) - Simple blog navigator featuring numbered posts and basic details, designed for easy content browsing.  
-* [Tiny List](https://postkit.pro/demo/tiny-list/) - Compact and lightweight list for guiding readers across blog pages, acting as a miniature post navigator.  
-
-= Carousel 🌅 =
-
-* [Alex Carousel](https://postkit.pro/demo/alex-carousel/) - Stylish post carousel with smooth transitions and image-centered display. Great for portfolios or galleries.  
-* [Alice Carousel](https://postkit.pro/demo/alice-carousel/) - Clean and minimalist carousel layout for displaying posts with titles and meta details.  
-* [Alter Carousel](https://postkit.pro/demo/alter-carousel/) - Adaptive carousel design with customizable settings for modern content presentation.  
-* [Amox Carousel](https://postkit.pro/demo/amox-carousel/) - Dynamic multi-slide carousel for showcasing images or blogs in a scrollable view.  
-* [Buzz List Carousel](https://postkit.pro/demo/buzz-list-carousel/) - Interactive carousel combining list-based navigation with rotating post previews.  
-* [Category Carousel](https://postkit.pro/demo/category-carousel/) - Efficient post carousel filtered by categories for targeted audience engagement.  
-* [Elite Carousel](https://postkit.pro/demo/elite-carousel/) - Premium carousel with sleek design and hover effects for high-end websites.  
-* [Harold List Carousel](https://postkit.pro/demo/harold-list-carousel/) - Unique carousel blending list structure with slider navigation for diverse content.  
-* [Hazel Carousel](https://postkit.pro/demo/hazel-carousel/) - Multi-functional carousel with a focus on high-quality imagery and clickable posts.  
-* [Maple Carousel](https://postkit.pro/demo/maple-carousel/) - Advanced carousel with detailed post summaries, perfect for blog showcases.  
-* [Ramble Carousel](https://postkit.pro/demo/ramble-carousel/) - Engaging carousel featuring horizontal scrolling and post highlights for a seamless UX.  
-
-= Slider 🎴 =
-
-* [Camux Slider](https://postkit.pro/demo/camux-slider/) - Modern and responsive slider offering full-width image or video displays. Perfect for immersive content presentation.  
-* [Carbon Slider](https://postkit.pro/demo/carbon-slider/) - Minimalistic slider emphasizing bold captions over high-resolution visuals, suitable for professional portfolios or presentations.  
-* [Crystal Slider](https://postkit.pro/demo/crystal-slider/) - Eye-catching slider with crystal-clear transitions, customizable animations and vibrant design for impactful storytelling.  
-* [Noxe Slider](https://postkit.pro/demo/noxe-slider/) - Unique slider with parallax effects, creating an engaging and cutting-edge visual experience for any audience.  
-* [Paradox Slider](https://postkit.pro/demo/paradox-slider/) - Innovative slider featuring overlapping layers, dynamic layouts and smooth animations for creative website designs.  
-* [Pholox Slider](https://postkit.pro/demo/pholox-slider/) - Intuitive slider supporting both auto-play and manual navigation, offering flexibility for diverse web projects.  
-* [Skide Slider](https://postkit.pro/demo/skide-slider/) - Interactive slider designed for showcasing content with bold typography and sharp visual hierarchy. Ideal for modern branding.  
-* [Snog Slider](https://postkit.pro/demo/snog-slider/) - Lightweight slider optimized for fast performance, seamless transitions and mobile-friendly displays for versatile usage.  
-
-= Timeline 🎏 =
-
-* [Oras Timeline](https://postkit.pro/demo/timeline/) - Elegant timeline widget for narrating events or milestones in chronological order.  
-
-= Others 💠 =
-
-* [Author](https://postkit.pro/demo/author/) - Showcase author details with a personalized and professional layout, complete with profile images and bios.  
-* [Banner](https://postkit.pro/demo/banner/) - Design engaging banners for promotions, ads or announcements, supporting vibrant images and compelling text.  
-* [News Ticker](https://postkit.pro/demo/news-ticker/) - Scrollable news ticker widget to display updates or breaking news in a compact and attention-grabbing format.  
-* [Newsletter](https://postkit.pro/demo/newsletter/) - User-friendly subscription form to grow your email audience effectively, featuring customizable fields and layouts.  
-* [Post Accordion](https://postkit.pro/demo/post-accordion/) - Interactive accordion layout for organized post summaries, ideal for conserving space and enhancing readability.  
-* [Post Category](https://postkit.pro/demo/post-category/) - Filter posts by categories for better content discoverability, perfect for blogs or news portals.  
-* [Reading Progress Bar](https://postkit.pro/demo/reading-progress/) - Visual progress indicator enhancing the reader's experience by showing how far they've read.  
-* [Recent Comments](https://postkit.pro/demo/recent-comments/) - Highlight latest comments dynamically, encouraging user engagement and community interaction.  
-* [Social share](https://postkit.pro/demo/social-share/) - Interactive social share buttons for seamless content sharing across popular platforms.  
-* [Social Count - Static](https://postkit.pro/demo/static-social-count/) - Display static social media follower counts attractively, boosting your brand's credibility.  
-* [Tag Cloud](https://postkit.pro/demo/tag-cloud/) - Stylish tag cloud for showcasing popular tags in your content, encouraging user exploration and engagement.  
-
-= Free Extensions 🔥 =
-
-* [Animations](https://postkit.pro/demo/alter-grid/) - Add modern animations for an interactive user experience without extra cost.  
-
-= Free Features 🔥 =
-
-* [Live Copy or Paste](https://www.elementpack.pro/knowledge-base/how-to-use-live-copy-option/) - Copy and paste designs effortlessly across websites for consistent branding.  
-* [Duplicator](https://www.elementpack.pro/knowledge-base/how-to-use-element-pack-duplicator/) - Duplicate widgets and sections for faster editing and layout replication.  
-
-More widgets and extensions are coming soon...
-
-= Elementor Pro Widgets 🔥 =
-
-= Grid 🧊 =
-
-* [Kalon Grid](https://postkit.pro/demo/kalon-grid/) - A flexible grid layout with vibrant visuals, ideal for modern content presentation.  
-* [Pixina Grid](https://postkit.pro/demo/pixina-grid/) - Sleek and stylish grid layout designed for professional portfolio displays, emphasizing visual appeal.  
-* [Wixer Grid](https://postkit.pro/demo/wixer-grid/) - Dynamic grid showcasing content with smooth animations and hover effects, enhancing user interaction.  
-
-= List 🔢 =
-
-* [Classic List](https://postkit.pro/demo/classic-list/) - Timeless list style with clean formatting, perfect for news and blogs.  
-* [Candy List](https://postkit.pro/demo/candy-list/) - Fun and engaging list design with colorful accents for creative projects.  
-* [Welsh List](https://postkit.pro/demo/welsh-list/) - Minimalist list layout with an elegant focus on text and icons.  
-
-= Gallery 💠 =
-
-* [Featured Gallery](https://postkit.pro/demo/featured-gallery/) - Stunning gallery widget with customizable layouts for impactful visuals.  
-
-= Carousel 🌅 =
-
-* [Eldora Carousel](https://postkit.pro/demo/eldora-carousel/) - A refined carousel layout with multi-layered content transitions, offering a smooth browsing experience.  
-* [Gratis Carousel](https://postkit.pro/demo/gratis-carousel/) - Lightweight and responsive carousel perfect for minimalistic themes, ensuring fast loading and clean design.  
-* [Kalon Carousel](https://postkit.pro/demo/kalon-carousel/) - Versatile carousel featuring sleek design and engaging hover effects, ideal for interactive showcases.  
-* [Pixina Carousel](https://postkit.pro/demo/pixina-carousel/) - Vibrant carousel widget tailored for creative and colorful websites, adding flair to your content.  
-* [Wixer Carousel](https://postkit.pro/demo/wixer-carousel/) - Dynamic carousel with bold animations for eye-catching presentations, keeping users engaged.  
-
-= Slider 🎴 =
-
-* [Atlas Slider](https://postkit.pro/demo/atlas-slider/) - Bold and professional slider layout with smooth, interactive transitions, perfect for impactful presentations.  
-* [Berlin Slider](https://postkit.pro/demo/berlin-slider/) - Clean slider design with full-screen visuals and sharp typography, ideal for modern websites.  
-* [Foxico Slider](https://postkit.pro/demo/foxico-slider/) - Sophisticated slider emphasizing content hierarchy and vibrant imagery to captivate viewers.  
-* [Hansel Slider](https://postkit.pro/demo/hansel-slider/) - Unique slider with intricate animations and hover-responsive elements for an engaging experience.  
-* [Iconic Slider](https://postkit.pro/demo/iconic-slider/) - Trendy slider widget with customizable icons and overlay text effects for a stylish look.  
-* [Optick Slider](https://postkit.pro/demo/optick-slider/) - Innovative slider with smooth auto-play functionality and modern visuals for sleek presentations.  
-* [Sline Slider](https://postkit.pro/demo/sline-slider/) - Minimalistic slider focused on typography and concise presentations, great for portfolios or blogs.  
-
-= Tabs 🧀 =
-
-* [Forbes Tabs](https://postkit.pro/demo/forbes-tabs/) - Elegant tab layout with smooth transitions and clean interface.  
-* [Holux Tabs](https://postkit.pro/demo/holux-tabs/) - Interactive tabs featuring a creative design for better content organization.  
-
-= Timeline 🎏 =
-
-* [Grove Timeline](https://postkit.pro/demo/grove-timeline/) - A visually appealing timeline for narrating detailed events or stories.  
-* [Snap Timeline](https://postkit.pro/demo/snap-timeline/) - Dynamic timeline with engaging transitions and clear content flow.  
-* [Soft Timeline](https://postkit.pro/demo/soft-timeline/) - Subtle timeline design with soft animations for a polished experience.  
-* [Checkerboard](https://postkit.pro/demo/checkerboard/) - Unique checkerboard layout combining timeline and grid elements seamlessly.  
-
-= Others 💠 =
-
-* [Post Calendar](https://postkit.pro/demo/post-calendar/) - Interactive calendar widget to organize and highlight scheduled posts.  
-* [Reading Progress Circle](https://postkit.pro/demo/reading-progress-circle/) - A circular progress indicator for immersive reader engagement.  
-* [Social Link](https://postkit.pro/demo/social-link/) - Minimal and effective widget for displaying social media links elegantly.  
-* [Stone Hover](https://postkit.pro/demo/stone-hover/) - Creative hover effect widget to make images or content stand out.  
-* [Instagram Gallery](https://postkit.pro/demo/instagram-gallery/) - Showcase Instagram feeds in an attractive gallery layout effortlessly.  
-
-= Dynamic Elements 👑 =
-
-* [Dynamic Content](https://postkit.pro/demo/dynamic-content/) - Flexible content widget for displaying posts, pages, or custom queries dynamically.  
-* [Dynamic Grid](https://postkit.pro/demo/dynamic-grid/) - Responsive grid layout to showcase posts, products, or custom content beautifully.  
-* [Dynamic Carousel](https://postkit.pro/demo/dynamic-carousel/) - Smooth carousel slider for posts, images, or custom content with advanced controls.  
-* [Dynamic Tabs](https://postkit.pro/demo/dynamic-tabs/) - Organized tabbed content display for better user experience and SEO.  
-* [Dynamic Accordion](https://postkit.pro/demo/dynamic-accordion/) - Interactive accordion widget for FAQs, content sections, or toggled layouts.  
-
-= Remote Control 👇 =
-
-* [Remote Arrows](https://postkit.pro/demo/remote-arrows/) - Separate the navigation from sliders and use remote arrows to control them from a different place on your site.
-* [Remote Fraction](https://postkit.pro/demo/remote-fraction/) - Add fraction navigation to any slider, regardless of its position, with this remote control widget.
-* [Remote Pagination](https://postkit.pro/demo/remote-pagination/) - Display the number of posts left in the query with remote pagination for enhanced user interaction.
-* [Remote Thumbs](https://postkit.pro/demo/remote-thumbs/) - Link a thumb gallery to any slider to make it more interactive and visually appealing.
-
-= Pro Extensions 🔥 =
-
-* [MultiColor Item](https://postkit.pro/demo/multicolor-item/) - Add multicolor elements for vibrant and attention-grabbing designs.  
-
-= Template Builder 🧊 =
-
-* [Post Title](https://postkit.pro/archive/) - Customize and display post titles with advanced styling options, enhancing visibility.  
-* [Post Content](https://postkit.pro/archive/) - Flexible content block for displaying post details dynamically with full customization options.  
-* [Post Info](https://postkit.pro/archive/) - Highlight meta details like author, date and categories attractively to improve content engagement.  
-* [Post Featured Image](https://postkit.pro/archive/) - Display featured images with modern effects and responsive design, making them stand out visually.  
-
-= Template Shortcode 🌅 =
-
-Now you can create shortcodes for templates created with the Ultimate Post Kit widgets with the Template Builder menu and display the template as it is inside any page builder. Works on Gutenberg, Divi, Oxygen, Beaver Builder etc.
-
-
-**[PURCHASE ULTIMATE POST KIT PRO FROM OUR WEBSITE]( https://postkit.pro/pricing/ )**
-
-= Common Issues and Solutions: 🐣 =
-
-1. **Elementor editor fails to load**
-Ans. This is due to your server's PHP settings. You can increase the PHP memory limit from the wp-config.php file or php.ini file
-[View Documentation](https://bdthemes.com/fix-elementor-stuck-on-loading-screen-instantly/)
-
-= Need Help? =
-
-Is there any feature that you want to get in this plugin?
-Please use the suggest page to send us a message about the feature you think we should add to our products.
-Needs assistance to use this plugin?
-Feel free to [Contact us](https://bdthemes.com/support/) 💌 or check our widget Tutorials to learn how to use them efficiently.
-
-= Checkout our other Plugins 👑 =
-
-Explore the best free addons for Elementor and Gutenberg to boost your site with advanced blocks, sliders and eCommerce tools.
-
-* **[Element Pack](https://wordpress.org/plugins/bdthemes-element-pack-lite/)** - Build responsive websites from scratch with an all-rounder package of 300+ widgets and 2700+ ready-to-use assets for Elementor.
-
-* **[Prime Slider](https://wordpress.org/plugins/bdthemes-prime-slider-lite/)** - The revolutionary slider builder addon for Elementor with a next-gen superb interface and 50+ unique slider designs.
-
-* **[Ultimate Post Kit](https://wordpress.org/plugins/ultimate-post-kit/)** - Best blogging addon for building a quality blogging website with fine-tuned post layouts, carousels, sliders and lists.
-
-* **[Ultimate Store Kit](https://wordpress.org/plugins/ultimate-store-kit/)** - The only eCommerce addon for answering all your online store design problems in one package for WooCommerce and EDD.
-
-* **[Pixel Gallery](https://wordpress.org/plugins/pixel-gallery/)** - The first Elementor-based WordPress gallery addon offering 60+ flexible and customizable gallery builder widgets.
-
-* **[ZoloBlocks](https://wordpress.org/plugins/zoloblocks/)** - Mind-blowing dynamic block plugin for Gutenberg with powerful and advanced features offering a greater web design experience.
-
-* **[Augmented Reality Viewer](https://wordpress.org/plugins/ar-viewer/)** - Bring your products to life with immersive 3D and AR experiences directly inside your WordPress website.
-
-* **[Dark Reader](https://wordpress.org/plugins/dark-reader/)** - Instantly transform your website into a sleek, eye-friendly dark mode experience with smooth and elegant styling.
-
-* **[Instant Image Generator](https://wordpress.org/plugins/ai-image/)** - Generate AI-powered images or import visuals instantly from popular platforms like Unsplash, Openverse, Pixabay, Pexels and Giphy — all from one place.
-
-* **[Live Copy Paste](https://wordpress.org/plugins/live-copy-paste/)** - Seamlessly copy and paste sections, widgets and entire pages across domains with zero hassle.
-
-* **[One Accessibility](https://wordpress.org/plugins/website-accessibility/)** - Make your website inclusive and accessible to everyone with essential accessibility enhancements and compliance-ready tools.
-
-* **[QR Code Generator & Scanner](https://wordpress.org/plugins/zolo-qr-code/)** - Create and manage dynamic QR codes directly from your WordPress dashboard for smarter engagement and tracking.
-
-* **[Smart Admin Assistant](https://wordpress.org/plugins/smart-admin-assistant/)** - Enhance your WordPress dashboard with productivity-focused tools and smart site management features.
-
-* **[Spin Wheel](https://wordpress.org/plugins/spin-wheel/)** - Engage visitors with an interactive spinning wheel that offers discounts, coupons and promotional rewards.
-
-* **[Swift Checkout for WooCommerce](https://wordpress.org/plugins/swift-checkout/)** - Simplify the WooCommerce checkout process to improve user experience and boost conversion rates.
-
-Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor page builder-based products, informative blogs and documentation.
+The build configuration is included in `gruntfile.js` and `package.json`. Bundled third-party libraries retain their upstream license and version comments.
 
 == Changelog ==
 
-= 4.5.X [XXth September 2026] =
+= 4.5.4 [10th September 2026] =
 
 * Updated: Security improved
 
@@ -386,461 +365,104 @@ Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor p
 * Security: Added nonce verification to the public load-more AJAX handlers; hardened settings save, register_setting sanitization, request-input unslashing, and the feedback option writes
 * Improved: Dashboard now exposes a neutral extension point so add-ons can register their own tabs
 
-= 4.2.5 [13th August 2026] =
-
-* Security: Added a safety-net module that blocks the known malicious host, scrubs payloads from the notification feed, and detects/cleans artefacts left by the notification-feed compromise
-* Security: Clamped the load-more page size to prevent an unauthenticated denial-of-service request
-* Security: Validated the newsletter subscription email address on the server
-* Security: Restricted settings save to the plugin's own options and sanitized stored values
-* Security: Escaped remote plugin data before rendering it in the setup wizard
-* Security: Removed the unauthenticated registration and added a capability check to the plugin catalog request
-* Security: Added an object-injection guard to the template import unserialize call
-
-= 4.2.4 [12th August 2026] =
-
-* Updated: System improved
-
-= 4.2.3 [11th August 2026] =
-
-* Added: Post widgets icon added
-
-= 4.2.2 [10th August 2026] =
-
-* Updated: Admin API Biggopti removed
-
-= 4.2.1 [8th August 2026] =
-
-* Fixed: Security issue where data returned by the promotions API could be injected as script into the WordPress admin area
-* Fixed: Promotion links and images are now restricted to http(s) and mailto addresses
-* Updated: Security improved
-
-= 4.2.0 [4th August 2026] =
-
-* Fixed: Author role label translation issue in author, elite grid, elite carousel, post accordion and paradox slider widgets
-* Fixed: Clock icon alignment issue with time text in the amox carousel widget
-* Fixed: Pagination arrow size control not working in the amox arid widget
-* Updated: Security improved
-
-= 4.1.18 [26th July 2026] =
-
-* Fixed: Output escaping issues in multiple widgets
-* Fixed: Pause on Hover control now only displays when Autoplay is enabled in slider, carousel, and news ticker widgets
-* Fixed: Resolved conditional logic mismatch in the timeline and snog slider widgets
-* Fixed: Title visibility issue in the recent comments widget
-* Fixed: Taxonomy dropdown now displays the correct term count in widget query controls
-* Fixed: The broken category design issue in the post accordion widget
-* Updated: Pholox Slider style controls reorganized into separate sections with correct conditional visibility for title, category, meta, and thumbs options
-
-= 4.1.17 [15th July 2026] =
-
-* Fixed: Pagination hover color not applying to previous/next arrow icons
-
-= 4.1.16 [6th July 2026] =
-
-* Fixed: CLS issue fixed in Alex Grid widget ( Thanks to Mit freundlichen Grüssen )
-
-= 4.1.15 [23rd June 2026] =
-
-* Fixed: Category text wrap issue fixed in Alter Grid widget ( Thanks to James Clarke )
-
-= 4.1.14 [21st June 2026] =
-
-* Fixed: Query offset leaking into other post widgets rendered later on the same page ( Thanks to James Brecher )
-
-= 4.1.13 [17th June 2026] =
-
-* Fixed: Read more hover style controls in the alex grid and alex carousel widgets
-
-= 4.1.12 [7th June 2026] =
-
-* Fixed: Double HTML escaping on author name in the buzz list carousel widget ( Thanks to itapress )
-
-= 4.1.11 [7th June 2026] =
-
-* Fixed: Typography issue for meta information in the hazel grid, hazel carousel, harold list, and harold carousel widgets
-* Fixed: Meta hover color issues in the harold list and harold carousel widgets
-* Fixed: Separator display issue fixed for the oras timeline widget
-
-= 4.1.10 [21th May 2026] =
-
-* Fixed: Undefined array key "posts_per_page" PHP warning in query controls on PHP 8.1+
-* Updated: Made compatible with WordPress version 7.0
-
-= 4.1.9 [12th May 2026] =
-
-* Updated: System improved
-
-= 4.1.8 [6th May 2026] =
-
-* Fixed: Replaced hard-coded strings with proper translation support
-
-= 4.1.7 [27th April 2026] =
-
-* Fixed: Navigation Horizontal Offset control issue fixed in the crystal slider widget
-
-= 4.1.6 [9th April 2026] =
-
-* Fixed: Buzz List widget pagination previous and next arrow icons not rendering on the frontend
-* Fixed: Carbon Slider — resolved desynchronization between prev/next navigation, timeline thumbs, and active slide when using loop + fade mode
-* Fixed: Timeline widget — comment count uses correct singular/plural
-* Improved: Comment count output across widgets — i18n, plural forms, localized numbers and escaping
-
-= 4.1.5 [30th March 2026] =
-
-* Updated: Made compatible with Elementor version 4.0.0
-* Fixed: Query controls Include/Exclude By Terms dropdown now hides taxonomy terms with no posts (only terms that have at least one post are shown)
-* Fixed: Paradox Slider — meta separator now also displays after date (between date and time) when time is enabled
-* Fixed: Clock icon and text alignment issue in the paradox widget
-* Fixed: Default pagination conflict issue
-
-= 4.1.4 [5th March 2026] =
-
-* Fixed: Order-by query issues in the category widget
-* Added: Maximum post count option added in the category widget
-
-= 4.1.3 [26th February 2026] =
-
-* Updated: System improved
-
-= 4.1.2 [24th February 2026] =
-
-* Fixed: Separator display issue in the gratis grid widget
-
-= 4.1.1 [8th February 2026] =
-
-* Added: Minimum Author Posts control to filter authors by the minimum number of published posts in the author widget
-* Added: Pagination control added in the author widget
-
-= 4.1.0 [1st February 2026] =
-
-* Added: WPML multi language support added
-* Fixed: Minute and Second display issues across all widgets
-* Fixed: Hide seconds & minutes issues for ajax load more
-
-= 4.0.23 [27th January 2026] =
-
-* Added: Hide minute and second option for reading time in all widget ( Thanks to Iqbal Khan )
-* Fixed: Pagination issue fixed for builder ( Thanks to Kent )
-* Fixed: Shwo/Hide image issue fixed in the oras timeline widget
-* Fixed: Undefined variable and array_merge fatal error fixed in all widgets with query_posts method
-
-= 4.0.22 [12th January 2026] =
-
-* Updated: Security Improved
-* Updated: Plugin cache manager optimized by removing unused admin interface components
-
-= 4.0.21 [5th January 2026] =
-
-* Fixed: Css conflict issue fixed ( Thanks to Pixelwars )
-
-= 4.0.20 [1st January 2026] =
-
-* Fixed: Human diff time issue fixed
-
-= 4.0.19 [24th December 2025] =
-
-* Fixed: Time short format issue fixed in gratis grid widget
-
-= 4.0.18 [18th December 2025] =
-
-* Fixed: Corrected the conditional logic for displaying the separator between category, author, and reading time in the exotic widget
-
-= 4.0.17 [11th December 2025] =
-
-* Fixed: Others plugin issue fixed in Setup Wizard & Admin Dashboard
-* Updated: Template path updated
-* Updated: Security improved
-
-= 4.0.16 [4th December 2025] =
-
-* Fixed: Security vulnerability fixed in AJAX load more endpoints
-
-= 4.0.15 [2nd December 2025] =
-
-* Updated: Made compatible with WordPress version 6.9
-* Updated: Added aria-label attribute to links for better accessibility
-
-= 4.0.14 [26th November 2025] =
-
-* Added: Dynamic tag support provided
-* Fixed: Show/Hide author name issue fixed in skide slider widget
-
-= 4.0.13 [20th November 2025] =
-
-* Fixed: Notice duplicate issue fixed
-
-= 4.0.12 [18th November 2025] =
-
-* Fixed: Rollback Security checking issue fixed
-
-= 4.0.11 [18th November 2025] =
-
-* Improved: Added aria-label attribute to links for better accessibility
-
-= 4.0.10 [13th November 2025] =
-
-* Updated: Notice design improved
-
-= 4.0.9 [11th November 2025] =
-
-* Fixed: API Banner duplicate issue fixed
-
-= 4.0.8 [10th November 2025] =
-
-* Updated: System improved
-
-= 4.0.7 [10th November 2025] =
-
-* Fixed: Error fixed
-
-= 4.0.6 [10th November 2025] =
-
-* Added: Ajax Load More feature added in fanel list, buzz list, featured list and harold list widgets
-
-= 4.0.5 [6th November 2025] =
-
-* Added: Ajax Load More feature added in tiny list and scott list widget
-
-= 4.0.4 [30th October 2025] =
-
-* Added: White label logo update feature added
-* Fixed: HTML tag validation issue fixed
-
-= 4.0.3 [16th October 2025] =
-
-* Added: Ajax Load More feature added in ramble grid, amox grid widgets
-* Fixed: Pagination issue fixed in Alice Carousel widget
-* Fixed: Pagination issue fixed in carousel-type widgets
-* Fixed: Conditional logic issue fixed in alex grid and alice grid widgets
-* Updated: Web accessibility enhanced for pagination Previous/Next links ( Thanks to Oktawia )
-
-= 4.0.2 [5th October 2025] =
-
-* Added: Ajax Load More feature added in elite grid, hazel grid and gratis grid widgets
-* Fixed: Added spacing between date, time, and reading time in gratis widget
-* Fixed: Front page pagination issue fixed in all widgets
-
-= 4.0.1 [30th September 2025] =
-
-* Added: Ajax Load More feature added in elite grid widget
-* Updated: Admin Dashboard improved
-
-= 4.0.0 [29th September 2025] =
-
-* Added: Dynamic content feature added
-* Added: Remote Arrows widget added
-* Added: Remote Fraction widget added
-* Added: Remote Pagination widget added
-* Added: Remote Thumbs widget added
-* Added: Dynamic grid widget added
-* Added: Dynamic carousel widget added
-* Added: Dynamic accordion widget added
-* Added: Dynamic tabs widget added
-* Added: Admin Dashboard updated
-* Added: Custom css & js feature added
-* Added: White label feature added
-* Added: Setup wizard added
-* Added: Ajax Load More feature added in alice grid & alter widgets
-* Fixed: Resolved deprecation error in PHP 8.4
-* Fixed: Pagination arrow icon missing issue fixed in candy list widget
-* Fixed: PHP nullable parameter deprecation warning fixed
-* Fixed: Resolved regular notice display problem for white-label users
-* Fixed: Play button style controls issue fixed in atlas slider widget
-
-= 3.16.1 [8th September 2025] =
-
-* Fixed: DCI Notice removed for security reason
-
-= 3.16.0 [28th August 2025] =
-
-* Added: Admin Store API Notice added
-* Fixed: Swiper carousel widgets item gap ( 0 Value ) not working issue fixed
-* Fixed: Deprication error fixed
-* Fixed: Resolved regular notice display problem for white-label users
-* Updated: Security improved
-
-= 3.15.4 [6th August 2025] =
-
-* Fixed: Offset issue fixed in Alter Grid ( Thanks to S.podboraczynski ) 
-* Updated: Security improved
-
-= 3.15.3 [3rd July 2025] =
-
-* Added: Ellipsis added in noxe slider & maple grid widgets
-* Fixed: Alter grid widget error fixed
-
-= 3.15.2 [15th June 2025] =
-
-* Fixed: Translation issue fixed
-
-= 3.15.1 [4th June 2025] =
-
-* Fixed: Error fix for pagination ( Thanks to Tomas Andrlik )
-
-= 3.15.0 [29th May 2025] =
-
-* Added: Ellipsis feature added in post type widgets
-* Fixed: Title Style And Hover Color Issue Fixed in Noxe Slider Widget
-* Fixed: Pagination Next Button issue fixed
-* Fixed: JS error fixed in Dashboard Settings
-
-= 3.14.4 [12th May 2025] =
-
-* Added: Mousewheel control added in carousel type widgets
-* Added: Title style default added in amox grid and amox carousel widget
-* Updated: Only one plugin RC notice will show at a time
-* Fixed: Resolved jQuery Migrate warning ( Thanks to BackuPs )
-* Fixed: DCI Notice transition issue fixed
-* Fixed: Dashboard widget usage warning error fixed
-
-= 3.14.3 [21th April 2025] =
-
-* Added: WordPress Version 6.8 compatibility added
-* Updated: Only one plugin DCI notice will show at a time
-* Updated: System improved
-
-= 3.14.2 [6th April 2025] =
-
-* Added: Date position option added in fanel list widget
-* Fixed: Columns issue fixed in gratis grid widget
-
-= 3.14.1 [24th March 2025] =
-
-* Added: Title transition duration & text stroke controls added in tiny list widget
-* Added: Plugin action menu settings option added
-
-= 3.14.0 [6th March 2025] =
-
-* Added: Reading time feature added in elite grid & elite carousel widgets
-* Added: Title animations style added in elite grid, elite carousel, harold list carousel, hazel carousel, hazel grid, maple carousel, paradox slider, pholox slider widgets
-* Fixed: Link open in new tab issue fixed in elite grid, elite carousel, harold list carousel, hazel carousel, hazel grid widgets
-* Updated: Assets and widgets optimized
-
-= 3.13.7 [25th February 2025] =
-
-* Added: Title default style added in tiny list widget
-* Fixed: Navigation direction issue fixed in crystal slider widget (Thanks to Alex)
-
-= 3.13.6 [19th February 2025] =
-
-* Fixed: Link open in new tab issue fixed in post accordion widget
-
-= 3.13.5 [13th February 2025] =
-
-* Fixed: Dashboard notice dismiss icon conflict issue fixed
-
-= 3.13.4 [3rd February 2025] =
-
-* Added: Link open in a new tab feature added
-
-= 3.13.3 [18th January 2025] =
-
-* Fixed: Global pagination issue fixed (Thanks to Sylvain L-Mizon)
-
-= 3.13.2 [25th December 2024] =
-
-* Updated: Dashboard system improved
-
-= 3.13.1 [19th December 2024] =
-
-* Fixed: Swiper loading issue fixed
-
-= 3.13.0 [17th December 2024] =
-
-* Added: Optimized Markup feature compatibility added
-* Added: Upgrade Swiper Library compatibility added
-
-= 3.12.15 [4th December 2024] =
-
-* Updated: System improved
-
-= 3.12.14 [23th November 2024] =
-
-* Updated: Dashboard system improved
-* Fixed: Translation issue fixed
-
-= 3.12.13 [19th November 2024] =
-
-* Fixed: Image height issue fixed in exotic list widget
-
-= 3.12.12 [12th November 2024] =
-
-* Updated: Dynamic post content escaped from elementor caching
-
-= 3.12.11 [28th October 2024] =
-
-* Added: Offset, Order, Order By arg added in Current Query
-
-= 3.12.10 [14th October 2024] =
-
-* Fixed: JS dependency Error fixed (Thanks to Hasan)
-
-= 3.12.9 [9th October 2024] =
-
-* Added: Date format added in timeline widget
-
-= 3.12.8 [25th September 2024] =
-
-* Fixed: JS scripts error fixed
-
-= 3.12.7 [23th September 2024] =
-
-* Fixed: Security improved newsletter & news ticker widgets
-
-= 3.12.6 [12th September 2024] =
-
-* Updated: WordPress & Elementor latest version compatibility added
-
-= 3.12.5 [10th September 2024] =
-
-* Removed: Waypoint removed completely
-
-= 3.12.4 [2nd September 2024] =
-
-* Updated: Swiper library old support completely removed
-
-= 3.12.3 [29th August 2024] =
-
-* Added: Ajax load more feature added in alex grid widget
-
-= 3.12.2 [21th August 2024] =
-
-* Added: Order by Last Modified feature added in query builder
-* Added: Thumbs image height option added in pholox slider widget
-* Fixed: Item height issue fixed in noxe slider widget
-* Fixed: Content width & alignment issue fixed in the snog slider widget
-
-= 3.12.1 [11th August 2024] =
-
-* Fixed: Author page link issue fixed in Author widget (Thanks to Rob)
-* Updated: Dashboard system improved
-
-= 3.12.0 [29th July 2024] =
-
-* Added: Element caching feature added
-* Updated: Dashboard system improved
-
 Details [changelog here](https://feedback.bdthemes.com/announcements?category=category_nld48ndl)
 
 == Upgrade Notice ==
 
 - Click on update plugin and install the new update version of your plugin, simple.
 
+== Frequently Asked Questions ==
+
+= What do I need to use Ultimate Post Kit? =
+
+Install and activate Elementor, then install and activate Ultimate Post Kit. The available post and blog layout widgets will appear in the Elementor editor.
+
+= Is Ultimate Post Kit a blog post addon or blog post plugin for Elementor? =
+
+Ultimate Post Kit is a WordPress plugin built for Elementor. It works as an Elementor blog post addon by adding post grid, post list, post carousel, post slider, timeline, category and supporting blog widgets to the Elementor editor.
+
+= Can I create a post grid, post carousel or post slider in Elementor? =
+
+Yes. Ultimate Post Kit includes Elementor post grid, blog post carousel and blog post slider widgets. Add a supported widget in Elementor, choose its content query and configure its available layout and styling controls.
+
+= Can I add an Elementor post list widget? =
+
+Yes. Available Elementor post list widget options include Post List, Buzz, Exotic, Fanel, Featured, Harold, Scott, Tiny, Classic, Candy and Welsh layouts. Free and Pro availability is identified in the widget sections above.
+
+= Can I create a picture carousel or carousel slider? =
+
+You can create an image-focused post carousel with Hazel Carousel or Amox Carousel. These picture carousel layouts use post imagery with linked post content. Dynamic Carousel is another carousel slider option; review its demo for its supported content and controls.
+
+= Can I use Ultimate Post Kit as a blog layout plugin or blog layout addon? =
+
+Yes. Its Elementor post widgets can be used individually as a blog layout widget or combined into a broader blog layout template containing grids, lists, carousels, sliders, categories, author information and other available elements.
+
+= Does Ultimate Post Kit include dynamic post grid and dynamic post carousel widgets? =
+
+The Pro collection includes Dynamic Grid, Dynamic Carousel and Dynamic Content. Dynamic Grid is described for supported posts, products or custom content; Dynamic Carousel is described for supported posts, images or custom content. Check each linked demo for its available sources and controls.
+
+= Can I build an Elementor archive page layout? =
+
+Combine the Template Builder's Post Title, Post Content, Post Info and Post Featured Image elements. Review the [Archive Page demo](https://postkit.pro/archive/) to determine whether these components fit your intended Elementor archive template and archive page layout.
+
+= Can I create an Elementor single post template? =
+
+Use the Template Builder's Post Title, Post Content, Post Info and Post Featured Image elements to compose the main parts of an Elementor single post template.
+
+= Can I build an Elementor magazine layout or news website section? =
+
+Yes. Combine post grids, post lists, post carousels, post sliders, category displays, author information and the News Ticker widget. Each widget is configured separately, so the final magazine or news layout depends on the widgets, query and styling settings you choose.
+
+= Does the plugin offer responsive blog post layouts? =
+
+Ultimate Post Kit widgets include responsive layout and styling options for desktop, tablet and mobile displays. The exact responsive controls depend on the selected widget.
+
+= Can I select posts, categories or authors? =
+
+Available query controls can include or exclude specific post categories, individual posts or posts by selected authors. Query settings depend on the widget being configured.
+
+= Can I show related or featured posts? =
+
+Use the available query controls with a supported post grid, post list, post carousel or post slider to display related, featured or manually selected posts. The resulting selection depends on the query settings you configure.
+
+= Can I place multiple post widgets on one Elementor page? =
+
+Yes. Multiple Ultimate Post Kit widgets can be placed on the same Elementor page, with each widget configured separately.
+
+= Does Ultimate Post Kit support multilingual websites? =
+
+Ultimate Post Kit supports RTL and multiple languages. Test the required language and layout combination on your site and consult the documentation for configuration guidance.
+
+= What should I do if a theme or another plugin affects a widget? =
+
+Test the affected feature after temporarily disabling other extensions in a staging environment. If the problem continues, contact support with the affected widget, relevant software versions and the steps needed to reproduce the issue.
+
+= Where can I find tutorials for the widgets? =
+
+Use the documentation, video tutorials and individual widget demos linked in this readme. Each widget demo should be reviewed for its specific layout, controls and Free or Pro availability.
+
+= How do I receive updates and get help? =
+
+WordPress displays an update notification in the Plugins screen when a new version is available. For guidance, use the [Ultimate Post Kit knowledge base](https://bdthemes.com/all-knowledge-base-of-ultimate-post-kit/) or [contact support](https://bdthemes.com/support/).
+
+= How can I report security bugs? =
+
+Report security bugs through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/9e5fb868-7544-4586-b365-636dc6104737). Patchstack helps validate, triage and handle reported vulnerabilities.
+
 == Screenshots ==
 
-01. Ultimate Post Kit Intro
-02. Most wanted features
-03. Widget on or off options
-04. Popular widget list
-05. Alter Grid Example
-06. Alice Grid Example
-07. Kalon Grid Example
-08. Hazel Grid Example
-09. Harold Grid Example
-10. Alice Grid Example
-11. Post Category Grid Example
-12. Social Button Example
-13. Hansel Slider Example
-14. Why you chooseultimate post kit
-15. Our Others plugins
-
+1. Ultimate Post Kit introduction
+2. Feature overview
+3. Widget activation controls
+4. Widget list
+5. Alter Grid example
+6. Alice Grid example
+7. Kalon Grid example
+8. Hazel Grid example
+9. Harold Grid example
+10. Post layout example
+11. Post Category Grid example
+12. Social Share example
+13. Hansel Slider example
+14. Ultimate Post Kit overview
+15. Other BdThemes plugins

@@ -344,7 +344,7 @@
                          .html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...');
                     
                     $.ajax({
-                        url: BDT_SetupWizard.ajax_url,
+                        url: UPK_SetupWizard.ajax_url,
                         type: 'POST',
                         data: data,
                         success: function (response) {
@@ -428,11 +428,11 @@
                             statusText.textContent = `Installing ${pluginName}...`;
                             
                             jQuery.ajax({
-                                url: BDT_SetupWizard.ajax_url,
+                                url: UPK_SetupWizard.ajax_url,
                                 method: 'POST',
                                 data: {
                                     action: 'ultimate_post_kit_setup_wizard_install_plugins',
-                                    nonce: BDT_SetupWizard.nonce,
+                                    nonce: UPK_SetupWizard.nonce,
                                     plugins: [slug]
                                 },
                                 success: (response) => {
@@ -523,11 +523,11 @@
         if (isJsonTemplate) {
             // Handle JSON template import
             $.ajax({
-                url: BDT_SetupWizard.ajax_url,
+                url: UPK_SetupWizard.ajax_url,
                 type: 'POST',
                 data: {
                     action: 'ultimate_post_kit_import_elementor_template',
-                    nonce: BDT_SetupWizard.nonce,
+                    nonce: UPK_SetupWizard.nonce,
                     import_url: importUrl
                 },
                 success: function(response) {
@@ -570,11 +570,11 @@
         } else if (isZipTemplate) {
             // Handle ZIP template import
             $.ajax({
-                url: BDT_SetupWizard.ajax_url,
+                url: UPK_SetupWizard.ajax_url,
                 type: 'POST',
                 data: {
                     action: 'ultimate_post_kit_import_elementor_bundle_template',
-                    nonce: BDT_SetupWizard.nonce,
+                    nonce: UPK_SetupWizard.nonce,
                     import_url: importUrl
                 },
                 success: async function(response) {
@@ -664,9 +664,9 @@
         try {
             const response = await new Promise((resolve, reject) => {
                 $.ajax({
-                    url: BDT_SetupWizard.ajax_url, type: 'POST', data: {
+                    url: UPK_SetupWizard.ajax_url, type: 'POST', data: {
                         action: 'ultimate_post_kit_import_elementor_bundle_runner_template',
-                        nonce: BDT_SetupWizard.nonce,
+                        nonce: UPK_SetupWizard.nonce,
                         sessionId: sessionId,
                         runner: runner,
                     }, success: resolve, error: reject

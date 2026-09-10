@@ -27,6 +27,59 @@ class Remote_Data_Handler {
     const CACHE_KEY = 'bdt_remote_plugins_data';
 
     /**
+     * Bundled logo file name for each plugin slug.
+     *
+     * These ship with the plugin (assets/images/others-plugin-logo/) so the plugin
+     * cards render our own branded artwork instead of the wordpress.org icon, and
+     * still show something for plugins whose .org listing has no icon at all.
+     * The key is the wordpress.org slug; the value is the file base name.
+     *
+     * @var array<string, string>
+     */
+    const LOCAL_PLUGIN_LOGOS = [
+        'bdthemes-element-pack-lite' => 'element-pack',
+        'bdthemes-prime-slider-lite' => 'prime-slider',
+        'ultimate-post-kit'          => 'ultimate-post-kit',
+        'ultimate-store-kit'         => 'ultimate-store-kit',
+        'zoloblocks'                 => 'zoloblocks',
+        'pixel-gallery'              => 'pixel-gallery',
+        'live-copy-paste'            => 'live-copy-paste',
+        'spin-wheel'                 => 'spin-wheel',
+        'ai-image'                   => 'ai-image',
+        'dark-reader'                => 'dark-reader',
+        'ar-viewer'                  => 'ar-viewer',
+        'smart-admin-assistant'      => 'smart-admin-assistant',
+        'website-accessibility'      => 'one-accessibility',
+        'launch-guard'               => 'launch-guard',
+        'sigma-forms'                => 'sigma-forms',
+        'sigma-media-manager'        => 'sigma-media-manager',
+        'sigma-store-locator'        => 'sigma-store-locator',
+        'swift-checkout'             => 'swift-checkout',
+    ];
+
+    /**
+     * Resolve the bundled logo URL for a plugin slug.
+     *
+     * @param string $slug Plugin slug.
+     * @return string Logo URL, or an empty string when the slug has no bundled logo.
+     */
+    public static function get_local_plugin_logo( $slug ) {
+        if ( ! is_string( $slug ) || '' === $slug || ! isset( self::LOCAL_PLUGIN_LOGOS[ $slug ] ) ) {
+            return '';
+        }
+
+        $file = self::LOCAL_PLUGIN_LOGOS[ $slug ] . '.png';
+
+        // Only advertise the file if it actually shipped, so a trimmed build falls
+        // back to the remote icon rather than rendering a broken image.
+        if ( defined( 'BDTUPK_PATH' ) && ! file_exists( BDTUPK_PATH . 'assets/images/others-plugin-logo/' . $file ) ) {
+            return '';
+        }
+
+        return BDTUPK_ASSETS_URL . 'images/others-plugin-logo/' . $file;
+    }
+
+    /**
      * Cron hook name for background fetch
      */
     const CRON_HOOK = 'bdt_fetch_remote_plugins_cron';
@@ -439,8 +492,13 @@ class Remote_Data_Handler {
      * @return array Formatted plugin data
      */
     private static function format_plugin_data($raw_data) {
-        // Get the best available icon with validation
-        $icon_url = self::get_valid_plugin_icon($raw_data['icons'] ?? []);
+        // Prefer the logo bundled with this plugin so the cards show our own branded
+        // artwork; fall back to the wordpress.org icon for anything not bundled.
+        $icon_url = self::get_local_plugin_logo($raw_data['slug'] ?? '');
+
+        if ('' === $icon_url) {
+            $icon_url = self::get_valid_plugin_icon($raw_data['icons'] ?? []);
+        }
 
         // Format active installs with null safety and real data
         $active_installs_raw = $raw_data['active_installs'] ?? 0;
@@ -489,8 +547,14 @@ class Remote_Data_Handler {
      */
     private static function get_valid_plugin_icon($icons) {
         $valid_extensions = ['gif', 'png', 'jpg', 'jpeg', 'svg'];
-        $icon_sizes = ['256', '128', 'default'];
-        
+
+        // The wordpress.org plugin_information API returns its icon map keyed by
+        // '2x' / '1x' (and 'svg' or 'default' for the generated geopattern icon) --
+        // never '256' / '128'. Looking only for the pixel keys meant no plugin icon
+        // ever resolved and every card fell back to the placeholder. Highest quality
+        // first, with the old pixel keys kept for any cached/legacy payload.
+        $icon_sizes = ['2x', '1x', 'svg', 'default', '256', '128'];
+
         foreach ($icon_sizes as $size) {
             if (!empty($icons[$size])) {
                 $icon_url = $icons[$size];
