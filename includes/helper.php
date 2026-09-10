@@ -820,9 +820,9 @@ function ultimate_post_kit_title_tags() {
 		'h4'   => 'H4',
 		'h5'   => 'H5',
 		'h6'   => 'H6',
-		'div'  => 'div',
-		'span' => 'span',
-		'p'    => 'p',
+		'div'  => 'Div',
+		'span' => 'Span',
+		'p'    => 'P',
 	];
 
 	return $title_tags;
@@ -934,6 +934,9 @@ function get_user_role( $id ) {
 
 if ( _is_upk_pro_activated() ) {
 	function ultimate_post_kit_reading_time( $content, $avg_reading_speed, $hide_seconds = 'no', $hide_minutes = 'no' ) {
+		$avg_reading_speed = is_scalar( $avg_reading_speed ) ? (int) $avg_reading_speed : 0;
+		$avg_reading_speed = $avg_reading_speed > 0 ? $avg_reading_speed : 200;
+
 		$total_word      = str_word_count( wp_strip_all_tags( $content ) );
 		$reading_minute  = floor( $total_word / $avg_reading_speed );
 		$reading_seconds = floor( $total_word % $avg_reading_speed / ( $avg_reading_speed / 60 ) );
@@ -1021,16 +1024,15 @@ if ( ! function_exists( 'upk_license_validation' ) ) {
 if ( ! function_exists( 'ultimate_post_kit_sanitize_public_post_type' ) ) {
 	function ultimate_post_kit_sanitize_public_post_type( $post_type, $fallback = 'post' ) {
 
-		$allowed = get_post_types(
-			[
-				'public'              => true,
-				'exclude_from_search' => false,
-			]
-		);
+		$is_allowed = static function ( $type ) {
+			$object = get_post_type_object( $type );
+
+			return $object && is_post_type_viewable( $type ) && empty( $object->exclude_from_search );
+		};
 
 		if ( is_array( $post_type ) ) {
 			$requested = array_filter( $post_type, 'is_scalar' );
-			$requested = array_values( array_intersect( array_map( 'strval', $requested ), $allowed ) );
+			$requested = array_values( array_filter( array_map( 'strval', $requested ), $is_allowed ) );
 
 			return empty( $requested ) ? $fallback : $requested;
 		}
@@ -1041,7 +1043,7 @@ if ( ! function_exists( 'ultimate_post_kit_sanitize_public_post_type' ) ) {
 
 		$post_type = (string) $post_type;
 
-		return isset( $allowed[ $post_type ] ) ? $post_type : $fallback;
+		return $is_allowed( $post_type ) ? $post_type : $fallback;
 	}
 }
 

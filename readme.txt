@@ -332,6 +332,10 @@ Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor p
 
 == Changelog ==
 
+= 4.5.X [XXth September 2026] =
+
+* Updated: Security improved
+
 = 4.5.3 [7th September 2026] =
 
 * Fixed: Fatal error on every page of the site when another BdThemes plugin that provides the same duplicate post feature, such as Live Copy Paste, was active alongside this plugin

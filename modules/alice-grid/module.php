@@ -94,7 +94,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 
 						<?php if ( isset( $settings['show_category'] ) && 'yes' === $settings['show_category'] ) : ?>
 							<div class="upk-category">
-								<?php echo wp_kses_post( upk_get_category( $settings['post_source'] ) ); ?>
+								<?php echo wp_kses_post( upk_get_category( $settings['posts_source'] ?? 'post' ) ); ?>
 							</div>
 						<?php endif; ?>
 

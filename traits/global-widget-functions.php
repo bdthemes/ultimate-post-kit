@@ -32,7 +32,11 @@ trait Global_Widget_Functions {
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in the load-more AJAX handler (check_ajax_referer 'upk-site') before this runs.
 		if ( isset( $_POST['settings'] ) && is_array( $_POST['settings'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in the load-more AJAX handler (check_ajax_referer 'upk-site') before this runs.
-			extract( map_deep( wp_unslash( $_POST['settings'] ), 'sanitize_text_field' ) );
+			$request_settings = map_deep( wp_unslash( $_POST['settings'] ), 'sanitize_text_field' );
+
+			unset( $request_settings['this'], $request_settings['GLOBALS'] );
+
+			extract( $request_settings, EXTR_SKIP );
 		}
 
 		// This handler is reachable unauthenticated (wp_ajax_nopriv_*). Clamp the
@@ -122,6 +126,8 @@ trait Global_Widget_Functions {
 
 		$exclude_by = isset($posts_exclude_by) ? $posts_exclude_by : [];
 		$include_by = isset($posts_include_by) ? $posts_include_by : [];
+		$exclude_by = is_array($exclude_by) ? $exclude_by : ( '' === $exclude_by || null === $exclude_by ? [] : [ $exclude_by ] );
+		$include_by = is_array($include_by) ? $include_by : ( '' === $include_by || null === $include_by ? [] : [ $include_by ] );
 		$include_users = [];
 		$exclude_users = [];
 		// print_r($exclude_by);
@@ -166,8 +172,8 @@ trait Global_Widget_Functions {
 			$args['post_type'] = get_post_type($related_post_id);
 
 			// $include_by = $this->getGroupControlQueryParamBy('include');
-			if (in_array('authors', $include_by)) {
-				$args['author__in'] = wp_parse_id_list($settings['posts_include_author_ids']);
+			if (in_array('authors', $include_by) && isset($posts_include_author_ids)) {
+				$args['author__in'] = wp_parse_id_list($posts_include_author_ids);
 			} else {
 				$args['author__in'] = get_post_field('post_author', $related_post_id);
 			}
@@ -267,6 +273,10 @@ trait Global_Widget_Functions {
 				$args['tax_query'] = $terms_query;
 				$args['tax_query']['relation'] = 'AND';
 			}
+		}
+
+		if ( empty( $args['post_status'] ) || 'publish' !== $args['post_status'] ) {
+			$args['post_status'] = 'publish';
 		}
 
 		$ajaxposts = new \WP_Query($args);

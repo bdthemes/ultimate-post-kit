@@ -56,12 +56,16 @@ class Utils {
 	 * @param string $tag
 	 * @return string
 	 */
-	public static function get_valid_html_tag( $tag ) { 
-		return in_array( strtolower( $tag ), self::ALLOWED_HTML_WRAPPER_TAGS ) ? $tag : 'div';
+	public static function get_valid_html_tag( $tag ) {
+		if ( ! is_scalar( $tag ) ) {
+			return 'div';
+		}
+
+		return in_array( strtolower( (string) $tag ), self::ALLOWED_HTML_WRAPPER_TAGS ) ? $tag : 'div';
 	}
 
-	public static function print_valid_html_tag( $tag ) { 
-		echo esc_attr( in_array( strtolower( $tag ), self::ALLOWED_HTML_WRAPPER_TAGS ) ? $tag : 'div' );
+	public static function print_valid_html_tag( $tag ) {
+		echo esc_attr( self::get_valid_html_tag( $tag ) );
 	}
 
 	/**

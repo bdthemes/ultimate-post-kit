@@ -96,8 +96,15 @@ class UltimatePostKit_Dynamic_Select_Input_Module {
 	 * @return array|mixed
 	 */
 	protected function getselecedIds() {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in getSelectInputData() before this helper runs.
-		return isset($_POST['ids']) ? sanitize_text_field(wp_unslash($_POST['ids'])) : [];
+		if ( ! check_ajax_referer( 'upk_dynamic_select', 'security', false ) ) {
+			return [];
+		}
+
+		if ( ! isset( $_POST['ids'] ) ) {
+			return [];
+		}
+
+		return array_values( array_filter( wp_parse_id_list( (array) wp_unslash( $_POST['ids'] ) ) ) );
 	}
 
 
@@ -212,10 +219,16 @@ class UltimatePostKit_Dynamic_Select_Input_Module {
 		$taxonomies  = $this->getAllPublicTaxonomies();
 		$include     = $this->getselecedIds();
 
+		$post_type = '';
+
 		if ($this->getPostType() == '_ultimate_post_kit_pro_related_post_type') {
 			$post_type = $this->getAllPublicPostTypes();
 		} elseif ($this->getPostType()) {
 			$post_type = $this->getPostType();
+		}
+
+		if (empty($post_type)) {
+			return [];
 		}
 
 		$post_taxonomies = get_object_taxonomies($post_type);
