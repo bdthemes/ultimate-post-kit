@@ -262,11 +262,7 @@ class UltimatePostKit_Others_Plugin_Manager {
                                     '</div>' +
                                 '</div>' +
                                 '<div class="bdt-others-plugin-content-text bdt-margin-top">';
-                        
-                        if (plugin.description) {
-                            html += '<p>' + upkEsc(plugin.description) + '</p>';
-                        }
-                        
+
                         // Active installs
                         var installsCount = Number(plugin.active_installs_count) || 0;
                         html += '<span class="active-installs bdt-margin-small-top">' +
@@ -457,7 +453,10 @@ class UltimatePostKit_Others_Plugin_Manager {
                         '<p class="bdt-margin-small-top bdt-text-muted"><?php echo esc_js(__('Loading plugin data...', 'ultimate-post-kit')); ?></p>' +
                     '</div>'
                 );
-                $list.show();
+                // Set the display explicitly: the list is a CSS grid, and jQuery's
+                // .show() can resolve the inline display:none to "block", which would
+                // flatten the card grid into a single stacked column.
+                $list.css('display', 'grid');
             }
             
             // Function to show error

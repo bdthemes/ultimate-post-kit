@@ -19,7 +19,7 @@ class Plugin_Integration_Helper {
      * @return array Plugin configurations
      */
     public static function get_predefined_plugins() {
-        return [
+        $plugins = [
             'bdthemes-element-pack-lite' => [
                 'recommended' => true,
                 'fallback' => [
@@ -142,6 +142,27 @@ class Plugin_Integration_Helper {
             //     ]
             // ]
         ];
+
+        // Point every fallback at the logo bundled with this plugin. These entries are
+        // what render when the wordpress.org data is unavailable, so without this the
+        // cards would fall back to a placeholder instead of the real branding. Keys may
+        // be either a bare slug or "slug/file.php", so normalise to the directory first.
+        if ( class_exists( __NAMESPACE__ . '\\Remote_Data_Handler' ) ) {
+            foreach ( $plugins as $key => $config ) {
+                if ( ! empty( $config['fallback']['logo'] ) ) {
+                    continue;
+                }
+
+                $slug = ( false !== strpos( $key, '/' ) ) ? dirname( $key ) : $key;
+                $logo = Remote_Data_Handler::get_local_plugin_logo( $slug );
+
+                if ( '' !== $logo ) {
+                    $plugins[ $key ]['fallback']['logo'] = $logo;
+                }
+            }
+        }
+
+        return $plugins;
     }
 
     /**

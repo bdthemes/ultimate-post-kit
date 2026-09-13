@@ -1217,14 +1217,36 @@ $global-link-color: #1e87f0;
 	}
 
 	.upk-dashboard-panel {
+		// Other Plugins uses the same card grid as the setup wizard's integration
+		// step, so the two screens read as one design. One column by default; the
+		// breakpoints below step it up to two and three.
 		.upk-dashboard-others-plugin {
-			display: flex;
-			flex-direction: column;
-			gap: $upk-dashboard-gap-size;
+
+			// The cards are injected into .upk-plugins-list, so the grid has to live
+			// there -- the container also holds the loading and error states.
+			.upk-plugins-list {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: $upk-dashboard-gap-size;
+			}
 
 			.bdt-card {
+				display: flex;
 				flex-direction: column;
-				gap: 20px;
+				align-items: flex-start;
+				gap: 8px;
+				height: 100%;
+				padding: 25px 20px;
+				background: var(--upk-white, #ffffff);
+				border: 1px solid var(--upk-gray-medium, #e8f0f3);
+				border-radius: var(--upk-border-radius, 10px);
+				transition: var(--upk-transition, all 0.3s ease);
+
+				&:hover {
+					border-color: var(--upk-primary, #6c5ce7);
+					box-shadow: var(--upk-shadow, 0 10px 20px rgba(108, 92, 231, 0.1));
+					transform: translateY(-3px);
+				}
 			}
 		}
 
@@ -1264,58 +1286,81 @@ $global-link-color: #1e87f0;
 
 			.bdt-others-plugin-content {
 				width: 100%;
-				gap: 20px;
+				gap: 8px;
 				flex-direction: column;
 				align-items: flex-start;
 
 				.upk-feature-title {
-					font-weight: 500;
+					font-weight: 600;
+					font-size: 16px;
+					line-height: 1.4;
+					color: var(--upk-text-dark, #2d3436);
 				}
 
+				// Logo and title stack instead of sitting side by side, so the card
+				// reads the same way as the wizard's: logo on its own line, name under it.
 				.bdt-plugin-logo-wrap {
-					gap: 15px;
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 12px;
+					width: 100%;
 				}
 
+				// Match the wizard's 48px logo so both screens line up.
 				img {
-					width: clamp(50px, 8vw, 70px);
-					height: auto;
+					width: 48px;
+					height: 48px;
+					flex: none;
+					object-fit: contain;
 					vertical-align: middle;
-					// border-radius: 6px;
+					border-radius: 4px;
 				}
 
 				.upk-feature-title {
 					margin-bottom: 0;
 				}
 
+				// Card-scale typography, matching the wizard's integration cards.
+				// max-width is dropped: the grid column is the constraint now.
 				p {
-					margin: 0 0 10px 0;
-					font-size: 15px;
+					margin: 0 0 4px 0;
+					font-size: 14px;
 					line-height: 1.5;
-					color: #656a71;
-					max-width: 600px;
-					font-weight: 300;
+					color: var(--upk-text-light, #636e72);
+					max-width: none;
+					font-weight: 400;
 				}
 				span.active-installs {
-					font-size: 14px;
+					font-size: 13px;
 					font-weight: 500;
 					color: #9C27B0;
 					.installs-count {
 						color: #9C27B0;
 					}
 				}
+				.bdt-others-plugin-downloads {
+					font-size: 13px;
+					color: var(--upk-success, #00b894);
+					font-weight: 500;
+				}
 				.bdt-others-plugin-updated {
+					font-size: 13px;
+					font-style: italic;
 					color: #656a71;
 				}
 			}
 
+			// Actions sit at the foot of the card. margin-top:auto keeps them aligned
+			// across a row even when descriptions differ in length. No min-width here:
+			// it would blow out the grid columns on narrower screens.
 			.bdt-others-plugins-link {
 				display: flex;
 				flex-wrap: wrap;
 				justify-content: left;
 				gap: 8px;
 				width: 100%;
-				flex: 1;
-				min-width: 300px;
+				margin-top: auto;
+				padding-top: 5px;
 
 				.bdt-dashboard-sec-btn {
 					padding: 9px 20px !IMPORTANT;
@@ -1364,6 +1409,31 @@ $global-link-color: #1e87f0;
 
 					&:hover {
 						background: linear-gradient(to right, #58D34D, #00A85C);
+					}
+				}
+
+				// "Active" status pill. bdt-button-success was used in the markup but
+				// never defined in any stylesheet, so it fell through to .bdt-button's
+				// `color: #fff` with no background -- white text on the white card, i.e.
+				// invisible -- while uikit's `.bdt-disabled > * { color: #999 }` greyed
+				// out the tick icon. Give it a real success colour and let the icon
+				// inherit it.
+				&.bdt-button-success {
+					display: inline-flex;
+					align-items: center;
+					justify-content: center;
+					gap: 4px;
+					background: rgba(0, 168, 92, 0.12);
+					color: #00A85C;
+					border: 1px solid rgba(0, 168, 92, 0.25);
+					cursor: default;
+
+					.dashicons {
+						color: inherit;
+						font-size: 16px;
+						width: 16px;
+						height: 16px;
+						line-height: 1;
 					}
 				}
 
@@ -3390,10 +3460,10 @@ $global-link-color: #1e87f0;
 		display: block;
 	}
 
-	// .ultimate-post-kit-dashboard.wrap .upk-dashboard-panel .bdt-card .bdt-others-plugin-content {
-	// 	flex-direction: row;
-	// 	align-items: center;
-	// }
+	// Two-column Other Plugins grid, same step the wizard's integration list takes.
+	.ultimate-post-kit-dashboard.wrap .upk-dashboard-panel .upk-dashboard-others-plugin .upk-plugins-list {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
 @media (min-width: 1200px) {
@@ -3410,16 +3480,13 @@ $global-link-color: #1e87f0;
 		grid-column: span 5 / auto;
 	}
 
+	// Third column for Other Plugins, matching the wizard's integration grid.
+	// The card stays a vertical stack here -- it used to flip to a horizontal row,
+	// which is what made this screen look unlike the wizard.
 	.ultimate-post-kit-dashboard.wrap .upk-dashboard-panel {
 
-		.upk-dashboard-others-plugin {
-			.bdt-card {
-				flex-direction: row;
-
-				.bdt-others-plugins-link {
-					justify-content: right;
-				}
-			}
+		.upk-dashboard-others-plugin .upk-plugins-list {
+			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 }

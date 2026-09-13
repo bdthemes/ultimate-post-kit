@@ -1089,9 +1089,9 @@ if (!class_exists('UltimatePostKit_Settings_API')) :
 												<div>
 													<ul
 														class="bdt-subnav bdt-subnav-pill upk-widget-filter bdt-widget-type-content bdt-flex-inline">
-														<li class="upk-widget-all" bdt-filter-control="*"><a
+														<li class="upk-widget-all bdt-active" bdt-filter-control="*"><a
 																href="#"><?php esc_html_e('All', 'ultimate-post-kit'); ?></a></li>
-														<li class="upk-widget-free bdt-active"
+														<li class="upk-widget-free"
 															bdt-filter-control="filter: [data-widget-type='free']; group: data-content-type">
 															<a href="#"><?php esc_html_e('Free', 'ultimate-post-kit'); ?></a>
 														</li>

@@ -903,14 +903,27 @@
   background: #fefefe;
   padding: 30px;
 }
-.ultimate-post-kit-dashboard .upk-dashboard-panel .upk-dashboard-others-plugin {
-  display: flex;
-  flex-direction: column;
+.ultimate-post-kit-dashboard .upk-dashboard-panel .upk-dashboard-others-plugin .upk-plugins-list {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 20px;
 }
 .ultimate-post-kit-dashboard .upk-dashboard-panel .upk-dashboard-others-plugin .bdt-card {
+  display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: flex-start;
+  gap: 8px;
+  height: 100%;
+  padding: 25px 20px;
+  background: var(--upk-white, #ffffff);
+  border: 1px solid var(--upk-gray-medium, #e8f0f3);
+  border-radius: var(--upk-border-radius, 10px);
+  transition: var(--upk-transition, all 0.3s ease);
+}
+.ultimate-post-kit-dashboard .upk-dashboard-panel .upk-dashboard-others-plugin .bdt-card:hover {
+  border-color: var(--upk-primary, #6c5ce7);
+  box-shadow: var(--upk-shadow, 0 10px 20px rgba(108, 92, 231, 0.1));
+  transform: translateY(-3px);
 }
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card {
   border-radius: 6px;
@@ -941,41 +954,57 @@
 }
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-others-plugin-content {
   width: 100%;
-  gap: 20px;
+  gap: 8px;
   flex-direction: column;
   align-items: flex-start;
 }
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-others-plugin-content .upk-feature-title {
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--upk-text-dark, #2d3436);
 }
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-others-plugin-content .bdt-plugin-logo-wrap {
-  gap: 15px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
 }
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-others-plugin-content img {
-  width: clamp(50px, 8vw, 70px);
-  height: auto;
+  width: 48px;
+  height: 48px;
+  flex: none;
+  object-fit: contain;
   vertical-align: middle;
+  border-radius: 4px;
 }
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-others-plugin-content .upk-feature-title {
   margin-bottom: 0;
 }
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-others-plugin-content p {
-  margin: 0 0 10px 0;
-  font-size: 15px;
+  margin: 0 0 4px 0;
+  font-size: 14px;
   line-height: 1.5;
-  color: #656a71;
-  max-width: 600px;
-  font-weight: 300;
+  color: var(--upk-text-light, #636e72);
+  max-width: none;
+  font-weight: 400;
 }
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-others-plugin-content span.active-installs {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   color: #9C27B0;
 }
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-others-plugin-content span.active-installs .installs-count {
   color: #9C27B0;
 }
+.ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-others-plugin-content .bdt-others-plugin-downloads {
+  font-size: 13px;
+  color: var(--upk-success, #00b894);
+  font-weight: 500;
+}
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-others-plugin-content .bdt-others-plugin-updated {
+  font-size: 13px;
+  font-style: italic;
   color: #656a71;
 }
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-others-plugins-link {
@@ -984,8 +1013,8 @@
   justify-content: left;
   gap: 8px;
   width: 100%;
-  flex: 1;
-  min-width: 300px;
+  margin-top: auto;
+  padding-top: 5px;
 }
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-others-plugins-link .bdt-dashboard-sec-btn {
   padding: 9px 20px !important;
@@ -1026,6 +1055,23 @@
 }
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-button.bdt-welcome-button:hover {
   background: linear-gradient(to left, #58D34D, #00A85C);
+}
+.ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-button.bdt-button-success {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: rgba(0, 168, 92, 0.12);
+  color: #00A85C;
+  border: 1px solid rgba(0, 168, 92, 0.25);
+  cursor: default;
+}
+.ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-button.bdt-button-success .dashicons {
+  color: inherit;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  line-height: 1;
 }
 .ultimate-post-kit-dashboard .upk-dashboard-panel .bdt-card .bdt-button.bdt-dashboard-sec-btn {
   color: #58D34D;
@@ -2581,6 +2627,9 @@
   .ultimate-post-kit-dashboard.wrap .upk-content-type-filter {
     display: block;
   }
+  .ultimate-post-kit-dashboard.wrap .upk-dashboard-panel .upk-dashboard-others-plugin .upk-plugins-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media (min-width: 1200px) {
   .ultimate-post-kit-dashboard.wrap .upk-dashboard-nav-container-wrapper {
@@ -2593,11 +2642,8 @@
   .ultimate-post-kit-dashboard.wrap .upk-dashboard-item:nth-child(2) {
     grid-column: span 5/auto;
   }
-  .ultimate-post-kit-dashboard.wrap .upk-dashboard-panel .upk-dashboard-others-plugin .bdt-card {
-    flex-direction: row;
-  }
-  .ultimate-post-kit-dashboard.wrap .upk-dashboard-panel .upk-dashboard-others-plugin .bdt-card .bdt-others-plugins-link {
-    justify-content: right;
+  .ultimate-post-kit-dashboard.wrap .upk-dashboard-panel .upk-dashboard-others-plugin .upk-plugins-list {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (min-width: 1440px) {

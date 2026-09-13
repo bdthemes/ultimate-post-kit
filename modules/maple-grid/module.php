@@ -63,6 +63,9 @@ class Module extends Ultimate_Post_Kit_Module_Base {
         $settings
     );
 
+		// Fill display flags the request may have omitted (see trait) before the render loop reads them.
+		$settings = array_merge( $this->loadmore_display_defaults(), $settings );
+
     $ajaxposts = $this->query_args( $settings );
 
     ob_start();
