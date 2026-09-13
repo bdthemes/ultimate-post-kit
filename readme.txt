@@ -311,7 +311,7 @@ The build configuration is included in `gruntfile.js` and `package.json`. Bundle
 
 == Changelog ==
 
-= 4.5.4 [10th September 2026] =
+= 4.5.4 [13th September 2026] =
 
 * Updated: Security improved
 
