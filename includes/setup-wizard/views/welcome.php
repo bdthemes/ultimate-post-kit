@@ -17,9 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
             <img src="<?php echo esc_url( BDTUPK_ASSETS_URL . 'images/logo.svg' ); ?>" alt="Ultimate Post Kit Logo" class="bdt-logo">
         </div>
         <h2><?php esc_html_e( 'Welcome to Ultimate Post Kit', 'ultimate-post-kit' ); ?></h2>
-        <p><?php esc_html_e( 'Thank you for choosing Ultimate Post Kit, a leading addon that provides a total web design solution for you. This quick setup wizard will help you configure the basic settings and get you started.', 'ultimate-post-kit' ); ?></p>
     </div>
-    
+
+    <div class="bdt-welcome-scroll">
     <div class="bdt-welcome-features">
         <div class="bdt-features-grid">
             <div class="bdt-feature-item">
@@ -43,7 +43,31 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <h3><?php esc_html_e( 'Fast & Optimized', 'ultimate-post-kit' ); ?></h3>
                 <p><?php esc_html_e( 'Built with performance in mind for lightning-fast websites', 'ultimate-post-kit' ); ?></p>
             </div>
+            <div class="bdt-feature-item">
+                <div class="bdt-feature-icon">
+                    <span class="dashicons dashicons-admin-page"></span>
+                </div>
+                <h3><?php esc_html_e( 'Live Copy & Paste', 'ultimate-post-kit' ); ?></h3>
+                <p><?php esc_html_e( 'Copy and paste supported designs straight into your pages', 'ultimate-post-kit' ); ?></p>
+            </div>
+            <div class="bdt-feature-item">
+                <div class="bdt-feature-icon">
+                    <span class="dashicons dashicons-controls-play"></span>
+                </div>
+                <h3><?php esc_html_e( 'Widget Animations', 'ultimate-post-kit' ); ?></h3>
+                <p><?php esc_html_e( 'Add animation options to supported widgets', 'ultimate-post-kit' ); ?></p>
+            </div>
+            <div class="bdt-feature-item">
+                <div class="bdt-feature-icon">
+                    <span class="dashicons dashicons-sos"></span>
+                </div>
+                <h3><?php esc_html_e( 'Dedicated Support', 'ultimate-post-kit' ); ?></h3>
+                <p><?php esc_html_e( 'Regular updates and expert help whenever you need a hand', 'ultimate-post-kit' ); ?></p>
+            </div>
         </div>
+    </div>
+
+    <?php require plugin_dir_path( BDTUPK__FILE__ ) . 'includes/setup-wizard/views/subscribe.php'; ?>
     </div>
 
     <div class="bdt-wizard-navigation">
