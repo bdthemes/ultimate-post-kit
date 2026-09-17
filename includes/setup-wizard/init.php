@@ -46,9 +46,20 @@ class Setup_Wizard {
 		return self::$instance;
 	}
 
+	/**
+	 * Newsletter list endpoint the welcome step's opt-in posts to.
+	 */
+	const SUBSCRIBE_ENDPOINT = 'https://marketing.sigmative.com/newsletter/rui/lists/6a9943aacbe70/embedded-form-subscribe';
+
+	/**
+	 * Customer identifier required by the newsletter endpoint.
+	 */
+	const SUBSCRIBE_CUSTOMER_UID = '6a93d39ce0ebd';
+
 	// Initialize hooks
 	private function init_hooks() {
 		add_action( 'wp_ajax_ultimate_post_kit_setup_wizard_install_plugins', array( $this, 'install_plugins' ) );
+		add_action( 'wp_ajax_ultimate_post_kit_setup_wizard_subscribe', array( $this, 'ajax_subscribe' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'admin_init', array( $this, 'activate_default_widgets' ) );
 		add_action( 'admin_init', array( $this, 'maybe_display_setup_wizard' ) );
@@ -267,6 +278,103 @@ class Setup_Wizard {
 			}
 		);
 		return $arr_obj;
+	}
+
+	/**
+	 * Handle the newsletter opt-in on the welcome step.
+	 *
+	 * Opt-in only: nothing is sent unless the administrator ticked the box,
+	 * which is unticked by default. The choice is recorded either way so the
+	 * wizard can show it again on a re-run. Runs server side so the
+	 * cross-origin POST is not subject to CORS.
+	 */
+	public function ajax_subscribe() {
+		check_ajax_referer( 'ultimate_post_kit_setup_wizard_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => esc_html__( 'Unauthorized', 'ultimate-post-kit' ) ) );
+		}
+
+		// Record the choice first, whichever way it went.
+		$consent = isset( $_POST['consent'] ) && 'yes' === sanitize_text_field( wp_unslash( $_POST['consent'] ) );
+
+		update_option( 'bdtupk_subscribe_optin', $consent ? 'yes' : 'no' );
+
+		if ( ! $consent ) {
+			// No opt-in: the choice is stored and nothing leaves the site.
+			wp_send_json_success(
+				array(
+					'subscribed' => false,
+					'message'    => esc_html__( 'Preferences saved.', 'ultimate-post-kit' ),
+				)
+			);
+		}
+
+		// Keep the raw value: sanitize_email() flattens anything malformed to an
+		// empty string, which would otherwise be indistinguishable from "left blank".
+		$raw_email = isset( $_POST['email'] ) ? sanitize_text_field( wp_unslash( $_POST['email'] ) ) : '';
+		$email     = sanitize_email( $raw_email );
+
+		if ( '' === trim( $raw_email ) ) {
+			wp_send_json_success(
+				array(
+					'subscribed' => false,
+					'message'    => esc_html__( 'Preferences saved.', 'ultimate-post-kit' ),
+				)
+			);
+		}
+
+		if ( ! is_email( $email ) ) {
+			wp_send_json_error( array( 'message' => esc_html__( 'Please enter a valid email address.', 'ultimate-post-kit' ) ) );
+		}
+
+		// Never subscribe the same address twice from this site.
+		if ( get_option( 'bdtupk_subscribed_email' ) === $email ) {
+			wp_send_json_success(
+				array(
+					'subscribed' => true,
+					'message'    => esc_html__( 'You are already subscribed.', 'ultimate-post-kit' ),
+				)
+			);
+		}
+
+		$current_user = wp_get_current_user();
+
+		$body = array(
+			'customer_uid' => apply_filters( 'bdtupk/setup_wizard/subscribe_customer_uid', self::SUBSCRIBE_CUSTOMER_UID ),
+			'EMAIL'        => $email,
+			'FIRST_NAME'   => $current_user ? $current_user->first_name : '',
+			'LAST_NAME'    => $current_user ? $current_user->last_name : '',
+		);
+
+		$response = wp_safe_remote_post(
+			apply_filters( 'bdtupk/setup_wizard/subscribe_url', self::SUBSCRIBE_ENDPOINT ),
+			array(
+				'timeout'   => 15,
+				'body'      => apply_filters( 'bdtupk/setup_wizard/subscribe_body', $body, $email ),
+				'headers'   => array( 'Accept' => '*/*' ),
+				'sslverify' => true,
+			)
+		);
+
+		if ( is_wp_error( $response ) ) {
+			wp_send_json_error( array( 'message' => esc_html__( 'Could not reach the subscription service. Please try again later.', 'ultimate-post-kit' ) ) );
+		}
+
+		$code = wp_remote_retrieve_response_code( $response );
+
+		if ( $code < 200 || $code >= 400 ) {
+			wp_send_json_error( array( 'message' => esc_html__( 'The subscription service rejected the request.', 'ultimate-post-kit' ) ) );
+		}
+
+		update_option( 'bdtupk_subscribed_email', $email );
+
+		wp_send_json_success(
+			array(
+				'subscribed' => true,
+				'message'    => esc_html__( 'Thanks for subscribing!', 'ultimate-post-kit' ),
+			)
+		);
 	}
 
 	// Install plugins

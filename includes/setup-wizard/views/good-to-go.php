@@ -17,6 +17,7 @@ $templates      = json_decode( file_get_contents( $templates_path ), true );
 ?>
 <div class="bdt-wizard-step bdt-text-center" data-step="finish">
 
+    <div class="bdt-goodtogo-scroll">
     <div class="bdt-templates-section">
 		<div class="bdt-success-icon">
             <i class="dashicons dashicons-yes-alt"></i>
@@ -86,7 +87,8 @@ $templates      = json_decode( file_get_contents( $templates_path ), true );
             </a>
         </div>
     </div>
-    
+    </div>
+
 	<div class="bdt-flex bdt-flex-between bdt-flex-wrap">
 		<div class="bdt-wizard-navigation">
 			<button class="bdt-button bdt-button-secondary bdt-wizard-prev" data-step="integration">
