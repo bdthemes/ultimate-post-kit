@@ -4,12 +4,12 @@ Donate link: https://bdthemes.com/
 Tags: elementor addons, post grid, post carousel, post slider, blog layout
 Requires at least: 6.8
 Tested up to: 7.1
-Stable tag: 4.5.4
+Stable tag: 4.5.5
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 4.0.0
-Elementor tested up to: 4.2.4
+Elementor tested up to: 4.3.1
 
 Build WordPress blog, magazine, news, archive and single-post layouts with Elementor post grid, carousel, slider and list widgets.
 
@@ -311,6 +311,10 @@ The plugin is not obfuscated. Human-readable source for minified or compiled ass
 The build configuration is included in `gruntfile.js` and `package.json`. Bundled third-party libraries retain their upstream license and version comments.
 
 == Changelog ==
+
+= 4.5.5 [24th September 2026] =
+
+* Updated: System improved
 
 = 4.5.4 [13th September 2026] =
 
