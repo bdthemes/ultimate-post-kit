@@ -1432,7 +1432,12 @@ class Author extends Module_Base {
 			$users = array_slice($users, 0, $item_limit);
 		}
 
-		$social_links = $settings['social_links'];
+		// Elementor stores control values verbatim, so the saved list must be checked
+		// against the control's own options before any value is used as a user field name.
+		$allowed_links = array_keys(ultimate_post_kit_user_contact_methods([], true));
+		$social_links  = array_values(array_filter((array) $settings['social_links'], function ($link) use ($allowed_links) {
+			return is_string($link) && in_array($link, $allowed_links, true);
+		}));
 
 ?>
 		<div class="upk-author">
