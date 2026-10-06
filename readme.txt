@@ -9,7 +9,7 @@ Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 4.0.0
-Elementor tested up to: 4.3.1
+Elementor tested up to: 4.3.4
 
 Build WordPress blog, magazine, news, archive and single-post layouts with Elementor post grid, carousel, slider and list widgets.
 
