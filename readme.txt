@@ -4,7 +4,7 @@ Donate link: https://bdthemes.com/
 Tags: elementor addons, post grid, post carousel, post slider, blog layout
 Requires at least: 6.8
 Tested up to: 7.1
-Stable tag: 4.5.5
+Stable tag: 4.5.6
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -311,6 +311,11 @@ The plugin is not obfuscated. Human-readable source for minified or compiled ass
 The build configuration is included in `gruntfile.js` and `package.json`. Bundled third-party libraries retain their upstream license and version comments.
 
 == Changelog ==
+
+= 4.5.6 [6th October 2026] =
+
+* Fixed: Security issue in the Author widget where the Social Links setting was used as a user field name without being checked against the available options
+* Updated: Security improved
 
 = 4.5.5 [24th September 2026] =
 
