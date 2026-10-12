@@ -312,6 +312,11 @@ The build configuration is included in `gruntfile.js` and `package.json`. Bundle
 
 == Changelog ==
 
+= 4.5.7 [12th October 2026] =
+
+* Fixed: The Terms, Posts and Authors fields in the widget Query section showed an empty dropdown with no search on some sites running Elementor 4.3, so terms, posts and authors could not be selected
+* Updated: The search dropdown used by these fields now loads together with the Elementor editor, so caching, optimization or CDN settings can no longer stop it from working
+
 = 4.5.6 [6th October 2026] =
 
 * Fixed: Security issue in the Author widget where the Social Links setting was used as a user field name without being checked against the available options
