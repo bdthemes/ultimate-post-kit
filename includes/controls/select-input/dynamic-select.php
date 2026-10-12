@@ -105,16 +105,48 @@ class Dynamic_Select extends Base_Data_Control {
 		 * @since 5.8.0
 		 */
 		public function enqueue() {
+			static $done = false;
+
+			if ($done) {
+				return;
+			}
+			$done = true;
+
+			$settings = [
+				'nonce'    => wp_create_nonce('upk_dynamic_select'),
+				'action'   => 'upk_dynamic_select_input_data',
+				'ajax_url' => admin_url('admin-ajax.php')
+			];
+
+			/**
+			 * Ship the control view inline, right after Elementor's own editor
+			 * script, instead of as a separate file.
+			 *
+			 * As a separate file it is printed after the editor loader (which
+			 * calls elementor.start()), and on some sites the tag never runs at
+			 * all: optimizers, CDNs or a stray crossorigin attribute can block
+			 * or rewrite the request. The control then falls back to a plain
+			 * <select> with no Select2. Inline, there is no request to block,
+			 * and the view is registered before the editor starts.
+			 */
+			$script_path = BDTUPK_PATH . 'includes/controls/assets/js/upk-dynamic-select.min.js';
+
+			if (wp_script_is('elementor-editor', 'registered') && is_readable($script_path)) {
+				// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- reading a bundled local plugin file, not a remote URL.
+				$script = file_get_contents($script_path);
+
+				if ($script) {
+					wp_add_inline_script(
+						'elementor-editor',
+						'var upk_dynamic_select = ' . wp_json_encode($settings) . ';' . PHP_EOL . $script,
+						'after'
+					);
+					return;
+				}
+			}
+
 			wp_enqueue_script('upk-dynamic-select', BDTUPK_URL . 'includes/controls/assets/js/upk-dynamic-select.min.js', array('jquery'), BDTUPK_VER, true);
-			wp_localize_script(
-				'upk-dynamic-select',
-				'upk_dynamic_select',
-				[
-					'nonce'    => wp_create_nonce('upk_dynamic_select'),
-					'action'   => 'upk_dynamic_select_input_data',
-					'ajax_url' => admin_url('admin-ajax.php')
-				]
-			);
+			wp_localize_script('upk-dynamic-select', 'upk_dynamic_select', $settings);
 		}
 	}
 
