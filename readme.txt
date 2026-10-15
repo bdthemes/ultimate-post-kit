@@ -4,7 +4,7 @@ Donate link: https://bdthemes.com/
 Tags: elementor addons, post grid, post carousel, post slider, blog layout
 Requires at least: 6.8
 Tested up to: 7.1
-Stable tag: 4.5.7
+Stable tag: 4.5.8
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -312,7 +312,11 @@ The build configuration is included in `gruntfile.js` and `package.json`. Bundle
 
 == Changelog ==
 
-= 4.5.7 [15th October 2026] =
+= 4.5.8 [15th October 2026] =
+
+* Fixed: Category duplicate showing issue fixed in elite grid widget
+
+= 4.5.7 [12th October 2026] =
 
 * Fixed: Category duplicate showing issue fixed in elite grid widget
 * Fixed: The Terms, Posts and Authors fields in the widget Query section showed an empty dropdown with no search on some sites running Elementor 4.3, so terms, posts and authors could not be selected
