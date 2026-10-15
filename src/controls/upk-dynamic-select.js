@@ -1,6 +1,14 @@
 !(function ($) {
 	'use strict';
-	$(window).on('elementor:init', function () {
+
+	var isRegistered = false;
+
+	function registerControlView() {
+		if (isRegistered) {
+			return;
+		}
+		isRegistered = true;
+
 		var widget = elementor.modules.controls.BaseData.extend({
 			isTitlesReceived: false,
 			addControlSpinner: function () {
@@ -121,5 +129,19 @@
 			},
 		});
 		elementor.addControlView('upk-dynamic-select', widget);
-	});
+	}
+
+	/**
+	 * Elementor 4.3 prints its editor loader (which calls elementor.start())
+	 * before add-on control scripts, and the initial document is served from
+	 * cache, so `elementor:init` can fire before this file runs. Waiting only
+	 * for that event then leaves the control on the generic BaseData view: a
+	 * plain <select> that never gets Select2. The control registry exists as
+	 * soon as the editor is constructed, so register right away when we can.
+	 */
+	if (window.elementor && elementor.modules && elementor.modules.controls && elementor.modules.controls.BaseData) {
+		registerControlView();
+	} else {
+		$(window).on('elementor:init', registerControlView);
+	}
 })(jQuery);

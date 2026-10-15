@@ -176,7 +176,7 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: "src/controls/assets/js/",
+                        cwd: "src/controls/",
                         src: ["upk-dynamic-select.js"],
                         dest: "includes/controls/assets/js/",
                         ext: ".min.js",
