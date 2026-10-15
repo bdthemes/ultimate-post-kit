@@ -1316,29 +1316,6 @@ class Elite_Grid extends Group_Control_Query {
 						<div class="upk-text-wrap">
 							<?php $this->render_excerpt($excerpt_length); ?>
 						</div>
-
-						<?php if ($settings['show_category'] == 'yes' or $settings['show_date'] == 'yes') : ?>
-							<div class="upk-meta-list upk-flex upk-flex-middle">
-								<?php $this->render_category(); ?>
-
-								<?php if ( 'yes' === $settings['show_date'] or 'yes' === $settings['show_reading_time'] ) : ?>
-								<div class="upk-flex upk-flex-middle upk-date-reading-wrap">
-
-									<?php $this->render_date(); ?>
-									
-									<?php if (_is_upk_pro_activated()) :
-										if ('yes' === $settings['show_reading_time']) : ?>
-											<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
-												<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
-											</div>
-										<?php endif; ?>
-									<?php endif; ?>
-								</div>
-								<?php endif; ?>
-
-							</div>
-						<?php endif; ?>
-
 					</div>
 				</div>
 
