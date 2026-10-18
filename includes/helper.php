@@ -87,7 +87,9 @@ function ultimate_post_kit_user_contact_methods( $methods, $core = false ) {
 	}
 
 	$methods['facebook']  = __( 'Facebook', 'ultimate-post-kit' );
-	$methods['twitter']   = __( 'Twitter', 'ultimate-post-kit' );
+	// The key stays `twitter` so links already saved on user profiles keep working.
+	$methods['twitter']   = __( 'X (Twitter)', 'ultimate-post-kit' );
+	$methods['instagram'] = __( 'Instagram', 'ultimate-post-kit' );
 	$methods['linkedin']  = __( 'LinkedIn', 'ultimate-post-kit' );
 	$methods['github']    = __( 'GitHub', 'ultimate-post-kit' );
 	$methods['wordpress'] = __( 'WordPress', 'ultimate-post-kit' );

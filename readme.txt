@@ -4,7 +4,7 @@ Donate link: https://bdthemes.com/
 Tags: elementor addons, post grid, post carousel, post slider, blog layout
 Requires at least: 6.8
 Tested up to: 7.1
-Stable tag: 4.5.8
+Stable tag: 4.5.9
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -311,6 +311,12 @@ The plugin is not obfuscated. Human-readable source for minified or compiled ass
 The build configuration is included in `gruntfile.js` and `package.json`. Bundled third-party libraries retain their upstream license and version comments.
 
 == Changelog ==
+
+= 4.5.9 [18th October 2026] =
+
+* Added: Instagram link option in the Author widget Social Links, with a matching Instagram field on user profiles
+* Updated: The Twitter link in the Author widget now shows the current X logo and is labelled X (Twitter). Links already saved keep working
+* Fixed: The X (Twitter) link in the Author widget was broken when the profile field held only a username, as saved by SEO plugins such as Yoast and Rank Math, and now opens the right x.com profile
 
 = 4.5.8 [15th October 2026] =
 
