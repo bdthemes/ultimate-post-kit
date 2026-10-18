@@ -4,7 +4,7 @@ Donate link: https://bdthemes.com/
 Tags: elementor addons, post grid, post carousel, post slider, blog layout
 Requires at least: 6.8
 Tested up to: 7.1
-Stable tag: 4.5.8
+Stable tag: 4.5.9
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
