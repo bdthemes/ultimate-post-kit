@@ -1434,7 +1434,8 @@ class Author extends Module_Base {
 
 		// Elementor stores control values verbatim, so the saved list must be checked
 		// against the control's own options before any value is used as a user field name.
-		$allowed_links = array_keys(ultimate_post_kit_user_contact_methods([], true));
+		$link_labels   = ultimate_post_kit_user_contact_methods([], true);
+		$allowed_links = array_keys($link_labels);
 		$social_links  = array_values(array_filter((array) $settings['social_links'], function ($link) use ($allowed_links) {
 			return is_string($link) && in_array($link, $allowed_links, true);
 		}));
@@ -1489,17 +1490,26 @@ class Author extends Module_Base {
 											<?php
 
 											$final_url = get_the_author_meta($link, $author->ID);
-											$alt_title = esc_html__( 'Click here to go ', 'ultimate-post-kit' ) . ucwords( $link );
+											$alt_title = esc_html__( 'Click here to go ', 'ultimate-post-kit' ) . $link_labels[ $link ];
 
 											if ($link == 'email') {
 												$final_url = 'mailto:' . get_the_author_meta($link, $author->ID);
-												$alt_title = esc_html__( 'Click here to ', 'ultimate-post-kit' ) . ucwords( $link );
+												$alt_title = esc_html__( 'Click here to ', 'ultimate-post-kit' ) . $link_labels[ $link ];
+											}
+
+											// SEO plugins such as Yoast and Rank Math save a bare username in the same field.
+											if ($link == 'twitter' && preg_match('/^@?([A-Za-z0-9_]{1,15})$/', trim($final_url), $handle)) {
+												$final_url = 'https://x.com/' . $handle[1];
 											}
 
 											?>
 
 											<a href="<?php echo esc_url($final_url); ?>" title="<?php echo esc_attr($alt_title); ?>">
-												<i class="upk-icon-<?php echo esc_attr($link); ?>" aria-hidden="true"></i>
+												<?php if ($link == 'twitter') : ?>
+													<svg class="upk-icon-x" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" style="vertical-align: -0.125em;"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+												<?php else : ?>
+													<i class="upk-icon-<?php echo esc_attr($link); ?>" aria-hidden="true"></i>
+												<?php endif; ?>
 											</a>
 										<?php endif; ?>
 
