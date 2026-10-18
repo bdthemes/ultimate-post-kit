@@ -312,6 +312,12 @@ The build configuration is included in `gruntfile.js` and `package.json`. Bundle
 
 == Changelog ==
 
+= 4.5.9 [18th October 2026] =
+
+* Added: Instagram link option in the Author widget Social Links, with a matching Instagram field on user profiles
+* Updated: The Twitter link in the Author widget now shows the current X logo and is labelled X (Twitter). Links already saved keep working
+* Fixed: The X (Twitter) link in the Author widget was broken when the profile field held only a username, as saved by SEO plugins such as Yoast and Rank Math, and now opens the right x.com profile
+
 = 4.5.8 [15th October 2026] =
 
 * Fixed: Category duplicate showing issue fixed in elite grid widget
