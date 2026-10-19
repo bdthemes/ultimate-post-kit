@@ -294,6 +294,7 @@ class UltimatePostKit_Admin_Settings {
         //initialize settings
         $this->settings_api->admin_init();
         $this->upk_redirect_to_get_pro();
+        $this->upk_redirect_to_deals();
         if (true === _is_upk_pro_activated()) {
             $this->bdt_redirect_to_renew_link();
         }
@@ -314,6 +315,56 @@ class UltimatePostKit_Admin_Settings {
             wp_redirect('https://postkit.pro/pricing/');
             exit;
         }
+    }
+
+    /**
+     * Deals page the free version's "Up To 86% Off" menu entry opens.
+     */
+    const DEALS_URL = 'https://bdthemes.com/deals/?utm_source=UltimatePostKit&utm_medium=plugin_menu&utm_campaign=UltimatePostKit';
+
+    /**
+     * Send the "Up To 86% Off" menu entry to the BdThemes deals page.
+     *
+     * @return void
+     */
+    public function upk_redirect_to_deals() {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check of the current admin page slug for display routing, no form data processed.
+        if (!isset($_GET['page']) || $_GET['page'] !== self::PAGE_ID . '_deals' || !current_user_can('manage_options')) {
+            return;
+        }
+
+        // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect -- Intentional redirect to the external BdThemes deals page; wp_safe_redirect() would block this off-site host.
+        wp_redirect(self::DEALS_URL);
+        exit;
+    }
+
+    /**
+     * Highlight the deals entry and open it in a new tab.
+     *
+     * @return void
+     */
+    public function deals_menu_assets() {
+        ?>
+        <style>
+            #adminmenu #toplevel_page_ultimate_post_kit_options a[href$="page=ultimate_post_kit_options_deals"] {
+                color: #ffc107;
+                font-weight: 600;
+            }
+            #adminmenu #toplevel_page_ultimate_post_kit_options a[href$="page=ultimate_post_kit_options_deals"]:hover,
+            #adminmenu #toplevel_page_ultimate_post_kit_options a[href$="page=ultimate_post_kit_options_deals"]:focus {
+                color: #ffffff;
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var link = document.querySelector('#toplevel_page_ultimate_post_kit_options a[href$="page=ultimate_post_kit_options_deals"]');
+                if (link) {
+                    link.setAttribute('target', '_blank');
+                    link.setAttribute('rel', 'noopener noreferrer');
+                }
+            });
+        </script>
+        <?php
     }
 
     /**
@@ -430,6 +481,20 @@ class UltimatePostKit_Admin_Settings {
                 'edit.php?post_type=upk-template-builder',
             );
         }
+
+		// Free version only: the BdThemes deals page (admin_init redirects there).
+		if (true !== _is_upk_pro_activated()) {
+			add_submenu_page(
+				self::PAGE_ID,
+				BDTUPK_TITLE,
+				esc_html__('Up To 86% Off', 'ultimate-post-kit'),
+				'manage_options',
+				self::PAGE_ID . '_deals',
+				[$this, 'plugin_page']
+			);
+
+			add_action('admin_head', [$this, 'deals_menu_assets']);
+		}
 
 	}
 
@@ -1186,7 +1251,7 @@ class UltimatePostKit_Admin_Settings {
 
                 window.addEventListener("hashchange", hashHandler, true);
 
-                jQuery('.toplevel_page_ultimate_post_kit_options > ul > li > a ').on('click', function(event) {
+                jQuery('.toplevel_page_ultimate_post_kit_options > ul > li > a ').not('[href$="page=ultimate_post_kit_options_deals"]').on('click', function(event) {
                     jQuery(this).parent().siblings().removeClass('current');
                     jQuery(this).parent().addClass('current');
                 });

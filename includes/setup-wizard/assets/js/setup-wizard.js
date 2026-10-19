@@ -412,6 +412,8 @@
                 $('#upk-install-plugins').submit(function (e) {
                     e.preventDefault();
                     
+                    const originalInstallLabel = vm.installButton.dataset.label || vm.installButton.innerHTML;
+                    vm.installButton.dataset.label = originalInstallLabel;
                     vm.installButton.disabled = true;
                     vm.installButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Installing...';
                     
@@ -428,7 +430,14 @@
                     });
 
                     let installedPlugins = 0;
+                    const failures = [];
                     const totalPluginsSlug = pluginSlugs.length;
+
+                    if (!totalPluginsSlug) {
+                        vm.installButton.disabled = false;
+                        vm.installButton.innerHTML = originalInstallLabel;
+                        return;
+                    }
                     
                     let progressContainer = document.querySelector('.install-progress-container');
                     if (!progressContainer) {
@@ -450,7 +459,7 @@
                         const progress = (installedPlugins / totalPluginsSlug) * 100;
                         progressBar.style.width = `${progress}%`;
                         progressBar.textContent = `${Math.round(progress)}%`;
-                        statusText.textContent = `Installing plugin ${installedPlugins} of ${totalPluginsSlug}...`;
+                        statusText.textContent = `Processed ${installedPlugins} of ${totalPluginsSlug}...`;
                     };
 
                     const installNextPlugin = () => {
@@ -469,7 +478,12 @@
                                     plugins: [slug]
                                 },
                                 success: (response) => {
-                                    if (response.success) {
+                                    // Each slug is sent on its own, so the
+                                    // envelope's success flag is this plugin's
+                                    // result (the handler answers with an
+                                    // error when installing or activating it
+                                    // failed).
+                                    if (response && response.success) {
                                         installedPlugins++;
                                         updateProgressBar();
                                         
@@ -484,7 +498,9 @@
                                             installNextPlugin();
                                         }, 500);
                                     } else {
-                                        statusText.innerHTML += ` <span class="error-indicator"><i class="dashicons dashicons-no"></i> Failed</span>`;
+                                        const message = response && response.data && response.data.message ? String(response.data.message) : 'Failed';
+                                        failures.push(pluginName + ': ' + message);
+                                        $(statusText).append(' ', $('<span class="error-indicator"></span>').append('<i class="dashicons dashicons-no"></i> ', document.createTextNode(message)));
                                         installedPlugins++;
                                         updateProgressBar();
                                         setTimeout(() => {
@@ -493,6 +509,7 @@
                                     }
                                 },
                                 error: (error) => {
+                                    failures.push(pluginName + ': request failed');
                                     statusText.innerHTML += ` <span class="error-indicator"><i class="dashicons dashicons-no"></i> Error</span>`;
                                     installedPlugins++;
                                     updateProgressBar();
@@ -501,6 +518,12 @@
                                     }, 500);
                                 }
                             });
+                        } else if (failures.length) {
+                            // Stay on this step so the errors can be read; the
+                            // user can retry or Skip.
+                            statusText.textContent = failures.length + ' of ' + totalPluginsSlug + ' could not be installed or activated. ' + failures.join(' ');
+                            vm.installButton.disabled = false;
+                            vm.installButton.innerHTML = originalInstallLabel;
                         } else {
                             statusText.textContent = 'All plugins installed successfully!';
                             statusText.innerHTML += ' <span class="success-indicator"><i class="dashicons dashicons-yes-alt"></i></span>';
@@ -715,55 +738,58 @@
 
 })(jQuery);
 
+// Scoped to the wizard: .spinner and .progress-bar are also WordPress core
+// class names, and the keyframe names are common ones, so unscoped rules
+// restyled other admin UI.
 document.addEventListener('DOMContentLoaded', function() {
     const style = document.createElement('style');
     style.textContent = `
-        .bdt-wizard-step {
+        .upk-setup-wizard .bdt-wizard-step {
             transition: opacity 0.3s ease, transform 0.3s ease;
             display: none; /* Hide all steps by default */
         }
         
-        .bdt-wizard-step.active {
+        .upk-setup-wizard .bdt-wizard-step.active {
             display: block; /* Show only active step */
             opacity: 1;
             transform: translateY(0);
         }
         
-        .item-highlight {
+        .upk-setup-wizard .item-highlight {
             transition: all 0.3s ease;
             box-shadow: 0 0 0 2px var(--upk-primary);
             transform: translateY(-3px);
         }
         
-        .button-pulse {
-            animation: buttonPulse 0.5s ease;
+        .upk-setup-wizard .button-pulse {
+            animation: upk-buttonPulse 0.5s ease;
         }
         
-        .pulse-animation {
-            animation: pulse 1.5s infinite;
+        .upk-setup-wizard .pulse-animation {
+            animation: upk-pulse 1.5s infinite;
         }
         
         /* Spinner for plugin installation and template importing */
-        .spinner {
+        .upk-setup-wizard .spinner {
             display: inline-block;
             width: 16px;
             height: 16px;
             border: 2px solid rgba(255,255,255,0.3);
             border-radius: 50%;
             border-top-color: #fff;
-            animation: spin 1s linear infinite;
+            animation: upk-spin 1s linear infinite;
             margin-right: 8px;
         }
         
         /* Plugin installation progress styles */
-        .install-progress-container {
+        .upk-setup-wizard .install-progress-container {
             margin-top: 20px;
             padding: 15px;
             background: var(--upk-gray-light);
             border-radius: var(--upk-border-radius);
         }
         
-        .progress-bar-wrapper {
+        .upk-setup-wizard .progress-bar-wrapper {
             height: 8px;
             background: var(--upk-gray-medium);
             border-radius: 4px;
@@ -771,7 +797,7 @@ document.addEventListener('DOMContentLoaded', function() {
             margin-bottom: 10px;
         }
         
-        .progress-bar {
+        .upk-setup-wizard .progress-bar {
             height: 100%;
             background: var(--upk-primary);
             border-radius: 4px;
@@ -780,67 +806,67 @@ document.addEventListener('DOMContentLoaded', function() {
             font-size: 0;
         }
         
-        .install-status {
+        .upk-setup-wizard .install-status {
             font-size: 14px;
             color: var(--upk-text-light);
         }
         
-        .success-indicator {
+        .upk-setup-wizard .success-indicator {
             color: var(--upk-success);
         }
         
-        .error-indicator {
+        .upk-setup-wizard .error-indicator {
             color: var(--upk-danger);
         }
         
-        .plugin-installed {
+        .upk-setup-wizard .plugin-installed {
             border-color: var(--upk-success) !important;
         }
         
         /* Template import states */
-        .template-importing {
+        .upk-setup-wizard .template-importing {
             opacity: 0.7;
             pointer-events: none;
         }
         
-        .template-imported {
+        .upk-setup-wizard .template-imported {
             border-color: var(--upk-success) !important;
         }
         
-        .template-import-failed {
+        .upk-setup-wizard .template-import-failed {
             border-color: var(--upk-danger) !important;
         }
         
         /* Template import button states */
-        .template-import:disabled {
+        .upk-setup-wizard .template-import:disabled {
             cursor: not-allowed;
         }
         
-        .template-import.template-imported {
+        .upk-setup-wizard .template-import.template-imported {
             background-color: #28a745;
             border-color: #28a745;
             color: white;
         }
         
-        .template-import.template-import-failed {
+        .upk-setup-wizard .template-import.template-import-failed {
             background-color: #dc3545;
             border-color: #dc3545;
             color: white;
         }
         
         /* Animations */
-        @keyframes buttonPulse {
+        @keyframes upk-buttonPulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
         
-        @keyframes pulse {
+        @keyframes upk-pulse {
             0% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4); }
             70% { box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); }
             100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); }
         }
         
-        @keyframes spin {
+        @keyframes upk-spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }

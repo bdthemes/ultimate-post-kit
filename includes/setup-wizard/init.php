@@ -33,6 +33,14 @@ class Setup_Wizard {
 	// Singleton instance
 	private static $instance = null;
 
+	/**
+	 * Whether this request renders the wizard. Set on admin_init, read when
+	 * the assets are enqueued.
+	 *
+	 * @var bool
+	 */
+	private $is_wizard_request = false;
+
 	// Constructor
 	private function __construct() {
 		$this->init_hooks();
@@ -61,6 +69,7 @@ class Setup_Wizard {
 		add_action( 'wp_ajax_ultimate_post_kit_setup_wizard_install_plugins', array( $this, 'install_plugins' ) );
 		add_action( 'wp_ajax_ultimate_post_kit_setup_wizard_subscribe', array( $this, 'ajax_subscribe' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'dequeue_sibling_wizards' ), 100 );
 		add_action( 'admin_init', array( $this, 'activate_default_widgets' ) );
 		add_action( 'admin_init', array( $this, 'maybe_display_setup_wizard' ) );
 		add_action( 'admin_init', array( $this, 'check_manual_wizard_request' ) );
@@ -82,6 +91,8 @@ class Setup_Wizard {
 		$is_setup_wizard_request = isset($_GET['upk_setup_wizard']) && $_GET['upk_setup_wizard'] === 'show';
 		
 		if ( $is_setup_wizard_request ) {
+			$this->is_wizard_request = true;
+
 			// Use the same approach as first activation - completely override the page
 			add_action('admin_head', function() {
 				?>
@@ -180,6 +191,8 @@ class Setup_Wizard {
 		if ( get_option( 'bdtupk_setup_wizard_completed' ) === false ) {
 			// Set the flag so it doesn't run again
 			update_option( 'bdtupk_setup_wizard_completed', true );
+
+			$this->is_wizard_request = true;
 			
 			// Add a header to ensure proper full-page display
 			add_action('admin_head', function() {
@@ -247,6 +260,12 @@ class Setup_Wizard {
 			return;
 		}
 
+		// Only the request that renders the wizard needs its assets. Loaded on
+		// every admin screen, the script also attached itself to the other
+		// BdThemes plugins' wizards, which share the .bdt-setup-wizard markup.
+		if ( ! $this->is_wizard_request ) {
+			return;
+		}
 
 		$direction_suffix = is_rtl() ? '.rtl' : '';
 
@@ -268,6 +287,36 @@ class Setup_Wizard {
 				'is_fullscreen' => true
 			)
 		);
+	}
+
+	/**
+	 * Keep the other BdThemes plugins' setup wizards off this one.
+	 *
+	 * Those plugins enqueue their wizard script and stylesheet on every admin
+	 * screen and select the same .bdt-setup-wizard markup, so on this page
+	 * their handlers ran as well. Only handles loaded from another plugin's
+	 * includes/setup-wizard/ folder are removed.
+	 */
+	public function dequeue_sibling_wizards() {
+		if ( ! $this->is_wizard_request ) {
+			return;
+		}
+
+		$own_folder = '/' . basename( dirname( BDTUPK__FILE__ ) ) . '/';
+
+		foreach ( array( wp_scripts(), wp_styles() ) as $deps ) {
+			foreach ( (array) $deps->queue as $handle ) {
+				if ( 'upk-setup-wizard' === $handle || ! isset( $deps->registered[ $handle ] ) ) {
+					continue;
+				}
+
+				$src = (string) $deps->registered[ $handle ]->src;
+
+				if ( false !== strpos( $src, '/includes/setup-wizard/' ) && false === strpos( $src, $own_folder ) ) {
+					$deps instanceof \WP_Scripts ? wp_dequeue_script( $handle ) : wp_dequeue_style( $handle );
+				}
+			}
+		}
 	}
 
 	public static function get_widget_map() {
@@ -396,86 +445,115 @@ class Setup_Wizard {
 		include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader-skin.php';
 		include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-		// Replace new \Plugin_Installer_Skin with new Quiet_Upgrader_Skin when output needs to be suppressed.
-		$skin = new Quiet_Upgrader_Skin();
-		// $skin     = new \Plugin_Installer_Skin( array( 'api' => $api ) );
-		$upgrader = new \Plugin_Upgrader( $skin );
-
-		// $upgrader = new \Plugin_Upgrader();
-
-        $installedPlugins = get_plugins();
-		$results = array();
+		$upgrader = new \Plugin_Upgrader( new Quiet_Upgrader_Skin() );
+		$results  = array();
 
 		foreach ( $plugin_slugs as $plugin_slug ) {
-            // skip when the plugin is already active
-            if (is_plugin_active($plugin_slug)) {
-                $results[] = array(
-                    'slug'    => $plugin_slug,
-                    'success' => true,
-                    'message' => 'Installed and activated successfully',
-                );
-                continue;
-            }
+			// The wizard sends wordpress.org slugs ("live-copy-paste") and, for
+			// some entries, a main file path ("bdthemes-prime-slider-lite/
+			// bdthemes-prime-slider.php"). activate_plugin() needs the main file,
+			// so both are reduced to the folder and looked up.
+			$slug        = sanitize_key( strtok( (string) $plugin_slug, '/' ) );
+			$plugin_file = $slug ? $this->get_plugin_file( $slug ) : false;
 
-            // Download the plugin if the plugin is not installed
-            if (!isset($installedPlugins[$plugin_slug])) {
-                $slug = explode('/', $plugin_slug)[0];
-                $api = plugins_api( 'plugin_information', array( 'slug' => $slug ) );
+			if ( ! $slug ) {
+				continue;
+			}
 
-                if ( is_wp_error( $api ) ) {
-                    $results[] = array(
-                        'slug'    => $plugin_slug,
-                        'success' => false,
-                        'message' => $api->get_error_message(),
-                    );
-                    continue;
-                }
+			if ( $plugin_file && is_plugin_active( $plugin_file ) ) {
+				$results[] = array(
+					'slug'    => $slug,
+					'success' => true,
+					'message' => esc_html__( 'Already active.', 'ultimate-post-kit' ),
+				);
+				continue;
+			}
 
-                $result = $upgrader->install( $api->download_link );
-                if ( is_wp_error( $result ) ) {
-                    $results[] = array(
-                        'slug'    => $plugin_slug,
-                        'success' => false,
-                        'message' => $result->get_error_message(),
-                    );
-                    continue;
-                }
-            }
+			// Download only what is not installed yet. Installing over an
+			// existing folder fails with "Destination folder already exists".
+			if ( ! $plugin_file ) {
+				$api = plugins_api( 'plugin_information', array( 'slug' => $slug, 'fields' => array( 'sections' => false ) ) );
 
-            // Activating a plugin is a separate capability from installing one, so it is
-            // checked on its own rather than being implied by 'install_plugins' above.
-            if ( ! current_user_can( 'activate_plugins' ) ) {
-                $results[] = array(
-                    'slug'    => $plugin_slug,
-                    'success' => false,
-                    'message' => esc_html__( 'You do not have permission to activate plugins on this site.', 'ultimate-post-kit' ),
-                );
-                continue;
-            }
+				if ( is_wp_error( $api ) ) {
+					$results[] = array(
+						'slug'    => $slug,
+						'success' => false,
+						'message' => $api->get_error_message(),
+					);
+					continue;
+				}
 
-            // active the plugin
-            if ( is_plugin_inactive( $plugin_slug ) ) {
-                $activation_result = activate_plugin( $plugin_slug );
-                if ( is_wp_error( $activation_result ) ) {
-                    $results[] = array(
-                        'slug'    => $plugin_slug,
-                        'success' => false,
-                        'message' => $activation_result->get_error_message(),
-                    );
-                    continue;
-                }
+				$installed = $upgrader->install( $api->download_link );
 
-                $results[] = array(
-                    'slug'    => $plugin_slug,
-                    'success' => true,
-                    'message' => 'Installed and activated successfully',
-                );
-            }
+				if ( is_wp_error( $installed ) || ! $installed ) {
+					$results[] = array(
+						'slug'    => $slug,
+						'success' => false,
+						'message' => is_wp_error( $installed ) ? $installed->get_error_message() : esc_html__( 'Installation failed.', 'ultimate-post-kit' ),
+					);
+					continue;
+				}
+
+				wp_clean_plugins_cache();
+				$plugin_file = $upgrader->plugin_info() ? $upgrader->plugin_info() : $this->get_plugin_file( $slug );
+			}
+
+			if ( ! $plugin_file ) {
+				$results[] = array(
+					'slug'    => $slug,
+					'success' => false,
+					'message' => esc_html__( 'The plugin was installed, but its main file could not be found.', 'ultimate-post-kit' ),
+				);
+				continue;
+			}
+
+			// Activating a plugin is a separate capability from installing one, so it is
+			// checked on its own rather than being implied by 'install_plugins' above.
+			if ( ! current_user_can( 'activate_plugin', $plugin_file ) ) {
+				$results[] = array(
+					'slug'    => $slug,
+					'success' => false,
+					'message' => esc_html__( 'You do not have permission to activate plugins on this site.', 'ultimate-post-kit' ),
+				);
+				continue;
+			}
+
+			$activated = activate_plugin( $plugin_file );
+
+			$results[] = array(
+				'slug'    => $slug,
+				'success' => ! is_wp_error( $activated ),
+				'message' => is_wp_error( $activated ) ? $activated->get_error_message() : esc_html__( 'Installed and activated successfully.', 'ultimate-post-kit' ),
+			);
 		}
 
-		ob_clean();
+		// Discard anything an activated plugin printed into an open buffer, so
+		// the response stays valid JSON. ob_clean() without a buffer raises a
+		// notice, which is what the unconditional call here used to do.
+		if ( ob_get_level() > 0 && ob_get_length() ) {
+			ob_clean();
+		}
+
+		// The wizard sends one plugin per request and reads the envelope's
+		// success flag, so a failed install or activation has to answer with an
+		// error; it used to be reported as a success.
+		$failed = array_filter(
+			$results,
+			function ( $result ) {
+				return empty( $result['success'] );
+			}
+		);
+
+		if ( $failed ) {
+			wp_send_json_error(
+				array(
+					'results' => $results,
+					'message' => implode( ' ', wp_list_pluck( $failed, 'message' ) ),
+				)
+			);
+		}
+
 		wp_send_json_success( array( 'results' => $results ) );
-		wp_die();
 	}
 
 	/**
@@ -487,8 +565,10 @@ class Setup_Wizard {
 	private function get_plugin_file( $slug ) {
 		$plugins = get_plugins();
 
-		foreach ( $plugins as $file => $plugin ) {
-			if ( strpos( $file, $slug ) !== false ) {
+		foreach ( array_keys( $plugins ) as $file ) {
+			// Match the folder exactly: a substring test would match
+			// "ultimate-post-kit-pro/…" for "ultimate-post-kit".
+			if ( dirname( $file ) === $slug ) {
 				return $file;
 			}
 		}
