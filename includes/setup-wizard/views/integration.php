@@ -129,15 +129,10 @@ if (!$has_cached_data) {
                 foreach ($upk_plugins as $slug_key => $plugin) :
                     // Skip own plugin (Ultimate Post Kit) when printing only; data still includes it for other plugins
                     if ($slug_key === 'ultimate-post-kit' ) continue;
-                    // Use enhanced status if available, otherwise fall back to old method
-                    $plugin_status = $plugin['status'] ?? 'unknown';
-                    if ($plugin_status === 'unknown') {
-                        // Fallback to old method for compatibility
-                        $is_active = is_plugin_active($plugin['slug']);
-                    } else {
-                        // Use enhanced status
-                        $is_active = ($plugin_status === 'active');
-                    }
+                    // The cached API data holds no install state; is_plugin_active()
+                    // needs a main file path, not the bare slug it was given here.
+                    $plugin_status = Remote_Data_Handler::get_plugin_status_by_slug($plugin['slug'] ?? $slug_key);
+                    $is_active     = ($plugin_status === 'active');
                     $plugin_recommended = !empty($recommended_by_slug[ $slug_key ]);
                     $is_recommended = $plugin_recommended && !$is_active;
                 ?>
