@@ -77,11 +77,30 @@ if (!class_exists('Ultimate_Post_Kit_Category_Image')) {
             }
         }
 
+        /**
+         * Whether the current screen is the category list or edit screen, the only
+         * places the image field is shown.
+         *
+         * @return bool
+         */
+        private function is_category_screen() {
+            $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+
+            return $screen && 'category' === $screen->taxonomy && in_array($screen->base, ['edit-tags', 'term'], true);
+        }
+
         public function load_media_files() {
+            if (!$this->is_category_screen()) {
+                return;
+            }
             wp_enqueue_media();
         }
 
-        public function load_category_media_scripts() { ?>
+        public function load_category_media_scripts() {
+            if (!$this->is_category_screen()) {
+                return;
+            }
+            ?>
             <script>
                 (function($) {
                     $(document).ready(function() {
@@ -100,7 +119,8 @@ if (!class_exists('Ultimate_Post_Kit_Category_Image')) {
                         });
                         $('.upk-category-image-remove.button').on("click", function() {
                             $('#upk-category-image-id').val('');
-                            $('#upk-category-image-wrapper').html('<img width=150; height=150; class="upk-media-hidden-image" src="" style="margin:0; max-height:100px; padding:0;float:none;" />');
+                            // Empty, not an <img src="">: that rendered as a broken image.
+                            $('#upk-category-image-wrapper').empty();
                         })
                     });
                 })(jQuery);

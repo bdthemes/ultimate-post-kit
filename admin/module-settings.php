@@ -124,7 +124,7 @@ class ModuleService {
                     'name'         => 'banner',
                     'label'        => esc_html__('Banner', 'ultimate-post-kit'),
                     'type'         => 'checkbox',
-                    'default'      => "off",
+                    'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'others',
                     'demo_url'     => 'https://postkit.pro/demo/banner/',
@@ -934,7 +934,7 @@ class ModuleService {
                     'name'         => 'snog-slider',
                     'label'        => esc_html__('Snog Slider', 'ultimate-post-kit'),
                     'type'         => 'checkbox',
-                    'default'      => "off",
+                    'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'slider',
                     'demo_url'     => 'https://postkit.pro/demo/snog-slider/',
@@ -1185,6 +1185,30 @@ class ModuleService {
                     'type'    => 'checkbox',
                     'default' => "off",
                     'widget_type' => 'free',
+                ],
+
+                [
+                    'name'         => 'asset_optimization_group_start',
+                    'label'        => esc_html__('Asset Optimization', 'ultimate-post-kit'),
+                    'desc'         => __('Loads only the widgets a page uses, joined into one CSS file and one JS file per page. The files are written to the uploads folder the first time a page is viewed and shared by every page that uses the same widgets. The site stylesheet and script load only on pages that contain an Ultimate Post Kit widget, with or without this option.', 'ultimate-post-kit'),
+                    'type'         => 'start_group',
+                    'content_type' => 'new',
+                ],
+
+                [
+                    'name'        => 'asset-manager',
+                    'label'       => esc_html__('Asset Manager', 'ultimate-post-kit'),
+                    'tooltip'     => __('Joins the CSS and JS of the widgets each page uses into combined files, so a page loads only what it renders, in fewer files.', 'ultimate-post-kit'),
+                    'type'        => 'checkbox',
+                    'default'     => 'off',
+                    'widget_type' => 'free',
+                    'demo_url'    => '',
+                    'video_url'   => '',
+                ],
+
+                [
+                    'name' => 'asset_optimization_group_end',
+                    'type' => 'end_group',
                 ],
 
                 [

@@ -272,8 +272,8 @@ class Setup_Wizard {
 		wp_enqueue_style('bdt-uikit', BDTUPK_ADMIN_ASSETS_URL . 'css/bdt-uikit' . $direction_suffix . '.css', [], '3.17.0');
 		wp_enqueue_script('bdt-uikit', BDTUPK_ADMIN_ASSETS_URL . 'js/bdt-uikit.min.js', ['jquery'], '3.17.0', true);
 
-		wp_register_script( 'upk-setup-wizard', plugins_url( 'assets/js/setup-wizard.js', __FILE__ ), array( 'jquery' ), '1.0.0', true );
-		wp_register_style( 'upk-setup-wizard', plugins_url( 'assets/css/setup-wizard.css', __FILE__ ), array(), '1.0.0' );
+		wp_register_script( 'upk-setup-wizard', plugins_url( 'assets/js/setup-wizard.js', __FILE__ ), array( 'jquery' ), BDTUPK_VER, true );
+		wp_register_style( 'upk-setup-wizard', plugins_url( 'assets/css/setup-wizard.css', __FILE__ ), array(), BDTUPK_VER );
 
 		wp_enqueue_script( 'upk-setup-wizard' );
 		wp_enqueue_style( 'upk-setup-wizard' );
@@ -763,6 +763,7 @@ add_action('wp_ajax_ultimate_post_kit_import_elementor_bundle_template', functio
 
     $app = Plugin::$instance->app;
     if (!$app) {
+        Plugin::$instance->uploads_manager->remove_file_or_dir(dirname($kit_zip_path));
         wp_send_json_error(['message' => esc_html__('Elementor app not available', 'ultimate-post-kit')]);
     }
 
@@ -770,6 +771,11 @@ add_action('wp_ajax_ultimate_post_kit_import_elementor_bundle_template', functio
 
     try {
         $result = $import_export_module->upload_kit($kit_zip_path, 'local');
+
+        // The kit is unpacked into its session folder; drop the downloaded zip,
+        // as Elementor's own importer does, so imports leave no copies in uploads.
+        Plugin::$instance->uploads_manager->remove_file_or_dir(dirname($kit_zip_path));
+
         $manifest = $result['manifest'] ?? [];
         $plugins = $manifest['plugins'];
 
@@ -827,6 +833,9 @@ add_action('wp_ajax_ultimate_post_kit_import_elementor_bundle_template', functio
 
         wp_send_json_success($import);
     } catch (\Throwable $e) {
+        if (file_exists($kit_zip_path)) {
+            Plugin::$instance->uploads_manager->remove_file_or_dir(dirname($kit_zip_path));
+        }
         wp_send_json_error(['message' => esc_html__('Import failed: ', 'ultimate-post-kit') . esc_html($e->getMessage())]);
     }
 });

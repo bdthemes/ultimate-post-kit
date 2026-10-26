@@ -4,7 +4,7 @@
  * Plugin Name: Ultimate Post Kit
  * Plugin URI: https://postkit.pro/
  * Description: <a href="https://postkit.pro/">Ultimate Post Kit</a> is a packed of post related elementor widgets. This plugin gives you post related widget features for elementor page builder plugin.
- * Version: 4.5.10
+ * Version: 4.6.0
  * Author: BdThemes
  * Author URI: https://bdthemes.com/
  * Text Domain: ultimate-post-kit
@@ -24,7 +24,7 @@ if ( is_admin() ) {
 }
 
 // Some pre define value for easy use
-define( 'BDTUPK_VER', '4.5.10' );
+define( 'BDTUPK_VER', '4.6.0' );
 
 /**
  * Minimum Pro version this Free/Core release is API compatible with.
@@ -35,7 +35,7 @@ define( 'BDTUPK_VER', '4.5.10' );
  * warned about, never blocked, so the Free plugin stays fully functional on
  * its own.
  */
-define( 'BDTUPK_PRO_REQUIRED_VERSION', '4.5.2' );
+define( 'BDTUPK_PRO_REQUIRED_VERSION', '4.6.0' );
 
 define( 'BDTUPK__FILE__', __FILE__ );
 

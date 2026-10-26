@@ -58,10 +58,13 @@ $active_modules = get_option( 'ultimate_post_kit_active_modules', array() );
 				<ul class="widget-list">
 					<?php foreach ( $widget_map as $widget ) : ?>
 						<?php
-						$is_checked = isset( $active_modules[ $widget['name'] ] ) && 'on' === $active_modules[ $widget['name'] ] ? 'checked' : '';
+						// A widget with no stored value runs with its default, as on the dashboard.
+						$state      = isset( $active_modules[ $widget['name'] ] ) ? $active_modules[ $widget['name'] ] : ( isset( $widget['default'] ) ? $widget['default'] : 'off' );
+						$is_checked = 'on' === $state ? 'checked' : '';
 
 						$pro_class = '';
-						if (!empty($widget['widget_type']) && 'pro' == $widget['widget_type'] && true !== _is_upk_pro_activated()) {
+						$is_locked = !empty($widget['widget_type']) && 'pro' == $widget['widget_type'] && true !== _is_upk_pro_activated();
+						if ($is_locked) {
 							$pro_class = ' upk-setup-wizard-pro-widget';
 						}
 						?>
@@ -70,11 +73,16 @@ $active_modules = get_option( 'ultimate_post_kit_active_modules', array() );
 							data-label="<?php echo esc_attr( strtolower( $widget['label'] ) ); ?>">
 							<div class="widget-item-clickable bdt-flex bdt-flex-middle bdt-flex-between">
 								<span class="bdt-flex bdt-text-left"><?php echo esc_html( $widget['label'] ); ?></span>
+								<?php if ( $is_locked ) : ?>
+									<?php // Hidden without Pro, and not saved: a stored "off" would switch the widget off once Pro is active. ?>
+									<span class="switch"></span>
+								<?php else : ?>
 								<label class="switch">
 									<input type="hidden" name="ultimate_post_kit_active_modules[<?php echo esc_attr( $widget['name'] ); ?>]" value="off">
 									<input type="checkbox" name="ultimate_post_kit_active_modules[<?php echo esc_attr( $widget['name'] ); ?>]" <?php echo esc_html( $is_checked ); ?> value="on" class="checkbox" id="bdt_upk_ultimate_post_kit_active_modules[<?php echo esc_attr( $widget['name'] ); ?>]">
 									<span class="slider"></span>
 								</label>
+								<?php endif; ?>
 							</div>
 						</li>
 					<?php endforeach; ?>

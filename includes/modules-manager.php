@@ -112,12 +112,14 @@ final class Manager
 
         if (!ultimate_post_kit_is_preview()) {
             // register widgets css
+            // Each widget file depends on the shared site stylesheet/script, so a
+            // page loads those only when it has a widget.
             if (ModuleService::has_module_style( $module_id, BDTUPK_MODULES_PATH )) {
-                wp_register_style('upk-' . $module_id, BDTUPK_URL . 'assets/css/upk-' . $module_id . $direction . '.css', [], BDTUPK_VER);
+                wp_register_style('upk-' . $module_id, BDTUPK_URL . 'assets/css/upk-' . $module_id . $direction . '.css', ultimate_post_kit_module_asset_depends('css', $module_id), BDTUPK_VER);
             }
             // register widget JS
             if (ModuleService::has_module_script( $module_id, BDTUPK_MODULES_PATH )) {
-                wp_register_script('upk-' . $module_id, BDTUPK_URL . 'assets/js/widgets/upk-' . $module_id . $suffix . '.js', ['jquery'], BDTUPK_VER, true);
+                wp_register_script('upk-' . $module_id, BDTUPK_URL . 'assets/js/widgets/upk-' . $module_id . $suffix . '.js', ultimate_post_kit_module_asset_depends('js', $module_id), BDTUPK_VER, true);
             }
         }
 

@@ -364,7 +364,7 @@
 
             saveSettingsSubmit: function () {
                 const vm = this;
-                $('#upk_setup_wizard_modules').submit(function (e) {
+                $('#upk_setup_wizard_modules').on('submit', function (e) {
                     e.preventDefault();
                     var data = $(this).serialize();
                     
@@ -409,7 +409,7 @@
 
             installPlugins: function () {
                 const vm = this;
-                $('#upk-install-plugins').submit(function (e) {
+                $('#upk-install-plugins').on('submit', function (e) {
                     e.preventDefault();
                     
                     const originalInstallLabel = vm.installButton.dataset.label || vm.installButton.innerHTML;

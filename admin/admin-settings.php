@@ -30,6 +30,13 @@ class UltimatePostKit_Admin_Settings {
 
     private $settings_api;
 
+    /**
+     * React dashboard, when its build is available.
+     *
+     * @var UltimatePostKit_React_Dashboard|null
+     */
+    private $react_dashboard = null;
+
     public  $responseObj;
     public  $licenseMessage;
     public  $showMessage  = false;
@@ -44,6 +51,12 @@ class UltimatePostKit_Admin_Settings {
 
     function __construct() {
         $this->settings_api = new UltimatePostKit_Settings_API;
+
+        require_once BDTUPK_ADMIN_PATH . 'class-react-dashboard.php';
+
+        if (UltimatePostKit_React_Dashboard::is_enabled()) {
+            $this->react_dashboard = new UltimatePostKit_React_Dashboard($this);
+        }
 
         if (!defined('BDTUPK_HIDE')) {
             add_action('admin_init', [$this, 'admin_init']);
@@ -999,6 +1012,11 @@ class UltimatePostKit_Admin_Settings {
 	 */
 
 	public function plugin_page() {
+
+		if ($this->react_dashboard) {
+			$this->react_dashboard->render();
+			return;
+		}
 
 		?>
 

@@ -1317,7 +1317,7 @@ class Gratis_Grid extends Group_Control_Query {
 						<?php if ($settings['show_date'] or $settings['show_reading_time']) : ?>
 							<div class="upk-date-reading upk-flex upk-flex-middle">
 								<?php $this->render_date(); ?>
-								<?php if ('yes' === $settings['show_reading_time']) : ?>
+								<?php if (_is_upk_pro_activated() && 'yes' === $settings['show_reading_time']) : ?>
 									<div class="upk-reading-time" data-separator="<?php echo esc_attr($settings['meta_separator']); ?>">
 										<?php echo esc_html( ultimate_post_kit_reading_time( get_the_content(), $settings['avg_reading_speed'], $settings['hide_seconds'] ?? 'no', $settings['hide_minutes'] ?? 'no' ) ); ?>
 									</div>

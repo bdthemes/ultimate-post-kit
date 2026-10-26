@@ -41,15 +41,15 @@ if (!class_exists('Ultimate_Post_Kit_Metabox')) {
             $display_content = '<div class="upk-video-link-form-group">';
             if ($this->enabled_video_features == 'on') {
                 $display_content .= '<label for="_upk_video_link_meta_key">' . $video_label . '</label>';
-                $display_content .= '<input type="text" class="widefat" name="_upk_video_link_meta_key" id="_upk_video_link_meta_key" value="' . $video_link . '">';
+                $display_content .= '<input type="text" class="widefat" name="_upk_video_link_meta_key" id="_upk_video_link_meta_key" value="' . esc_attr($video_link) . '">';
             }
             if ($this->enabled_audio_features == 'on') {
                 $display_content .= '<label for="_upk_audio_link_meta_key">' . $audio_link_label . '</label>';
-                $display_content .= '<input type="text" class="widefat" name="_upk_audio_link_meta_key" id="_upk_audio_link_meta_key" value="' . $audio_link . '">';
+                $display_content .= '<input type="text" class="widefat" name="_upk_audio_link_meta_key" id="_upk_audio_link_meta_key" value="' . esc_attr($audio_link) . '">';
                 $display_content .= '<label for="_upk_audio_title_meta_key">' . $audio_label . '</label>';
-                $display_content .= '<input type="text" class="widefat" name="_upk_audio_title_meta_key" id="_upk_audio_title_meta_key" value="' . $audio_title . '">';
+                $display_content .= '<input type="text" class="widefat" name="_upk_audio_title_meta_key" id="_upk_audio_title_meta_key" value="' . esc_attr($audio_title) . '">';
                 $display_content .= '<label for="_upk_artist_name_meta_key">' . $artist_label . '</label>';
-                $display_content .= '<input type="text" class="widefat" name="_upk_artist_name_meta_key" id="_upk_artist_name_meta_key" value="' . $artist_name . '">';
+                $display_content .= '<input type="text" class="widefat" name="_upk_artist_name_meta_key" id="_upk_artist_name_meta_key" value="' . esc_attr($artist_name) . '">';
             }
             $display_content .= '</div>';
 
@@ -75,21 +75,23 @@ if (!class_exists('Ultimate_Post_Kit_Metabox')) {
                 return $post_id;
             }
 
-            // phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in is_secured_nonce() above before any $_POST is read.
-            $video_link = isset($_POST['_upk_video_link_meta_key']) ? sanitize_text_field(wp_unslash($_POST['_upk_video_link_meta_key'])) : '';
-            update_post_meta($post_id, '_upk_video_link_meta_key',  $video_link);
+            // Only the fields the form showed are saved: with one feature switched
+            // off its inputs are not posted, and writing '' for them would erase
+            // what the post already has.
+            $fields = [
+                '_upk_video_link_meta_key',
+                '_upk_audio_link_meta_key',
+                '_upk_audio_title_meta_key',
+                '_upk_artist_name_meta_key',
+            ];
 
-            // phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in is_secured_nonce() above before any $_POST is read.
-            $audio_link = isset($_POST['_upk_audio_link_meta_key']) ? sanitize_text_field(wp_unslash($_POST['_upk_audio_link_meta_key'])) : '';
-            update_post_meta($post_id, '_upk_audio_link_meta_key', $audio_link);
-
-            // phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in is_secured_nonce() above before any $_POST is read.
-            $audio_title = isset($_POST['_upk_audio_title_meta_key']) ? sanitize_text_field(wp_unslash($_POST['_upk_audio_title_meta_key'])) : '';
-            update_post_meta($post_id, '_upk_audio_title_meta_key', $audio_title);
-
-            // phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in is_secured_nonce() above before any $_POST is read.
-            $artist_name = isset($_POST['_upk_artist_name_meta_key']) ? sanitize_text_field(wp_unslash($_POST['_upk_artist_name_meta_key'])) : '';
-            update_post_meta($post_id, '_upk_artist_name_meta_key', $artist_name);
+            foreach ($fields as $field) {
+                // phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in is_secured_nonce() above before any $_POST is read.
+                if (isset($_POST[$field])) {
+                    // phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in is_secured_nonce() above before any $_POST is read.
+                    update_post_meta($post_id, $field, sanitize_text_field(wp_unslash($_POST[$field])));
+                }
+            }
         }
 
 

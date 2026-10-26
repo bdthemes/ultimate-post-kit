@@ -94,6 +94,19 @@ class Module extends Ultimate_Post_Kit_Module_Base
             die;
         }
 
+        // Without credentials nothing is sent, so say that rather than report an
+        // internal error. Visitors get a neutral message; administrators are told
+        // where to add the keys.
+        $options = get_option('ultimate_post_kit_api_settings');
+        if (empty($options['mailchimp_api_key']) || empty($options['mailchimp_list_id'])) {
+            if (current_user_can('manage_options')) {
+                echo '<div class="upk-text-warning">' . esc_html_x('Mailchimp is not connected yet. Add the API key and Audience ID in Ultimate Post Kit > API Settings.', 'Mailchimp String', 'ultimate-post-kit') . '</div>';
+            } else {
+                echo '<div class="upk-text-warning">' . esc_html_x('Newsletter sign-up is not available right now. Please try again later.', 'Mailchimp String', 'ultimate-post-kit') . '</div>';
+            }
+            die;
+        }
+
         $result  = $this->mailchimp_subscriber_status($email, 'subscribed', ['FNAME' => $fname, 'LNAME' => '']);
 
         if (! is_object($result) || ! isset($result->status)) {

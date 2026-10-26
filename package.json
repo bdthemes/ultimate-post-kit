@@ -1,12 +1,14 @@
 {
 	"name": "ultimate-post-kit",
-	"version": "4.5.10",
+	"version": "4.6.0",
 	"main": "index.php",
 	"scripts": {
 		"build": "npm run && npm run clean && cross-env NODE_ENV=production grunt",
 			"clean": "rimraf ./assets",
 			"dev": "cross-env NODE_ENV=development grunt watch",
-			"zip": "npm run && npm run clean && cross-env NODE_ENV=production grunt && rsync -av --exclude-from=.buildignore . ultimate-post-kit && zip -r ultimate-post-kit-v.$npm_package_version.zip ultimate-post-kit/* && rm -rf ultimate-post-kit"
+			"zip": "npm run && npm run clean && cross-env NODE_ENV=production grunt && rsync -av --exclude-from=.buildignore . ultimate-post-kit && zip -r ultimate-post-kit-v.$npm_package_version.zip ultimate-post-kit/* && rm -rf ultimate-post-kit",
+			"start:admin": "wp-scripts start",
+			"build:admin": "wp-scripts build"
 	},
 	"keywords": [
 		"ultimate-post-kit",
@@ -32,9 +34,16 @@
 		"prettier": "^3.0.2",
 		"rimraf": "^5.0.1",
 		"terser": "^5.30.3",
-		"uikit": "3.17.1"
+		"uikit": "3.17.1",
+		"@wordpress/scripts": "^27.9.0",
+		"autoprefixer": "^10.5.4",
+		"postcss": "^8.5.25",
+		"tailwindcss": "^3.4.19"
 	},
 	"dependencies": {
-		"sass": "^1.72.0"
+		"sass": "^1.72.0",
+		"@wordpress/element": "^6.4.0",
+		"@wordpress/i18n": "^5.4.0",
+		"react-router-dom": "^6.26.0"
 	}
 }
