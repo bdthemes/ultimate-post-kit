@@ -5,7 +5,7 @@ Tags: elementor addons, post grid, post carousel, post slider, blog layout
 Requires at least: 6.8
 Tested up to: 7.1
 Stable tag: 4.6.0
-Requires PHP: 7.0
+Requires PHP: 7.4
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 4.0.0
@@ -328,6 +328,7 @@ The build configuration is included in `gruntfile.js` and `package.json`. Bundle
 * Fixed: Category Image loaded the media library on every admin screen, and Remove Image left a broken image
 * Fixed: Banner and Snog Slider were shown as off in the dashboard while they were active
 * Updated: Tag Cloud shows "No terms found." when there is nothing to list
+* Updated: Requires PHP 7.4 or newer, the same as Elementor (was 7.0, although parts of the code already needed 7.1)
 * Updated: Requires Ultimate Post Kit Pro 4.6.0
 
 = 4.5.10 [20th October 2026] =

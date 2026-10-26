@@ -10,6 +10,7 @@
  * Text Domain: ultimate-post-kit
  * Domain Path: /languages
  * License: GPL3
+ * Requires PHP: 7.4
  * Elementor requires at least: 4.0.0
  * Elementor tested up to: 4.3.5
  */
