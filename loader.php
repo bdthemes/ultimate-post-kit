@@ -119,6 +119,10 @@ class Ultimate_Post_Kit_Loader {
 		require_once BDTUPK_PATH . 'traits/global-swiper-functions.php';
 		require_once BDTUPK_INC_PATH . 'modules-manager.php';
 
+		// Asset Optimization: per-page combined widget CSS/JS files
+		require_once BDTUPK_INC_PATH . 'class-asset-combiner.php';
+		Includes\Asset_Combiner::init();
+
 		// wpml compatibility class for wpml support
 		require_once BDTUPK_PATH . 'includes/class-elements-wpml-compatibility.php';
 
@@ -180,6 +184,7 @@ class Ultimate_Post_Kit_Loader {
 	public function register_site_styles() {
 		$direction_suffix = is_rtl() ? '.rtl' : '';
 
+		wp_register_style( 'upk-site', BDTUPK_ASSETS_URL . 'css/upk-site' . $direction_suffix . '.css', [], BDTUPK_VER );
 		wp_register_style( 'upk-all-styles', BDTUPK_ASSETS_URL . 'css/upk-all-styles' . $direction_suffix . '.css', [], BDTUPK_VER );
 		wp_register_style( 'upk-font', BDTUPK_ASSETS_URL . 'css/upk-font' . $direction_suffix . '.css', [], BDTUPK_VER );
 	}
@@ -194,7 +199,8 @@ class Ultimate_Post_Kit_Loader {
 		wp_register_script( 'fslightbox', BDTUPK_ASSETS_URL . 'vendor/js/fslightbox.min.js', [], '3.8.0', true );
 		wp_register_script( 'upk-animations', BDTUPK_ASSETS_URL . 'js/extensions/upk-animations.min.js', [ 'jquery' ], BDTUPK_VER, true );
 
-		wp_register_script( 'upk-ajax-loadmore', BDTUPK_ASSETS_URL . 'js/extensions/upk-ajax-loadmore.min.js', [ 'jquery' ], BDTUPK_VER, true );
+		// Reads UltimatePostKitConfig, which the site script carries.
+		wp_register_script( 'upk-ajax-loadmore', BDTUPK_ASSETS_URL . 'js/extensions/upk-ajax-loadmore.min.js', [ 'jquery', 'upk-site' ], BDTUPK_VER, true );
 
 		wp_register_script( 'upk-all-scripts', BDTUPK_ASSETS_URL . 'js/upk-all-scripts.min.js', [ 
 			'jquery',
@@ -204,15 +210,49 @@ class Ultimate_Post_Kit_Loader {
 
 
 	/**
+	 * Whether the site stylesheet and script are enqueued on their own on this request.
+	 *
+	 * Widget files depend on `upk-site`, so a page that loads a widget gets it
+	 * anyway, in the head when Elementor declares the page's widgets there. This
+	 * covers the rest: the editor and its preview, and a queue that already holds an
+	 * Ultimate Post Kit file registered without that dependency (Ultimate Post Kit
+	 * Pro before 4.6.0). A page with no Ultimate Post Kit widget loads neither file.
+	 *
+	 * @return bool
+	 */
+	private function needs_site_assets() {
+		if ( ultimate_post_kit_is_preview() || ultimate_post_kit_is_edit() ) {
+			$needed = true;
+		} else {
+			$needed = false;
+
+			foreach ( [ wp_styles(), wp_scripts() ] as $deps ) {
+				foreach ( (array) $deps->queue as $handle ) {
+					if ( 0 === strpos( $handle, 'upk-' ) ) {
+						$needed = true;
+						break 2;
+					}
+				}
+			}
+		}
+
+		/**
+		 * Filters whether the Ultimate Post Kit site stylesheet and script are
+		 * enqueued on this request regardless of the widgets on the page.
+		 *
+		 * @param bool $needed Whether to enqueue them.
+		 */
+		return (bool) apply_filters( 'ultimate_post_kit/frontend/enqueue_site_assets', $needed );
+	}
+
+	/**
 	 * Loading site related style from here.
 	 * @return [type] [description]
 	 */
 	public function enqueue_site_styles() {
-
-		$direction_suffix = is_rtl() ? '.rtl' : '';
-
-		wp_register_style( 'upk-site', BDTUPK_ASSETS_URL . 'css/upk-site' . $direction_suffix . '.css', [], BDTUPK_VER );
-		wp_enqueue_style( 'upk-site' );
+		if ( $this->needs_site_assets() ) {
+			wp_enqueue_style( 'upk-site' );
+		}
 	}
 
 
@@ -229,7 +269,9 @@ class Ultimate_Post_Kit_Loader {
 			'jquery'
 		], BDTUPK_VER, true ); // tooltip file should be separate
 
-		wp_enqueue_script( 'upk-site' );
+		if ( $this->needs_site_assets() ) {
+			wp_enqueue_script( 'upk-site' );
+		}
 
 		$script_config = [ 
 			'ajaxurl'       => admin_url( 'admin-ajax.php' ),

@@ -4,8 +4,8 @@ Donate link: https://bdthemes.com/
 Tags: elementor addons, post grid, post carousel, post slider, blog layout
 Requires at least: 6.8
 Tested up to: 7.1
-Stable tag: 4.5.10
-Requires PHP: 7.0
+Stable tag: 4.6.0
+Requires PHP: 7.4
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 4.0.0
@@ -311,6 +311,25 @@ The plugin is not obfuscated. Human-readable source for minified or compiled ass
 The build configuration is included in `gruntfile.js` and `package.json`. Bundled third-party libraries retain their upstream license and version comments.
 
 == Changelog ==
+
+= 4.6.0 [26th October 2026] =
+
+* Added: New admin dashboard, laid out like Element Pack and Prime Slider: Widgets, Extensions, Features, API Settings, System Status and Other Plugins, with light and dark modes
+* Added: API Settings page showing whether Mailchimp and Instagram are connected
+* Added: Asset Manager on the new Performance page (off by default) combines the widget CSS and JS used on each page into one file per type, rebuilt automatically after updates or Elementor's Clear Files & Data
+* Updated: The site-wide Ultimate Post Kit stylesheet and script now load only on pages that use Ultimate Post Kit widgets
+* Fixed: Setup wizard showed widgets that are on by default as off, and saving it switched them off
+* Fixed: Setup wizard no longer saves locked Pro widgets as off in the free version, so they stay on once Pro is active
+* Fixed: The Blaze template imported a page named GameGeek; imported template pages now get their full names
+* Fixed: Template import no longer leaves a copy of the template file in the uploads folder
+* Fixed: Fatal error in Gratis Grid with Show Reading Time enabled in the free version
+* Fixed: Newsletter now says Mailchimp is not connected instead of reporting an internal error
+* Fixed: Saving a post with only Video Link or only Audio Link enabled erased the other feature's fields
+* Fixed: Category Image loaded the media library on every admin screen, and Remove Image left a broken image
+* Fixed: Banner and Snog Slider were shown as off in the dashboard while they were active
+* Updated: Tag Cloud shows "No terms found." when there is nothing to list
+* Updated: Requires PHP 7.4 or newer, the same as Elementor (was 7.0, although parts of the code already needed 7.1)
+* Updated: Requires Ultimate Post Kit Pro 4.6.0
 
 = 4.5.10 [20th October 2026] =
 
