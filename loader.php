@@ -123,6 +123,10 @@ class Ultimate_Post_Kit_Loader {
 		require_once BDTUPK_INC_PATH . 'class-asset-combiner.php';
 		Includes\Asset_Combiner::init();
 
+		// Paginated widgets on archive templates: no 404 for pages the widget has
+		require_once BDTUPK_INC_PATH . 'class-pagination-404.php';
+		Includes\Pagination_404::init();
+
 		// wpml compatibility class for wpml support
 		require_once BDTUPK_PATH . 'includes/class-elements-wpml-compatibility.php';
 
