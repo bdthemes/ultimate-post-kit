@@ -312,9 +312,9 @@ The build configuration is included in `gruntfile.js` and `package.json`. Bundle
 
 == Changelog ==
 
-= 4.6.1 [28th October 2026] =
+= 4.6.1 [18th November 2026] =
 
-* Updated: System improved
+* Fixed: Post widgets with pagination on a blog or archive template (Element Pack or Elementor Pro Theme Builder) linked to pages that ended in "Page not found" when the widget shows fewer posts per page than Settings > Reading; those pages now load
 
 = 4.6.0 [26th October 2026] =
 
