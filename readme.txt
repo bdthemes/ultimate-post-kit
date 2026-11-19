@@ -1,5 +1,5 @@
 === Ultimate Post Kit – Elementor Post Grid, Post Carousel, Post Slider & Blog Layout Widgets ===
-Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shmusuf, arafatakashakku, shaikatazim, shamim496
+Contributors: bdthemes, selimmw, abutalib, maudud, sohanurrahman, arafatakashakku, shamim496
 Donate link: https://bdthemes.com/
 Tags: elementor addons, post grid, post carousel, post slider, blog layout
 Requires at least: 6.8
