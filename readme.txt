@@ -1,10 +1,10 @@
 === Ultimate Post Kit – Elementor Post Grid, Post Carousel, Post Slider & Blog Layout Widgets ===
-Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shmusuf, arafatakashakku, shaikatazim, shamim496
+Contributors: bdthemes, selimmw, abutalib, maudud, sohanurrahman, arafatakashakku, shamim496
 Donate link: https://bdthemes.com/
 Tags: elementor addons, post grid, post carousel, post slider, blog layout
 Requires at least: 6.8
 Tested up to: 7.1
-Stable tag: 4.6.1
+Stable tag: 4.6.2
 Requires PHP: 7.4
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -311,6 +311,10 @@ The plugin is not obfuscated. Human-readable source for minified or compiled ass
 The build configuration is included in `gruntfile.js` and `package.json`. Bundled third-party libraries retain their upstream license and version comments.
 
 == Changelog ==
+
+= 4.6.2 [19th November 2026] =
+
+* Updated: System improved
 
 = 4.6.1 [18th November 2026] =
 
