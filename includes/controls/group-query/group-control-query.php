@@ -482,7 +482,10 @@ abstract class Group_Control_Query extends Module_Base {
              */
             $selected_ids      = $this->get_settings_for_display('posts_selected_ids');
             $selected_ids      = wp_parse_id_list($selected_ids);
-            $args['post_type'] = 'any';
+            // 'any' matches every post type that is not exclude_from_search, including
+            // non-public ones, and the ids come from the saved widget. Limit the query
+            // to the post types this site exposes to visitors.
+            $args['post_type'] = ultimate_post_kit_sanitize_public_post_type(array_values(get_post_types(['public' => true])));
             if (!empty($selected_ids)) {
                 $args['post__in'] = $selected_ids;
             }
@@ -524,8 +527,14 @@ abstract class Group_Control_Query extends Module_Base {
 
             /**
              * Set Post Type
+             *
+             * Elementor stores a SELECT control's value verbatim, so posts_source is
+             * whatever was saved on the document and not necessarily one of the options
+             * the editor offered. Restrict it to the post types this site already
+             * exposes to visitors, as the load-more handlers do, so a saved widget
+             * cannot query a non-public post type.
              */
-            $args['post_type'] = $this->getGroupControlQueryPostType();
+            $args['post_type'] = ultimate_post_kit_sanitize_public_post_type($this->getGroupControlQueryPostType());
 
             /**
              * Set Exclude Post

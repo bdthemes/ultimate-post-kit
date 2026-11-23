@@ -787,14 +787,21 @@ class Recent_Comments extends Group_Control_Query {
 	public function render() {
 		$settings = $this->get_settings_for_display();
 		global $post_id;
+		// WP_Comment_Query applies no post status filter of its own, so without
+		// post_status this widget also lists comments left on private and draft posts,
+		// together with those posts' titles. WordPress core's own Recent Comments
+		// widget passes 'publish' for the same reason.
+		$comment_post_type = $settings['post_type'];
+
 		$query_args = [
-			'status'    => $settings['status'],
-			'order'     => $settings['order'],
-			'orderby'   => $settings['orderby'],
-			'post_id'   => $post_id,
-			'number'    => $settings['number'],
-			'offset'    => $settings['offset'],
-			'post_type' => $settings['post_type'],
+			'status'      => $settings['status'],
+			'order'       => $settings['order'],
+			'orderby'     => $settings['orderby'],
+			'post_id'     => $post_id,
+			'number'      => $settings['number'],
+			'offset'      => $settings['offset'],
+			'post_type'   => $comment_post_type ? ultimate_post_kit_sanitize_public_post_type($comment_post_type) : $comment_post_type,
+			'post_status' => 'publish',
 		];
 
 		if ($settings['parent'] == 'yes') {

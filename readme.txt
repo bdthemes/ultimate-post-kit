@@ -4,7 +4,7 @@ Donate link: https://bdthemes.com/
 Tags: elementor addons, post grid, post carousel, post slider, blog layout
 Requires at least: 6.8
 Tested up to: 7.1
-Stable tag: 4.6.2
+Stable tag: 4.6.3
 Requires PHP: 7.4
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -311,6 +311,11 @@ The plugin is not obfuscated. Human-readable source for minified or compiled ass
 The build configuration is included in `gruntfile.js` and `package.json`. Bundled third-party libraries retain their upstream license and version comments.
 
 == Changelog ==
+
+= 4.6.3 [23rd November 2026] =
+
+* Security: Post widgets: the Source setting now queries only post types the site shows to visitors, so a contributor can no longer list entries of private post types (for example form submissions or coupons) through a widget on their own draft; Manual Selection is limited the same way
+* Security: Recent Comments: comments left on private and draft posts are no longer listed
 
 = 4.6.2 [19th November 2026] =
 
