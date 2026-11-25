@@ -59,6 +59,55 @@ class Author extends Module_Base {
 		return $this->_query;
 	}
 
+	/**
+	 * Whether this widget may list every user and print e-mail addresses.
+	 *
+	 * WordPress shows the full user list and e-mail addresses only to people who can
+	 * `list_users`. The widget's settings are chosen by whoever built the page, so the
+	 * check is made on the author of the Elementor document that holds the widget, not
+	 * on the visitor. An administrator's team page therefore renders the same for
+	 * everyone. A page by someone without `list_users` gets what core's REST API would
+	 * give them: people who have published something, and no e-mail addresses.
+	 *
+	 * @return bool
+	 */
+	protected function can_show_private_user_data() {
+		$owner_id = $this->get_document_owner_id();
+		$allowed  = $owner_id && user_can($owner_id, 'list_users');
+
+		/**
+		 * Filters whether the Author widget may list users who have not published
+		 * anything and show their e-mail addresses.
+		 *
+		 * @param bool   $allowed  Whether the document's author can list users.
+		 * @param int    $owner_id Author of the document that holds the widget, 0 if unknown.
+		 * @param Author $widget   The widget being rendered.
+		 */
+		return (bool) apply_filters('ultimate_post_kit/author/show_private_user_data', $allowed, $owner_id, $this);
+	}
+
+	/**
+	 * The author of the Elementor document being rendered (the page, or the template
+	 * that carries this widget), falling back to the current post's author.
+	 *
+	 * @return int
+	 */
+	protected function get_document_owner_id() {
+		$documents = \Elementor\Plugin::$instance->documents ?? null;
+		$document  = $documents ? $documents->get_current() : null;
+
+		if ($document && method_exists($document, 'get_main_id')) {
+			$owner_id = (int) get_post_field('post_author', $document->get_main_id());
+			if ($owner_id) {
+				return $owner_id;
+			}
+		}
+
+		$post_id = get_the_ID();
+
+		return $post_id ? (int) get_post_field('post_author', $post_id) : 0;
+	}
+
 	public function has_widget_inner_wrapper(): bool {
         return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
     }
@@ -1405,14 +1454,23 @@ class Author extends Module_Base {
 
 		$number = ($min_published_posts > 0 || $show_pagination) ? -1 : $item_limit;
 
-		$users = get_users([
+		$show_private = $this->can_show_private_user_data();
+
+		$user_args = [
 			'orderby'  => $settings['orderby'],
 			'order'    => $settings['order'],
 			'role__in' => (!empty($settings['role'])) ? $settings['role'] : null,
 			'number'   => $number,
 			// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Elementor widget query built from user-configured controls; expected behaviour.
 			'exclude'  => array_filter(array_map('absint', explode(',', esc_attr($settings['exclude'])))),
-		]);
+		];
+
+		if (!$show_private) {
+			// Same limit core's REST API applies to callers without list_users.
+			$user_args['has_published_posts'] = true;
+		}
+
+		$users = get_users($user_args);
 
 		if ($min_published_posts > 0) {
 			$users = array_filter($users, function ($user) use ($min_published_posts) {
@@ -1439,6 +1497,16 @@ class Author extends Module_Base {
 		$social_links  = array_values(array_filter((array) $settings['social_links'], function ($link) use ($allowed_links) {
 			return is_string($link) && in_array($link, $allowed_links, true);
 		}));
+
+		$hides_email = !$show_private && $settings['show_author_link'] && in_array('email', $social_links, true);
+
+		if (!$show_private) {
+			$social_links = array_values(array_diff($social_links, ['email']));
+		}
+
+		if ($hides_email && $this->upk_is_edit_mode()) {
+			echo '<div class="upk-alert">' . esc_html__('The author of this page cannot list the site\'s users, so this widget shows only people who have published posts and hides e-mail links. This notice is shown only in the editor.', 'ultimate-post-kit') . '</div>';
+		}
 
 ?>
 		<div class="upk-author">
