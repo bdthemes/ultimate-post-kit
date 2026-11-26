@@ -1174,7 +1174,7 @@ class Maple_Carousel extends Group_Control_Query {
 					$settings = $this->get_settings_for_display();
 
 					if ('yes' == $settings['global_link']) {
-						$this->add_render_attribute('grid-item', 'onclick', "window.open('" . esc_url(get_permalink()) . "', '_self')", true);
+						$this->add_render_attribute('grid-item', 'onclick', ultimate_post_kit_window_open_handler(get_permalink()), true);
 					}
 
 					$this->add_render_attribute('grid-item', 'class', 'upk-item swiper-slide upk-transition-toggle', true);

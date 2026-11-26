@@ -892,7 +892,7 @@ class Alice_Carousel extends Group_Control_Query {
 					$settings = $this->get_settings_for_display();
 
 					if ('yes' == $settings['global_link']) {
-						$this->add_render_attribute('carousel-item', 'onclick', "window.open('" . esc_url(get_permalink()) . "', '_self')", true);
+						$this->add_render_attribute('carousel-item', 'onclick', ultimate_post_kit_window_open_handler(get_permalink()), true);
 					}
 
 					$this->add_render_attribute('carousel-item', 'class', 'upk-item swiper-slide', true);

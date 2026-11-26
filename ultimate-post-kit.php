@@ -100,6 +100,7 @@ if ( ! function_exists( '_is_upk_pro_version_sufficient' ) ) {
 
 // Helper function here
 require_once ( dirname( __FILE__ ) . '/includes/helper.php' );
+require_once ( dirname( __FILE__ ) . '/includes/security-helpers.php' );
 
 if ( ! _is_upk_pro_activated() ) {
 	require_once BDTUPK_INC_PATH . 'class-pro-widget-map.php';

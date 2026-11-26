@@ -828,7 +828,8 @@ class Post_Category extends Module_Base {
 	public function render() {
 		$settings       = $this->get_settings_for_display();
 		$image_settings = ultimate_post_kit_option( 'category_image', 'ultimate_post_kit_other_settings', 'off' );
-		$taxonomy       = ! empty( $settings['taxonomy'] ) ? $settings['taxonomy'] : 'category';
+		// The SELECT value is saved verbatim: list public taxonomies only.
+		$taxonomy       = ! empty( $settings['taxonomy'] ) ? ultimate_post_kit_sanitize_public_taxonomy( $settings['taxonomy'], 'category' ) : 'category';
 		$taxonomy_object = get_taxonomy( $taxonomy );
 		$taxonomy_label  = $taxonomy_object ? $taxonomy_object->labels->name : ucwords( str_replace( [ '-', '_' ], ' ', $taxonomy ) );
 		$orderby        = $settings['orderby'];

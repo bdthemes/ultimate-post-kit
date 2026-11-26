@@ -46,10 +46,13 @@
         '<span class="uwk-newsletter-loader"></span>' + langStr.subscribing,
       );
 
+      // The reply is shown as HTML, so it must come from this site's own
+      // subscribe handler: the form's action and its "action" field are page
+      // markup, which a comment or post can imitate.
       $.ajax({
-        url: mailchimpform.attr("action"),
+        url: window.UltimatePostKitConfig.ajaxurl,
         type: "POST",
-        data: mailchimpform.serialize(),
+        data: mailchimpform.serialize() + "&action=ultimate_post_kit_mailchimp_subscribe",
         success: function (data) {
           setTimeout(function () {
             $.alert(data);

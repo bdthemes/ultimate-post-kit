@@ -11,7 +11,7 @@
     //console.log(JSON.parse(JSON.stringify($settings)));
 
     var $carouselContainer = $carousel.find(".swiper-carousel"),
-      $settings = $carousel.data("settings");
+      $settings = upkSafeSwiperSettings($carousel.data("settings"));
 
     const Swiper = elementorFrontend.utils.swiper;
     initSwiper();
