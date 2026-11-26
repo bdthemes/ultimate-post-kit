@@ -3,7 +3,7 @@
 
   var widgetPholoxSlider = function ($scope, $) {
     var $slider = $scope.find(".upk-pholox-slider"),
-      $settings = $slider.data("settings"),
+      $settings = upkSafeSwiperSettings($slider.data("settings")),
       $widgetSettings = $slider.data("widget");
 
     if (!$slider.length) {
@@ -57,10 +57,15 @@
 
       $slider.find(".upk-pholox-video-trigger").on("click", function () {
         console.log("s");
-        var videoURL = $(this).data("src").split("?")[0],
+        // data-src comes from widget markup and becomes the iframe's address.
+        var videoURL = upkSafeUrl($(this).data("src")).split("?")[0],
           sliderWrapper = $slider.find(
             ".upk-main-slider .swiper-slide-active .upk-img-wrap",
           );
+
+        if (!videoURL) {
+          return;
+        }
 
         $slider.find(".upk-img-wrap").removeClass("upk-width-100");
         $(sliderWrapper).addClass("upk-width-100");

@@ -120,7 +120,7 @@ class Module extends Ultimate_Post_Kit_Module_Base {
 				$post_format_icon = isset($format_icons[get_post_format()]) ? $format_icons[get_post_format()] : 'upk-icon-post';
 				
 				?>
-				<div <?php if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) { printf( 'onclick="window.open(\'%s\', \'_self\')"', esc_url( $post_link ) ); } ?> class="upk-item">
+				<div <?php if ( ! empty( $settings['global_link'] ) && $settings['global_link'] === 'yes' ) { printf( 'onclick="%s"', esc_attr( ultimate_post_kit_window_open_handler( $post_link ) ) ); } ?> class="upk-item">
 					<div class="upk-image-wrap">
 						<img class="upk-img" src="<?php echo esc_url( $image_src ); ?>" alt="<?php echo esc_attr($title); ?>">
 		

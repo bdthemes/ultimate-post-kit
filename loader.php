@@ -206,9 +206,12 @@ class Ultimate_Post_Kit_Loader {
 		// Reads UltimatePostKitConfig, which the site script carries.
 		wp_register_script( 'upk-ajax-loadmore', BDTUPK_ASSETS_URL . 'js/extensions/upk-ajax-loadmore.min.js', [ 'jquery', 'upk-site' ], BDTUPK_VER, true );
 
-		wp_register_script( 'upk-all-scripts', BDTUPK_ASSETS_URL . 'js/upk-all-scripts.min.js', [ 
+		// The editor preview loads every widget from this bundle. upk-site carries
+		// UltimatePostKitConfig and the upkSafe* helpers the widget handlers call.
+		wp_register_script( 'upk-all-scripts', BDTUPK_ASSETS_URL . 'js/upk-all-scripts.min.js', [
 			'jquery',
-			'scrolline'
+			'scrolline',
+			'upk-site'
 		], BDTUPK_VER, true );
 	}
 

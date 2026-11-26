@@ -1458,7 +1458,7 @@ class Alex_Carousel extends Group_Control_Query {
 						$this->add_render_attribute(
 							'grid-item',
 							'onclick',
-							sprintf( "window.open('%s', '_self')", esc_js( esc_url( get_permalink() ) ) ),
+							ultimate_post_kit_window_open_handler( get_permalink() ),
 							true
 						);
 					}

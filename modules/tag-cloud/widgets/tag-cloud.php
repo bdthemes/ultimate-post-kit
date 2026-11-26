@@ -623,7 +623,8 @@ class Tag_Cloud extends Module_Base {
 		$settings = $this->get_settings_for_display();
 
 		$categories = get_categories([
-			'taxonomy'   => $settings["taxonomy"],
+			// The SELECT value is saved verbatim: list public taxonomies only.
+			'taxonomy'   => ultimate_post_kit_sanitize_public_taxonomy($settings["taxonomy"], 'post_tag'),
 			'orderby'    => $settings["orderby"],
 			'order'      => $settings["order"],
 			'hide_empty' => 0,

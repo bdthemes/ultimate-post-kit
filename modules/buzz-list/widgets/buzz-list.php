@@ -865,7 +865,7 @@ class Buzz_List extends Group_Control_Query {
 
 		if ('yes' == $settings['global_link']) {
 
-			$this->add_render_attribute('list-item', 'onclick', "window.open('" . esc_url(get_permalink()) . "', '_self')", true);
+			$this->add_render_attribute('list-item', 'onclick', ultimate_post_kit_window_open_handler(get_permalink()), true);
 		}
 		$this->add_render_attribute('list-item', 'class', 'upk-item upk-flex upk-flex-middle', true);
 

@@ -773,6 +773,39 @@ class Recent_Comments extends Group_Control_Query {
 		return $post_types;
 	}
 
+	/**
+	 * The comment status this widget may list.
+	 *
+	 * Elementor stores the SELECT value verbatim, so it can be any status WordPress
+	 * knows, spam and trash included. Pending comments ("Hold", and "All", which
+	 * adds them) are the moderation queue: they are listed only when the author of
+	 * the page that holds the widget can moderate comments, so a Contributor's
+	 * widget cannot show the queue, or anything else, to visitors. Pages built by
+	 * administrators and editors are unchanged.
+	 *
+	 * @param mixed $status Saved setting.
+	 * @return string
+	 */
+	protected function get_comment_status( $status ) {
+		$status = in_array( $status, [ 'approve', 'hold', 'all' ], true ) ? $status : 'approve';
+
+		if ( 'approve' === $status ) {
+			return $status;
+		}
+
+		$owner_id = ultimate_post_kit_document_owner_id();
+		$allowed  = $owner_id && user_can( $owner_id, 'moderate_comments' );
+
+		/**
+		 * Filters whether the Recent Comments widget may list comments that are not approved.
+		 *
+		 * @param bool            $allowed  Whether the page's author can moderate comments.
+		 * @param int             $owner_id Author of the document that holds the widget, 0 if unknown.
+		 * @param Recent_Comments $widget   The widget being rendered.
+		 */
+		return apply_filters( 'ultimate_post_kit/recent_comments/show_unapproved', $allowed, $owner_id, $this ) ? $status : 'approve';
+	}
+
 	public function get_html_output($output) {
 		$tags = [
 			'a'    => ['href'  => [], 'target'      => [], 'class' => []],
@@ -794,7 +827,7 @@ class Recent_Comments extends Group_Control_Query {
 		$comment_post_type = $settings['post_type'];
 
 		$query_args = [
-			'status'      => $settings['status'],
+			'status'      => $this->get_comment_status( $settings['status'] ),
 			'order'       => $settings['order'],
 			'orderby'     => $settings['orderby'],
 			'post_id'     => $post_id,
@@ -846,11 +879,19 @@ class Recent_Comments extends Group_Control_Query {
 			<div <?php $this->print_render_attribute_string('grid-wrap'); ?>>
 				<?php
 				foreach ($comments as $comment) {
+					// WordPress hides the comments of a password-protected post until its
+					// password is entered (comments template, comment feeds, REST API).
+					if ( post_password_required( $comment->comment_post_ID ) ) {
+						continue;
+					}
+
 					$title      = get_the_title($comment->comment_post_ID);
 					$comment_id = absint( $comment->comment_ID );
-					$content    = wp_trim_words($comment->comment_content, absint( $settings['excerpt_limit'] ));
+					// Visitors write the comment and its author name, and this output is part of
+					// the_content, where shortcodes run afterwards: keep [ and ] from starting one.
+					$content    = ultimate_post_kit_escape_shortcode_brackets( wp_trim_words($comment->comment_content, absint( $settings['excerpt_limit'] )) );
 					$avatar     = get_avatar($comment->comment_author_email, absint( $settings['avatar_size'] ));
-					$author     = $comment->comment_author;
+					$author     = ultimate_post_kit_escape_shortcode_brackets( $comment->comment_author );
 					$date 		= get_comment_date('F j, Y \a\t g:i a', $comment_id);
 					$author_key  = 'upk-author-' . $comment_id;
 					$show_author = ( 'yes' === $settings['show_author'] );

@@ -1530,7 +1530,8 @@ class Author extends Module_Base {
 							<?php if ($settings['show_author_name']) : ?>
 								<div class="upk-name">
 									<a href="<?php echo esc_url(get_author_posts_url($author->ID)); ?>">
-										<?php echo esc_html(get_the_author_meta('display_name', $author->ID)); ?>
+										<?php // Users choose their own name; this output is part of the_content, where shortcodes run afterwards.
+										echo esc_html(ultimate_post_kit_escape_shortcode_brackets(get_the_author_meta('display_name', $author->ID))); ?>
 									</a>
 								</div>
 							<?php endif; ?>
@@ -1543,7 +1544,7 @@ class Author extends Module_Base {
 
 							<?php if ($settings['show_author_description'] and get_the_author_meta('description', $author->ID)) : ?>
 								<div class="upk-description">
-									<?php echo wp_kses_post(get_the_author_meta('description', $author->ID)); ?>
+									<?php echo wp_kses_post(ultimate_post_kit_escape_shortcode_brackets(get_the_author_meta('description', $author->ID))); ?>
 								</div>
 							<?php endif; ?>
 

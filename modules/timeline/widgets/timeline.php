@@ -1056,7 +1056,7 @@ class Timeline extends Group_Control_Query {
 
 		if ( 'yes' == $settings['global_link'] ) {
 
-			$this->add_render_attribute( 'timeline-item', 'onclick', "window.open('" . esc_url( get_permalink() ) . "', '_self')", true );
+			$this->add_render_attribute( 'timeline-item', 'onclick', ultimate_post_kit_window_open_handler( get_permalink() ), true );
 		}
 		$this->add_render_attribute( 'timeline-item', 'class', 'upk-item', true );
 		$this->add_render_attribute( 'timeline-item', 'class', $class );

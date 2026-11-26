@@ -52,6 +52,14 @@ class Module extends Ultimate_Post_Kit_Module_Base
             return null;
         }
 
+        // The part after the dash names the Mailchimp data center ("us21") and becomes
+        // the request host, and the audience ID goes into the path: anything else
+        // would send the request, and the API key, to another host.
+        $data_center = substr($api_key, strpos($api_key, '-') + 1);
+        if (!preg_match('/^[a-z]+[0-9]+$/', $data_center) || !preg_match('/^[A-Za-z0-9]+$/', $list_id)) {
+            return null;
+        }
+
         $args = array(
             'method' => 'PUT',
             'headers' => array(

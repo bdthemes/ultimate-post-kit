@@ -8,8 +8,10 @@
     }
 
     var $carouselContainer = $carousel.find(".upk-main-slider"),
-      $settings = $carousel.data("settings"),
-      $widgetSettings = $carousel.data("widget-settings");
+      $settings = upkSafeSwiperSettings($carousel.data("settings")),
+      $widgetSettings = $carousel.data("widget-settings"),
+      // Used as a selector below; it comes from widget markup.
+      widgetId = upkSafeSelector($widgetSettings && $widgetSettings.id);
 
     const Swiper = elementorFrontend.utils.swiper;
     initSwiper();
@@ -44,7 +46,7 @@
       });
 
       var contentslide = await new Swiper(
-        $($widgetSettings.id).find(".upk-content-slider"),
+        $(widgetId).find(".upk-content-slider"),
         {
           parallax: true,
           effect: "fade",
@@ -54,7 +56,7 @@
           loopedSlides: 4,
           allowTouchMove: false,
           pagination: {
-            el: $widgetSettings.id + " .upk-pagination",
+            el: widgetId + " .upk-pagination",
             clickable: true,
           },
 
@@ -75,11 +77,11 @@
 
       $(document).ready(function () {
         setTimeout(() => {
-          var mainSwiperInstance = $($widgetSettings.id).find(
+          var mainSwiperInstance = $(widgetId).find(
             ".upk-main-slider",
           )[0].swiper;
 
-          var $slideActive = $($widgetSettings.id).find(
+          var $slideActive = $(widgetId).find(
             ".upk-main-slider .swiper-slide-active",
           );
           var realIndex = $slideActive.data("swiper-slide-index");
@@ -88,19 +90,19 @@
             realIndex = $slideActive.index();
           }
 
-          $($widgetSettings.id)
+          $(widgetId)
             .find(".upk-navigation-prev")
             .on("click", function () {
               mainSwiperInstance.slidePrev();
             });
 
-          $($widgetSettings.id)
+          $(widgetId)
             .find(".upk-navigation-next")
             .on("click", function () {
               mainSwiperInstance.slideNext();
             });
 
-          $($widgetSettings.id)
+          $(widgetId)
             .find(".swiper-pagination-bullet")
             .on("click", function () {
               var index = $(this).index();
@@ -111,7 +113,7 @@
                 mainSwiperInstance.slideTo(index);
               }
 
-              $($widgetSettings.id).addClass("wait--"); //todo future
+              $(widgetId).addClass("wait--"); //todo future
             });
 
           mainSwiperInstance.on("slideChange", function (e) {

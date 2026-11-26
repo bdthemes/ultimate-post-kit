@@ -161,6 +161,15 @@ class UltimatePostKit_Dynamic_Select_Input_Module {
 		}
 		if ($searchText) {
 			$args['s'] = $searchText;
+
+			// This endpoint only needs edit_posts, which a Contributor has. WordPress
+			// searches content and excerpts too, so a term would match inside other
+			// authors' password-protected posts and reveal, title by title, what they
+			// say. Users who may not edit others' posts search titles only, which are
+			// public anyway.
+			if (!current_user_can('edit_others_posts')) {
+				$args['search_columns'] = ['post_title'];
+			}
 		}
 
 		$query = new \WP_Query($args);
